@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OX QA Checking App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .button {
+          background-color: #22b9e7;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        div.jumbotron {
+            /* height: 625px; */
+            height: 725px;
+            text-align: center;
+            /* margin-top: 50px; */
+            margin-top: 15px;
+        }
+        #visibility {
+            display: none;
+        }
+        #checkout, #visibility, #webForms, #responsiveness, #version_mobile, 
+        #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
+        #site_americanleatherusa, #site_andresperezjurado, #credentials {
+            display: none;
+        }
+        input[type=text] {
+            width: 80%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        #submit {
+            background-color: black;
+            color: white;
+            margin-top: 20px;
+        }
+        div.inputs {
+            margin-top: 150px;
+        }
+        /* input[type=checkbox] {
+            margin-left: 100px;
+        } */
+        #checkbox {
+            margin-bottom: 8px;
+        }
+        form.credentials {
+            align-items: left;
+        }
+        #product {
+            margin-left: -15px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <button class="button" onclick="checkoutForm()">Checkout</button>
+            <button class="button" onclick="">Image Optimization</button>
+            <button class="button" onclick="visibilityForm()">Visibility</button>
+            <button class="button" onclick="webForms()">Web Forms</button>
+            <button class="button" onclick="responsivenessForm()">Responsiveness</button>
+            <br>
+
+            <div class="inputs">
+                <div id="checkout">
+                    <form action="/post/checkout" method="post">
+                        <label for="site">Choose a site:</label>
+                        <select name="site" id="site" onchange="sites()">
+                            <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
+                        </select>
+
+                        <a href="" onclick="not_on_the_list()">Not on the list?</a><br>
+
+                        <!-- <div id="product">
+                            <label for="product" style="margin-left: -10px;">Choose one:</label>
+                            <input type="radio" id="product1" name="product1" style="margin-left: 10px;">
+                            <label for="product">White Buffalo Round Silver Earrings</label><br>
+                            <input type="radio" id="product2" name="product2" style="margin-left: 39px;">
+                            <label for="product">Kingman Turquoise Bracelet</label>
+                        </div> -->
+
+                        <div id="product">
+                            <label for="product">Choose one:</label>
+                            <select name="product">
+                            <option value="product1">White Buffalo Round Silver Earrings</option>
+                            <option value="product2">Kingman Turquoise Bracelet</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submit">Submit</button>
+
+                    </form>
+                </div>
+
+                <div id="visibility">
+                    <!-- <p><u>Visibility</u></p> -->
+                    <form action="/post/visibility" method="post">
+                        <b>Search Key:</b>
+                        <input id="site_name" type="text" value="" name="site_name" placeholder="Example: 'Natina'" required /><br/>
+                        <button type="submit" id="submit">Submit</button>
+                    </form>
+                </div>
+
+                <div id="webForms">
+                    <form action="/post/webforms" method="post">
+                        <div style="text-align: left;">
+                            <p>Curent credentials are: </p>
+                            <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                            <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>^24)zwOSdIJsVJVK8K&YASRx</i></p>
+                            <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                        </div>
+
+                        <div id="credentials" style="text-align: left;">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" style="width: 10%; height: 20px;"><br>
+                            <label for="password">Password:</label>
+                            <input type="text" id="password" name="password" style="width: 10%; height: 20px; margin-left: 6px;"><br>
+                        </div>
+
+                        <label for="site">Choose a site:</label>
+                        <select name="site" id="site" onchange="sites()">
+                            <option value="accidentchiropracticaz">Accident Chiropractic AZ</option>
+                            <option value="advancedimagemedspa">Advanced Image Med Spa</option>
+                            <option value="aerialengagement">Aerial Engagement</option>
+                            <option value="americanleatherusa">American Leather USA</option>
+                            <option value="andresperezjurado">Andres Perez Jurado</option>
+                            <option value="azdoordoctor">AZ Door Doctor</option>
+                            <option value="biltmoreloanandjewelry">Biltmore Loan and Jewelry</option>
+                            <option value="buckeyederm">Buckeye Derm</option>
+                            <option value="crexendo">Crexendo</option>
+                            <option value="freddabranyon">Fredda Branyon</option>
+                            <option value="frlawgroup">FR Law Group</option>
+                            <option value="jewelryoutletinc">Jewelry Outlet Inc.</option>
+                            <option value="judefrancesjewelry">Jude Frances Jewelry</option>
+                            <option value="lignans">Lignans</option>
+                            <option value="natina">Natina</option>
+                            <option value="newhopemedicalcenter">New Hope Medical Center</option>
+                            <option value="paysondermatology">Payson Dermatology</option>
+                            <option value="phoenixritecare">Phoenix Ritecare</option>
+                            <option value="primeview">Primeview</option>
+                            <option value="randosouthwest">Randosouthwest</option>
+                            <option value="renewscal">Renewscal</option>
+                            <option value="risingsunmartialarts">Rising Sun Martial Arts</option>
+                            <option value="sellusyourcaraz">Sell Us Your Caraz</option>
+                            <option value="solutionsforum">Solutions Forum</option>
+                            <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
+                            <option value="thehairextensioncompany">The Hair Extension Company</option>
+                            <option value="versatile">Versatile</option>
+                        </select>
+                        
+                        <a href="" onclick="not_on_the_list()">Not on the list?</a><br>
+
+                        <div id="checkbox">
+                            <label for="checkbox">Choose one:</label>
+                            <select name="checkbox">
+                            <option value="dev">Dev</option>
+                            <option value="live">Live</option>
+                            </select>
+                        </div>
+
+
+                        <div id="site_accidentchiropracticaz">
+                            <label for="site_accidentchiropracticaz">Choose a form:</label>
+                            <select name="site_accidentchiropracticaz">
+                            <option value="form1">Schedule an Appointment - Home</option>
+                            <option value="form2">Schedule an Appointment - Sidebar</option>
+                            </select>
+                        </div>
+
+                        <div id="site_advancedimagemedspa">
+                            <label for="site_advancedimagemedspa">Choose a form:</label>
+                            <select name="site_advancedimagemedspa">
+                            <option value="form1">Contact Form ( Contact Us Page )</option>
+                            <option value="form2">Homepage Contact Us</option>
+                            <option value="form3">Request Form ( Sidebar ) - New Layout</option>
+                            </select>
+                        </div>
+
+                        <div id="site_aerialengagement">
+                            <label for="site_aerialengagement">Choose a form:</label>
+                            <select name="site_aerialengagement">
+                            <option value="form1">Contact Us</option>
+                            </select>
+                        </div>
+
+                        <div id="site_americanleatherusa">
+                            <label for="site_americanleatherusa">Choose a form:</label>
+                            <select name="site_americanleatherusa">
+                            <option value="form1">Contact form 1</option>
+                            </select>
+                        </div>
+
+                        <div id="site_andresperezjurado">
+                            <label for="site_andresperezjurado">Choose a form:</label>
+                            <select name="site_andresperezjurado">
+                            <option value="form1">Custom Inquiry</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submit">Submit</button>
+
+                    </form>
+                </div>
+
+                <div id="responsiveness">
+                    <!-- <p><u>Responsiveness</u></p> -->
+                    <form action="/post/responsiveness" method="post">
+                        <b>Site URL:</b>
+                        <input id="url" type="text" value="" name="url" placeholder="Example: 'https://www.primeview.com/'" required /><br/>
+
+                        <label for="device">Choose a device:</label>
+                        <select name="device" id="device" onchange="versions()">
+                            <option value="desktop">Desktop</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="tablet">Tablet</option>
+                        </select><br/>
+
+                        <div id="version_desktop">
+                            <label for="version_desktop">Choose a version:</label>
+                            <select name="version_desktop">
+                            <option value="version1">Windows 11</option>
+                            <option value="version2">Windows 8</option>
+                            <option value="version3">Windows 7</option>
+                            <option value="version4">macOS Sierra 10.12</option>
+                            </select>
+                        </div>
+
+                        <div id="version_mobile">
+                            <label for="version_mobile">Choose a version:</label>
+                            <select name="version_mobile">
+                            <option value="version1">Samsung Galaxy M30s</option>
+                            <option value="version2">Google Pixel 5</option>
+                            <option value="version3">OnePlus 9</option>
+                            <option value="version4">Xiaomi Mi 11</option>
+                            <option value="version5">Realme 5</option>
+                            <option value="version6">Huawei P30 Pro</option>
+                            <option value="version7">Sony Xperia xz2</option>
+                            <option value="version8">Moto G6</option>
+                            <option value="version9">LG G6</option>
+                            <option value="version10">iPhone 13 Pro Max</option>
+                            <option value="version11">iPhone X</option>
+                            </select>
+                        </div>
+
+                        <div id="version_tablet">
+                            <label for="version_tablet">Choose a version:</label>
+                            <select name="version_tablet">
+                            <option value="version1">iPad Air (4th generation)</option>
+                            <option value="version2">Galaxy Tab S7 Plus</option>
+                            <option value="version3">Galaxy Tab S6</option>
+                            </select>
+                        </div>
+                        
+
+                        <button type="submit" id="submit">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    
+
+
+    <script>
+        function checkoutForm(){
+            document.getElementById('checkout').style.display = 'block';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+        }
+        function visibilityForm(){
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('visibility').style.display = 'block';
+            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+        }
+        function webForms(){
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('webForms').style.display = 'block';
+            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+        }
+        function responsivenessForm(){
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('responsiveness').style.display = 'block';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+        }
+
+        function versions() {
+            var device = document.getElementById("device").value;
+            if (device === "desktop") {
+                document.getElementById('version_desktop').style.display = 'block';
+                document.getElementById('version_mobile').style.display = 'none';
+                document.getElementById('version_tablet').style.display = 'none';
+            }
+            else if (device === "mobile") {
+                document.getElementById('version_mobile').style.display = 'block';
+                document.getElementById('version_desktop').style.display = 'none';
+                document.getElementById('version_tablet').style.display = 'none';
+            }
+            else if (device === "tablet") {
+                document.getElementById('version_tablet').style.display = 'block';
+                document.getElementById('version_desktop').style.display = 'none';
+                document.getElementById('version_mobile').style.display = 'none';
+            }
+        }
+
+        function sites() {
+            var site = document.getElementById("site").value;
+            if (site === "accidentchiropracticaz") {
+                document.getElementById('site_accidentchiropracticaz').style.display = 'block';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+            }
+            else if (site === "advancedimagemedspa") {
+                document.getElementById('site_advancedimagemedspa').style.display = 'block';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+            }
+            else if (site === "aerialengagement") {
+                document.getElementById('site_aerialengagement').style.display = 'block';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+            }
+            else if (site === "americanleatherusa") {
+                document.getElementById('site_americanleatherusa').style.display = 'block';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+            }
+
+            else if (site === "andresperezjurado") {
+                document.getElementById('site_andresperezjurado').style.display = 'block';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+            }
+        }
+
+        function not_on_the_list() {
+            alert("Site must be tracked on the contact form tracker first.")
+        }
+
+        function showCredEdit() {
+            document.getElementById('credentials').style.display = 'block';
+        }
+
+
+        // function myFunc() {
+        //     alert("yes???");
+        //     setTimeout(function(){
+        //         window.location.href = 'http://localhost:3000/';
+        //     }, 5000);
+        // }
+
+    </script>
+
+</body>
+</html>

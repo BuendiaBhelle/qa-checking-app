@@ -1,0 +1,22 @@
+{
+  "name": "qa-testing-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@microsoft/edge-selenium-tools": "^3.6.2",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "googleapis": "^95.0.0",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.15",
+    "selenium-webdriver": "^4.1.1",
+    "webdriver-manager": "^12.1.8"
+  }
+}
