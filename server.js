@@ -20,18 +20,21 @@ app.get('/', function(req, res){
 });
 
 app.post('/post/checkout', function(req, res) {
-    const site = req.body.site;
+    const checkout = req.body.checkout;
     const product = req.body.product;
+    console.log("checkout: " + checkout);
+    console.log("product: " + product);
     try {
-        switch (site) {
+        switch (checkout) {
             case "sunrisejewelryusa":
                 switch (product) {
                     case "product1":
-                        console.log("Site: " + site);
+                        console.log("checkout: " + checkout);
                         console.log("product1 selected.");
                         checkout_sunrisejewelryusa_p1.index();
                         break;
                     case "product2":
+                        console.log("checkout: " + checkout);
                         console.log("product2 selected.");
                         checkout_sunrisejewelryusa_p2.index();
                         break;

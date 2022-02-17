@@ -77,28 +77,18 @@
             <div class="inputs">
                 <div id="checkout">
                     <form action="/post/checkout" method="post">
-                        <label for="site">Choose a site:</label>
-                        <select name="site" id="site" onchange="sites()">
+                        <label for="checkout">Choose a site:</label>
+                        <select name="checkout">
                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
                         </select>
 
                         <a href="" onclick="not_on_the_list()">Not on the list?</a><br>
-
-                        <!-- <div id="product">
-                            <label for="product" style="margin-left: -10px;">Choose one:</label>
-                            <input type="radio" id="product1" name="product1" style="margin-left: 10px;">
-                            <label for="product">White Buffalo Round Silver Earrings</label><br>
-                            <input type="radio" id="product2" name="product2" style="margin-left: 39px;">
-                            <label for="product">Kingman Turquoise Bracelet</label>
-                        </div> -->
-
-                        <div id="product">
-                            <label for="product">Choose one:</label>
-                            <select name="product">
-                            <option value="product1">White Buffalo Round Silver Earrings</option>
-                            <option value="product2">Kingman Turquoise Bracelet</option>
-                            </select>
-                        </div>
+ 
+                        <label for="product">Choose one:</label>
+                        <select name="product">
+                        <option value="product1">White Buffalo Round Silver Earrings</option>
+                        <option value="product2">Kingman Turquoise Bracelet</option>
+                        </select><br>
 
                         <button type="submit" id="submit">Submit</button>
 
