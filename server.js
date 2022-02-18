@@ -21,10 +21,15 @@ app.get('/', function(req, res){
 });
 
 app.post('/post/checkout', function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
     const checkout = req.body.checkout;
     const product = req.body.product;
     console.log("checkout: " + checkout);
     console.log("product: " + product);
+
+    console.log("username_server: " + username);
+    console.log("password_server: " + password);
     try {
         switch (checkout) {
             case "sunrisejewelryusa":
@@ -32,12 +37,12 @@ app.post('/post/checkout', function(req, res) {
                     case "product1":
                         console.log("checkout: " + checkout);
                         console.log("product1 selected.");
-                        checkout_sunrisejewelryusa_p1.index();
+                        checkout_sunrisejewelryusa_p1.index(username, password);
                         break;
                     case "product2":
                         console.log("checkout: " + checkout);
                         console.log("product2 selected.");
-                        checkout_sunrisejewelryusa_p2.index();
+                        checkout_sunrisejewelryusa_p2.index(username, password);
                         break;
                     default:
                         break;
@@ -72,8 +77,7 @@ app.post('/post/webforms', function(req, res) {
     var site = req.body.site;
     var checkbox = req.body.checkbox;
     console.log("username: " + username);
-    console.log("password: " + password);
-    
+    console.log("password: " + password);   
     try {
         switch (site) {
             case "accidentchiropracticaz":

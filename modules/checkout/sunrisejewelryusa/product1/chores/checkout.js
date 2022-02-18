@@ -1,14 +1,18 @@
 const {Builder, By} = require("selenium-webdriver");
 const {google} = require("googleapis");
-const config = require("../config");
+const config = require("../../config");
 
 const site = config.site;
-const wp_username = config.wp_username;
-const wp_password = config.wp_password;
+const wp_username = config.creds_sunrisejewelryusa.username;
+const wp_password = config.creds_sunrisejewelryusa.password;
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
-async function checkout() {
+
+async function checkout(username, password) {
+    console.log("username2: " + username);
+    console.log("password2: " + password);
+
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -18,9 +22,17 @@ async function checkout() {
     // site login
     try {
         await driver.executeScript("return document.getElementsByTagName('a')[36].click()");
-        await driver.findElement(By.id("username")).sendKeys(wp_username);
-        await driver.findElement(By.id("password")).sendKeys(wp_password);
-        await driver.findElement(By.name("login")).click();
+        if ((username) && (password)) {
+            console.log("creds was edited.");
+            await driver.findElement(By.id("username")).sendKeys(username);
+            await driver.findElement(By.id("password")).sendKeys(password);
+            await driver.findElement(By.name("login")).click();
+        } else {
+            console.log("creds was not edited.");
+            await driver.findElement(By.id("username")).sendKeys(wp_username);
+            await driver.findElement(By.id("password")).sendKeys(wp_password);
+            await driver.findElement(By.name("login")).click();
+        }
     } catch (error) {
         console.log(error);
     }
@@ -76,7 +88,7 @@ async function checkout() {
         await driver.executeScript("return document.getElementsByName('apply_coupon')[0].click()");
         await driver.sleep(3000);
         
-        await driver.findElement(By.id("wc-stripe-payment-token-2")).click();
+        await driver.executeScript("document.getElementsByName('wc-stripe-payment-token')[0].click()");
 
         let payment_method = await driver.executeScript("return document.getElementsByClassName('woocommerce-SavedPaymentMethods-token')[0].childNodes[3].innerHTML");
         console.log("payment_method: " + payment_method);

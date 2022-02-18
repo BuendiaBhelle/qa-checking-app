@@ -1,13 +1,14 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
-const config = require("../config");
+const config = require("../../config");
 
-const wp_username = config.wp_username;
-const wp_password = config.wp_password;
+const wp_username = config.creds_sunrisejewelryusa.username;
+const wp_password = config.creds_sunrisejewelryusa.password;
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
-async function wordpressFinish() {
+
+async function wordpressFinish(username, password) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -16,9 +17,17 @@ async function wordpressFinish() {
 
     // wp login
     try {
-        await driver.findElement(By.name("log")).sendKeys(wp_username);
-        await driver.findElement(By.name("pwd")).sendKeys(wp_password);
-        await driver.findElement(By.id("wp-submit")).click();
+        if ((username) && (password)) {
+            console.log("creds was edited.");
+            await driver.findElement(By.name("log")).sendKeys(username);
+            await driver.findElement(By.name("pwd")).sendKeys(password);
+            await driver.findElement(By.id("wp-submit")).click();
+        } else {
+            console.log("creds was not edited.");
+            await driver.findElement(By.name("log")).sendKeys(wp_username);
+            await driver.findElement(By.name("pwd")).sendKeys(wp_password);
+            await driver.findElement(By.id("wp-submit")).click();
+        }
         var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
         if (admin_email_verification === true) {
             await driver.executeScript("return document.getElementsByTagName('a')[3].click()");

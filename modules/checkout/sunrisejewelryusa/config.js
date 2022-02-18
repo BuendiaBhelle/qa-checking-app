@@ -1,8 +1,15 @@
 const {google} = require("googleapis");
 
 const site = "https://sunrisejewelryusa.primeview.com/";
-const wp_username = "pvadmin";
-const wp_password = "jX6#dN5?oR7#vU5#";
+
+// const wp_username = "pvadmin";
+// const wp_password = "jX6#dN5?oR7#vU5#";
+
+let creds_sunrisejewelryusa = {
+    username: "pvadmin",
+    password: "jX6#dN5?oR7#vU5#",
+}
+
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
 const wp_site = site + "wp-admin";
 
@@ -21,4 +28,4 @@ let year = dateObj.getFullYear();
 const date = month  + "/" + day  + '/' + year;
 
 
-module.exports = { site, wp_username, wp_password, qa_email, wp_site, auth, spreadsheetId, date };
+module.exports = { site, creds_sunrisejewelryusa, qa_email, wp_site, auth, spreadsheetId, date };

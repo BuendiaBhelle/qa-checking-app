@@ -31,7 +31,7 @@
         }
         #checkout, #visibility, #webForms, #responsiveness, #version_mobile, 
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
-        #site_americanleatherusa, #site_andresperezjurado, #credentials {
+        #site_americanleatherusa, #site_andresperezjurado, #credentials_checkout, #credentials {
             display: none;
         }
         input[type=text] {
@@ -89,6 +89,20 @@
                         <option value="product1">White Buffalo Round Silver Earrings</option>
                         <option value="product2">Kingman Turquoise Bracelet</option>
                         </select><br>
+
+                        <div style="margin-top: 10px;">
+                            <p>Curent credentials are: </p>
+                            <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                            <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>jX6#dN5?oR7#vU5#</i></p>
+                            <p style="color: #007bff; margin-top: -10px;" onclick="showCredEditCheckout()">Edit?</p>
+                        </div>
+
+                        <div id="credentials_checkout">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" style="width: 10%; height: 20px;"><br>
+                            <label for="password">Password:</label>
+                            <input type="text" id="password" name="password" style="width: 10%; height: 20px; margin-left: 6px;"><br>
+                        </div>
 
                         <button type="submit" id="submit">Submit</button>
 
@@ -385,9 +399,15 @@
             alert("Site must be tracked on the contact form tracker first.")
         }
 
+        function showCredEditCheckout() {
+            document.getElementById('credentials_checkout').style.display = 'block';
+        }
+
         function showCredEdit() {
             document.getElementById('credentials').style.display = 'block';
         }
+
+        
 
 
         // function myFunc() {
