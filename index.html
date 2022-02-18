@@ -106,20 +106,6 @@
 
                 <div id="webForms">
                     <form action="/post/webforms" method="post">
-                        <div style="text-align: left;">
-                            <p>Curent credentials are: </p>
-                            <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
-                            <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>^24)zwOSdIJsVJVK8K&YASRx</i></p>
-                            <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
-                        </div>
-
-                        <div id="credentials" style="text-align: left;">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" style="width: 10%; height: 20px;"><br>
-                            <label for="password">Password:</label>
-                            <input type="text" id="password" name="password" style="width: 10%; height: 20px; margin-left: 6px;"><br>
-                        </div>
-
                         <label for="site">Choose a site:</label>
                         <select name="site" id="site" onchange="sites()">
                             <option value="accidentchiropracticaz">Accident Chiropractic AZ</option>
@@ -168,6 +154,13 @@
                             <option value="form1">Schedule an Appointment - Home</option>
                             <option value="form2">Schedule an Appointment - Sidebar</option>
                             </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Curent credentials are: </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>^24)zwOSdIJsVJVK8K&YASRx</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
                         </div>
 
                         <div id="site_advancedimagemedspa">
@@ -177,6 +170,13 @@
                             <option value="form2">Homepage Contact Us</option>
                             <option value="form3">Request Form ( Sidebar ) - New Layout</option>
                             </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Curent credentials are: </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>kT*D3jzk%%ifOcY3N1lbB%sg</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
                         </div>
 
                         <div id="site_aerialengagement">
@@ -184,6 +184,13 @@
                             <select name="site_aerialengagement">
                             <option value="form1">Contact Us</option>
                             </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Curent credentials are: </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>CCa(c@[iDz*8</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
                         </div>
 
                         <div id="site_americanleatherusa">
@@ -191,6 +198,13 @@
                             <select name="site_americanleatherusa">
                             <option value="form1">Contact form 1</option>
                             </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Curent credentials are: </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>1L$YRb8ovrch5YpiHkYIf9WX</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
                         </div>
 
                         <div id="site_andresperezjurado">
@@ -198,6 +212,21 @@
                             <select name="site_andresperezjurado">
                             <option value="form1">Custom Inquiry</option>
                             </select>
+
+                            <!-- <div style="margin-top: 10px;">
+                                <p>Curent credentials are: </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>kT*D3jzk%%ifOcY3N1lbB%sg</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div> -->
+                        </div>
+
+
+                        <div id="credentials">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" style="width: 10%; height: 20px;"><br>
+                            <label for="password">Password:</label>
+                            <input type="text" id="password" name="password" style="width: 10%; height: 20px; margin-left: 6px;"><br>
                         </div>
 
                         <button type="submit" id="submit">Submit</button>
@@ -206,7 +235,6 @@
                 </div>
 
                 <div id="responsiveness">
-                    <!-- <p><u>Responsiveness</u></p> -->
                     <form action="/post/responsiveness" method="post">
                         <b>Site URL:</b>
                         <input id="url" type="text" value="" name="url" placeholder="Example: 'https://www.primeview.com/'" required /><br/>

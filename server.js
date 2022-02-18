@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 const success_msg = 'Success.<br><br><a href="http://localhost:3000/">Return home</a>';
 
+
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
@@ -72,6 +73,7 @@ app.post('/post/webforms', function(req, res) {
     var checkbox = req.body.checkbox;
     console.log("username: " + username);
     console.log("password: " + password);
+    
     try {
         switch (site) {
             case "accidentchiropracticaz":
@@ -85,11 +87,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz.site1_form1(domain);
+                                webforms_accidentchiropracticaz.site1_form1(domain, username, password);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz.site1_form2(domain);
+                                webforms_accidentchiropracticaz.site1_form2(domain, username, password);
                                 break;
                             default:
                                 break;
@@ -102,11 +104,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz.site1_form1(domain);
+                                webforms_accidentchiropracticaz.site1_form1(domain, username, password);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz.site1_form2(domain);
+                                webforms_accidentchiropracticaz.site1_form2(domain, username, password);
                                 break;
                             default:
                                 break;
@@ -127,15 +129,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa.site2_form1(domain, checkbox);
+                                webforms_advancedimagemedspa.site2_form1(domain, checkbox, username, password);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa.site2_form2(domain, checkbox);
+                                webforms_advancedimagemedspa.site2_form2(domain, checkbox, username, password);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa.site2_form3(domain, checkbox);
+                                webforms_advancedimagemedspa.site2_form3(domain, checkbox, username, password);
                                 break;
                             default:
                                 break;
@@ -148,15 +150,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa.site2_form1(domain, checkbox);
+                                webforms_advancedimagemedspa.site2_form1(domain, checkbox, username, password);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa.site2_form2(domain, checkbox);
+                                webforms_advancedimagemedspa.site2_form2(domain, checkbox, username, password);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa.site2_form3(domain, checkbox);
+                                webforms_advancedimagemedspa.site2_form3(domain, checkbox, username, password);
                                 break;
                             default:
                                 break;
@@ -177,7 +179,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement.site3_form1(domain);
+                                webforms_aerialengagement.site3_form1(domain, username, password);
                                 break;
                             default:
                                 break;
@@ -190,7 +192,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement.site3_form1(domain);
+                                webforms_aerialengagement.site3_form1(domain, username, password);
                                 break;
                             default:
                                 break;
@@ -209,7 +211,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa.site4_form1(domain, checkbox)
+                                webforms_americanleatherusa.site4_form1(domain, checkbox, username, password)
                                 break;
                             default:
                                 break;
@@ -222,7 +224,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa.site4_form1(domain, checkbox);
+                                webforms_americanleatherusa.site4_form1(domain, checkbox, username, password);
                                 break;
                             default:
                                 break;
@@ -337,3 +339,5 @@ app.post('/post/responsiveness', function(req, res) {
 http.listen(3000, function(){
   console.log('listening on port 3000');
 });
+
+

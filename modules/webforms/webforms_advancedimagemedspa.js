@@ -1,28 +1,17 @@
 const {Builder, By, Key, util} = require("selenium-webdriver");
 const {google} = require("googleapis");
+const config = require("../../../qa-checking-app/modules/webforms/config");
 
-const wp_username = "pvadmin";
-const wp_password = "kT*D3jzk%%ifOcY3N1lbB%sg";
-const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
+const wp_username = config.creds_advancedimagemedspa.username;
+const wp_password = config.creds_advancedimagemedspa.password;
+const qa_email = config.qa_email;
+const auth = config.auth;
+const spreadsheetId = config.spreadsheetId;
+const date = config.date;
 
-const auth = new google.auth.GoogleAuth({
-    keyFile: "credentials.json",
-    scopes: "https://www.googleapis.com/auth/spreadsheets"
-});
-
-const spreadsheetId = "12kLaYAzd0qsJ0v3jDZElfuR1x8GHP56gWG-3zmCf_48";
-
-let monthNames = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
-let dateObj = new Date();
-let month = monthNames[dateObj.getMonth()];
-let day = String(dateObj.getDate()).padStart(2, '0');
-let year = dateObj.getFullYear();
-const date = month  + "/" + day  + '/' + year;
-
-console.log(date);
 
 // form1 - Contact Form ( Contact Us Page )
-async function site2_form1(domain, checkbox) {
+async function site2_form1(domain, checkbox, username, password) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
@@ -100,9 +89,17 @@ async function site2_form1(domain, checkbox) {
 
     await driver.get(wp_site);
 
-    await driver.findElement(By.name("log")).sendKeys(wp_username);
-    await driver.findElement(By.name("pwd")).sendKeys(wp_password);
-    await driver.findElement(By.id("wp-submit")).click();
+    if ((username) && (password)) {
+        console.log("creds was edited.");
+        await driver.findElement(By.name("log")).sendKeys(username);
+        await driver.findElement(By.name("pwd")).sendKeys(password);
+        await driver.findElement(By.id("wp-submit")).click();
+    } else {
+        console.log("creds was not edited.");
+        await driver.findElement(By.name("log")).sendKeys(wp_username);
+        await driver.findElement(By.name("pwd")).sendKeys(wp_password);
+        await driver.findElement(By.id("wp-submit")).click();
+    }
 
     var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
     if (admin_email_verification === true) {
@@ -161,7 +158,7 @@ async function site2_form1(domain, checkbox) {
     await driver.findElement(By.name("services")).sendKeys(Key.ENTER);
     await driver.findElement(By.name("message")).sendKeys("Please take note that this is a test submit form for Contact Form ( Contact Us Page ). Please disregard if received. Thank you.");
     await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
-    await driver.sleep(3000);
+    await driver.sleep(5000);
     let ty_url = await driver.getCurrentUrl();
     console.log("Form1 thank you page: " + ty_url);
 
@@ -219,7 +216,7 @@ async function site2_form1(domain, checkbox) {
 
 
 // form2 - Homepage Contact Us
-async function site2_form2(domain, checkbox) {
+async function site2_form2(domain, checkbox, username, password) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
@@ -291,9 +288,18 @@ async function site2_form2(domain, checkbox) {
     let driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get(wp_site);
-    await driver.findElement(By.name("log")).sendKeys(wp_username);
-    await driver.findElement(By.name("pwd")).sendKeys(wp_password);
-    await driver.findElement(By.id("wp-submit")).click();
+
+    if ((username) && (password)) {
+        console.log("creds was edited.");
+        await driver.findElement(By.name("log")).sendKeys(username);
+        await driver.findElement(By.name("pwd")).sendKeys(password);
+        await driver.findElement(By.id("wp-submit")).click();
+    } else {
+        console.log("creds was not edited.");
+        await driver.findElement(By.name("log")).sendKeys(wp_username);
+        await driver.findElement(By.name("pwd")).sendKeys(wp_password);
+        await driver.findElement(By.id("wp-submit")).click();
+    }
 
     var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
     if (admin_email_verification === true) {
@@ -353,7 +359,7 @@ async function site2_form2(domain, checkbox) {
     await driver.findElement(By.name("hp-contact-services")).sendKeys(Key.ENTER);
     await driver.findElement(By.name("hp-contact-message")).sendKeys("Please take note that this is a test submit form for Homepage Contact Us. Please disregard if received. Thank you.");
     await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
-    await driver.sleep(3000);
+    await driver.sleep(5000);
     let ty_url = await driver.getCurrentUrl();
     console.log("Form2 thank you page: " + ty_url);
 
@@ -411,7 +417,7 @@ async function site2_form2(domain, checkbox) {
 
 
 // form3 - Request Form ( Sidebar ) - New Layout
-async function site2_form3(domain, checkbox) {
+async function site2_form3(domain, checkbox, username, password) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
@@ -516,9 +522,18 @@ async function site2_form3(domain, checkbox) {
     let driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get(wp_site);
-    await driver.findElement(By.name("log")).sendKeys(wp_username);
-    await driver.findElement(By.name("pwd")).sendKeys(wp_password);
-    await driver.findElement(By.id("wp-submit")).click();
+
+    if ((username) && (password)) {
+        console.log("creds was edited.");
+        await driver.findElement(By.name("log")).sendKeys(username);
+        await driver.findElement(By.name("pwd")).sendKeys(password);
+        await driver.findElement(By.id("wp-submit")).click();
+    } else {
+        console.log("creds was not edited.");
+        await driver.findElement(By.name("log")).sendKeys(wp_username);
+        await driver.findElement(By.name("pwd")).sendKeys(wp_password);
+        await driver.findElement(By.id("wp-submit")).click();
+    }
 
     var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
     if (admin_email_verification === true) {
@@ -583,7 +598,7 @@ async function site2_form3(domain, checkbox) {
     await driver.findElement(By.name("nl-services")).sendKeys(Key.ENTER);
     await driver.findElement(By.name("nl-message")).sendKeys("Please take note that this is a test submit form for Request Form ( Sidebar ) - New Layout. Please disregard if received. Thank you.");
     await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
-    await driver.sleep(3000);
+    await driver.sleep(5000);
     let ty_url = await driver.getCurrentUrl();
     console.log("Form3 thank you page: " + ty_url);
 
