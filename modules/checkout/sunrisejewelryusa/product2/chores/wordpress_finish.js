@@ -8,7 +8,7 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
 
-async function wordpressFinish(username, password) {
+async function wordpressFinish(username, password, email) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 

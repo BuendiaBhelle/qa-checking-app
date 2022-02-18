@@ -9,7 +9,7 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
 
-async function checkout(username, password) {
+async function checkout(username, password, email) {
     console.log("username2: " + username);
     console.log("password2: " + password);
 

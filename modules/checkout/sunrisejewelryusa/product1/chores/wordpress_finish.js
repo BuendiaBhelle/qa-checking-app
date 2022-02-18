@@ -8,7 +8,7 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
 
-async function wordpressFinish(username, password) {
+async function wordpressFinish(username, password, email) {
     console.log("username3: " + username);
     console.log("password3: " + password);
 

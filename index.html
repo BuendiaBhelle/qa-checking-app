@@ -31,7 +31,7 @@
         }
         #checkout, #visibility, #webForms, #responsiveness, #version_mobile, 
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
-        #site_americanleatherusa, #site_andresperezjurado, #credentials_checkout, #credentials {
+        #site_americanleatherusa, #site_andresperezjurado, #credentials_checkout, #qa_email, #credentials {
             display: none;
         }
         input[type=text] {
@@ -102,6 +102,17 @@
                             <input type="text" id="username" name="username" style="width: 10%; height: 20px;"><br>
                             <label for="password">Password:</label>
                             <input type="text" id="password" name="password" style="width: 10%; height: 20px; margin-left: 6px;"><br>
+                        </div>
+
+                        <div style="margin-top: 10px;">
+                            <p>QA Email: </p>
+                            <p style="margin-top: -15px; margin-left: 20px;"><i>mbuendia@optimizex.com, qa@primeview.com</i></p>
+                            <p style="color: #007bff; margin-top: -10px;" onclick="showEmail()">Edit?</p>
+                        </div>
+
+                        <div id="qa_email">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" style="width: 10%; height: 20px;"><br>
                         </div>
 
                         <button type="submit" id="submit">Submit</button>
@@ -399,6 +410,10 @@
             alert("Site must be tracked on the contact form tracker first.")
         }
 
+        function showEmail() {
+            document.getElementById('qa_email').style.display = 'block';
+        }
+
         function showCredEditCheckout() {
             document.getElementById('credentials_checkout').style.display = 'block';
         }
@@ -406,16 +421,6 @@
         function showCredEdit() {
             document.getElementById('credentials').style.display = 'block';
         }
-
-        
-
-
-        // function myFunc() {
-        //     alert("yes???");
-        //     setTimeout(function(){
-        //         window.location.href = 'http://localhost:3000/';
-        //     }, 5000);
-        // }
 
     </script>
 

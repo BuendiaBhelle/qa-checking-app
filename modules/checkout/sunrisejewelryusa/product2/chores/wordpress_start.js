@@ -11,7 +11,7 @@ const spreadsheetId = config.spreadsheetId;
 const date = config.date;
 
 
-async function wordpressStart(username, password) {
+async function wordpressStart(username, password, email) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -153,9 +153,14 @@ async function wordpressStart(username, password) {
                     }
         
                     await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-                    await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(qa_email);
+                    if (email) {
+                        console.log("qa email was edited.");
+                        await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(email);
+                    } else {
+                        console.log("qa email was not edited.");
+                        await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(qa_email);
+                    }
                     await driver.findElement(By.name("save")).click();
-            
                 } catch (error) {
                     console.log(error);
                 }
@@ -194,8 +199,14 @@ async function wordpressStart(username, password) {
                         console.log(error);
                     }
         
-                    await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-                    await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(qa_email);
+                    await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);   
+                    if (email) {
+                        console.log("qa email was edited.");
+                        await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(email);
+                    } else {
+                        console.log("qa email was not edited.");
+                        await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(qa_email);
+                    }
                     await driver.findElement(By.name("save")).click();
                 } catch (error) {
                     console.log(error);
@@ -234,7 +245,14 @@ async function wordpressStart(username, password) {
                         console.log(error);
                     }
                     await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-                    await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(qa_email);
+                    if (email) {
+                        console.log("qa email was edited.");
+                        await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(email);
+                    } else {
+                        console.log("qa email was not edited.");
+                        await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(qa_email);
+                    }
+                    
                     await driver.findElement(By.name("save")).click();  
                 } catch (error) {
                     console.log(error);

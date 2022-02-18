@@ -23,8 +23,10 @@ app.get('/', function(req, res){
 app.post('/post/checkout', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
+    var email = req.body.email;
     const checkout = req.body.checkout;
     const product = req.body.product;
+    console.log("email: " + email);
     console.log("checkout: " + checkout);
     console.log("product: " + product);
 
@@ -37,12 +39,12 @@ app.post('/post/checkout', function(req, res) {
                     case "product1":
                         console.log("checkout: " + checkout);
                         console.log("product1 selected.");
-                        checkout_sunrisejewelryusa_p1.index(username, password);
+                        checkout_sunrisejewelryusa_p1.index(username, password, email);
                         break;
                     case "product2":
                         console.log("checkout: " + checkout);
                         console.log("product2 selected.");
-                        checkout_sunrisejewelryusa_p2.index(username, password);
+                        checkout_sunrisejewelryusa_p2.index(username, password, email);
                         break;
                     default:
                         break;
