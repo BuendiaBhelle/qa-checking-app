@@ -11,7 +11,7 @@ const date = config.date;
 
 
 // form1 - Contact form 1
-async function site4_form1(domain, checkbox, username, password) {
+async function site4_form1(domain, checkbox, username, password, email) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
@@ -139,7 +139,10 @@ async function site4_form1(domain, checkbox, username, password) {
     }
 
     await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-    await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(qa_email);
+    if (email) {
+        await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(email);
+    } else {
+        await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(qa_email);    }
     await driver.executeScript("return document.getElementsByName('wpcf7-save')[2].click()");
 
     await driver.switchTo().newWindow('tab');
