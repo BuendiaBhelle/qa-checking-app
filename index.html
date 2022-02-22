@@ -29,9 +29,10 @@
         #visibility {
             display: none;
         }
-        #checkout, #visibility, #webForms, #responsiveness, #version_mobile, 
+        #checkout, #image_optimization, #visibility, #webForms, #responsiveness, #version_mobile, 
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
-        #site_americanleatherusa, #site_andresperezjurado, #credentials_checkout, #qa_email, #credentials {
+        #site_americanleatherusa, #site_andresperezjurado, #credentials_checkout, 
+        #credentials_responsiveness, #qa_email, #credentials {
             display: none;
         }
         input[type=text] {
@@ -68,7 +69,7 @@
     <div class="container">
         <div class="jumbotron">
             <button class="button" onclick="checkoutForm()">Checkout</button>
-            <button class="button" onclick="">Image Optimization</button>
+            <button class="button" onclick="image_optimizationForm()">Image Optimization</button>
             <button class="button" onclick="visibilityForm()">Visibility</button>
             <button class="button" onclick="webForms()">Web Forms</button>
             <button class="button" onclick="responsivenessForm()">Responsiveness</button>
@@ -84,14 +85,14 @@
 
                         <a href="" onclick="not_on_the_list()">Not on the list?</a><br>
  
-                        <label for="product">Choose one:</label>
+                        <label for="product">Choose a product:</label>
                         <select name="product">
                         <option value="product1">White Buffalo Round Silver Earrings</option>
                         <option value="product2">Kingman Turquoise Bracelet</option>
                         </select><br>
 
                         <div style="margin-top: 10px;">
-                            <p>Curent credentials are: </p>
+                            <p>Credentials (wordpress): </p>
                             <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
                             <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>jX6#dN5?oR7#vU5#</i></p>
                             <p style="color: #007bff; margin-top: -10px;" onclick="showCredEditCheckout()">Edit?</p>
@@ -120,8 +121,15 @@
                     </form>
                 </div>
 
+                <div id="image_optimization">
+                    <form action="/post/image_optimization" method="post">
+                        <b>Site URL:</b>
+                        <input id="url" type="text" value="" name="url" placeholder="Example: 'https://www.primeview.com/'" required /><br/>
+                        <button type="submit" id="submit">Submit</button>
+                    </form>
+                </div>
+
                 <div id="visibility">
-                    <!-- <p><u>Visibility</u></p> -->
                     <form action="/post/visibility" method="post">
                         <b>Search Key:</b>
                         <input id="site_name" type="text" value="" name="site_name" placeholder="Example: 'Natina'" required /><br/>
@@ -181,7 +189,7 @@
                             </select>
 
                             <div style="margin-top: 10px;">
-                                <p>Curent credentials are: </p>
+                                <p>Credentials (wordpress): </p>
                                 <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
                                 <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>^24)zwOSdIJsVJVK8K&YASRx</i></p>
                                 <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
@@ -197,7 +205,7 @@
                             </select>
 
                             <div style="margin-top: 10px;">
-                                <p>Curent credentials are: </p>
+                                <p>Credentials (wordpress): </p>
                                 <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
                                 <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>kT*D3jzk%%ifOcY3N1lbB%sg</i></p>
                                 <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
@@ -211,7 +219,7 @@
                             </select>
 
                             <div style="margin-top: 10px;">
-                                <p>Curent credentials are: </p>
+                                <p>Credentials (wordpress): </p>
                                 <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
                                 <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>CCa(c@[iDz*8</i></p>
                                 <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
@@ -225,7 +233,7 @@
                             </select>
 
                             <div style="margin-top: 10px;">
-                                <p>Curent credentials are: </p>
+                                <p>Credentials (wordpress): </p>
                                 <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
                                 <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>1L$YRb8ovrch5YpiHkYIf9WX</i></p>
                                 <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
@@ -239,7 +247,7 @@
                             </select>
 
                             <!-- <div style="margin-top: 10px;">
-                                <p>Curent credentials are: </p>
+                                <p>Credentials (wordpress): </p>
                                 <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
                                 <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>kT*D3jzk%%ifOcY3N1lbB%sg</i></p>
                                 <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
@@ -306,8 +314,21 @@
                             <option value="version3">Galaxy Tab S6</option>
                             </select>
                         </div>
-                        
 
+                        <div style="margin-top: 10px;">
+                            <p>Credentials (lambdatest): </p>
+                            <p style="margin-top: -15px; margin-left: 20px;"><b>email:</b> <i>pvqa@primeview.com</i></p>
+                            <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>iN1vN6lU1qD8</i></p>
+                            <p style="color: #007bff; margin-top: -10px;" onclick="showCredEditResponsiveness()">Edit?</p>
+                        </div>
+
+                        <div id="credentials_responsiveness">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" style="width: 10%; height: 20px;"><br>
+                            <label for="password">Password:</label>
+                            <input type="text" id="password" name="password" style="width: 10%; height: 20px; margin-left: 6px;"><br>
+                        </div>
+                        
                         <button type="submit" id="submit">Submit</button>
                     </form>
                 </div>
@@ -322,26 +343,37 @@
 
 
     <script>
-        function checkoutForm(){
+        function checkoutForm() {
             document.getElementById('checkout').style.display = 'block';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+        }
+        function image_optimizationForm() {
+            document.getElementById('image_optimization').style.display = 'block';
+            document.getElementById('checkout').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('responsiveness').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
         }
         function visibilityForm(){
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'block';
             document.getElementById('responsiveness').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
         }
         function webForms(){
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('webForms').style.display = 'block';
             document.getElementById('responsiveness').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
         }
         function responsivenessForm(){
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('responsiveness').style.display = 'block';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -418,11 +450,18 @@
             document.getElementById('credentials_checkout').style.display = 'block';
         }
 
+        function showCredEditResponsiveness() {
+            document.getElementById('credentials_responsiveness').style.display = 'block';
+        }
+
         function showCredEdit() {
             document.getElementById('credentials').style.display = 'block';
         }
 
     </script>
+
+
+    <script src="dist/popupS.min.js"></script>
 
 </body>
 </html>

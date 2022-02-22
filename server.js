@@ -3,6 +3,7 @@ const http = require('http').Server(app);
 const bodyParser = require('body-parser');
 const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelryusa/product1/index");
 const checkout_sunrisejewelryusa_p2 = require("./modules/checkout/sunrisejewelryusa/product2/index");
+const image_optimization = require("./modules/image_optimization/image_optimization");
 const visibility = require("./modules/visibility/visibility");
 const webforms_accidentchiropracticaz = require("./modules/webforms/webforms_accidentchiropracticaz");
 const webforms_advancedimagemedspa = require("./modules/webforms/webforms_advancedimagemedspa");
@@ -53,6 +54,17 @@ app.post('/post/checkout', function(req, res) {
             default:
                 break;
         }
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/image_optimization', function(req, res) {
+    var url = req.body.url;
+    console.log("URL: " + url);
+    try {
+        image_optimization.imageOptimization(url);
     } catch (error) {
         console.log(error);
     }
@@ -251,8 +263,12 @@ app.post('/post/webforms', function(req, res) {
 app.post('/post/responsiveness', function(req, res) {
     var url = req.body.url;
     var device = req.body.device;
+    var email = req.body.email;
+    var password = req.body.password;
     console.log("URL: " + url);
     console.log("Device: " + device);
+    console.log("email: " + email);
+    console.log("password: " + password);
     try {
         switch (device) {
             case "desktop":
@@ -260,16 +276,16 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_desktop);
                 switch (version_desktop) {
                     case "version1":
-                        responsiveness.desktop1(url);
+                        responsiveness.desktop1(url, email, password);
                         break;
                     case "version2":
-                        responsiveness.desktop2(url);
+                        responsiveness.desktop2(url, email, password);
                         break;
                     case "version3":
-                        responsiveness.desktop3(url);
+                        responsiveness.desktop3(url, email, password);
                         break;
                     case "version4":
-                        responsiveness.desktop4(url);
+                        responsiveness.desktop4(url, email, password);
                         break;
                     default:
                         break;
@@ -280,37 +296,37 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_mobile);
                 switch (version_mobile) {
                     case "version1":
-                        responsiveness.android1(url);
+                        responsiveness.android1(url, email, password);
                         break;
                     case "version2":
-                        responsiveness.android2(url);
+                        responsiveness.android2(url, email, password);
                         break;
                     case "version3":
-                        responsiveness.android3(url);
+                        responsiveness.android3(url, email, password);
                         break;
                     case "version4":
-                        responsiveness.android4(url);
+                        responsiveness.android4(url, email, password);
                         break;
                     case "version5":
-                        responsiveness.android5(url);
+                        responsiveness.android5(url, email, password);
                         break;
                     case "version6":
-                        responsiveness.android6(url);
+                        responsiveness.android6(url, email, password);
                         break;
                     case "version7":
-                        responsiveness.android7(url);
+                        responsiveness.android7(url, email, password);
                         break;
                     case "version8":
-                        responsiveness.android8(url);
+                        responsiveness.android8(url, email, password);
                         break;
                     case "version9":
-                        responsiveness.android9(url);
+                        responsiveness.android9(url, email, password);
                         break;
                     case "version10":
-                        responsiveness.ios1(url);
+                        responsiveness.ios1(url, email, password);
                         break;
                     case "version11":
-                        responsiveness.ios2(url);
+                        responsiveness.ios2(url, email, password);
                         break;
                     default:
                         break;
@@ -321,13 +337,13 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_tablet);
                 switch (version_tablet) {
                     case "version1":
-                        responsiveness.tablet1(url);
+                        responsiveness.tablet1(url, email, password);
                         break;
                     case "version2":
-                        responsiveness.tablet2(url);
+                        responsiveness.tablet2(url, email, password);
                         break;
                     case "version3":
-                        responsiveness.tablet3(url);
+                        responsiveness.tablet3(url, email, password);
                         break;
                     default:
                         break;

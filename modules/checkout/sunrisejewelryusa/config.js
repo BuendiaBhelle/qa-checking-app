@@ -2,15 +2,13 @@ const {google} = require("googleapis");
 
 const site = "https://sunrisejewelryusa.primeview.com/";
 
-// const wp_username = "pvadmin";
-// const wp_password = "jX6#dN5?oR7#vU5#";
-
 let creds_sunrisejewelryusa = {
     username: "pvadmin",
     password: "jX6#dN5?oR7#vU5#",
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
+
 const wp_site = site + "wp-admin";
 
 const auth = new google.auth.GoogleAuth({
