@@ -1,23 +1,49 @@
 const {google} = require("googleapis");
 
-let creds_accidentchiropracticaz = {
-    username: "pvadmin",
-    password: "^24)zwOSdIJsVJVK8K&YASRx",
+let credentials = {
+    accidentchiropracticaz: {
+        username: "pvadmin",
+        password: "^24)zwOSdIJsVJVK8K&YASRx"
+    },
+    advancedimagemedspa: {
+        username: "pvadmin",
+        password: "kT*D3jzk%%ifOcY3N1lbB%sg"
+    },
+    aerialengagement: {
+        username: "pvadmin",
+        password: "CCa(c@[iDz*8"
+    },
+    americanleatherusa: {
+        username: "pvadmin",
+        password: "1L$YRb8ovrch5YpiHkYIf9WX"
+    },
+    andresperezjurado: {
+        username: "pvadmin",
+        password: "t1tqAV@I}S>w"
+    }
 }
 
-let creds_advancedimagemedspa = {
-    username: "pvadmin",
-    password: "kT*D3jzk%%ifOcY3N1lbB%sg",
-}
 
-let creds_aerialengagement = {
-    username: "pvadmin",
-    password: "CCa(c@[iDz*8",
-}
-
-let creds_americanleatherusa = {
-    username: "pvadmin",
-    password: "1L$YRb8ovrch5YpiHkYIf9WX",
+let forms = {
+    accidentchiropracticaz: {
+        form1: "about-us/",
+        form2: "contact/"
+    },
+    advancedimagemedspa: {
+        form1: "contact/",
+        form2: "/",
+        form3_dev: "boost-your-beauty-club/",
+        form3_live: "join-our-clubs/"
+    },
+    aerialengagement: {
+        form1: "contact-us/"
+    },
+    americanleatherusa: {
+        form1: "contact-us/"
+    },
+    andresperezjurado: {
+        form1: "custom-inquiry/"
+    }
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -38,10 +64,8 @@ const date = month  + "/" + day  + '/' + year;
 
 
 module.exports = { 
-    creds_accidentchiropracticaz, 
-    creds_advancedimagemedspa, 
-    creds_aerialengagement, 
-    creds_americanleatherusa, 
+    credentials,
+    forms,
     qa_email, 
     auth, 
     spreadsheetId, 

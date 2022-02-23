@@ -5,10 +5,14 @@ const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelry
 const checkout_sunrisejewelryusa_p2 = require("./modules/checkout/sunrisejewelryusa/product2/index");
 const image_optimization = require("./modules/image_optimization/image_optimization");
 const visibility = require("./modules/visibility/visibility");
-const webforms_accidentchiropracticaz = require("./modules/webforms/webforms_accidentchiropracticaz");
-const webforms_advancedimagemedspa = require("./modules/webforms/webforms_advancedimagemedspa");
-const webforms_aerialengagement = require("./modules/webforms/webforms_aerialengagement");
-const webforms_americanleatherusa = require("./modules/webforms/webforms_americanleatherusa");
+const webforms_accidentchiropracticaz_f1 = require("./modules/webforms/accidentchiropracticaz/form1/index");
+const webforms_accidentchiropracticaz_f2 = require("./modules/webforms/accidentchiropracticaz/form2/index");
+const webforms_advancedimagemedspa_f1 = require("./modules/webforms/advancedimagemedspa/form1/index");
+const webforms_advancedimagemedspa_f2 = require("./modules/webforms/advancedimagemedspa/form2/index");
+const webforms_advancedimagemedspa_f3 = require("./modules/webforms/advancedimagemedspa/form3/index");
+const webforms_aerialengagement_f1 = require("./modules/webforms/aerialengagement/form1/index");
+const webforms_americanleatherusa_f1 = require("./modules/webforms/americanleatherusa/form1/index");
+const webforms_andresperezjurado_f1 = require("./modules/webforms/andresperezjurado/form1/index");
 const responsiveness = require("./modules/responsiveness/responsiveness");
 
 app.use(bodyParser.urlencoded({ extended: false })) 
@@ -107,11 +111,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz.site1_form1(domain, username, password, email);
+                                webforms_accidentchiropracticaz_f1.index(domain, checkbox, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz.site1_form2(domain, username, password, email);
+                                webforms_accidentchiropracticaz_f2.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -124,11 +128,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz.site1_form1(domain, username, password, email);
+                                webforms_accidentchiropracticaz_f1.index(domain, checkbox, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz.site1_form2(domain, username, password, email);
+                                webforms_accidentchiropracticaz_f2.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -149,15 +153,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa.site2_form1(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_f1.index(domain, checkbox, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa.site2_form2(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_f2.index(domain, checkbox, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa.site2_form3(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -170,15 +174,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa.site2_form1(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_f1.index(domain, checkbox, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa.site2_form2(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_f2.index(domain, checkbox, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa.site2_form3(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -199,7 +203,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement.site3_form1(domain, username, password, email);
+                                webforms_aerialengagement_f1.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -212,7 +216,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement.site3_form1(domain, username, password, email);
+                                webforms_aerialengagement_f1.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -231,7 +235,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa.site4_form1(domain, checkbox, username, password, email)
+                                webforms_americanleatherusa_f1.index(domain, checkbox, username, password, email)
                                 break;
                             default:
                                 break;
@@ -244,7 +248,40 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa.site4_form1(domain, checkbox, username, password, email);
+                                webforms_americanleatherusa_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "andresperezjurado":
+                var site_andresperezjurado = req.body.site_andresperezjurado;
+                console.log("Site: " + site_andresperezjurado);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://andresperezjurado.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_andresperezjurado) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_andresperezjurado_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = "https://www.andresperezjurado.com/";
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_andresperezjurado) {
+                            case "form1":
+                                console.log("form1");
+                                // webforms_andresperezjurado.site5_form1(domain, checkbox, username, password, email);
+                                webforms_andresperezjurado_f1.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
