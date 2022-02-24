@@ -31,7 +31,7 @@
         }
         #checkout, #image_optimization, #visibility, #webForms, #responsiveness, #version_mobile, 
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
-        #site_americanleatherusa, #site_andresperezjurado, #credentials_checkout, 
+        #site_americanleatherusa, #site_andresperezjurado, #site_azdoordoctor, #credentials_checkout, 
         #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
             display: none;
         }
@@ -254,6 +254,22 @@
                             </div>
                         </div>
 
+                        <div id="site_azdoordoctor">
+                            <label for="site_azdoordoctor">Choose a form:</label>
+                            <select name="site_azdoordoctor">
+                            <option value="form1">Contact Us</option>
+                            <option value="form2">Contact Us | Sidebar</option>
+                            <option value="form3">Schedule an Appointment</option>
+                            </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Credentials (wordpress): </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>m*8ggXsJk7Py3Q*Ml)l0Z4WV</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
+                        </div>
+
 
                         <div id="credentials">
                             <label for="username">Username:</label>
@@ -417,6 +433,7 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
             }
             else if (site === "advancedimagemedspa") {
                 document.getElementById('site_advancedimagemedspa').style.display = 'block';
@@ -424,6 +441,7 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
             }
             else if (site === "aerialengagement") {
                 document.getElementById('site_aerialengagement').style.display = 'block';
@@ -431,6 +449,7 @@
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
             }
             else if (site === "americanleatherusa") {
                 document.getElementById('site_americanleatherusa').style.display = 'block';
@@ -438,6 +457,7 @@
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
             }
 
             else if (site === "andresperezjurado") {
@@ -445,6 +465,15 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
+            }
+            else if (site === "azdoordoctor") {
+                document.getElementById('site_azdoordoctor').style.display = 'block';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
             }
         }

@@ -13,6 +13,9 @@ const webforms_advancedimagemedspa_f3 = require("./modules/webforms/advancedimag
 const webforms_aerialengagement_f1 = require("./modules/webforms/aerialengagement/form1/index");
 const webforms_americanleatherusa_f1 = require("./modules/webforms/americanleatherusa/form1/index");
 const webforms_andresperezjurado_f1 = require("./modules/webforms/andresperezjurado/form1/index");
+const webforms_azdoordoctor_f1 = require("./modules/webforms/azdoordoctor/form1/index");
+const webforms_azdoordoctor_f2 = require("./modules/webforms/azdoordoctor/form2/index");
+const webforms_azdoordoctor_f3 = require("./modules/webforms/azdoordoctor/form3/index");
 const responsiveness = require("./modules/responsiveness/responsiveness");
 
 app.use(bodyParser.urlencoded({ extended: false })) 
@@ -280,8 +283,55 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_andresperezjurado) {
                             case "form1":
                                 console.log("form1");
-                                // webforms_andresperezjurado.site5_form1(domain, checkbox, username, password, email);
                                 webforms_andresperezjurado_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "azdoordoctor":
+                var site_azdoordoctor = req.body.site_azdoordoctor;
+                console.log("Site: " + site_azdoordoctor);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://azdoordoctor.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_azdoordoctor) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_azdoordoctor_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_azdoordoctor_f2.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form3":
+                                console.log("form3");
+                                webforms_azdoordoctor_f3.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = "https://www.azdoordoctor.com/";
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_azdoordoctor) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_azdoordoctor_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_azdoordoctor_f2.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form3":
+                                console.log("form3");
+                                webforms_azdoordoctor_f3.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;

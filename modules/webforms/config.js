@@ -20,6 +20,10 @@ let credentials = {
     andresperezjurado: {
         username: "pvadmin",
         password: "t1tqAV@I}S>w"
+    },
+    azdoordoctor: {
+        username: "pvadmin",
+        password: "m*8ggXsJk7Py3Q*Ml)l0Z4WV"
     }
 }
 
@@ -43,6 +47,11 @@ let forms = {
     },
     andresperezjurado: {
         form1: "custom-inquiry/"
+    },
+    azdoordoctor: {
+        form1: "contact-us/",
+        form2: "areas-we-service/",
+        form3: "schedule-an-appointment/"
     }
 }
 
