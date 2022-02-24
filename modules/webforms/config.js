@@ -24,6 +24,10 @@ let credentials = {
     azdoordoctor: {
         username: "pvadmin",
         password: "m*8ggXsJk7Py3Q*Ml)l0Z4WV"
+    },
+    indinspect: {
+        username: "pvadmin",
+        password: "ChtB1]>Q3Zzw"
     }
 }
 
@@ -52,6 +56,10 @@ let forms = {
         form1: "contact-us/",
         form2: "areas-we-service/",
         form3: "schedule-an-appointment/"
+    },
+    indinspect: {
+        form1: "contact/",
+        form2: "services-offered/specialty-testing/"
     }
 }
 

@@ -16,6 +16,9 @@ const webforms_andresperezjurado_f1 = require("./modules/webforms/andresperezjur
 const webforms_azdoordoctor_f1 = require("./modules/webforms/azdoordoctor/form1/index");
 const webforms_azdoordoctor_f2 = require("./modules/webforms/azdoordoctor/form2/index");
 const webforms_azdoordoctor_f3 = require("./modules/webforms/azdoordoctor/form3/index");
+const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
+const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
+const webforms_indinspect_live_f1 = require("./modules/webforms/indinspect/live/form1/index");
 const responsiveness = require("./modules/responsiveness/responsiveness");
 
 app.use(bodyParser.urlencoded({ extended: false })) 
@@ -332,6 +335,42 @@ app.post('/post/webforms', function(req, res) {
                             case "form3":
                                 console.log("form3");
                                 webforms_azdoordoctor_f3.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "indinspect":
+                var site_indinspect = req.body.site_indinspect;
+                console.log("Site: " + site_indinspect);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://indinspectdev.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_indinspect) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_indinspect_dev_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_indinspect_dev_f2.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = "https://www.indinspect.com/";
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_indinspect) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_indinspect_live_f1.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;

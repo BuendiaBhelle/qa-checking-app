@@ -31,8 +31,8 @@
         }
         #checkout, #image_optimization, #visibility, #webForms, #responsiveness, #version_mobile, 
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
-        #site_americanleatherusa, #site_andresperezjurado, #site_azdoordoctor, #credentials_checkout, 
-        #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
+        #site_americanleatherusa, #site_andresperezjurado, #site_azdoordoctor, #site_indinspect, 
+        #credentials_checkout, #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
             display: none;
         }
         input[type=text] {
@@ -152,6 +152,7 @@
                             <option value="crexendo">Crexendo</option>
                             <option value="freddabranyon">Fredda Branyon</option>
                             <option value="frlawgroup">FR Law Group</option>
+                            <option value="indinspect">Industrial Inspection & Consulting</option>
                             <option value="jewelryoutletinc">Jewelry Outlet Inc.</option>
                             <option value="judefrancesjewelry">Jude Frances Jewelry</option>
                             <option value="lignans">Lignans</option>
@@ -266,6 +267,21 @@
                                 <p>Credentials (wordpress): </p>
                                 <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
                                 <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>m*8ggXsJk7Py3Q*Ml)l0Z4WV</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
+                        </div>
+
+                        <div id="site_indinspect">
+                            <label for="site_indinspect">Choose a form:</label>
+                            <select name="site_indinspect">
+                            <option value="form1">Contact Us</option>
+                            <option value="form2">Request Information</option>
+                            </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Credentials (wordpress): </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>ChtB1]>Q3Zzw</i></p>
                                 <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
                             </div>
                         </div>
@@ -434,6 +450,7 @@
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "advancedimagemedspa") {
                 document.getElementById('site_advancedimagemedspa').style.display = 'block';
@@ -442,6 +459,7 @@
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "aerialengagement") {
                 document.getElementById('site_aerialengagement').style.display = 'block';
@@ -450,6 +468,7 @@
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "americanleatherusa") {
                 document.getElementById('site_americanleatherusa').style.display = 'block';
@@ -458,6 +477,7 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
             }
 
             else if (site === "andresperezjurado") {
@@ -467,6 +487,7 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "azdoordoctor") {
                 document.getElementById('site_azdoordoctor').style.display = 'block';
@@ -475,7 +496,17 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
             }
+            else if (site === "indinspect") {
+                document.getElementById('site_indinspect').style.display = 'block';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+            }   
         }
 
         function not_on_the_list() {
