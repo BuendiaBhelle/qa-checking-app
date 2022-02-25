@@ -31,8 +31,8 @@
         }
         #checkout, #image_optimization, #visibility, #webForms, #responsiveness, #version_mobile, 
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
-        #site_americanleatherusa, #site_andresperezjurado, #site_azdoordoctor, #site_indinspect, 
-        #credentials_checkout, #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
+        #site_americanleatherusa, #site_andresperezjurado, #site_azdoordoctor, #site_biltmoreloanandjewelry, 
+        #site_indinspect, #credentials_checkout, #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
             display: none;
         }
         input[type=text] {
@@ -271,6 +271,25 @@
                             </div>
                         </div>
 
+                        <div id="site_biltmoreloanandjewelry">
+                            <label for="site_biltmoreloanandjewelry">Choose a form:</label>
+                            <select name="site_biltmoreloanandjewelry">
+                            <option value="form1">Request an Appraisal - Sell Your Jewelry</option>
+                            <option value="form2">Request an Appraisal - Get a Loan</option>
+                            <option value="form3">Book an Appointment (SB)</option>
+                            <option value="form4">Contact form 1</option>
+                            <option value="form5">Request an Appraisal | Landing Page 2019</option>
+                            <option value="form6">Book an Appointment (Page)</option>
+                            </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Credentials (wordpress): </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>%*j*4F^iQPLGi7e2aXV!3smf</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
+                        </div>
+
                         <div id="site_indinspect">
                             <label for="site_indinspect">Choose a form:</label>
                             <select name="site_indinspect">
@@ -450,6 +469,7 @@
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "advancedimagemedspa") {
@@ -459,6 +479,7 @@
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "aerialengagement") {
@@ -468,6 +489,7 @@
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "americanleatherusa") {
@@ -477,6 +499,7 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
             }
 
@@ -487,6 +510,7 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "azdoordoctor") {
@@ -496,6 +520,17 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
+            }
+            else if (site === "biltmoreloanandjewelry") {
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'block';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
             }
             else if (site === "indinspect") {
@@ -506,6 +541,7 @@
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
             }   
         }
 

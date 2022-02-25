@@ -16,6 +16,12 @@ const webforms_andresperezjurado_f1 = require("./modules/webforms/andresperezjur
 const webforms_azdoordoctor_f1 = require("./modules/webforms/azdoordoctor/form1/index");
 const webforms_azdoordoctor_f2 = require("./modules/webforms/azdoordoctor/form2/index");
 const webforms_azdoordoctor_f3 = require("./modules/webforms/azdoordoctor/form3/index");
+const webforms_biltmoreloanandjewelry_f1 = require("./modules/webforms/biltmoreloanandjewelry/form1/index");
+const webforms_biltmoreloanandjewelry_f2 = require("./modules/webforms/biltmoreloanandjewelry/form2/index");
+const webforms_biltmoreloanandjewelry_f3 = require("./modules/webforms/biltmoreloanandjewelry/form3/index");
+const webforms_biltmoreloanandjewelry_f4 = require("./modules/webforms/biltmoreloanandjewelry/form4/index");
+const webforms_biltmoreloanandjewelry_f5 = require("./modules/webforms/biltmoreloanandjewelry/form5/index");
+const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/biltmoreloanandjewelry/form6/index");
 const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
 const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
 const webforms_indinspect_live_f1 = require("./modules/webforms/indinspect/live/form1/index");
@@ -335,6 +341,78 @@ app.post('/post/webforms', function(req, res) {
                             case "form3":
                                 console.log("form3");
                                 webforms_azdoordoctor_f3.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "biltmoreloanandjewelry":
+                var site_biltmoreloanandjewelry = req.body.site_biltmoreloanandjewelry;
+                console.log("Site: " + site_biltmoreloanandjewelry);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://biltmorelandj.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_biltmoreloanandjewelry) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_biltmoreloanandjewelry_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_biltmoreloanandjewelry_f2.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form3":
+                                console.log("form3");
+                                webforms_biltmoreloanandjewelry_f3.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form4":
+                                console.log("form4");
+                                webforms_biltmoreloanandjewelry_f4.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form5":
+                                console.log("form5");
+                                webforms_biltmoreloanandjewelry_f5.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form6":
+                                console.log("form6");
+                                webforms_biltmoreloanandjewelry_f6.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = "https://www.biltmoreloanandjewelry.com/";
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_biltmoreloanandjewelry) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_biltmoreloanandjewelry_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_biltmoreloanandjewelry_f2.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form3":
+                                console.log("form3");
+                                webforms_biltmoreloanandjewelry_f3.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form4":
+                                console.log("form4");
+                                webforms_biltmoreloanandjewelry_f4.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form5":
+                                console.log("form5");
+                                webforms_biltmoreloanandjewelry_f5.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form6":
+                                console.log("form6");
+                                webforms_biltmoreloanandjewelry_f6.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;

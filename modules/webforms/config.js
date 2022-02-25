@@ -25,6 +25,10 @@ let credentials = {
         username: "pvadmin",
         password: "m*8ggXsJk7Py3Q*Ml)l0Z4WV"
     },
+    biltmoreloanandjewelry: {
+        username: "pvadmin",
+        password: "%*j*4F^iQPLGi7e2aXV!3smf"
+    },
     indinspect: {
         username: "pvadmin",
         password: "ChtB1]>Q3Zzw"
@@ -56,6 +60,14 @@ let forms = {
         form1: "contact-us/",
         form2: "areas-we-service/",
         form3: "schedule-an-appointment/"
+    },
+    biltmoreloanandjewelry: {
+        form1: "sell-luxury-items/",
+        form2: "get-a-loan/",
+        form3: "how-it-works-4/",
+        form4: "contact-us/",
+        form5: "collateral-loans-in-phoenix/",
+        form6: "get-an-appraisal/"
     },
     indinspect: {
         form1: "contact/",
