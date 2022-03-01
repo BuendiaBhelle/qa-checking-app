@@ -1,6 +1,9 @@
+require('dotenv').config();
 const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
+const error_log = require("./middleware/error_logs");
+
 const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelryusa/product1/index");
 const checkout_sunrisejewelryusa_p2 = require("./modules/checkout/sunrisejewelryusa/product2/index");
 const image_optimization = require("./modules/image_optimization/image_optimization");
@@ -22,19 +25,92 @@ const webforms_biltmoreloanandjewelry_f3 = require("./modules/webforms/biltmorel
 const webforms_biltmoreloanandjewelry_f4 = require("./modules/webforms/biltmoreloanandjewelry/form4/index");
 const webforms_biltmoreloanandjewelry_f5 = require("./modules/webforms/biltmoreloanandjewelry/form5/index");
 const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/biltmoreloanandjewelry/form6/index");
+const webforms_buckeyederm_f1 = require("./modules/webforms/buckeyederm/form1/index");
+const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/canyonfallshairextensioncompany/form1/index");
+const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/canyonfallshairextensioncompany/form2/index");
+
 const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
 const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
 const webforms_indinspect_live_f1 = require("./modules/webforms/indinspect/live/form1/index");
 const responsiveness = require("./modules/responsiveness/responsiveness");
+const express = require('express');
+const bcrypt = require('bcrypt');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 
 app.use(bodyParser.urlencoded({ extended: false })) 
 app.use(bodyParser.json());
+app.use(express.json());
+app.use(cookieParser());
 
-const success_msg = 'Success.<br><br><a href="http://localhost:3000/">Return home</a>';
+const expiry = 1000 * 60 * 60 * 24;
 
+app.use(sessions({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized:true,
+    cookie: { maxAge: expiry },
+    resave: false 
+}));
+
+const success_msg = 'Success.<br><br><a href="http://localhost:3000/post">Return home</a>';
+
+app.get('/users', (req, res) => {
+    res.json(users);
+});
 
 app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/login.html');
+});
+
+app.get('/post', function(req, res){
+    session=req.session;
+
+    var userId = session.userid;
+    
+    if(userId){
+        error_log.errorLog(userId);
+        res.sendFile(__dirname + '/index.html');
+    }
+    else {
+        res.sendFile(__dirname + '/login.html');
+    }
+});
+
+app.post('/login', async (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    const passwordData = process.env.ADMIN_PASSWORD;
+    const hashedPassword = await bcrypt.hash(password, 10)
+    const usernameData = [
+        "mbuendia@optimizex.com",
+        "jmagnaye@optimizex.com",
+        "ragulto@optimizex.com",
+        "jaguilar@optimizex.com"
+    ]
+    
+    try {
+        if (usernameData.includes(username)) {
+            console.log("user is allowed.");
+            if (await bcrypt.compare(passwordData, hashedPassword)) {
+                session=req.session;
+                session.userid=req.body.username;
+                console.log(req.session)
+                res.redirect("/post");
+             } else {
+                res.send('Login failed.');
+            }
+        } else {
+            console.log("User is not allowed.");
+            res.send('User is not allowed.');
+        }
+    } catch (error) {
+        res.status(500).send();
+    } 
+});
+
+app.get('/logout',(req,res) => {
+    req.session.destroy();
+    res.redirect('/');
 });
 
 app.post('/post/checkout', function(req, res) {
@@ -107,6 +183,7 @@ app.post('/post/webforms', function(req, res) {
     var email = req.body.email;
     var site = req.body.site;
     var checkbox = req.body.checkbox;
+    var checkbox_cfhec = req.body.checkbox_cfhec;
     console.log("username: " + username);
     console.log("password: " + password);  
     console.log("email: " + email); 
@@ -413,6 +490,78 @@ app.post('/post/webforms', function(req, res) {
                             case "form6":
                                 console.log("form6");
                                 webforms_biltmoreloanandjewelry_f6.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "buckeyederm":
+                var site_buckeyederm = req.body.site_buckeyederm;
+                console.log("Site: " + site_buckeyederm);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://buckeyedermdev.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_buckeyederm) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_buckeyederm_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = "https://www.buckeyederm.com/";
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_buckeyederm) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_buckeyederm_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "canyonfallshairextensioncompany":
+                var site_canyonfallshairextensioncompany = req.body.site_canyonfallshairextensioncompany;
+                console.log("Site: " + site_canyonfallshairextensioncompany);
+                switch (checkbox_cfhec) {
+                    case "dev1":
+                        var domain = "https://dev.thehairextensioncompany.com/";
+                        console.log(domain);
+                        console.log("dev1");
+                        switch (site_canyonfallshairextensioncompany) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_canyonfallshairextensioncompany_f1.index(domain, checkbox_cfhec, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_canyonfallshairextensioncompany_f2.index(domain, checkbox_cfhec, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "dev2":
+                        var domain = "https://thehairextensioncompany.primeview.com/";
+                        console.log(domain);
+                        console.log("dev2");
+                        switch (site_canyonfallshairextensioncompany) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_canyonfallshairextensioncompany_f1.index(domain, checkbox_cfhec, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_canyonfallshairextensioncompany_f2.index(domain, checkbox_cfhec, username, password, email);
                                 break;
                             default:
                                 break;

@@ -29,6 +29,14 @@ let credentials = {
         username: "pvadmin",
         password: "%*j*4F^iQPLGi7e2aXV!3smf"
     },
+    buckeyederm: {
+        username: "pvadmin",
+        password: "wd85cj5>}MF~"
+    },
+    canyonfallshairextensioncompany: {
+        username: "devadmin",
+        password: "p2@iH&8Lo1JHv02"
+    },
     indinspect: {
         username: "pvadmin",
         password: "ChtB1]>Q3Zzw"
@@ -68,6 +76,13 @@ let forms = {
         form4: "contact-us/",
         form5: "collateral-loans-in-phoenix/",
         form6: "get-an-appraisal/"
+    },
+    buckeyederm: {
+        form1: "contact/"
+    },
+    canyonfallshairextensioncompany: {
+        form1: "request-an-appointment/",
+        form2: "return-request-form/"
     },
     indinspect: {
         form1: "contact/",
