@@ -28,19 +28,6 @@ async function imageOptimization(url) {
         await driver_web.get(webpagetest_result_url);
     
         console.log("Webpagetest Result URL: " + webpagetest_result_url);
-        
-        // open notepad
-        try {
-            spawn(program, [], { cwd: dirname(program) });
-
-            await driver.startWithCapabilities(windowsAppDriverCapabilities(appExe));
-    
-            const element = By2.nativeXpath('//*[@ClassName="Edit"]');
-            await element.click();
-            await element.sendKeys(webpagetest_result_url);
-        } catch (error) {
-            console.log(error);
-        }
     } catch (error) {
         console.log(error);
     }

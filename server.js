@@ -2,7 +2,7 @@ require('dotenv').config();
 const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
-const error_log = require("./middleware/error_logs");
+const logger = require("./middleware/logger.js");
 
 const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelryusa/product1/index");
 const checkout_sunrisejewelryusa_p2 = require("./modules/checkout/sunrisejewelryusa/product2/index");
@@ -68,7 +68,7 @@ app.get('/post', function(req, res){
     var userId = session.userid;
     
     if(userId){
-        error_log.errorLog(userId);
+        logger.errorLog();
         res.sendFile(__dirname + '/index.html');
     }
     else {
@@ -80,7 +80,7 @@ app.post('/login', async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     const passwordData = process.env.ADMIN_PASSWORD;
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10);
     const usernameData = [
         "mbuendia@optimizex.com",
         "jmagnaye@optimizex.com",
@@ -89,28 +89,47 @@ app.post('/login', async (req, res) => {
     ]
     
     try {
+        logger.errorLog();
         if (usernameData.includes(username)) {
             console.log("user is allowed.");
             if (await bcrypt.compare(passwordData, hashedPassword)) {
                 session=req.session;
                 session.userid=req.body.username;
                 console.log(req.session)
+                module.exports.userId = session.userid;
                 res.redirect("/post");
+                logger.logger.log({ level: 'info', message: 'login success.', tester: this.userId });
+                console.log("login success.");
              } else {
                 res.send('Login failed.');
+                logger.logger.log({ level: 'error', message: 'login failed.', tester: this.userId });
+                console.log("login failed.");
             }
+            logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
+            console.log("user is allowed.");
         } else {
-            console.log("User is not allowed.");
             res.send('User is not allowed.');
+            logger.logger.log({ level: 'error', message: 'user is not allowed.', tester: this.userId });
+            console.log("user is not allowed.");
         }
     } catch (error) {
         res.status(500).send();
-    } 
+        logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
+        console.log("user is allowed.");
+    }
 });
 
 app.get('/logout',(req,res) => {
-    req.session.destroy();
-    res.redirect('/');
+    logger.errorLog();
+    try {
+        req.session.destroy();
+        res.redirect('/');
+        logger.logger.log({ level: 'info', message: 'logout success.', tester: this.userId });
+        console.log("logout success.");
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: 'logout failed.', tester: this.userId });
+        console.log("logout failed.");
+    }
 });
 
 app.post('/post/checkout', function(req, res) {
