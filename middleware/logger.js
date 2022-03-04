@@ -2,7 +2,6 @@ const winston = require('winston');
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, json } = format;
 
-
 async function errorLog() {
     module.exports.logger = createLogger({
         format: combine(

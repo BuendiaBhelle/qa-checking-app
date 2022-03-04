@@ -2,6 +2,7 @@ require('dotenv').config();
 const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
+const fs = require('file-system');
 const logger = require("./middleware/logger.js");
 const express = require('express');
 const bcrypt = require('bcrypt');
@@ -11,26 +12,49 @@ const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelry
 const checkout_sunrisejewelryusa_p2 = require("./modules/checkout/sunrisejewelryusa/product2/index");
 const image_optimization = require("./modules/image_optimization/image_optimization");
 const visibility = require("./modules/visibility/visibility");
-const webforms_accidentchiropracticaz_f1 = require("./modules/webforms/accidentchiropracticaz/form1/index");
-const webforms_accidentchiropracticaz_f2 = require("./modules/webforms/accidentchiropracticaz/form2/index");
-const webforms_advancedimagemedspa_f1 = require("./modules/webforms/advancedimagemedspa/form1/index");
-const webforms_advancedimagemedspa_f2 = require("./modules/webforms/advancedimagemedspa/form2/index");
-const webforms_advancedimagemedspa_f3 = require("./modules/webforms/advancedimagemedspa/form3/index");
-const webforms_aerialengagement_f1 = require("./modules/webforms/aerialengagement/form1/index");
-const webforms_americanleatherusa_f1 = require("./modules/webforms/americanleatherusa/form1/index");
-const webforms_andresperezjurado_f1 = require("./modules/webforms/andresperezjurado/form1/index");
-const webforms_azdoordoctor_f1 = require("./modules/webforms/azdoordoctor/form1/index");
-const webforms_azdoordoctor_f2 = require("./modules/webforms/azdoordoctor/form2/index");
-const webforms_azdoordoctor_f3 = require("./modules/webforms/azdoordoctor/form3/index");
-const webforms_biltmoreloanandjewelry_f1 = require("./modules/webforms/biltmoreloanandjewelry/form1/index");
-const webforms_biltmoreloanandjewelry_f2 = require("./modules/webforms/biltmoreloanandjewelry/form2/index");
-const webforms_biltmoreloanandjewelry_f3 = require("./modules/webforms/biltmoreloanandjewelry/form3/index");
-const webforms_biltmoreloanandjewelry_f4 = require("./modules/webforms/biltmoreloanandjewelry/form4/index");
-const webforms_biltmoreloanandjewelry_f5 = require("./modules/webforms/biltmoreloanandjewelry/form5/index");
-const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/biltmoreloanandjewelry/form6/index");
-const webforms_buckeyederm_f1 = require("./modules/webforms/buckeyederm/form1/index");
-const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/canyonfallshairextensioncompany/form1/index");
-const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/canyonfallshairextensioncompany/form2/index");
+const webforms_accidentchiropracticaz_dev_f1 = require("./modules/webforms/accidentchiropracticaz/dev/form1/index");
+const webforms_accidentchiropracticaz_dev_f2 = require("./modules/webforms/accidentchiropracticaz/dev/form2/index");
+const webforms_accidentchiropracticaz_live_f1 = require("./modules/webforms/accidentchiropracticaz/live/form1/index");
+const webforms_accidentchiropracticaz_live_f2 = require("./modules/webforms/accidentchiropracticaz/live/form2/index");
+const webforms_advancedimagemedspa_dev_f1 = require("./modules/webforms/advancedimagemedspa/dev/form1/index");
+const webforms_advancedimagemedspa_dev_f2 = require("./modules/webforms/advancedimagemedspa/dev/form2/index");
+const webforms_advancedimagemedspa_dev_f3 = require("./modules/webforms/advancedimagemedspa/dev/form3/index");
+const webforms_advancedimagemedspa_live_f1 = require("./modules/webforms/advancedimagemedspa/live/form1/index");
+const webforms_advancedimagemedspa_live_f2 = require("./modules/webforms/advancedimagemedspa/live/form2/index");
+const webforms_advancedimagemedspa_live_f3 = require("./modules/webforms/advancedimagemedspa/live/form3/index");
+const webforms_aerialengagement_dev_f1 = require("./modules/webforms/aerialengagement/dev/form1/index");
+const webforms_aerialengagement_live_f1 = require("./modules/webforms/aerialengagement/live/form1/index");
+const webforms_americanleatherusa_dev_f1 = require("./modules/webforms/americanleatherusa/dev/form1/index");
+const webforms_americanleatherusa_live_f1 = require("./modules/webforms/americanleatherusa/live/form1/index");
+const webforms_andresperezjurado_dev_f1 = require("./modules/webforms/andresperezjurado/dev/form1/index");
+const webforms_andresperezjurado_live_f1 = require("./modules/webforms/andresperezjurado/live/form1/index");
+const webforms_azdoordoctor_dev_f1 = require("./modules/webforms/azdoordoctor/dev/form1/index");
+const webforms_azdoordoctor_dev_f2 = require("./modules/webforms/azdoordoctor/dev/form2/index");
+const webforms_azdoordoctor_dev_f3 = require("./modules/webforms/azdoordoctor/dev/form3/index");
+const webforms_azdoordoctor_live_f1 = require("./modules/webforms/azdoordoctor/live/form1/index");
+const webforms_azdoordoctor_live_f2 = require("./modules/webforms/azdoordoctor/live/form2/index");
+const webforms_azdoordoctor_live_f3 = require("./modules/webforms/azdoordoctor/live/form3/index");
+const webforms_biltmoreloanandjewelry_dev_f1 = require("./modules/webforms/biltmoreloanandjewelry/dev/form1/index");
+const webforms_biltmoreloanandjewelry_dev_f2 = require("./modules/webforms/biltmoreloanandjewelry/dev/form2/index");
+const webforms_biltmoreloanandjewelry_dev_f3 = require("./modules/webforms/biltmoreloanandjewelry/dev/form3/index");
+const webforms_biltmoreloanandjewelry_dev_f4 = require("./modules/webforms/biltmoreloanandjewelry/dev/form4/index");
+const webforms_biltmoreloanandjewelry_dev_f5 = require("./modules/webforms/biltmoreloanandjewelry/dev/form5/index");
+const webforms_biltmoreloanandjewelry_dev_f6 = require("./modules/webforms/biltmoreloanandjewelry/dev/form6/index");
+const webforms_biltmoreloanandjewelry_live_f1 = require("./modules/webforms/biltmoreloanandjewelry/live/form1/index");
+const webforms_biltmoreloanandjewelry_live_f2 = require("./modules/webforms/biltmoreloanandjewelry/live/form2/index");
+const webforms_biltmoreloanandjewelry_live_f3 = require("./modules/webforms/biltmoreloanandjewelry/live/form3/index");
+const webforms_biltmoreloanandjewelry_live_f4 = require("./modules/webforms/biltmoreloanandjewelry/live/form4/index");
+const webforms_biltmoreloanandjewelry_live_f5 = require("./modules/webforms/biltmoreloanandjewelry/live/form5/index");
+const webforms_biltmoreloanandjewelry_live_f6 = require("./modules/webforms/biltmoreloanandjewelry/live/form6/index");
+const webforms_buckeyederm_dev_f1 = require("./modules/webforms/buckeyederm/dev/form1/index");
+const webforms_buckeyederm_live_f1 = require("./modules/webforms/buckeyederm/live/form1/index");
+
+const webforms_canyonfallshairextensioncompany_dev1_f1 = require("./modules/webforms/canyonfallshairextensioncompany/dev1/form1/index");
+const webforms_canyonfallshairextensioncompany_dev1_f2 = require("./modules/webforms/canyonfallshairextensioncompany/dev1/form2/index");
+
+const webforms_canyonfallshairextensioncompany_dev2_f1 = require("./modules/webforms/canyonfallshairextensioncompany/dev2/form1/index");
+const webforms_canyonfallshairextensioncompany_dev2_f2 = require("./modules/webforms/canyonfallshairextensioncompany/dev2/form2/index");
+
 const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
 const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
 const webforms_indinspect_live_f1 = require("./modules/webforms/indinspect/live/form1/index");
@@ -133,7 +157,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/logout',(req,res) => {
+app.get('/logout', async (req,res) => {
     logger.errorLog();
     try {
         req.session.destroy();
@@ -144,6 +168,7 @@ app.get('/logout',(req,res) => {
         logger.logger.log({ level: 'error', message: 'logout failed.', tester: this.userId });
         console.log("logout failed.");
     }
+    fs.writeFile("./middleware/logs/combined.log", "");
 });
 
 app.post('/post/checkout', function(req, res) {
@@ -233,11 +258,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz_f1.index(domain, checkbox, username, password, email);
+                                webforms_accidentchiropracticaz_dev_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz_f2.index(domain, checkbox, username, password, email);
+                                webforms_accidentchiropracticaz_dev_f2.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -250,11 +275,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz_f1.index(domain, checkbox, username, password, email);
+                                webforms_accidentchiropracticaz_live_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz_f2.index(domain, checkbox, username, password, email);
+                                webforms_accidentchiropracticaz_live_f2.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -275,15 +300,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa_f1.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_dev_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa_f2.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_dev_f2.index(domain, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_dev_f3.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -296,15 +321,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa_f1.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_live_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa_f2.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_live_f2.index(domain, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_live_f3.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;
@@ -325,7 +350,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement_f1.index(domain, checkbox, username, password, email);
+                                webforms_aerialengagement_dev_f1.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -338,7 +363,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement_f1.index(domain, checkbox, username, password, email);
+                                webforms_aerialengagement_live_f1.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -357,7 +382,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa_f1.index(domain, checkbox, username, password, email)
+                                webforms_americanleatherusa_dev_f1.index(domain, username, password, email)
                                 break;
                             default:
                                 break;
@@ -370,7 +395,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa_f1.index(domain, checkbox, username, password, email);
+                                webforms_americanleatherusa_live_f1.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -389,7 +414,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_andresperezjurado) {
                             case "form1":
                                 console.log("form1");
-                                webforms_andresperezjurado_f1.index(domain, checkbox, username, password, email);
+                                webforms_andresperezjurado_dev_f1.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -402,7 +427,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_andresperezjurado) {
                             case "form1":
                                 console.log("form1");
-                                webforms_andresperezjurado_f1.index(domain, checkbox, username, password, email);
+                                webforms_andresperezjurado_live_f1.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -421,15 +446,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_azdoordoctor) {
                             case "form1":
                                 console.log("form1");
-                                webforms_azdoordoctor_f1.index(domain, checkbox, username, password, email);
+                                webforms_azdoordoctor_dev_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_azdoordoctor_f2.index(domain, checkbox, username, password, email);
+                                webforms_azdoordoctor_dev_f2.index(domain, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_azdoordoctor_f3.index(domain, checkbox, username, password, email);
+                                webforms_azdoordoctor_dev_f3.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -442,15 +467,15 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_azdoordoctor) {
                             case "form1":
                                 console.log("form1");
-                                webforms_azdoordoctor_f1.index(domain, checkbox, username, password, email);
+                                webforms_azdoordoctor_live_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_azdoordoctor_f2.index(domain, checkbox, username, password, email);
+                                webforms_azdoordoctor_live_f2.index(domain, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_azdoordoctor_f3.index(domain, checkbox, username, password, email);
+                                webforms_azdoordoctor_live_f3.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -469,27 +494,27 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_biltmoreloanandjewelry) {
                             case "form1":
                                 console.log("form1");
-                                webforms_biltmoreloanandjewelry_f1.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_biltmoreloanandjewelry_f2.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f2.index(domain, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_biltmoreloanandjewelry_f3.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f3.index(domain, username, password, email);
                                 break;
                             case "form4":
                                 console.log("form4");
-                                webforms_biltmoreloanandjewelry_f4.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f4.index(domain, username, password, email);
                                 break;
                             case "form5":
                                 console.log("form5");
-                                webforms_biltmoreloanandjewelry_f5.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f5.index(domain, username, password, email);
                                 break;
                             case "form6":
                                 console.log("form6");
-                                webforms_biltmoreloanandjewelry_f6.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f6.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -502,27 +527,27 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_biltmoreloanandjewelry) {
                             case "form1":
                                 console.log("form1");
-                                webforms_biltmoreloanandjewelry_f1.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_biltmoreloanandjewelry_f2.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f2.index(domain, username, password, email);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_biltmoreloanandjewelry_f3.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f3.index(domain, username, password, email);
                                 break;
                             case "form4":
                                 console.log("form4");
-                                webforms_biltmoreloanandjewelry_f4.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f4.index(domain, username, password, email);
                                 break;
                             case "form5":
                                 console.log("form5");
-                                webforms_biltmoreloanandjewelry_f5.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f5.index(domain, username, password, email);
                                 break;
                             case "form6":
                                 console.log("form6");
-                                webforms_biltmoreloanandjewelry_f6.index(domain, checkbox, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f6.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -541,7 +566,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_buckeyederm) {
                             case "form1":
                                 console.log("form1");
-                                webforms_buckeyederm_f1.index(domain, checkbox, username, password, email);
+                                webforms_buckeyederm_dev_f1.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -554,7 +579,7 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_buckeyederm) {
                             case "form1":
                                 console.log("form1");
-                                webforms_buckeyederm_f1.index(domain, checkbox, username, password, email);
+                                webforms_buckeyederm_live_f1.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -573,11 +598,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_canyonfallshairextensioncompany) {
                             case "form1":
                                 console.log("form1");
-                                webforms_canyonfallshairextensioncompany_f1.index(domain, checkbox_cfhec, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev1_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_canyonfallshairextensioncompany_f2.index(domain, checkbox_cfhec, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev1_f2.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
@@ -590,11 +615,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_canyonfallshairextensioncompany) {
                             case "form1":
                                 console.log("form1");
-                                webforms_canyonfallshairextensioncompany_f1.index(domain, checkbox_cfhec, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev2_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_canyonfallshairextensioncompany_f2.index(domain, checkbox_cfhec, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev2_f2.index(domain, username, password, email);
                                 break;
                             default:
                                 break;
