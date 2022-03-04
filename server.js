@@ -3,7 +3,10 @@ const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
 const logger = require("./middleware/logger.js");
-
+const express = require('express');
+const bcrypt = require('bcrypt');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelryusa/product1/index");
 const checkout_sunrisejewelryusa_p2 = require("./modules/checkout/sunrisejewelryusa/product2/index");
 const image_optimization = require("./modules/image_optimization/image_optimization");
@@ -28,22 +31,33 @@ const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/biltmorel
 const webforms_buckeyederm_f1 = require("./modules/webforms/buckeyederm/form1/index");
 const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/canyonfallshairextensioncompany/form1/index");
 const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/canyonfallshairextensioncompany/form2/index");
-
 const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
 const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
 const webforms_indinspect_live_f1 = require("./modules/webforms/indinspect/live/form1/index");
-const responsiveness = require("./modules/responsiveness/responsiveness");
-const express = require('express');
-const bcrypt = require('bcrypt');
-const cookieParser = require("cookie-parser");
-const sessions = require('express-session');
+const responsiveness_desktop1 = require("./modules/responsiveness/desktop/windows11/windows11");
+const responsiveness_desktop2 = require("./modules/responsiveness/desktop/windows8/windows8");
+const responsiveness_desktop3 = require("./modules/responsiveness/desktop/windows7/windows7");
+const responsiveness_desktop4 = require("./modules/responsiveness/desktop/macos_sierra/macos_sierra");
+const responsiveness_mobile1 = require("./modules/responsiveness/mobile/samsung_galaxy_m30s/samsung_galaxy_m30s");
+const responsiveness_mobile2 = require("./modules/responsiveness/mobile/google_pixel_5/google_pixel_5");
+const responsiveness_mobile3 = require("./modules/responsiveness/mobile/oneplus_9/oneplus_9");
+const responsiveness_mobile4 = require("./modules/responsiveness/mobile/xiaomi_mi_11/xiaomi_mi_11");
+const responsiveness_mobile5 = require("./modules/responsiveness/mobile/realme_5/realme_5");
+const responsiveness_mobile6 = require("./modules/responsiveness/mobile/huawei_p30_pro/huawei_p30_pro");
+const responsiveness_mobile7 = require("./modules/responsiveness/mobile/sony_xperia_xz2/sony_xperia_xz2");
+const responsiveness_mobile8 = require("./modules/responsiveness/mobile/moto_g6/moto_g6");
+const responsiveness_mobile9 = require("./modules/responsiveness/mobile/lg_g6/lg_g6");
+const responsiveness_mobile10 = require("./modules/responsiveness/mobile/iphone_13_pro_max/iphone_13_pro_max");
+const responsiveness_mobile11 = require("./modules/responsiveness/mobile/iphone_x/iphone_x");
+const responsiveness_tablet1 = require("./modules/responsiveness/tablet/ipad_air_4th_gen/ipad_air_4th_gen");
+const responsiveness_tablet2 = require("./modules/responsiveness/tablet/galaxy_tab_s7_plus/galaxy_tab_s7_plus");
+const responsiveness_tablet3 = require("./modules/responsiveness/tablet/galaxy_tab_s6/galaxy_tab_s6");
+const expiry = 1000 * 60 * 60 * 24;
 
 app.use(bodyParser.urlencoded({ extended: false })) 
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
-
-const expiry = 1000 * 60 * 60 * 24;
 
 app.use(sessions({
     secret: process.env.SESSION_SECRET,
@@ -650,16 +664,16 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_desktop);
                 switch (version_desktop) {
                     case "version1":
-                        responsiveness.desktop1(url, email, password);
+                        responsiveness_desktop1.windows11(url, email, password);
                         break;
                     case "version2":
-                        responsiveness.desktop2(url, email, password);
+                        responsiveness_desktop2.windows8(url, email, password);
                         break;
                     case "version3":
-                        responsiveness.desktop3(url, email, password);
+                        responsiveness_desktop3.windows7(url, email, password);
                         break;
                     case "version4":
-                        responsiveness.desktop4(url, email, password);
+                        responsiveness_desktop4.macos_sierra(url, email, password);
                         break;
                     default:
                         break;
@@ -670,37 +684,37 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_mobile);
                 switch (version_mobile) {
                     case "version1":
-                        responsiveness.android1(url, email, password);
+                        responsiveness_mobile1.samsung_galaxy_m30s(url, email, password);
                         break;
                     case "version2":
-                        responsiveness.android2(url, email, password);
+                        responsiveness_mobile2.google_pixel_5(url, email, password);
                         break;
                     case "version3":
-                        responsiveness.android3(url, email, password);
+                        responsiveness_mobile3.oneplus_9(url, email, password);
                         break;
                     case "version4":
-                        responsiveness.android4(url, email, password);
+                        responsiveness_mobile4.xiaomi_mi_11(url, email, password);
                         break;
                     case "version5":
-                        responsiveness.android5(url, email, password);
+                        responsiveness_mobile5.realme_5(url, email, password);
                         break;
                     case "version6":
-                        responsiveness.android6(url, email, password);
+                        responsiveness_mobile6.huawei_p30_pro(url, email, password);
                         break;
                     case "version7":
-                        responsiveness.android7(url, email, password);
+                        responsiveness_mobile7.sony_xperia_xz2(url, email, password);
                         break;
                     case "version8":
-                        responsiveness.android8(url, email, password);
+                        responsiveness_mobile8.moto_g6(url, email, password);
                         break;
                     case "version9":
-                        responsiveness.android9(url, email, password);
+                        responsiveness_mobile9.lg_g6(url, email, password);
                         break;
                     case "version10":
-                        responsiveness.ios1(url, email, password);
+                        responsiveness_mobile10.iphone_13_pro_max(url, email, password);
                         break;
                     case "version11":
-                        responsiveness.ios2(url, email, password);
+                        responsiveness_mobile11.iphone_x(url, email, password);
                         break;
                     default:
                         break;
@@ -711,13 +725,13 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_tablet);
                 switch (version_tablet) {
                     case "version1":
-                        responsiveness.tablet1(url, email, password);
+                        responsiveness_tablet1.ipad_air_4th_gen(url, email, password);
                         break;
                     case "version2":
-                        responsiveness.tablet2(url, email, password);
+                        responsiveness_tablet2.galaxy_tab_s7_plus(url, email, password);
                         break;
                     case "version3":
-                        responsiveness.tablet3(url, email, password);
+                        responsiveness_tablet3.galaxy_tab_s6(url, email, password);
                         break;
                     default:
                         break;
