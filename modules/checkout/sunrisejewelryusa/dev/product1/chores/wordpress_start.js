@@ -1,17 +1,19 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
-const config = require("../../config");
+const config = require("../../../config");
+const logger = require('../../../../../../middleware/logger.js');
+const server = require('../../../../../../server.js');
 
 const wp_username = config.creds_sunrisejewelryusa.username;
 const wp_password = config.creds_sunrisejewelryusa.password;
 const qa_email = config.qa_email;
-const wp_site = config.wp_site;
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 const date = config.date;
 
 
-async function wordpressStart(username, password, email) {
+async function wordpressStart(domain, username, password, email) {
+    const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -21,23 +23,39 @@ async function wordpressStart(username, password, email) {
     // wp login
     try {
         if ((username) && (password)) {
-            console.log("creds was edited.");
             await driver.findElement(By.name("log")).sendKeys(username);
             await driver.findElement(By.name("pwd")).sendKeys(password);
-            await driver.findElement(By.id("wp-submit")).click();
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - edit credentials success.', tester: server.userId });
+            console.log("CHECKOUT - edit credentials success.");
         } else {
-            console.log("creds was not edited.");
             await driver.findElement(By.name("log")).sendKeys(wp_username);
             await driver.findElement(By.name("pwd")).sendKeys(wp_password);
-            await driver.findElement(By.id("wp-submit")).click();
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - same credentials.', tester: server.userId });
+            console.log("CHECKOUT - same credentials.");
         }
+
+        await driver.findElement(By.id("wp-submit")).click();
+
+        let login_error = await driver.executeScript("return document.getElementById('login_error')");
+        if (login_error) {
+            logger.logger.log({ level: 'error', message: 'CHECKOUT - wordpress login failed.', tester: server.userId });
+            console.log("CHECKOUT - wordpress login failed.");
+        } else {
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - wordpress login success.', tester: server.userId });
+            console.log("CHECKOUT - wordpress login success.");
+        }
+
         var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
         if (admin_email_verification === true) {
             await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
-            console.log("with admin email verification.");
-            console.log("admin_email_verification: " + admin_email_verification);
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - admin email verification.', tester: server.userId });
+            console.log("CHECKOUT - admin email verification.");
+        } else {
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - no admin email verification.', tester: server.userId });
+            console.log("CHECKOUT - no admin email verification.");
         }
     } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
     }
     
@@ -57,7 +75,8 @@ async function wordpressStart(username, password, email) {
 
     try {
         if ((prices_entered_with_tax === true) && (display_prices_in_the_shop === "Excluding tax") && (display_prices_during_cart_and_checkout === "Excluding tax")) {
-            console.log("tax tab checked.");
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - tax tab checked.', tester: server.userId });
+            console.log("CHECKOUT - tax tab checked.");
             let tax_page = await driver.getCurrentUrl();
             console.log("tax_page: " + tax_page);
             await driver.switchTo().newWindow('tab');
@@ -69,7 +88,8 @@ async function wordpressStart(username, password, email) {
             // check payments tab
             let enable_or_disable = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].checked");
             if (enable_or_disable === true) {
-                console.log("checked.");
+                logger.logger.log({ level: 'info', message: 'CHECKOUT - payments tab checked.', tester: server.userId });
+                console.log("CHECKOUT - payments tab checked.");
                 let payments_page = await driver.getCurrentUrl();
                 console.log("payments_page: " + payments_page);
                 await driver.switchTo().newWindow('tab');
@@ -85,7 +105,7 @@ async function wordpressStart(username, password, email) {
                         shiftDimension: "ROWS"
                     }
                 }];   
-                
+
                 const batchUpdateRequest = {requests};
                 
                 // add columns
@@ -96,14 +116,16 @@ async function wordpressStart(username, password, email) {
                         resource: batchUpdateRequest,
                         }, (err, response) => {
                         if (err) {
-                            console.log(err);
+                            logger.logger.log({ level: 'error', message: err, tester: server.userId });
+                            console.log(err);                        
                         } else {
-                        
-                            console.log("Success");
+                            logger.logger.log({ level: 'info', message: 'CHECKOUT - add columns success.', tester: server.userId });
+                            console.log("CHECKOUT - add columns success."); 
                         }
-                    });
+                    }); 
                 } catch (error) {
-                    console.log(error);
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                    console.log(error);                  
                 }
                 
                 // edit emails tab
@@ -113,20 +135,22 @@ async function wordpressStart(username, password, email) {
                     await googleSheets.spreadsheets.values.append({
                         auth,
                         spreadsheetId,
-                        range: "Sunrise Jewelry USA!B2:C2",
+                        range: "Sunrise Jewelry USA!A2:C2",
                         valueInputOption: "USER_ENTERED",
                         resource: {
                             values: [
                                 [
+                                    "Pre-launch",
                                     date, 
                                     wp_username + "\n" + wp_password]
                             ]
                         }
                     });
-                    console.log("success.");
+                    logger.logger.log({ level: 'info', message: 'CHECKOUT - list date and creds success.', tester: server.userId });
+                    console.log("CHECKOUT - list date and creds success.");  
                 } catch (error) {
-                    console.log(error);
-                }
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                    console.log(error);                      }
         
                 // new order
                 try {
@@ -147,22 +171,25 @@ async function wordpressStart(username, password, email) {
                                 ]
                             }
                         });
-                        console.log("success.");
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - list new order recipient success.', tester: server.userId });
+                        console.log("CHECKOUT - list new order recipient success.");                     
                     } catch (error) {
+                        logger.logger.log({ level: 'error', message: error, tester: server.userId });
                         console.log(error);
                     }
         
                     await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
                     if (email) {
-                        console.log("qa email was edited.");
                         await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(email);
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
+                        console.log("CHECKOUT - change qa email success.");  
                     } else {
-                        console.log("qa email was not edited.");
                         await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(qa_email);
                     }
                     await driver.findElement(By.name("save")).click();
                 } catch (error) {
-                    console.log(error);
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                    console.log(error);                
                 }
                 
                 // cancelled order
@@ -194,21 +221,24 @@ async function wordpressStart(username, password, email) {
                                 ]
                             }
                         });
-                        console.log("success.");
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - list cancelled order recipient success.', tester: server.userId });
+                        console.log("CHECKOUT - list cancelled order recipient success.");                         
                     } catch (error) {
-                        console.log(error);
+                        logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                        console.log(error);                    
                     }
         
-                    await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);   
+                    await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
                     if (email) {
-                        console.log("qa email was edited.");
                         await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(email);
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
+                        console.log("CHECKOUT - change qa email success.");
                     } else {
-                        console.log("qa email was not edited.");
                         await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(qa_email);
                     }
                     await driver.findElement(By.name("save")).click();
                 } catch (error) {
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
                 }
 
@@ -240,74 +270,75 @@ async function wordpressStart(username, password, email) {
                                 ]
                             }
                         });
-                        console.log("success.");
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - list failed order recipient success.', tester: server.userId });
+                        console.log("CHECKOUT - list failed order recipient success.");                     
                     } catch (error) {
-                        console.log(error);
+                        logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                        console.log(error);                         
                     }
                     await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
                     if (email) {
-                        console.log("qa email was edited.");
                         await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(email);
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
+                        console.log("CHECKOUT - change qa email success.");
                     } else {
-                        console.log("qa email was not edited.");
                         await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(qa_email);
                     }
-                    
                     await driver.findElement(By.name("save")).click();  
                 } catch (error) {
-                    console.log(error);
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                    console.log(error);               
                 }
 
                 // get coupons
                 try {
                     let current_page_url = await driver.getCurrentUrl();
                     console.log("current_page_url: " + current_page_url);
-        
                     await driver.switchTo().newWindow('tab');
                     await driver.get(current_page_url);
-
                     await driver.executeScript("return document.getElementsByTagName('a')[47].click()");
+                    logger.logger.log({ level: 'info', message: 'CHECKOUT - coupons page success.', tester: server.userId });
+                    console.log("CHECKOUT - coupons page success.");  
+                } catch (error) {
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                    console.log(error);                   
+                }
 
+                // put coupons in tracker
+                try {
                     let coupon_code = await driver.executeScript("return document.getElementsByClassName('row-title')[0].innerHTML");
                     let coupon_expiry_date = await driver.executeScript("return document.getElementsByClassName('expiry_date column-expiry_date')[0].innerHTML");
-                    
-                    // put coupons in tracker
-                    try {
-                        await googleSheets.spreadsheets.values.append({
-                            auth,
-                            spreadsheetId,
-                            // range: "Sunrise Jewelry USA!M2",
-                            range: "Sunrise Jewelry USA!M2:N2",
-                            valueInputOption: "USER_ENTERED",
-                            resource: {
-                                values: [
-                                    // [coupon_code]
-                                    [coupon_code, coupon_expiry_date]
-                                ]
-                            }
-                        });
-                        console.log("success.");
-                    } catch (error) {
-                        console.log(error);
-                    }
-
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: "Sunrise Jewelry USA!M2:N2",
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [coupon_code, coupon_expiry_date]
+                            ]
+                        }
+                    });
+                    logger.logger.log({ level: 'info', message: 'CHECKOUT - list coupon details success.', tester: server.userId });
+                    console.log("CHECKOUT - list coupon details success.");                  
                 } catch (error) {
-                    console.log(error);
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                    console.log(error);                  
                 }
             }
             else {
-                console.log("unchecked.");
                 await driver.findElement(By.id("woocommerce_stripe_enabled")).click();
+                logger.logger.log({ level: 'info', message: 'CHECKOUT - enable stripe success.', tester: server.userId });
+                console.log("CHECKOUT - enable stripe success.");
             }
         }
         else {
-            console.log("error");
-            // await driver.executeScript("return document.getElementsByName('woocommerce_prices_include_tax')[1].click()");
-            // let element = await driver.executeScript("return document.getElementsByClassName('select2-selection__rendered')[3]");
-            // element.click();
+            logger.logger.log({ level: 'error', message: 'CHECKOUT - tax tab failed.', tester: server.userId });
+            console.log("CHECKOUT - tax tab failed.");
         }
     } catch (error) {
-        console.log(error);
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
+        console.log(error);    
     }
 
     return true;

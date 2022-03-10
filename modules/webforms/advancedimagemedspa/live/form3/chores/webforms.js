@@ -1,11 +1,11 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
-// const config = require("../../config");
 const config = require("../../../../config");
+const logger = require('../../../../../../middleware/logger.js');
+const server = require('../../../../../../server.js');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
-// const form_page = config.forms.advancedimagemedspa.form2;
 const form_page_dev = config.forms.advancedimagemedspa.form3_dev;
 const form_page_live = config.forms.advancedimagemedspa.form3_live;
 
@@ -31,7 +31,10 @@ async function webforms(domain, checkbox) {
         await driver.findElement(By.name("nl-services")).sendKeys(Key.ENTER);
         await driver.findElement(By.name("nl-message")).sendKeys("Please take note that this is a test submit form for Request Form ( Sidebar ) - New Layout. Please disregard if received. Thank you.");
         await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
+        console.log("WEBFORMS - form fill in success.");
     } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
     }
 
@@ -53,8 +56,10 @@ async function webforms(domain, checkbox) {
                 ]
             }
         });
-        console.log("success.");
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - track thank you page success.', tester: server.userId });
+        console.log("WEBFORMS - track thank you page success.");
     } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
     }
 

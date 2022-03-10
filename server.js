@@ -8,8 +8,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
-const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelryusa/product1/index");
-const checkout_sunrisejewelryusa_p2 = require("./modules/checkout/sunrisejewelryusa/product2/index");
+const checkout_sunrisejewelryusa_dev_p1 = require("./modules/checkout/sunrisejewelryusa/dev/product1/index");
+const checkout_sunrisejewelryusa_dev_p2 = require("./modules/checkout/sunrisejewelryusa/dev/product2/index");
 const image_optimization = require("./modules/image_optimization/image_optimization");
 const visibility = require("./modules/visibility/visibility");
 const webforms_accidentchiropracticaz_dev_f1 = require("./modules/webforms/accidentchiropracticaz/dev/form1/index");
@@ -169,13 +169,16 @@ app.get('/logout', async (req,res) => {
         console.log("logout failed.");
     }
     fs.writeFile("./middleware/logs/combined.log", "");
+    fs.writeFile("./middleware/logs/error.log", "");
 });
 
 app.post('/post/checkout', function(req, res) {
+    logger.errorLog();
     var username = req.body.username;
     var password = req.body.password;
     var email = req.body.email;
     const checkout = req.body.checkout;
+    var checkbox_checkout = req.body.checkbox_checkout;
     const product = req.body.product;
     console.log("email: " + email);
     console.log("checkout: " + checkout);
@@ -186,17 +189,46 @@ app.post('/post/checkout', function(req, res) {
     try {
         switch (checkout) {
             case "sunrisejewelryusa":
-                switch (product) {
-                    case "product1":
-                        console.log("checkout: " + checkout);
-                        console.log("product1 selected.");
-                        checkout_sunrisejewelryusa_p1.index(username, password, email);
+                switch (checkbox_checkout) {
+                    case "dev":
+                        var domain = "https://sunrisejewelryusa.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (product) {
+                            case "product1":
+                                console.log("checkout: " + checkout);
+                                console.log("product1 selected.");
+                                checkout_sunrisejewelryusa_dev_p1.index(domain, username, password, email);
+                                break;
+                            case "product2":
+                                console.log("checkout: " + checkout);
+                                console.log("product2 selected.");
+                                checkout_sunrisejewelryusa_dev_p2.index(domain, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
                         break;
-                    case "product2":
-                        console.log("checkout: " + checkout);
-                        console.log("product2 selected.");
-                        checkout_sunrisejewelryusa_p2.index(username, password, email);
+                    case "live":
+                        var domain = "https://www.sunrisejewelryusa.com/";
+                        console.log(domain);
+                        console.log("live");
+                        // switch (product) {
+                        //     case "product1":
+                        //         console.log("checkout: " + checkout);
+                        //         console.log("product1 selected.");
+                        //         checkout_sunrisejewelryusa_dev_p1.index(domain, username, password, email);
+                        //         break;
+                        //     case "product2":
+                        //         console.log("checkout: " + checkout);
+                        //         console.log("product2 selected.");
+                        //         checkout_sunrisejewelryusa_dev_p2.index(domain, username, password, email);
+                        //         break;
+                        //     default:
+                        //         break;
+                        // }
                         break;
+                
                     default:
                         break;
                 }

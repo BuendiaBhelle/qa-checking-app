@@ -1,6 +1,8 @@
 const {Builder, By} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config = require("../../../../config");
+const logger = require('../../../../../../middleware/logger.js');
+const server = require('../../../../../../server.js');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
@@ -23,7 +25,10 @@ async function webforms(domain) {
         await driver.findElement(By.name("address")).sendKeys("7620 E McKellips Rd Scottsdale AZ 85257");
         await driver.findElement(By.name("additional-message")).sendKeys("Please take note that this is a test submit form for Custom Inquiry. Please disregard if received. Thank you.");
         await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
+        console.log("WEBFORMS - form fill in success.");
     } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
     }
 
@@ -45,8 +50,10 @@ async function webforms(domain) {
                 ]
             }
         });
-        console.log("success.");
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - track thank you page success.', tester: server.userId });
+        console.log("WEBFORMS - track thank you page success.");
     } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
     }
 

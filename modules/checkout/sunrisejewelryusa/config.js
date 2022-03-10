@@ -1,6 +1,6 @@
 const {google} = require("googleapis");
 
-const site = "https://sunrisejewelryusa.primeview.com/";
+// const site = "https://sunrisejewelryusa.primeview.com/";
 
 let creds_sunrisejewelryusa = {
     username: "pvadmin",
@@ -9,7 +9,7 @@ let creds_sunrisejewelryusa = {
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
 
-const wp_site = site + "wp-admin";
+// const wp_site = site + "wp-admin";
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -26,4 +26,4 @@ let year = dateObj.getFullYear();
 const date = month  + "/" + day  + '/' + year;
 
 
-module.exports = { site, creds_sunrisejewelryusa, qa_email, wp_site, auth, spreadsheetId, date };
+module.exports = { creds_sunrisejewelryusa, qa_email, auth, spreadsheetId, date };

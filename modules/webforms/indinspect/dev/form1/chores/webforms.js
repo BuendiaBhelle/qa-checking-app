@@ -1,6 +1,8 @@
 const {Builder, By} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config = require("../../../../config");
+const logger = require('../../../../../../middleware/logger.js');
+const server = require('../../../../../../server.js');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
@@ -22,7 +24,10 @@ async function webforms(domain) {
         await driver.findElement(By.id("input_1_3")).sendKeys("4806480839");
         await driver.findElement(By.id("input_1_4")).sendKeys("Please take note that this is a test submit form for Contact Us. Please disregard if received. Thank you.");
         await driver.executeScript("return document.getElementsByClassName('gform_button button')[0].click()");
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
+        console.log("WEBFORMS - form fill in success.");
     } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
     }
 
@@ -44,8 +49,10 @@ async function webforms(domain) {
                 ]
             }
         });
-        console.log("success.");
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - track thank you page success.', tester: server.userId });
+        console.log("WEBFORMS - track thank you page success.");
     } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
     }
 
