@@ -9,7 +9,7 @@ const lt_email = config.creds_lambdatest.email;
 const lt_password = config.creds_lambdatest.password;
 
 
-async function ipad_air_4th_gen(url, email, password) {
+async function iphone_13(url, email, password) {
     let driver = await new Builder().forBrowser("chrome").build();
     try {
         await driver.get(lambdatest_site);
@@ -41,8 +41,11 @@ async function ipad_air_4th_gen(url, email, password) {
         }
         await driver.findElement(By.id("input-text")).sendKeys(url);
         await driver.executeScript("return document.getElementsByClassName('img-responsive center-block')[1].click()");
-        await driver.executeScript("return document.getElementsByTagName('li')[136].click()");
-        await driver.executeScript("return document.getElementsByTagName('li')[139].click()");
+        await driver.sleep(1000);
+        await driver.executeScript("return document.getElementsByClassName('fa fa-apple')[7].click()");
+        await driver.sleep(1000);
+        await driver.executeScript("return document.getElementsByTagName('li')[143].click()");
+        await driver.sleep(1000);
         await driver.findElement(By.className("btn-start")).click();
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
@@ -51,6 +54,6 @@ async function ipad_air_4th_gen(url, email, password) {
 }
 
 
-module.exports = { ipad_air_4th_gen };
+module.exports = { iphone_13 };
 
     

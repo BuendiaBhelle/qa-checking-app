@@ -48,12 +48,12 @@ const webforms_biltmoreloanandjewelry_live_f5 = require("./modules/webforms/bilt
 const webforms_biltmoreloanandjewelry_live_f6 = require("./modules/webforms/biltmoreloanandjewelry/live/form6/index");
 const webforms_buckeyederm_dev_f1 = require("./modules/webforms/buckeyederm/dev/form1/index");
 const webforms_buckeyederm_live_f1 = require("./modules/webforms/buckeyederm/live/form1/index");
-
 const webforms_canyonfallshairextensioncompany_dev1_f1 = require("./modules/webforms/canyonfallshairextensioncompany/dev1/form1/index");
 const webforms_canyonfallshairextensioncompany_dev1_f2 = require("./modules/webforms/canyonfallshairextensioncompany/dev1/form2/index");
-
 const webforms_canyonfallshairextensioncompany_dev2_f1 = require("./modules/webforms/canyonfallshairextensioncompany/dev2/form1/index");
 const webforms_canyonfallshairextensioncompany_dev2_f2 = require("./modules/webforms/canyonfallshairextensioncompany/dev2/form2/index");
+const webforms_crexendo_dev_f1 = require("./modules/webforms/crexendo/dev/form1/index");
+const webforms_crexendo_dev_f2 = require("./modules/webforms/crexendo/dev/form2/index");
 
 const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
 const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
@@ -72,7 +72,12 @@ const responsiveness_mobile7 = require("./modules/responsiveness/mobile/sony_xpe
 const responsiveness_mobile8 = require("./modules/responsiveness/mobile/moto_g6/moto_g6");
 const responsiveness_mobile9 = require("./modules/responsiveness/mobile/lg_g6/lg_g6");
 const responsiveness_mobile10 = require("./modules/responsiveness/mobile/iphone_13_pro_max/iphone_13_pro_max");
-const responsiveness_mobile11 = require("./modules/responsiveness/mobile/iphone_x/iphone_x");
+const responsiveness_mobile11 = require("./modules/responsiveness/mobile/iphone_13_pro/iphone_13_pro");
+const responsiveness_mobile12 = require("./modules/responsiveness/mobile/iphone_13/iphone_13");
+const responsiveness_mobile13 = require("./modules/responsiveness/mobile/iphone_12_pro_max/iphone_12_pro_max");
+const responsiveness_mobile14 = require("./modules/responsiveness/mobile/iphone_11_pro_max/iphone_11_pro_max");
+const responsiveness_mobile15 = require("./modules/responsiveness/mobile/iphone_x/iphone_x");
+
 const responsiveness_tablet1 = require("./modules/responsiveness/tablet/ipad_air_4th_gen/ipad_air_4th_gen");
 const responsiveness_tablet2 = require("./modules/responsiveness/tablet/galaxy_tab_s7_plus/galaxy_tab_s7_plus");
 const responsiveness_tablet3 = require("./modules/responsiveness/tablet/galaxy_tab_s6/galaxy_tab_s6");
@@ -243,6 +248,7 @@ app.post('/post/checkout', function(req, res) {
 });
 
 app.post('/post/image_optimization', function(req, res) {
+    logger.errorLog();
     var url = req.body.url;
     console.log("URL: " + url);
     try {
@@ -254,6 +260,7 @@ app.post('/post/image_optimization', function(req, res) {
 });
 
 app.post('/post/visibility', function(req, res) {
+    logger.errorLog();
     const site_name = req.body.site_name;
     console.log("Site Name: " + site_name);
     try {
@@ -268,6 +275,7 @@ app.post('/post/visibility', function(req, res) {
 
 
 app.post('/post/webforms', function(req, res) {
+    logger.errorLog();
     var username = req.body.username;
     var password = req.body.password;
     var email = req.body.email;
@@ -659,6 +667,46 @@ app.post('/post/webforms', function(req, res) {
                         break;
                 }
                 break;
+            case "crexendo":
+                var site_crexendo = req.body.site_crexendo;
+                console.log("Site: " + site_crexendo);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://crexendoredesign.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_crexendo) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_crexendo_dev_f1.index(domain, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_crexendo_dev_f2.index(domain, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = "https://thehairextensioncompany.primeview.com/";
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_canyonfallshairextensioncompany) {
+                    //         case "form1":
+                    //             console.log("form1");
+                    //             webforms_canyonfallshairextensioncompany_dev2_f1.index(domain, username, password, email);
+                    //             break;
+                    //         case "form2":
+                    //             console.log("form2");
+                    //             webforms_canyonfallshairextensioncompany_dev2_f2.index(domain, username, password, email);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                }
+                break;
             case "indinspect":
                 var site_indinspect = req.body.site_indinspect;
                 console.log("Site: " + site_indinspect);
@@ -706,6 +754,7 @@ app.post('/post/webforms', function(req, res) {
 
 
 app.post('/post/responsiveness', function(req, res) {
+    logger.errorLog();
     var url = req.body.url;
     var device = req.body.device;
     var email = req.body.email;
@@ -771,7 +820,19 @@ app.post('/post/responsiveness', function(req, res) {
                         responsiveness_mobile10.iphone_13_pro_max(url, email, password);
                         break;
                     case "version11":
-                        responsiveness_mobile11.iphone_x(url, email, password);
+                        responsiveness_mobile11.iphone_13_pro(url, email, password);
+                        break;
+                    case "version12":
+                        responsiveness_mobile12.iphone_13(url, email, password);
+                        break;
+                    case "version13":
+                        responsiveness_mobile13.iphone_12_pro_max(url, email, password);
+                        break;
+                    case "version14":
+                        responsiveness_mobile14.iphone_11_pro_max(url, email, password);
+                        break;
+                    case "version15":
+                        responsiveness_mobile15.iphone_x(url, email, password);
                         break;
                     default:
                         break;

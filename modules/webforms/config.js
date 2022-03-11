@@ -37,6 +37,10 @@ let credentials = {
         username: "devadmin",
         password: "p2@iH&8Lo1JHv02"
     },
+    crexendo: {
+        username: "pvadmin",
+        password: "S4INhCIRoGpIfI*ss8KGXLmN"
+    },
     indinspect: {
         username: "pvadmin",
         password: "ChtB1]>Q3Zzw"
@@ -83,6 +87,13 @@ let forms = {
     canyonfallshairextensioncompany: {
         form1: "request-an-appointment/",
         form2: "return-request-form/"
+    },
+    crexendo: {
+        form1: "schedule-a-free-demo/",
+        form2: "talk-to-consultant/",
+        form3: "get-free-quote/",
+        form4: "refer-a-business/",
+        form5: "partner-registration/",
     },
     indinspect: {
         form1: "contact/",
