@@ -2,6 +2,8 @@ const {Builder, By, Key} = require("selenium-webdriver");
 const config = require("../image_optimization/config");
 const logger = require('../../middleware/logger.js');
 const server = require('../../server.js');
+const sheet = require('../../middleware/gsheet.js');
+const configMain = require('../../config.js');
 
 const webpagetest_url = config.webpagetest_url;
 const optimization_tab = config.optimization_tab;
@@ -16,16 +18,35 @@ async function imageOptimization(url) {
     
         await driver_web.sleep(40000);
 
-        // let testing = await driver_web.findElement(By.id("testing"));
+        let waiting = await driver_web.executeScript("return document.getElementsByClassName('is-active')[0].innerHTML");
 
-        // if (testing) {
-        //     await driver_web.sleep(10000);
-        // }
+        if (waiting === "Waiting...") {
+            console.log("Waiting...");
+            await driver_web.sleep(10000);
+        }
         logger.logger.log({ level: 'info', message: 'IMAGE_OPTIMIZATION - webpagetest url success.', tester: server.userId });
         console.log("IMAGE_OPTIMIZATION - webpagetest url success.");
+        value = [
+            "",
+            "info",
+            "IMAGE_OPTIMIZATION - webpagetest url success.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addROw();
+        await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
+        value = [
+            "",
+            "error",
+            error,
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addROw();
+        await sheet.appendValues(value);
     }
 
     let performance_summary = await driver_web.executeScript("return document.getElementsByTagName('h2')[0].innerHTML");
@@ -42,10 +63,28 @@ async function imageOptimization(url) {
             console.log("Webpagetest Result URL: " + webpagetest_result_url);
             logger.logger.log({ level: 'info', message: 'IMAGE_OPTIMIZATION - image optimization page success.', tester: server.userId });
             console.log("IMAGE_OPTIMIZATION - image optimization page success.");
+            value = [
+                "",
+                "info",
+                "IMAGE_OPTIMIZATION - image optimization page success.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addROw();
+            await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
+        value = [
+            "",
+            "error",
+            error,
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addROw();
+        await sheet.appendValues(value);
     }
 }
 

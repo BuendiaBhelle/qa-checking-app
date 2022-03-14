@@ -4,6 +4,8 @@ const http = require('http').Server(app);
 const bodyParser = require('body-parser');
 const fs = require('file-system');
 const logger = require("./middleware/logger.js");
+const sheet = require('./middleware/gsheet.js');
+
 const express = require('express');
 const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser");
@@ -82,6 +84,9 @@ const responsiveness_tablet1 = require("./modules/responsiveness/tablet/ipad_air
 const responsiveness_tablet2 = require("./modules/responsiveness/tablet/galaxy_tab_s7_plus/galaxy_tab_s7_plus");
 const responsiveness_tablet3 = require("./modules/responsiveness/tablet/galaxy_tab_s6/galaxy_tab_s6");
 const expiry = 1000 * 60 * 60 * 24;
+var date = new Date();
+var dateString = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
+
 
 app.use(bodyParser.urlencoded({ extended: false })) 
 app.use(bodyParser.json());
@@ -112,6 +117,7 @@ app.get('/post', function(req, res){
     
     if(userId){
         logger.errorLog();
+        logtosheet.logToSheet();
         res.sendFile(__dirname + '/index.html');
     }
     else {
@@ -130,35 +136,80 @@ app.post('/login', async (req, res) => {
         "ragulto@optimizex.com",
         "jaguilar@optimizex.com"
     ]
+    session=req.session;
+    session.userid=req.body.username;
+    console.log(req.session)
+    module.exports.userId = session.userid;
     
     try {
         logger.errorLog();
         if (usernameData.includes(username)) {
             console.log("user is allowed.");
             if (await bcrypt.compare(passwordData, hashedPassword)) {
-                session=req.session;
-                session.userid=req.body.username;
-                console.log(req.session)
-                module.exports.userId = session.userid;
                 res.redirect("/post");
                 logger.logger.log({ level: 'info', message: 'login success.', tester: this.userId });
                 console.log("login success.");
-             } else {
+                let value = [
+                    "",
+                    "info",
+                    "login success.",
+                    this.userId,
+                    dateString
+                ]
+                await sheet.addROw();
+                await sheet.appendValues(value);
+            } else {
                 res.send('Login failed.');
                 logger.logger.log({ level: 'error', message: 'login failed.', tester: this.userId });
                 console.log("login failed.");
+                let value = [
+                    "",
+                    "error",
+                    "login failed.",
+                    this.userId,
+                    dateString
+                ]
+                await sheet.addROw();
+                await sheet.appendValues(value);
             }
             logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
             console.log("user is allowed.");
+            let value = [
+                "",
+                "info",
+                "user is allowed.",
+                this.userId,
+                dateString
+            ]
+            await sheet.addROw();
+            await sheet.appendValues(value);
         } else {
             res.send('User is not allowed.');
             logger.logger.log({ level: 'error', message: 'user is not allowed.', tester: this.userId });
             console.log("user is not allowed.");
+            let value = [
+                "",
+                "error",
+                "user is not allowed.",
+                this.userId,
+                dateString
+            ]
+            await sheet.addROw();
+            await sheet.appendValues(value);
         }
     } catch (error) {
         res.status(500).send();
-        logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
-        console.log("user is allowed.");
+        logger.logger.log({ level: 'error', message: error, tester: this.userId });
+        console.log(error);
+        let value = [
+            "",
+            "error",
+            error,
+            this.userId,
+            dateString
+        ]
+        await sheet.addROw();
+        await sheet.appendValues(value);
     }
 });
 
@@ -169,9 +220,28 @@ app.get('/logout', async (req,res) => {
         res.redirect('/');
         logger.logger.log({ level: 'info', message: 'logout success.', tester: this.userId });
         console.log("logout success.");
+        // let value = [
+        //     "",
+        //     "info",
+        //     "logout success.",
+        //     this.userId,
+        //     dateString
+        // ]
+        // await sheet.addROw();
+        // await sheet.appendValues(value);
+        await sheet.clearLogs();
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'logout failed.', tester: this.userId });
         console.log("logout failed.");
+        let value = [
+            "",
+            "error",
+            "logout failed.",
+            this.userId,
+            dateString
+        ]
+        await sheet.addROw();
+        await sheet.appendValues(value);
     }
     fs.writeFile("./middleware/logs/combined.log", "");
     fs.writeFile("./middleware/logs/error.log", "");
@@ -259,14 +329,15 @@ app.post('/post/image_optimization', function(req, res) {
     res.send(success_msg);
 });
 
-app.post('/post/visibility', function(req, res) {
+app.post('/post/visibility', async (req, res) => {
     logger.errorLog();
+    // sheet.gsheet();
     const site_name = req.body.site_name;
     console.log("Site Name: " + site_name);
     try {
-        visibility.chrome(site_name);
-        visibility.firefox(site_name);
-        visibility.edge(site_name);
+        await visibility.chrome(site_name);
+        await visibility.firefox(site_name);
+        await visibility.edge(site_name);
     } catch (error) {
         console.log(error);
     }
