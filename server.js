@@ -204,7 +204,7 @@ app.post('/login', async (req, res) => {
         let value = [
             "",
             "error",
-            error,
+            JSON.stringify(error),
             this.userId,
             dateString
         ]
@@ -345,7 +345,7 @@ app.post('/post/visibility', async (req, res) => {
 });
 
 
-app.post('/post/webforms', function(req, res) {
+app.post('/post/webforms', async (req, res) => {
     logger.errorLog();
     var username = req.body.username;
     var password = req.body.password;
@@ -369,11 +369,11 @@ app.post('/post/webforms', function(req, res) {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz_dev_f1.index(domain, username, password, email);
+                                await webforms_accidentchiropracticaz_dev_f1.index(domain, username, password, email);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz_dev_f2.index(domain, username, password, email);
+                                await webforms_accidentchiropracticaz_dev_f2.index(domain, username, password, email);
                                 break;
                             default:
                                 break;

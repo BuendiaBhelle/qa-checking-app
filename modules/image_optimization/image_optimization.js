@@ -41,7 +41,7 @@ async function imageOptimization(url) {
         value = [
             "",
             "error",
-            error,
+            JSON.stringify(error),
             server.userId,
             configMain.dateString
         ]
@@ -79,7 +79,7 @@ async function imageOptimization(url) {
         value = [
             "",
             "error",
-            error,
+            JSON.stringify(error),
             server.userId,
             configMain.dateString
         ]
