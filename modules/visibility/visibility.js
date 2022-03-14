@@ -23,7 +23,7 @@ async function chrome(site_name) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'VISIBILITY - chrome fail.', tester: server.userId });
@@ -35,7 +35,7 @@ async function chrome(site_name) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
 }
@@ -55,7 +55,7 @@ async function firefox(site_name) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'VISIBILITY - firefox fail.', tester: server.userId });
@@ -67,7 +67,7 @@ async function firefox(site_name) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
 }
@@ -88,7 +88,7 @@ async function edge(site_name) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'VISIBILITY - edge fail.', tester: server.userId });
@@ -100,7 +100,7 @@ async function edge(site_name) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
 }

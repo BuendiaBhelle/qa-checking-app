@@ -33,7 +33,7 @@ async function imageOptimization(url) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
@@ -45,7 +45,7 @@ async function imageOptimization(url) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
 
@@ -70,7 +70,7 @@ async function imageOptimization(url) {
                 server.userId,
                 configMain.dateString
             ]
-            await sheet.addROw();
+            await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
@@ -83,7 +83,7 @@ async function imageOptimization(url) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
 }

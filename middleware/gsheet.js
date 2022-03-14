@@ -5,7 +5,7 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
 
-async function addROw() {
+async function addRow() {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -91,4 +91,4 @@ async function clearLogs() {
 
 
 
-module.exports = { addROw, appendValues, clearLogs };
+module.exports = { addRow, appendValues, clearLogs };

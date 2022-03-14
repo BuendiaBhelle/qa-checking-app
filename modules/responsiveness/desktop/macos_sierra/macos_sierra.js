@@ -28,7 +28,7 @@ async function macos_sierra(url, email, password) {
                     server.userId,
                     configMain.dateString
                 ]
-                await sheet.addROw();
+                await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
                 await driver.findElement(By.id("email")).sendKeys(lt_email);
@@ -42,7 +42,7 @@ async function macos_sierra(url, email, password) {
                     server.userId,
                     configMain.dateString
                 ]
-                await sheet.addROw();
+                await sheet.addRow();
                 await sheet.appendValues(value);
             }
             await driver.findElement(By.id("login-button")).click();
@@ -59,7 +59,7 @@ async function macos_sierra(url, email, password) {
                     server.userId,
                     configMain.dateString
                 ]
-                await sheet.addROw();
+                await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
                 logger.logger.log({ level: 'info', message: 'RESPONSIVENESS - lambdatest login success.', tester: server.userId });
@@ -71,7 +71,7 @@ async function macos_sierra(url, email, password) {
                     server.userId,
                     configMain.dateString
                 ]
-                await sheet.addROw();
+                await sheet.addRow();
                 await sheet.appendValues(value);
             }
         } catch (error) {
@@ -84,7 +84,7 @@ async function macos_sierra(url, email, password) {
                 server.userId,
                 configMain.dateString
             ]
-            await sheet.addROw();
+            await sheet.addRow();
             await sheet.appendValues(value);
         }
         await driver.findElement(By.id("input-text")).sendKeys(url);
@@ -102,7 +102,7 @@ async function macos_sierra(url, email, password) {
             server.userId,
             configMain.dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
 }

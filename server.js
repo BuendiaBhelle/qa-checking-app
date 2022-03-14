@@ -156,7 +156,7 @@ app.post('/login', async (req, res) => {
                     this.userId,
                     dateString
                 ]
-                await sheet.addROw();
+                await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
                 res.send('Login failed.');
@@ -169,7 +169,7 @@ app.post('/login', async (req, res) => {
                     this.userId,
                     dateString
                 ]
-                await sheet.addROw();
+                await sheet.addRow();
                 await sheet.appendValues(value);
             }
             logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
@@ -181,7 +181,7 @@ app.post('/login', async (req, res) => {
                 this.userId,
                 dateString
             ]
-            await sheet.addROw();
+            await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             res.send('User is not allowed.');
@@ -194,7 +194,7 @@ app.post('/login', async (req, res) => {
                 this.userId,
                 dateString
             ]
-            await sheet.addROw();
+            await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
@@ -208,7 +208,7 @@ app.post('/login', async (req, res) => {
             this.userId,
             dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
 });
@@ -227,7 +227,7 @@ app.get('/logout', async (req,res) => {
         //     this.userId,
         //     dateString
         // ]
-        // await sheet.addROw();
+        // await sheet.addRow();
         // await sheet.appendValues(value);
         await sheet.clearLogs();
     } catch (error) {
@@ -240,7 +240,7 @@ app.get('/logout', async (req,res) => {
             this.userId,
             dateString
         ]
-        await sheet.addROw();
+        await sheet.addRow();
         await sheet.appendValues(value);
     }
     fs.writeFile("./middleware/logs/combined.log", "");
