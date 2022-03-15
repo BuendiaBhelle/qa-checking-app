@@ -117,7 +117,6 @@ app.get('/post', function(req, res){
     
     if(userId){
         logger.errorLog();
-        logtosheet.logToSheet();
         res.sendFile(__dirname + '/index.html');
     }
     else {

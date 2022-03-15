@@ -3,6 +3,8 @@ const {google} = require("googleapis");
 const config = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
+const sheet = require('../../../../../../middleware/gsheet.js');
+const configMain = require('../../../../../../config.js');
 
 const wp_username = config.credentials.aerialengagement.username;
 const wp_password = config.credentials.aerialengagement.password;
@@ -33,19 +35,36 @@ async function wordpressStart(domain, username, password, email) {
     const batchUpdateRequest = {requests};
     
     // add columns
-    await googleSheets.spreadsheets.batchUpdate({
-        auth,
-        spreadsheetId,
-        resource: batchUpdateRequest,
-        }, (err, response) => {
-        if (err) {
-            logger.logger.log({ level: 'error', message: err, tester: server.userId });
-            console.log(err);
-        } else {
-            logger.logger.log({ level: 'info', message: 'WEBFORMS - add columns success.', tester: server.userId });
-            console.log("WEBFORMS - add columns success.");
-        }
-    });
+    try {
+        await googleSheets.spreadsheets.batchUpdate({
+            auth,
+            spreadsheetId,
+            resource: batchUpdateRequest
+        });
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - add columns success.', tester: server.userId });
+        console.log("WEBFORMS - add columns success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - add columns success.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: 'WEBFORMS - add columns failed.', tester: server.userId });
+        console.log("WEBFORMS - add columns failed.");
+        value = [
+            "",
+            "error",
+            "WEBFORMS - add columns failed.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    }
 
     let ranges = [
         "Aerial Engagement!A2",
@@ -83,9 +102,27 @@ async function wordpressStart(domain, username, password, email) {
             });
             logger.logger.log({ level: 'info', message: 'WEBFORMS - track details success.', tester: server.userId });
             console.log("WEBFORMS - track details success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - track details success.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         } catch (error) {
             logger.logger.log({ level: 'error', message: 'WEBFORMS - track details failed.', tester: server.userId });
             console.log("WEBFORMS - track details failed.");
+            value = [
+                "",
+                "error",
+                "WEBFORMS - track details failed.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
     }
 
@@ -100,11 +137,29 @@ async function wordpressStart(domain, username, password, email) {
             await driver.findElement(By.name("pwd")).sendKeys(password);
             logger.logger.log({ level: 'info', message: 'WEBFORMS - edit credentials success.', tester: server.userId });
             console.log("WEBFORMS - edit credentials success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - edit credentials success.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         } else {
             await driver.findElement(By.name("log")).sendKeys(wp_username);
             await driver.findElement(By.name("pwd")).sendKeys(wp_password);
             logger.logger.log({ level: 'info', message: 'WEBFORMS - same credentials.', tester: server.userId });
             console.log("WEBFORMS - same credentials.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - same credentials.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
 
         await driver.findElement(By.id("wp-submit")).click();
@@ -113,9 +168,27 @@ async function wordpressStart(domain, username, password, email) {
         if (login_error) {
             logger.logger.log({ level: 'error', message: 'WEBFORMS - wordpress login failed.', tester: server.userId });
             console.log("WEBFORMS - wordpress login failed.");
+            value = [
+                "",
+                "error",
+                "WEBFORMS - wordpress login failed.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
             console.log("WEBFORMS - wordpress login success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - wordpress login success.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
 
         var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
@@ -123,13 +196,40 @@ async function wordpressStart(domain, username, password, email) {
             await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
             logger.logger.log({ level: 'info', message: 'WEBFORMS - admin email verification.', tester: server.userId });
             console.log("WEBFORMS - admin email verification.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - admin email verification.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'WEBFORMS - no admin email verification.', tester: server.userId });
             console.log("WEBFORMS - no admin email verification.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - no admin email verification.",
+                server.userId,
+                configMain.dateString
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[6].click()");
@@ -154,9 +254,27 @@ async function wordpressStart(domain, username, password, email) {
         });
         logger.logger.log({ level: 'info', message: 'WEBFORMS - track form recipients success.', tester: server.userId });
         console.log("WEBFORMS - track form recipients success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - track form recipients success.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     // change form recipients
@@ -170,9 +288,27 @@ async function wordpressStart(domain, username, password, email) {
         await driver.executeScript("return document.getElementsByName('wpcf7-save')[2].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
         console.log("WEBFORMS - change form recipients success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - change form recipients success.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     return true;

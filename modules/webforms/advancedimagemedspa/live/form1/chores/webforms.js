@@ -3,6 +3,8 @@ const {google} = require("googleapis");
 const config = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
+const sheet = require('../../../../../../middleware/gsheet.js');
+const configMain = require('../../../../../../config.js');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
@@ -29,9 +31,27 @@ async function webforms(domain) {
         await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - form fill in success.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     await driver.sleep(5000);
@@ -54,9 +74,27 @@ async function webforms(domain) {
         });
         logger.logger.log({ level: 'info', message: 'WEBFORMS - track thank you page success.', tester: server.userId });
         console.log("WEBFORMS - track thank you page success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - track thank you page success.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);    
+        console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     return true;

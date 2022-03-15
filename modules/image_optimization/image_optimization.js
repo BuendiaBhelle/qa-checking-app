@@ -18,12 +18,11 @@ async function imageOptimization(url) {
     
         await driver_web.sleep(40000);
 
-        let waiting = await driver_web.executeScript("return document.getElementsByClassName('is-active')[0].innerHTML");
-
-        if (waiting === "Waiting...") {
-            console.log("Waiting...");
-            await driver_web.sleep(10000);
-        }
+        // let waiting = await driver_web.executeScript("return document.getElementsByClassName('is-active')[0].innerHTML");
+        // if (waiting === "Waiting...") {
+        //     console.log("Waiting...");
+        //     await driver_web.sleep(10000);
+        // }
         logger.logger.log({ level: 'info', message: 'IMAGE_OPTIMIZATION - webpagetest url success.', tester: server.userId });
         console.log("IMAGE_OPTIMIZATION - webpagetest url success.");
         value = [
