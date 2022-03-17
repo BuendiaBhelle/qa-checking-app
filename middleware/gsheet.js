@@ -77,7 +77,7 @@ async function clearLogs() {
 
     const request = {
         spreadsheetId: spreadsheetId,
-        range: 'Logs!A2:D100',
+        range: 'Logs!A2:D200',
         auth: client,
     };
     

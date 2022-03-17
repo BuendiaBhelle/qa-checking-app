@@ -60,6 +60,11 @@ const webforms_crexendo_dev_f2 = require("./modules/webforms/crexendo/dev/form2/
 const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
 const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
 const webforms_indinspect_live_f1 = require("./modules/webforms/indinspect/live/form1/index");
+
+const webforms_kyrenefamilydentistry_dev_f1 = require("./modules/webforms/kyrenefamilydentistry/dev/form1/index");
+const webforms_kyrenefamilydentistry_dev_f2 = require("./modules/webforms/kyrenefamilydentistry/dev/form2/index");
+const webforms_kyrenefamilydentistry_live_f1 = require("./modules/webforms/kyrenefamilydentistry/live/form1/index");
+const webforms_kyrenefamilydentistry_live_f2 = require("./modules/webforms/kyrenefamilydentistry/live/form2/index");
 const responsiveness_desktop1 = require("./modules/responsiveness/desktop/windows11/windows11");
 const responsiveness_desktop2 = require("./modules/responsiveness/desktop/windows8/windows8");
 const responsiveness_desktop3 = require("./modules/responsiveness/desktop/windows7/windows7");
@@ -351,7 +356,7 @@ app.post('/post/webforms', async (req, res) => {
     var email = req.body.email;
     var site = req.body.site;
     var checkbox = req.body.checkbox;
-    var checkbox_cfhec = req.body.checkbox_cfhec;
+    // var checkbox_cfhec = req.body.checkbox_cfhec;
     console.log("username: " + username);
     console.log("password: " + password);  
     console.log("email: " + email); 
@@ -700,11 +705,11 @@ app.post('/post/webforms', async (req, res) => {
             case "canyonfallshairextensioncompany":
                 var site_canyonfallshairextensioncompany = req.body.site_canyonfallshairextensioncompany;
                 console.log("Site: " + site_canyonfallshairextensioncompany);
-                switch (checkbox_cfhec) {
-                    case "dev1":
+                switch (checkbox) {
+                    case "dev":
                         var domain = "https://dev.thehairextensioncompany.com/";
                         console.log(domain);
-                        console.log("dev1");
+                        console.log("dev");
                         switch (site_canyonfallshairextensioncompany) {
                             case "form1":
                                 console.log("form1");
@@ -718,10 +723,10 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    case "dev2":
+                    case "live":
                         var domain = "https://thehairextensioncompany.primeview.com/";
                         console.log(domain);
-                        console.log("dev2");
+                        console.log("live");
                         switch (site_canyonfallshairextensioncompany) {
                             case "form1":
                                 console.log("form1");
@@ -806,6 +811,46 @@ app.post('/post/webforms', async (req, res) => {
                             case "form1":
                                 console.log("form1");
                                 webforms_indinspect_live_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "kyrenefamilydentistry":
+                var site_kyrenefamilydentistry = req.body.site_kyrenefamilydentistry;
+                console.log("Site: " + site_kyrenefamilydentistry);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://kyrenefamilydentistry.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_kyrenefamilydentistry) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_kyrenefamilydentistry_dev_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_kyrenefamilydentistry_dev_f2.index(domain, checkbox, username, password, email);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = "https://www.kyrenefamilydentistry.com/";
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_kyrenefamilydentistry) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_kyrenefamilydentistry_live_f1.index(domain, checkbox, username, password, email);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_kyrenefamilydentistry_live_f2.index(domain, checkbox, username, password, email);
                                 break;
                             default:
                                 break;

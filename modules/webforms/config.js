@@ -44,6 +44,11 @@ let credentials = {
     indinspect: {
         username: "pvadmin",
         password: "ChtB1]>Q3Zzw"
+    },
+    kyrenefamilydentistry: {
+        username: "pvadmin",
+        password: "JQR&H*i$fUA%wCcit@!TP8Jh"
+        // password: "admin"
     }
 }
 
@@ -98,6 +103,10 @@ let forms = {
     indinspect: {
         form1: "contact/",
         form2: "services-offered/specialty-testing/"
+    },
+    kyrenefamilydentistry: {
+        form1: "/",
+        form2: "/schedule-an-appointment/",
     }
 }
 

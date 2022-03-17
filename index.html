@@ -32,8 +32,8 @@
         #checkout, #image_optimization, #visibility, #webForms, #responsiveness, #version_mobile, 
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
         #site_americanleatherusa, #site_andresperezjurado, #site_azdoordoctor, #site_biltmoreloanandjewelry, 
-        #site_buckeyederm, #site_canyonfallshairextensioncompany, #site_crexendo, #site_indinspect, #credentials_checkout, 
-        #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials, #checkbox_cfhec {
+        #site_buckeyederm, #site_canyonfallshairextensioncompany, #site_crexendo, #site_indinspect, #site_kyrenefamilydentistry, 
+        #credentials_checkout, #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
             display: none;
         }
         input[type=text] {
@@ -167,6 +167,7 @@
                             <option value="indinspect">Industrial Inspection & Consulting</option>
                             <option value="jewelryoutletinc">Jewelry Outlet Inc.</option>
                             <option value="judefrancesjewelry">Jude Frances Jewelry</option>
+                            <option value="kyrenefamilydentistry">Kyrene Family Dentistry</option>
                             <option value="lignans">Lignans</option>
                             <option value="natina">Natina</option>
                             <option value="newhopemedicalcenter">New Hope Medical Center</option>
@@ -192,13 +193,13 @@
                             </select>
                         </div>
 
-                        <div id="checkbox_cfhec">
+                        <!-- <div id="checkbox_cfhec">
                             <label for="checkbox_cfhec">Choose one:</label>
                             <select name="checkbox_cfhec">
                             <option value="dev1">Dev1 (dev)</option>
                             <option value="dev2">Dev2 (primeview)</option>
                             </select>
-                        </div>
+                        </div> -->
 
 
                         <div id="site_accidentchiropracticaz">
@@ -371,6 +372,21 @@
                             </div>
                         </div>
 
+                        <div id="site_kyrenefamilydentistry">
+                            <label for="site_kyrenefamilydentistry">Choose a form:</label>
+                            <select name="site_kyrenefamilydentistry">
+                            <option value="form1">Quick Contact</option>
+                            <option value="form2">Schedule an Appointment</option>
+                            </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Credentials (wordpress): </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>pvadmin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>JQR&H*i$fUA%wCcit@!TP8Jh</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
+                        </div>
+
 
                         <div id="credentials">
                             <label for="username">Username:</label>
@@ -534,7 +550,7 @@
             var site = document.getElementById("site").value;
             if (site === "accidentchiropracticaz") {
                 document.getElementById('site_accidentchiropracticaz').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
@@ -545,10 +561,11 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "advancedimagemedspa") {
                 document.getElementById('site_advancedimagemedspa').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
@@ -559,10 +576,11 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "aerialengagement") {
                 document.getElementById('site_aerialengagement').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
@@ -573,10 +591,11 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "americanleatherusa") {
                 document.getElementById('site_americanleatherusa').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
@@ -587,11 +606,12 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
 
             else if (site === "andresperezjurado") {
                 document.getElementById('site_andresperezjurado').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
@@ -602,10 +622,11 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "azdoordoctor") {
                 document.getElementById('site_azdoordoctor').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
@@ -616,10 +637,11 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "biltmoreloanandjewelry") {
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
@@ -630,10 +652,11 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "buckeyederm") {
                 document.getElementById('site_buckeyederm').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
@@ -644,11 +667,12 @@
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "canyonfallshairextensioncompany") {
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'block';
-                document.getElementById('checkbox').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'block';
+                // document.getElementById('checkbox').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
@@ -659,10 +683,11 @@
                 document.getElementById('site_buckeyederm').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "crexendo") {
                 document.getElementById('site_crexendo').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
@@ -673,10 +698,11 @@
                 document.getElementById('site_buckeyederm').style.display = 'none';
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
             }
             else if (site === "indinspect") {
                 document.getElementById('site_indinspect').style.display = 'block';
-                document.getElementById('checkbox_cfhec').style.display = 'none';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
@@ -687,7 +713,23 @@
                 document.getElementById('site_buckeyederm').style.display = 'none';
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
                 document.getElementById('site_crexendo').style.display = 'none';
-            }   
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
+            }
+            else if (site === "kyrenefamilydentistry") {
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'block';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
+                document.getElementById('site_buckeyederm').style.display = 'none';
+                document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
+                document.getElementById('site_crexendo').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
+            } 
         }
 
         function not_on_the_list() {
