@@ -88,8 +88,8 @@ async function wordpressStart(domain, checkbox, username, password, email) {
     ]
 
     // track form details
-    for (let index = 0; index < ranges.length; index++) {
-        try {
+    try {
+        for (let index = 0; index < ranges.length; index++) {
             await googleSheets.spreadsheets.values.append({
                 auth,
                 spreadsheetId,
@@ -101,31 +101,30 @@ async function wordpressStart(domain, checkbox, username, password, email) {
                     ]
                 }
             });
-            logger.logger.log({ level: 'info', message: 'WEBFORMS - track details success.', tester: server.userId });
-            console.log("WEBFORMS - track details success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - track details success.",
-                server.userId,
-                configMain.dateString
-            ]
-            await sheet.addRow();
-            await sheet.appendValues(value);
-        } catch (error) {
-            logger.logger.log({ level: 'error', message: 'WEBFORMS - track details failed.', tester: server.userId });
-            console.log("WEBFORMS - track details failed.");
-            value = [
-                "",
-                "error",
-                "WEBFORMS - track details failed.",
-                server.userId,
-                configMain.dateString
-            ]
-            await sheet.addRow();
-            await sheet.appendValues(value);
         }
-        
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - track details success.', tester: server.userId });
+        console.log("WEBFORMS - track details success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - track details success.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: 'WEBFORMS - track details failed.', tester: server.userId });
+        console.log("WEBFORMS - track details failed.");
+        value = [
+            "",
+            "error",
+            "WEBFORMS - track details failed.",
+            server.userId,
+            configMain.dateString
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     let driver = await new Builder().forBrowser("chrome").build();
