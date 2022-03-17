@@ -4,13 +4,12 @@ const config = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
-const configMain = require('../../../../../../config.js');
 
 const wp_username = config.credentials.indinspect.username;
 const wp_password = config.credentials.indinspect.password;
 
 
-async function wordpressFinish(domain, checkbox, username, password) {
+async function wordpressFinish(domain, checkbox, username, password, timestamp) {
     const wp_site = domain + "wp-admin";
 
     let driver = await new Builder().forBrowser("chrome").build();
@@ -29,7 +28,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
                 "info",
                 "WEBFORMS - edit credentials success.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -43,7 +42,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
                 "info",
                 "WEBFORMS - same credentials.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -60,7 +59,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
                 "error",
                 "WEBFORMS - wordpress login failed.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -72,7 +71,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
                 "info",
                 "WEBFORMS - wordpress login success.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -88,7 +87,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
                 "info",
                 "WEBFORMS - admin email verification.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -100,7 +99,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
                 "info",
                 "WEBFORMS - no admin email verification.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -113,7 +112,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -137,7 +136,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
             "info",
             "WEBFORMS - set admin notif to active success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -149,7 +148,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -170,7 +169,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
             "info",
             "WEBFORMS - set qa notif to inactive success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -182,7 +181,7 @@ async function wordpressFinish(domain, checkbox, username, password) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);

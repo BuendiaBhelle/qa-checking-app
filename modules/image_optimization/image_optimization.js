@@ -3,13 +3,12 @@ const config = require("../image_optimization/config");
 const logger = require('../../middleware/logger.js');
 const server = require('../../server.js');
 const sheet = require('../../middleware/gsheet.js');
-const configMain = require('../../config.js');
 
 const webpagetest_url = config.webpagetest_url;
 const optimization_tab = config.optimization_tab;
 
 
-async function imageOptimization(url) {
+async function imageOptimization(url, timestamp) {
     let driver_web = await new Builder().forBrowser("chrome").build();
     // webpage test
     try {
@@ -30,7 +29,7 @@ async function imageOptimization(url) {
             "info",
             "IMAGE_OPTIMIZATION - webpagetest url success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -42,7 +41,7 @@ async function imageOptimization(url) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -67,7 +66,7 @@ async function imageOptimization(url) {
                 "info",
                 "IMAGE_OPTIMIZATION - image optimization page success.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -80,7 +79,7 @@ async function imageOptimization(url) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);

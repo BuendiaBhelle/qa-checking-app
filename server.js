@@ -90,7 +90,7 @@ const responsiveness_tablet2 = require("./modules/responsiveness/tablet/galaxy_t
 const responsiveness_tablet3 = require("./modules/responsiveness/tablet/galaxy_tab_s6/galaxy_tab_s6");
 const expiry = 1000 * 60 * 60 * 24;
 var date = new Date();
-var dateString = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
+var timestamp = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
 
 
 app.use(bodyParser.urlencoded({ extended: false })) 
@@ -158,7 +158,7 @@ app.post('/login', async (req, res) => {
                     "info",
                     "login success.",
                     this.userId,
-                    dateString
+                    timestamp
                 ]
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -171,7 +171,7 @@ app.post('/login', async (req, res) => {
                     "error",
                     "login failed.",
                     this.userId,
-                    dateString
+                    timestamp
                 ]
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -183,7 +183,7 @@ app.post('/login', async (req, res) => {
                 "info",
                 "user is allowed.",
                 this.userId,
-                dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -196,7 +196,7 @@ app.post('/login', async (req, res) => {
                 "error",
                 "user is not allowed.",
                 this.userId,
-                dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -210,7 +210,7 @@ app.post('/login', async (req, res) => {
             "error",
             JSON.stringify(error),
             this.userId,
-            dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -229,7 +229,7 @@ app.get('/logout', async (req,res) => {
         //     "info",
         //     "logout success.",
         //     this.userId,
-        //     dateString
+        //     timestamp
         // ]
         // await sheet.addRow();
         // await sheet.appendValues(value);
@@ -242,7 +242,7 @@ app.get('/logout', async (req,res) => {
             "error",
             "logout failed.",
             this.userId,
-            dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -326,7 +326,7 @@ app.post('/post/image_optimization', function(req, res) {
     var url = req.body.url;
     console.log("URL: " + url);
     try {
-        image_optimization.imageOptimization(url);
+        image_optimization.imageOptimization(url, timestamp);
     } catch (error) {
         console.log(error);
     }
@@ -339,9 +339,9 @@ app.post('/post/visibility', async (req, res) => {
     const site_name = req.body.site_name;
     console.log("Site Name: " + site_name);
     try {
-        await visibility.chrome(site_name);
-        await visibility.firefox(site_name);
-        await visibility.edge(site_name);
+        await visibility.chrome(site_name, timestamp);
+        await visibility.firefox(site_name, timestamp);
+        await visibility.edge(site_name, timestamp);
     } catch (error) {
         console.log(error);
     }
@@ -373,11 +373,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                await webforms_accidentchiropracticaz_dev_f1.index(domain, username, password, email);
+                                await webforms_accidentchiropracticaz_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                await webforms_accidentchiropracticaz_dev_f2.index(domain, username, password, email);
+                                await webforms_accidentchiropracticaz_dev_f2.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -390,11 +390,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_accidentchiropracticaz) {
                             case "form1":
                                 console.log("form1");
-                                webforms_accidentchiropracticaz_live_f1.index(domain, username, password, email);
+                                webforms_accidentchiropracticaz_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_accidentchiropracticaz_live_f2.index(domain, username, password, email);
+                                webforms_accidentchiropracticaz_live_f2.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -415,15 +415,15 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa_dev_f1.index(domain, username, password, email);
+                                webforms_advancedimagemedspa_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa_dev_f2.index(domain, username, password, email);
+                                webforms_advancedimagemedspa_dev_f2.index(domain, username, password, email, timestamp);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa_dev_f3.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_dev_f3.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -436,15 +436,15 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_advancedimagemedspa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_advancedimagemedspa_live_f1.index(domain, username, password, email);
+                                webforms_advancedimagemedspa_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_advancedimagemedspa_live_f2.index(domain, username, password, email);
+                                webforms_advancedimagemedspa_live_f2.index(domain, username, password, email, timestamp);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_advancedimagemedspa_live_f3.index(domain, checkbox, username, password, email);
+                                webforms_advancedimagemedspa_live_f3.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -465,7 +465,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement_dev_f1.index(domain, username, password, email);
+                                webforms_aerialengagement_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -478,7 +478,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_aerialengagement) {
                             case "form1":
                                 console.log("form1");
-                                webforms_aerialengagement_live_f1.index(domain, username, password, email);
+                                webforms_aerialengagement_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -497,7 +497,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa_dev_f1.index(domain, username, password, email)
+                                webforms_americanleatherusa_dev_f1.index(domain, username, password, email, timestamp)
                                 break;
                             default:
                                 break;
@@ -510,7 +510,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_americanleatherusa) {
                             case "form1":
                                 console.log("form1");
-                                webforms_americanleatherusa_live_f1.index(domain, username, password, email);
+                                webforms_americanleatherusa_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -529,7 +529,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_andresperezjurado) {
                             case "form1":
                                 console.log("form1");
-                                webforms_andresperezjurado_dev_f1.index(domain, username, password, email);
+                                webforms_andresperezjurado_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -542,7 +542,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_andresperezjurado) {
                             case "form1":
                                 console.log("form1");
-                                webforms_andresperezjurado_live_f1.index(domain, username, password, email);
+                                webforms_andresperezjurado_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -561,15 +561,15 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_azdoordoctor) {
                             case "form1":
                                 console.log("form1");
-                                webforms_azdoordoctor_dev_f1.index(domain, username, password, email);
+                                webforms_azdoordoctor_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_azdoordoctor_dev_f2.index(domain, username, password, email);
+                                webforms_azdoordoctor_dev_f2.index(domain, username, password, email, timestamp);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_azdoordoctor_dev_f3.index(domain, username, password, email);
+                                webforms_azdoordoctor_dev_f3.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -582,15 +582,15 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_azdoordoctor) {
                             case "form1":
                                 console.log("form1");
-                                webforms_azdoordoctor_live_f1.index(domain, username, password, email);
+                                webforms_azdoordoctor_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_azdoordoctor_live_f2.index(domain, username, password, email);
+                                webforms_azdoordoctor_live_f2.index(domain, username, password, email, timestamp);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_azdoordoctor_live_f3.index(domain, username, password, email);
+                                webforms_azdoordoctor_live_f3.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -609,27 +609,27 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_biltmoreloanandjewelry) {
                             case "form1":
                                 console.log("form1");
-                                webforms_biltmoreloanandjewelry_dev_f1.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_biltmoreloanandjewelry_dev_f2.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f2.index(domain, username, password, email, timestamp);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_biltmoreloanandjewelry_dev_f3.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f3.index(domain, username, password, email, timestamp);
                                 break;
                             case "form4":
                                 console.log("form4");
-                                webforms_biltmoreloanandjewelry_dev_f4.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f4.index(domain, username, password, email, timestamp);
                                 break;
                             case "form5":
                                 console.log("form5");
-                                webforms_biltmoreloanandjewelry_dev_f5.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f5.index(domain, username, password, email, timestamp);
                                 break;
                             case "form6":
                                 console.log("form6");
-                                webforms_biltmoreloanandjewelry_dev_f6.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_dev_f6.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -642,27 +642,27 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_biltmoreloanandjewelry) {
                             case "form1":
                                 console.log("form1");
-                                webforms_biltmoreloanandjewelry_live_f1.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_biltmoreloanandjewelry_live_f2.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f2.index(domain, username, password, email, timestamp);
                                 break;
                             case "form3":
                                 console.log("form3");
-                                webforms_biltmoreloanandjewelry_live_f3.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f3.index(domain, username, password, email, timestamp);
                                 break;
                             case "form4":
                                 console.log("form4");
-                                webforms_biltmoreloanandjewelry_live_f4.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f4.index(domain, username, password, email, timestamp);
                                 break;
                             case "form5":
                                 console.log("form5");
-                                webforms_biltmoreloanandjewelry_live_f5.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f5.index(domain, username, password, email, timestamp);
                                 break;
                             case "form6":
                                 console.log("form6");
-                                webforms_biltmoreloanandjewelry_live_f6.index(domain, username, password, email);
+                                webforms_biltmoreloanandjewelry_live_f6.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -681,7 +681,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_buckeyederm) {
                             case "form1":
                                 console.log("form1");
-                                webforms_buckeyederm_dev_f1.index(domain, username, password, email);
+                                webforms_buckeyederm_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -694,7 +694,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_buckeyederm) {
                             case "form1":
                                 console.log("form1");
-                                webforms_buckeyederm_live_f1.index(domain, username, password, email);
+                                webforms_buckeyederm_live_f1.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -713,11 +713,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_canyonfallshairextensioncompany) {
                             case "form1":
                                 console.log("form1");
-                                webforms_canyonfallshairextensioncompany_dev1_f1.index(domain, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev1_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_canyonfallshairextensioncompany_dev1_f2.index(domain, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev1_f2.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -730,11 +730,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_canyonfallshairextensioncompany) {
                             case "form1":
                                 console.log("form1");
-                                webforms_canyonfallshairextensioncompany_dev2_f1.index(domain, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev2_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_canyonfallshairextensioncompany_dev2_f2.index(domain, username, password, email);
+                                webforms_canyonfallshairextensioncompany_dev2_f2.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -753,11 +753,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_crexendo) {
                             case "form1":
                                 console.log("form1");
-                                webforms_crexendo_dev_f1.index(domain, username, password, email);
+                                webforms_crexendo_dev_f1.index(domain, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_crexendo_dev_f2.index(domain, username, password, email);
+                                webforms_crexendo_dev_f2.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -793,11 +793,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_indinspect) {
                             case "form1":
                                 console.log("form1");
-                                webforms_indinspect_dev_f1.index(domain, checkbox, username, password, email);
+                                webforms_indinspect_dev_f1.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_indinspect_dev_f2.index(domain, checkbox, username, password, email);
+                                webforms_indinspect_dev_f2.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -810,7 +810,7 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_indinspect) {
                             case "form1":
                                 console.log("form1");
-                                webforms_indinspect_live_f1.index(domain, checkbox, username, password, email);
+                                webforms_indinspect_live_f1.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -829,11 +829,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_kyrenefamilydentistry) {
                             case "form1":
                                 console.log("form1");
-                                webforms_kyrenefamilydentistry_dev_f1.index(domain, checkbox, username, password, email);
+                                webforms_kyrenefamilydentistry_dev_f1.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_kyrenefamilydentistry_dev_f2.index(domain, checkbox, username, password, email);
+                                webforms_kyrenefamilydentistry_dev_f2.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -846,11 +846,11 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_kyrenefamilydentistry) {
                             case "form1":
                                 console.log("form1");
-                                webforms_kyrenefamilydentistry_live_f1.index(domain, checkbox, username, password, email);
+                                webforms_kyrenefamilydentistry_live_f1.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             case "form2":
                                 console.log("form2");
-                                webforms_kyrenefamilydentistry_live_f2.index(domain, checkbox, username, password, email);
+                                webforms_kyrenefamilydentistry_live_f2.index(domain, checkbox, username, password, email, timestamp);
                                 break;
                             default:
                                 break;
@@ -885,16 +885,16 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_desktop);
                 switch (version_desktop) {
                     case "version1":
-                        responsiveness_desktop1.windows11(url, email, password);
+                        responsiveness_desktop1.windows11(url, email, password, timestamp);
                         break;
                     case "version2":
-                        responsiveness_desktop2.windows8(url, email, password);
+                        responsiveness_desktop2.windows8(url, email, password, timestamp);
                         break;
                     case "version3":
-                        responsiveness_desktop3.windows7(url, email, password);
+                        responsiveness_desktop3.windows7(url, email, password, timestamp);
                         break;
                     case "version4":
-                        responsiveness_desktop4.macos_sierra(url, email, password);
+                        responsiveness_desktop4.macos_sierra(url, email, password, timestamp);
                         break;
                     default:
                         break;
@@ -905,49 +905,49 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_mobile);
                 switch (version_mobile) {
                     case "version1":
-                        responsiveness_mobile1.samsung_galaxy_m30s(url, email, password);
+                        responsiveness_mobile1.samsung_galaxy_m30s(url, email, password, timestamp);
                         break;
                     case "version2":
-                        responsiveness_mobile2.google_pixel_5(url, email, password);
+                        responsiveness_mobile2.google_pixel_5(url, email, password, timestamp);
                         break;
                     case "version3":
-                        responsiveness_mobile3.oneplus_9(url, email, password);
+                        responsiveness_mobile3.oneplus_9(url, email, password, timestamp);
                         break;
                     case "version4":
-                        responsiveness_mobile4.xiaomi_mi_11(url, email, password);
+                        responsiveness_mobile4.xiaomi_mi_11(url, email, password, timestamp);
                         break;
                     case "version5":
-                        responsiveness_mobile5.realme_5(url, email, password);
+                        responsiveness_mobile5.realme_5(url, email, password, timestamp);
                         break;
                     case "version6":
-                        responsiveness_mobile6.huawei_p30_pro(url, email, password);
+                        responsiveness_mobile6.huawei_p30_pro(url, email, password, timestamp);
                         break;
                     case "version7":
-                        responsiveness_mobile7.sony_xperia_xz2(url, email, password);
+                        responsiveness_mobile7.sony_xperia_xz2(url, email, password, timestamp);
                         break;
                     case "version8":
-                        responsiveness_mobile8.moto_g6(url, email, password);
+                        responsiveness_mobile8.moto_g6(url, email, password, timestamp);
                         break;
                     case "version9":
-                        responsiveness_mobile9.lg_g6(url, email, password);
+                        responsiveness_mobile9.lg_g6(url, email, password, timestamp);
                         break;
                     case "version10":
-                        responsiveness_mobile10.iphone_13_pro_max(url, email, password);
+                        responsiveness_mobile10.iphone_13_pro_max(url, email, password, timestamp);
                         break;
                     case "version11":
-                        responsiveness_mobile11.iphone_13_pro(url, email, password);
+                        responsiveness_mobile11.iphone_13_pro(url, email, password, timestamp);
                         break;
                     case "version12":
-                        responsiveness_mobile12.iphone_13(url, email, password);
+                        responsiveness_mobile12.iphone_13(url, email, password, timestamp);
                         break;
                     case "version13":
-                        responsiveness_mobile13.iphone_12_pro_max(url, email, password);
+                        responsiveness_mobile13.iphone_12_pro_max(url, email, password, timestamp);
                         break;
                     case "version14":
-                        responsiveness_mobile14.iphone_11_pro_max(url, email, password);
+                        responsiveness_mobile14.iphone_11_pro_max(url, email, password, timestamp);
                         break;
                     case "version15":
-                        responsiveness_mobile15.iphone_x(url, email, password);
+                        responsiveness_mobile15.iphone_x(url, email, password, timestamp);
                         break;
                     default:
                         break;
@@ -958,13 +958,13 @@ app.post('/post/responsiveness', function(req, res) {
                 console.log("Version: " + version_tablet);
                 switch (version_tablet) {
                     case "version1":
-                        responsiveness_tablet1.ipad_air_4th_gen(url, email, password);
+                        responsiveness_tablet1.ipad_air_4th_gen(url, email, password, timestamp);
                         break;
                     case "version2":
-                        responsiveness_tablet2.galaxy_tab_s7_plus(url, email, password);
+                        responsiveness_tablet2.galaxy_tab_s7_plus(url, email, password, timestamp);
                         break;
                     case "version3":
-                        responsiveness_tablet3.galaxy_tab_s6(url, email, password);
+                        responsiveness_tablet3.galaxy_tab_s6(url, email, password, timestamp);
                         break;
                     default:
                         break;

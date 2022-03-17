@@ -133,5 +133,5 @@ module.exports = {
     qa_email, 
     auth, 
     spreadsheetId, 
-    date 
+    date
 };

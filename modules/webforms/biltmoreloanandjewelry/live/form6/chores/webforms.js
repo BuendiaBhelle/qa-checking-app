@@ -4,14 +4,13 @@ const config = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
-const configMain = require('../../../../../../config.js');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 const form_page = config.forms.biltmoreloanandjewelry.form6;
 
 
-async function webforms(domain) {
+async function webforms(domain, timestamp) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -38,7 +37,7 @@ async function webforms(domain) {
             "info",
             "WEBFORMS - form fill in success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -50,7 +49,7 @@ async function webforms(domain) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -81,7 +80,7 @@ async function webforms(domain) {
             "info",
             "WEBFORMS - track thank you page success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -93,7 +92,7 @@ async function webforms(domain) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);

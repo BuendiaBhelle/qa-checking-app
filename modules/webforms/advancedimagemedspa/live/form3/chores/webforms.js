@@ -4,7 +4,6 @@ const config = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
-const configMain = require('../../../../../../config.js');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
@@ -12,7 +11,7 @@ const form_page_dev = config.forms.advancedimagemedspa.form3_dev;
 const form_page_live = config.forms.advancedimagemedspa.form3_live;
 
 
-async function webforms(domain, checkbox) {
+async function webforms(domain, checkbox, timestamp) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -40,7 +39,7 @@ async function webforms(domain, checkbox) {
             "info",
             "WEBFORMS - form fill in success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -52,7 +51,7 @@ async function webforms(domain, checkbox) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -83,7 +82,7 @@ async function webforms(domain, checkbox) {
             "info",
             "WEBFORMS - track thank you page success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -95,7 +94,7 @@ async function webforms(domain, checkbox) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);

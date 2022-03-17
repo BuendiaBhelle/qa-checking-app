@@ -4,7 +4,6 @@ const config = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
-const configMain = require('../../../../../../config.js');
 
 const wp_username = config.credentials.indinspect.username;
 const wp_password = config.credentials.indinspect.password;
@@ -15,7 +14,7 @@ const date = config.date;
 const form_page = config.forms.indinspect.form2;
 
 
-async function wordpressStart(domain, checkbox, username, password, email) {
+async function wordpressStart(domain, checkbox, username, password, email, timestamp) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })   
@@ -49,7 +48,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "info",
             "WEBFORMS - add columns success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -61,7 +60,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "error",
             "WEBFORMS - add columns failed.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -109,7 +108,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "info",
             "WEBFORMS - track details success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -121,7 +120,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "error",
             "WEBFORMS - track details failed.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -143,7 +142,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
                 "info",
                 "WEBFORMS - edit credentials success.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -157,7 +156,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
                 "info",
                 "WEBFORMS - same credentials.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -174,7 +173,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
                 "error",
                 "WEBFORMS - wordpress login failed.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -186,7 +185,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
                 "info",
                 "WEBFORMS - wordpress login success.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -202,7 +201,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
                 "info",
                 "WEBFORMS - admin email verification.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -214,7 +213,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
                 "info",
                 "WEBFORMS - no admin email verification.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -227,7 +226,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -262,7 +261,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "info",
             "WEBFORMS - track form recipients success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -274,7 +273,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -300,7 +299,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "info",
             "WEBFORMS - change form recipients success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -312,7 +311,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -334,7 +333,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "info",
             "WEBFORMS - set admin notif to inactive success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -346,7 +345,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -367,7 +366,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "info",
             "WEBFORMS - set qa notif to active success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -379,7 +378,7 @@ async function wordpressStart(domain, checkbox, username, password, email) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);

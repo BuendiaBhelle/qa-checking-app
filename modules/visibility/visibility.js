@@ -3,13 +3,12 @@ const microsoftedge = require("@microsoft/edge-selenium-tools");
 const logger = require('../../middleware/logger.js');
 const server = require('../../server.js');
 const sheet = require('../../middleware/gsheet.js');
-const configMain = require('../../config.js');
 
 let search_engine = "https://www.google.com/";
 let value;
 
 //google chrome
-async function chrome(site_name) {
+async function chrome(site_name, timestamp) {
     let driver = await new Builder().forBrowser("chrome").build();
     try {
         await driver.get(search_engine);
@@ -21,7 +20,7 @@ async function chrome(site_name) {
             "info",
             "VISIBILITY - chrome success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -33,7 +32,7 @@ async function chrome(site_name) {
             "error",
             "VISIBILITY - chrome failed.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -53,7 +52,7 @@ async function firefox(site_name) {
             "info",
             "VISIBILITY - firefox success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -65,7 +64,7 @@ async function firefox(site_name) {
             "error",
             "VISIBILITY - firefox failed.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -86,7 +85,7 @@ async function edge(site_name) {
             "info",
             "VISIBILITY - edge success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -98,7 +97,7 @@ async function edge(site_name) {
             "info",
             "VISIBILITY - edge failed.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);

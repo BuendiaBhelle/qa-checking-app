@@ -4,7 +4,6 @@ const config = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
-const configMain = require('../../../../../../config.js');
 
 const wp_username = config.credentials.advancedimagemedspa.username;
 const wp_password = config.credentials.advancedimagemedspa.password;
@@ -12,7 +11,7 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
 
-async function wordpressFinish(domain, username, password) {
+async function wordpressFinish(domain, username, password, timestamp) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
@@ -33,7 +32,7 @@ async function wordpressFinish(domain, username, password) {
                 "info",
                 "WEBFORMS - edit credentials success.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -47,7 +46,7 @@ async function wordpressFinish(domain, username, password) {
                 "info",
                 "WEBFORMS - same credentials.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -64,7 +63,7 @@ async function wordpressFinish(domain, username, password) {
                 "error",
                 "WEBFORMS - wordpress login failed.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -76,7 +75,7 @@ async function wordpressFinish(domain, username, password) {
                 "info",
                 "WEBFORMS - wordpress login success.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -92,7 +91,7 @@ async function wordpressFinish(domain, username, password) {
                 "info",
                 "WEBFORMS - admin email verification.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -104,7 +103,7 @@ async function wordpressFinish(domain, username, password) {
                 "info",
                 "WEBFORMS - no admin email verification.",
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -117,7 +116,7 @@ async function wordpressFinish(domain, username, password) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -150,7 +149,7 @@ async function wordpressFinish(domain, username, password) {
             "info",
             "WEBFORMS - put original form recipients success.",
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -162,7 +161,7 @@ async function wordpressFinish(domain, username, password) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);

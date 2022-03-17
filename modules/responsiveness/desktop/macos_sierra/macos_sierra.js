@@ -4,14 +4,13 @@ const config = require("../../config");
 const logger = require('../../../../middleware/logger.js');
 const server = require('../../../../server.js');
 const sheet = require('../../../../middleware/gsheet.js');
-const configMain = require('../../../../config.js');
 
 const lambdatest_site = config.lambdatest_site;
 const lt_email = config.creds_lambdatest.email;
 const lt_password = config.creds_lambdatest.password;
 
 
-async function macos_sierra(url, email, password) {
+async function macos_sierra(url, email, password, timestamp) {
     let driver = await new Builder().forBrowser("chrome").build();
     try {
         await driver.get(lambdatest_site);
@@ -26,7 +25,7 @@ async function macos_sierra(url, email, password) {
                     "info",
                     "RESPONSIVENESS - edit credentials success.",
                     server.userId,
-                    configMain.dateString
+                    timestamp
                 ]
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -40,7 +39,7 @@ async function macos_sierra(url, email, password) {
                     "info",
                     "RESPONSIVENESS - same credentials.",
                     server.userId,
-                    configMain.dateString
+                    timestamp
                 ]
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -57,7 +56,7 @@ async function macos_sierra(url, email, password) {
                     "error",
                     "RESPONSIVENESS - lambdatest login failed.",
                     server.userId,
-                    configMain.dateString
+                    timestamp
                 ]
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -69,7 +68,7 @@ async function macos_sierra(url, email, password) {
                     "info",
                     "RESPONSIVENESS - lambdatest login success.",
                     server.userId,
-                    configMain.dateString
+                    timestamp
                 ]
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -82,7 +81,7 @@ async function macos_sierra(url, email, password) {
                 "error",
                 JSON.stringify(error),
                 server.userId,
-                configMain.dateString
+                timestamp
             ]
             await sheet.addRow();
             await sheet.appendValues(value);
@@ -100,7 +99,7 @@ async function macos_sierra(url, email, password) {
             "error",
             JSON.stringify(error),
             server.userId,
-            configMain.dateString
+            timestamp
         ]
         await sheet.addRow();
         await sheet.appendValues(value);
