@@ -42,12 +42,30 @@ async function appendValues(value) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
+    // let ranges = [
+    //     "Logs!E2",
+    //     "Logs!A2",
+    //     "Logs!B2",
+    //     "Logs!C2",
+    //     "Logs!D2"
+    // ]
+
     let ranges = [
-        "Logs!E2",
+        "Logs!O2",
         "Logs!A2",
         "Logs!B2",
         "Logs!C2",
-        "Logs!D2"
+        "Logs!D2",
+        "Logs!E2",
+        "Logs!F2",
+        "Logs!G2",
+        "Logs!H2",
+        "Logs!I2",
+        "Logs!J2",
+        "Logs!K2",
+        "Logs!L2",
+        "Logs!M2",
+        "Logs!N2"
     ]
 
     for (let index = 0; index < ranges.length; index++) {
@@ -77,7 +95,7 @@ async function clearLogs() {
 
     const request = {
         spreadsheetId: spreadsheetId,
-        range: 'Logs!A2:D200',
+        range: 'Logs!A2:N200',
         auth: client,
     };
     

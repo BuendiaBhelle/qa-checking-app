@@ -6,7 +6,7 @@ const sheet = require('../../middleware/gsheet.js');
 
 const webpagetest_url = config.webpagetest_url;
 const optimization_tab = config.optimization_tab;
-
+const module_name = "IMAGE OPTIMIZATION";
 
 async function imageOptimization(url, timestamp) {
     let driver_web = await new Builder().forBrowser("chrome").build();
@@ -24,25 +24,13 @@ async function imageOptimization(url, timestamp) {
         // }
         logger.logger.log({ level: 'info', message: 'IMAGE_OPTIMIZATION - webpagetest url success.', tester: server.userId });
         console.log("IMAGE_OPTIMIZATION - webpagetest url success.");
-        value = [
-            "",
-            "info",
-            "IMAGE_OPTIMIZATION - webpagetest url success.",
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "info", "webpagetest url success.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -61,26 +49,14 @@ async function imageOptimization(url, timestamp) {
             console.log("Webpagetest Result URL: " + webpagetest_result_url);
             logger.logger.log({ level: 'info', message: 'IMAGE_OPTIMIZATION - image optimization page success.', tester: server.userId });
             console.log("IMAGE_OPTIMIZATION - image optimization page success.");
-            value = [
-                "",
-                "info",
-                "IMAGE_OPTIMIZATION - image optimization page success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "image optimization page success.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }

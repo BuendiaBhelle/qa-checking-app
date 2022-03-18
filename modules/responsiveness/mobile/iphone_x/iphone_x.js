@@ -8,6 +8,9 @@ const sheet = require('../../../../middleware/gsheet.js');
 const lambdatest_site = config.lambdatest_site;
 const lt_email = config.creds_lambdatest.email;
 const lt_password = config.creds_lambdatest.password;
+const module_name = config.module_name;
+const device = config.devices.mobile;
+const version = config.versions.mobile.version15;
 
 
 async function iphone_x(url, email, password, timestamp) {
@@ -20,13 +23,7 @@ async function iphone_x(url, email, password, timestamp) {
                 await driver.findElement(By.id("password")).sendKeys(password);
                 logger.logger.log({ level: 'info', message: 'RESPONSIVENESS - edit credentials success.', tester: server.userId });
                 console.log("RESPONSIVENESS - edit credentials success.");
-                value = [
-                    "",
-                    "info",
-                    "RESPONSIVENESS - edit credentials success.",
-                    server.userId,
-                    timestamp
-                ]
+                value = [ "", "info", "edit credentials success.", server.userId, timestamp, module_name, url, "", email + "\n" + password, "", "", "", "", device, version ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
@@ -34,13 +31,7 @@ async function iphone_x(url, email, password, timestamp) {
                 await driver.findElement(By.id("password")).sendKeys(lt_password);
                 logger.logger.log({ level: 'info', message: 'RESPONSIVENESS - same credentials.', tester: server.userId });
                 console.log("RESPONSIVENESS - same credentials.");
-                value = [
-                    "",
-                    "info",
-                    "RESPONSIVENESS - same credentials.",
-                    server.userId,
-                    timestamp
-                ]
+                value = [ "", "info", "same credentials.", server.userId, timestamp, module_name, url, "", lt_email + "\n" + lt_password, "", "", "", "", device, version ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
@@ -51,38 +42,20 @@ async function iphone_x(url, email, password, timestamp) {
             if (error_msg1 || error_msg2) {
                 logger.logger.log({ level: 'error', message: 'RESPONSIVENESS - lambdatest login failed.', tester: server.userId });
                 console.log("RESPONSIVENESS - lambdatest login failed.");
-                value = [
-                    "",
-                    "error",
-                    "RESPONSIVENESS - lambdatest login failed.",
-                    server.userId,
-                    timestamp
-                ]
+                value = [ "", "error", "lambdatest login failed.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", device, version ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
                 logger.logger.log({ level: 'info', message: 'RESPONSIVENESS - lambdatest login success.', tester: server.userId });
                 console.log("RESPONSIVENESS - lambdatest login success.");
-                value = [
-                    "",
-                    "info",
-                    "RESPONSIVENESS - lambdatest login success.",
-                    server.userId,
-                    timestamp
-                ]
+                value = [ "", "info", "lambdatest login success.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", device, version ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
         } catch (error) {
             logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
-            value = [
-                "",
-                "error",
-                JSON.stringify(error),
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", device, version ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -97,13 +70,7 @@ async function iphone_x(url, email, password, timestamp) {
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", device, version ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }

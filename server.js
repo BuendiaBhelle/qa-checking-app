@@ -153,51 +153,27 @@ app.post('/login', async (req, res) => {
                 res.redirect("/post");
                 logger.logger.log({ level: 'info', message: 'login success.', tester: this.userId });
                 console.log("login success.");
-                let value = [
-                    "",
-                    "info",
-                    "login success.",
-                    this.userId,
-                    timestamp
-                ]
+                let value = [ "", "info", "login success.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
                 res.send('Login failed.');
                 logger.logger.log({ level: 'error', message: 'login failed.', tester: this.userId });
                 console.log("login failed.");
-                let value = [
-                    "",
-                    "error",
-                    "login failed.",
-                    this.userId,
-                    timestamp
-                ]
+                let value = [ "", "error", "login failed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
             logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
             console.log("user is allowed.");
-            let value = [
-                "",
-                "info",
-                "user is allowed.",
-                this.userId,
-                timestamp
-            ]
+            let value = [ "", "info", "user is allowed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             res.send('User is not allowed.');
             logger.logger.log({ level: 'error', message: 'user is not allowed.', tester: this.userId });
             console.log("user is not allowed.");
-            let value = [
-                "",
-                "error",
-                "user is not allowed.",
-                this.userId,
-                timestamp
-            ]
+            let value = [ "", "error", "user is not allowed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -205,13 +181,7 @@ app.post('/login', async (req, res) => {
         res.status(500).send();
         logger.logger.log({ level: 'error', message: error, tester: this.userId });
         console.log(error);
-        let value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            this.userId,
-            timestamp
-        ]
+        let value = [ "", "error", JSON.stringify(error), this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -224,26 +194,11 @@ app.get('/logout', async (req,res) => {
         res.redirect('/');
         logger.logger.log({ level: 'info', message: 'logout success.', tester: this.userId });
         console.log("logout success.");
-        // let value = [
-        //     "",
-        //     "info",
-        //     "logout success.",
-        //     this.userId,
-        //     timestamp
-        // ]
-        // await sheet.addRow();
-        // await sheet.appendValues(value);
         await sheet.clearLogs();
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'logout failed.', tester: this.userId });
         console.log("logout failed.");
-        let value = [
-            "",
-            "error",
-            "logout failed.",
-            this.userId,
-            timestamp
-        ]
+        let value = [ "", "logout failed.", JSON.stringify(error), this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
