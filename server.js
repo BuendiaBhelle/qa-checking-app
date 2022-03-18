@@ -251,7 +251,7 @@ app.get('/logout', async (req,res) => {
     fs.writeFile("./middleware/logs/error.log", "");
 });
 
-app.post('/post/checkout', function(req, res) {
+app.post('/post/checkout', async (req, res) => {
     logger.errorLog();
     var username = req.body.username;
     var password = req.body.password;
@@ -277,12 +277,12 @@ app.post('/post/checkout', function(req, res) {
                             case "product1":
                                 console.log("checkout: " + checkout);
                                 console.log("product1 selected.");
-                                checkout_sunrisejewelryusa_dev_p1.index(domain, username, password, email);
+                                checkout_sunrisejewelryusa_dev_p1.index(domain, username, password, email, timestamp);
                                 break;
                             case "product2":
                                 console.log("checkout: " + checkout);
                                 console.log("product2 selected.");
-                                checkout_sunrisejewelryusa_dev_p2.index(domain, username, password, email);
+                                checkout_sunrisejewelryusa_dev_p2.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;

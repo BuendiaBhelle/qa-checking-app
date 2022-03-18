@@ -3,6 +3,7 @@ const {google} = require("googleapis");
 const config = require("../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
+const sheet = require('../../../../../../middleware/gsheet.js');
 
 const wp_username = config.creds_sunrisejewelryusa.username;
 const wp_password = config.creds_sunrisejewelryusa.password;
@@ -10,7 +11,7 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
 
-async function checkout(domain, username, password, email) {
+async function checkout(domain, username, password, email, timestamp) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -26,16 +27,43 @@ async function checkout(domain, username, password, email) {
             await driver.findElement(By.name("login")).click();
             logger.logger.log({ level: 'info', message: 'CHECKOUT - edit credentials success.', tester: server.userId });
             console.log("CHECKOUT - edit credentials success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - edit credentials success.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         } else {
             await driver.findElement(By.id("username")).sendKeys(wp_username);
             await driver.findElement(By.id("password")).sendKeys(wp_password);
             await driver.findElement(By.name("login")).click();
             logger.logger.log({ level: 'info', message: 'CHECKOUT - same credentials.', tester: server.userId });
             console.log("CHECKOUT - same credentials.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - same credentials.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);    
+        console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            timestamp
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     // check if cart is empty
@@ -52,10 +80,28 @@ async function checkout(domain, username, password, email) {
             }
             logger.logger.log({ level: 'info', message: 'CHECKOUT - empty cart success.', tester: server.userId });
             console.log("CHECKOUT - empty cart success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - empty cart success.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);      
+        console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            timestamp
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);
     }
 
     // add to cart
@@ -67,11 +113,29 @@ async function checkout(domain, username, password, email) {
         if (orderby === "Sort by price: low to high") {
             logger.logger.log({ level: 'info', message: 'CHECKOUT - sort success.', tester: server.userId });
             console.log("CHECKOUT - sort success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - sort success.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
             await driver.executeScript("return document.getElementsByClassName('button product_type_simple add_to_cart_button ajax_add_to_cart')[0].click()");
             await driver.sleep(3000);
         } else {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - sort failed.', tester: server.userId });
-            console.log("CHECKOUT - sort failed."); 
+            console.log("CHECKOUT - sort failed.");
+            value = [
+                "",
+                "error",
+                "WEBFORMS - sort failed.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
 
         // go to cart
@@ -92,10 +156,28 @@ async function checkout(domain, username, password, email) {
                 }
             });
             logger.logger.log({ level: 'info', message: 'CHECKOUT - list product name success.', tester: server.userId });
-            console.log("CHECKOUT - list product name success.");    
+            console.log("CHECKOUT - list product name success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - list product name success.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value); 
         } catch (error) {
             logger.logger.log({ level: 'error', message: error, tester: server.userId });
-            console.log(error);      
+            console.log(error);
+            value = [
+                "",
+                "error",
+                JSON.stringify(error),
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);      
         }
 
         await driver.findElement(By.id("customer_notes_text")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thank you.");             
@@ -103,9 +185,27 @@ async function checkout(domain, username, password, email) {
         // await driver.sleep(3000);
         logger.logger.log({ level: 'info', message: 'CHECKOUT - add to cart success.', tester: server.userId });
         console.log("CHECKOUT - add to cart success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - add to cart success.",
+            server.userId,
+            timestamp
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value); 
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);      
+        console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            timestamp
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);     
     }
 
     // checkout
@@ -129,11 +229,29 @@ async function checkout(domain, username, password, email) {
 
         if (woocommerce_error) {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - apply coupon failed.', tester: server.userId });
-            console.log("CHECKOUT - apply coupon failed.");  
+            console.log("CHECKOUT - apply coupon failed.");
+            value = [
+                "",
+                "error",
+                "WEBFORMS - apply coupon failed.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value); 
         }
         else if (woocommerce_message) {
             logger.logger.log({ level: 'info', message: 'CHECKOUT - apply coupon success.', tester: server.userId });
             console.log("CHECKOUT - apply coupon success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - apply coupon success.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value); 
         } 
         
         await driver.sleep(3000);
@@ -146,13 +264,40 @@ async function checkout(domain, username, password, email) {
             await driver.executeScript("return document.getElementsByClassName('button alt')[0].click()");
             logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout success.', tester: server.userId });
             console.log("CHECKOUT - checkout success.");
+            value = [
+                "",
+                "info",
+                "WEBFORMS - checkout success.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value); 
         } else {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - checkout failed.', tester: server.userId });
-            console.log("CHECKOUT - checkout failed.");          
+            console.log("CHECKOUT - checkout failed.");
+            value = [
+                "",
+                "error",
+                "WEBFORMS - checkout failed.",
+                server.userId,
+                timestamp
+            ]
+            await sheet.addRow();
+            await sheet.appendValues(value);          
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);    
+        console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            timestamp
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value); 
     }
 
     // track thank you page
@@ -173,10 +318,28 @@ async function checkout(domain, username, password, email) {
             }
         });
         logger.logger.log({ level: 'info', message: 'CHECKOUT - list thank you page success.', tester: server.userId });
-        console.log("CHECKOUT - list thank you page success.");    
+        console.log("CHECKOUT - list thank you page success.");
+        value = [
+            "",
+            "info",
+            "WEBFORMS - list thank you page success.",
+            server.userId,
+            timestamp
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value); 
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);      
+        console.log(error);
+        value = [
+            "",
+            "error",
+            JSON.stringify(error),
+            server.userId,
+            timestamp
+        ]
+        await sheet.addRow();
+        await sheet.appendValues(value);    
     }
 
     return true;

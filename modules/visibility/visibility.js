@@ -40,7 +40,7 @@ async function chrome(site_name, timestamp) {
 }
 
 //firefox
-async function firefox(site_name) {
+async function firefox(site_name, timestamp) {
     let driver = await new Builder().forBrowser("firefox").build();
     try {
         await driver.get(search_engine);
@@ -72,7 +72,7 @@ async function firefox(site_name) {
 }
 
 //microsoft edge
-async function edge(site_name) {
+async function edge(site_name, timestamp) {
     let options = new microsoftedge.Options().setEdgeChromium(true);
     let driver = microsoftedge.Driver.createSession(options);
     try {
