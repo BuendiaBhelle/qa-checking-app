@@ -11,6 +11,9 @@ const qa_email = config.qa_email;
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 const date = config.date;
+const module_name = config.module_name;
+const launch = config.launch.dev;
+const product = config.product.site.site1.product1;
 
 
 async function wordpressStart(domain, username, password, email, timestamp) {
@@ -28,13 +31,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
             await driver.findElement(By.name("pwd")).sendKeys(password);
             logger.logger.log({ level: 'info', message: 'CHECKOUT - edit credentials success.', tester: server.userId });
             console.log("CHECKOUT - edit credentials success.");
-            value = [
-                "",
-                "info",
-                "CHECKOUT - edit credentials success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
@@ -42,13 +39,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
             await driver.findElement(By.name("pwd")).sendKeys(wp_password);
             logger.logger.log({ level: 'info', message: 'CHECKOUT - same credentials.', tester: server.userId });
             console.log("CHECKOUT - same credentials.");
-            value = [
-                "",
-                "info",
-                "CHECKOUT - same credentials.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "same credentials.", server.userId, timestamp, module_name, domain, wp_username + "\n" + wp_password, "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -59,25 +50,13 @@ async function wordpressStart(domain, username, password, email, timestamp) {
         if (login_error) {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - wordpress login failed.', tester: server.userId });
             console.log("CHECKOUT - wordpress login failed.");
-            value = [
-                "",
-                "error",
-                "CHECKOUT - wordpress login failed.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", "wordpress login failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'CHECKOUT - wordpress login success.', tester: server.userId });
             console.log("CHECKOUT - wordpress login success.");
-            value = [
-                "",
-                "info",
-                "CHECKOUT - wordpress login success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -87,38 +66,20 @@ async function wordpressStart(domain, username, password, email, timestamp) {
             await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
             logger.logger.log({ level: 'info', message: 'CHECKOUT - admin email verification.', tester: server.userId });
             console.log("CHECKOUT - admin email verification.");
-            value = [
-                "",
-                "info",
-                "CHECKOUT - admin email verification.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'CHECKOUT - no admin email verification.', tester: server.userId });
             console.log("CHECKOUT - no admin email verification.");
-            value = [
-                "",
-                "info",
-                "CHECKOUT - no admin email verification.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "no admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -141,13 +102,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
         if ((prices_entered_with_tax === true) && (display_prices_in_the_shop === "Excluding tax") && (display_prices_during_cart_and_checkout === "Excluding tax")) {
             logger.logger.log({ level: 'info', message: 'CHECKOUT - tax tab checked.', tester: server.userId });
             console.log("CHECKOUT - tax tab checked.");
-            value = [
-                "",
-                "info",
-                "CHECKOUT - tax tab checked.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "tax tab checked.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
             let tax_page = await driver.getCurrentUrl();
@@ -163,13 +118,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
             if (enable_or_disable === true) {
                 logger.logger.log({ level: 'info', message: 'CHECKOUT - payments tab checked.', tester: server.userId });
                 console.log("CHECKOUT - payments tab checked.");
-                value = [
-                    "",
-                    "info",
-                    "CHECKOUT - payments tab checked.",
-                    server.userId,
-                    timestamp
-                ]
+                value = [ "", "info", "payments tab checked.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
                 let payments_page = await driver.getCurrentUrl();
@@ -198,26 +147,14 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                         resource: batchUpdateRequest,
                     });
                     logger.logger.log({ level: 'info', message: 'CHECKOUT - add columns success.', tester: server.userId });
-                    console.log("CHECKOUT - add columns success."); 
-                    value = [
-                        "",
-                        "info",
-                        "CHECKOUT - add columns success.",
-                        server.userId,
-                        timestamp
-                    ]
+                    console.log("CHECKOUT - add columns success.");
+                    value = [ "", "info", "add columns success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);
                 } catch (error) {
                     logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
-                    value = [
-                        "",
-                        "error",
-                        JSON.stringify(error),
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);              
                 }
@@ -242,25 +179,13 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                     });
                     logger.logger.log({ level: 'info', message: 'CHECKOUT - list date and creds success.', tester: server.userId });
                     console.log("CHECKOUT - list date and creds success.");
-                    value = [
-                        "",
-                        "info",
-                        "CHECKOUT - list date and creds success.",
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "info", "list date and creds success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);  
                 } catch (error) {
                     logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
-                    value = [
-                        "",
-                        "error",
-                        JSON.stringify(error),
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value); 
                 }
@@ -285,26 +210,14 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                             }
                         });
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - list new order recipient success.', tester: server.userId });
-                        console.log("CHECKOUT - list new order recipient success."); 
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - list new order recipient success.",
-                            server.userId,
-                            timestamp
-                        ]
+                        console.log("CHECKOUT - list new order recipient success.");
+                        value = [ "", "info", "list new order recipient success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);                      
                     } catch (error) {
                         logger.logger.log({ level: 'error', message: error, tester: server.userId });
                         console.log(error);
-                        value = [
-                            "",
-                            "error",
-                            JSON.stringify(error),
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value); 
                     }
@@ -314,26 +227,14 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                         await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(email);
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
                         console.log("CHECKOUT - change qa email success.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - change qa email success.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);   
                     } else {
                         await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(qa_email);
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - same qa email.', tester: server.userId });
                         console.log("CHECKOUT - same qa email.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - same qa email.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);  
                     }
@@ -341,13 +242,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                 } catch (error) {
                     logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
-                    value = [
-                        "",
-                        "error",
-                        JSON.stringify(error),
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);                
                 }
@@ -383,25 +278,13 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                         });
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - list cancelled order recipient success.', tester: server.userId });
                         console.log("CHECKOUT - list cancelled order recipient success.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - list cancelled order recipient success.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "list cancelled order recipient success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);                        
                     } catch (error) {
                         logger.logger.log({ level: 'error', message: error, tester: server.userId });
                         console.log(error);
-                        value = [
-                            "",
-                            "error",
-                            JSON.stringify(error),
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);                  
                     }
@@ -411,26 +294,14 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                         await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(email);
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
                         console.log("CHECKOUT - change qa email success.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - change qa email success.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value); 
                     } else {
                         await driver.findElement(By.id("woocommerce_cancelled_order_recipient")).sendKeys(qa_email);
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - same qa email.', tester: server.userId });
                         console.log("CHECKOUT - same qa email.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - same qa email.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);
                     }
@@ -438,13 +309,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                 } catch (error) {
                     logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
-                    value = [
-                        "",
-                        "error",
-                        JSON.stringify(error),
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);
                 }
@@ -479,25 +344,13 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                         });
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - list failed order recipient success.', tester: server.userId });
                         console.log("CHECKOUT - list failed order recipient success.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - list failed order recipient success.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "list failed order recipient success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);                    
                     } catch (error) {
                         logger.logger.log({ level: 'error', message: error, tester: server.userId });
                         console.log(error);
-                        value = [
-                            "",
-                            "error",
-                            JSON.stringify(error),
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);                    
                     }
@@ -506,26 +359,14 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                         await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(email);
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
                         console.log("CHECKOUT - change qa email success.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - change qa email success.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value); 
                     } else {
                         await driver.findElement(By.id("woocommerce_failed_order_recipient")).sendKeys(qa_email);
                         logger.logger.log({ level: 'info', message: 'CHECKOUT - same qa email.', tester: server.userId });
                         console.log("CHECKOUT - same qa email.");
-                        value = [
-                            "",
-                            "info",
-                            "CHECKOUT - same qa email.",
-                            server.userId,
-                            timestamp
-                        ]
+                        value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, product, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value); 
                     }
@@ -533,13 +374,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                 } catch (error) {
                     logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
-                    value = [
-                        "",
-                        "error",
-                        JSON.stringify(error),
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);            
                 }
@@ -553,25 +388,13 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                     await driver.executeScript("return document.getElementsByTagName('a')[47].click()");
                     logger.logger.log({ level: 'info', message: 'CHECKOUT - coupons page success.', tester: server.userId });
                     console.log("CHECKOUT - coupons page success.");
-                    value = [
-                        "",
-                        "info",
-                        "CHECKOUT - coupons page success.",
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "info", "coupons page success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value); 
                 } catch (error) {
                     logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
-                    value = [
-                        "",
-                        "error",
-                        JSON.stringify(error),
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);                
                 }
@@ -593,25 +416,13 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                     });
                     logger.logger.log({ level: 'info', message: 'CHECKOUT - list coupon details success.', tester: server.userId });
                     console.log("CHECKOUT - list coupon details success.");
-                    value = [
-                        "",
-                        "info",
-                        "CHECKOUT - list coupon details success.",
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "info", "list coupon details success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);                   
                 } catch (error) {
                     logger.logger.log({ level: 'error', message: error, tester: server.userId });
                     console.log(error);
-                    value = [
-                        "",
-                        "error",
-                        JSON.stringify(error),
-                        server.userId,
-                        timestamp
-                    ]
+                    value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);                 
                 }
@@ -620,13 +431,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                 await driver.findElement(By.id("woocommerce_stripe_enabled")).click();
                 logger.logger.log({ level: 'info', message: 'CHECKOUT - enable stripe success.', tester: server.userId });
                 console.log("CHECKOUT - enable stripe success.");
-                value = [
-                    "",
-                    "info",
-                    "CHECKOUT - enable stripe success.",
-                    server.userId,
-                    timestamp
-                ]
+                value = [ "", "info", "enable stripe success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value); 
             }
@@ -634,26 +439,14 @@ async function wordpressStart(domain, username, password, email, timestamp) {
         else {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - tax tab failed.', tester: server.userId });
             console.log("CHECKOUT - tax tab failed.");
-            value = [
-                "",
-                "error",
-                "CHECKOUT - tax tab failed.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", "tax tab failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value); 
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error); 
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        console.log(error);
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);    
     }

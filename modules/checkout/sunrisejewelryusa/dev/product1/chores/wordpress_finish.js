@@ -5,11 +5,13 @@ const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
 
-
 const wp_username = config.creds_sunrisejewelryusa.username;
 const wp_password = config.creds_sunrisejewelryusa.password;
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
+const module_name = config.module_name;
+const launch = config.launch.dev;
+const product = config.product.site.site1.product1;
 
 
 async function wordpressFinish(domain, username, password, email, timestamp) {
@@ -27,13 +29,7 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
             await driver.findElement(By.name("pwd")).sendKeys(password);
             logger.logger.log({ level: 'info', message: 'CHECKOUT - edit credentials success.', tester: server.userId });
             console.log("CHECKOUT - edit credentials success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - edit credentials success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
@@ -41,13 +37,7 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
             await driver.findElement(By.name("pwd")).sendKeys(wp_password);
             logger.logger.log({ level: 'info', message: 'CHECKOUT - same credentials.', tester: server.userId });
             console.log("CHECKOUT - same credentials.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - same credentials.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "same credentials.", server.userId, timestamp, module_name, domain, wp_username + "\n" + wp_password, "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -58,25 +48,13 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
         if (login_error) {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - wordpress login failed.', tester: server.userId });
             console.log("CHECKOUT - wordpress login failed.");
-            value = [
-                "",
-                "error",
-                "WEBFORMS - wordpress login failed.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", "wordpress login failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'CHECKOUT - wordpress login success.', tester: server.userId });
             console.log("CHECKOUT - wordpress login success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - wordpress login success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -86,38 +64,20 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
             await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
             logger.logger.log({ level: 'info', message: 'CHECKOUT - admin email verification.', tester: server.userId });
             console.log("CHECKOUT - admin email verification.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - admin email verification.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'CHECKOUT - no admin email verification.', tester: server.userId });
             console.log("CHECKOUT - no admin email verification.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - no admin email verification.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "no admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);  
     }
@@ -148,38 +108,20 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
 
             logger.logger.log({ level: 'info', message: 'CHECKOUT - get new order recipient success.', tester: server.userId });
             console.log("CHECKOUT - get new order recipient success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - get new order recipient success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "get new order recipient success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } catch (error) {
             logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
-            value = [
-                "",
-                "error",
-                JSON.stringify(error),
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);  
     }
@@ -213,38 +155,20 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
 
             logger.logger.log({ level: 'info', message: 'CHECKOUT - get cancelled order recipient success.', tester: server.userId });
             console.log("CHECKOUT - get cancelled order recipient success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - get cancelled order recipient success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "get cancelled order recipient success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } catch (error) {
             logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
-            value = [
-                "",
-                "error",
-                JSON.stringify(error),
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error); 
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        console.log(error);
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);   
     }
@@ -279,38 +203,20 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
 
             logger.logger.log({ level: 'info', message: 'CHECKOUT - get failed order recipient success.', tester: server.userId });
             console.log("CHECKOUT - get failed order recipient success.");
-            value = [
-                "",
-                "info",
-                "CHECKOUT - get failed order recipient success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "get failed order recipient success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } catch (error) {
             logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
-            value = [
-                "",
-                "error",
-                JSON.stringify(error),
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } 
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);  
     }

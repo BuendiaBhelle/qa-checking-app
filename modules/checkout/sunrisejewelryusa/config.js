@@ -25,5 +25,31 @@ let day = String(dateObj.getDate()).padStart(2, '0');
 let year = dateObj.getFullYear();
 const date = month  + "/" + day  + '/' + year;
 
+const module_name = "CHECKOUT";
 
-module.exports = { creds_sunrisejewelryusa, qa_email, auth, spreadsheetId, date };
+let launch = {
+    dev: "dev",
+    live: "live"
+}
+
+let product = {
+    site: {
+        site1: {
+            product1: "White Buffalo Round Silver Earrings",
+            product2: "Kingman Turquoise Bracelet"
+        }
+    }
+}
+
+
+
+module.exports = { 
+    creds_sunrisejewelryusa, 
+    qa_email, 
+    auth, 
+    spreadsheetId, 
+    date, 
+    module_name,
+    launch,
+    product
+};
