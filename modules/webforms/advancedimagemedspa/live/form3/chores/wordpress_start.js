@@ -13,6 +13,9 @@ const spreadsheetId = config.spreadsheetId;
 const date = config.date;
 const form_page_dev = config.forms.advancedimagemedspa.form3_dev;
 const form_page_live = config.forms.advancedimagemedspa.form3_live;
+const module_name = config.module_name;
+const launch = config.launch.live;
+const form = config.webforms.advancedimagemedspa.live.form3;
 
 
 async function wordpressStart(domain, checkbox, username, password, email, timestamp) {
@@ -43,25 +46,13 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         });
         logger.logger.log({ level: 'info', message: 'WEBFORMS - add columns success.', tester: server.userId });
         console.log("WEBFORMS - add columns success.");
-        value = [
-            "",
-            "info",
-            "WEBFORMS - add columns success.",
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "info", "add columns success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'WEBFORMS - add columns failed.', tester: server.userId });
         console.log("WEBFORMS - add columns failed.");
-        value = [
-            "",
-            "error",
-            "WEBFORMS - add columns failed.",
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", "add columns failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -109,25 +100,13 @@ async function wordpressStart(domain, checkbox, username, password, email, times
             }
             logger.logger.log({ level: 'info', message: 'WEBFORMS - track details success.', tester: server.userId });
             console.log("WEBFORMS - track details success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - track details success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "track details success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } catch (error) {
             logger.logger.log({ level: 'error', message: 'WEBFORMS - track details failed.', tester: server.userId });
             console.log("WEBFORMS - track details failed.");
-            value = [
-                "",
-                "error",
-                "WEBFORMS - track details failed.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", "track details failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -148,25 +127,13 @@ async function wordpressStart(domain, checkbox, username, password, email, times
             }
             logger.logger.log({ level: 'info', message: 'WEBFORMS - track details success.', tester: server.userId });
             console.log("WEBFORMS - track details success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - track details success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "track details success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } catch (error) {
             logger.logger.log({ level: 'error', message: 'WEBFORMS - track details failed.', tester: server.userId });
             console.log("WEBFORMS - track details failed.");
-            value = [
-                "",
-                "error",
-                "WEBFORMS - track details failed.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", "track details failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -183,13 +150,7 @@ async function wordpressStart(domain, checkbox, username, password, email, times
             await driver.findElement(By.name("pwd")).sendKeys(password);
             logger.logger.log({ level: 'info', message: 'WEBFORMS - edit credentials success.', tester: server.userId });
             console.log("WEBFORMS - edit credentials success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - edit credentials success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
@@ -197,13 +158,7 @@ async function wordpressStart(domain, checkbox, username, password, email, times
             await driver.findElement(By.name("pwd")).sendKeys(wp_password);
             logger.logger.log({ level: 'info', message: 'WEBFORMS - same credentials.', tester: server.userId });
             console.log("WEBFORMS - same credentials.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - same credentials.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "same credentials.", server.userId, timestamp, module_name, domain, wp_username + "\n" + wp_password, "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -214,25 +169,13 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         if (login_error) {
             logger.logger.log({ level: 'error', message: 'WEBFORMS - wordpress login failed.', tester: server.userId });
             console.log("WEBFORMS - wordpress login failed.");
-            value = [
-                "",
-                "error",
-                "WEBFORMS - wordpress login failed.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "error", "wordpress login failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
             console.log("WEBFORMS - wordpress login success.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - wordpress login success.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -242,38 +185,20 @@ async function wordpressStart(domain, checkbox, username, password, email, times
             await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
             logger.logger.log({ level: 'info', message: 'WEBFORMS - admin email verification.', tester: server.userId });
             console.log("WEBFORMS - admin email verification.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - admin email verification.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
             logger.logger.log({ level: 'info', message: 'WEBFORMS - no admin email verification.', tester: server.userId });
             console.log("WEBFORMS - no admin email verification.");
-            value = [
-                "",
-                "info",
-                "WEBFORMS - no admin email verification.",
-                server.userId,
-                timestamp
-            ]
+            value = [ "", "info", "no admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -301,25 +226,13 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         });
         logger.logger.log({ level: 'info', message: 'WEBFORMS - track form recipients success.', tester: server.userId });
         console.log("WEBFORMS - track form recipients success.");
-        value = [
-            "",
-            "info",
-            "WEBFORMS - track form recipients success.",
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "info", "track form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -329,31 +242,29 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         if (email) {
             await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(email);
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
+            console.log("CHECKOUT - change qa email success.");
+            value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, "", form_page_live + "\n" + form, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value); 
         } else {
-            await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(qa_email);    
+            await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(qa_email);
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
+            console.log("CHECKOUT - same qa email.");
+            value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, "", form_page_live + "\n" + form, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);     
         }
         await driver.executeScript("return document.getElementsByName('wpcf7-save')[2].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
         console.log("WEBFORMS - change form recipients success.");
-        value = [
-            "",
-            "info",
-            "WEBFORMS - change form recipients success.",
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page_live + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }

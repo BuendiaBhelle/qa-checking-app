@@ -126,6 +126,55 @@ let day = String(dateObj.getDate()).padStart(2, '0');
 let year = dateObj.getFullYear();
 const date = month  + "/" + day  + '/' + year;
 
+const module_name = "WEB FORMS";
+
+let launch = {
+    dev: "dev",
+    live: "live"
+}
+
+let webforms = {
+    accidentchiropracticaz: {
+        dev: {
+            form1: "Schedule an Appointment - Home",
+            form2: "Schedule an Appointment - Sidebar",
+        },
+        live: {
+            form1: "Schedule an Appointment - Home",
+            form2: "Schedule an Appointment - Sidebar",
+        }
+    },
+    advancedimagemedspa: {
+        dev: {
+            form1: "Contact Form ( Contact Us Page )",
+            form2: "Homepage Contact Us",
+            form3: "Request Form ( Sidebar ) - New Layout",
+        },
+        live: {
+            form1: "Contact Form ( Contact Us Page )",
+            form2: "Homepage Contact Us",
+            form3: "Request Form ( Sidebar ) - New Layout",
+        }
+    },
+    aerialengagement: {
+        dev: {
+            form1: "Contact Us"
+        },
+        live: {
+            form1: "Contact Us"
+        }
+    },
+    americanleatherusa: {
+        dev: {
+            form1: "Contact form 1"
+        },
+        live: {
+            form1: "Contact form 1"
+        }
+    }
+}
+
+
 
 module.exports = { 
     credentials,
@@ -133,5 +182,8 @@ module.exports = {
     qa_email, 
     auth, 
     spreadsheetId, 
-    date
+    date,
+    module_name,
+    launch,
+    webforms
 };

@@ -67,6 +67,12 @@ async function edge(site_name, timestamp) {
         await sheet.addRow();
         await sheet.appendValues(value);
     }
+    // end test
+    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
+    console.log("test ends.");
+    value = [ "", "info", "test ends.", server.userId, timestamp, module_name, site_name, "", "", "", "", "", "", "", "" ];
+    await sheet.addRow();
+    await sheet.appendValues(value);
 }
 
 module.exports = { chrome, firefox, edge };

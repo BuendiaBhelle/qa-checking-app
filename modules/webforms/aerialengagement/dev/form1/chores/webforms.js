@@ -8,6 +8,9 @@ const sheet = require('../../../../../../middleware/gsheet.js');
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 const form_page = config.forms.aerialengagement.form1;
+const module_name = config.module_name;
+const launch = config.launch.dev;
+const form = config.webforms.aerialengagement.dev.form1;
 
 
 async function webforms(domain, timestamp) {
@@ -27,25 +30,13 @@ async function webforms(domain, timestamp) {
         await driver.executeScript("return document.getElementsByClassName('btn-primary')[0].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
-        value = [
-            "",
-            "info",
-            "WEBFORMS - form fill in success.",
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "info", "form fill in success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -70,25 +61,13 @@ async function webforms(domain, timestamp) {
         });
         logger.logger.log({ level: 'info', message: 'WEBFORMS - track thank you page success.', tester: server.userId });
         console.log("WEBFORMS - track thank you page success.");
-        value = [
-            "",
-            "info",
-            "WEBFORMS - track thank you page success.",
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "info", "track thank you page success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [
-            "",
-            "error",
-            JSON.stringify(error),
-            server.userId,
-            timestamp
-        ]
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
