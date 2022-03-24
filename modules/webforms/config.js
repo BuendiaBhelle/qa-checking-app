@@ -171,6 +171,44 @@ let webforms = {
         live: {
             form1: "Contact form 1"
         }
+    },
+    andresperezjurado: {
+        dev: {
+            form1: "Custom Inquiry"
+        },
+        live: {
+            form1: "Custom Inquiry"
+        }
+    },
+    azdoordoctor: {
+        dev: {
+            form1: "Contact Us",
+            form2: "Contact Us | Sidebar",
+            form3: "Schedule an Appointment"
+        },
+        live: {
+            form1: "Contact Us",
+            form2: "Contact Us | Sidebar",
+            form3: "Schedule an Appointment"
+        }
+    },
+    biltmoreloanandjewelry: {
+        dev: {
+            form1: "Request an Appraisal - Sell Your Jewelry",
+            form2: "Request an Appraisal - Get a Loan",
+            form3: "Book an Appointment (SB)",
+            form4: "Contact form 1",
+            form5: "Request an Appraisal | Landing Page 2019",
+            form6: "Book an Appointment (Page)"
+        },
+        live: {
+            form1: "Request an Appraisal - Sell Your Jewelry",
+            form2: "Request an Appraisal - Get a Loan",
+            form3: "Book an Appointment (SB)",
+            form4: "Contact form 1",
+            form5: "Request an Appraisal | Landing Page 2019",
+            form6: "Book an Appointment (Page)"
+        }
     }
 }
 
