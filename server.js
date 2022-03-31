@@ -164,11 +164,11 @@ app.post('/login', async (req, res) => {
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
-            logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
-            console.log("user is allowed.");
-            let value = [ "", "info", "user is allowed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value);
+            // logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
+            // console.log("user is allowed.");
+            // let value = [ "", "info", "user is allowed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+            // await sheet.addRow();
+            // await sheet.appendValues(value);
         } else {
             res.send('User is not allowed.');
             logger.logger.log({ level: 'error', message: 'user is not allowed.', tester: this.userId });

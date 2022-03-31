@@ -209,6 +209,59 @@ let webforms = {
             form5: "Request an Appraisal | Landing Page 2019",
             form6: "Book an Appointment (Page)"
         }
+    },
+    buckeyederm: {
+        dev: {
+            form1: "Schedule an Appointment"
+        },
+        live: {
+            form1: "Schedule an Appointment"
+        }
+    },
+    canyonfallshairextensioncompany: {
+        dev1: {
+            form1: "Request an Appointment",
+            form2: "Return Request Form"
+        },
+        dev2: {
+            form1: "Request an Appointment",
+            form2: "Return Request Form"
+        }
+    },
+    crexendo: {
+        dev: {
+            form1: "Sign-Up for your Free Demonstration",
+            form2: "Talk to a Consultant Form",
+            form3: "Personalized Quote Form Step 1",
+            form4: "Refer a Business",
+            form5: "Register To Become A Channel Partner"
+        },
+        live: {
+            form1: "Sign-Up for your Free Demonstration",
+            form2: "Talk to a Consultant Form",
+            form3: "Personalized Quote Form Step 1",
+            form4: "Refer a Business",
+            form5: "Register To Become A Channel Partner"
+        }
+    },
+    indinspect: {
+        dev: {
+            form1: "Contact Us",
+            form2: "Request Information"
+        },
+        live: {
+            form1: "Contact Us"
+        }
+    },
+    kyrenefamilydentistry: {
+        dev: {
+            form1: "Quick Contact",
+            form2: "Schedule an Appointment"
+        },
+        live: {
+            form1: "Quick Contact",
+            form2: "Schedule an Appointment"
+        }
     }
 }
 
