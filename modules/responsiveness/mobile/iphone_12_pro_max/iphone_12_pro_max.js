@@ -74,6 +74,12 @@ async function iphone_12_pro_max(url, email, password, timestamp) {
         await sheet.addRow();
         await sheet.appendValues(value);
     }
+    // end test
+    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
+    console.log("test ends.");
+    value = [ "", "info", "test ends.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", device, version ];
+    await sheet.addRow();
+    await sheet.appendValues(value);
 }
 
 
