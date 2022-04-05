@@ -81,9 +81,13 @@ async function wordpressFinish(domain, checkbox, username, password, timestamp) 
     }
 
     await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[6].click()");
-    await driver.executeScript("return document.getElementsByTagName('a')[210].click()");
+    await driver.sleep(1000);
+    await driver.executeScript("return document.getElementsByTagName('a')[209].click()");
 
     // set admin notif to active
+    await driver.sleep(1000);
+    await driver.executeScript("return document.getElementsByTagName('a')[204].click()");
+
     let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
     console.log("admin_notif_status: " + admin_notif_status);
 

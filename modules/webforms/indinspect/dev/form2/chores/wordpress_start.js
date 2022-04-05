@@ -170,10 +170,12 @@ async function wordpressStart(domain, checkbox, username, password, email, times
     }
 
     await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[6].click()");
-    await driver.executeScript("return document.getElementsByTagName('a')[223].click()");
+    await driver.sleep(1000);
+    await driver.executeScript("return document.getElementsByTagName('a')[222].click()");
 
     // get admin notif recipient
-    await driver.executeScript("return document.getElementsByTagName('a')[210].click()");
+    await driver.sleep(1000);
+    await driver.executeScript("return document.getElementsByTagName('a')[204].click()");
 
     let recipients = await driver.executeScript("return document.getElementById('toEmail').value");
     console.log("recipients: " + recipients);

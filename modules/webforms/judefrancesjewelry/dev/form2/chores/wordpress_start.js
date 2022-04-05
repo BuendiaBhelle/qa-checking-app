@@ -5,16 +5,16 @@ const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
 
-const wp_username = config.credentials.indinspect.username;
-const wp_password = config.credentials.indinspect.password;
+const wp_username = config.credentials.judefrancesjewelry.username;
+const wp_password = config.credentials.judefrancesjewelry.password;
 const qa_email = config.qa_email;
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 const date = config.date;
-const form_page = config.forms.indinspect.form1;
+const form_page = config.forms.judefrancesjewelry.form2;
 const module_name = config.module_name;
 const launch = config.launch.dev;
-const form = config.webforms.indinspect.dev.form1;
+const form = config.webforms.judefrancesjewelry.dev.form2;
 
 
 async function wordpressStart(domain, checkbox, username, password, email, timestamp) {
@@ -25,7 +25,7 @@ async function wordpressStart(domain, checkbox, username, password, email, times
     let requests = [{
         insertRange: {
             range: {
-                sheetId: 1563257098,
+                sheetId: 1676737950,
                 startRowIndex: 1,
                 endRowIndex: 4,
                 startColumnIndex: 0,
@@ -57,13 +57,13 @@ async function wordpressStart(domain, checkbox, username, password, email, times
     }
 
     let ranges = [
-        "Industrial Inspection & Consulting!A2",
-        "Industrial Inspection & Consulting!B2",
-        "Industrial Inspection & Consulting!C2",
-        "Industrial Inspection & Consulting!C3",
-        "Industrial Inspection & Consulting!D2",
-        "Industrial Inspection & Consulting!E2",
-        "Industrial Inspection & Consulting!G2",
+        "Jude Frances Jewelry!A2",
+        "Jude Frances Jewelry!B2",
+        "Jude Frances Jewelry!C2",
+        "Jude Frances Jewelry!C3",
+        "Jude Frances Jewelry!D2",
+        "Jude Frances Jewelry!E2",
+        "Jude Frances Jewelry!G2",
     ]
 
     let values = [
@@ -72,8 +72,8 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         wp_username,
         wp_password,
         domain + form_page,
-        "Contact Us",
-        'gform_1',
+        "Repairs",
+        'gform_2',
     ]
 
     // track form details
@@ -168,13 +168,15 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         await sheet.appendValues(value);
     }
 
-    await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[6].click()");
+    await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[7].click()");
     await driver.sleep(1000);
-    await driver.executeScript("return document.getElementsByTagName('a')[209].click()");
+    await driver.executeScript("return document.getElementsByTagName('a')[318].click()");
 
     // get admin notif recipient
     await driver.sleep(1000);
-    await driver.executeScript("return document.getElementsByTagName('a')[204].click()");
+    await driver.executeScript("return document.getElementsByTagName('a')[271].click()");
+    await driver.sleep(1000);
+    await driver.executeScript("return document.getElementsByTagName('a')[283].click()");
 
     let recipients = await driver.executeScript("return document.getElementById('toEmail').value");
     console.log("recipients: " + recipients);
@@ -184,7 +186,7 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         await googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "Industrial Inspection & Consulting!H2",
+            range: "Jude Frances Jewelry!H2",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
@@ -209,7 +211,7 @@ async function wordpressStart(domain, checkbox, username, password, email, times
 
     // change form recipients
     try {
-        await driver.executeScript("return document.getElementsByTagName('a')[214].click()");
+        await driver.executeScript("return document.getElementsByTagName('a')[287].click()");
         await driver.findElement(By.id("toEmail")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         if (email) {
             await driver.findElement(By.id("toEmail")).sendKeys(email);
@@ -227,6 +229,7 @@ async function wordpressStart(domain, checkbox, username, password, email, times
             await sheet.appendValues(value);
         }
         await driver.executeScript("return document.getElementsByClassName('primary button large')[0].click()");
+        await driver.sleep(1000);
         await driver.executeScript("return document.getElementsByClassName('label')[2].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
         console.log("WEBFORMS - change form recipients success.");

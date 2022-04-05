@@ -5,27 +5,27 @@ const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
 
-const wp_username = config.credentials.indinspect.username;
-const wp_password = config.credentials.indinspect.password;
+const wp_username = config.credentials.optimizex.username;
+const wp_password = config.credentials.optimizex.password;
 const qa_email = config.qa_email;
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 const date = config.date;
-const form_page = config.forms.indinspect.form1;
+const form_page = config.forms.optimizex.form2;
 const module_name = config.module_name;
 const launch = config.launch.dev;
-const form = config.webforms.indinspect.dev.form1;
+const form = config.webforms.optimizex.dev.form2;
 
 
-async function wordpressStart(domain, checkbox, username, password, email, timestamp) {
+async function wordpressStart(domain, username, password, email, timestamp) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
-    const googleSheets = google.sheets({ version: "v4", auth: client })   
+    const googleSheets = google.sheets({ version: "v4", auth: client })
 
     let requests = [{
         insertRange: {
             range: {
-                sheetId: 1563257098,
+                sheetId: 610692665,
                 startRowIndex: 1,
                 endRowIndex: 4,
                 startColumnIndex: 0,
@@ -57,23 +57,23 @@ async function wordpressStart(domain, checkbox, username, password, email, times
     }
 
     let ranges = [
-        "Industrial Inspection & Consulting!A2",
-        "Industrial Inspection & Consulting!B2",
-        "Industrial Inspection & Consulting!C2",
-        "Industrial Inspection & Consulting!C3",
-        "Industrial Inspection & Consulting!D2",
-        "Industrial Inspection & Consulting!E2",
-        "Industrial Inspection & Consulting!G2",
+        "OptimizeX!A2",
+        "OptimizeX!B2",
+        "OptimizeX!C2",
+        "OptimizeX!C3",
+        "OptimizeX!D2",
+        "OptimizeX!E2",
+        "OptimizeX!G2",
     ]
 
     let values = [
-        "Pre-launch",
+        "",
         date,
         wp_username,
         wp_password,
         domain + form_page,
-        "Contact Us",
-        'gform_1',
+        "Sidebar - SEO Quote",
+        '[contact-form-7 id="11883" title="Sidebar - SEO Quote"]',
     ]
 
     // track form details
@@ -168,27 +168,25 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         await sheet.appendValues(value);
     }
 
-    await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[6].click()");
     await driver.sleep(1000);
-    await driver.executeScript("return document.getElementsByTagName('a')[209].click()");
-
-    // get admin notif recipient
+    await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[8].click()");
     await driver.sleep(1000);
-    await driver.executeScript("return document.getElementsByTagName('a')[204].click()");
-
-    let recipients = await driver.executeScript("return document.getElementById('toEmail').value");
-    console.log("recipients: " + recipients);
+    await driver.executeScript("return document.getElementsByClassName('row-title')[2].click()");
+    await driver.sleep(1000);
+    await driver.findElement(By.id("ui-id-2")).click();
+    let recipients_form1 = await driver.findElement(By.id("wpcf7-mail-recipient")).getAttribute('value');
+    console.log("recipients_form1: " + recipients_form1);
 
     // track form recipients
     try {
         await googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "Industrial Inspection & Consulting!H2",
+            range: "OptimizeX!H2",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
-                    [recipients]
+                    [recipients_form1]
                 ]
             }
         });
@@ -204,76 +202,29 @@ async function wordpressStart(domain, checkbox, username, password, email, times
         await sheet.addRow();
         await sheet.appendValues(value);
     }
-    
-    await driver.executeScript("return document.getElementsByClassName('label')[2].click()");
 
     // change form recipients
     try {
-        await driver.executeScript("return document.getElementsByTagName('a')[214].click()");
-        await driver.findElement(By.id("toEmail")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         if (email) {
-            await driver.findElement(By.id("toEmail")).sendKeys(email);
+            await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(email);
             logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
             console.log("CHECKOUT - change qa email success.");
             value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, "", form_page + "\n" + form, "", "" ];
             await sheet.addRow();
-            await sheet.appendValues(value);  
+            await sheet.appendValues(value);   
         } else {
-            await driver.findElement(By.id("toEmail")).sendKeys(qa_email);
+            await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(qa_email);
             logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
             console.log("CHECKOUT - same qa email.");
             value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, "", form_page + "\n" + form, "", "" ];
             await sheet.addRow();
-            await sheet.appendValues(value);
+            await sheet.appendValues(value);  
         }
-        await driver.executeScript("return document.getElementsByClassName('primary button large')[0].click()");
-        await driver.executeScript("return document.getElementsByClassName('label')[2].click()");
+        await driver.executeScript("return document.getElementsByName('wpcf7-save')[2].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
         console.log("WEBFORMS - change form recipients success.");
         value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);
-        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    }
-
-    // set form email recipients to qa's
-    let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
-    console.log("admin_notif_status: " + admin_notif_status);
-
-    // set admin notif to inactive
-    try {
-        if (admin_notif_status === "Active") {
-            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].click()");
-        }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - set admin notif to inactive success.', tester: server.userId });
-        console.log("WEBFORMS - set admin notif to inactive success.");
-        value = [ "", "info", "set admin notif to inactive success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);
-        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    }
-
-    let qa_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].innerHTML");
-    console.log("qa_notif_status: " + qa_notif_status);
-
-    // set qa notif to active
-    try {
-        if (qa_notif_status === "Inactive") {
-            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].click()");
-        }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - set qa notif to active success.', tester: server.userId });
-        console.log("WEBFORMS - set qa notif to active success.");
-        value = [ "", "info", "set qa notif to active success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {

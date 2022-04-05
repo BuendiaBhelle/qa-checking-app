@@ -5,12 +5,12 @@ const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
 const sheet = require('../../../../../../middleware/gsheet.js');
 
-const wp_username = config.credentials.indinspect.username;
-const wp_password = config.credentials.indinspect.password;
-const form_page = config.forms.indinspect.form2;
+const wp_username = config.credentials.judefrancesjewelry.username;
+const wp_password = config.credentials.judefrancesjewelry.password;
+const form_page = config.forms.judefrancesjewelry.form1;
 const module_name = config.module_name;
 const launch = config.launch.dev;
-const form = config.webforms.indinspect.dev.form2;
+const form = config.webforms.judefrancesjewelry.dev.form1;
 
 
 async function wordpressFinish(domain, checkbox, username, password, timestamp) {
@@ -80,13 +80,13 @@ async function wordpressFinish(domain, checkbox, username, password, timestamp) 
         await sheet.appendValues(value);
     }
 
-    await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[6].click()");
+    await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[7].click()");
     await driver.sleep(1000);
-    await driver.executeScript("return document.getElementsByTagName('a')[222].click()");
+    await driver.executeScript("return document.getElementsByTagName('a')[346].click()");
 
     // set admin notif to active
     await driver.sleep(1000);
-    await driver.executeScript("return document.getElementsByTagName('a')[204].click()");
+    await driver.executeScript("return document.getElementsByTagName('a')[271].click()");
 
     let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
     console.log("admin_notif_status: " + admin_notif_status);
@@ -97,7 +97,7 @@ async function wordpressFinish(domain, checkbox, username, password, timestamp) 
         }
         logger.logger.log({ level: 'info', message: 'WEBFORMS - set admin notif to active success.', tester: server.userId });
         console.log("WEBFORMS - set admin notif to active success.");
-        value = [ "", "info", "set admin notif to active success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
+        value = [ "", "info", "set admin notif to active success", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
@@ -118,7 +118,7 @@ async function wordpressFinish(domain, checkbox, username, password, timestamp) 
         }
         logger.logger.log({ level: 'info', message: 'WEBFORMS - set qa notif to inactive success.', tester: server.userId });
         console.log("WEBFORMS - set qa notif to inactive success.");
-        value = [ "", "info", "set qa notif to inactive success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
+        value = [ "", "info", "set qa notif to inactive success", server.userId, timestamp, module_name, domain, "", "", "", launch, "", form_page + "\n" + form, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {

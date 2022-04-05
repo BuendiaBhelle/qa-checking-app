@@ -57,14 +57,28 @@ const webforms_canyonfallshairextensioncompany_dev2_f2 = require("./modules/webf
 const webforms_crexendo_dev_f1 = require("./modules/webforms/crexendo/dev/form1/index");
 const webforms_crexendo_dev_f2 = require("./modules/webforms/crexendo/dev/form2/index");
 
+const webforms_ewingconstruction_dev_f1 = require("./modules/webforms/ewingconstruction/dev/form1/index");
+
 const webforms_indinspect_dev_f1 = require("./modules/webforms/indinspect/dev/form1/index");
 const webforms_indinspect_dev_f2 = require("./modules/webforms/indinspect/dev/form2/index");
 const webforms_indinspect_live_f1 = require("./modules/webforms/indinspect/live/form1/index");
+
+const webforms_judefrancesjewelry_dev_f1 = require("./modules/webforms/judefrancesjewelry/dev/form1/index");
+const webforms_judefrancesjewelry_dev_f2 = require("./modules/webforms/judefrancesjewelry/dev/form2/index");
+const webforms_judefrancesjewelry_dev_f3 = require("./modules/webforms/judefrancesjewelry/dev/form3/index");
+const webforms_judefrancesjewelry_dev_f4 = require("./modules/webforms/judefrancesjewelry/dev/form4/index");
+const webforms_judefrancesjewelry_dev_f5 = require("./modules/webforms/judefrancesjewelry/dev/form5/index");
+const webforms_judefrancesjewelry_dev_f6 = require("./modules/webforms/judefrancesjewelry/dev/form6/index");
 
 const webforms_kyrenefamilydentistry_dev_f1 = require("./modules/webforms/kyrenefamilydentistry/dev/form1/index");
 const webforms_kyrenefamilydentistry_dev_f2 = require("./modules/webforms/kyrenefamilydentistry/dev/form2/index");
 const webforms_kyrenefamilydentistry_live_f1 = require("./modules/webforms/kyrenefamilydentistry/live/form1/index");
 const webforms_kyrenefamilydentistry_live_f2 = require("./modules/webforms/kyrenefamilydentistry/live/form2/index");
+
+const webforms_optimizex_dev_f1 = require("./modules/webforms/optimizex/dev/form1/index");
+const webforms_optimizex_dev_f2 = require("./modules/webforms/optimizex/dev/form2/index");
+const webforms_optimizex_dev_f3 = require("./modules/webforms/optimizex/dev/form3/index");
+
 const responsiveness_desktop1 = require("./modules/responsiveness/desktop/windows11/windows11");
 const responsiveness_desktop2 = require("./modules/responsiveness/desktop/windows8/windows8");
 const responsiveness_desktop3 = require("./modules/responsiveness/desktop/windows7/windows7");
@@ -164,11 +178,6 @@ app.post('/login', async (req, res) => {
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
-            // logger.logger.log({ level: 'info', message: 'user is allowed.', tester: this.userId });
-            // console.log("user is allowed.");
-            // let value = [ "", "info", "user is allowed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
-            // await sheet.addRow();
-            // await sheet.appendValues(value);
         } else {
             res.send('User is not allowed.');
             logger.logger.log({ level: 'error', message: 'user is not allowed.', tester: this.userId });
@@ -737,6 +746,43 @@ app.post('/post/webforms', async (req, res) => {
                     //     break;
                 }
                 break;
+            case "ewingconstruction":
+                var site_ewingconstruction = req.body.site_ewingconstruction;
+                console.log("Site: " + site_ewingconstruction);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://ewingconstructiondev.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_ewingconstruction) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_ewingconstruction_dev_f1.index(domain, username, password, email, timestamp);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = "https://thehairextensioncompany.primeview.com/";
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_canyonfallshairextensioncompany) {
+                    //         case "form1":
+                    //             console.log("form1");
+                    //             webforms_canyonfallshairextensioncompany_dev2_f1.index(domain, username, password, email);
+                    //             break;
+                    //         case "form2":
+                    //             console.log("form2");
+                    //             webforms_canyonfallshairextensioncompany_dev2_f2.index(domain, username, password, email);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                }
+                break;
+                webforms_ewingconstruction_dev_f1
             case "indinspect":
                 var site_indinspect = req.body.site_indinspect;
                 console.log("Site: " + site_indinspect);
@@ -771,6 +817,58 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
+                }
+                break;
+            case "judefrancesjewelry":
+                var site_judefrancesjewelry = req.body.site_judefrancesjewelry;
+                console.log("Site: " + site_judefrancesjewelry);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://dev.judefrances.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_judefrancesjewelry) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_judefrancesjewelry_dev_f1.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_judefrancesjewelry_dev_f2.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            case "form3":
+                                console.log("form3");
+                                webforms_judefrancesjewelry_dev_f3.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            case "form4":
+                                console.log("form4");
+                                webforms_judefrancesjewelry_dev_f4.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            case "form5":
+                                console.log("form5");
+                                webforms_judefrancesjewelry_dev_f5.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            case "form6":
+                                console.log("form6");
+                                webforms_judefrancesjewelry_dev_f6.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = "https://www.indinspect.com/";
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_indinspect) {
+                    //         case "form1":
+                    //             console.log("form1");
+                    //             webforms_indinspect_live_f1.index(domain, checkbox, username, password, email, timestamp);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
                 }
                 break;
             case "kyrenefamilydentistry":
@@ -811,6 +909,50 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
+                }
+                break;
+            case "optimizex":
+                var site_optimizex = req.body.site_optimizex;
+                console.log("Site: " + site_optimizex);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = "https://optimizexdev.primeview.com/";
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_optimizex) {
+                            case "form1":
+                                console.log("form1");
+                                webforms_optimizex_dev_f1.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            case "form2":
+                                console.log("form2");
+                                webforms_optimizex_dev_f2.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            case "form3":
+                                console.log("form3");
+                                webforms_optimizex_dev_f3.index(domain, checkbox, username, password, email, timestamp);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = "https://www.kyrenefamilydentistry.com/";
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_kyrenefamilydentistry) {
+                    //         case "form1":
+                    //             console.log("form1");
+                    //             webforms_kyrenefamilydentistry_live_f1.index(domain, checkbox, username, password, email, timestamp);
+                    //             break;
+                    //         case "form2":
+                    //             console.log("form2");
+                    //             webforms_kyrenefamilydentistry_live_f2.index(domain, checkbox, username, password, email, timestamp);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
                 }
                 break;
             default:

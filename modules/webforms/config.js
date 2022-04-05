@@ -41,14 +41,26 @@ let credentials = {
         username: "pvadmin",
         password: "S4INhCIRoGpIfI*ss8KGXLmN"
     },
+    ewingconstruction: {
+        username: "pvadmin",
+        password: "pXq9]r?4+HNh"
+    },
     indinspect: {
         username: "pvadmin",
         password: "ChtB1]>Q3Zzw"
+    },
+    judefrancesjewelry: {
+        username: "pvadmin",
+        password: "%XsJl4Uu%/]5"   
     },
     kyrenefamilydentistry: {
         username: "pvadmin",
         password: "JQR&H*i$fUA%wCcit@!TP8Jh"
         // password: "admin"
+    },
+    optimizex: {
+        username: "oxadmin",
+        password: "SwP!Dw3iJwqj#dOj%ZVVV7a7"
     }
 }
 
@@ -100,13 +112,29 @@ let forms = {
         form4: "refer-a-business/",
         form5: "partner-registration/",
     },
+    ewingconstruction: {
+        form1: "contact/"
+    },
     indinspect: {
         form1: "contact/",
         form2: "services-offered/specialty-testing/"
     },
+    judefrancesjewelry: {
+        form1: "returns/",
+        form2: "jewelry-repairs/",
+        form3: "replacing-lost-jewelry/",
+        form4: "product-inquiry/",
+        form5: "contact/",
+        form6: "feedback/"
+    },
     kyrenefamilydentistry: {
         form1: "/",
-        form2: "/schedule-an-appointment/",
+        form2: "/schedule-an-appointment/"
+    },
+    optimizex: {
+        form1: "/",
+        form2: "search-engine-optimization/",
+        form3: "contact-us/"
     }
 }
 
@@ -244,6 +272,14 @@ let webforms = {
             form5: "Register To Become A Channel Partner"
         }
     },
+    ewingconstruction: {
+        dev: {
+            form1: "Contact Us"
+        },
+        live: {
+            form1: "Contact Us"
+        }
+    },
     indinspect: {
         dev: {
             form1: "Contact Us",
@@ -253,6 +289,24 @@ let webforms = {
             form1: "Contact Us"
         }
     },
+    judefrancesjewelry: {
+        dev: {
+            form1: "Returns",
+            form2: "Repairs",
+            form3: "Replacing Lost Jewelry",
+            form4: "Product Inquiry",
+            form5: "General Questions",
+            form6: "Feedback"
+        },
+        live: {
+            form1: "Returns",
+            form2: "Repairs",
+            form3: "Replacing Lost Jewelry",
+            form4: "Product Inquiry",
+            form5: "General Questions",
+            form6: "Feedback"
+        }    
+    },
     kyrenefamilydentistry: {
         dev: {
             form1: "Quick Contact",
@@ -261,6 +315,18 @@ let webforms = {
         live: {
             form1: "Quick Contact",
             form2: "Schedule an Appointment"
+        }
+    },
+    optimizex: {
+        dev: {
+            form1: "SEO Quote",
+            form2: "Sidebar - SEO Quote",
+            form3: "Contact Us - Page"
+        },
+        live: {
+            form1: "SEO Quote",
+            form2: "Sidebar - SEO Quote",
+            form3: "Contact Us - Page"
         }
     }
 }
