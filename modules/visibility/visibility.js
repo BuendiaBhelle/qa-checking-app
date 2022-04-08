@@ -63,7 +63,7 @@ async function edge(site_name, timestamp) {
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'VISIBILITY - edge fail.', tester: server.userId });
         console.log("VISIBILITY - edge fail.");
-        value = [ "", "info", "edge failed.", server.userId, timestamp, module_name, site_name, "", "", "", "", "", "", "", "" ];
+        value = [ "", "error", "edge failed.", server.userId, timestamp, module_name, site_name, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
