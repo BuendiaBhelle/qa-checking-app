@@ -9,7 +9,6 @@ async function index(date, domain, checkbox, username, password, email, timestam
 }
 
 
-
 module.exports = { index };
 
 

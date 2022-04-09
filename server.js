@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const fs = require('file-system');
 const logger = require("./middleware/logger.js");
 const sheet = require('./middleware/gsheet.js');
-const config = require("./server_config");
+const config = require("./config");
 
 const express = require('express');
 const bcrypt = require('bcrypt');
