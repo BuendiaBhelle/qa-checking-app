@@ -52,6 +52,9 @@ const webforms_kyrenefamilydentistry_f2 = require("./modules/webforms/contactfor
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
 const webforms_optimizex_f2 = require("./modules/webforms/contactform7/forms/optimizex/form2/index");
 const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/optimizex/form3/index");
+const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form1/index");
+const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
+const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
 
 const responsiveness_desktop1 = require("./modules/responsiveness/desktop/windows11/windows11");
 const responsiveness_desktop2 = require("./modules/responsiveness/desktop/windows8/windows8");
@@ -279,7 +282,7 @@ app.post('/post/visibility', async (req, res) => {
     try {
         await visibility.chrome(site_name, timestamp);
         await visibility.firefox(site_name, timestamp);
-        await visibility.edge(site_name, timestamp);
+        // await visibility.edge(site_name, timestamp);
     } catch (error) {
         console.log(error);
     }
@@ -1484,6 +1487,105 @@ app.post('/post/webforms', async (req, res) => {
                     //             break;
                     //     }
                     //     break;
+                }
+                break;
+            case "sellusyourcaraz":
+                var site_sellusyourcaraz = req.body.site_sellusyourcaraz;
+                var sheetId = config.sheetId.sellusyourcaraz;
+                var ranges = config.ranges.sellusyourcaraz;
+                var range_recipient = config.range_recipient.sellusyourcaraz;
+                var range_thankyou_page = config.range_thankyou_page.sellusyourcaraz;
+
+                console.log("Site: " + site_sellusyourcaraz);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.sellusyourcaraz.dev;
+                        var wp_creds_username = config.wp_creds.sellusyourcaraz.username;
+                        var wp_creds_password = config.wp_creds.sellusyourcaraz.password;
+                        var launch = config.launch.dev;
+                        var wp_menu_name = config.wp_menu_name.sellusyourcaraz.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_sellusyourcaraz) {
+                            case "form1":
+                                var forms = config.forms.sellusyourcaraz.form1;
+                                var row_title = config.row_title.sellusyourcaraz.dev.form1;
+                                var webforms = config.webforms.sellusyourcaraz.dev.form1;
+                                var contact_form_name = config.contact_form_name.sellusyourcaraz.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.sellusyourcaraz.form1;
+
+                                console.log("form1");
+                                webforms_sellusyourcaraz_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.sellusyourcaraz.form2;
+                                var row_title = config.row_title.sellusyourcaraz.dev.form2;
+                                var webforms = config.webforms.sellusyourcaraz.dev.form2;
+                                var contact_form_name = config.contact_form_name.sellusyourcaraz.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.sellusyourcaraz.form2;
+
+                                console.log("form2");
+                                webforms_sellusyourcaraz_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.sellusyourcaraz.form3;
+                                var row_title = config.row_title.sellusyourcaraz.dev.form3;
+                                var webforms = config.webforms.sellusyourcaraz.dev.form3;
+                                var contact_form_name = config.contact_form_name.sellusyourcaraz.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.sellusyourcaraz.form3;
+
+                                console.log("form3");
+                                webforms_sellusyourcaraz_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.sellusyourcaraz.live;
+                        var wp_creds_username = config.wp_creds.sellusyourcaraz.username;
+                        var wp_creds_password = config.wp_creds.sellusyourcaraz.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.sellusyourcaraz.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_sellusyourcaraz) {
+                            case "form1":
+                                var forms = config.forms.sellusyourcaraz.form1;
+                                var row_title = config.row_title.sellusyourcaraz.live.form1;
+                                var webforms = config.webforms.sellusyourcaraz.live.form1;
+                                var contact_form_name = config.contact_form_name.sellusyourcaraz.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.sellusyourcaraz.form1;
+
+                                console.log("form1");
+                                webforms_sellusyourcaraz_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.sellusyourcaraz.form2;
+                                var row_title = config.row_title.sellusyourcaraz.live.form2;
+                                var webforms = config.webforms.sellusyourcaraz.live.form2;
+                                var contact_form_name = config.contact_form_name.sellusyourcaraz.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.sellusyourcaraz.form2;
+
+                                console.log("form2");
+                                webforms_sellusyourcaraz_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.sellusyourcaraz.form3;
+                                var row_title = config.row_title.sellusyourcaraz.live.form3;
+                                var webforms = config.webforms.sellusyourcaraz.live.form3;
+                                var contact_form_name = config.contact_form_name.sellusyourcaraz.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.sellusyourcaraz.form3;
+
+                                console.log("form3");
+                                webforms_sellusyourcaraz_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             default:

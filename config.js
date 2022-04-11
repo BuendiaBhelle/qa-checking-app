@@ -20,7 +20,8 @@ const sites = [
     "indinspect",
     "judefrancesjewelry",
     "kyrenefamilydentistry",
-    "optimizex"
+    "optimizex",
+    "sellusyourcaraz"
 ]
 
 let wp_creds = {
@@ -84,6 +85,10 @@ let wp_creds = {
     optimizex: {
         username: "oxadmin",
         password: "SwP!Dw3iJwqj#dOj%ZVVV7a7"
+    },
+    sellusyourcaraz: {
+        username: "admin",
+        password: "bA9:kB0~eI8$gS"
     }
 }
 
@@ -147,6 +152,10 @@ let domain = {
     optimizex: {
         dev: "https://optimizexdev.primeview.com/",
         live: ""
+    },
+    sellusyourcaraz: {
+        dev: "https://sellusyourcarazdev.primeview.com/",
+        live: "https://www.sellusyourcaraz.com/"
     }
 }
 
@@ -220,6 +229,11 @@ let forms = {
         form1: "/",
         form2: "search-engine-optimization/",
         form3: "contact-us/"
+    },
+    sellusyourcaraz: {
+        form1: "/",
+        form2: "/",
+        form3: "contact-us/"
     }
 }
 
@@ -238,7 +252,8 @@ let sheetId = {
     indinspect: 1563257098,
     judefrancesjewelry: 1676737950,
     kyrenefamilydentistry: 1779652858,
-    optimizex: 610692665
+    optimizex: 610692665,
+    sellusyourcaraz: 2085688851
 }
 
 let range = [
@@ -421,6 +436,18 @@ let range = [
             "OptimizeX!E2",
             "OptimizeX!G2",
         ]
+    ],
+    sites[15] = [
+        [
+            "Sell us your Car AZ!Q2",
+            "Sell us your Car AZ!A2",
+            "Sell us your Car AZ!B2",
+            "Sell us your Car AZ!C2",
+            "Sell us your Car AZ!C3",
+            "Sell us your Car AZ!D2",
+            "Sell us your Car AZ!E2",
+            "Sell us your Car AZ!G2",
+        ]
     ]
 ]
 
@@ -439,7 +466,8 @@ let ranges = {
     indinspect: range[11][0],
     judefrancesjewelry: range[12][0],
     kyrenefamilydentistry: range[13][0],
-    optimizex: range[14][0]
+    optimizex: range[14][0],
+    sellusyourcaraz:  range[15][0]
 }
 
 let launch = {
@@ -513,6 +541,11 @@ let contact_form_name = {
         form1: "SEO Quote",
         form2: "Sidebar - SEO Quote",
         form3: "Contact Us - Page"
+    },
+    sellusyourcaraz: {
+        form1: "Get A Quote Banner/Popup",
+        form2: "Get A Quote Modal",
+        form3: "Contact Page Form"
     }
 }
 
@@ -582,31 +615,13 @@ let contact_form_shortcode = {
         form1: '[contact-form-7 id="11882" title="SEO Quote"]',
         form2: '[contact-form-7 id="11883" title="Sidebar - SEO Quote"]',
         form3: '[contact-form-7 id="11935" title="Contact Us - Page"]'
+    },
+    sellusyourcaraz: {
+        form1: '[contact-form-7 id="117" title="Get A Quote Banner/Popup"]',
+        form2: '[contact-form-7 id="2612" title="Get A Quote Modal"]',
+        form3: '[contact-form-7 id="130" title="Contact Page Form"]'
     }
 }
-
-
-// console.log(values[14][0][2]);
-// console.log(JSON.stringify(values[14][0][2]));
-
-
-// let arrEl = [
-//     "",
-//     "date",
-//     "wp_creds_username",
-//     "wp_creds_password",
-//     "domain + forms",
-//     // "Contact Us - Page",
-//     // '[contact-form-7 id="11935" title="Contact Us - Page"]',
-// ]
-
-// arrEl.splice(5, 0, "Contact Us - Page")
-// arrEl.splice(6, 0, "[contact-form-7 id=11935]");
-// arrEl.join()
-// console.log(arrEl);
-
-
-
 
 let wp_menu_name = {
     accidentchiropracticaz: {
@@ -668,6 +683,10 @@ let wp_menu_name = {
     optimizex: {
         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
         live: "return document.getElementsByClassName('wp-menu-name')[8].click()"
+    },
+    sellusyourcaraz: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
+        live: "return document.getElementsByClassName('wp-menu-name')[11].click()"
     }
 }
 
@@ -819,6 +838,18 @@ let row_title = {
         live: {
             form1: ""
         }
+    },
+    sellusyourcaraz: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[2].click()",
+            form2: "return document.getElementsByClassName('row-title')[3].click()",
+            form3: "return document.getElementsByClassName('row-title')[1].click()"
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[2].click()",
+            form2: "return document.getElementsByClassName('row-title')[3].click()",
+            form3: "return document.getElementsByClassName('row-title')[1].click()"
+        }
     }
 }
 
@@ -838,7 +869,8 @@ let range_recipient = {
     indinspect: "Industrial Inspection & Consulting!H2",
     judefrancesjewelry: "Jude Frances Jewelry!H2",
     kyrenefamilydentistry: "Kyrene Family Dentistry!H2",
-    optimizex: "OptimizeX!H2"
+    optimizex: "OptimizeX!H2",
+    sellusyourcaraz: "Sell us your Car AZ!H2"
 }
 
 
@@ -857,7 +889,8 @@ let range_thankyou_page = {
     indinspect: "Industrial Inspection & Consulting!I2",
     judefrancesjewelry: "Jude Frances Jewelry!I2",
     kyrenefamilydentistry: "Kyrene Family Dentistry!I2",
-    optimizex: "OptimizeX!I2"
+    optimizex: "OptimizeX!I2",
+    sellusyourcaraz: "Sell us your Car AZ!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1032,6 +1065,18 @@ let webforms = {
             form1: "SEO Quote",
             form2: "Sidebar - SEO Quote",
             form3: "Contact Us - Page"
+        }
+    },
+    sellusyourcaraz: {
+        dev: {
+            form1: "Get A Quote Banner/Popup",
+            form2: "Get A Quote Modal",
+            form3: "Contact Page Form"
+        },
+        live: {
+            form1: "Get A Quote Banner/Popup",
+            form2: "Get A Quote Modal",
+            form3: "Contact Page Form"
         }
     }
 }

@@ -33,8 +33,8 @@
         #version_tablet, #site_advancedimagemedspa, #site_aerialengagement, 
         #site_americanleatherusa, #site_andresperezjurado, #site_azdoordoctor, #site_biltmoreloanandjewelry, 
         #site_buckeyederm, #site_canyonfallshairextensioncompany, #site_crexendo, #site_ewingconstruction,
-        #site_indinspect, #site_judefrancesjewelry, #site_kyrenefamilydentistry, #site_optimizex,
-        #credentials_checkout, #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
+        #site_indinspect, #site_judefrancesjewelry, #site_kyrenefamilydentistry, #site_optimizex, 
+        #site_sellusyourcaraz, #credentials_checkout, #credentials_responsiveness, #qa_email, #qa_email_webforms, #credentials {
             display: none;
         }
         input[type=text] {
@@ -180,9 +180,9 @@
                             <option value="primeview">Primeview</option>
                             <option value="randosouthwest">Randosouthwest</option>
                             <option value="renewscal">Renewscal</option>
-                            <option value="risingsunmartialarts">Rising Sun Martial Arts</option>
-                            <option value="sellusyourcaraz">Sell Us Your Caraz</option>
-                            <option value="solutionsforum">Solutions Forum</option>
+                            <option value="risingsunmartialarts">Rising Sun Martial Arts</option> -->
+                            <option value="sellusyourcaraz">Sell Us Your Car AZ</option>
+                            <!-- <option value="solutionsforum">Solutions Forum</option>
                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
                             <option value="versatile">Versatile</option> -->
                         </select>
@@ -440,6 +440,22 @@
                             </div>
                         </div>
 
+                        <div id="site_sellusyourcaraz">
+                            <label for="site_sellusyourcaraz">Choose a form:</label>
+                            <select name="site_sellusyourcaraz">
+                            <option value="form1">Get A Quote Banner/Popup</option>
+                            <option value="form2">Get A Quote Modal</option>
+                            <option value="form3">Contact Page Form</option>
+                            </select>
+
+                            <div style="margin-top: 10px;">
+                                <p>Credentials (wordpress): </p>
+                                <p style="margin-top: -15px; margin-left: 20px;"><b>username:</b> <i>admin</i></p>
+                                <p style="margin-top: -20px; margin-left: 20px;"><b>password:</b> <i>bA9:kB0~eI8$gS</i></p>
+                                <p style="color: #007bff; margin-top: -10px;" onclick="showCredEdit()">Edit?</p>
+                            </div>
+                        </div>
+
                         <div id="credentials">
                             <label for="username">Username:</label>
                             <input type="text" id="username" name="username" style="width: 10%; height: 20px;"><br>
@@ -617,6 +633,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "advancedimagemedspa") {
                 document.getElementById('site_advancedimagemedspa').style.display = 'block';
@@ -635,6 +652,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "aerialengagement") {
                 document.getElementById('site_aerialengagement').style.display = 'block';
@@ -653,6 +671,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "americanleatherusa") {
                 document.getElementById('site_americanleatherusa').style.display = 'block';
@@ -671,6 +690,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
 
             else if (site === "andresperezjurado") {
@@ -690,6 +710,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "azdoordoctor") {
                 document.getElementById('site_azdoordoctor').style.display = 'block';
@@ -708,6 +729,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "biltmoreloanandjewelry") {
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'block';
@@ -726,6 +748,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "buckeyederm") {
                 document.getElementById('site_buckeyederm').style.display = 'block';
@@ -744,6 +767,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "canyonfallshairextensioncompany") {
                 document.getElementById('site_canyonfallshairextensioncompany').style.display = 'block';
@@ -763,6 +787,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "crexendo") {
                 document.getElementById('site_crexendo').style.display = 'block';
@@ -781,6 +806,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "ewingconstruction") {
                 document.getElementById('site_ewingconstruction').style.display = 'block';
@@ -799,6 +825,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "indinspect") {
                 document.getElementById('site_indinspect').style.display = 'block';
@@ -817,6 +844,7 @@
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "judefrancesjewelry") {
                 document.getElementById('site_judefrancesjewelry').style.display = 'block';
@@ -835,6 +863,7 @@
                 document.getElementById('site_indinspect').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "kyrenefamilydentistry") {
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'block';
@@ -853,6 +882,7 @@
                 document.getElementById('site_indinspect').style.display = 'none';
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
             }
             else if (site === "optimizex") {
                 document.getElementById('site_optimizex').style.display = 'block';
@@ -871,7 +901,27 @@
                 document.getElementById('site_indinspect').style.display = 'none';
                 document.getElementById('site_judefrancesjewelry').style.display = 'none';
                 document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
-            } 
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
+            }
+            else if (site === "sellusyourcaraz") {
+                document.getElementById('site_sellusyourcaraz').style.display = 'block';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
+                document.getElementById('site_buckeyederm').style.display = 'none';
+                document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
+                document.getElementById('site_crexendo').style.display = 'none';
+                document.getElementById('site_ewingconstruction').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_judefrancesjewelry').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
+                document.getElementById('site_optimizex').style.display = 'none';
+            }
             
         }
 
