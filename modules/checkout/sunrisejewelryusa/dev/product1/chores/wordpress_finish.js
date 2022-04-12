@@ -82,7 +82,7 @@ async function wordpressFinish(domain, username, password, email, timestamp) {
         await sheet.appendValues(value);  
     }
     
-    await driver.executeScript("return document.getElementsByTagName('a')[50].click()");
+    await driver.executeScript("return document.getElementsByTagName('a')[61].click()");
     
     // edit emails tab
     await driver.executeScript("return document.getElementsByClassName('nav-tab')[6].click()");

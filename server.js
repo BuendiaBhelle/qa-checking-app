@@ -8,6 +8,7 @@ const sheet = require('./middleware/gsheet.js');
 const config = require("./config");
 
 const express = require('express');
+app.use(express.static(__dirname + '/public'));
 const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
@@ -84,7 +85,6 @@ const responsiveness_tablet3 = require("./modules/responsiveness/tablet/galaxy_t
 const expiry = 1000 * 60 * 60 * 24;
 var date = new Date();
 var timestamp = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
-
 
 app.use(bodyParser.urlencoded({ extended: false })) 
 app.use(bodyParser.json());
@@ -220,12 +220,12 @@ app.post('/post/checkout', async (req, res) => {
                             case "product1":
                                 console.log("checkout: " + checkout);
                                 console.log("product1 selected.");
-                                checkout_sunrisejewelryusa_dev_p1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                checkout_sunrisejewelryusa_dev_p1.index(domain, username, password, email, timestamp);
                                 break;
                             case "product2":
                                 console.log("checkout: " + checkout);
                                 console.log("product2 selected.");
-                                checkout_sunrisejewelryusa_dev_p2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                checkout_sunrisejewelryusa_dev_p2.index(domain, username, password, email, timestamp);
                                 break;
                             default:
                                 break;

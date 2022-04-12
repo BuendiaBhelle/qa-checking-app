@@ -84,7 +84,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
         await sheet.appendValues(value);
     }
     
-    await driver.executeScript("return document.getElementsByTagName('a')[50].click()");
+    await driver.executeScript("return document.getElementsByTagName('a')[61].click()");
 
     await driver.executeScript("return document.getElementsByClassName('nav-tab')[2].click()");
 
@@ -385,7 +385,7 @@ async function wordpressStart(domain, username, password, email, timestamp) {
                     console.log("current_page_url: " + current_page_url);
                     await driver.switchTo().newWindow('tab');
                     await driver.get(current_page_url);
-                    await driver.executeScript("return document.getElementsByTagName('a')[47].click()");
+                    await driver.executeScript("return document.getElementsByTagName('a')[58].click()");
                     logger.logger.log({ level: 'info', message: 'CHECKOUT - coupons page success.', tester: server.userId });
                     console.log("CHECKOUT - coupons page success.");
                     value = [ "", "info", "coupons page success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product, "", "", "" ];
