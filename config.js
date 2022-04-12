@@ -813,7 +813,12 @@ let row_title = {
     },
     judefrancesjewelry: {
         dev: {
-            form1: "",
+            form1: "return document.getElementsByTagName('a')[341].click()",
+            form2: "return document.getElementsByTagName('a')[313].click()",
+            form3: "return document.getElementsByTagName('a')[327].click()",
+            form4: "return document.getElementsByTagName('a')[299].click()",
+            form5: "return document.getElementsByTagName('a')[285].click()",
+            form6: "return document.getElementsByTagName('a')[271].click()",
         },
         live: {
             form1: "",
@@ -852,6 +857,55 @@ let row_title = {
         }
     }
 }
+
+
+let settings_arr = {
+    judefrancesjewelry: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[266].click()",
+            form2: "return document.getElementsByTagName('a')[266].click()",
+            form3: "return document.getElementsByTagName('a')[266].click()",
+            form4: "return document.getElementsByTagName('a')[266].click()",
+            form5: "return document.getElementsByTagName('a')[266].click()",
+            form6: "return document.getElementsByTagName('a')[266].click()",
+        },
+        live: {
+        }
+    }
+}
+
+let admin_notif = {
+    judefrancesjewelry: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[278].click()",
+            form2: "return document.getElementsByTagName('a')[278].click()",
+            form3: "return document.getElementsByTagName('a')[278].click()",
+            form4: "return document.getElementsByTagName('a')[278].click()",
+            form5: "return document.getElementsByTagName('a')[278].click()",
+            form6: "return document.getElementsByTagName('a')[278].click()"
+        },
+        live: {
+
+        }
+    }
+}
+
+let qa_notif = {
+    judefrancesjewelry: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[282].click()",
+            form2: "return document.getElementsByTagName('a')[282].click()",
+            form3: "return document.getElementsByTagName('a')[282].click()",
+            form4: "return document.getElementsByTagName('a')[282].click()",
+            form5: "return document.getElementsByTagName('a')[282].click()",
+            form6: "return document.getElementsByTagName('a')[282].click()"
+        },
+        live: {
+
+        }
+    }
+}
+
 
 
 let range_recipient = {
@@ -1091,6 +1145,9 @@ module.exports = {
     ranges,
     wp_menu_name,
     row_title,
+    settings_arr,
+    admin_notif,
+    qa_notif,
     range_recipient,
     range_thankyou_page,
     qa_email,

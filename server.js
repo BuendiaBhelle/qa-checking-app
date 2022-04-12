@@ -41,12 +41,14 @@ const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crex
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
 const webforms_indinspect_f1 = require("./modules/webforms/contactform7/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/contactform7/forms/indinspect/form2/index");
-const webforms_judefrancesjewelry_f1 = require("./modules/webforms/contactform7/forms/judefrancesjewelry/form1/index");
-const webforms_judefrancesjewelry_f2 = require("./modules/webforms/contactform7/forms/judefrancesjewelry/form2/index");
-const webforms_judefrancesjewelry_f3 = require("./modules/webforms/contactform7/forms/judefrancesjewelry/form3/index");
-const webforms_judefrancesjewelry_f4 = require("./modules/webforms/contactform7/forms/judefrancesjewelry/form4/index");
-const webforms_judefrancesjewelry_f5 = require("./modules/webforms/contactform7/forms/judefrancesjewelry/form5/index");
-const webforms_judefrancesjewelry_f6 = require("./modules/webforms/contactform7/forms/judefrancesjewelry/form6/index");
+
+const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
+const webforms_judefrancesjewelry_f2 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form2/index");
+const webforms_judefrancesjewelry_f3 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form3/index");
+const webforms_judefrancesjewelry_f4 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form4/index");
+const webforms_judefrancesjewelry_f5 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form5/index");
+const webforms_judefrancesjewelry_f6 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form6/index");
+
 const webforms_kyrenefamilydentistry_f1 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form1/index");
 const webforms_kyrenefamilydentistry_f2 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form2/index");
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
@@ -1267,57 +1269,236 @@ app.post('/post/webforms', async (req, res) => {
                             case "form1":
                                 var forms = config.forms.judefrancesjewelry.form1;
                                 var row_title = config.row_title.judefrancesjewelry.dev.form1;
+                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form1;
+                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form1;
+                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form1;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form1;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form1;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form1;
 
                                 console.log("form1");
-                                webforms_judefrancesjewelry_f1.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_judefrancesjewelry_f1.index(
+                                    date, 
+                                    domain, 
+                                    checkbox, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    wp_menu_name, 
+                                    row_title, 
+                                    settings_arr, 
+                                    admin_notif,
+                                    qa_notif,
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms
+                                );
                                 break;
                             case "form2":
+                                var forms = config.forms.judefrancesjewelry.form2;
                                 var row_title = config.row_title.judefrancesjewelry.dev.form2;
+                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form2;
+                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form2;
+                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form2;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form2;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form2;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form2;
 
                                 console.log("form2");
-                                webforms_judefrancesjewelry_f2.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_judefrancesjewelry_f2.index(
+                                    date, 
+                                    domain, 
+                                    checkbox, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    wp_menu_name, 
+                                    row_title, 
+                                    settings_arr, 
+                                    admin_notif,
+                                    qa_notif,
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms
+                                );
                                 break;
                             case "form3":
+                                var forms = config.forms.judefrancesjewelry.form3;
                                 var row_title = config.row_title.judefrancesjewelry.dev.form3;
+                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form3;
+                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form3;
+                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form3;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form3;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form3;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form3;
 
                                 console.log("form3");
-                                webforms_judefrancesjewelry_f3.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_judefrancesjewelry_f3.index(
+                                    date, 
+                                    domain, 
+                                    checkbox, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    wp_menu_name, 
+                                    row_title, 
+                                    settings_arr, 
+                                    admin_notif,
+                                    qa_notif,
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms
+                                );
                                 break;
                             case "form4":
+                                var forms = config.forms.judefrancesjewelry.form4;
                                 var row_title = config.row_title.judefrancesjewelry.dev.form4;
+                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form4;
+                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form4;
+                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form4;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form4;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form4;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form4;
 
                                 console.log("form4");
-                                webforms_judefrancesjewelry_f4.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_judefrancesjewelry_f4.index(
+                                    date, 
+                                    domain, 
+                                    checkbox, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    wp_menu_name, 
+                                    row_title, 
+                                    settings_arr, 
+                                    admin_notif,
+                                    qa_notif,
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms
+                                );
                                 break;
                             case "form5":
+                                var forms = config.forms.judefrancesjewelry.form5;
                                 var row_title = config.row_title.judefrancesjewelry.dev.form5;
+                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form5;
+                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form5;
+                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form5;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form5;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form5;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form5;
 
                                 console.log("form5");
-                                webforms_judefrancesjewelry_f5.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_judefrancesjewelry_f5.index(
+                                    date, 
+                                    domain, 
+                                    checkbox, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    wp_menu_name, 
+                                    row_title, 
+                                    settings_arr, 
+                                    admin_notif,
+                                    qa_notif,
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms
+                                );
                                 break;
                             case "form6":
+                                var forms = config.forms.judefrancesjewelry.form6;
                                 var row_title = config.row_title.judefrancesjewelry.dev.form6;
+                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form6;
+                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form6;
+                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form6;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form6;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form6;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form6;
 
                                 console.log("form6");
-                                webforms_judefrancesjewelry_f6.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_judefrancesjewelry_f6.index(
+                                    date, 
+                                    domain, 
+                                    checkbox, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    wp_menu_name, 
+                                    row_title, 
+                                    settings_arr, 
+                                    admin_notif,
+                                    qa_notif,
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms
+                                );
                                 break;
                             default:
                                 break;
