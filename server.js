@@ -6,7 +6,6 @@ const fs = require('file-system');
 const logger = require("./middleware/logger.js");
 const sheet = require('./middleware/gsheet.js');
 const config = require("./config");
-
 const express = require('express');
 app.use(express.static(__dirname + '/public'));
 const bcrypt = require('bcrypt');
@@ -16,7 +15,6 @@ const checkout_sunrisejewelryusa_dev_p1 = require("./modules/checkout/sunrisejew
 const checkout_sunrisejewelryusa_dev_p2 = require("./modules/checkout/sunrisejewelryusa/dev/product2/index");
 const image_optimization = require("./modules/image_optimization/image_optimization");
 const visibility = require("./modules/visibility/visibility");
-
 const webforms_accidentchiropracticaz_f1 = require("./modules/webforms/contactform7/forms/accidentchiropracticaz/form1/index");
 const webforms_accidentchiropracticaz_f2 = require("./modules/webforms/contactform7/forms/accidentchiropracticaz/form2/index");
 const webforms_advancedimagemedspa_f1 = require("./modules/webforms/contactform7/forms/advancedimagemedspa/form1/index");
@@ -42,14 +40,12 @@ const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crex
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
 const webforms_indinspect_f1 = require("./modules/webforms/contactform7/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/contactform7/forms/indinspect/form2/index");
-
 const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
 const webforms_judefrancesjewelry_f2 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form2/index");
 const webforms_judefrancesjewelry_f3 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form3/index");
 const webforms_judefrancesjewelry_f4 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form4/index");
 const webforms_judefrancesjewelry_f5 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form5/index");
 const webforms_judefrancesjewelry_f6 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form6/index");
-
 const webforms_kyrenefamilydentistry_f1 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form1/index");
 const webforms_kyrenefamilydentistry_f2 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form2/index");
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
@@ -58,30 +54,9 @@ const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/opt
 const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form1/index");
 const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
 const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
-
-const responsiveness_desktop1 = require("./modules/responsiveness/desktop/windows11/windows11");
-const responsiveness_desktop2 = require("./modules/responsiveness/desktop/windows8/windows8");
-const responsiveness_desktop3 = require("./modules/responsiveness/desktop/windows7/windows7");
-const responsiveness_desktop4 = require("./modules/responsiveness/desktop/macos_sierra/macos_sierra");
-const responsiveness_mobile1 = require("./modules/responsiveness/mobile/samsung_galaxy_m30s/samsung_galaxy_m30s");
-const responsiveness_mobile2 = require("./modules/responsiveness/mobile/google_pixel_5/google_pixel_5");
-const responsiveness_mobile3 = require("./modules/responsiveness/mobile/oneplus_9/oneplus_9");
-const responsiveness_mobile4 = require("./modules/responsiveness/mobile/xiaomi_mi_11/xiaomi_mi_11");
-const responsiveness_mobile5 = require("./modules/responsiveness/mobile/realme_5/realme_5");
-const responsiveness_mobile6 = require("./modules/responsiveness/mobile/huawei_p30_pro/huawei_p30_pro");
-const responsiveness_mobile7 = require("./modules/responsiveness/mobile/sony_xperia_xz2/sony_xperia_xz2");
-const responsiveness_mobile8 = require("./modules/responsiveness/mobile/moto_g6/moto_g6");
-const responsiveness_mobile9 = require("./modules/responsiveness/mobile/lg_g6/lg_g6");
-const responsiveness_mobile10 = require("./modules/responsiveness/mobile/iphone_13_pro_max/iphone_13_pro_max");
-const responsiveness_mobile11 = require("./modules/responsiveness/mobile/iphone_13_pro/iphone_13_pro");
-const responsiveness_mobile12 = require("./modules/responsiveness/mobile/iphone_13/iphone_13");
-const responsiveness_mobile13 = require("./modules/responsiveness/mobile/iphone_12_pro_max/iphone_12_pro_max");
-const responsiveness_mobile14 = require("./modules/responsiveness/mobile/iphone_11_pro_max/iphone_11_pro_max");
-const responsiveness_mobile15 = require("./modules/responsiveness/mobile/iphone_x/iphone_x");
-
-const responsiveness_tablet1 = require("./modules/responsiveness/tablet/ipad_air_4th_gen/ipad_air_4th_gen");
-const responsiveness_tablet2 = require("./modules/responsiveness/tablet/galaxy_tab_s7_plus/galaxy_tab_s7_plus");
-const responsiveness_tablet3 = require("./modules/responsiveness/tablet/galaxy_tab_s6/galaxy_tab_s6");
+const responsiveness_desktop = require("./modules/responsiveness/desktop/desktop");
+const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
+const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
 const expiry = 1000 * 60 * 60 * 24;
 var date = new Date();
 var timestamp = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
@@ -1651,23 +1626,50 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = "https://www.kyrenefamilydentistry.com/";
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_kyrenefamilydentistry) {
-                    //         case "form1":
-                    //             console.log("form1");
-                    //             webforms_kyrenefamilydentistry_live_f1.index(domain, checkbox, username, password, email, timestamp);
-                    //             break;
-                    //         case "form2":
-                    //             console.log("form2");
-                    //             webforms_kyrenefamilydentistry_live_f2.index(domain, checkbox, username, password, email, timestamp);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                    case "live":
+                        var domain = config.domain.optimizex.live;
+                        var wp_creds_username = config.wp_creds.optimizex.username;
+                        var wp_creds_password = config.wp_creds.optimizex.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.optimizex.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_optimizex) {
+                            case "form1":
+                                var forms = config.forms.optimizex.form1;
+                                var row_title = config.row_title.optimizex.live.form1;
+                                var webforms = config.webforms.optimizex.live.form1;
+                                var contact_form_name = config.contact_form_name.optimizex.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.optimizex.form1;
+
+                                console.log("form1");
+                                webforms_optimizex_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.optimizex.form2;
+                                var row_title = config.row_title.optimizex.live.form2;
+                                var webforms = config.webforms.optimizex.live.form2;
+                                var contact_form_name = config.contact_form_name.optimizex.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.optimizex.form2;
+
+                                console.log("form2");
+                                webforms_optimizex_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.optimizex.form3;
+                                var row_title = config.row_title.optimizex.live.form3;
+                                var webforms = config.webforms.optimizex.live.form3;
+                                var contact_form_name = config.contact_form_name.optimizex.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.optimizex.form3;
+
+                                console.log("form3");
+                                webforms_optimizex_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "sellusyourcaraz":
@@ -1785,6 +1787,12 @@ app.post('/post/responsiveness', function(req, res) {
     var device = req.body.device;
     var email = req.body.email;
     var password = req.body.password;
+
+    var lambdatest_site = config.lambdatest_site;
+    var lt_email = config.creds_lambdatest.email;
+    var lt_password = config.creds_lambdatest.password;
+    var module_name = config.module_name.responsiveness;
+
     console.log("URL: " + url);
     console.log("Device: " + device);
     console.log("email: " + email);
@@ -1793,19 +1801,81 @@ app.post('/post/responsiveness', function(req, res) {
         switch (device) {
             case "desktop":
                 var version_desktop = req.body.version_desktop;
+                var devices = config.devices.desktop;
+
                 console.log("Version: " + version_desktop);
                 switch (version_desktop) {
                     case "version1":
-                        responsiveness_desktop1.windows11(url, email, password, timestamp);
+                        var versions = config.versions.desktop.version1;
+                        var device_desktop = config.device_desktop.windows_11;
+
+                        responsiveness_desktop.desktop(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            device_desktop
+                        );
                         break;
                     case "version2":
-                        responsiveness_desktop2.windows8(url, email, password, timestamp);
+                        var versions = config.versions.desktop.version2;
+                        var device_desktop = config.device_desktop.windows_8;
+
+                        responsiveness_desktop.desktop(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            device_desktop
+                        );
                         break;
                     case "version3":
-                        responsiveness_desktop3.windows7(url, email, password, timestamp);
+                        var versions = config.versions.desktop.version3;
+                        var device_desktop = config.device_desktop.windows_7;
+
+                        responsiveness_desktop.desktop(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            device_desktop
+                        );
                         break;
                     case "version4":
-                        responsiveness_desktop4.macos_sierra(url, email, password, timestamp);
+                        var versions = config.versions.desktop.version4;
+                        var device_desktop = config.device_desktop.macos_sierra;
+
+                        responsiveness_desktop.desktop(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            device_desktop
+                        );
                         break;
                     default:
                         break;
@@ -1813,52 +1883,309 @@ app.post('/post/responsiveness', function(req, res) {
                 break;
             case "mobile":
                 var version_mobile = req.body.version_mobile;
+                var devices = config.devices.mobile;
+
                 console.log("Version: " + version_mobile);
                 switch (version_mobile) {
                     case "version1":
-                        responsiveness_mobile1.samsung_galaxy_m30s(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version1;
+                        var brand = config.brand.mobile.samsung;
+                        var device_mobile = config.device_mobile.samsung_galaxy_m30s;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version2":
-                        responsiveness_mobile2.google_pixel_5(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version2;
+                        var brand = config.brand.mobile.google;
+                        var device_mobile = config.device_mobile.google_pixel_5_5g;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version3":
-                        responsiveness_mobile3.oneplus_9(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version3;
+                        var brand = config.brand.mobile.one_plus;
+                        var device_mobile = config.device_mobile.one_plus_9;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version4":
-                        responsiveness_mobile4.xiaomi_mi_11(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version4;
+                        var brand = config.brand.mobile.xiaomi;
+                        var device_mobile = config.device_mobile.xiaomi_mi_11;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version5":
-                        responsiveness_mobile5.realme_5(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version5;
+                        var brand = config.brand.mobile.real_me;
+                        var device_mobile = config.device_mobile.real_me_5;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version6":
-                        responsiveness_mobile6.huawei_p30_pro(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version6;
+                        var brand = config.brand.mobile.huawei;
+                        var device_mobile = config.device_mobile.huawei_p30_pro;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version7":
-                        responsiveness_mobile7.sony_xperia_xz2(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version7;
+                        var brand = config.brand.mobile.sony;
+                        var device_mobile = config.device_mobile.sony_xperia_xz2;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version8":
-                        responsiveness_mobile8.moto_g6(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version8;
+                        var brand = config.brand.mobile.motorola;
+                        var device_mobile = config.device_mobile.moto_g6;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version9":
-                        responsiveness_mobile9.lg_g6(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version9;
+                        var brand = config.brand.mobile.lg;
+                        var device_mobile = config.device_mobile.lg_g6;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version10":
-                        responsiveness_mobile10.iphone_13_pro_max(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version10;
+                        var brand = config.brand.mobile.iphone;
+                        var device_mobile = config.device_mobile.iphone_13_pro_max;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version11":
-                        responsiveness_mobile11.iphone_13_pro(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version11;
+                        var brand = config.brand.mobile.iphone;
+                        var device_mobile = config.device_mobile.iphone_13_pro;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version12":
-                        responsiveness_mobile12.iphone_13(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version12;
+                        var brand = config.brand.mobile.iphone;
+                        var device_mobile = config.device_mobile.iphone_13;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version13":
-                        responsiveness_mobile13.iphone_12_pro_max(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version13;
+                        var brand = config.brand.mobile.iphone;
+                        var device_mobile = config.device_mobile.iphone_12_pro_max;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version14":
-                        responsiveness_mobile14.iphone_11_pro_max(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version14;
+                        var brand = config.brand.mobile.iphone;
+                        var device_mobile = config.device_mobile.iphone_11_pro_max;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     case "version15":
-                        responsiveness_mobile15.iphone_x(url, email, password, timestamp);
+                        var versions = config.versions.mobile.version15;
+                        var brand = config.brand.mobile.iphone;
+                        var device_mobile = config.device_mobile.iphone_x;
+
+                        responsiveness_mobile.mobile(
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_mobile
+                        );
                         break;
                     default:
                         break;
@@ -1866,16 +2193,72 @@ app.post('/post/responsiveness', function(req, res) {
                 break;
             case "tablet":
                 var version_tablet = req.body.version_tablet;
+                var devices = config.devices.tablet;
+
                 console.log("Version: " + version_tablet);
                 switch (version_tablet) {
                     case "version1":
-                        responsiveness_tablet1.ipad_air_4th_gen(url, email, password, timestamp);
+                        var versions = config.versions.tablet.version1;
+                        var brand = config.brand.tablet.ios;
+                        var device_tablet = config.device_tablet.ipad_air_4th_gen;
+
+                        responsiveness_tablet.tablet(
+                            version_tablet,
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_tablet
+                        );
                         break;
                     case "version2":
-                        responsiveness_tablet2.galaxy_tab_s7_plus(url, email, password, timestamp);
+                        var versions = config.versions.tablet.version2;
+                        var brand = config.brand.mobile.samsung;
+                        var device_tablet = config.device_tablet.galaxy_tab_s7_plus;
+
+                        responsiveness_tablet.tablet(
+                            version_tablet,
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_tablet
+                        );
                         break;
                     case "version3":
-                        responsiveness_tablet3.galaxy_tab_s6(url, email, password, timestamp);
+                        var versions = config.versions.tablet.version3;
+                        var brand = config.brand.mobile.samsung;
+                        var device_tablet = config.device_tablet.galaxy_tab_s6;
+
+                        responsiveness_tablet.tablet(
+                            version_tablet,
+                            module_name,
+                            url, 
+                            email, 
+                            password, 
+                            timestamp, 
+                            lt_email, 
+                            lt_password,
+                            lambdatest_site,
+                            devices,
+                            versions,
+                            brand,
+                            device_tablet
+                        );
                         break;
                     default:
                         break;

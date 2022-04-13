@@ -151,7 +151,7 @@ let domain = {
     },
     optimizex: {
         dev: "https://optimizexdev.primeview.com/",
-        live: ""
+        live: "https://www.optimizex.com/"
     },
     sellusyourcaraz: {
         dev: "https://sellusyourcarazdev.primeview.com/",
@@ -841,7 +841,9 @@ let row_title = {
             form3: "return document.getElementsByClassName('row-title')[0].click()"
         },
         live: {
-            form1: ""
+            form1: "return document.getElementsByClassName('row-title')[1].click()",
+            form2: "return document.getElementsByClassName('row-title')[2].click()",
+            form3: "return document.getElementsByClassName('row-title')[0].click()"
         }
     },
     sellusyourcaraz: {
@@ -950,6 +952,10 @@ let range_thankyou_page = {
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
 
 let module_name = {
+    checkout: "CHECKOUT",
+    image_optimization: "IMAGE OPTIMIZATION",
+    responsiveness: "RESPONSIVENESS",
+    visibility: "VISIBILITY",
     webforms: "WEB FORMS"
 }
 
@@ -1135,6 +1141,105 @@ let webforms = {
     }
 }
 
+// responsiveness
+const lambdatest_site = "https://app.lambdatest.com/console/realtime";
+
+let creds_lambdatest = {
+    email: "pvqa@primeview.com",
+    password: "iN1vN6lU1qD8",
+}
+
+let devices = {
+    desktop: "DESKTOP",
+    mobile: "MOBILE",
+    tablet: "TABLET"
+}
+
+let versions = {
+    desktop: {
+        version1: "Windows 11",
+        version2: "Windows 8",
+        version3: "Windows 7",
+        version4: "macOS Sierra 10.12"
+    },
+    mobile:  {
+        version1: "Samsung Galaxy M30s",
+        version2: "Google Pixel 5",
+        version3: "OnePlus 9",
+        version4: "Xiaomi Mi 11",
+        version5: "Realme 5",
+        version6: "Huawei P30 Pro",
+        version7: "Sony Xperia xz2",
+        version8: "Moto G6",
+        version9: "LG G6",
+        version10: "iPhone 13 Pro Max",
+        version11: "iPhone 13 Pro",
+        version12: "iPhone 13",
+        version13: "iPhone 12 Pro Max",
+        version14: "iPhone 11 Pro Max",
+        version15: "iPhone X",
+    },
+    tablet: {
+        version1: "iPad Air (4th generation)",
+        version2: "Galaxy Tab S7 Plus",
+        version3: "Galaxy Tab S6"
+    }
+}
+
+let device_desktop = {
+    windows_11: "return document.getElementsByTagName('li')[113].click()",
+    windows_8: "return document.getElementsByTagName('li')[116].click()",
+    windows_7: "return document.getElementsByTagName('li')[117].click()",
+    macos_sierra: "return document.getElementsByTagName('li')[123].click()"
+}
+
+// mobile
+let brand = {
+    mobile : {
+        samsung: "return document.getElementsByTagName('li')[202].click()",
+        google: "return document.getElementsByTagName('li')[203].click()",
+        one_plus: "return document.getElementsByTagName('li')[204].click()",
+        xiaomi: "return document.getElementsByTagName('li')[206].click()",
+        real_me: "return document.getElementsByTagName('li')[207].click()",
+        huawei: "return document.getElementsByTagName('li')[208].click()",
+        sony: "return document.getElementsByTagName('li')[209].click()",
+        motorola: "return document.getElementsByTagName('li')[210].click()",
+        lg: "return document.getElementsByTagName('li')[211].click()",
+        iphone: "return document.getElementById('apple-icon').click()"
+    },
+    tablet: {
+        ios: "return document.getElementById('apple-icon').click()",
+        android: "return document.getElementById('android-icon').click()"
+    }
+}
+
+let device_mobile = {
+    samsung_galaxy_m30s: "return document.getElementsByTagName('li')[218].click()",
+    google_pixel_5_5g: "return document.getElementsByTagName('li')[183].click()",
+    one_plus_9: "return document.getElementsByTagName('li')[181].click()",
+    xiaomi_mi_11: "return document.getElementsByTagName('li')[178].click()",
+    real_me_5: "return document.getElementsByTagName('li')[165].click()",
+    huawei_p30_pro: "return document.getElementsByTagName('li')[166].click()",
+    sony_xperia_xz2: "return document.getElementsByTagName('li')[162].click()",
+    moto_g6: "return document.getElementsByTagName('li')[163].click()",
+    lg_g6: "return document.getElementsByTagName('li')[165].click()",
+    iphone_13_pro_max: "return document.getElementsByTagName('li')[141].click()",
+    iphone_13_pro: "return document.getElementsByTagName('li')[142].click()",
+    iphone_13: "return document.getElementsByTagName('li')[144].click()",
+    iphone_12_pro_max: "return document.getElementsByTagName('li')[145].click()",
+    iphone_11_pro_max: "return document.getElementsByTagName('li')[150].click()",
+    iphone_x: "return document.getElementsByTagName('li')[156].click()"
+}
+
+// tablet
+let device_tablet = {
+    ipad_air_4th_gen: "return document.getElementsByTagName('li')[218].click()",
+    galaxy_tab_s7_plus: "return document.getElementsByTagName('li')[222].click()",
+    galaxy_tab_s6: "return document.getElementsByTagName('li')[258].click()"
+}
+
+
+
 
 module.exports = {
     date,
@@ -1155,17 +1260,14 @@ module.exports = {
     launch,
     contact_form_name,
     contact_form_shortcode,
-    webforms
+    webforms,
+    lambdatest_site, 
+    creds_lambdatest, 
+    devices,
+    versions,
+    device_desktop,
+    brand,
+    device_mobile,
+    device_tablet
 };
 
-
-// console.log(values[0][0]);
-
-
-// values
-// username
-// password
-// wp_username
-// wp_password
-// email
-// qa_email
