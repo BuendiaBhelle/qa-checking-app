@@ -21,7 +21,9 @@ const sites = [
     "judefrancesjewelry",
     "kyrenefamilydentistry",
     "optimizex",
-    "sellusyourcaraz"
+    "sellusyourcaraz",
+    "freddabranyon",
+    "frlawgroup"
 ]
 
 let wp_creds = {
@@ -89,6 +91,14 @@ let wp_creds = {
     sellusyourcaraz: {
         username: "admin",
         password: "bA9:kB0~eI8$gS"
+    },
+    freddabranyon: {
+        username: "pvadmin",
+        password: "cHJxubk0*E8q^J$M1A%Hpk*P"
+    },
+    frlawgroup: {
+        username: "pvadmin",
+        password: "5M^S)oi5U4Krr5YugUNEJUSM"
     }
 }
 
@@ -156,6 +166,14 @@ let domain = {
     sellusyourcaraz: {
         dev: "https://sellusyourcarazdev.primeview.com/",
         live: "https://www.sellusyourcaraz.com/"
+    },
+    freddabranyon: {
+        dev: "https://freddabranyondev.primeview.com/",
+        live: "https://www.freddabranyon.com/"
+    },
+    frlawgroup: {
+        dev: "https://frlawgroupdev.primeview.com/",
+        live: "https://www.frlawgroup.com/"
     }
 }
 
@@ -234,6 +252,14 @@ let forms = {
         form1: "/",
         form2: "/",
         form3: "contact-us/"
+    },
+    freddabranyon: {
+        form1: "contact/"
+    },
+    frlawgroup: {
+        form1: "troy-froderman/",
+        form2: "category/news-and-updates/",
+        form3: "contact/"
     }
 }
 
@@ -253,7 +279,9 @@ let sheetId = {
     judefrancesjewelry: 1676737950,
     kyrenefamilydentistry: 1779652858,
     optimizex: 610692665,
-    sellusyourcaraz: 2085688851
+    sellusyourcaraz: 2085688851,
+    freddabranyon: 1296321677,
+    frlawgroup: 273755578
 }
 
 let range = [
@@ -448,6 +476,30 @@ let range = [
             "Sell us your Car AZ!E2",
             "Sell us your Car AZ!G2",
         ]
+    ],
+    sites[16] = [
+        [
+            "Fredda Branyon!Q2",
+            "Fredda Branyon!A2",
+            "Fredda Branyon!B2",
+            "Fredda Branyon!C2",
+            "Fredda Branyon!C3",
+            "Fredda Branyon!D2",
+            "Fredda Branyon!E2",
+            "Fredda Branyon!G2",
+        ]
+    ],
+    sites[17] = [
+        [
+            "FR Law Group!Q2",
+            "FR Law Group!A2",
+            "FR Law Group!B2",
+            "FR Law Group!C2",
+            "FR Law Group!C3",
+            "FR Law Group!D2",
+            "FR Law Group!E2",
+            "FR Law Group!G2",
+        ]
     ]
 ]
 
@@ -467,7 +519,9 @@ let ranges = {
     judefrancesjewelry: range[12][0],
     kyrenefamilydentistry: range[13][0],
     optimizex: range[14][0],
-    sellusyourcaraz:  range[15][0]
+    sellusyourcaraz:  range[15][0],
+    freddabranyon: range[16][0],
+    frlawgroup: range[17][0]
 }
 
 let launch = {
@@ -546,6 +600,14 @@ let contact_form_name = {
         form1: "Get A Quote Banner/Popup",
         form2: "Get A Quote Modal",
         form3: "Contact Page Form"
+    },
+    freddabranyon: {
+        form1: "Contact form 1"
+    },
+    frlawgroup: {
+        form1: "CTA Contact Form",
+        form2: "Contact Us Form - SB",
+        form3: "Contact Us Form"
     }
 }
 
@@ -620,6 +682,14 @@ let contact_form_shortcode = {
         form1: '[contact-form-7 id="117" title="Get A Quote Banner/Popup"]',
         form2: '[contact-form-7 id="2612" title="Get A Quote Modal"]',
         form3: '[contact-form-7 id="130" title="Contact Page Form"]'
+    },
+    freddabranyon: {
+        form1: '[contact-form-7 id="4" title="Contact form 1"]'
+    },
+    frlawgroup: {
+        form1: '[contact-form-7 id="807" title="CTA Contact Form"]',
+        form2: '[contact-form-7 id="390" title="Contact Us Form - SB"]',
+        form3: '[contact-form-7 id="317" title="Contact Us Form"]'
     }
 }
 
@@ -687,6 +757,14 @@ let wp_menu_name = {
     sellusyourcaraz: {
         dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
         live: "return document.getElementsByClassName('wp-menu-name')[11].click()"
+    },
+    freddabranyon: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
+        live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
+    },
+    frlawgroup: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
+        live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
     }
 }
 
@@ -857,6 +935,26 @@ let row_title = {
             form2: "return document.getElementsByClassName('row-title')[3].click()",
             form3: "return document.getElementsByClassName('row-title')[1].click()"
         }
+    },
+    freddabranyon: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[0].click()"
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[0].click()"
+        }
+    },
+    frlawgroup: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[2].click()",
+            form2: "return document.getElementsByClassName('row-title')[1].click()",
+            form3: "return document.getElementsByClassName('row-title')[0].click()"
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[2].click()",
+            form2: "return document.getElementsByClassName('row-title')[1].click()",
+            form3: "return document.getElementsByClassName('row-title')[0].click()"
+        }
     }
 }
 
@@ -926,7 +1024,9 @@ let range_recipient = {
     judefrancesjewelry: "Jude Frances Jewelry!H2",
     kyrenefamilydentistry: "Kyrene Family Dentistry!H2",
     optimizex: "OptimizeX!H2",
-    sellusyourcaraz: "Sell us your Car AZ!H2"
+    sellusyourcaraz: "Sell us your Car AZ!H2",
+    freddabranyon: "Fredda Branyon!H2",
+    frlawgroup: "FR Law Group!H2"
 }
 
 
@@ -946,7 +1046,9 @@ let range_thankyou_page = {
     judefrancesjewelry: "Jude Frances Jewelry!I2",
     kyrenefamilydentistry: "Kyrene Family Dentistry!I2",
     optimizex: "OptimizeX!I2",
-    sellusyourcaraz: "Sell us your Car AZ!I2"
+    sellusyourcaraz: "Sell us your Car AZ!I2",
+    freddabranyon: "Fredda Branyon!I2",
+    frlawgroup: "FR Law Group!I2",
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1137,6 +1239,26 @@ let webforms = {
             form1: "Get A Quote Banner/Popup",
             form2: "Get A Quote Modal",
             form3: "Contact Page Form"
+        }
+    },
+    freddabranyon: {
+        dev: {
+            form1: "Contact form 1"
+        },
+        live: {
+            form1: "Contact form 1"
+        }
+    },
+    frlawgroup: {
+        dev: {
+            form1: "CTA Contact Form",
+            form2: "Contact Us Form - SB",
+            form3: "Contact Us Form"
+        },
+        live: {
+            form1: "CTA Contact Form",
+            form2: "Contact Us Form - SB",
+            form3: "Contact Us Form"
         }
     }
 }

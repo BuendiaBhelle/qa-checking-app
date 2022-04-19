@@ -38,6 +38,14 @@ const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/
 const webforms_crexendo_f1 = require("./modules/webforms/contactform7/forms/crexendo/form1/index");
 const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crexendo/form2/index");
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
+
+const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms/freddabranyon/form1/index");
+
+const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
+const webforms_frlawgroup_f2 = require("./modules/webforms/contactform7/forms/frlawgroup/form2/index");
+const webforms_frlawgroup_f3 = require("./modules/webforms/contactform7/forms/frlawgroup/form3/index");
+
+
 const webforms_indinspect_f1 = require("./modules/webforms/contactform7/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/contactform7/forms/indinspect/form2/index");
 const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
@@ -277,7 +285,6 @@ app.post('/post/webforms', async (req, res) => {
     var qa_email = config.qa_email;
     const module_name = config.module_name.webforms;
     var date = config.date;
-    // var checkbox_cfhec = req.body.checkbox_cfhec;
  
     console.log("username: " + username);
     console.log("password: " + password);  
@@ -1151,6 +1158,164 @@ app.post('/post/webforms', async (req, res) => {
                     //             break;
                     //     }
                     //     break;
+                }
+                break;
+            case "freddabranyon":
+                var site_freddabranyon = req.body.site_freddabranyon;
+                var sheetId = config.sheetId.freddabranyon;
+                var ranges = config.ranges.freddabranyon;
+                var range_recipient = config.range_recipient.freddabranyon;
+                var range_thankyou_page = config.range_thankyou_page.freddabranyon;
+
+                console.log("Site: " + site_freddabranyon);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.freddabranyon.dev;
+                        var wp_creds_username = config.wp_creds.freddabranyon.username;
+                        var wp_creds_password = config.wp_creds.freddabranyon.password;
+                        var launch = config.launch.dev;
+                        var wp_menu_name = config.wp_menu_name.freddabranyon.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_freddabranyon) {
+                            case "form1":
+                                var forms = config.forms.freddabranyon.form1;
+                                var row_title = config.row_title.freddabranyon.dev.form1;
+                                var webforms = config.webforms.freddabranyon.dev.form1;
+                                var contact_form_name = config.contact_form_name.freddabranyon.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.freddabranyon.form1;
+
+                                console.log("form1");
+                                webforms_freddabranyon_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.freddabranyon.live;
+                        var wp_creds_username = config.wp_creds.freddabranyon.username;
+                        var wp_creds_password = config.wp_creds.freddabranyon.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.freddabranyon.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_freddabranyon) {
+                            case "form1":
+                                var forms = config.forms.freddabranyon.form1;
+                                var row_title = config.row_title.freddabranyon.live.form1;
+                                var webforms = config.webforms.freddabranyon.live.form1;
+                                var contact_form_name = config.contact_form_name.freddabranyon.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.freddabranyon.form1;
+
+                                console.log("form1");
+                                webforms_freddabranyon_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "frlawgroup":
+                var site_frlawgroup = req.body.site_frlawgroup;
+                var sheetId = config.sheetId.frlawgroup;
+                var ranges = config.ranges.frlawgroup;
+                var range_recipient = config.range_recipient.frlawgroup;
+                var range_thankyou_page = config.range_thankyou_page.frlawgroup;
+
+                console.log("Site: " + site_frlawgroup);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.frlawgroup.dev;
+                        var wp_creds_username = config.wp_creds.frlawgroup.username;
+                        var wp_creds_password = config.wp_creds.frlawgroup.password;
+                        var launch = config.launch.dev;
+                        var wp_menu_name = config.wp_menu_name.frlawgroup.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_frlawgroup) {
+                            case "form1":
+                                var forms = config.forms.frlawgroup.form1;
+                                var row_title = config.row_title.frlawgroup.dev.form1;
+                                var webforms = config.webforms.frlawgroup.dev.form1;
+                                var contact_form_name = config.contact_form_name.frlawgroup.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.frlawgroup.form1;
+
+                                console.log("form1");
+                                webforms_frlawgroup_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.frlawgroup.form2;
+                                var row_title = config.row_title.frlawgroup.dev.form2;
+                                var webforms = config.webforms.frlawgroup.dev.form2;
+                                var contact_form_name = config.contact_form_name.frlawgroup.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.frlawgroup.form2;
+
+                                console.log("form2");
+                                webforms_frlawgroup_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.frlawgroup.form3;
+                                var row_title = config.row_title.frlawgroup.dev.form3;
+                                var webforms = config.webforms.frlawgroup.dev.form3;
+                                var contact_form_name = config.contact_form_name.frlawgroup.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.frlawgroup.form3;
+
+                                console.log("form3");
+                                webforms_frlawgroup_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.frlawgroup.live;
+                        var wp_creds_username = config.wp_creds.frlawgroup.username;
+                        var wp_creds_password = config.wp_creds.frlawgroup.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.frlawgroup.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_frlawgroup) {
+                            case "form1":
+                                var forms = config.forms.frlawgroup.form1;
+                                var row_title = config.row_title.frlawgroup.live.form1;
+                                var webforms = config.webforms.frlawgroup.live.form1;
+                                var contact_form_name = config.contact_form_name.frlawgroup.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.frlawgroup.form1;
+
+                                console.log("form1");
+                                webforms_frlawgroup_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.frlawgroup.form2;
+                                var row_title = config.row_title.frlawgroup.live.form2;
+                                var webforms = config.webforms.frlawgroup.live.form2;
+                                var contact_form_name = config.contact_form_name.frlawgroup.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.frlawgroup.form2;
+
+                                console.log("form2");
+                                webforms_frlawgroup_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.frlawgroup.form3;
+                                var row_title = config.row_title.frlawgroup.live.form3;
+                                var webforms = config.webforms.frlawgroup.live.form3;
+                                var contact_form_name = config.contact_form_name.frlawgroup.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.frlawgroup.form3;
+
+                                console.log("form3");
+                                webforms_frlawgroup_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "indinspect":

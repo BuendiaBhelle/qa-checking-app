@@ -8,10 +8,13 @@ const sheet = require('../../../middleware/gsheet.js');
 const auth = config_webforms.auth;
 const spreadsheetId = config_webforms.spreadsheetId;
 
+var googleSheets;
+var driver;
+var current_page_url;
 async function wordpressStart(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
-    const googleSheets = google.sheets({ version: "v4", auth: client });
+    googleSheets = google.sheets({ version: "v4", auth: client });
 
     let requests = [{
         insertRange: {
@@ -92,7 +95,7 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
         await sheet.appendValues(value);
     }
 
-    let driver = await new Builder().forBrowser("chrome").build();
+    driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get(wp_site);
 
@@ -109,11 +112,11 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
         } else {
             await driver.findElement(By.name("log")).sendKeys(wp_creds_username);
             await driver.findElement(By.name("pwd")).sendKeys(wp_creds_password);
-            logger.logger.log({ level: 'info', message: 'WEBFORMS - same credentials.', tester: server.userId });
-            console.log("WEBFORMS - same credentials.");
-            value = [ "", "info", "same credentials.", server.userId, timestamp, module_name, domain, wp_creds_username + "\n" + wp_creds_password, "", "", launch, "", forms + "\n" + webforms, "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value);
+            // logger.logger.log({ level: 'info', message: 'WEBFORMS - same credentials.', tester: server.userId });
+            // console.log("WEBFORMS - same credentials.");
+            // value = [ "", "info", "same credentials.", server.userId, timestamp, module_name, domain, wp_creds_username + "\n" + wp_creds_password, "", "", launch, "", forms + "\n" + webforms, "", "" ];
+            // await sheet.addRow();
+            // await sheet.appendValues(value);
         }
 
         await driver.findElement(By.id("wp-submit")).click();
@@ -141,13 +144,14 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
             value = [ "", "info", "admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
-        } else {
-            logger.logger.log({ level: 'info', message: 'WEBFORMS - no admin email verification.', tester: server.userId });
-            console.log("WEBFORMS - no admin email verification.");
-            value = [ "", "info", "no admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value);
-        }
+        } 
+        // else {
+        //     logger.logger.log({ level: 'info', message: 'WEBFORMS - no admin email verification.', tester: server.userId });
+        //     console.log("WEBFORMS - no admin email verification.");
+        //     value = [ "", "info", "no admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        //     await sheet.addRow();
+        //     await sheet.appendValues(value);
+        // }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
@@ -199,23 +203,71 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
         await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         if (email) {
             await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(email);
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
-            console.log("CHECKOUT - change qa email success.");
-            value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, "", forms + "\n" + webforms, "", "" ];
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - change form recipients success.', tester: server.userId });
+            console.log("CHECKOUT - change form recipients success.");
+            value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", email, launch, "", forms + "\n" + webforms, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);   
         } else {
             await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(qa_email);
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
-            console.log("CHECKOUT - same qa email.");
-            value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, "", forms + "\n" + webforms, "", "" ];
+            logger.logger.log({ level: 'info', message: 'CHECKOUT - change form recipients success.', tester: server.userId });
+            console.log("CHECKOUT - change form recipients success.");
+            value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, "", forms + "\n" + webforms, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);  
         }
         await driver.executeScript("return document.getElementsByName('wpcf7-save')[2].click()");
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
-        console.log("WEBFORMS - change form recipients success.");
-        value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        // logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
+        // console.log("WEBFORMS - change form recipients success.");
+        // value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        // await sheet.addRow();
+        // await sheet.appendValues(value);
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
+        console.log(error);
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    }
+
+
+    current_page_url = await driver.getCurrentUrl();
+    
+    await driver.sleep(1000);    
+    
+
+    return true;
+    
+}
+
+
+
+async function wordpressEnd(domain, timestamp, forms, range_recipient, module_name, launch, webforms) {
+    console.log("current_page_url: " + current_page_url);
+    await driver.switchTo().newWindow('tab');
+    await driver.get(current_page_url);
+
+    await driver.sleep(1000);    
+
+    // put back original form recipients
+    try {
+        await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        
+        let orig_recipients_data = await googleSheets.spreadsheets.values.get({
+            auth,
+            spreadsheetId,
+            range: range_recipient,
+        });
+    
+        let orig_recipients = orig_recipients_data.data.values[0][0];
+    
+        console.log("orig_recipients: " + orig_recipients);
+        
+        await driver.findElement(By.id("wpcf7-mail-recipient")).sendKeys(orig_recipients);
+        await driver.executeScript("return document.getElementsByName('wpcf7-save')[2].click()");
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - put original form recipients success.', tester: server.userId });
+        console.log("WEBFORMS - put original form recipients success.");
+        value = [ "", "info", "put original form recipients success", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
@@ -225,10 +277,16 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
         await sheet.addRow();
         await sheet.appendValues(value);
     }
+    // end test
+    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
+    console.log("test ends.");
+    value = [ "", "info", "test ends.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+    await sheet.addRow();
+    await sheet.appendValues(value);
 
     return true;
-    
+
 }
 
 
-module.exports = { wordpressStart };
+module.exports = { wordpressStart, wordpressEnd };
