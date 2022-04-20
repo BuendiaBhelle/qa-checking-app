@@ -38,14 +38,12 @@ const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/
 const webforms_crexendo_f1 = require("./modules/webforms/contactform7/forms/crexendo/form1/index");
 const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crexendo/form2/index");
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
-
 const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms/freddabranyon/form1/index");
-
 const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
 const webforms_frlawgroup_f2 = require("./modules/webforms/contactform7/forms/frlawgroup/form2/index");
 const webforms_frlawgroup_f3 = require("./modules/webforms/contactform7/forms/frlawgroup/form3/index");
-
-
+const webforms_primemedicalpain_f1 = require("./modules/webforms/contactform7/forms/primemedicalpain/form1/index");
+const webforms_primemedicalpain_f2 = require("./modules/webforms/contactform7/forms/primemedicalpain/form2/index");
 const webforms_indinspect_f1 = require("./modules/webforms/contactform7/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/contactform7/forms/indinspect/form2/index");
 const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
@@ -62,6 +60,7 @@ const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/opt
 const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form1/index");
 const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
 const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
+const webforms_sunrisejewelryusa_f1 = require("./modules/webforms/contactform7/forms/sunrisejewelryusa/form1/index");
 const responsiveness_desktop = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
@@ -1141,23 +1140,30 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = "https://thehairextensioncompany.primeview.com/";
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_canyonfallshairextensioncompany) {
-                    //         case "form1":
-                    //             console.log("form1");
-                    //             webforms_canyonfallshairextensioncompany_f1.index(domain, username, password, email);
-                    //             break;
-                    //         case "form2":
-                    //             console.log("form2");
-                    //             webforms_canyonfallshairextensioncompany_f2.index(domain, username, password, email);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                    case "live":
+                        var domain = config.domain.ewingconstruction.live;
+                        var wp_creds_username = config.wp_creds.ewingconstruction.username;
+                        var wp_creds_password = config.wp_creds.ewingconstruction.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.ewingconstruction.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_ewingconstruction) {
+                            case "form1":
+                                var forms = config.forms.ewingconstruction.form1;
+                                var row_title = config.row_title.ewingconstruction.live.form1;
+                                var webforms = config.webforms.ewingconstruction.live.form1;
+                                var contact_form_name = config.contact_form_name.ewingconstruction.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.ewingconstruction.form1;
+
+                                console.log("form1");
+                                webforms_ewingconstruction_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "freddabranyon":
@@ -1311,6 +1317,85 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form3");
                                 webforms_frlawgroup_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "primemedicalpain":
+                var site_primemedicalpain = req.body.site_primemedicalpain;
+                var sheetId = config.sheetId.primemedicalpain;
+                var ranges = config.ranges.primemedicalpain;
+                var range_recipient = config.range_recipient.primemedicalpain;
+                var range_thankyou_page = config.range_thankyou_page.primemedicalpain;
+
+                console.log("Site: " + site_primemedicalpain);
+                switch (checkbox) {
+                    // case "dev":
+                    //     var domain = config.domain.primemedicalpain.dev;
+                    //     var wp_creds_username = config.wp_creds.primemedicalpain.username;
+                    //     var wp_creds_password = config.wp_creds.primemedicalpain.password;
+                    //     var launch = config.launch.dev;
+                    //     var wp_menu_name = config.wp_menu_name.primemedicalpain.dev;
+
+                    //     console.log(domain);
+                    //     console.log("dev");
+                    //     switch (site_primemedicalpain) {
+                    //         case "form1":
+                    //             var forms = config.forms.primemedicalpain.form1;
+                    //             var row_title = config.row_title.primemedicalpain.dev.form1;
+                    //             var webforms = config.webforms.primemedicalpain.dev.form1;
+                    //             var contact_form_name = config.contact_form_name.primemedicalpain.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.primemedicalpain.form1;
+
+                    //             console.log("form1");
+                    //             webforms_primemedicalpain_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                    //             break;
+                    //         case "form2":
+                    //             var forms = config.forms.primemedicalpain.form2;
+                    //             var row_title = config.row_title.primemedicalpain.dev.form2;
+                    //             var webforms = config.webforms.primemedicalpain.dev.form2;
+                    //             var contact_form_name = config.contact_form_name.primemedicalpain.form2;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.primemedicalpain.form2;
+
+                    //             console.log("form2");
+                    //             webforms_primemedicalpain_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                    case "live":
+                        var domain = config.domain.primemedicalpain.live;
+                        var wp_creds_username = config.wp_creds.primemedicalpain.username;
+                        var wp_creds_password = config.wp_creds.primemedicalpain.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.primemedicalpain.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_primemedicalpain) {
+                            case "form1":
+                                var forms = config.forms.primemedicalpain.form1;
+                                var row_title = config.row_title.primemedicalpain.live.form1;
+                                var webforms = config.webforms.primemedicalpain.live.form1;
+                                var contact_form_name = config.contact_form_name.primemedicalpain.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.primemedicalpain.form1;
+
+                                console.log("form1");
+                                webforms_primemedicalpain_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.primemedicalpain.form2;
+                                var row_title = config.row_title.primemedicalpain.live.form2;
+                                var webforms = config.webforms.primemedicalpain.live.form2;
+                                var contact_form_name = config.contact_form_name.primemedicalpain.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.primemedicalpain.form2;
+
+                                console.log("form2");
+                                webforms_primemedicalpain_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
                                 break;
                             default:
                                 break;
@@ -1929,6 +2014,65 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form3");
                                 webforms_sellusyourcaraz_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "sunrisejewelryusa":
+                var site_sunrisejewelryusa = req.body.site_sunrisejewelryusa;
+                var sheetId = config.sheetId.sunrisejewelryusa;
+                var ranges = config.ranges.sunrisejewelryusa;
+                var range_recipient = config.range_recipient.sunrisejewelryusa;
+                var range_thankyou_page = config.range_thankyou_page.sunrisejewelryusa;
+
+                console.log("Site: " + site_sunrisejewelryusa);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.sunrisejewelryusa.dev;
+                        var wp_creds_username = config.wp_creds.sunrisejewelryusa.username;
+                        var wp_creds_password = config.wp_creds.sunrisejewelryusa.password;
+                        var launch = config.launch.dev;
+                        var wp_menu_name = config.wp_menu_name.sunrisejewelryusa.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_sunrisejewelryusa) {
+                            case "form1":
+                                var forms = config.forms.sunrisejewelryusa.form1;
+                                var row_title = config.row_title.sunrisejewelryusa.dev.form1;
+                                var webforms = config.webforms.sunrisejewelryusa.dev.form1;
+                                var contact_form_name = config.contact_form_name.sunrisejewelryusa.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.sunrisejewelryusa.form1;
+
+                                console.log("form1");
+                                webforms_sunrisejewelryusa_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.sunrisejewelryusa.live;
+                        var wp_creds_username = config.wp_creds.sunrisejewelryusa.username;
+                        var wp_creds_password = config.wp_creds.sunrisejewelryusa.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.sunrisejewelryusa.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_sunrisejewelryusa) {
+                            case "form1":
+                                var forms = config.forms.sunrisejewelryusa.form1;
+                                var row_title = config.row_title.sunrisejewelryusa.live.form1;
+                                var webforms = config.webforms.sunrisejewelryusa.live.form1;
+                                var contact_form_name = config.contact_form_name.sunrisejewelryusa.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.sunrisejewelryusa.form1;
+
+                                console.log("form1");
+                                webforms_sunrisejewelryusa_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
                                 break;
                             default:
                                 break;

@@ -17,9 +17,18 @@ async function webforms(domain, checkbox, timestamp, forms, range_thankyou_page,
 
     // form fill in
     try {
-        await driver.get(domain + forms);
-        await driver.sleep(1000);
+        // await driver.get(domain + forms);
+        await driver.get(domain);
+        await driver.sleep(5000);
         await driver.executeScript("return document.getElementsByClassName('quotebtn')[0].click()");
+        // await driver.sleep(1000);
+        // if (checkbox === "dev") {
+        //     let phone_no = await driver.executeScript("return document.getElementsByName('customer-mobile')[1]");
+        //     phone_no.sendKeys("4806480839");
+        // } else if (checkbox === "live"){
+        //     let phone_no = await driver.executeScript("return document.getElementsByName('phone_no')[1]");
+        //     phone_no.sendKeys("4806480839");
+        // }
         await driver.sleep(1000);
         let fullname = await driver.executeScript("return document.getElementsByName('fullname')[1]");
         fullname.sendKeys("Primeview Test");
@@ -27,13 +36,8 @@ async function webforms(domain, checkbox, timestamp, forms, range_thankyou_page,
         let email_id = await driver.executeScript("return document.getElementsByName('email_id')[1]");
         email_id.sendKeys("qa@primeview.com");
         await driver.sleep(1000);
-        if (checkbox === "dev") {
-            let phone_no = await driver.executeScript("return document.getElementsByName('customer-mobile')[1]");
-            phone_no.sendKeys("4806480839");
-        } else if (checkbox === "live"){
-            let phone_no = await driver.executeScript("return document.getElementsByName('phone_no')[1]");
-            phone_no.sendKeys("4806480839");
-        }
+        let phone_no = await driver.executeScript("return document.getElementsByName('phone_no')[1]");
+        phone_no.sendKeys("4806480839");
         await driver.sleep(1000);
         let product_year = await driver.executeScript("return document.getElementsByName('product_year')[1]");
         product_year.sendKeys("2015");
@@ -46,7 +50,6 @@ async function webforms(domain, checkbox, timestamp, forms, range_thankyou_page,
         await driver.sleep(1000);
         let crossroads = await driver.executeScript("return document.getElementsByName('crossroads')[1]");
         crossroads.sendKeys("7620 E McKellips Rd");
-        await driver.sleep(1000);
         await driver.executeScript("return document.getElementsByClassName('banner_leftbtn')[1].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");

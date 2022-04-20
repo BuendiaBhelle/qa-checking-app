@@ -17,17 +17,24 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
 
     // form fill in
     try {
-        // await driver.get(domain + forms);
-        await driver.get(domain);
+        await driver.get(domain + forms);
         await driver.sleep(1000);
-        await driver.findElement(By.id("fullname")).sendKeys("Primeview Test");
-        await driver.findElement(By.id("email_id")).sendKeys("qa@primeview.com");
-        await driver.findElement(By.id("phone_no")).sendKeys("4806480839");
-        await driver.findElement(By.id("product_year")).sendKeys("2015");
-        await driver.findElement(By.id("product_make")).sendKeys("Lead Test Submission");
-        await driver.findElement(By.id("product_model")).sendKeys("Lead Test Submission");
-        await driver.findElement(By.id("crossroads")).sendKeys("7620 E McKellips Rd");
-        await driver.executeScript("return document.getElementsByClassName('banner_leftbtn')[0].click()");
+        let first_name = await driver.executeScript("return document.getElementsByName('first-name')[0]");
+        first_name.sendKeys("Primeview");
+        await driver.sleep(1000);
+        let last_name = await driver.executeScript("return document.getElementsByName('last-name')[0]");
+        last_name.sendKeys("Test");
+        await driver.sleep(1000);
+        let email = await driver.executeScript("return document.getElementsByName('your-email')[0]");
+        email.sendKeys("qa@primeview.com");
+        await driver.sleep(1000);
+        let contact_no = await driver.executeScript("return document.getElementsByName('contact-no')[0]");
+        contact_no.sendKeys("4806480839");
+        await driver.sleep(1000);
+        let message = await driver.executeScript("return document.getElementsByName('your-message')[0]");
+        message.sendKeys("Please take note that this is a test submit form for Contact us - Homepage (New Theme) Form. Please disregard if received. Thank you.");
+        await driver.sleep(1000);
+        await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
         value = [ "", "info", "form fill in success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];

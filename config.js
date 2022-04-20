@@ -23,7 +23,9 @@ const sites = [
     "optimizex",
     "sellusyourcaraz",
     "freddabranyon",
-    "frlawgroup"
+    "frlawgroup",
+    "primemedicalpain",
+    "sunrisejewelryusa"
 ]
 
 let wp_creds = {
@@ -99,6 +101,14 @@ let wp_creds = {
     frlawgroup: {
         username: "pvadmin",
         password: "5M^S)oi5U4Krr5YugUNEJUSM"
+    },
+    primemedicalpain: {
+        username: "pvadmin",
+        password: "^24)zwOSdIJsVJVK8K&YASRx"
+    },
+    sunrisejewelryusa: {
+        username: "pvadmin",
+        password: "jX6#dN5?oR7#vU5#"
     }
 }
 
@@ -174,6 +184,14 @@ let domain = {
     frlawgroup: {
         dev: "https://frlawgroupdev.primeview.com/",
         live: "https://www.frlawgroup.com/"
+    },
+    primemedicalpain: {
+        dev: "",
+        live: "https://www.primemedicalpain.com/"
+    },
+    sunrisejewelryusa: {
+        dev: "https://sunrisejewelryusa.primeview.com/",
+        live: "https://www.sunrisejewelryusa.com/"
     }
 }
 
@@ -249,8 +267,8 @@ let forms = {
         form3: "contact-us/"
     },
     sellusyourcaraz: {
-        form1: "/",
-        form2: "/",
+        form1: "",
+        form2: "",
         form3: "contact-us/"
     },
     freddabranyon: {
@@ -260,6 +278,13 @@ let forms = {
         form1: "troy-froderman/",
         form2: "category/news-and-updates/",
         form3: "contact/"
+    },
+    primemedicalpain: {
+        form1: "",
+        form2: "contact-us/"
+    },
+    sunrisejewelryusa: {
+        form1: "contact-us/"
     }
 }
 
@@ -281,7 +306,9 @@ let sheetId = {
     optimizex: 610692665,
     sellusyourcaraz: 2085688851,
     freddabranyon: 1296321677,
-    frlawgroup: 273755578
+    frlawgroup: 273755578,
+    primemedicalpain: 1077043857,
+    sunrisejewelryusa: 1432843299
 }
 
 let range = [
@@ -500,7 +527,31 @@ let range = [
             "FR Law Group!E2",
             "FR Law Group!G2",
         ]
-    ]
+    ],
+    sites[18] = [
+        [
+            "Prime Medical Pain Management Centers!Q2",
+            "Prime Medical Pain Management Centers!A2",
+            "Prime Medical Pain Management Centers!B2",
+            "Prime Medical Pain Management Centers!C2",
+            "Prime Medical Pain Management Centers!C3",
+            "Prime Medical Pain Management Centers!D2",
+            "Prime Medical Pain Management Centers!E2",
+            "Prime Medical Pain Management Centers!G2",
+        ]
+    ],
+    sites[19] = [
+        [
+            "Sunrise Jewelry!Q2",
+            "Sunrise Jewelry!A2",
+            "Sunrise Jewelry!B2",
+            "Sunrise Jewelry!C2",
+            "Sunrise Jewelry!C3",
+            "Sunrise Jewelry!D2",
+            "Sunrise Jewelry!E2",
+            "Sunrise Jewelry!G2",
+        ]
+    ],
 ]
 
 let ranges = {
@@ -521,7 +572,9 @@ let ranges = {
     optimizex: range[14][0],
     sellusyourcaraz:  range[15][0],
     freddabranyon: range[16][0],
-    frlawgroup: range[17][0]
+    frlawgroup: range[17][0],
+    primemedicalpain: range[18][0],
+    sunrisejewelryusa: range[19][0]
 }
 
 let launch = {
@@ -608,6 +661,13 @@ let contact_form_name = {
         form1: "CTA Contact Form",
         form2: "Contact Us Form - SB",
         form3: "Contact Us Form"
+    },
+    primemedicalpain: {
+        form1: "Contact us - Homepage (New Theme)",
+        form2: "Contact form @ Contact Us Page"
+    },
+    sunrisejewelryusa: {
+        form1: "Contact Us"
     }
 }
 
@@ -690,6 +750,13 @@ let contact_form_shortcode = {
         form1: '[contact-form-7 id="807" title="CTA Contact Form"]',
         form2: '[contact-form-7 id="390" title="Contact Us Form - SB"]',
         form3: '[contact-form-7 id="317" title="Contact Us Form"]'
+    },
+    primemedicalpain: {
+        form1: '[contact-form-7 id="673" title="Contact us - Homepage (New Theme)"]',
+        form2: '[contact-form-7 id="310" title="Contact form @ Contact Us Page"]'
+    },
+    sunrisejewelryusa: {
+        form1: '[contact-form-7 id="2297" title="Contact Us"]'
     }
 }
 
@@ -708,7 +775,7 @@ let wp_menu_name = {
     },
     americanleatherusa: {
         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[8].click()"    
+        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
     },
     andresperezjurado: {
         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
@@ -736,7 +803,7 @@ let wp_menu_name = {
     },
     ewingconstruction: {
         dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
-        live: ""    
+        live: "return document.getElementsByClassName('wp-menu-name')[6].click()"    
     },
     indinspect: {
         dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
@@ -765,6 +832,14 @@ let wp_menu_name = {
     frlawgroup: {
         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
         live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
+    },
+    primemedicalpain: {
+        dev: "",
+        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
+    },
+    sunrisejewelryusa: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
+        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
     }
 }
 
@@ -878,7 +953,7 @@ let row_title = {
             form1: "return document.getElementsByClassName('row-title')[0].click()"
         },
         live: {
-            form1: ""
+            form1: "return document.getElementsByClassName('row-title')[0].click()"
         }
     },
     indinspect: {
@@ -955,6 +1030,24 @@ let row_title = {
             form2: "return document.getElementsByClassName('row-title')[1].click()",
             form3: "return document.getElementsByClassName('row-title')[0].click()"
         }
+    },
+    primemedicalpain: {
+        dev: {
+            form1: "",
+            form2: ""
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[2].click()",
+            form2: "return document.getElementsByClassName('row-title')[0].click()"
+        }
+    },
+    sunrisejewelryusa: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[1].click()"
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[1].click()"
+        }
     }
 }
 
@@ -1026,7 +1119,9 @@ let range_recipient = {
     optimizex: "OptimizeX!H2",
     sellusyourcaraz: "Sell us your Car AZ!H2",
     freddabranyon: "Fredda Branyon!H2",
-    frlawgroup: "FR Law Group!H2"
+    frlawgroup: "FR Law Group!H2",
+    primemedicalpain: "Prime Medical Pain Management Centers!H2",
+    sunrisejewelryusa: "Sunrise Jewelry!H2"
 }
 
 
@@ -1049,6 +1144,8 @@ let range_thankyou_page = {
     sellusyourcaraz: "Sell us your Car AZ!I2",
     freddabranyon: "Fredda Branyon!I2",
     frlawgroup: "FR Law Group!I2",
+    primemedicalpain: "Prime Medical Pain Management Centers!I2",
+    sunrisejewelryusa: "Sunrise Jewelry!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1259,6 +1356,24 @@ let webforms = {
             form1: "CTA Contact Form",
             form2: "Contact Us Form - SB",
             form3: "Contact Us Form"
+        }
+    },
+    primemedicalpain: {
+        dev: {
+            form1: "",
+            form2: ""
+        },
+        live: {
+            form1: "Contact us - Homepage (New Theme)",
+            form2: "Contact form @ Contact Us Page"
+        }
+    },
+    sunrisejewelryusa: {
+        dev: {
+            form1: "Contact Us"
+        },
+        live: {
+            form1: "Contact Us"
         }
     }
 }
