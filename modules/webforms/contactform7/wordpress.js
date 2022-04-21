@@ -121,11 +121,19 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
-            logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
-            console.log("WEBFORMS - wordpress login success.");
-            value = [ "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value);
+            if ((username) && (password)) {
+                logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
+                console.log("WEBFORMS - wordpress login success.");
+                value = [ "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", forms + "\n" + webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            } else {
+                logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
+                console.log("WEBFORMS - wordpress login success.");
+                value = [ "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, wp_creds_username + "\n" + wp_creds_password, "", "", launch, "", forms + "\n" + webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            }
         }
 
         var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  

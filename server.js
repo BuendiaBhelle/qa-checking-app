@@ -61,7 +61,8 @@ const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/for
 const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
 const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
 const webforms_sunrisejewelryusa_f1 = require("./modules/webforms/contactform7/forms/sunrisejewelryusa/form1/index");
-const responsiveness_desktop = require("./modules/responsiveness/desktop/desktop");
+const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
+const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
 const expiry = 1000 * 60 * 60 * 24;
@@ -2090,7 +2091,7 @@ app.post('/post/webforms', async (req, res) => {
 });
 
 
-app.post('/post/responsiveness', function(req, res) {
+app.post('/post/responsiveness_lambdatest', function(req, res) {
     logger.errorLog();
     var url = req.body.url;
     var device = req.body.device;
@@ -2118,7 +2119,7 @@ app.post('/post/responsiveness', function(req, res) {
                         var versions = config.versions.desktop.version1;
                         var device_desktop = config.device_desktop.windows_11;
 
-                        responsiveness_desktop.desktop(
+                        responsiveness_desktop_lambdatest.desktop(
                             module_name,
                             url, 
                             email, 
@@ -2136,7 +2137,7 @@ app.post('/post/responsiveness', function(req, res) {
                         var versions = config.versions.desktop.version2;
                         var device_desktop = config.device_desktop.windows_8;
 
-                        responsiveness_desktop.desktop(
+                        responsiveness_desktop_lambdatest.desktop(
                             module_name,
                             url, 
                             email, 
@@ -2154,7 +2155,7 @@ app.post('/post/responsiveness', function(req, res) {
                         var versions = config.versions.desktop.version3;
                         var device_desktop = config.device_desktop.windows_7;
 
-                        responsiveness_desktop.desktop(
+                        responsiveness_desktop_lambdatest.desktop(
                             module_name,
                             url, 
                             email, 
@@ -2172,7 +2173,7 @@ app.post('/post/responsiveness', function(req, res) {
                         var versions = config.versions.desktop.version4;
                         var device_desktop = config.device_desktop.macos_sierra;
 
-                        responsiveness_desktop.desktop(
+                        responsiveness_desktop_lambdatest.desktop(
                             module_name,
                             url, 
                             email, 
@@ -2575,6 +2576,29 @@ app.post('/post/responsiveness', function(req, res) {
             default:
                 break;
         }
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+
+app.post('/post/responsiveness_manual', function(req, res) {
+    logger.errorLog();
+    var url = req.body.url;
+    var resolution = req.body.resolution;
+    var module_name = config.module_name.responsiveness;
+
+    console.log("URL: " + url);
+    console.log("Resolution: " + resolution);
+
+    try {
+        responsiveness_desktop_manual.manual(
+            url,
+            resolution,
+            module_name,
+            timestamp
+        );
     } catch (error) {
         console.log(error);
     }

@@ -8,6 +8,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
+<style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #158CBE;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+      color: #fff;
+      width: 100%;
+      height: 76px;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    </style>
 <body>
     <div class="body-container">
         <div class="sidebar-nav">
@@ -34,9 +57,26 @@
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="webForms()">Web Forms</button>
                             </li>
-                            <li class="nav-item">
-                                <button class="button sidebar-nav-item" onclick="responsivenessForm()">Responsiveness</button>
-                            </li>
+                            <div class="dropdown">
+                                <li class="nav-item">
+                                    <button class="button sidebar-nav-item">Responsiveness</button>
+                                    <div class="dropdown-content">
+                                        <p style="margin-bottom: 6px;" onclick="responsivenessForm_lambdatest()">Lambdatest</p>
+                                        <p onclick="responsiveness_manual()">Manual</p>
+                                    </div>
+                                </li>
+                            </div>
+
+                            <!-- <li class="nav-item"></li>
+                                <div class="dropdown">
+                                    <button class="button sidebar-nav-item">Responsiveness</button>
+                                    <div class="dropdown-content">
+                                    <p onclick="responsivenessForm_lambdatest()">Lambdatest</p>
+                                    <p onclick="responsiveness_manual()">Manual</p>
+                                    </div>
+                                </div>
+                            </li> -->
+                              
                         </ul>
                         <div class="logout">
                             <button class="logout-botton" onclick="location.href='/logout'">Logout</button>
@@ -136,6 +176,7 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
+
                             <!-- Image Optimization -->
                             <div id="image_optimization">
                                 <h1>Image Optimization</h1>
@@ -155,6 +196,7 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
+
                             <!-- Visibility -->
                             <div id="visibility">
                                 <h1>Visibility</h1>
@@ -174,6 +216,7 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
+
                             <!-- Web Forms -->
                             <div id="webForms">
                                 <h1>Web Forms</h1>
@@ -672,10 +715,11 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
+
                             <!-- Responsiveness -->
-                            <div id="responsiveness">
-                                <h1>Responsiveness</h1>
-                                <form action="/post/responsiveness" method="post">
+                            <div id="responsiveness_lambdatest">
+                                <h1>Responsiveness - Lambdatest</h1>
+                                <form action="/post/responsiveness_lambdatest" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-7">
@@ -773,6 +817,40 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
+                
+                            <div id="responsiveness_manual">
+                                <h1>Responsiveness - Manual</h1>
+                                <form action="/post/responsiveness_manual" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="Example: 'https://www.primeview.com/'" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="resolution" class="col-sm-3 col-form-label">Choose a resolution:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="resolution" id="resolution" class="form-control" onchange="versions()">
+                                                            <option value="1280x720">1280x720</option>
+                                                            <option value="1280x800">1280x800</option>
+                                                            <option value="1280x1024">1280x1024</option>
+                                                            <option value="1366x768">1366x768</option>
+                                                            <option value="1440x900">1440x900</option>
+                                                            <option value="1600x1200">1600x1200</option>
+                                                            <option value="1680x1050">1680x1050</option>
+                                                            <option value="1920x1080">1920x1080</option>
+                                                            <option value="1920x1200">1920x1200</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>            
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -785,34 +863,46 @@
             document.getElementById('checkout').style.display = 'block';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
-            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
         }
         function image_optimizationForm() {
             document.getElementById('image_optimization').style.display = 'block';
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
-            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
         }
         function visibilityForm(){
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'block';
-            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
         }
         function webForms(){
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('webForms').style.display = 'block';
-            document.getElementById('responsiveness').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
         }
-        function responsivenessForm(){
+        function responsivenessForm_lambdatest() {
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
-            document.getElementById('responsiveness').style.display = 'block';
+            document.getElementById('responsiveness_lambdatest').style.display = 'block';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+        }
+        function responsiveness_manual() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'block';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
         }
@@ -926,7 +1016,6 @@
                 document.getElementById('site_sellusyourcaraz').style.display = 'none';
                 document.getElementById('site_sunrisejewelryusa').style.display = 'none';
             }
-
             else if (site === "andresperezjurado") {
                 document.getElementById('site_andresperezjurado').style.display = 'block';
                 // document.getElementById('checkbox_cfhec').style.display = 'none';

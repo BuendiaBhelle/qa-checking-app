@@ -20,11 +20,6 @@ async function desktop(module_name, url, email, password, timestamp, lt_email, l
             } else {
                 await driver.findElement(By.id("email")).sendKeys(lt_email);
                 await driver.findElement(By.id("password")).sendKeys(lt_password);
-                logger.logger.log({ level: 'info', message: 'RESPONSIVENESS - same credentials.', tester: server.userId });
-                console.log("RESPONSIVENESS - same credentials.");
-                value = [ "", "info", "same credentials.", server.userId, timestamp, module_name, url, "", lt_email + "\n" + lt_password, "", "", "", "", devices, versions ];
-                await sheet.addRow();
-                await sheet.appendValues(value);
             }
             await driver.findElement(By.id("login-button")).click();
             await driver.sleep(3000);
