@@ -42,8 +42,6 @@ const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms
 const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
 const webforms_frlawgroup_f2 = require("./modules/webforms/contactform7/forms/frlawgroup/form2/index");
 const webforms_frlawgroup_f3 = require("./modules/webforms/contactform7/forms/frlawgroup/form3/index");
-const webforms_primemedicalpain_f1 = require("./modules/webforms/contactform7/forms/primemedicalpain/form1/index");
-const webforms_primemedicalpain_f2 = require("./modules/webforms/contactform7/forms/primemedicalpain/form2/index");
 const webforms_indinspect_f1 = require("./modules/webforms/contactform7/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/contactform7/forms/indinspect/form2/index");
 const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
@@ -57,10 +55,35 @@ const webforms_kyrenefamilydentistry_f2 = require("./modules/webforms/contactfor
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
 const webforms_optimizex_f2 = require("./modules/webforms/contactform7/forms/optimizex/form2/index");
 const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/optimizex/form3/index");
+const webforms_phoenixritecare_f1 = require("./modules/webforms/contactform7/forms/phoenixritecare/form1/index");
+const webforms_phoenixritecare_f2 = require("./modules/webforms/contactform7/forms/phoenixritecare/form2/index");
+const webforms_phoenixritecare_f3 = require("./modules/webforms/contactform7/forms/phoenixritecare/form3/index");
+const webforms_phoenixritecare_f4 = require("./modules/webforms/contactform7/forms/phoenixritecare/form4/index");
+const webforms_phoenixritecare_f5 = require("./modules/webforms/contactform7/forms/phoenixritecare/form5/index");
+const webforms_phoenixritecare_f6 = require("./modules/webforms/contactform7/forms/phoenixritecare/form6/index");
+const webforms_phoenixritecare_f7 = require("./modules/webforms/contactform7/forms/phoenixritecare/form7/index");
+const webforms_phoenixritecare_f8 = require("./modules/webforms/contactform7/forms/phoenixritecare/form8/index");
+const webforms_phoenixritecare_f9 = require("./modules/webforms/contactform7/forms/phoenixritecare/form9/index");
+const webforms_primemedicalpain_f1 = require("./modules/webforms/contactform7/forms/primemedicalpain/form1/index");
+const webforms_primemedicalpain_f2 = require("./modules/webforms/contactform7/forms/primemedicalpain/form2/index");
+const webforms_primeview_f1 = require("./modules/webforms/contactform7/forms/primeview/form1/index");
+const webforms_primeview_f2 = require("./modules/webforms/contactform7/forms/primeview/form2/index");
+const webforms_primeview_f3 = require("./modules/webforms/contactform7/forms/primeview/form3/index");
+const webforms_primeview_f4 = require("./modules/webforms/contactform7/forms/primeview/form4/index");
+const webforms_primeview_f5 = require("./modules/webforms/contactform7/forms/primeview/form5/index");
+const webforms_primeview_f6 = require("./modules/webforms/contactform7/forms/primeview/form6/index");
+const webforms_primeview_f7 = require("./modules/webforms/contactform7/forms/primeview/form7/index");
+const webforms_randosouthwest_f1 = require("./modules/webforms/contactform7/forms/randosouthwest/form1/index");
 const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form1/index");
 const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
 const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
 const webforms_sunrisejewelryusa_f1 = require("./modules/webforms/contactform7/forms/sunrisejewelryusa/form1/index");
+const webforms_versatile_f1 = require("./modules/webforms/contactform7/forms/versatile/form1/index");
+const webforms_versatile_f2 = require("./modules/webforms/contactform7/forms/versatile/form2/index");
+const webforms_versatile_f3 = require("./modules/webforms/contactform7/forms/versatile/form3/index");
+const webforms_versatile_f4 = require("./modules/webforms/contactform7/forms/versatile/form4/index");
+const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/forms/solutionsforum/form1/index");
+
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
@@ -1404,6 +1427,193 @@ app.post('/post/webforms', async (req, res) => {
                         break;
                 }
                 break;
+            case "primeview":
+                var site_primeview = req.body.site_primeview;
+                var sheetId = config.sheetId.primeview;
+                var ranges = config.ranges.primeview;
+                var range_recipient = config.range_recipient.primeview;
+                var range_thankyou_page = config.range_thankyou_page.primeview;
+
+                console.log("Site: " + site_primeview);
+                switch (checkbox) {
+                    // case "dev":
+                    //     var domain = config.domain.primeview.dev;
+                    //     var wp_creds_username = config.wp_creds.primeview.username;
+                    //     var wp_creds_password = config.wp_creds.primeview.password;
+                    //     var launch = config.launch.dev;
+                    //     var wp_menu_name = config.wp_menu_name.primeview.dev;
+
+                    //     console.log(domain);
+                    //     console.log("dev");
+                    //     switch (site_primeview) {
+                    //         case "form1":
+                    //             var forms = config.forms.primeview.form1;
+                    //             var row_title = config.row_title.primeview.dev.form1;
+                    //             var webforms = config.webforms.primeview.dev.form1;
+                    //             var contact_form_name = config.contact_form_name.primeview.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.primeview.form1;
+
+                    //             console.log("form1");
+                    //             webforms_primeview_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                    //             break;
+                    //         case "form2":
+                    //             var forms = config.forms.primeview.form2;
+                    //             var row_title = config.row_title.primeview.dev.form2;
+                    //             var webforms = config.webforms.primeview.dev.form2;
+                    //             var contact_form_name = config.contact_form_name.primeview.form2;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.primeview.form2;
+
+                    //             console.log("form2");
+                    //             webforms_primeview_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                    case "live":
+                        var domain = config.domain.primeview.live;
+                        var wp_creds_username = config.wp_creds.primeview.username;
+                        var wp_creds_password = config.wp_creds.primeview.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.primeview.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_primeview) {
+                            case "form1":
+                                var forms = config.forms.primeview.form1;
+                                var row_title = config.row_title.primeview.live.form1;
+                                var webforms = config.webforms.primeview.live.form1;
+                                var contact_form_name = config.contact_form_name.primeview.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.primeview.form1;
+
+                                console.log("form1");
+                                webforms_primeview_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.primeview.form2;
+                                var row_title = config.row_title.primeview.live.form2;
+                                var webforms = config.webforms.primeview.live.form2;
+                                var contact_form_name = config.contact_form_name.primeview.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.primeview.form2;
+
+                                console.log("form2");
+                                webforms_primeview_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.primeview.form3;
+                                var row_title = config.row_title.primeview.live.form3;
+                                var webforms = config.webforms.primeview.live.form3;
+                                var contact_form_name = config.contact_form_name.primeview.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.primeview.form3;
+
+                                console.log("form3");
+                                webforms_primeview_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form4":
+                                var forms = config.forms.primeview.form4;
+                                var row_title = config.row_title.primeview.live.form4;
+                                var webforms = config.webforms.primeview.live.form4;
+                                var contact_form_name = config.contact_form_name.primeview.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.primeview.form4;
+
+                                console.log("form4");
+                                webforms_primeview_f4.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form5":
+                                var forms = config.forms.primeview.form5;
+                                var row_title = config.row_title.primeview.live.form5;
+                                var webforms = config.webforms.primeview.live.form5;
+                                var contact_form_name = config.contact_form_name.primeview.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.primeview.form5;
+
+                                console.log("form5");
+                                webforms_primeview_f5.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form6":
+                                var forms = config.forms.primeview.form6;
+                                var row_title = config.row_title.primeview.live.form6;
+                                var webforms = config.webforms.primeview.live.form6;
+                                var contact_form_name = config.contact_form_name.primeview.form6;
+                                var contact_form_shortcode = config.contact_form_shortcode.primeview.form6;
+
+                                console.log("form6");
+                                webforms_primeview_f6.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form7":
+                                var forms = config.forms.primeview.form7;
+                                var row_title = config.row_title.primeview.live.form7;
+                                var webforms = config.webforms.primeview.live.form7;
+                                var contact_form_name = config.contact_form_name.primeview.form7;
+                                var contact_form_shortcode = config.contact_form_shortcode.primeview.form7;
+
+                                console.log("form7");
+                                webforms_primeview_f7.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                                default:
+                        }
+                        break;
+                }
+                break;
+            case "randosouthwest":
+                var site_randosouthwest = req.body.site_randosouthwest;
+                var sheetId = config.sheetId.randosouthwest;
+                var ranges = config.ranges.randosouthwest;
+                var range_recipient = config.range_recipient.randosouthwest;
+                var range_thankyou_page = config.range_thankyou_page.randosouthwest;
+
+                console.log("Site: " + site_randosouthwest);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.randosouthwest.dev;
+                        var wp_creds_username = config.wp_creds.randosouthwest.username;
+                        var wp_creds_password = config.wp_creds.randosouthwest.password;
+                        var launch = config.launch.dev;
+                        var wp_menu_name = config.wp_menu_name.randosouthwest.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_randosouthwest) {
+                            case "form1":
+                                var forms = config.forms.randosouthwest.form1;
+                                var row_title = config.row_title.randosouthwest.dev.form1;
+                                var webforms = config.webforms.randosouthwest.dev.form1;
+                                var contact_form_name = config.contact_form_name.randosouthwest.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.randosouthwest.form1;
+
+                                console.log("form1");
+                                webforms_randosouthwest_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.randosouthwest.live;
+                        var wp_creds_username = config.wp_creds.randosouthwest.username;
+                        var wp_creds_password = config.wp_creds.randosouthwest.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.randosouthwest.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_randosouthwest) {
+                            case "form1":
+                                var forms = config.forms.randosouthwest.form1;
+                                var row_title = config.row_title.randosouthwest.live.form1;
+                                var webforms = config.webforms.randosouthwest.live.form1;
+                                var contact_form_name = config.contact_form_name.randosouthwest.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.randosouthwest.form1;
+
+                                console.log("form1");
+                                webforms_randosouthwest_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
             case "indinspect":
                 var site_indinspect = req.body.site_indinspect;
                 var sheetId = config.sheetId.indinspect;
@@ -1923,6 +2133,145 @@ app.post('/post/webforms', async (req, res) => {
                         break;
                 }
                 break;
+            case "phoenixritecare":
+                var site_phoenixritecare = req.body.site_phoenixritecare;
+                var sheetId = config.sheetId.phoenixritecare;
+                var ranges = config.ranges.phoenixritecare;
+                var range_recipient = config.range_recipient.phoenixritecare;
+                var range_thankyou_page = config.range_thankyou_page.phoenixritecare;
+
+                console.log("Site: " + site_phoenixritecare);
+                switch (checkbox) {
+                    // case "dev":
+                    //     var domain = config.domain.phoenixritecare.dev;
+                    //     var wp_creds_username = config.wp_creds.phoenixritecare.username;
+                    //     var wp_creds_password = config.wp_creds.phoenixritecare.password;
+                    //     var launch = config.launch.dev;
+                    //     var wp_menu_name = config.wp_menu_name.phoenixritecare.dev;
+
+                    //     console.log(domain);
+                    //     console.log("dev");
+                    //     switch (site_phoenixritecare) {
+                    //         case "form1":
+                    //             var forms = config.forms.phoenixritecare.form1;
+                    //             var row_title = config.row_title.phoenixritecare.dev.form1;
+                    //             var webforms = config.webforms.phoenixritecare.dev.form1;
+                    //             var contact_form_name = config.contact_form_name.phoenixritecare.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form1;
+
+                    //             console.log("form1");
+                    //             webforms_phoenixritecare_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                    case "live":
+                        var domain = config.domain.phoenixritecare.live;
+                        var wp_creds_username = config.wp_creds.phoenixritecare.username;
+                        var wp_creds_password = config.wp_creds.phoenixritecare.password;
+                        var launch = config.launch.live;
+                        var wp_menu_name = config.wp_menu_name.phoenixritecare.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_phoenixritecare) {
+                            case "form1":
+                                var forms = config.forms.phoenixritecare.form1;
+                                var row_title = config.row_title.phoenixritecare.live.form1;
+                                var webforms = config.webforms.phoenixritecare.live.form1;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form1;
+
+                                console.log("form1");
+                                webforms_phoenixritecare_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.phoenixritecare.form2;
+                                var row_title = config.row_title.phoenixritecare.live.form2;
+                                var webforms = config.webforms.phoenixritecare.live.form2;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form2;
+
+                                console.log("form2");
+                                webforms_phoenixritecare_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.phoenixritecare.form3;
+                                var row_title = config.row_title.phoenixritecare.live.form3;
+                                var webforms = config.webforms.phoenixritecare.live.form3;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form3;
+
+                                console.log("form3");
+                                webforms_phoenixritecare_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form4":
+                                var forms = config.forms.phoenixritecare.form4;
+                                var row_title = config.row_title.phoenixritecare.live.form4;
+                                var webforms = config.webforms.phoenixritecare.live.form4;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form4;
+
+                                console.log("form4");
+                                webforms_phoenixritecare_f4.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form5":
+                                var forms = config.forms.phoenixritecare.form5;
+                                var row_title = config.row_title.phoenixritecare.live.form5;
+                                var webforms = config.webforms.phoenixritecare.live.form5;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form5;
+
+                                console.log("form5");
+                                webforms_phoenixritecare_f5.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form6":
+                                var forms = config.forms.phoenixritecare.form6;
+                                var row_title = config.row_title.phoenixritecare.live.form6;
+                                var webforms = config.webforms.phoenixritecare.live.form6;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form6;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form6;
+
+                                console.log("form6");
+                                webforms_phoenixritecare_f6.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form7":
+                                var forms = config.forms.phoenixritecare.form7;
+                                var row_title = config.row_title.phoenixritecare.live.form7;
+                                var webforms = config.webforms.phoenixritecare.live.form7;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form7;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form7;
+
+                                console.log("form7");
+                                webforms_phoenixritecare_f7.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form8":
+                                var forms = config.forms.phoenixritecare.form8;
+                                var row_title = config.row_title.phoenixritecare.live.form8;
+                                var webforms = config.webforms.phoenixritecare.live.form8;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form8;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form8;
+
+                                console.log("form8");
+                                webforms_phoenixritecare_f8.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form9":
+                                var forms = config.forms.phoenixritecare.form9;
+                                var row_title = config.row_title.phoenixritecare.live.form9;
+                                var webforms = config.webforms.phoenixritecare.live.form9;
+                                var contact_form_name = config.contact_form_name.phoenixritecare.form9;
+                                var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form9;
+
+                                console.log("form9");
+                                webforms_phoenixritecare_f9.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
             case "sellusyourcaraz":
                 var site_sellusyourcaraz = req.body.site_sellusyourcaraz;
                 var sheetId = config.sheetId.sellusyourcaraz;
@@ -2079,6 +2428,154 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
+                }
+                break;
+            case "versatile":
+                var site_versatile = req.body.site_versatile;
+                var sheetId = config.sheetId.versatile;
+                var ranges = config.ranges.versatile;
+                var range_recipient = config.range_recipient.versatile;
+                var range_thankyou_page = config.range_thankyou_page.versatile;
+
+                console.log("Site: " + site_versatile);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.versatile.dev;
+                        var wp_creds_username = config.wp_creds.versatile.username;
+                        var wp_creds_password = config.wp_creds.versatile.password;
+                        var launch = config.launch.dev;
+                        var wp_menu_name = config.wp_menu_name.versatile.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_versatile) {
+                            case "form1":
+                                var forms = config.forms.versatile.form1;
+                                var row_title = config.row_title.versatile.dev.form1;
+                                var webforms = config.webforms.versatile.dev.form1;
+                                var contact_form_name = config.contact_form_name.versatile.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.versatile.form1;
+
+                                console.log("form1");
+                                webforms_versatile_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form2":
+                                var forms = config.forms.versatile.form2;
+                                var row_title = config.row_title.versatile.dev.form2;
+                                var webforms = config.webforms.versatile.dev.form2;
+                                var contact_form_name = config.contact_form_name.versatile.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.versatile.form2;
+
+                                console.log("form2");
+                                webforms_versatile_f2.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form3":
+                                var forms = config.forms.versatile.form3;
+                                var row_title = config.row_title.versatile.dev.form3;
+                                var webforms = config.webforms.versatile.dev.form3;
+                                var contact_form_name = config.contact_form_name.versatile.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.versatile.form3;
+
+                                console.log("form3");
+                                webforms_versatile_f3.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            case "form4":
+                                var forms = config.forms.versatile.form4;
+                                var row_title = config.row_title.versatile.dev.form4;
+                                var webforms = config.webforms.versatile.dev.form4;
+                                var contact_form_name = config.contact_form_name.versatile.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.versatile.form4;
+
+                                console.log("form4");
+                                webforms_versatile_f4.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = config.domain.versatile.live;
+                    //     var wp_creds_username = config.wp_creds.versatile.username;
+                    //     var wp_creds_password = config.wp_creds.versatile.password;
+                    //     var launch = config.launch.live;
+                    //     var wp_menu_name = config.wp_menu_name.versatile.live;
+
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_versatile) {
+                    //         case "form1":
+                    //             var forms = config.forms.versatile.form1;
+                    //             var row_title = config.row_title.versatile.live.form1;
+                    //             var webforms = config.webforms.versatile.live.form1;
+                    //             var contact_form_name = config.contact_form_name.versatile.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.versatile.form1;
+
+                    //             console.log("form1");
+                    //             webforms_versatile_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                }
+                break;
+            case "solutionsforum":
+                var site_solutionsforum = req.body.site_solutionsforum;
+                var sheetId = config.sheetId.solutionsforum;
+                var ranges = config.ranges.solutionsforum;
+                var range_recipient = config.range_recipient.solutionsforum;
+                var range_thankyou_page = config.range_thankyou_page.solutionsforum;
+
+                console.log("Site: " + site_solutionsforum);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.solutionsforum.dev;
+                        var wp_creds_username = config.wp_creds.solutionsforum.username;
+                        var wp_creds_password = config.wp_creds.solutionsforum.password;
+                        var launch = config.launch.dev;
+                        var wp_menu_name = config.wp_menu_name.solutionsforum.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_solutionsforum) {
+                            case "form1":
+                                var forms = config.forms.solutionsforum.form1;
+                                var row_title = config.row_title.solutionsforum.dev.form1;
+                                var webforms = config.webforms.solutionsforum.dev.form1;
+                                var contact_form_name = config.contact_form_name.solutionsforum.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.solutionsforum.form1;
+
+                                console.log("form1");
+                                webforms_solutionsforum_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = config.domain.solutionsforum.live;
+                    //     var wp_creds_username = config.wp_creds.solutionsforum.username;
+                    //     var wp_creds_password = config.wp_creds.solutionsforum.password;
+                    //     var launch = config.launch.live;
+                    //     var wp_menu_name = config.wp_menu_name.solutionsforum.live;
+
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_solutionsforum) {
+                    //         case "form1":
+                    //             var forms = config.forms.solutionsforum.form1;
+                    //             var row_title = config.row_title.solutionsforum.live.form1;
+                    //             var webforms = config.webforms.solutionsforum.live.form1;
+                    //             var contact_form_name = config.contact_form_name.solutionsforum.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.solutionsforum.form1;
+
+                    //             console.log("form1");
+                    //             webforms_solutionsforum_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
                 }
                 break;
             default:

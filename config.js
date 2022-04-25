@@ -25,7 +25,12 @@ const sites = [
     "freddabranyon",
     "frlawgroup",
     "primemedicalpain",
-    "sunrisejewelryusa"
+    "sunrisejewelryusa",
+    "randosouthwest",
+    "primeview",
+    "phoenixritecare",
+    "versatile",
+    "solutionsforum"
 ]
 
 let wp_creds = {
@@ -109,6 +114,26 @@ let wp_creds = {
     sunrisejewelryusa: {
         username: "pvadmin",
         password: "jX6#dN5?oR7#vU5#"
+    },
+    randosouthwest: {
+        username: "pvadmin",
+        password: "&4c^I6WjO&SfVJ3fiSCz0dRd"
+    },
+    primeview: {
+        username: "pvadmin",
+        password: "Nkp$leidilGxzKH*RcrKdPmJ"
+    },
+    phoenixritecare: {
+        username: "pvadmin",
+        password: "lGmeVv#22rTn"
+    },
+    versatile: {
+        username: "pvadmin",
+        password: "bZX(?{U<a960"
+    },
+    solutionsforum: {
+        username: "pvadmin",
+        password: "p@iWoX3pvx0r2"
     }
 }
 
@@ -192,6 +217,26 @@ let domain = {
     sunrisejewelryusa: {
         dev: "https://sunrisejewelryusa.primeview.com/",
         live: "https://www.sunrisejewelryusa.com/"
+    },
+    randosouthwest: {
+        dev: "https://randosouthwestdev.primeview.com/",
+        live: "https://www.randosouthwest.com/"
+    },
+    primeview: {
+        dev: "",
+        live: "https://www.primeview.com/"
+    },
+    phoenixritecare: {
+        dev: "",
+        live: "https://www.phoenixritecare.org/"
+    },
+    versatile: {
+        dev: "https://versatiledev.primeview.com/",
+        live: ""
+    },
+    solutionsforum: {
+        dev: "https://solutionsforum.primeview.com/",
+        live: ""
     }
 }
 
@@ -285,6 +330,38 @@ let forms = {
     },
     sunrisejewelryusa: {
         form1: "contact-us/"
+    },
+    randosouthwest: {
+        form1: ""
+    },
+    primeview: {
+        form1: "",
+        form2: "contact/",
+        form3: "contact/request-a-proposal/",
+        form4: "free-seo-quote/",
+        form5: "live-agent/",
+        form6: "blog/",
+        form7: "blog/"
+    },
+    phoenixritecare: {
+        form1: "",
+        form2: "",
+        form3: "",
+        form4: "contact-us/",
+        form5: "ritecare/",
+        form6: "ritecare/",
+        form7: "coach/",
+        form8: "driver/",
+        form9: "evaluator/"
+    },
+    versatile: {
+        form1: "contact-us/",
+        form2: "custom-tiles/",
+        form3: "about/",
+        form4: ""
+    },
+    solutionsforum: {
+        form1: "contact-us/"
     }
 }
 
@@ -308,7 +385,12 @@ let sheetId = {
     freddabranyon: 1296321677,
     frlawgroup: 273755578,
     primemedicalpain: 1077043857,
-    sunrisejewelryusa: 1432843299
+    sunrisejewelryusa: 1432843299,
+    randosouthwest: 1298381075,
+    primeview: 376138285,
+    phoenixritecare: 1351577327,
+    versatile: 1955196721,
+    solutionsforum: 1648766915
 }
 
 let range = [
@@ -552,6 +634,66 @@ let range = [
             "Sunrise Jewelry!G2",
         ]
     ],
+    sites[20] = [
+        [
+            "Rando South West!Q2",
+            "Rando South West!A2",
+            "Rando South West!B2",
+            "Rando South West!C2",
+            "Rando South West!C3",
+            "Rando South West!D2",
+            "Rando South West!E2",
+            "Rando South West!G2",
+        ]
+    ],
+    sites[21] = [
+        [
+            "Primeview!Q2",
+            "Primeview!A2",
+            "Primeview!B2",
+            "Primeview!C2",
+            "Primeview!C3",
+            "Primeview!D2",
+            "Primeview!E2",
+            "Primeview!G2",
+        ]
+    ],
+    sites[22] = [
+        [
+            "Phoenix Scottish Rite!Q2",
+            "Phoenix Scottish Rite!A2",
+            "Phoenix Scottish Rite!B2",
+            "Phoenix Scottish Rite!C2",
+            "Phoenix Scottish Rite!C3",
+            "Phoenix Scottish Rite!D2",
+            "Phoenix Scottish Rite!E2",
+            "Phoenix Scottish Rite!G2",
+        ]
+    ],
+    sites[23] = [
+        [
+            "Versatile!Q2",
+            "Versatile!A2",
+            "Versatile!B2",
+            "Versatile!C2",
+            "Versatile!C3",
+            "Versatile!D2",
+            "Versatile!E2",
+            "Versatile!G2",
+        ]
+    ],
+    sites[24] = [
+        [
+            "The Solutions Forum!Q2",
+            "The Solutions Forum!A2",
+            "The Solutions Forum!B2",
+            "The Solutions Forum!C2",
+            "The Solutions Forum!C3",
+            "The Solutions Forum!D2",
+            "The Solutions Forum!E2",
+            "The Solutions Forum!G2",
+        ]
+    ],
 ]
 
 let ranges = {
@@ -574,7 +716,12 @@ let ranges = {
     freddabranyon: range[16][0],
     frlawgroup: range[17][0],
     primemedicalpain: range[18][0],
-    sunrisejewelryusa: range[19][0]
+    sunrisejewelryusa: range[19][0],
+    randosouthwest: range[20][0],
+    primeview: range[21][0],
+    phoenixritecare: range[22][0],
+    versatile: range[23][0],
+    solutionsforum: range[24][0]
 }
 
 let launch = {
@@ -668,6 +815,38 @@ let contact_form_name = {
     },
     sunrisejewelryusa: {
         form1: "Contact Us"
+    },
+    randosouthwest: {
+        form1: "Contact Us ( Form )"
+    },
+    primeview: {
+        form1: "QUICK QUOTE (Footer)",
+        form2: "Contact Us ( Page )",
+        form3: "Free Website Quote",
+        form4: "Free SEO Quote",
+        form5: "Crankwheel Form",
+        form6: "Quote Form ( Sidebar )",
+        form7: "PDF Form"
+    },
+    phoenixritecare: {
+        form1: "Arizona Scholarship - Form",
+        form2: "National Scholarship - Form",
+        form3: "Voucher - Form",
+        form4: "Send Us a Message - Form",
+        form5: "Evaluation - Form",
+        form6: "Hearing Test - Form",
+        form7: "Coach Volunteer - Form",
+        form8: "Driver Volunteer - Form",
+        form9: "Evaluator Volunteer - Form"
+    },
+    versatile: {
+        form1: "Get In Touch With Us - Contact Us",
+        form2: "Custom Tiles Form",
+        form3: "Newsletter-Footer",
+        form4: "Get In Touch With Us"
+    },
+    solutionsforum: {
+        form1: "Contact form 1"
     }
 }
 
@@ -757,6 +936,38 @@ let contact_form_shortcode = {
     },
     sunrisejewelryusa: {
         form1: '[contact-form-7 id="2297" title="Contact Us"]'
+    },
+    randosouthwest: {
+        form1: '[contact-form-7 id="4" title="Contact Us ( Form )"]'
+    },
+    primeview: {
+        form1: '[contact-form-7 id="10415" title="QUICK QUOTE (Footer)"]',
+        form2: '[contact-form-7 id="5608" title="Contact Us ( Page )"]',
+        form3: '[contact-form-7 id="5612" title="Free Website Quote"]',
+        form4: '[contact-form-7 id="5610" title="Free SEO Quote"]',
+        form5: '[contact-form-7 id="17730" title="Crankwheel Form"]',
+        form6: '[contact-form-7 id="65" title="Quote Form ( Sidebar )"]',
+        form7: '[contact-form-7 id="5607" title="PDF Form"]'
+    },
+    phoenixritecare: {
+        form1: '[contact-form-7 id="269" title="Arizona Scholarship - Form"]',
+        form2: '[contact-form-7 id="457" title="National Scholarship - Form"]',
+        form3: '[contact-form-7 id="95" title="Voucher - Form"]',
+        form4: '[contact-form-7 id="31" title="Send us a Message - Form"]',
+        form5: '[contact-form-7 id="489" title="Evaluation - Form"]',
+        form6: '[contact-form-7 id="487" title="Hearing Test - Form"]',
+        form7: '[contact-form-7 id="461" title="Coach Volunteer - Form"]',
+        form8: '[contact-form-7 id="462" title="Driver Volunteer - Form"]',
+        form9: '[contact-form-7 id="463" title="Evaluator Volunteer - Form"]'
+    },
+    versatile: {
+        form1: '[contact-form-7 id="183" title="Get In Touch With Us - Contact Us"]',
+        form2: '[contact-form-7 id="187" title="Custom Tiles Form"]',
+        form3: '[contact-form-7 id="52" title="Newsletter - Footer"]',
+        form4: '[contact-form-7 id="12" title="Get In Touch With Us"]'
+    },
+    solutionsforum: {
+        form1: '[contact-form-7 id="5" title="Contact form 1"]'
     }
 }
 
@@ -840,6 +1051,26 @@ let wp_menu_name = {
     sunrisejewelryusa: {
         dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
+    },
+    randosouthwest: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
+        live: "return document.getElementsByClassName('wp-menu-name')[12].click()"
+    },
+    primeview: {
+        dev: "",
+        live: "return document.getElementsByClassName('wp-menu-name')[11].click()"
+    },
+    phoenixritecare: {
+        dev: "",
+        live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
+    },
+    versatile: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+        live: ""
+    },
+    solutionsforum: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+        live: ""
     }
 }
 
@@ -1048,6 +1279,66 @@ let row_title = {
         live: {
             form1: "return document.getElementsByClassName('row-title')[1].click()"
         }
+    },
+    randosouthwest: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[0].click()"
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[0].click()"
+        }
+    },
+    primeview: {
+        dev: {
+            form1: ""
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[11].click()",
+            form2: "return document.getElementsByClassName('row-title')[1].click()",
+            form3: "return document.getElementsByClassName('row-title')[8].click()",
+            form4: "return document.getElementsByClassName('row-title')[7].click()",
+            form5: "return document.getElementsByClassName('row-title')[3].click()",
+            form6: "return document.getElementsByClassName('row-title')[12].click()",
+            form7: "return document.getElementsByClassName('row-title')[10].click()"
+        }
+    },
+    phoenixritecare: {
+        dev: {
+            form1: ""
+        },
+        live: {
+            form1: "return document.getElementsByClassName('row-title')[0].click()",
+            form2: "return document.getElementsByClassName('row-title')[7].click()",
+            form3: "return document.getElementsByClassName('row-title')[9].click()",
+            form4: "return document.getElementsByClassName('row-title')[8].click()",
+            form5: "return document.getElementsByClassName('row-title')[3].click()",
+            form6: "return document.getElementsByClassName('row-title')[5].click()",
+            form7: "return document.getElementsByClassName('row-title')[1].click()",
+            form8: "return document.getElementsByClassName('row-title')[2].click()",
+            form9: "return document.getElementsByClassName('row-title')[4].click()"
+        }
+    },
+    versatile: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[1].click()",
+            form2: "return document.getElementsByClassName('row-title')[0].click()",
+            form3: "return document.getElementsByClassName('row-title')[2].click()",
+            form4: "return document.getElementsByClassName('row-title')[3].click()"
+        },
+        live: {
+            form1: "",
+            form2: "",
+            form3: "",
+            form4: "",
+        }
+    },
+    solutionsforum: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[0].click()"
+        },
+        live: {
+            form1: ""
+        }
     }
 }
 
@@ -1121,7 +1412,12 @@ let range_recipient = {
     freddabranyon: "Fredda Branyon!H2",
     frlawgroup: "FR Law Group!H2",
     primemedicalpain: "Prime Medical Pain Management Centers!H2",
-    sunrisejewelryusa: "Sunrise Jewelry!H2"
+    sunrisejewelryusa: "Sunrise Jewelry!H2",
+    randosouthwest: "Rando South West!H2",
+    primeview: "Primeview!H2",
+    phoenixritecare: "Phoenix Scottish Rite!H2",
+    versatile: "Versatile!H2",
+    solutionsforum: "The Solutions Forum!H2"
 }
 
 
@@ -1145,7 +1441,12 @@ let range_thankyou_page = {
     freddabranyon: "Fredda Branyon!I2",
     frlawgroup: "FR Law Group!I2",
     primemedicalpain: "Prime Medical Pain Management Centers!I2",
-    sunrisejewelryusa: "Sunrise Jewelry!I2"
+    sunrisejewelryusa: "Sunrise Jewelry!I2",
+    randosouthwest: "Rando South West!I2",
+    primeview: "Primeview!I2",
+    phoenixritecare: "Phoenix Scottish Rite!I2",
+    versatile: "Versatile!I2",
+    solutionsforum: "The Solutions Forum!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1374,6 +1675,80 @@ let webforms = {
         },
         live: {
             form1: "Contact Us"
+        }
+    },
+    randosouthwest: {
+        dev: {
+            form1: "Contact Us ( Form )"
+        },
+        live: {
+            form1: "Contact Us ( Form )"
+        }
+    },
+    primeview: {
+        dev: {
+            form1: "",
+            form2: "",
+            form3: "",
+            form4: "",
+            form5: "",
+            form6: "",
+            form7: ""
+        },
+        live: {
+            form1: "QUICK QUOTE (Footer)",
+            form2: "Contact Us ( Page )",
+            form3: "Free Website Quote",
+            form4: "Free SEO Quote",
+            form5: "Crankwheel Form",
+            form6: "Quote Form ( Sidebar )",
+            form7: "PDF Form"
+        }
+    },
+    phoenixritecare: {
+        dev: {
+            form1: "",
+            form2: "",
+            form3: "",
+            form4: "",
+            form5: "",
+            form6: "",
+            form7: "",
+            form8: "",
+            form9: ""
+        },
+        live: {
+            form1: "Arizona Scholarship - Form",
+            form2: "National Scholarship - Form",
+            form3: "Voucher - Form",
+            form4: "Send Us a Message - Form",
+            form5: "Evaluation - Form",
+            form6: "Hearing Test - Form",
+            form7: "Coach Volunteer - Form",
+            form8: "Driver Volunteer - Form",
+            form9: "Evaluator Volunteer - Form"
+        }
+    },
+    versatile: {
+        dev: {
+            form1: "Get In Touch With Us - Contact Us",
+            form2: "Custom Tiles Form",
+            form3: "Newsletter-Footer",
+            form4: "Get In Touch With Us"
+        },
+        live: {
+            form1: "",
+            form2: "",
+            form3: "",
+            form4: ""
+        }
+    },
+    solutionsforum: {
+        dev: {
+            form1: "Contact form 1"
+        },
+        live: {
+            form1: ""
         }
     }
 }
