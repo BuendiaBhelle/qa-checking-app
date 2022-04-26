@@ -30,7 +30,10 @@ const sites = [
     "primeview",
     "phoenixritecare",
     "versatile",
-    "solutionsforum"
+    "solutionsforum",
+    "lignans",
+    "natina",
+    "newhopemedicalcenter"
 ]
 
 let wp_creds = {
@@ -134,6 +137,18 @@ let wp_creds = {
     solutionsforum: {
         username: "pvadmin",
         password: "p@iWoX3pvx0r2"
+    },
+    lignans: {
+        username: "PrimeView",
+        password: "wV0^7*FT4NZ$VfZM"
+    },
+    natina: {
+        username: "primeview",
+        password: "pD5nE4sC8dD1"
+    },
+    newhopemedicalcenter: {
+        username: "pvadmin",
+        password: "TK#%uA8ZrvZe9Au9*@jFm%Yd"
     }
 }
 
@@ -237,6 +252,18 @@ let domain = {
     solutionsforum: {
         dev: "https://solutionsforum.primeview.com/",
         live: ""
+    },
+    lignans: {
+        dev: "https://lignansdev.primeview.com/",
+        live: ""
+    },
+    natina: {
+        dev: "https://natinadev.primeview.com/",
+        live: ""
+    },
+    newhopemedicalcenter: {
+        dev: "https://newhopemedicalcenter.primeview.com/",
+        live: "https://www.newhopemedicalcenter.com/"
     }
 }
 
@@ -362,6 +389,21 @@ let forms = {
     },
     solutionsforum: {
         form1: "contact-us/"
+    },
+    lignans: {
+        form1: "contact/"
+    },
+    natina: {
+        form1: "contact/"
+    },
+    newhopemedicalcenter: {
+        form1: "",
+        form2: "stories-of-hope/timothy-chiaruttini-patient-testimonial/",
+        form3: "new-hope-medical-ppc-layout-3/",
+        form4: "immunotherapy-treatment/",
+        form5: "liver-cancer/",
+        form6: "the-journey-to-nhu/",
+        form7: "contact-us/",
     }
 }
 
@@ -390,7 +432,10 @@ let sheetId = {
     primeview: 376138285,
     phoenixritecare: 1351577327,
     versatile: 1955196721,
-    solutionsforum: 1648766915
+    solutionsforum: 1648766915,
+    lignans: 1781929333,
+    natina: 1726917041,
+    newhopemedicalcenter: 1475574979
 }
 
 let range = [
@@ -694,6 +739,42 @@ let range = [
             "The Solutions Forum!G2",
         ]
     ],
+    sites[25] = [
+        [
+            "Lignans!Q2",
+            "Lignans!A2",
+            "Lignans!B2",
+            "Lignans!C2",
+            "Lignans!C3",
+            "Lignans!D2",
+            "Lignans!E2",
+            "Lignans!G2",
+        ]
+    ],
+    sites[26] = [
+        [
+            "Natina!Q2",
+            "Natina!A2",
+            "Natina!B2",
+            "Natina!C2",
+            "Natina!C3",
+            "Natina!D2",
+            "Natina!E2",
+            "Natina!G2",
+        ]
+    ],
+    sites[27] = [
+        [
+            "New Hope Medical Center!Q2",
+            "New Hope Medical Center!A2",
+            "New Hope Medical Center!B2",
+            "New Hope Medical Center!C2",
+            "New Hope Medical Center!C3",
+            "New Hope Medical Center!D2",
+            "New Hope Medical Center!E2",
+            "New Hope Medical Center!G2",
+        ]
+    ]
 ]
 
 let ranges = {
@@ -721,7 +802,10 @@ let ranges = {
     primeview: range[21][0],
     phoenixritecare: range[22][0],
     versatile: range[23][0],
-    solutionsforum: range[24][0]
+    solutionsforum: range[24][0],
+    lignans: range[25][0],
+    natina: range[26][0],
+    newhopemedicalcenter: range[27][0]
 }
 
 let launch = {
@@ -847,6 +931,21 @@ let contact_form_name = {
     },
     solutionsforum: {
         form1: "Contact form 1"
+    },
+    lignans: {
+        form1: "Contact Form - Basic"
+    },
+    natina: {
+        form1: "Request a quote"
+    },
+    newhopemedicalcenter: {
+        form1: "Home Page Contact",
+        form2: "Stories of Hope Form",
+        form3: "New PPC Form",
+        form4: "Immunotherapy Form",
+        form5: "Cancer Page Sidebar Form",
+        form6: "Quick Contact Sidebar Form",
+        form7: "Contact Us Page Form",
     }
 }
 
@@ -968,6 +1067,21 @@ let contact_form_shortcode = {
     },
     solutionsforum: {
         form1: '[contact-form-7 id="5" title="Contact form 1"]'
+    },
+    lignans: {
+        form1: '[contact-form-7 id="74" title="Contact Form - Basic"]'
+    },
+    natina: {
+        form1: '[contact-form-7 id="192" title="Request a quote"]'
+    },
+    newhopemedicalcenter: {
+        form1: 'gform_1',
+        form2: 'gform_2',
+        form3: 'gform_3',
+        form4: 'gform_5',
+        form5: 'gform_6',
+        form6: 'gform_7',
+        form7: 'gform_8',
     }
 }
 
@@ -1071,6 +1185,18 @@ let wp_menu_name = {
     solutionsforum: {
         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
         live: ""
+    },
+    lignans: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
+        live: ""
+    },
+    natina: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[13].click()",
+        live: ""
+    },
+    newhopemedicalcenter: {
+        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
     }
 }
 
@@ -1197,12 +1323,12 @@ let row_title = {
     },
     judefrancesjewelry: {
         dev: {
-            form1: "return document.getElementsByTagName('a')[341].click()",
-            form2: "return document.getElementsByTagName('a')[313].click()",
-            form3: "return document.getElementsByTagName('a')[327].click()",
-            form4: "return document.getElementsByTagName('a')[299].click()",
-            form5: "return document.getElementsByTagName('a')[285].click()",
-            form6: "return document.getElementsByTagName('a')[271].click()",
+            form1: "return document.getElementsByTagName('a')[365].click()",
+            form2: "return document.getElementsByTagName('a')[337].click()",
+            form3: "return document.getElementsByTagName('a')[351].click()",
+            form4: "return document.getElementsByTagName('a')[323].click()",
+            form5: "return document.getElementsByTagName('a')[309].click()",
+            form6: "return document.getElementsByTagName('a')[295].click()",
         },
         live: {
             form1: "",
@@ -1339,6 +1465,42 @@ let row_title = {
         live: {
             form1: ""
         }
+    },
+    lignans: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[1].click()"
+        },
+        live: {
+            form1: ""
+        }
+    },
+    natina: {
+        dev: {
+            form1: "return document.getElementsByClassName('row-title')[1].click()"
+        },
+        live: {
+            form1: ""
+        }
+    },
+    newhopemedicalcenter: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[355].click()",
+            form2: "return document.getElementsByTagName('a')[439].click()",
+            form3: "return document.getElementsByTagName('a')[383].click()",
+            form4: "return document.getElementsByTagName('a')[369].click()",
+            form5: "return document.getElementsByTagName('a')[313].click()",
+            form6: "return document.getElementsByTagName('a')[425].click()",
+            form7: "return document.getElementsByTagName('a')[341].click()"
+        },
+        live: {
+            form1: "return document.getElementsByTagName('a')[371].click()",
+            form2: "return document.getElementsByTagName('a')[455].click()",
+            form3: "return document.getElementsByTagName('a')[399].click()",
+            form4: "return document.getElementsByTagName('a')[385].click()",
+            form5: "return document.getElementsByTagName('a')[329].click()",
+            form6: "return document.getElementsByTagName('a')[441].click()",
+            form7: "return document.getElementsByTagName('a')[357].click()"
+        }
     }
 }
 
@@ -1346,14 +1508,34 @@ let row_title = {
 let settings_arr = {
     judefrancesjewelry: {
         dev: {
-            form1: "return document.getElementsByTagName('a')[266].click()",
-            form2: "return document.getElementsByTagName('a')[266].click()",
-            form3: "return document.getElementsByTagName('a')[266].click()",
-            form4: "return document.getElementsByTagName('a')[266].click()",
-            form5: "return document.getElementsByTagName('a')[266].click()",
-            form6: "return document.getElementsByTagName('a')[266].click()",
+            form1: "return document.getElementsByTagName('a')[289].click()",
+            form2: "return document.getElementsByTagName('a')[289].click()",
+            form3: "return document.getElementsByTagName('a')[289].click()",
+            form4: "return document.getElementsByTagName('a')[289].click()",
+            form5: "return document.getElementsByTagName('a')[289].click()",
+            form6: "return document.getElementsByTagName('a')[289].click()",
         },
         live: {
+        }
+    },
+    newhopemedicalcenter: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[309].click()",
+            form2: "return document.getElementsByTagName('a')[309].click()",
+            form3: "return document.getElementsByTagName('a')[309].click()",
+            form4: "return document.getElementsByTagName('a')[309].click()",
+            form5: "return document.getElementsByTagName('a')[309].click()",
+            form6: "return document.getElementsByTagName('a')[309].click()",
+            form7: "return document.getElementsByTagName('a')[309].click()"
+        },
+        live: {
+            form1: "return document.getElementsByTagName('a')[325].click()",
+            form2: "return document.getElementsByTagName('a')[325].click()",
+            form3: "return document.getElementsByTagName('a')[325].click()",
+            form4: "return document.getElementsByTagName('a')[325].click()",
+            form5: "return document.getElementsByTagName('a')[325].click()",
+            form6: "return document.getElementsByTagName('a')[325].click()",
+            form7: "return document.getElementsByTagName('a')[325].click()"
         }
     }
 }
@@ -1361,15 +1543,34 @@ let settings_arr = {
 let admin_notif = {
     judefrancesjewelry: {
         dev: {
-            form1: "return document.getElementsByTagName('a')[278].click()",
-            form2: "return document.getElementsByTagName('a')[278].click()",
-            form3: "return document.getElementsByTagName('a')[278].click()",
-            form4: "return document.getElementsByTagName('a')[278].click()",
-            form5: "return document.getElementsByTagName('a')[278].click()",
-            form6: "return document.getElementsByTagName('a')[278].click()"
+            form1: "return document.getElementsByTagName('a')[301].click()",
+            form2: "return document.getElementsByTagName('a')[301].click()",
+            form3: "return document.getElementsByTagName('a')[301].click()",
+            form4: "return document.getElementsByTagName('a')[301].click()",
+            form5: "return document.getElementsByTagName('a')[301].click()",
+            form6: "return document.getElementsByTagName('a')[301].click()"
         },
         live: {
-
+        }
+    },
+    newhopemedicalcenter: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[320].click()",
+            form2: "return document.getElementsByTagName('a')[320].click()",
+            form3: "return document.getElementsByTagName('a')[320].click()",
+            form4: "return document.getElementsByTagName('a')[320].click()",
+            form5: "return document.getElementsByTagName('a')[320].click()",
+            form6: "return document.getElementsByTagName('a')[320].click()",
+            form7: "return document.getElementsByTagName('a')[320].click()"
+        },
+        live: {
+            form1: "return document.getElementsByTagName('a')[336].click()",
+            form2: "return document.getElementsByTagName('a')[336].click()",
+            form3: "return document.getElementsByTagName('a')[336].click()",
+            form4: "return document.getElementsByTagName('a')[336].click()",
+            form5: "return document.getElementsByTagName('a')[336].click()",
+            form6: "return document.getElementsByTagName('a')[336].click()",
+            form7: "return document.getElementsByTagName('a')[336].click()"
         }
     }
 }
@@ -1377,15 +1578,35 @@ let admin_notif = {
 let qa_notif = {
     judefrancesjewelry: {
         dev: {
-            form1: "return document.getElementsByTagName('a')[282].click()",
-            form2: "return document.getElementsByTagName('a')[282].click()",
-            form3: "return document.getElementsByTagName('a')[282].click()",
-            form4: "return document.getElementsByTagName('a')[282].click()",
-            form5: "return document.getElementsByTagName('a')[282].click()",
-            form6: "return document.getElementsByTagName('a')[282].click()"
+            form1: "return document.getElementsByTagName('a')[305].click()",
+            form2: "return document.getElementsByTagName('a')[305].click()",
+            form3: "return document.getElementsByTagName('a')[305].click()",
+            form4: "return document.getElementsByTagName('a')[305].click()",
+            form5: "return document.getElementsByTagName('a')[305].click()",
+            form6: "return document.getElementsByTagName('a')[305].click()"
         },
         live: {
 
+        }
+    },
+    newhopemedicalcenter: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[324].click()",
+            form2: "return document.getElementsByTagName('a')[324].click()",
+            form3: "return document.getElementsByTagName('a')[324].click()",
+            form4: "return document.getElementsByTagName('a')[324].click()",
+            form5: "return document.getElementsByTagName('a')[324].click()",
+            form6: "return document.getElementsByTagName('a')[324].click()",
+            form7: "return document.getElementsByTagName('a')[324].click()"
+        },
+        live: {
+            form1: "return document.getElementsByTagName('a')[340].click()",
+            form2: "return document.getElementsByTagName('a')[340].click()",
+            form3: "return document.getElementsByTagName('a')[340].click()",
+            form4: "return document.getElementsByTagName('a')[340].click()",
+            form5: "return document.getElementsByTagName('a')[340].click()",
+            form6: "return document.getElementsByTagName('a')[340].click()",
+            form7: "return document.getElementsByTagName('a')[340].click()"
         }
     }
 }
@@ -1417,7 +1638,10 @@ let range_recipient = {
     primeview: "Primeview!H2",
     phoenixritecare: "Phoenix Scottish Rite!H2",
     versatile: "Versatile!H2",
-    solutionsforum: "The Solutions Forum!H2"
+    solutionsforum: "The Solutions Forum!H2",
+    lignans: "Lignans!H2",
+    natina: "Natina!H2",
+    newhopemedicalcenter: "New Hope Medical Center!H2"
 }
 
 
@@ -1446,7 +1670,10 @@ let range_thankyou_page = {
     primeview: "Primeview!I2",
     phoenixritecare: "Phoenix Scottish Rite!I2",
     versatile: "Versatile!I2",
-    solutionsforum: "The Solutions Forum!I2"
+    solutionsforum: "The Solutions Forum!I2",
+    lignans: "Lignans!I2",
+    natina: "Natina!I2",
+    newhopemedicalcenter: "New Hope Medical Center!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1749,6 +1976,42 @@ let webforms = {
         },
         live: {
             form1: ""
+        }
+    },
+    lignans: {
+        dev: {
+            form1: "Contact Form - Basic"
+        },
+        live: {
+            form1: ""
+        }
+    },
+    natina: {
+        dev: {
+            form1: "Request a quote"
+        },
+        live: {
+            form1: ""
+        }
+    },
+    newhopemedicalcenter: {
+        dev: {
+            form1: "Home Page Contact",
+            form2: "Stories of Hope Form",
+            form3: "New PPC Form",
+            form4: "Immunotherapy Form",
+            form5: "Cancer Page Sidebar Form",
+            form6: "Quick Contact Sidebar Form",
+            form7: "Contact Us Page Form"
+        },
+        live: {
+            form1: "Home Page Contact",
+            form2: "Stories of Hope Form",
+            form3: "New PPC Form",
+            form4: "Immunotherapy Form",
+            form5: "Cancer Page Sidebar Form",
+            form6: "Quick Contact Sidebar Form",
+            form7: "Contact Us Page Form"
         }
     }
 }

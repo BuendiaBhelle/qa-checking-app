@@ -8,10 +8,13 @@ const sheet = require('../../../middleware/gsheet.js');
 const auth = config_webforms.auth;
 const spreadsheetId = config_webforms.spreadsheetId;
 
+var googleSheets;
+var driver;
+var current_page_url;
 async function wordpressStart(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, settings_arr, admin_notif, qa_notif, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
-    const googleSheets = google.sheets({ version: "v4", auth: client });
+    googleSheets = google.sheets({ version: "v4", auth: client });
 
     let requests = [{
         insertRange: {
@@ -92,7 +95,7 @@ async function wordpressStart(date, domain, username, password, email, timestamp
         await sheet.appendValues(value);
     }
 
-    let driver = await new Builder().forBrowser("chrome").build();
+    driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get(wp_site);
 
@@ -281,9 +284,70 @@ async function wordpressStart(date, domain, username, password, email, timestamp
         await sheet.appendValues(value);
     }
 
+    current_page_url = await driver.getCurrentUrl();
+    await driver.sleep(1000);   
+
     return true;
     
 }
 
 
-module.exports = { wordpressStart };
+
+async function wordpressEnd(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, settings_arr, admin_notif, qa_notif, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms) {
+    console.log("current_page_url: " + current_page_url);
+    await driver.switchTo().newWindow('tab');
+    await driver.get(current_page_url);
+
+    // set admin notif to active
+    let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
+    console.log("admin_notif_status: " + admin_notif_status);
+
+    try {
+        if (admin_notif_status === "Inactive") {
+            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].click()");
+        }
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - set admin notif to active success.', tester: server.userId });
+        console.log("WEBFORMS - set admin notif to active success.");
+        value = [ "", "info", "set admin notif to active success", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
+        console.log(error);
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    }
+ 
+    // set qa notif to inactive
+    let qa_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].innerHTML");
+    console.log("qa_notif_status: " + qa_notif_status);
+
+    try {
+        if (qa_notif_status === "Active") {
+            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].click()");
+        }
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - set qa notif to inactive success.', tester: server.userId });
+        console.log("WEBFORMS - set qa notif to inactive success.");
+        value = [ "", "info", "set qa notif to inactive success", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+        await driver.sleep(1000);  
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: error, tester: server.userId });
+        console.log(error);
+        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+        await driver.sleep(1000);
+    }
+    // end test 
+    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
+    console.log("test ends.");
+    value = [ "", "info", "test ends.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+    await sheet.addRow();
+    await sheet.appendValues(value);
+
+    return true;
+}
+module.exports = { wordpressStart, wordpressEnd };
