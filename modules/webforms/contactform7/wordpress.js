@@ -136,7 +136,7 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
             }
         }
 
-        await driver.sleep(1000);
+        // await driver.sleep(1000);
         
         var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
         if (admin_email_verification === true) {
@@ -155,17 +155,34 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
         await sheet.appendValues(value);
     }
 
-    await driver.sleep(1000);
-    await driver.executeScript(wp_menu_name);
-    await driver.sleep(1000);
+    let wp_menu_name_length = await driver.executeScript("return document.getElementsByClassName('wp-menu-name').length");
+    for (let index = 0; index < wp_menu_name_length; index++) {
+        let contact_innerhtml = await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[" + index + "].innerHTML");
+        if (contact_innerhtml === wp_menu_name) {
+            await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[" + index + "].click()");
+            console.log(wp_menu_name);
+            // await driver.sleep(3000);
+            // let row_title_length = await driver.executeScript("return document.getElementsByClassName('row-title').length");
+            // for (let index = 0; index < row_title_length; index++) {
+            //     let contact_innerhtml = await driver.executeScript("return document.getElementsByClassName('row-title')[" + index + "].innerHTML");
+            //     if (contact_innerhtml === contact_form_name) {
+            //         await driver.executeScript("return document.getElementsByClassName('row-title')[" + index + "].click()");
+            //         console.log(contact_form_name);
+            //         await driver.findElement(By.id("ui-id-2")).click();
+            //     }
+            // }
+        }
+    }
+
     await driver.executeScript(row_title);
     await driver.sleep(1000);
     await driver.findElement(By.id("ui-id-2")).click();
     let recipients_form1 = await driver.findElement(By.id("wpcf7-mail-recipient")).getAttribute('value');
     console.log("recipients_form1: " + recipients_form1);
-
     console.log(range_recipient);
     console.log(recipients_form1);
+
+    await driver.sleep(1000);
 
     // track form recipients
     try {

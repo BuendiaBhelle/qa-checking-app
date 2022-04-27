@@ -1086,125 +1086,132 @@ let contact_form_shortcode = {
 }
 
 let wp_menu_name = {
-    accidentchiropracticaz: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
-    },
-    advancedimagemedspa: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
-    },
-    aerialengagement: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[7].click()"    
-    },
-    americanleatherusa: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
-    },
-    andresperezjurado: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[8].click()"    
-    },
-    azdoordoctor: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
-    },
-    biltmoreloanandjewelry: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[14].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[14].click()"    
-    },
-    buckeyederm: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[8].click()"    
-    },
-    canyonfallshairextensioncompany: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[6].click()"    
-    },
-    crexendo: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
-        live: ""    
-    },
-    ewingconstruction: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[6].click()"    
-    },
-    indinspect: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[4].click()"    
-    },
-    judefrancesjewelry: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
-        live: ""    
-    },
-    kyrenefamilydentistry: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[14].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[15].click()"
-    },
-    optimizex: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[8].click()"
-    },
-    sellusyourcaraz: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[11].click()"
-    },
-    freddabranyon: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
-    },
-    frlawgroup: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
-    },
-    primemedicalpain: {
-        dev: "",
-        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
-    },
-    sunrisejewelryusa: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
-    },
-    randosouthwest: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[12].click()"
-    },
-    primeview: {
-        dev: "",
-        live: "return document.getElementsByClassName('wp-menu-name')[11].click()"
-    },
-    phoenixritecare: {
-        dev: "",
-        live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
-    },
-    versatile: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: ""
-    },
-    solutionsforum: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: ""
-    },
-    lignans: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
-        live: ""
-    },
-    natina: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[13].click()",
-        live: ""
-    },
-    newhopemedicalcenter: {
-        dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
-        live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
-    }
+    contact_form_7: "Contact",
+    gravity_forms: "Form"
 }
+
+// let wp_menu_name_old = {
+//     accidentchiropracticaz: {
+//         // dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+//         dev: "Contact",
+//         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
+//     },
+//     advancedimagemedspa: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
+//     },
+//     aerialengagement: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[7].click()"    
+//     },
+//     americanleatherusa: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
+//     },
+//     andresperezjurado: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[8].click()"    
+//     },
+//     azdoordoctor: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"    
+//     },
+//     biltmoreloanandjewelry: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[14].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[14].click()"    
+//     },
+//     buckeyederm: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[8].click()"    
+//     },
+//     canyonfallshairextensioncompany: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[6].click()"    
+//     },
+//     crexendo: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
+//         live: ""    
+//     },
+//     ewingconstruction: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[6].click()"    
+//     },
+//     indinspect: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[6].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[4].click()"    
+//     },
+//     judefrancesjewelry: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
+//         live: ""    
+//     },
+//     kyrenefamilydentistry: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[14].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[15].click()"
+//     },
+//     optimizex: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[8].click()"
+//     },
+//     sellusyourcaraz: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[11].click()"
+//     },
+//     freddabranyon: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
+//     },
+//     frlawgroup: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[7].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
+//     },
+//     primemedicalpain: {
+//         dev: "",
+//         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
+//     },
+//     sunrisejewelryusa: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[9].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
+//     },
+//     randosouthwest: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[12].click()"
+//     },
+//     primeview: {
+//         dev: "",
+//         live: "return document.getElementsByClassName('wp-menu-name')[11].click()"
+//     },
+//     phoenixritecare: {
+//         dev: "",
+//         live: "return document.getElementsByClassName('wp-menu-name')[10].click()"
+//     },
+//     versatile: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+//         live: ""
+//     },
+//     solutionsforum: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+//         live: ""
+//     },
+//     lignans: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[10].click()",
+//         live: ""
+//     },
+//     natina: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[13].click()",
+//         live: ""
+//     },
+//     newhopemedicalcenter: {
+//         dev: "return document.getElementsByClassName('wp-menu-name')[8].click()",
+//         live: "return document.getElementsByClassName('wp-menu-name')[9].click()"
+//     }
+// }
 
 
 let row_title = {
     accidentchiropracticaz: {
         dev: {
             form1: "return document.getElementsByClassName('row-title')[0].click()",
+            // form1: "Schedule an Appointment - Home",
             form2: "return document.getElementsByClassName('row-title')[1].click()"
         },
         live: {

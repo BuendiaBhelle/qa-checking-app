@@ -329,6 +329,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.accidentchiropracticaz;
                 var range_recipient = config.range_recipient.accidentchiropracticaz;
                 var range_thankyou_page = config.range_thankyou_page.accidentchiropracticaz;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_accidentchiropracticaz);
                 switch (checkbox) {
@@ -337,7 +338,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.accidentchiropracticaz.username;
                         var wp_creds_password = config.wp_creds.accidentchiropracticaz.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.accidentchiropracticaz.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -371,7 +371,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.accidentchiropracticaz.username;
                         var wp_creds_password = config.wp_creds.accidentchiropracticaz.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.accidentchiropracticaz.live;
 
                         console.log(domain);
                         console.log("live");
@@ -410,6 +409,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.advancedimagemedspa;
                 var range_recipient = config.range_recipient.advancedimagemedspa;
                 var range_thankyou_page = config.range_thankyou_page.advancedimagemedspa;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_advancedimagemedspa);
                 switch (checkbox) {
@@ -418,7 +418,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.advancedimagemedspa.username;
                         var wp_creds_password = config.wp_creds.advancedimagemedspa.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.advancedimagemedspa.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -462,7 +461,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.advancedimagemedspa.username;
                         var wp_creds_password = config.wp_creds.advancedimagemedspa.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.advancedimagemedspa.live;
 
                         console.log(domain);
                         console.log("live");
@@ -511,6 +509,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.aerialengagement;
                 var range_recipient = config.range_recipient.aerialengagement;
                 var range_thankyou_page = config.range_thankyou_page.aerialengagement;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_aerialengagement);
                 switch (checkbox) {
@@ -519,7 +518,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.aerialengagement.username;
                         var wp_creds_password = config.wp_creds.aerialengagement.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.aerialengagement.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -543,7 +541,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.aerialengagement.username;
                     //     var wp_creds_password = config.wp_creds.aerialengagement.password;
                     //     var launch = config.launch.live;
-                    //     var wp_menu_name = config.wp_menu_name.aerialengagement.live;
 
                     //     console.log(domain);
                     //     console.log("live");
@@ -570,6 +567,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.americanleatherusa;
                 var range_recipient = config.range_recipient.americanleatherusa;
                 var range_thankyou_page = config.range_thankyou_page.americanleatherusa;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_americanleatherusa);
                 switch (checkbox) {
@@ -578,7 +576,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.americanleatherusa.username;
                         var wp_creds_password = config.wp_creds.americanleatherusa.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.americanleatherusa.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -602,7 +599,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.americanleatherusa.username;
                         var wp_creds_password = config.wp_creds.americanleatherusa.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.americanleatherusa.live;
 
                         console.log(domain);
                         console.log("live");
@@ -629,6 +625,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.andresperezjurado;
                 var range_recipient = config.range_recipient.andresperezjurado;
                 var range_thankyou_page = config.range_thankyou_page.andresperezjurado;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_andresperezjurado);
                 switch (checkbox) {
@@ -637,7 +634,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.andresperezjurado.username;
                         var wp_creds_password = config.wp_creds.andresperezjurado.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.andresperezjurado.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -661,7 +657,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.andresperezjurado.username;
                         var wp_creds_password = config.wp_creds.andresperezjurado.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.andresperezjurado.live;
 
                         console.log(domain);
                         console.log("live");
@@ -688,6 +683,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.azdoordoctor;
                 var range_recipient = config.range_recipient.azdoordoctor;
                 var range_thankyou_page = config.range_thankyou_page.azdoordoctor;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_azdoordoctor);
                 switch (checkbox) {
@@ -696,7 +692,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.azdoordoctor.username;
                         var wp_creds_password = config.wp_creds.azdoordoctor.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.azdoordoctor.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -740,7 +735,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.azdoordoctor.username;
                         var wp_creds_password = config.wp_creds.azdoordoctor.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.azdoordoctor.live;
 
                         console.log(domain);
                         console.log("live");
@@ -787,6 +781,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.biltmoreloanandjewelry;
                 var range_recipient = config.range_recipient.biltmoreloanandjewelry;
                 var range_thankyou_page = config.range_thankyou_page.biltmoreloanandjewelry;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_biltmoreloanandjewelry);
                 switch (checkbox) {
@@ -795,7 +790,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.biltmoreloanandjewelry.username;
                         var wp_creds_password = config.wp_creds.biltmoreloanandjewelry.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.biltmoreloanandjewelry.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -869,7 +863,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.biltmoreloanandjewelry.username;
                         var wp_creds_password = config.wp_creds.biltmoreloanandjewelry.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.biltmoreloanandjewelry.live;
 
                         console.log(domain);
                         console.log("live");
@@ -946,6 +939,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.buckeyederm;
                 var range_recipient = config.range_recipient.buckeyederm;
                 var range_thankyou_page = config.range_thankyou_page.buckeyederm;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_buckeyederm);
                 switch (checkbox) {
@@ -954,7 +948,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.buckeyederm.username;
                         var wp_creds_password = config.wp_creds.buckeyederm.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.buckeyederm.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -978,7 +971,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.buckeyederm.username;
                         var wp_creds_password = config.wp_creds.buckeyederm.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.buckeyederm.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1005,6 +997,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.canyonfallshairextensioncompany;
                 var range_recipient = config.range_recipient.canyonfallshairextensioncompany;
                 var range_thankyou_page = config.range_thankyou_page.canyonfallshairextensioncompany;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_canyonfallshairextensioncompany);
                 switch (checkbox) {
@@ -1013,7 +1006,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.canyonfallshairextensioncompany.username;
                         var wp_creds_password = config.wp_creds.canyonfallshairextensioncompany.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.canyonfallshairextensioncompany.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1047,7 +1039,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.canyonfallshairextensioncompany.username;
                         var wp_creds_password = config.wp_creds.canyonfallshairextensioncompany.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.canyonfallshairextensioncompany.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1084,6 +1075,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.crexendo;
                 var range_recipient = config.range_recipient.crexendo;
                 var range_thankyou_page = config.range_thankyou_page.crexendo;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_crexendo);
                 switch (checkbox) {
@@ -1092,7 +1084,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.crexendo.username;
                         var wp_creds_password = config.wp_creds.crexendo.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.crexendo.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1146,6 +1137,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.ewingconstruction;
                 var range_recipient = config.range_recipient.ewingconstruction;
                 var range_thankyou_page = config.range_thankyou_page.ewingconstruction;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_ewingconstruction);
                 switch (checkbox) {
@@ -1154,7 +1146,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.ewingconstruction.username;
                         var wp_creds_password = config.wp_creds.ewingconstruction.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.ewingconstruction.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1178,7 +1169,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.ewingconstruction.username;
                         var wp_creds_password = config.wp_creds.ewingconstruction.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.ewingconstruction.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1205,6 +1195,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.freddabranyon;
                 var range_recipient = config.range_recipient.freddabranyon;
                 var range_thankyou_page = config.range_thankyou_page.freddabranyon;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_freddabranyon);
                 switch (checkbox) {
@@ -1213,7 +1204,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.freddabranyon.username;
                         var wp_creds_password = config.wp_creds.freddabranyon.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.freddabranyon.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1237,7 +1227,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.freddabranyon.username;
                         var wp_creds_password = config.wp_creds.freddabranyon.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.freddabranyon.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1264,6 +1253,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.frlawgroup;
                 var range_recipient = config.range_recipient.frlawgroup;
                 var range_thankyou_page = config.range_thankyou_page.frlawgroup;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_frlawgroup);
                 switch (checkbox) {
@@ -1272,7 +1262,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.frlawgroup.username;
                         var wp_creds_password = config.wp_creds.frlawgroup.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.frlawgroup.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1316,7 +1305,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.frlawgroup.username;
                         var wp_creds_password = config.wp_creds.frlawgroup.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.frlawgroup.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1363,6 +1351,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.primemedicalpain;
                 var range_recipient = config.range_recipient.primemedicalpain;
                 var range_thankyou_page = config.range_thankyou_page.primemedicalpain;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_primemedicalpain);
                 switch (checkbox) {
@@ -1371,7 +1360,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.primemedicalpain.username;
                     //     var wp_creds_password = config.wp_creds.primemedicalpain.password;
                     //     var launch = config.launch.dev;
-                    //     var wp_menu_name = config.wp_menu_name.primemedicalpain.dev;
 
                     //     console.log(domain);
                     //     console.log("dev");
@@ -1405,7 +1393,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.primemedicalpain.username;
                         var wp_creds_password = config.wp_creds.primemedicalpain.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.primemedicalpain.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1442,6 +1429,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.primeview;
                 var range_recipient = config.range_recipient.primeview;
                 var range_thankyou_page = config.range_thankyou_page.primeview;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_primeview);
                 switch (checkbox) {
@@ -1450,7 +1438,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.primeview.username;
                     //     var wp_creds_password = config.wp_creds.primeview.password;
                     //     var launch = config.launch.dev;
-                    //     var wp_menu_name = config.wp_menu_name.primeview.dev;
 
                     //     console.log(domain);
                     //     console.log("dev");
@@ -1484,7 +1471,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.primeview.username;
                         var wp_creds_password = config.wp_creds.primeview.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.primeview.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1570,6 +1556,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.randosouthwest;
                 var range_recipient = config.range_recipient.randosouthwest;
                 var range_thankyou_page = config.range_thankyou_page.randosouthwest;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_randosouthwest);
                 switch (checkbox) {
@@ -1578,7 +1565,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.randosouthwest.username;
                         var wp_creds_password = config.wp_creds.randosouthwest.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.randosouthwest.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1602,7 +1588,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.randosouthwest.username;
                         var wp_creds_password = config.wp_creds.randosouthwest.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.randosouthwest.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1629,6 +1614,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.indinspect;
                 var range_recipient = config.range_recipient.indinspect;
                 var range_thankyou_page = config.range_thankyou_page.indinspect;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_indinspect);
                 switch (checkbox) {
@@ -1637,7 +1623,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.indinspect.username;
                         var wp_creds_password = config.wp_creds.indinspect.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.indinspect.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1671,7 +1656,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.indinspect.username;
                         var wp_creds_password = config.wp_creds.indinspect.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.indinspect.live;
 
                         console.log(domain);
                         console.log("live");
@@ -1698,6 +1682,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.judefrancesjewelry;
                 var range_recipient = config.range_recipient.judefrancesjewelry;
                 var range_thankyou_page = config.range_thankyou_page.judefrancesjewelry;
+                var wp_menu_name = config.wp_menu_name.gravity_forms;
 
                 console.log("Site: " + site_judefrancesjewelry);
                 switch (checkbox) {
@@ -1706,7 +1691,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.judefrancesjewelry.username;
                         var wp_creds_password = config.wp_creds.judefrancesjewelry.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.judefrancesjewelry.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -1970,6 +1954,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.kyrenefamilydentistry;
                 var range_recipient = config.range_recipient.kyrenefamilydentistry;
                 var range_thankyou_page = config.range_thankyou_page.kyrenefamilydentistry;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
                 
                 console.log("Site: " + site_kyrenefamilydentistry);
                 switch (checkbox) {
@@ -1978,7 +1963,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.kyrenefamilydentistry.username;
                         var wp_creds_password = config.wp_creds.kyrenefamilydentistry.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.kyrenefamilydentistry.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -2012,7 +1996,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.kyrenefamilydentistry.username;
                         var wp_creds_password = config.wp_creds.kyrenefamilydentistry.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.kyrenefamilydentistry.live;
 
                         console.log(domain);
                         console.log("live");
@@ -2049,6 +2032,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.lignans;
                 var range_recipient = config.range_recipient.lignans;
                 var range_thankyou_page = config.range_thankyou_page.lignans;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
                 
                 console.log("Site: " + site_lignans);
                 switch (checkbox) {
@@ -2057,7 +2041,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.lignans.username;
                         var wp_creds_password = config.wp_creds.lignans.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.lignans.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -2081,7 +2064,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.lignans.username;
                     //     var wp_creds_password = config.wp_creds.lignans.password;
                     //     var launch = config.launch.live;
-                    //     var wp_menu_name = config.wp_menu_name.lignans.live;
 
                     //     console.log(domain);
                     //     console.log("live");
@@ -2108,6 +2090,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.natina;
                 var range_recipient = config.range_recipient.natina;
                 var range_thankyou_page = config.range_thankyou_page.natina;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
                 
                 console.log("Site: " + site_natina);
                 switch (checkbox) {
@@ -2116,7 +2099,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.natina.username;
                         var wp_creds_password = config.wp_creds.natina.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.natina.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -2140,7 +2122,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.natina.username;
                     //     var wp_creds_password = config.wp_creds.natina.password;
                     //     var launch = config.launch.live;
-                    //     var wp_menu_name = config.wp_menu_name.natina.live;
 
                     //     console.log(domain);
                     //     console.log("live");
@@ -2167,6 +2148,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.newhopemedicalcenter;
                 var range_recipient = config.range_recipient.newhopemedicalcenter;
                 var range_thankyou_page = config.range_thankyou_page.newhopemedicalcenter;
+                var wp_menu_name = config.wp_menu_name.gravity_forms;
                 
                 console.log("Site: " + site_newhopemedicalcenter);
                 switch (checkbox) {
@@ -2175,7 +2157,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.newhopemedicalcenter.username;
                         var wp_creds_password = config.wp_creds.newhopemedicalcenter.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.newhopemedicalcenter.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -2462,7 +2443,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.newhopemedicalcenter.username;
                         var wp_creds_password = config.wp_creds.newhopemedicalcenter.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.newhopemedicalcenter.live;
 
                         console.log(domain);
                         console.log("live");
@@ -2752,6 +2732,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.optimizex;
                 var range_recipient = config.range_recipient.optimizex;
                 var range_thankyou_page = config.range_thankyou_page.optimizex;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_optimizex);
                 switch (checkbox) {
@@ -2760,7 +2741,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.optimizex.username;
                         var wp_creds_password = config.wp_creds.optimizex.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.optimizex.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -2804,7 +2784,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.optimizex.username;
                         var wp_creds_password = config.wp_creds.optimizex.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.optimizex.live;
 
                         console.log(domain);
                         console.log("live");
@@ -2851,6 +2830,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.phoenixritecare;
                 var range_recipient = config.range_recipient.phoenixritecare;
                 var range_thankyou_page = config.range_thankyou_page.phoenixritecare;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_phoenixritecare);
                 switch (checkbox) {
@@ -2859,7 +2839,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.phoenixritecare.username;
                     //     var wp_creds_password = config.wp_creds.phoenixritecare.password;
                     //     var launch = config.launch.dev;
-                    //     var wp_menu_name = config.wp_menu_name.phoenixritecare.dev;
 
                     //     console.log(domain);
                     //     console.log("dev");
@@ -2883,7 +2862,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.phoenixritecare.username;
                         var wp_creds_password = config.wp_creds.phoenixritecare.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.phoenixritecare.live;
 
                         console.log(domain);
                         console.log("live");
@@ -2990,6 +2968,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.sellusyourcaraz;
                 var range_recipient = config.range_recipient.sellusyourcaraz;
                 var range_thankyou_page = config.range_thankyou_page.sellusyourcaraz;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_sellusyourcaraz);
                 switch (checkbox) {
@@ -2998,7 +2977,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.sellusyourcaraz.username;
                         var wp_creds_password = config.wp_creds.sellusyourcaraz.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.sellusyourcaraz.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -3042,7 +3020,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.sellusyourcaraz.username;
                         var wp_creds_password = config.wp_creds.sellusyourcaraz.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.sellusyourcaraz.live;
 
                         console.log(domain);
                         console.log("live");
@@ -3089,6 +3066,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.sunrisejewelryusa;
                 var range_recipient = config.range_recipient.sunrisejewelryusa;
                 var range_thankyou_page = config.range_thankyou_page.sunrisejewelryusa;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_sunrisejewelryusa);
                 switch (checkbox) {
@@ -3097,7 +3075,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.sunrisejewelryusa.username;
                         var wp_creds_password = config.wp_creds.sunrisejewelryusa.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.sunrisejewelryusa.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -3121,7 +3098,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.sunrisejewelryusa.username;
                         var wp_creds_password = config.wp_creds.sunrisejewelryusa.password;
                         var launch = config.launch.live;
-                        var wp_menu_name = config.wp_menu_name.sunrisejewelryusa.live;
 
                         console.log(domain);
                         console.log("live");
@@ -3148,6 +3124,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.versatile;
                 var range_recipient = config.range_recipient.versatile;
                 var range_thankyou_page = config.range_thankyou_page.versatile;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_versatile);
                 switch (checkbox) {
@@ -3156,7 +3133,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.versatile.username;
                         var wp_creds_password = config.wp_creds.versatile.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.versatile.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -3210,7 +3186,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.versatile.username;
                     //     var wp_creds_password = config.wp_creds.versatile.password;
                     //     var launch = config.launch.live;
-                    //     var wp_menu_name = config.wp_menu_name.versatile.live;
 
                     //     console.log(domain);
                     //     console.log("live");
@@ -3237,6 +3212,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.solutionsforum;
                 var range_recipient = config.range_recipient.solutionsforum;
                 var range_thankyou_page = config.range_thankyou_page.solutionsforum;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
 
                 console.log("Site: " + site_solutionsforum);
                 switch (checkbox) {
@@ -3245,7 +3221,6 @@ app.post('/post/webforms', async (req, res) => {
                         var wp_creds_username = config.wp_creds.solutionsforum.username;
                         var wp_creds_password = config.wp_creds.solutionsforum.password;
                         var launch = config.launch.dev;
-                        var wp_menu_name = config.wp_menu_name.solutionsforum.dev;
 
                         console.log(domain);
                         console.log("dev");
@@ -3269,7 +3244,6 @@ app.post('/post/webforms', async (req, res) => {
                     //     var wp_creds_username = config.wp_creds.solutionsforum.username;
                     //     var wp_creds_password = config.wp_creds.solutionsforum.password;
                     //     var launch = config.launch.live;
-                    //     var wp_menu_name = config.wp_menu_name.solutionsforum.live;
 
                     //     console.log(domain);
                     //     console.log("live");
