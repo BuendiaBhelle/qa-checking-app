@@ -11,7 +11,7 @@ const spreadsheetId = config_webforms.spreadsheetId;
 var googleSheets;
 var driver;
 var current_page_url;
-async function wordpressStart(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, settings_arr, admin_notif, qa_notif, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms) {
+async function wordpressStart(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, settings_arr, admin_notif, qa_notif, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     googleSheets = google.sheets({ version: "v4", auth: client });
@@ -160,10 +160,7 @@ async function wordpressStart(date, domain, username, password, email, timestamp
     }
 
     // navigate to forms page
-    let form1 = "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1";
-    let form2 = "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2";
-
-    await driver.get(wp_site + form2);
+    await driver.get(wp_site + form_page);
     await driver.sleep(1000);
     let strong_tag_length = await driver.executeScript("return document.getElementsByTagName('strong').length");
     var recipients;
