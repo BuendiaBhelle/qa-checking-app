@@ -2027,6 +2027,24 @@ let webforms = {
 
 
 let form_page = {
+    judefrancesjewelry: {
+        dev: {
+            form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1",
+            form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2",
+            form3: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
+            form4: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=4",
+            form5: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=5",
+            form6: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=6"
+        },
+        // live: {
+        //     form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1",
+        //     form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2",
+        //     form3: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
+        //     form4: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=4",
+        //     form5: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=5",
+        //     form6: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=6"
+        // }
+    },
     newhopemedicalcenter: {
         dev: {
             form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1",

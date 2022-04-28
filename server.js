@@ -1704,6 +1704,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var webforms = config.webforms.judefrancesjewelry.dev.form1;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form1;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form1;
+                                var form_page = config.form_page.judefrancesjewelry.dev.form1;
 
                                 console.log("form1");
                                 webforms_judefrancesjewelry_f1.index(
@@ -1731,7 +1732,8 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms
+                                    webforms,
+                                    form_page
                                 );
                                 break;
                             case "form2":
@@ -1743,6 +1745,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var webforms = config.webforms.judefrancesjewelry.dev.form2;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form2;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form2;
+                                var form_page = config.form_page.judefrancesjewelry.dev.form2;
 
                                 console.log("form2");
                                 webforms_judefrancesjewelry_f2.index(
@@ -1770,7 +1773,8 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms
+                                    webforms,
+                                    form_page
                                 );
                                 break;
                             case "form3":
@@ -1782,6 +1786,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var webforms = config.webforms.judefrancesjewelry.dev.form3;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form3;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form3;
+                                var form_page = config.form_page.judefrancesjewelry.dev.form3;
 
                                 console.log("form3");
                                 webforms_judefrancesjewelry_f3.index(
@@ -1809,7 +1814,8 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms
+                                    webforms,
+                                    form_page
                                 );
                                 break;
                             case "form4":
@@ -1821,6 +1827,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var webforms = config.webforms.judefrancesjewelry.dev.form4;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form4;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form4;
+                                var form_page = config.form_page.judefrancesjewelry.dev.form4;
 
                                 console.log("form4");
                                 webforms_judefrancesjewelry_f4.index(
@@ -1848,7 +1855,8 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms
+                                    webforms,
+                                    form_page
                                 );
                                 break;
                             case "form5":
@@ -1860,6 +1868,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var webforms = config.webforms.judefrancesjewelry.dev.form5;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form5;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form5;
+                                var form_page = config.form_page.judefrancesjewelry.dev.form5;
 
                                 console.log("form5");
                                 webforms_judefrancesjewelry_f5.index(
@@ -1887,7 +1896,8 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms
+                                    webforms,
+                                    form_page
                                 );
                                 break;
                             case "form6":
@@ -1899,6 +1909,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var webforms = config.webforms.judefrancesjewelry.dev.form6;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form6;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form6;
+                                var form_page = config.form_page.judefrancesjewelry.dev.form6;
 
                                 console.log("form6");
                                 webforms_judefrancesjewelry_f6.index(
@@ -1926,7 +1937,8 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms
+                                    webforms,
+                                    form_page
                                 );
                                 break;
                             default:
