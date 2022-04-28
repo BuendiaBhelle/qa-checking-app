@@ -159,133 +159,159 @@ async function wordpressStart(date, domain, username, password, email, timestamp
         await sheet.appendValues(value);
     }
 
-    await driver.sleep(1000);
-    await driver.executeScript(wp_menu_name);
-    await driver.sleep(1000);
-    await driver.executeScript(row_title);
-    await driver.sleep(1000);
+    // navigate to forms page
+    let form1 = "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1";
+    let form2 = "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2";
 
-    // get admin notif recipient
+    await driver.get(wp_site + form2);
     await driver.sleep(1000);
-    await driver.executeScript(settings_arr);
-    await driver.sleep(1000);
-    await driver.executeScript(admin_notif);
+    let strong_tag_length = await driver.executeScript("return document.getElementsByTagName('strong').length");
+    var recipients;
 
-    let recipients_form1 = await driver.executeScript("return document.getElementById('toEmail').value");
-    console.log("recipients_form1: " + recipients_form1);
-
-    console.log(range_recipient);
-    console.log(recipients_form1);
-
-    // track form recipients
-    try {
-        await googleSheets.spreadsheets.values.append({
-            auth,
-            spreadsheetId,
-            range: range_recipient,
-            valueInputOption: "USER_ENTERED",
-            resource: {
-                values: [
-                    [recipients_form1]
-                ]
-            }
-        });
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - track form recipients success.', tester: server.userId });
-        console.log("WEBFORMS - track form recipients success.");
-        value = [ "", "info", "track form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);
-        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
+    for (let index = 0; index < strong_tag_length; index++) {
+        let notifications_innerhtml = await driver.executeScript("return document.getElementsByTagName('strong')[" + index + "].innerHTML");
+        if (notifications_innerhtml === "Admin Notification") {
+            console.log(notifications_innerhtml);
+            await driver.executeScript("return document.getElementsByTagName('strong')[" + index + "].click()");
+            recipients = await driver.executeScript("return document.getElementById('toEmail').value");
+            console.log("recipients: " + recipients);
+            await trackFormRecipients();
+        }
+        await notifBar();
+        if (notifications_innerhtml === "QA Notification") {
+            console.log(notifications_innerhtml);
+            await driver.executeScript("return document.getElementsByTagName('strong')[" + index + "].click()");
+            await changeFormRecipients();
+            await setAdminOff();
+            await setQAOn();
+            current_page_url = await driver.getCurrentUrl();
+            console.log(current_page_url);
+        }
     }
 
-    await driver.executeScript("return document.getElementsByClassName('label')[2].click()");
-    await driver.sleep(1000);
+
+    // navigate to notifications bar
+    async function notifBar() {
+        let span_label_length = await driver.executeScript("return document.getElementsByClassName('label').length");
+        for (let index = 0; index < span_label_length; index++) {
+            let notif_bar_innerhtml = await driver.executeScript("return document.getElementsByClassName('label')[" + index + "].innerText");
+            if (notif_bar_innerhtml === "Notifications") {
+                console.log(notif_bar_innerhtml);
+                await driver.executeScript("return document.getElementsByClassName('label')[" + index + "].click()");
+            }
+        }
+    }
+    
+    // track form recipients
+    async function trackFormRecipients() {
+        console.log(range_recipient);
+        try {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: range_recipient,
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [recipients]
+                    ]
+                }
+            });
+            logger.logger.log({ level: 'info', message: 'WEBFORMS - track form recipients success.', tester: server.userId });
+            console.log("WEBFORMS - track form recipients success.");
+            value = [ "", "info", "track form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);
+        } catch (error) {
+            logger.logger.log({ level: 'error', message: error, tester: server.userId });
+            console.log(error);
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);
+        }
+    }
 
     // change form recipients
-    try {
-        await driver.executeScript(qa_notif);
-        await driver.findElement(By.id("toEmail")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        if (email) {
-            await driver.findElement(By.id("toEmail")).sendKeys(email);
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
-            console.log("CHECKOUT - change qa email success.");
-            value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, "", forms + "\n" + webforms, "", "" ];
+    async function changeFormRecipients() {
+        try {
+            await driver.findElement(By.id("toEmail")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            if (email) {
+                await driver.findElement(By.id("toEmail")).sendKeys(email);
+                logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
+                console.log("CHECKOUT - change qa email success.");
+                value = [ "", "info", "change qa email success.", server.userId, timestamp, module_name, domain, "", "", email, launch, "", forms + "\n" + webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);   
+            } else {
+                await driver.findElement(By.id("toEmail")).sendKeys(qa_email);
+                logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
+                console.log("CHECKOUT - same qa email.");
+                value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, "", forms + "\n" + webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);  
+            }
+            await driver.executeScript("return document.getElementsByClassName('primary button large')[0].click()");
+            await notifBar();
+            logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
+            console.log("WEBFORMS - change form recipients success.");
+            value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
             await sheet.addRow();
-            await sheet.appendValues(value);   
-        } else {
-            await driver.findElement(By.id("toEmail")).sendKeys(qa_email);
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - change qa email success.', tester: server.userId });
-            console.log("CHECKOUT - same qa email.");
-            value = [ "", "info", "same qa email.", server.userId, timestamp, module_name, domain, "", "", qa_email, launch, "", forms + "\n" + webforms, "", "" ];
+            await sheet.appendValues(value);
+        } catch (error) {
+            logger.logger.log({ level: 'error', message: error, tester: server.userId });
+            console.log(error);
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
             await sheet.addRow();
-            await sheet.appendValues(value);  
+            await sheet.appendValues(value);
         }
-        await driver.executeScript("return document.getElementsByClassName('primary button large')[0].click()");
-        await driver.sleep(1000);
-        await driver.executeScript("return document.getElementsByClassName('label')[2].click()");
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - change form recipients success.', tester: server.userId });
-        console.log("WEBFORMS - change form recipients success.");
-        value = [ "", "info", "change form recipients success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);
-        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
     }
 
     // set form email recipients to qa's
-    let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
-    console.log("admin_notif_status: " + admin_notif_status);
-
-    // set admin notif to inactive
-    try {
-        if (admin_notif_status === "Active") {
-            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].click()");
+    async function setAdminOff() {
+        let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
+        console.log("admin_notif_status: " + admin_notif_status);
+    
+        // set admin notif to inactive
+        try {
+            if (admin_notif_status === "Active") {
+                await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].click()");
+            }
+            logger.logger.log({ level: 'info', message: 'WEBFORMS - set admin notif to inactive success.', tester: server.userId });
+            console.log("WEBFORMS - set admin notif to inactive success.");
+            value = [ "", "info", "set admin notif to inactive success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);
+        } catch (error) {
+            logger.logger.log({ level: 'error', message: error, tester: server.userId });
+            console.log(error);
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - set admin notif to inactive success.', tester: server.userId });
-        console.log("WEBFORMS - set admin notif to inactive success.");
-        value = [ "", "info", "set admin notif to inactive success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);
-        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
     }
 
-    let qa_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].innerHTML");
-    console.log("qa_notif_status: " + qa_notif_status);
-
-    // set qa notif to active
-    try {
-        if (qa_notif_status === "Inactive") {
-            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].click()");
+    async function setQAOn() {
+        let qa_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].innerHTML");
+        console.log("qa_notif_status: " + qa_notif_status);
+    
+        // set qa notif to active
+        try {
+            if (qa_notif_status === "Inactive") {
+                await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].click()");
+            }
+            logger.logger.log({ level: 'info', message: 'WEBFORMS - set qa notif to active success.', tester: server.userId });
+            console.log("WEBFORMS - set qa notif to active success.");
+            value = [ "", "info", "set qa notif to active success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);
+        } catch (error) {
+            logger.logger.log({ level: 'error', message: error, tester: server.userId });
+            console.log(error);
+            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - set qa notif to active success.', tester: server.userId });
-        console.log("WEBFORMS - set qa notif to active success.");
-        value = [ "", "info", "set qa notif to active success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);
-        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, "", forms + "\n" + webforms, "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
     }
-
-    current_page_url = await driver.getCurrentUrl();
-    await driver.sleep(1000);   
 
     return true;
     

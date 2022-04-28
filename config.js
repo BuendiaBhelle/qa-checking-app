@@ -1087,7 +1087,7 @@ let contact_form_shortcode = {
 
 let wp_menu_name = {
     contact_form_7: "Contact",
-    gravity_forms: "Form"
+    gravity_forms: "Forms1"
 }
 
 // let wp_menu_name_old = {
@@ -1527,13 +1527,13 @@ let settings_arr = {
     },
     newhopemedicalcenter: {
         dev: {
-            form1: "return document.getElementsByTagName('a')[309].click()",
-            form2: "return document.getElementsByTagName('a')[309].click()",
-            form3: "return document.getElementsByTagName('a')[309].click()",
-            form4: "return document.getElementsByTagName('a')[309].click()",
-            form5: "return document.getElementsByTagName('a')[309].click()",
-            form6: "return document.getElementsByTagName('a')[309].click()",
-            form7: "return document.getElementsByTagName('a')[309].click()"
+            form1: "return document.getElementsByTagName('a')[304].click()",
+            form2: "return document.getElementsByTagName('a')[304].click()",
+            form3: "return document.getElementsByTagName('a')[304].click()",
+            form4: "return document.getElementsByTagName('a')[304].click()",
+            form5: "return document.getElementsByTagName('a')[304].click()",
+            form6: "return document.getElementsByTagName('a')[304].click()",
+            form7: "return document.getElementsByTagName('a')[304].click()"
         },
         live: {
             form1: "return document.getElementsByTagName('a')[325].click()",
@@ -1562,7 +1562,8 @@ let admin_notif = {
     },
     newhopemedicalcenter: {
         dev: {
-            form1: "return document.getElementsByTagName('a')[320].click()",
+            // form1: "return document.getElementsByTagName('a')[320].click()",
+            form1: "Admin Notification",
             form2: "return document.getElementsByTagName('a')[320].click()",
             form3: "return document.getElementsByTagName('a')[320].click()",
             form4: "return document.getElementsByTagName('a')[320].click()",
@@ -1598,7 +1599,8 @@ let qa_notif = {
     },
     newhopemedicalcenter: {
         dev: {
-            form1: "return document.getElementsByTagName('a')[324].click()",
+            // form1: "return document.getElementsByTagName('a')[324].click()",
+            form1: "QA Notification",
             form2: "return document.getElementsByTagName('a')[324].click()",
             form3: "return document.getElementsByTagName('a')[324].click()",
             form4: "return document.getElementsByTagName('a')[324].click()",
@@ -2023,6 +2025,31 @@ let webforms = {
     }
 }
 
+
+let form_page = {
+    newhopemedicalcenter: {
+        dev: {
+            form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1",
+            form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2",
+            form3: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
+            form4: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=5",
+            form5: "",
+            form6: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=7",
+            form7: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=8"
+        },
+        live: {
+            form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1",
+            form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2",
+            form3: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
+            form4: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=5",
+            form5: "",
+            form6: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=7",
+            form7: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=8"
+        }
+    }
+}
+
+
 // responsiveness
 const lambdatest_site = "https://app.lambdatest.com/console/realtime";
 
@@ -2143,6 +2170,7 @@ module.exports = {
     contact_form_name,
     contact_form_shortcode,
     webforms,
+    form_page,
     lambdatest_site, 
     creds_lambdatest, 
     devices,
