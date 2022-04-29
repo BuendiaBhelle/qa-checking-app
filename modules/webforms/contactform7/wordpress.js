@@ -11,7 +11,7 @@ const spreadsheetId = config_webforms.spreadsheetId;
 var googleSheets;
 var driver;
 var current_page_url;
-async function wordpressStart(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms) {
+async function wordpressStart(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     googleSheets = google.sheets({ version: "v4", auth: client });
@@ -155,11 +155,17 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
         await sheet.appendValues(value);
     }
 
-    await driver.sleep(1000);
-    await driver.findElement(By.className("dashicons-email")).click();
-    await driver.sleep(1000);
-    await driver.executeScript(row_title);
-    await driver.sleep(1000);
+    // navigate to forms page
+    await driver.get(wp_site + form_page);
+
+
+    // await driver.sleep(1000);
+    // await driver.findElement(By.className("dashicons-email")).click();
+    // await driver.sleep(1000);
+    // await driver.executeScript(row_title);
+    // await driver.sleep(1000);
+
+    
     await driver.findElement(By.id("ui-id-2")).click();
     let recipients = await driver.findElement(By.id("wpcf7-mail-recipient")).getAttribute('value');
     console.log("recipients: " + recipients);
