@@ -92,7 +92,6 @@ const webforms_versatile_f2 = require("./modules/webforms/contactform7/forms/ver
 const webforms_versatile_f3 = require("./modules/webforms/contactform7/forms/versatile/form3/index");
 const webforms_versatile_f4 = require("./modules/webforms/contactform7/forms/versatile/form4/index");
 const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/forms/solutionsforum/form1/index");
-
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
@@ -145,7 +144,6 @@ app.post('/login', async (req, res) => {
     const usernameData = [
         "mbuendia@optimizex.com",
         "jmagnaye@optimizex.com",
-        "ragulto@optimizex.com",
         "jaguilar@optimizex.com"
     ]
     session=req.session;
@@ -161,14 +159,14 @@ app.post('/login', async (req, res) => {
                 res.redirect("/post");
                 logger.logger.log({ level: 'info', message: 'login success.', tester: this.userId });
                 console.log("login success.");
-                let value = [ "", "info", "login success.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+                let value = [ "", "", "info", "login success.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
                 res.send('Login failed.');
                 logger.logger.log({ level: 'error', message: 'login failed.', tester: this.userId });
                 console.log("login failed.");
-                let value = [ "", "error", "login failed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+                let value = [ "", "", "error", "login failed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
@@ -176,7 +174,7 @@ app.post('/login', async (req, res) => {
             res.send('User is not allowed.');
             logger.logger.log({ level: 'error', message: 'user is not allowed.', tester: this.userId });
             console.log("user is not allowed.");
-            let value = [ "", "error", "user is not allowed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+            let value = [ "", "", "error", "user is not allowed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -184,7 +182,7 @@ app.post('/login', async (req, res) => {
         res.status(500).send();
         logger.logger.log({ level: 'error', message: error, tester: this.userId });
         console.log(error);
-        let value = [ "", "error", JSON.stringify(error), this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+        let value = [ "", "", "error", JSON.stringify(error), this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
@@ -201,7 +199,7 @@ app.get('/logout', async (req,res) => {
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'logout failed.', tester: this.userId });
         console.log("logout failed.");
-        let value = [ "", "logout failed.", JSON.stringify(error), this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+        let value = [ "", "", "logout failed.", JSON.stringify(error), this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }

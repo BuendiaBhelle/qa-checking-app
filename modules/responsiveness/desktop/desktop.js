@@ -14,7 +14,7 @@ async function desktop(module_name, url, email, password, timestamp, lt_email, l
                 await driver.findElement(By.id("password")).sendKeys(password);
                 logger.logger.log({ level: 'info', message: 'RESPONSIVENESS - edit credentials success.', tester: server.userId });
                 console.log("RESPONSIVENESS - edit credentials success.");
-                value = [ "", "info", "edit credentials success.", server.userId, timestamp, module_name, url, "", email + "\n" + password, "", "", "", "", devices, versions ];
+                value = [ "", "", "info", "edit credentials success.", server.userId, timestamp, module_name, url, "", email + "\n" + password, "", "", "", "", devices, versions ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
@@ -28,20 +28,20 @@ async function desktop(module_name, url, email, password, timestamp, lt_email, l
             if (error_msg1 || error_msg2) {
                 logger.logger.log({ level: 'error', message: 'RESPONSIVENESS - lambdatest login failed.', tester: server.userId });
                 console.log("RESPONSIVENESS - lambdatest login failed.");
-                value = [ "", "error", "lambdatest login failed.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
+                value = [ "", "", "error", "lambdatest login failed.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
                 logger.logger.log({ level: 'info', message: 'RESPONSIVENESS - lambdatest login success.', tester: server.userId });
                 console.log("RESPONSIVENESS - lambdatest login success.");
-                value = [ "", "info", "lambdatest login success.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
+                value = [ "", "", "info", "lambdatest login success.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
         } catch (error) {
             logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
-            value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
+            value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
@@ -54,14 +54,14 @@ async function desktop(module_name, url, email, password, timestamp, lt_email, l
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
-        value = [ "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
+        value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
     // end test
     logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
     console.log("test ends.");
-    value = [ "", "info", "test ends.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
+    value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", devices, versions ];
     await sheet.addRow();
     await sheet.appendValues(value);
 }

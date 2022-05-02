@@ -52,6 +52,7 @@ async function appendValues(value) {
 
     let ranges = [
         "Logs!O2",
+        "Logs!P2",
         "Logs!A2",
         "Logs!B2",
         "Logs!C2",
