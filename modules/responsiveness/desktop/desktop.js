@@ -47,10 +47,18 @@ async function desktop(module_name, url, email, password, timestamp, lt_email, l
         }
         await driver.findElement(By.id("input-text")).sendKeys(url);
         await driver.sleep(1000);
-        // await driver.executeScript("return document.getElementsByTagName('li')[116].click()");
-        await driver.executeScript(device_desktop);
-        await driver.sleep(1000);
-        await driver.findElement(By.className("btn-start")).click();
+
+        let os_length = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-os')[0].children.length");
+        for (let index = 0; index < os_length; index++) {
+            let os_innerhtml = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-os')[0].children[" + index + "].innerText");
+            console.log(os_innerhtml);
+            if (os_innerhtml === device_desktop) {
+                console.log("os_innerhtml: " + os_innerhtml);
+                console.log("device_desktop: " + device_desktop);
+                await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-os')[0].children[" + index + "].click()");
+                await driver.findElement(By.className("btn-start")).click();
+            }
+        }
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);

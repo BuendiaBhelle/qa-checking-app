@@ -4,7 +4,7 @@ const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
 
 
-async function tablet(version_tablet, module_name, url, email, password, timestamp, lt_email, lt_password, lambdatest_site, devices, versions, brand, device_tablet) {
+async function tablet(version_tablet, module_name, url, email, password, timestamp, lt_email, lt_password, lambdatest_site, devices, versions, brand, device_tablet, os_tablet, brand_tablet, deviceOrOS_tablet) {
     let driver = await new Builder().forBrowser("chrome").build();
     try {
         await driver.get(lambdatest_site);
@@ -51,16 +51,70 @@ async function tablet(version_tablet, module_name, url, email, password, timesta
             await sheet.appendValues(value);
         }
         await driver.findElement(By.id("input-text")).sendKeys(url);
-        await driver.executeScript("return document.getElementsByClassName('img-responsive center-block')[1].click()");
         await driver.sleep(1000);
-        await driver.executeScript(brand);
-        await driver.sleep(1000);
-        if (version_tablet === "version1") {
-            await driver.executeScript("return document.getElementsByTagName('li')[140].click()");
-        }        
-        await driver.executeScript(device_tablet);
-        await driver.sleep(1000);
-        await driver.findElement(By.className("btn-start")).click();
+        await driver.executeScript("return document.getElementsByTagName('li').android.click()");
+        if (os_tablet === "Android") {
+            console.log("Android");
+            let brand_length = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[4].children.length");
+            for (let j = 0; j < brand_length; j++) {
+                let os_classname_android = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[4].children[" + j + "].innerText");
+                if (os_classname_android === brand_tablet) {
+                    console.log("os_classname_android: " + os_classname_android);
+                    console.log("brand_tablet: " + brand_tablet);
+                    await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[4].children[" + j + "].click()");
+                }
+            }
+            let device_length = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[5].children.length");
+            for (let k = 0; k < device_length; k++) {
+                let brand_classname = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[5].children[" + k + "].innerText");
+                if (brand_classname === deviceOrOS_tablet) {
+                    console.log("deviceOrOS_tablet: " + deviceOrOS_tablet);
+                    await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[5].children[" + k + "].click()");
+                    await driver.findElement(By.className("btn-start")).click();
+                }
+            }
+        }
+        else if (os_tablet === "IOS") {
+            console.log("IOS");
+            let os_length = await driver.executeScript("return document.getElementsByClassName('fa fa-apple').length");
+            for (let i = 0; i < os_length; i++) {
+                let os_classname_ios = await driver.executeScript("return document.getElementsByClassName('fa fa-apple')[" + i + "].classList.value");
+                if (os_classname_ios === "fa fa-apple") {
+                    await driver.executeScript("return document.getElementsByClassName('fa fa-apple')[" + i + "].click()");
+                    let device_type_tablet_length = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[0].children.length");
+                    for (let m = 0; m < device_type_tablet_length; m++) {
+                        let device_type_tablet_innertext = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[0].children[" + m + "].innerText");
+                        if (device_type_tablet_innertext === brand_tablet) {
+                            console.log("brand_tablet: " + brand_tablet);
+                            await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[0].children[" + m + "].click()");
+                        }
+                        
+                    }
+                    let device_tablet_length = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[1].children.length");
+                    for (let l = 0; l < device_tablet_length; l++) {
+                        let device_tablet_innertext = await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[1].children[" + l + "].innerText");
+                        if (device_tablet_innertext === deviceOrOS_tablet) {
+                            console.log("deviceOrOS_tablet: " + deviceOrOS_tablet);
+                            await driver.executeScript("return document.getElementsByClassName('list-unstyled real-browser-test__list-device mobile_device_list')[1].children[" + l + "].click()");
+                            await driver.findElement(By.className("btn-start")).click();
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        // await driver.executeScript("return document.getElementsByClassName('img-responsive center-block')[1].click()");
+        // await driver.sleep(1000);
+        // await driver.executeScript(brand);
+        // await driver.sleep(1000);
+        // if (version_tablet === "version1") {
+        //     await driver.executeScript("return document.getElementsByTagName('li')[140].click()");
+        // }        
+        // await driver.executeScript(device_tablet);
+        // await driver.sleep(1000);
+        // await driver.findElement(By.className("btn-start")).click();
     } catch (error) {
         logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);

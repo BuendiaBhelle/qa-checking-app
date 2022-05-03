@@ -3519,6 +3519,9 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                         var versions = config.versions.mobile.version1;
                         var brand = config.brand.mobile.samsung;
                         var device_mobile = config.device_mobile.samsung_galaxy_m30s;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.samsung;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.samsung_galaxy_m30s;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3532,13 +3535,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version2":
                         var versions = config.versions.mobile.version2;
                         var brand = config.brand.mobile.google;
                         var device_mobile = config.device_mobile.google_pixel_5_5g;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.google;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.google_pixel_5_5g;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3552,13 +3561,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version3":
                         var versions = config.versions.mobile.version3;
                         var brand = config.brand.mobile.one_plus;
                         var device_mobile = config.device_mobile.one_plus_9;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.oneplus;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.one_plus_9;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3572,13 +3587,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version4":
                         var versions = config.versions.mobile.version4;
                         var brand = config.brand.mobile.xiaomi;
                         var device_mobile = config.device_mobile.xiaomi_mi_11;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.xiaomi;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.xiaomi_mi_11;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3592,13 +3613,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version5":
                         var versions = config.versions.mobile.version5;
                         var brand = config.brand.mobile.real_me;
                         var device_mobile = config.device_mobile.real_me_5;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.realme;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.real_me_5;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3612,13 +3639,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version6":
                         var versions = config.versions.mobile.version6;
                         var brand = config.brand.mobile.huawei;
                         var device_mobile = config.device_mobile.huawei_p30_pro;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.huawei;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.huawei_p30_pro;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3632,13 +3665,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version7":
                         var versions = config.versions.mobile.version7;
                         var brand = config.brand.mobile.sony;
                         var device_mobile = config.device_mobile.sony_xperia_xz2;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.sony;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.sony_xperia_xz2;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3652,13 +3691,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version8":
                         var versions = config.versions.mobile.version8;
                         var brand = config.brand.mobile.motorola;
                         var device_mobile = config.device_mobile.moto_g6;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.motorola;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.moto_g6;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3672,13 +3717,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version9":
                         var versions = config.versions.mobile.version9;
                         var brand = config.brand.mobile.lg;
                         var device_mobile = config.device_mobile.lg_g6;
+                        var os_mobile = config.os_mobile.android;
+                        var brand_mobile = config.brand_mobile.lg;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.lg_g6;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3692,13 +3743,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version10":
                         var versions = config.versions.mobile.version10;
                         var brand = config.brand.mobile.iphone;
                         var device_mobile = config.device_mobile.iphone_13_pro_max;
+                        var os_mobile = config.os_mobile.ios;
+                        var brand_mobile = config.brand_mobile.iphone;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.iphone_13_pro_max;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3712,13 +3769,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version11":
                         var versions = config.versions.mobile.version11;
                         var brand = config.brand.mobile.iphone;
                         var device_mobile = config.device_mobile.iphone_13_pro;
+                        var os_mobile = config.os_mobile.ios;
+                        var brand_mobile = config.brand_mobile.iphone;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.iphone_13_pro;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3732,13 +3795,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version12":
                         var versions = config.versions.mobile.version12;
                         var brand = config.brand.mobile.iphone;
                         var device_mobile = config.device_mobile.iphone_13;
+                        var os_mobile = config.os_mobile.ios;
+                        var brand_mobile = config.brand_mobile.iphone;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.iphone_13;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3752,13 +3821,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version13":
                         var versions = config.versions.mobile.version13;
                         var brand = config.brand.mobile.iphone;
                         var device_mobile = config.device_mobile.iphone_12_pro_max;
+                        var os_mobile = config.os_mobile.ios;
+                        var brand_mobile = config.brand_mobile.iphone;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.iphone_12_pro_max;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3772,13 +3847,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version14":
                         var versions = config.versions.mobile.version14;
                         var brand = config.brand.mobile.iphone;
                         var device_mobile = config.device_mobile.iphone_11_pro_max;
+                        var os_mobile = config.os_mobile.ios;
+                        var brand_mobile = config.brand_mobile.iphone;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.iphone_11_pro_max;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3792,13 +3873,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     case "version15":
                         var versions = config.versions.mobile.version15;
                         var brand = config.brand.mobile.iphone;
                         var device_mobile = config.device_mobile.iphone_x;
+                        var os_mobile = config.os_mobile.ios;
+                        var brand_mobile = config.brand_mobile.iphone;
+                        var deviceOrOS_mobile = config.deviceOrOS_mobile.iphone_x;
 
                         responsiveness_mobile.mobile(
                             module_name,
@@ -3812,7 +3899,10 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_mobile
+                            device_mobile,
+                            os_mobile,
+                            brand_mobile,
+                            deviceOrOS_mobile
                         );
                         break;
                     default:
@@ -3829,6 +3919,9 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                         var versions = config.versions.tablet.version1;
                         var brand = config.brand.tablet.ios;
                         var device_tablet = config.device_tablet.ipad_air_4th_gen;
+                        var os_tablet = config.os_tablet.ios;
+                        var brand_tablet = config.brand_tablet.ipad;
+                        var deviceOrOS_tablet = config.deviceOrOS_tablet.ipad_air_4th_gen;
 
                         responsiveness_tablet.tablet(
                             version_tablet,
@@ -3843,13 +3936,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_tablet
+                            device_tablet,
+                            os_tablet,
+                            brand_tablet,
+                            deviceOrOS_tablet
                         );
                         break;
                     case "version2":
                         var versions = config.versions.tablet.version2;
                         var brand = config.brand.mobile.samsung;
                         var device_tablet = config.device_tablet.galaxy_tab_s7_plus;
+                        var os_tablet = config.os_tablet.android;
+                        var brand_tablet = config.brand_tablet.samsung;
+                        var deviceOrOS_tablet = config.deviceOrOS_tablet.galaxy_tab_s7_plus;
 
                         responsiveness_tablet.tablet(
                             version_tablet,
@@ -3864,13 +3963,19 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_tablet
+                            device_tablet,
+                            os_tablet,
+                            brand_tablet,
+                            deviceOrOS_tablet
                         );
                         break;
                     case "version3":
                         var versions = config.versions.tablet.version3;
                         var brand = config.brand.mobile.samsung;
                         var device_tablet = config.device_tablet.galaxy_tab_s6;
+                        var os_tablet = config.os_tablet.android;
+                        var brand_tablet = config.brand_tablet.samsung;
+                        var deviceOrOS_tablet = config.deviceOrOS_tablet.galaxy_tab_s6;
 
                         responsiveness_tablet.tablet(
                             version_tablet,
@@ -3885,7 +3990,10 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
                             devices,
                             versions,
                             brand,
-                            device_tablet
+                            device_tablet,
+                            os_tablet,
+                            brand_tablet,
+                            deviceOrOS_tablet
                         );
                         break;
                     default:

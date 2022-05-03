@@ -2398,13 +2398,79 @@ let versions = {
 }
 
 let device_desktop = {
-    windows_11: "return document.getElementsByTagName('li')[113].click()",
-    windows_8: "return document.getElementsByTagName('li')[116].click()",
-    windows_7: "return document.getElementsByTagName('li')[117].click()",
-    macos_sierra: "return document.getElementsByTagName('li')[123].click()"
+    // windows_11: "return document.getElementsByTagName('li')[113].click()",
+    // windows_8: "return document.getElementsByTagName('li')[116].click()",
+    // windows_7: "return document.getElementsByTagName('li')[117].click()",
+    // macos_sierra: "return document.getElementsByTagName('li')[123].click()"
+    windows_11: " Windows 11",
+    windows_8: " Windows 8",
+    windows_7: " Windows 7",
+    macos_sierra: " macOS Sierra"
 }
 
 // mobile
+let os_mobile = {
+    android: "Android",
+    ios: "IOS"
+}
+
+let brand_mobile = {
+    samsung: "Samsung",
+    google: "Google",
+    oneplus: "OnePlus",
+    microsoft: "Microsoft",
+    xiaomi: "Xiaomi",
+    realme: "Realme",
+    huawei: "Huawei",
+    sony: "Sony",
+    motorola: "Motorola",
+    lg: "LG",
+    htc: "HTC",
+    oppo: "Oppo",
+    gionee: "Gionee",
+    amazon: "Amazon",
+    vivo: "Vivo",
+    zebra: "Zebra",
+    iphone: "iPhone"
+}
+
+let deviceOrOS_mobile = {
+    samsung_galaxy_m30s: " Galaxy M30s\n12.0",
+    google_pixel_5_5g: " Google Pixel 5 - 5G\n12.0",
+    one_plus_9: " OnePlus 9 Pro\n12.0",
+    xiaomi_mi_11: " Xiaomi Mi 11 Pro\n11.0",
+    real_me_5: " Realme 5\n10.0",
+    huawei_p30_pro: " Huawei P30 Pro\n9.0",
+    sony_xperia_xz2: " Sony Xperia xz2\n8.0",
+    moto_g6: " Moto G6\n9.0",
+    lg_g6: " LG G6\n8.0",
+    iphone_13_pro_max: " iPhone 13 Pro Max",
+    iphone_13_pro: " iPhone 13 Pro",
+    iphone_13: " iPhone 13",
+    iphone_12_pro_max: " iPhone 12 Pro Max",
+    iphone_11_pro_max: " iPhone 11 Pro Max",
+    iphone_x: " iPhone X"
+}
+
+
+// tablet
+let os_tablet = {
+    android: "Android",
+    ios: "IOS"
+}
+
+let brand_tablet = {
+    samsung: "Samsung",
+    ipad: "iPad"
+}
+
+let deviceOrOS_tablet = {
+    ipad_air_4th_gen: " iPad Air (4th generation)",
+    galaxy_tab_s7_plus: " Galaxy Tab S7 Plus\n11.0",
+    galaxy_tab_s6: " Galaxy Tab S6\n9.0"
+}
+
+
 let brand = {
     mobile : {
         samsung: "return document.getElementsByTagName('li')[202].click()",
@@ -2480,6 +2546,12 @@ module.exports = {
     device_desktop,
     brand,
     device_mobile,
-    device_tablet
+    device_tablet,
+    os_mobile,
+    brand_mobile,
+    deviceOrOS_mobile,
+    os_tablet,
+    brand_tablet,
+    deviceOrOS_tablet
 };
 
