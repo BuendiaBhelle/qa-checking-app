@@ -37,6 +37,7 @@ const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/
 const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form2/index");
 const webforms_crexendo_f1 = require("./modules/webforms/contactform7/forms/crexendo/form1/index");
 const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crexendo/form2/index");
+const webforms_culpepper_f1 = require("./modules/webforms/ninjaform/forms/culpepper/form1/index");
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
 const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms/freddabranyon/form1/index");
 const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
@@ -1166,6 +1167,66 @@ app.post('/post/webforms', async (req, res) => {
                     //             break;
                     //     }
                     //     break;
+                }
+                break;
+            case "culpepper":
+                var site_culpepper = req.body.site_culpepper;
+                var sheetId = config.sheetId.culpepper;
+                var ranges = config.ranges.culpepper;
+                var range_recipient = config.range_recipient.culpepper;
+                var range_thankyou_page = config.range_thankyou_page.culpepper;
+                var wp_menu_name = config.wp_menu_name.contact_form_7;
+
+                console.log("Site: " + site_culpepper);
+                switch (checkbox) {
+                    // case "dev":
+                    //     var domain = config.domain.culpepper.dev;
+                    //     var wp_creds_username = config.wp_creds.culpepper.username;
+                    //     var wp_creds_password = config.wp_creds.culpepper.password;
+                    //     var launch = config.launch.dev;
+
+                    //     console.log(domain);
+                    //     console.log("dev");
+                    //     switch (site_culpepper) {
+                    //         case "form1":
+                    //             var forms = config.forms.culpepper.form1;
+                    //             var row_title = config.row_title.culpepper.dev.form1;
+                    //             var webforms = config.webforms.culpepper.dev.form1;
+                    //             var contact_form_name = config.contact_form_name.culpepper.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.culpepper.form1;
+                    //             var form_page = config.form_page.culpepper.dev.form1;
+
+                    //             console.log("form1");
+                    //             webforms_culpepper_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                    case "live":
+                        var domain = config.domain.culpepper.live;
+                        var wp_creds_username = config.wp_creds.culpepper.username;
+                        var wp_creds_password = config.wp_creds.culpepper.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_culpepper) {
+                            case "form1":
+                                var forms = config.forms.culpepper.form1;
+                                var row_title = config.row_title.culpepper.live.form1;
+                                var webforms = config.webforms.culpepper.live.form1;
+                                var contact_form_name = config.contact_form_name.culpepper.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.culpepper.form1;
+                                var form_page = config.form_page.culpepper.live.form1;
+
+                                console.log("form1");
+                                webforms_culpepper_f1.index(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "ewingconstruction":

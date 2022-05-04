@@ -33,7 +33,8 @@ const sites = [
     "solutionsforum",
     "lignans",
     "natina",
-    "newhopemedicalcenter"
+    "newhopemedicalcenter",
+    "culpepper"
 ]
 
 let wp_creds = {
@@ -149,6 +150,10 @@ let wp_creds = {
     newhopemedicalcenter: {
         username: "pvadmin",
         password: "TK#%uA8ZrvZe9Au9*@jFm%Yd"
+    },
+    culpepper: {
+        username: "Culpepper",
+        password: "1Elizab3th"
     }
 }
 
@@ -264,6 +269,10 @@ let domain = {
     newhopemedicalcenter: {
         dev: "https://newhopemedicalcenter.primeview.com/",
         live: "https://www.newhopemedicalcenter.com/"
+    },
+    culpepper: {
+        dev: "https://chrisassoc.primeview.com/",
+        live: "https://www.culpepper-associates.com/"
     }
 }
 
@@ -404,6 +413,9 @@ let forms = {
         form5: "liver-cancer/",
         form6: "the-journey-to-nhu/",
         form7: "contact-us/",
+    },
+    culpepper: {
+        form1: "contact/"
     }
 }
 
@@ -435,7 +447,8 @@ let sheetId = {
     solutionsforum: 1648766915,
     lignans: 1781929333,
     natina: 1726917041,
-    newhopemedicalcenter: 1475574979
+    newhopemedicalcenter: 1475574979,
+    culpepper: 1784007282
 }
 
 let range = [
@@ -774,6 +787,18 @@ let range = [
             "New Hope Medical Center!E2",
             "New Hope Medical Center!G2",
         ]
+    ],
+    sites[28] = [
+        [
+            "Culpepper & Associates!Q2",
+            "Culpepper & Associates!A2",
+            "Culpepper & Associates!B2",
+            "Culpepper & Associates!C2",
+            "Culpepper & Associates!C3",
+            "Culpepper & Associates!D2",
+            "Culpepper & Associates!E2",
+            "Culpepper & Associates!G2",
+        ]
     ]
 ]
 
@@ -805,7 +830,8 @@ let ranges = {
     solutionsforum: range[24][0],
     lignans: range[25][0],
     natina: range[26][0],
-    newhopemedicalcenter: range[27][0]
+    newhopemedicalcenter: range[27][0],
+    culpepper: range[28][0]
 }
 
 let launch = {
@@ -946,6 +972,9 @@ let contact_form_name = {
         form5: "Cancer Page Sidebar Form",
         form6: "Quick Contact Sidebar Form",
         form7: "Contact Us Page Form",
+    },
+    culpepper: {
+        form1: "Contact Form"
     }
 }
 
@@ -1082,6 +1111,9 @@ let contact_form_shortcode = {
         form5: 'gform_6',
         form6: 'gform_7',
         form7: 'gform_8',
+    },
+    culpepper: {
+        form1: '[ninja_form id=1]'
     }
 }
 
@@ -1508,6 +1540,14 @@ let row_title = {
             form6: "return document.getElementsByTagName('a')[441].click()",
             form7: "return document.getElementsByTagName('a')[357].click()"
         }
+    },
+    culpepper: {
+        dev: {
+            form1: "return document.getElementsByTagName('a')[355].click()"
+        },
+        live: {
+            form1: "return document.getElementsByTagName('a')[371].click()"
+        }
     }
 }
 
@@ -1650,7 +1690,8 @@ let range_recipient = {
     solutionsforum: "The Solutions Forum!H2",
     lignans: "Lignans!H2",
     natina: "Natina!H2",
-    newhopemedicalcenter: "New Hope Medical Center!H2"
+    newhopemedicalcenter: "New Hope Medical Center!H2",
+    culpepper: "Culpepper & Associates!H2"
 }
 
 
@@ -1682,7 +1723,8 @@ let range_thankyou_page = {
     solutionsforum: "The Solutions Forum!I2",
     lignans: "Lignans!I2",
     natina: "Natina!I2",
-    newhopemedicalcenter: "New Hope Medical Center!I2"
+    newhopemedicalcenter: "New Hope Medical Center!I2",
+    culpepper: "Culpepper & Associates!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -2022,6 +2064,14 @@ let webforms = {
             form6: "Quick Contact Sidebar Form",
             form7: "Contact Us Page Form"
         }
+    },
+    culpepper: {
+        dev: {
+            form1: "Contact Form"
+        },
+        live: {
+            form1: "Contact Form"
+        }
     }
 }
 
@@ -2347,6 +2397,14 @@ let form_page = {
             form5: "",
             form6: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=7",
             form7: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=8"
+        }
+    },
+    culpepper: {
+        dev: {
+            form1: ""
+        },
+        live: {
+            form1: "/admin.php?page=ninja-forms&form_id=1"
         }
     }
 }
