@@ -1354,10 +1354,12 @@ let row_title = {
     },
     indinspect: {
         dev: {
-            form1: "",
+            form1: "return document.getElementsByTagName('a')[355].click()",
+            form2: "return document.getElementsByTagName('a')[355].click()"
         },
         live: {
-            form1: "",
+            form1: "return document.getElementsByTagName('a')[371].click()",
+            form2: "return document.getElementsByTagName('a')[355].click()"
         }
     },
     judefrancesjewelry: {
@@ -1550,116 +1552,6 @@ let row_title = {
         }
     }
 }
-
-
-let settings_arr = {
-    judefrancesjewelry: {
-        dev: {
-            form1: "return document.getElementsByTagName('a')[289].click()",
-            form2: "return document.getElementsByTagName('a')[289].click()",
-            form3: "return document.getElementsByTagName('a')[289].click()",
-            form4: "return document.getElementsByTagName('a')[289].click()",
-            form5: "return document.getElementsByTagName('a')[289].click()",
-            form6: "return document.getElementsByTagName('a')[289].click()",
-        },
-        live: {
-        }
-    },
-    newhopemedicalcenter: {
-        dev: {
-            form1: "return document.getElementsByTagName('a')[304].click()",
-            form2: "return document.getElementsByTagName('a')[304].click()",
-            form3: "return document.getElementsByTagName('a')[304].click()",
-            form4: "return document.getElementsByTagName('a')[304].click()",
-            form5: "return document.getElementsByTagName('a')[304].click()",
-            form6: "return document.getElementsByTagName('a')[304].click()",
-            form7: "return document.getElementsByTagName('a')[304].click()"
-        },
-        live: {
-            form1: "return document.getElementsByTagName('a')[325].click()",
-            form2: "return document.getElementsByTagName('a')[325].click()",
-            form3: "return document.getElementsByTagName('a')[325].click()",
-            form4: "return document.getElementsByTagName('a')[325].click()",
-            form5: "return document.getElementsByTagName('a')[325].click()",
-            form6: "return document.getElementsByTagName('a')[325].click()",
-            form7: "return document.getElementsByTagName('a')[325].click()"
-        }
-    }
-}
-
-let admin_notif = {
-    judefrancesjewelry: {
-        dev: {
-            form1: "return document.getElementsByTagName('a')[301].click()",
-            form2: "return document.getElementsByTagName('a')[301].click()",
-            form3: "return document.getElementsByTagName('a')[301].click()",
-            form4: "return document.getElementsByTagName('a')[301].click()",
-            form5: "return document.getElementsByTagName('a')[301].click()",
-            form6: "return document.getElementsByTagName('a')[301].click()"
-        },
-        live: {
-        }
-    },
-    newhopemedicalcenter: {
-        dev: {
-            // form1: "return document.getElementsByTagName('a')[320].click()",
-            form1: "Admin Notification",
-            form2: "return document.getElementsByTagName('a')[320].click()",
-            form3: "return document.getElementsByTagName('a')[320].click()",
-            form4: "return document.getElementsByTagName('a')[320].click()",
-            form5: "return document.getElementsByTagName('a')[320].click()",
-            form6: "return document.getElementsByTagName('a')[320].click()",
-            form7: "return document.getElementsByTagName('a')[320].click()"
-        },
-        live: {
-            form1: "return document.getElementsByTagName('a')[336].click()",
-            form2: "return document.getElementsByTagName('a')[336].click()",
-            form3: "return document.getElementsByTagName('a')[336].click()",
-            form4: "return document.getElementsByTagName('a')[336].click()",
-            form5: "return document.getElementsByTagName('a')[336].click()",
-            form6: "return document.getElementsByTagName('a')[336].click()",
-            form7: "return document.getElementsByTagName('a')[336].click()"
-        }
-    }
-}
-
-let qa_notif = {
-    judefrancesjewelry: {
-        dev: {
-            form1: "return document.getElementsByTagName('a')[305].click()",
-            form2: "return document.getElementsByTagName('a')[305].click()",
-            form3: "return document.getElementsByTagName('a')[305].click()",
-            form4: "return document.getElementsByTagName('a')[305].click()",
-            form5: "return document.getElementsByTagName('a')[305].click()",
-            form6: "return document.getElementsByTagName('a')[305].click()"
-        },
-        live: {
-
-        }
-    },
-    newhopemedicalcenter: {
-        dev: {
-            // form1: "return document.getElementsByTagName('a')[324].click()",
-            form1: "QA Notification",
-            form2: "return document.getElementsByTagName('a')[324].click()",
-            form3: "return document.getElementsByTagName('a')[324].click()",
-            form4: "return document.getElementsByTagName('a')[324].click()",
-            form5: "return document.getElementsByTagName('a')[324].click()",
-            form6: "return document.getElementsByTagName('a')[324].click()",
-            form7: "return document.getElementsByTagName('a')[324].click()"
-        },
-        live: {
-            form1: "return document.getElementsByTagName('a')[340].click()",
-            form2: "return document.getElementsByTagName('a')[340].click()",
-            form3: "return document.getElementsByTagName('a')[340].click()",
-            form4: "return document.getElementsByTagName('a')[340].click()",
-            form5: "return document.getElementsByTagName('a')[340].click()",
-            form6: "return document.getElementsByTagName('a')[340].click()",
-            form7: "return document.getElementsByTagName('a')[340].click()"
-        }
-    }
-}
-
 
 
 let range_recipient = {
@@ -1862,7 +1754,8 @@ let webforms = {
             form2: "Request Information"
         },
         live: {
-            form1: "Contact Us"
+            form1: "Contact Us",
+            form2: "Request Information"
         }
     },
     judefrancesjewelry: {
@@ -2585,9 +2478,6 @@ module.exports = {
     ranges,
     wp_menu_name,
     row_title,
-    settings_arr,
-    admin_notif,
-    qa_notif,
     range_recipient,
     range_thankyou_page,
     qa_email,

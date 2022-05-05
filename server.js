@@ -43,8 +43,8 @@ const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms
 const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
 const webforms_frlawgroup_f2 = require("./modules/webforms/contactform7/forms/frlawgroup/form2/index");
 const webforms_frlawgroup_f3 = require("./modules/webforms/contactform7/forms/frlawgroup/form3/index");
-const webforms_indinspect_f1 = require("./modules/webforms/contactform7/forms/indinspect/form1/index");
-const webforms_indinspect_f2 = require("./modules/webforms/contactform7/forms/indinspect/form2/index");
+const webforms_indinspect_f1 = require("./modules/webforms/gravityform/forms/indinspect/form1/index");
+const webforms_indinspect_f2 = require("./modules/webforms/gravityform/forms/indinspect/form2/index");
 const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
 const webforms_judefrancesjewelry_f2 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form2/index");
 const webforms_judefrancesjewelry_f3 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form3/index");
@@ -1733,8 +1733,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.indinspect;
                 var range_recipient = config.range_recipient.indinspect;
                 var range_thankyou_page = config.range_thankyou_page.indinspect;
-                var wp_menu_name = config.wp_menu_name.contact_form_7;
-
+                
                 console.log("Site: " + site_indinspect);
                 switch (checkbox) {
                     case "dev":
@@ -1748,25 +1747,65 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_indinspect) {
                             case "form1":
                                 var forms = config.forms.indinspect.form1;
-                                var row_title = config.row_title.indinspect.dev.form1;
                                 var webforms = config.webforms.indinspect.dev.form1;
                                 var contact_form_name = config.contact_form_name.indinspect.form1;
                                 var contact_form_shortcode = config.contact_form_shortcode.indinspect.form1;
                                 var form_page = config.form_page.indinspect.dev.form1;
 
                                 console.log("form1");
-                                webforms_indinspect_f1.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_indinspect_f1.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
                                 break;
                             case "form2":
                                 var forms = config.forms.indinspect.form2;
-                                var row_title = config.row_title.indinspect.dev.form2;
                                 var webforms = config.webforms.indinspect.dev.form2;
                                 var contact_form_name = config.contact_form_name.indinspect.form2;
                                 var contact_form_shortcode = config.contact_form_shortcode.indinspect.form2;
                                 var form_page = config.form_page.indinspect.dev.form2;
 
                                 console.log("form2");
-                                webforms_indinspect_f2.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_indinspect_f2.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
                                 break;
                             default:
                                 break;
@@ -1783,14 +1822,65 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_indinspect) {
                             case "form1":
                                 var forms = config.forms.indinspect.form1;
-                                var row_title = config.row_title.indinspect.live.form1;
                                 var webforms = config.webforms.indinspect.live.form1;
                                 var contact_form_name = config.contact_form_name.indinspect.form1;
                                 var contact_form_shortcode = config.contact_form_shortcode.indinspect.form1;
                                 var form_page = config.form_page.indinspect.live.form1;
 
                                 console.log("form1");
-                                webforms_indinspect_f1.index(domain, checkbox, username, password, email, timestamp);
+                                webforms_indinspect_f1.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form2":
+                                var forms = config.forms.indinspect.form2;
+                                var webforms = config.webforms.indinspect.live.form2;
+                                var contact_form_name = config.contact_form_name.indinspect.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.indinspect.form2;
+                                var form_page = config.form_page.indinspect.live.form2;
+
+                                console.log("form2");
+                                webforms_indinspect_f2.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
                                 break;
                             default:
                                 break;
@@ -1804,8 +1894,7 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.judefrancesjewelry;
                 var range_recipient = config.range_recipient.judefrancesjewelry;
                 var range_thankyou_page = config.range_thankyou_page.judefrancesjewelry;
-                var wp_menu_name = config.wp_menu_name.gravity_forms;
-
+                
                 console.log("Site: " + site_judefrancesjewelry);
                 switch (checkbox) {
                     case "dev":
@@ -1819,10 +1908,6 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_judefrancesjewelry) {
                             case "form1":
                                 var forms = config.forms.judefrancesjewelry.form1;
-                                var row_title = config.row_title.judefrancesjewelry.dev.form1;
-                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form1;
-                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form1;
-                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form1;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form1;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form1;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form1;
@@ -1832,7 +1917,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_judefrancesjewelry_f1.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -1842,11 +1926,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -1854,16 +1933,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form2":
                                 var forms = config.forms.judefrancesjewelry.form2;
-                                var row_title = config.row_title.judefrancesjewelry.dev.form2;
-                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form2;
-                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form2;
-                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form2;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form2;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form2;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form2;
@@ -1873,7 +1948,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_judefrancesjewelry_f2.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -1883,11 +1957,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -1895,16 +1964,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form3":
                                 var forms = config.forms.judefrancesjewelry.form3;
-                                var row_title = config.row_title.judefrancesjewelry.dev.form3;
-                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form3;
-                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form3;
-                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form3;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form3;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form3;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form3;
@@ -1914,7 +1979,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_judefrancesjewelry_f3.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -1924,11 +1988,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -1936,16 +1995,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form4":
                                 var forms = config.forms.judefrancesjewelry.form4;
-                                var row_title = config.row_title.judefrancesjewelry.dev.form4;
-                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form4;
-                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form4;
-                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form4;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form4;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form4;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form4;
@@ -1955,7 +2010,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_judefrancesjewelry_f4.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -1965,11 +2019,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -1977,16 +2026,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form5":
                                 var forms = config.forms.judefrancesjewelry.form5;
-                                var row_title = config.row_title.judefrancesjewelry.dev.form5;
-                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form5;
-                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form5;
-                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form5;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form5;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form5;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form5;
@@ -1996,7 +2041,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_judefrancesjewelry_f5.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2006,11 +2050,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2018,16 +2057,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form6":
                                 var forms = config.forms.judefrancesjewelry.form6;
-                                var row_title = config.row_title.judefrancesjewelry.dev.form6;
-                                var settings_arr = config.settings_arr.judefrancesjewelry.dev.form6;
-                                var admin_notif = config.admin_notif.judefrancesjewelry.dev.form6;
-                                var qa_notif = config.qa_notif.judefrancesjewelry.dev.form6;
                                 var webforms = config.webforms.judefrancesjewelry.dev.form6;
                                 var contact_form_name = config.contact_form_name.judefrancesjewelry.form6;
                                 var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form6;
@@ -2037,7 +2072,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_judefrancesjewelry_f6.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2047,11 +2081,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2059,7 +2088,7 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
@@ -2068,13 +2097,75 @@ app.post('/post/webforms', async (req, res) => {
                         }
                         break;
                     // case "live":
-                    //     var domain = "https://www.indinspect.com/";
+                    //     var domain = config.domain.judefrancesjewelry.live;
+                    //     var wp_creds_username = config.wp_creds.judefrancesjewelry.username;
+                    //     var wp_creds_password = config.wp_creds.judefrancesjewelry.password;
+                    //     var launch = config.launch.live;
+
                     //     console.log(domain);
                     //     console.log("live");
-                    //     switch (site_indinspect) {
+                    //     switch (site_judefrancesjewelry) {
                     //         case "form1":
+                    //             var forms = config.forms.judefrancesjewelry.form1;
+                    //             var webforms = config.webforms.judefrancesjewelry.live.form1;
+                    //             var contact_form_name = config.contact_form_name.judefrancesjewelry.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form1;
+                    //             var form_page = config.form_page.judefrancesjewelry.live.form1;
+
                     //             console.log("form1");
-                    //             webforms_indinspect_f1.index(domain, checkbox, username, password, email, timestamp);
+                    //             webforms_judefrancesjewelry_f1.index(
+                    //                 date, 
+                    //                 domain, 
+                    //                 username, 
+                    //                 password, 
+                    //                 email, 
+                    //                 timestamp, 
+                    //                 wp_creds_username, 
+                    //                 wp_creds_password, 
+                    //                 forms, 
+                    //                 sheetId, 
+                    //                 ranges, 
+                    //                 range_recipient, 
+                    //                 range_thankyou_page, 
+                    //                 qa_email, 
+                    //                 module_name, 
+                    //                 launch, 
+                    //                 contact_form_name, 
+                    //                 contact_form_shortcode, 
+                    //                 webforms, 
+                    //                 form_page
+                    //             );
+                    //             break;
+                    //         case "form2":
+                    //             var forms = config.forms.judefrancesjewelry.form2;
+                    //             var webforms = config.webforms.judefrancesjewelry.live.form2;
+                    //             var contact_form_name = config.contact_form_name.judefrancesjewelry.form2;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form2;
+                    //             var form_page = config.form_page.judefrancesjewelry.live.form2;
+
+                    //             console.log("form2");
+                    //             webforms_judefrancesjewelry_f2.index(
+                    //                 date, 
+                    //                 domain, 
+                    //                 username, 
+                    //                 password, 
+                    //                 email, 
+                    //                 timestamp, 
+                    //                 wp_creds_username, 
+                    //                 wp_creds_password, 
+                    //                 forms, 
+                    //                 sheetId, 
+                    //                 ranges, 
+                    //                 range_recipient, 
+                    //                 range_thankyou_page, 
+                    //                 qa_email, 
+                    //                 module_name, 
+                    //                 launch, 
+                    //                 contact_form_name, 
+                    //                 contact_form_shortcode, 
+                    //                 webforms, 
+                    //                 form_page
+                    //             );
                     //             break;
                     //         default:
                     //             break;
@@ -2288,7 +2379,6 @@ app.post('/post/webforms', async (req, res) => {
                 var ranges = config.ranges.newhopemedicalcenter;
                 var range_recipient = config.range_recipient.newhopemedicalcenter;
                 var range_thankyou_page = config.range_thankyou_page.newhopemedicalcenter;
-                var wp_menu_name = config.wp_menu_name.gravity_forms;
                 
                 console.log("Site: " + site_newhopemedicalcenter);
                 switch (checkbox) {
@@ -2303,10 +2393,6 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_newhopemedicalcenter) {
                             case "form1":
                                 var forms = config.forms.newhopemedicalcenter.form1;
-                                var row_title = config.row_title.newhopemedicalcenter.dev.form1;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.dev.form1;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.dev.form1;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.dev.form1;
                                 var webforms = config.webforms.newhopemedicalcenter.dev.form1;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form1;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form1;
@@ -2316,7 +2402,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f1.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2326,11 +2411,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2338,16 +2418,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form2":
                                 var forms = config.forms.newhopemedicalcenter.form2;
-                                var row_title = config.row_title.newhopemedicalcenter.dev.form2;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.dev.form2;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.dev.form2;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.dev.form2;
                                 var webforms = config.webforms.newhopemedicalcenter.dev.form2;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form2;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form2;
@@ -2357,7 +2433,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f2.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2367,11 +2442,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2379,16 +2449,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form3":
                                 var forms = config.forms.newhopemedicalcenter.form3;
-                                var row_title = config.row_title.newhopemedicalcenter.dev.form3;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.dev.form3;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.dev.form3;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.dev.form3;
                                 var webforms = config.webforms.newhopemedicalcenter.dev.form3;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form3;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form3;
@@ -2398,7 +2464,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f3.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2408,11 +2473,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2420,16 +2480,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form4":
                                 var forms = config.forms.newhopemedicalcenter.form4;
-                                var row_title = config.row_title.newhopemedicalcenter.dev.form4;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.dev.form4;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.dev.form4;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.dev.form4;
                                 var webforms = config.webforms.newhopemedicalcenter.dev.form4;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form4;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form4;
@@ -2439,7 +2495,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f4.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2449,11 +2504,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2461,16 +2511,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form5":
                                 var forms = config.forms.newhopemedicalcenter.form5;
-                                var row_title = config.row_title.newhopemedicalcenter.dev.form5;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.dev.form5;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.dev.form5;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.dev.form5;
                                 var webforms = config.webforms.newhopemedicalcenter.dev.form5;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form5;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form5;
@@ -2480,7 +2526,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f5.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2490,11 +2535,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2502,16 +2542,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form6":
                                 var forms = config.forms.newhopemedicalcenter.form6;
-                                var row_title = config.row_title.newhopemedicalcenter.dev.form6;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.dev.form6;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.dev.form6;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.dev.form6;
                                 var webforms = config.webforms.newhopemedicalcenter.dev.form6;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form6;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form6;
@@ -2521,7 +2557,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f6.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2531,11 +2566,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2543,16 +2573,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form7":
                                 var forms = config.forms.newhopemedicalcenter.form7;
-                                var row_title = config.row_title.newhopemedicalcenter.dev.form7;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.dev.form7;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.dev.form7;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.dev.form7;
                                 var webforms = config.webforms.newhopemedicalcenter.dev.form7;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form7;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form7;
@@ -2562,7 +2588,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f7.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2572,11 +2597,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2584,7 +2604,7 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
@@ -2603,10 +2623,6 @@ app.post('/post/webforms', async (req, res) => {
                         switch (site_newhopemedicalcenter) {
                             case "form1":
                                 var forms = config.forms.newhopemedicalcenter.form1;
-                                var row_title = config.row_title.newhopemedicalcenter.live.form1;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.live.form1;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.live.form1;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.live.form1;
                                 var webforms = config.webforms.newhopemedicalcenter.live.form1;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form1;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form1;
@@ -2616,7 +2632,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f1.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2626,11 +2641,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2638,16 +2648,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form2":
                                 var forms = config.forms.newhopemedicalcenter.form2;
-                                var row_title = config.row_title.newhopemedicalcenter.live.form2;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.live.form2;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.live.form2;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.live.form2;
                                 var webforms = config.webforms.newhopemedicalcenter.live.form2;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form2;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form2;
@@ -2657,7 +2663,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f2.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2667,11 +2672,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2679,16 +2679,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form3":
                                 var forms = config.forms.newhopemedicalcenter.form3;
-                                var row_title = config.row_title.newhopemedicalcenter.live.form3;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.live.form3;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.live.form3;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.live.form3;
                                 var webforms = config.webforms.newhopemedicalcenter.live.form3;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form3;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form3;
@@ -2698,7 +2694,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f3.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2708,11 +2703,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2720,16 +2710,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form4":
                                 var forms = config.forms.newhopemedicalcenter.form4;
-                                var row_title = config.row_title.newhopemedicalcenter.live.form4;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.live.form4;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.live.form4;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.live.form4;
                                 var webforms = config.webforms.newhopemedicalcenter.live.form4;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form4;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form4;
@@ -2739,7 +2725,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f4.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2749,11 +2734,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2761,16 +2741,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form5":
                                 var forms = config.forms.newhopemedicalcenter.form5;
-                                var row_title = config.row_title.newhopemedicalcenter.live.form5;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.live.form5;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.live.form5;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.live.form5;
                                 var webforms = config.webforms.newhopemedicalcenter.live.form5;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form5;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form5;
@@ -2780,7 +2756,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f5.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2790,11 +2765,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2802,16 +2772,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form6":
                                 var forms = config.forms.newhopemedicalcenter.form6;
-                                var row_title = config.row_title.newhopemedicalcenter.live.form6;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.live.form6;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.live.form6;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.live.form6;
                                 var webforms = config.webforms.newhopemedicalcenter.live.form6;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form6;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form6;
@@ -2821,7 +2787,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f6.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2831,11 +2796,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2843,16 +2803,12 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;
                             case "form7":
                                 var forms = config.forms.newhopemedicalcenter.form7;
-                                var row_title = config.row_title.newhopemedicalcenter.live.form7;
-                                var settings_arr = config.settings_arr.newhopemedicalcenter.live.form7;
-                                var admin_notif = config.admin_notif.newhopemedicalcenter.live.form7;
-                                var qa_notif = config.qa_notif.newhopemedicalcenter.live.form7;
                                 var webforms = config.webforms.newhopemedicalcenter.live.form7;
                                 var contact_form_name = config.contact_form_name.newhopemedicalcenter.form7;
                                 var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form7;
@@ -2862,7 +2818,6 @@ app.post('/post/webforms', async (req, res) => {
                                 webforms_newhopemedicalcenter_f7.index(
                                     date, 
                                     domain, 
-                                    checkbox, 
                                     username, 
                                     password, 
                                     email, 
@@ -2872,11 +2827,6 @@ app.post('/post/webforms', async (req, res) => {
                                     forms, 
                                     sheetId, 
                                     ranges, 
-                                    wp_menu_name, 
-                                    row_title, 
-                                    settings_arr, 
-                                    admin_notif,
-                                    qa_notif,
                                     range_recipient, 
                                     range_thankyou_page, 
                                     qa_email, 
@@ -2884,7 +2834,7 @@ app.post('/post/webforms', async (req, res) => {
                                     launch, 
                                     contact_form_name, 
                                     contact_form_shortcode, 
-                                    webforms,
+                                    webforms, 
                                     form_page
                                 );
                                 break;

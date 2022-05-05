@@ -11,7 +11,7 @@ const spreadsheetId = config_webforms.spreadsheetId;
 var googleSheets;
 var driver;
 var current_page_url;
-async function wordpressStart(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, settings_arr, admin_notif, qa_notif, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page) {
+async function wordpressStart(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     googleSheets = google.sheets({ version: "v4", auth: client });
@@ -316,7 +316,7 @@ async function wordpressStart(date, domain, username, password, email, timestamp
 
 
 
-async function wordpressEnd(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, settings_arr, admin_notif, qa_notif, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms) {
+async function wordpressEnd(domain, timestamp, forms, module_name, launch, webforms) {
     console.log("current_page_url: " + current_page_url);
     await driver.switchTo().newWindow('tab');
     await driver.get(current_page_url);
