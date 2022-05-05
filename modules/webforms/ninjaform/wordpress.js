@@ -11,7 +11,7 @@ const spreadsheetId = config_webforms.spreadsheetId;
 var googleSheets;
 var driver;
 var current_page_url;
-async function wordpressStart(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page) {
+async function wordpressStart(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page) {
     const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     googleSheets = google.sheets({ version: "v4", auth: client });
