@@ -21,6 +21,7 @@ const webforms_advancedimagemedspa_f1 = require("./modules/webforms/contactform7
 const webforms_advancedimagemedspa_f2 = require("./modules/webforms/contactform7/forms/advancedimagemedspa/form2/index");
 const webforms_advancedimagemedspa_f3 = require("./modules/webforms/contactform7/forms/advancedimagemedspa/form3/index");
 const webforms_aerialengagement_f1 = require("./modules/webforms/contactform7/forms/aerialengagement/form1/index");
+const webforms_aeroturbine_f1 = require("./modules/webforms/contactform7/forms/aeroturbine/form1/index");
 const webforms_americanleatherusa_f1 = require("./modules/webforms/contactform7/forms/americanleatherusa/form1/index");
 const webforms_andresperezjurado_f1 = require("./modules/webforms/contactform7/forms/andresperezjurado/form1/index");
 const webforms_azdoordoctor_f1 = require("./modules/webforms/contactform7/forms/azdoordoctor/form1/index");
@@ -547,6 +548,62 @@ app.post('/post/webforms', async (req, res) => {
 
                     //             console.log("form1");
                     //             webforms_aerialengagement_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                }
+                break;
+            case "aeroturbine":
+                var site_aeroturbine = req.body.site_aeroturbine;
+                var sheetId = config.sheetId.aeroturbine;
+                var ranges = config.ranges.aeroturbine;
+                var range_recipient = config.range_recipient.aeroturbine;
+                var range_thankyou_page = config.range_thankyou_page.aeroturbine;
+
+                console.log("Site: " + site_aeroturbine);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.aeroturbine.dev;
+                        var wp_creds_username = config.wp_creds.aeroturbine.username;
+                        var wp_creds_password = config.wp_creds.aeroturbine.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_aeroturbine) {
+                            case "form1":
+                                var forms = config.forms.aeroturbine.form1;
+                                var webforms = config.webforms.aeroturbine.dev.form1;
+                                var contact_form_name = config.contact_form_name.aeroturbine.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.aeroturbine.form1;
+                                var form_page = config.form_page.aeroturbine.dev.form1;
+                                
+                                console.log("form1");
+                                webforms_aeroturbine_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = config.domain.aeroturbine.live;
+                    //     var wp_creds_username = config.wp_creds.aeroturbine.username;
+                    //     var wp_creds_password = config.wp_creds.aeroturbine.password;
+                    //     var launch = config.launch.live;
+
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_aeroturbine) {
+                    //         case "form1":
+                    //             var forms = config.forms.aeroturbine.form1;
+                    //             var webforms = config.webforms.aeroturbine.live.form1;
+                    //             var contact_form_name = config.contact_form_name.aeroturbine.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.aeroturbine.form1;
+
+                    //             console.log("form1");
+                    //             webforms_aeroturbine_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;

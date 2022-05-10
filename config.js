@@ -34,7 +34,8 @@ const sites = [
     "lignans",
     "natina",
     "newhopemedicalcenter",
-    "culpepper"
+    "culpepper",
+    "aeroturbine"
 ]
 
 let wp_creds = {
@@ -154,6 +155,10 @@ let wp_creds = {
     culpepper: {
         username: "Culpepper",
         password: "1Elizab3th"
+    },
+    aeroturbine: {
+        username: "pvadmin",
+        password: "!kIKQGXHRc18"
     }
 }
 
@@ -273,6 +278,10 @@ let domain = {
     culpepper: {
         dev: "https://chrisassoc.primeview.com/",
         live: "https://www.culpepper-associates.com/"
+    },
+    aeroturbine: {
+        dev: "https://aeroturbinedev.primeview.com/",
+        live: ""
     }
 }
 
@@ -416,6 +425,9 @@ let forms = {
     },
     culpepper: {
         form1: "contact/"
+    },
+    aeroturbine: {
+        form1: "contact-us/"
     }
 }
 
@@ -448,7 +460,8 @@ let sheetId = {
     lignans: 1781929333,
     natina: 1726917041,
     newhopemedicalcenter: 1475574979,
-    culpepper: 1784007282
+    culpepper: 1784007282,
+    aeroturbine: 716332200
 }
 
 let range = [
@@ -799,6 +812,18 @@ let range = [
             "Culpepper & Associates!E2",
             "Culpepper & Associates!G2",
         ]
+    ],
+    sites[29] = [
+        [
+            "Aero Turbine!Q2",
+            "Aero Turbine!A2",
+            "Aero Turbine!B2",
+            "Aero Turbine!C2",
+            "Aero Turbine!C3",
+            "Aero Turbine!D2",
+            "Aero Turbine!E2",
+            "Aero Turbine!G2",
+        ]
     ]
 ]
 
@@ -831,7 +856,8 @@ let ranges = {
     lignans: range[25][0],
     natina: range[26][0],
     newhopemedicalcenter: range[27][0],
-    culpepper: range[28][0]
+    culpepper: range[28][0],
+    aeroturbine: range[29][0]
 }
 
 let launch = {
@@ -975,6 +1001,9 @@ let contact_form_name = {
     },
     culpepper: {
         form1: "Contact Form"
+    },
+    aeroturbine: {
+        form1: "Contact Us"
     }
 }
 
@@ -1114,6 +1143,9 @@ let contact_form_shortcode = {
     },
     culpepper: {
         form1: '[ninja_form id=1]'
+    },
+    aeroturbine: {
+        form1: '[contact-form-7 id="187" title="Contact Us"]'
     }
 }
 
@@ -1147,7 +1179,8 @@ let range_recipient = {
     lignans: "Lignans!H2",
     natina: "Natina!H2",
     newhopemedicalcenter: "New Hope Medical Center!H2",
-    culpepper: "Culpepper & Associates!H2"
+    culpepper: "Culpepper & Associates!H2",
+    aeroturbine: "Aero Turbine!H2"
 }
 
 
@@ -1180,7 +1213,8 @@ let range_thankyou_page = {
     lignans: "Lignans!I2",
     natina: "Natina!I2",
     newhopemedicalcenter: "New Hope Medical Center!I2",
-    culpepper: "Culpepper & Associates!I2"
+    culpepper: "Culpepper & Associates!I2",
+    aeroturbine: "Aero Turbine!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1529,6 +1563,14 @@ let webforms = {
         live: {
             form1: "Contact Form"
         }
+    },
+    aeroturbine: {
+        dev: {
+            form1: "Contact Us"
+        },
+        live: {
+            form1: ""
+        }
     }
 }
 
@@ -1863,6 +1905,14 @@ let form_page = {
         live: {
             form1: "/admin.php?page=ninja-forms&form_id=1"
         }
+    },
+    aeroturbine: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=187&action=edit"
+        },
+        live: {
+            form1: ""
+        }
     }
 }
 
@@ -1913,10 +1963,6 @@ let versions = {
 }
 
 let device_desktop = {
-    // windows_11: "return document.getElementsByTagName('li')[113].click()",
-    // windows_8: "return document.getElementsByTagName('li')[116].click()",
-    // windows_7: "return document.getElementsByTagName('li')[117].click()",
-    // macos_sierra: "return document.getElementsByTagName('li')[123].click()"
     windows_11: " Windows 11",
     windows_8: " Windows 8",
     windows_7: " Windows 7",

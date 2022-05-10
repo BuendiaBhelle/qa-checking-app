@@ -66,6 +66,15 @@
                                     </div>
                                 </li>
                             </div>
+                            <div class="dropdown">
+                                <li class="nav-item">
+                                    <button class="button sidebar-nav-item">Monitoring Tasks</button>
+                                    <div class="dropdown-content">
+                                        <p style="margin-bottom: 6px;" onclick="responsivenessForm_lambdatest()">WPM</p>
+                                        <p onclick="responsiveness_manual()">Nitropack</p>
+                                    </div>
+                                </li>
+                            </div>
 
                             <!-- <li class="nav-item"></li>
                                 <div class="dropdown">
@@ -231,6 +240,7 @@
                                                             <option value="accidentchiropracticaz">Accident Chiropractic AZ</option>
                                                             <option value="advancedimagemedspa">Advanced Image Med Spa</option>
                                                             <option value="aerialengagement">Aerial Engagement</option>
+                                                            <option value="aeroturbine">Aero Turbine</option>
                                                             <option value="americanleatherusa">American Leather USA</option>
                                                             <option value="andresperezjurado">Andres Perez Jurado</option>
                                                             <option value="azdoordoctor">AZ Door Doctor</option>
@@ -324,10 +334,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Aerial Engagement -->
                                                 <div id="site_aerialengagement">
                                                     <div class="form-group row">
-                                                        <label for="site_accidentchiropracticaz" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <label for="site_aerialengagement" class="col-sm-3 col-form-label">Choose a form:</label>
                                                         <div class="col-sm-9">
                                                             <select name="site_aerialengagement" class="form-control">
                                                                 <option value="form1">Contact Us</option>
@@ -343,10 +354,31 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <!-- Aero Turbine -->
+                                                <div id="site_aeroturbine">
+                                                    <div class="form-group row">
+                                                        <label for="site_aeroturbine" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_aeroturbine" class="form-control">
+                                                                <option value="form1">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>!kIKQGXHRc18</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <!-- American Leather USA -->
                                                 <div id="site_americanleatherusa">
                                                     <div class="form-group row">
-                                                        <label for="site_accidentchiropracticaz" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <label for="site_americanleatherusa" class="col-sm-3 col-form-label">Choose a form:</label>
                                                         <div class="col-sm-9">
                                                             <select name="site_americanleatherusa" class="form-control">
                                                                 <option value="form1">Contact form 1</option>
@@ -1138,6 +1170,7 @@
                 // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1169,6 +1202,7 @@
                 // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1200,6 +1234,39 @@
                 // document.getElementById('checkbox_cfhec').style.display = 'none';
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
+                document.getElementById('site_americanleatherusa').style.display = 'none';
+                document.getElementById('site_andresperezjurado').style.display = 'none';
+                document.getElementById('site_azdoordoctor').style.display = 'none';
+                document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
+                document.getElementById('site_buckeyederm').style.display = 'none';
+                document.getElementById('site_canyonfallshairextensioncompany').style.display = 'none';
+                document.getElementById('site_crexendo').style.display = 'none';
+                document.getElementById('site_culpepper').style.display = 'none';
+                document.getElementById('site_ewingconstruction').style.display = 'none';
+                document.getElementById('site_freddabranyon').style.display = 'none';
+                document.getElementById('site_indinspect').style.display = 'none';
+                document.getElementById('site_judefrancesjewelry').style.display = 'none';
+                document.getElementById('site_kyrenefamilydentistry').style.display = 'none';
+                document.getElementById('site_lignans').style.display = 'none';
+                document.getElementById('site_natina').style.display = 'none';
+                document.getElementById('site_newhopemedicalcenter').style.display = 'none';
+                document.getElementById('site_optimizex').style.display = 'none';
+                document.getElementById('site_phoenixritecare').style.display = 'none';
+                document.getElementById('site_primemedicalpain').style.display = 'none';
+                document.getElementById('site_primeview').style.display = 'none';
+                document.getElementById('site_randosouthwest').style.display = 'none';
+                document.getElementById('site_sellusyourcaraz').style.display = 'none';
+                document.getElementById('site_solutionsforum').style.display = 'none';
+                document.getElementById('site_sunrisejewelryusa').style.display = 'none';
+                document.getElementById('site_versatile').style.display = 'none';
+            }
+            else if (site === "aeroturbine") {
+                document.getElementById('site_aeroturbine').style.display = 'block';
+                // document.getElementById('checkbox_cfhec').style.display = 'none';
+                document.getElementById('site_accidentchiropracticaz').style.display = 'none';
+                document.getElementById('site_advancedimagemedspa').style.display = 'none';
+                document.getElementById('site_aerialengagement').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1232,6 +1299,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1263,6 +1331,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1294,6 +1363,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1325,6 +1395,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1356,6 +1427,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1388,6 +1460,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1419,6 +1492,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1450,6 +1524,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1481,6 +1556,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1512,6 +1588,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_azdoordoctor').style.display = 'none';
@@ -1544,6 +1621,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1575,6 +1653,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1606,6 +1685,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1637,6 +1717,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1668,6 +1749,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1699,6 +1781,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1730,6 +1813,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1761,6 +1845,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1792,6 +1877,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1823,6 +1909,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1854,6 +1941,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1885,6 +1973,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1912,6 +2001,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1940,6 +2030,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
@@ -1968,6 +2059,7 @@
                 document.getElementById('site_accidentchiropracticaz').style.display = 'none';
                 document.getElementById('site_advancedimagemedspa').style.display = 'none';
                 document.getElementById('site_aerialengagement').style.display = 'none';
+                document.getElementById('site_aeroturbine').style.display = 'none';
                 document.getElementById('site_andresperezjurado').style.display = 'none';
                 document.getElementById('site_americanleatherusa').style.display = 'none';
                 document.getElementById('site_biltmoreloanandjewelry').style.display = 'none';
