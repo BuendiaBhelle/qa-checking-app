@@ -38,7 +38,8 @@ const sites = [
     "aeroturbine",
     "collisioncenternorthscottsdale",
     "jewelryoutletinc",
-    "paysondermatology"
+    "paysondermatology",
+    "renewscal"
 ]
 
 let wp_creds = {
@@ -174,6 +175,10 @@ let wp_creds = {
     paysondermatology: {
         username: "pvadmin",
         password: "ExvkE3I7$olXiHhAuDt6RJld"
+    },
+    renewscal: {
+        username: "pvadmin",
+        password: "(^Qpo(!LsSR2Zi$J$Gi417fy"
     }
 }
 
@@ -309,6 +314,10 @@ let domain = {
     paysondermatology: {
         dev: "https://paysondermatologydev.primeview.com/",
         live: "https://www.paysondermatology.com/"
+    },
+    renewscal: {
+        dev: "",
+        live: "https://renewscal.primeview.com/"
     }
 }
 
@@ -468,6 +477,10 @@ let forms = {
     },
     paysondermatology: {
         form1: "about-us/"
+    },
+    renewscal: {
+        form1: "",
+        form2: "contact-us/"
     }
 }
 
@@ -504,7 +517,8 @@ let sheetId = {
     aeroturbine: 716332200,
     collisioncenternorthscottsdale: 657428829,
     jewelryoutletinc: 1528265251,
-    paysondermatology: 1897422886
+    paysondermatology: 1897422886,
+    renewscal: 1177615742
 }
 
 let range = [
@@ -903,6 +917,18 @@ let range = [
             "Payson Dermatology!E2",
             "Payson Dermatology!G2",
         ]
+    ],
+    sites[33] = [
+        [
+            "Renew Stem Cell & Laser!Q2",
+            "Renew Stem Cell & Laser!A2",
+            "Renew Stem Cell & Laser!B2",
+            "Renew Stem Cell & Laser!C2",
+            "Renew Stem Cell & Laser!C3",
+            "Renew Stem Cell & Laser!D2",
+            "Renew Stem Cell & Laser!E2",
+            "Renew Stem Cell & Laser!G2",
+        ]
     ]
 ]
 
@@ -939,7 +965,8 @@ let ranges = {
     aeroturbine: range[29][0],
     collisioncenternorthscottsdale: range[30][0],
     jewelryoutletinc: range[31][0],
-    paysondermatology: range[32][0]
+    paysondermatology: range[32][0],
+    renewscal: range[33][0]
 }
 
 let launch = {
@@ -1099,6 +1126,10 @@ let contact_form_name = {
     },
     paysondermatology: {
         form1: "Request an Appointment"
+    },
+    renewscal: {
+        form1: "Join Our VIP List",
+        form2: "Schedule your consult"
     }
 }
 
@@ -1254,6 +1285,10 @@ let contact_form_shortcode = {
     },
     paysondermatology: {
         form1: '[contact-form-7 id="453" title="Request an Appointment"]'
+    },
+    renewscal: {
+        form1: 'gform_3',
+        form2: 'gform_1'
     }
 }
 
@@ -1291,7 +1326,8 @@ let range_recipient = {
     aeroturbine: "Aero Turbine!H2",
     collisioncenternorthscottsdale: "Airpark Collision Center!H2",
     jewelryoutletinc: "Jewelry Outlet!H2",
-    paysondermatology: "Payson Dermatology!H2"
+    paysondermatology: "Payson Dermatology!H2",
+    renewscal: "Renew Stem Cell & Laser!H2"
 }
 
 
@@ -1328,7 +1364,8 @@ let range_thankyou_page = {
     aeroturbine: "Aero Turbine!I2",
     collisioncenternorthscottsdale: "Airpark Collision Center!I2",
     jewelryoutletinc: "Jewelry Outlet!I2",
-    paysondermatology: "Payson Dermatology!I2"
+    paysondermatology: "Payson Dermatology!I2",
+    renewscal: "Renew Stem Cell & Laser!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1717,6 +1754,16 @@ let webforms = {
         live: {
             form1: "Request an Appointment"
         }
+    },
+    renewscal: {
+        dev: {
+            form1: "",
+            form2: ""
+        },
+        live: {
+            form1: "Join Our VIP List",
+            form2: "Schedule your consult"
+        }
     }
 }
 
@@ -2090,6 +2137,16 @@ let form_page = {
         },
         live: {
             form1: "/admin.php?page=wpcf7&post=453&action=edit"
+        }
+    },
+    renewscal: {
+        dev: {
+            form1: "",
+            form2: ""
+        },
+        live: {
+            form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
+            form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1"
         }
     }
 }

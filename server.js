@@ -72,9 +72,7 @@ const webforms_newhopemedicalcenter_f7 = require("./modules/webforms/gravityform
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
 const webforms_optimizex_f2 = require("./modules/webforms/contactform7/forms/optimizex/form2/index");
 const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/optimizex/form3/index");
-
 const webforms_paysondermatology_f1 = require("./modules/webforms/contactform7/forms/paysondermatology/form1/index");
-
 const webforms_phoenixritecare_f1 = require("./modules/webforms/contactform7/forms/phoenixritecare/form1/index");
 const webforms_phoenixritecare_f2 = require("./modules/webforms/contactform7/forms/phoenixritecare/form2/index");
 const webforms_phoenixritecare_f3 = require("./modules/webforms/contactform7/forms/phoenixritecare/form3/index");
@@ -94,6 +92,10 @@ const webforms_primeview_f5 = require("./modules/webforms/contactform7/forms/pri
 const webforms_primeview_f6 = require("./modules/webforms/contactform7/forms/primeview/form6/index");
 const webforms_primeview_f7 = require("./modules/webforms/contactform7/forms/primeview/form7/index");
 const webforms_randosouthwest_f1 = require("./modules/webforms/contactform7/forms/randosouthwest/form1/index");
+
+const webforms_renewscal_f1 = require("./modules/webforms/gravityform/forms/renewscal/form1/index");
+const webforms_renewscal_f2 = require("./modules/webforms/gravityform/forms/renewscal/form2/index");
+
 const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form1/index");
 const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
 const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
@@ -1837,6 +1839,167 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form1");
                                 webforms_randosouthwest_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "renewscal":
+                var site_renewscal = req.body.site_renewscal;
+                var sheetId = config.sheetId.renewscal;
+                var ranges = config.ranges.renewscal;
+                var range_recipient = config.range_recipient.renewscal;
+                var range_thankyou_page = config.range_thankyou_page.renewscal;
+                
+                console.log("Site: " + site_renewscal);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.renewscal.dev;
+                        var wp_creds_username = config.wp_creds.renewscal.username;
+                        var wp_creds_password = config.wp_creds.renewscal.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_renewscal) {
+                            case "form1":
+                                var forms = config.forms.renewscal.form1;
+                                var webforms = config.webforms.renewscal.dev.form1;
+                                var contact_form_name = config.contact_form_name.renewscal.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.renewscal.form1;
+                                var form_page = config.form_page.renewscal.dev.form1;
+
+                                console.log("form1");
+                                webforms_renewscal_f1.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form2":
+                                var forms = config.forms.renewscal.form2;
+                                var webforms = config.webforms.renewscal.dev.form2;
+                                var contact_form_name = config.contact_form_name.renewscal.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.renewscal.form2;
+                                var form_page = config.form_page.renewscal.dev.form2;
+
+                                console.log("form2");
+                                webforms_renewscal_f2.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.renewscal.live;
+                        var wp_creds_username = config.wp_creds.renewscal.username;
+                        var wp_creds_password = config.wp_creds.renewscal.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_renewscal) {
+                            case "form1":
+                                var forms = config.forms.renewscal.form1;
+                                var webforms = config.webforms.renewscal.live.form1;
+                                var contact_form_name = config.contact_form_name.renewscal.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.renewscal.form1;
+                                var form_page = config.form_page.renewscal.live.form1;
+
+                                console.log("form1");
+                                webforms_renewscal_f1.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form2":
+                                var forms = config.forms.renewscal.form2;
+                                var webforms = config.webforms.renewscal.live.form2;
+                                var contact_form_name = config.contact_form_name.renewscal.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.renewscal.form2;
+                                var form_page = config.form_page.renewscal.live.form2;
+
+                                console.log("form2");
+                                webforms_renewscal_f2.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
                                 break;
                             default:
                                 break;

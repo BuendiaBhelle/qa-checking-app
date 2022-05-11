@@ -251,8 +251,8 @@
                                                             <option value="crexendo">Crexendo</option>
                                                             <option value="culpepper">Culpepper & Associates</option>
                                                             <option value="ewingconstruction">Ewing Construction</option>
+                                                            <option value="frlawgroup">FR Law Group</option>
                                                             <option value="freddabranyon">Fredda Branyon</option>
-                                                            <!-- <option value="frlawgroup">FR Law Group</option> -->
                                                             <option value="indinspect">Industrial Inspection & Consulting</option>
                                                             <option value="jewelryoutletinc">Jewelry Outlet</option>
                                                             <option value="judefrancesjewelry">Jude Frances Jewelry</option>
@@ -262,11 +262,11 @@
                                                             <option value="newhopemedicalcenter">New Hope Medical Center</option>
                                                             <option value="optimizex">OptimizeX</option>
                                                             <option value="paysondermatology">Payson Dermatology</option>
+                                                            <option value="phoenixritecare">Phoenix Scottish Rite</option>
                                                             <option value="primemedicalpain">Prime Medical Pain Management Centers</option>
                                                             <option value="primeview">Primeview</option>
                                                             <option value="randosouthwest">Rando South West</option>
-                                                            <!-- <option value="renewscal">Renewscal</option>
-                                                            <option value="risingsunmartialarts">Rising Sun Martial Arts</option> -->
+                                                            <option value="renewscal">Renew Stem Cell & Laser</option>
                                                             <option value="sellusyourcaraz">Sell Us Your Car AZ</option>
                                                             <option value="solutionsforum">Solutions Forum</option>
                                                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
@@ -582,6 +582,28 @@
                                                     </div>
                                                 </div>
 
+                                                <!-- FR Law Group -->
+                                                <div id="site_frlawgroup">
+                                                    <div class="form-group row">
+                                                        <label for="site_frlawgroup" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_frlawgroup" class="form-control">
+                                                                <option value="form1">CTA Contact Form</option>
+                                                                <option value="form2">Contact Us Form - SB</option>
+                                                                <option value="form3">Contact Us Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>5M^S)oi5U4Krr5YugUNEJUSM</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <!-- Fredda Branyon -->
                                                 <div id="site_freddabranyon">
                                                     <div class="form-group row">
@@ -888,6 +910,27 @@
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
                                                             <p><b>password:</b> <i>&4c^I6WjO&SfVJ3fiSCz0dRd</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Renew Stem Cell & Laser -->
+                                                <div id="site_renewscal">
+                                                    <div class="form-group row">
+                                                        <label for="site_renewscal" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_renewscal">
+                                                                <option value="form1">Join Our VIP List</option>
+                                                                <option value="form2">Schedule your consult</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>(^Qpo(!LsSR2Zi$J$Gi417fy</i></p>
                                                             <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
                                                         </div>
                                                     </div>
@@ -1225,7 +1268,94 @@
             }
         }
 
+
         function sites() {
+            var site = document.getElementById("site").value;
+            var site_names = [
+                "accidentchiropracticaz",
+                "advancedimagemedspa",
+                "aerialengagement",
+                "aeroturbine",
+                "collisioncenternorthscottsdale",
+                "americanleatherusa",
+                "andresperezjurado",
+                "azdoordoctor",
+                "biltmoreloanandjewelry",
+                "buckeyederm",
+                "canyonfallshairextensioncompany",
+                "crexendo",
+                "culpepper",
+                "ewingconstruction",
+                "frlawgroup",
+                "freddabranyon",
+                "indinspect",
+                "jewelryoutletinc",
+                "judefrancesjewelry",
+                "kyrenefamilydentistry",
+                "lignans",
+                "natina",
+                "newhopemedicalcenter",
+                "optimizex",
+                "paysondermatology",
+                "phoenixritecare",
+                "primemedicalpain",
+                "primeview",
+                "randosouthwest",
+                "renewscal",
+                "sellusyourcaraz",
+                "solutionsforum",
+                "sunrisejewelryusa",
+                "versatile"  
+            ]
+            var site_name_value = [
+                "site_accidentchiropracticaz",
+                "site_advancedimagemedspa",
+                "site_aerialengagement",
+                "site_aeroturbine",
+                "site_collisioncenternorthscottsdale",
+                "site_americanleatherusa",
+                "site_andresperezjurado",
+                "site_azdoordoctor",
+                "site_biltmoreloanandjewelry",
+                "site_buckeyederm",
+                "site_canyonfallshairextensioncompany",
+                "site_crexendo",
+                "site_culpepper",
+                "site_ewingconstruction",
+                "site_frlawgroup",
+                "site_freddabranyon",
+                "site_indinspect",
+                "site_jewelryoutletinc",
+                "site_judefrancesjewelry",
+                "site_kyrenefamilydentistry",
+                "site_lignans",
+                "site_natina",
+                "site_newhopemedicalcenter",
+                "site_optimizex",
+                "site_paysondermatology",
+                "site_phoenixritecare",
+                "site_primemedicalpain",
+                "site_primeview",
+                "site_randosouthwest",
+                "site_renewscal",
+                "site_sellusyourcaraz",
+                "site_solutionsforum",
+                "site_sunrisejewelryusa",
+                "site_versatile"  
+            ]
+
+            for (let index = 0; index < site_names.length; index++) {
+                var val = site_name_value[index];
+                if (site === site_names[index]) {
+                    document.getElementById(site_name_value[index]).style.display = 'block';
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                }
+            }
+            
+        }
+
+        function sites_old() {
             var site = document.getElementById("site").value;
             if (site === "accidentchiropracticaz") {
                 document.getElementById('site_accidentchiropracticaz').style.display = 'block';
@@ -2334,8 +2464,7 @@
                 document.getElementById('site_sellusyourcaraz').style.display = 'none';
                 document.getElementById('site_solutionsforum').style.display = 'none';
                 document.getElementById('site_sunrisejewelryusa').style.display = 'none';
-            }
-            
+            }         
         }
 
         function not_on_the_list() {
