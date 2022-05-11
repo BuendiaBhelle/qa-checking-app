@@ -35,7 +35,8 @@ const sites = [
     "natina",
     "newhopemedicalcenter",
     "culpepper",
-    "aeroturbine"
+    "aeroturbine",
+    "collisioncenternorthscottsdale"
 ]
 
 let wp_creds = {
@@ -159,6 +160,10 @@ let wp_creds = {
     aeroturbine: {
         username: "pvadmin",
         password: "!kIKQGXHRc18"
+    },
+    collisioncenternorthscottsdale: {
+        username: "pvadmin",
+        password: "Ida5v)MSFCT@Vwh7!2u2n0ZH"
     }
 }
 
@@ -282,6 +287,10 @@ let domain = {
     aeroturbine: {
         dev: "https://aeroturbinedev.primeview.com/",
         live: ""
+    },
+    collisioncenternorthscottsdale: {
+        dev: "https://collisioncenternorthscottsdaledev.primeview.com/",
+        live: "https://www.collisioncenternorthscottsdale.com/"
     }
 }
 
@@ -428,6 +437,12 @@ let forms = {
     },
     aeroturbine: {
         form1: "contact-us/"
+    },
+    collisioncenternorthscottsdale: {
+        form1: "customer-authorization-form/",
+        form2: "schedule-a-reservation/",
+        form3: "body-shop-repair-estimate/",
+        form4: "major-collision-damage/"
     }
 }
 
@@ -461,7 +476,8 @@ let sheetId = {
     natina: 1726917041,
     newhopemedicalcenter: 1475574979,
     culpepper: 1784007282,
-    aeroturbine: 716332200
+    aeroturbine: 716332200,
+    collisioncenternorthscottsdale: 657428829
 }
 
 let range = [
@@ -824,6 +840,18 @@ let range = [
             "Aero Turbine!E2",
             "Aero Turbine!G2",
         ]
+    ],
+    sites[30] = [
+        [
+            "Airpark Collision Center!Q2",
+            "Airpark Collision Center!A2",
+            "Airpark Collision Center!B2",
+            "Airpark Collision Center!C2",
+            "Airpark Collision Center!C3",
+            "Airpark Collision Center!D2",
+            "Airpark Collision Center!E2",
+            "Airpark Collision Center!G2",
+        ]
     ]
 ]
 
@@ -857,7 +885,8 @@ let ranges = {
     natina: range[26][0],
     newhopemedicalcenter: range[27][0],
     culpepper: range[28][0],
-    aeroturbine: range[29][0]
+    aeroturbine: range[29][0],
+    collisioncenternorthscottsdale: range[30][0]
 }
 
 let launch = {
@@ -1004,6 +1033,12 @@ let contact_form_name = {
     },
     aeroturbine: {
         form1: "Contact Us"
+    },
+    collisioncenternorthscottsdale: {
+        form1: "ACC Authorization Form",
+        form2: "Appointment",
+        form3: "Body Shop Repair Estimate",
+        form4: "Body Shop Repair Estimate (Landing Page)"
     }
 }
 
@@ -1146,6 +1181,12 @@ let contact_form_shortcode = {
     },
     aeroturbine: {
         form1: '[contact-form-7 id="187" title="Contact Us"]'
+    },
+    collisioncenternorthscottsdale: {
+        form1: '[contact-form-7 id="5381" title="ACC Authorization Form"]',
+        form2: '[contact-form-7 id="116" title="Appointment"]',
+        form3: '[contact-form-7 id="4" title="Body Shop Repair Estimate"]',
+        form4: '[contact-form-7 id="4095" title="Body Shop Repair Estimate (Landing Page)"]'
     }
 }
 
@@ -1180,7 +1221,8 @@ let range_recipient = {
     natina: "Natina!H2",
     newhopemedicalcenter: "New Hope Medical Center!H2",
     culpepper: "Culpepper & Associates!H2",
-    aeroturbine: "Aero Turbine!H2"
+    aeroturbine: "Aero Turbine!H2",
+    collisioncenternorthscottsdale: "Airpark Collision Center!H2"
 }
 
 
@@ -1214,7 +1256,8 @@ let range_thankyou_page = {
     natina: "Natina!I2",
     newhopemedicalcenter: "New Hope Medical Center!I2",
     culpepper: "Culpepper & Associates!I2",
-    aeroturbine: "Aero Turbine!I2"
+    aeroturbine: "Aero Turbine!I2",
+    collisioncenternorthscottsdale: "Airpark Collision Center!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1571,6 +1614,20 @@ let webforms = {
         live: {
             form1: ""
         }
+    },
+    collisioncenternorthscottsdale: {
+        dev: {
+            form1: "ACC Authorization Form",
+            form2: "Appointment",
+            form3: "Body Shop Repair Estimate",
+            form4: "Body Shop Repair Estimate (Landing Page)"
+        },
+        live: {
+            form1: "ACC Authorization Form",
+            form2: "Appointment",
+            form3: "Body Shop Repair Estimate",
+            form4: "Body Shop Repair Estimate (Landing Page)"
+        }
     }
 }
 
@@ -1912,6 +1969,20 @@ let form_page = {
         },
         live: {
             form1: ""
+        }
+    },
+    collisioncenternorthscottsdale: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=5381&action=edit",
+            form2: "/admin.php?page=wpcf7&post=116&action=edit",
+            form3: "/admin.php?page=wpcf7&post=4&action=edit",
+            form4: "/admin.php?page=wpcf7&post=4095&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=5381&action=edit",
+            form2: "/admin.php?page=wpcf7&post=116&action=edit",
+            form3: "/admin.php?page=wpcf7&post=4&action=edit",
+            form4: "/admin.php?page=wpcf7&post=4095&action=edit"
         }
     }
 }

@@ -36,6 +36,12 @@ const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/contactfo
 const webforms_buckeyederm_f1 = require("./modules/webforms/contactform7/forms/buckeyederm/form1/index");
 const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form1/index");
 const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form2/index");
+
+const webforms_collisioncenternorthscottsdale_f1 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form1/index");
+const webforms_collisioncenternorthscottsdale_f2 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form2/index");
+const webforms_collisioncenternorthscottsdale_f3 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form3/index");
+const webforms_collisioncenternorthscottsdale_f4 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form4/index");
+
 const webforms_crexendo_f1 = require("./modules/webforms/contactform7/forms/crexendo/form1/index");
 const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crexendo/form2/index");
 const webforms_culpepper_f1 = require("./modules/webforms/ninjaform/forms/culpepper/form1/index");
@@ -1106,6 +1112,123 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form2");
                                 webforms_canyonfallshairextensioncompany_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "collisioncenternorthscottsdale":
+                var site_collisioncenternorthscottsdale = req.body.site_collisioncenternorthscottsdale;
+                var sheetId = config.sheetId.collisioncenternorthscottsdale;
+                var ranges = config.ranges.collisioncenternorthscottsdale;
+                var range_recipient = config.range_recipient.collisioncenternorthscottsdale;
+                var range_thankyou_page = config.range_thankyou_page.collisioncenternorthscottsdale;
+
+                console.log("Site: " + site_collisioncenternorthscottsdale);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.collisioncenternorthscottsdale.dev;
+                        var wp_creds_username = config.wp_creds.collisioncenternorthscottsdale.username;
+                        var wp_creds_password = config.wp_creds.collisioncenternorthscottsdale.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_collisioncenternorthscottsdale) {
+                            case "form1":
+                                var forms = config.forms.collisioncenternorthscottsdale.form1;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.dev.form1;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form1;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.dev.form1;
+
+                                console.log("form1");
+                                webforms_collisioncenternorthscottsdale_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.collisioncenternorthscottsdale.form2;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.dev.form2;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form2;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.dev.form2;
+
+                                console.log("form2");
+                                webforms_collisioncenternorthscottsdale_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.collisioncenternorthscottsdale.form3;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.dev.form3;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form3;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.dev.form3;
+
+                                console.log("form3");
+                                webforms_collisioncenternorthscottsdale_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form4":
+                                var forms = config.forms.collisioncenternorthscottsdale.form4;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.dev.form4;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form4;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.dev.form4;
+
+                                console.log("form4");
+                                webforms_collisioncenternorthscottsdale_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.collisioncenternorthscottsdale.live;
+                        var wp_creds_username = config.wp_creds.collisioncenternorthscottsdale.username;
+                        var wp_creds_password = config.wp_creds.collisioncenternorthscottsdale.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_collisioncenternorthscottsdale) {
+                            case "form1":
+                                var forms = config.forms.collisioncenternorthscottsdale.form1;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.live.form1;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form1;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.live.form1;
+
+                                console.log("form1");
+                                webforms_collisioncenternorthscottsdale_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.collisioncenternorthscottsdale.form2;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.live.form2;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form2;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.live.form2;
+
+                                console.log("form2");
+                                webforms_collisioncenternorthscottsdale_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.collisioncenternorthscottsdale.form3;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.live.form3;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form3;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.live.form3;
+
+                                console.log("form3");
+                                webforms_collisioncenternorthscottsdale_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form4":
+                                var forms = config.forms.collisioncenternorthscottsdale.form4;
+                                var webforms = config.webforms.collisioncenternorthscottsdale.live.form4;
+                                var contact_form_name = config.contact_form_name.collisioncenternorthscottsdale.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.collisioncenternorthscottsdale.form4;
+                                var form_page = config.form_page.collisioncenternorthscottsdale.live.form4;
+
+                                console.log("form4");
+                                webforms_collisioncenternorthscottsdale_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
