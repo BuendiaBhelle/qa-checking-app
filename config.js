@@ -36,7 +36,8 @@ const sites = [
     "newhopemedicalcenter",
     "culpepper",
     "aeroturbine",
-    "collisioncenternorthscottsdale"
+    "collisioncenternorthscottsdale",
+    "jewelryoutletinc"
 ]
 
 let wp_creds = {
@@ -164,6 +165,10 @@ let wp_creds = {
     collisioncenternorthscottsdale: {
         username: "pvadmin",
         password: "Ida5v)MSFCT@Vwh7!2u2n0ZH"
+    },
+    jewelryoutletinc: {
+        username: "pvadmin",
+        password: "AuAKL4TTFeQ^2DlBF8l8VBE!"
     }
 }
 
@@ -291,6 +296,10 @@ let domain = {
     collisioncenternorthscottsdale: {
         dev: "https://collisioncenternorthscottsdaledev.primeview.com/",
         live: "https://www.collisioncenternorthscottsdale.com/"
+    },
+    jewelryoutletinc: {
+        dev: "https://jewelry.primeview.com/",
+        live: "https://www.jewelryoutletinc.com/"
     }
 }
 
@@ -443,6 +452,10 @@ let forms = {
         form2: "schedule-a-reservation/",
         form3: "body-shop-repair-estimate/",
         form4: "major-collision-damage/"
+    },
+    jewelryoutletinc: {
+        form1: "contact-us/",
+        form2: "credit-application/"
     }
 }
 
@@ -477,7 +490,8 @@ let sheetId = {
     newhopemedicalcenter: 1475574979,
     culpepper: 1784007282,
     aeroturbine: 716332200,
-    collisioncenternorthscottsdale: 657428829
+    collisioncenternorthscottsdale: 657428829,
+    jewelryoutletinc: 1528265251
 }
 
 let range = [
@@ -852,6 +866,18 @@ let range = [
             "Airpark Collision Center!E2",
             "Airpark Collision Center!G2",
         ]
+    ],
+    sites[31] = [
+        [
+            "Jewelry Outlet!Q2",
+            "Jewelry Outlet!A2",
+            "Jewelry Outlet!B2",
+            "Jewelry Outlet!C2",
+            "Jewelry Outlet!C3",
+            "Jewelry Outlet!D2",
+            "Jewelry Outlet!E2",
+            "Jewelry Outlet!G2",
+        ]
     ]
 ]
 
@@ -886,7 +912,8 @@ let ranges = {
     newhopemedicalcenter: range[27][0],
     culpepper: range[28][0],
     aeroturbine: range[29][0],
-    collisioncenternorthscottsdale: range[30][0]
+    collisioncenternorthscottsdale: range[30][0],
+    jewelryoutletinc: range[31][0]
 }
 
 let launch = {
@@ -1039,6 +1066,10 @@ let contact_form_name = {
         form2: "Appointment",
         form3: "Body Shop Repair Estimate",
         form4: "Body Shop Repair Estimate (Landing Page)"
+    },
+    jewelryoutletinc: {
+        form1: "Contact form 1",
+        form2: "Credit Application"
     }
 }
 
@@ -1187,6 +1218,10 @@ let contact_form_shortcode = {
         form2: '[contact-form-7 id="116" title="Appointment"]',
         form3: '[contact-form-7 id="4" title="Body Shop Repair Estimate"]',
         form4: '[contact-form-7 id="4095" title="Body Shop Repair Estimate (Landing Page)"]'
+    },
+    jewelryoutletinc: {
+        form1: '[contact-form-7 id="33" title="Contact form 1"]',
+        form2: '[contact-form-7 id="891" title="Credit Application"]'
     }
 }
 
@@ -1222,7 +1257,8 @@ let range_recipient = {
     newhopemedicalcenter: "New Hope Medical Center!H2",
     culpepper: "Culpepper & Associates!H2",
     aeroturbine: "Aero Turbine!H2",
-    collisioncenternorthscottsdale: "Airpark Collision Center!H2"
+    collisioncenternorthscottsdale: "Airpark Collision Center!H2",
+    jewelryoutletinc: "Jewelry Outlet!H2"
 }
 
 
@@ -1257,7 +1293,8 @@ let range_thankyou_page = {
     newhopemedicalcenter: "New Hope Medical Center!I2",
     culpepper: "Culpepper & Associates!I2",
     aeroturbine: "Aero Turbine!I2",
-    collisioncenternorthscottsdale: "Airpark Collision Center!I2"
+    collisioncenternorthscottsdale: "Airpark Collision Center!I2",
+    jewelryoutletinc: "Jewelry Outlet!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1628,6 +1665,16 @@ let webforms = {
             form3: "Body Shop Repair Estimate",
             form4: "Body Shop Repair Estimate (Landing Page)"
         }
+    },
+    jewelryoutletinc: {
+        dev: {
+            form1: "Contact form 1",
+            form2: "Credit Application"
+        },
+        live: {
+            form1: "Contact form 1",
+            form2: "Credit Application"
+        }
     }
 }
 
@@ -1983,6 +2030,16 @@ let form_page = {
             form2: "/admin.php?page=wpcf7&post=116&action=edit",
             form3: "/admin.php?page=wpcf7&post=4&action=edit",
             form4: "/admin.php?page=wpcf7&post=4095&action=edit"
+        }
+    },
+    jewelryoutletinc: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=33&action=edit",
+            form2: "/admin.php?page=wpcf7&post=891&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=33&action=edit",
+            form2: "/admin.php?page=wpcf7&post=891&action=edit"
         }
     }
 }

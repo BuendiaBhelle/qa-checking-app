@@ -36,12 +36,10 @@ const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/contactfo
 const webforms_buckeyederm_f1 = require("./modules/webforms/contactform7/forms/buckeyederm/form1/index");
 const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form1/index");
 const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form2/index");
-
 const webforms_collisioncenternorthscottsdale_f1 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form1/index");
 const webforms_collisioncenternorthscottsdale_f2 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form2/index");
 const webforms_collisioncenternorthscottsdale_f3 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form3/index");
 const webforms_collisioncenternorthscottsdale_f4 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form4/index");
-
 const webforms_crexendo_f1 = require("./modules/webforms/contactform7/forms/crexendo/form1/index");
 const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crexendo/form2/index");
 const webforms_culpepper_f1 = require("./modules/webforms/ninjaform/forms/culpepper/form1/index");
@@ -52,6 +50,10 @@ const webforms_frlawgroup_f2 = require("./modules/webforms/contactform7/forms/fr
 const webforms_frlawgroup_f3 = require("./modules/webforms/contactform7/forms/frlawgroup/form3/index");
 const webforms_indinspect_f1 = require("./modules/webforms/gravityform/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/gravityform/forms/indinspect/form2/index");
+
+const webforms_jewelryoutletinc_f1 = require("./modules/webforms/contactform7/forms/jewelryoutletinc/form1/index");
+const webforms_jewelryoutletinc_f2 = require("./modules/webforms/contactform7/forms/jewelryoutletinc/form2/index");
+
 const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
 const webforms_judefrancesjewelry_f2 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form2/index");
 const webforms_judefrancesjewelry_f3 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form3/index");
@@ -1995,6 +1997,83 @@ app.post('/post/webforms', async (req, res) => {
                                     webforms, 
                                     form_page
                                 );
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "jewelryoutletinc":
+                var site_jewelryoutletinc = req.body.site_jewelryoutletinc;
+                var sheetId = config.sheetId.jewelryoutletinc;
+                var ranges = config.ranges.jewelryoutletinc;
+                var range_recipient = config.range_recipient.jewelryoutletinc;
+                var range_thankyou_page = config.range_thankyou_page.jewelryoutletinc;
+
+                console.log("Site: " + site_jewelryoutletinc);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.jewelryoutletinc.dev;
+                        var wp_creds_username = config.wp_creds.jewelryoutletinc.username;
+                        var wp_creds_password = config.wp_creds.jewelryoutletinc.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_jewelryoutletinc) {
+                            case "form1":
+                                var forms = config.forms.jewelryoutletinc.form1;
+                                var webforms = config.webforms.jewelryoutletinc.dev.form1;
+                                var contact_form_name = config.contact_form_name.jewelryoutletinc.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.jewelryoutletinc.form1;
+                                var form_page = config.form_page.jewelryoutletinc.dev.form1;
+
+                                console.log("form1");
+                                webforms_jewelryoutletinc_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.jewelryoutletinc.form2;
+                                var webforms = config.webforms.jewelryoutletinc.dev.form2;
+                                var contact_form_name = config.contact_form_name.jewelryoutletinc.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.jewelryoutletinc.form2;
+                                var form_page = config.form_page.jewelryoutletinc.dev.form2;
+
+                                console.log("form2");
+                                webforms_jewelryoutletinc_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.jewelryoutletinc.live;
+                        var wp_creds_username = config.wp_creds.jewelryoutletinc.username;
+                        var wp_creds_password = config.wp_creds.jewelryoutletinc.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_jewelryoutletinc) {
+                            case "form1":
+                                var forms = config.forms.jewelryoutletinc.form1;
+                                var webforms = config.webforms.jewelryoutletinc.live.form1;
+                                var contact_form_name = config.contact_form_name.jewelryoutletinc.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.jewelryoutletinc.form1;
+                                var form_page = config.form_page.jewelryoutletinc.live.form1;
+
+                                console.log("form1");
+                                webforms_jewelryoutletinc_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.jewelryoutletinc.form2;
+                                var webforms = config.webforms.jewelryoutletinc.live.form2;
+                                var contact_form_name = config.contact_form_name.jewelryoutletinc.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.jewelryoutletinc.form2;
+                                var form_page = config.form_page.jewelryoutletinc.live.form2;
+
+                                console.log("form2");
+                                webforms_jewelryoutletinc_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
