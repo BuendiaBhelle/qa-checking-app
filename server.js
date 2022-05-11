@@ -50,10 +50,8 @@ const webforms_frlawgroup_f2 = require("./modules/webforms/contactform7/forms/fr
 const webforms_frlawgroup_f3 = require("./modules/webforms/contactform7/forms/frlawgroup/form3/index");
 const webforms_indinspect_f1 = require("./modules/webforms/gravityform/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/gravityform/forms/indinspect/form2/index");
-
 const webforms_jewelryoutletinc_f1 = require("./modules/webforms/contactform7/forms/jewelryoutletinc/form1/index");
 const webforms_jewelryoutletinc_f2 = require("./modules/webforms/contactform7/forms/jewelryoutletinc/form2/index");
-
 const webforms_judefrancesjewelry_f1 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form1/index");
 const webforms_judefrancesjewelry_f2 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form2/index");
 const webforms_judefrancesjewelry_f3 = require("./modules/webforms/gravityform/forms/judefrancesjewelry/form3/index");
@@ -74,6 +72,9 @@ const webforms_newhopemedicalcenter_f7 = require("./modules/webforms/gravityform
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
 const webforms_optimizex_f2 = require("./modules/webforms/contactform7/forms/optimizex/form2/index");
 const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/optimizex/form3/index");
+
+const webforms_paysondermatology_f1 = require("./modules/webforms/contactform7/forms/paysondermatology/form1/index");
+
 const webforms_phoenixritecare_f1 = require("./modules/webforms/contactform7/forms/phoenixritecare/form1/index");
 const webforms_phoenixritecare_f2 = require("./modules/webforms/contactform7/forms/phoenixritecare/form2/index");
 const webforms_phoenixritecare_f3 = require("./modules/webforms/contactform7/forms/phoenixritecare/form3/index");
@@ -3116,6 +3117,63 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form3");
                                 webforms_optimizex_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "paysondermatology":
+                var site_paysondermatology = req.body.site_paysondermatology;
+                var sheetId = config.sheetId.paysondermatology;
+                var ranges = config.ranges.paysondermatology;
+                var range_recipient = config.range_recipient.paysondermatology;
+                var range_thankyou_page = config.range_thankyou_page.paysondermatology;
+
+                console.log("Site: " + site_paysondermatology);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.paysondermatology.dev;
+                        var wp_creds_username = config.wp_creds.paysondermatology.username;
+                        var wp_creds_password = config.wp_creds.paysondermatology.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_paysondermatology) {
+                            case "form1":
+                                var forms = config.forms.paysondermatology.form1;
+                                var webforms = config.webforms.paysondermatology.dev.form1;
+                                var contact_form_name = config.contact_form_name.paysondermatology.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.paysondermatology.form1;
+                                var form_page = config.form_page.paysondermatology.dev.form1;
+
+                                console.log("form1");
+                                webforms_paysondermatology_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.paysondermatology.live;
+                        var wp_creds_username = config.wp_creds.paysondermatology.username;
+                        var wp_creds_password = config.wp_creds.paysondermatology.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_paysondermatology) {
+                            case "form1":
+                                var forms = config.forms.paysondermatology.form1;
+                                var webforms = config.webforms.paysondermatology.live.form1;
+                                var contact_form_name = config.contact_form_name.paysondermatology.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.paysondermatology.form1;
+                                var form_page = config.form_page.paysondermatology.live.form1;
+
+                                console.log("form1");
+                                webforms_paysondermatology_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;

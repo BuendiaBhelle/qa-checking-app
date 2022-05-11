@@ -37,7 +37,8 @@ const sites = [
     "culpepper",
     "aeroturbine",
     "collisioncenternorthscottsdale",
-    "jewelryoutletinc"
+    "jewelryoutletinc",
+    "paysondermatology"
 ]
 
 let wp_creds = {
@@ -169,6 +170,10 @@ let wp_creds = {
     jewelryoutletinc: {
         username: "pvadmin",
         password: "AuAKL4TTFeQ^2DlBF8l8VBE!"
+    },
+    paysondermatology: {
+        username: "pvadmin",
+        password: "ExvkE3I7$olXiHhAuDt6RJld"
     }
 }
 
@@ -300,6 +305,10 @@ let domain = {
     jewelryoutletinc: {
         dev: "https://jewelry.primeview.com/",
         live: "https://www.jewelryoutletinc.com/"
+    },
+    paysondermatology: {
+        dev: "https://paysondermatologydev.primeview.com/",
+        live: "https://www.paysondermatology.com/"
     }
 }
 
@@ -456,6 +465,9 @@ let forms = {
     jewelryoutletinc: {
         form1: "contact-us/",
         form2: "credit-application/"
+    },
+    paysondermatology: {
+        form1: "about-us/"
     }
 }
 
@@ -491,7 +503,8 @@ let sheetId = {
     culpepper: 1784007282,
     aeroturbine: 716332200,
     collisioncenternorthscottsdale: 657428829,
-    jewelryoutletinc: 1528265251
+    jewelryoutletinc: 1528265251,
+    paysondermatology: 1897422886
 }
 
 let range = [
@@ -878,6 +891,18 @@ let range = [
             "Jewelry Outlet!E2",
             "Jewelry Outlet!G2",
         ]
+    ],
+    sites[32] = [
+        [
+            "Payson Dermatology!Q2",
+            "Payson Dermatology!A2",
+            "Payson Dermatology!B2",
+            "Payson Dermatology!C2",
+            "Payson Dermatology!C3",
+            "Payson Dermatology!D2",
+            "Payson Dermatology!E2",
+            "Payson Dermatology!G2",
+        ]
     ]
 ]
 
@@ -913,7 +938,8 @@ let ranges = {
     culpepper: range[28][0],
     aeroturbine: range[29][0],
     collisioncenternorthscottsdale: range[30][0],
-    jewelryoutletinc: range[31][0]
+    jewelryoutletinc: range[31][0],
+    paysondermatology: range[32][0]
 }
 
 let launch = {
@@ -1070,6 +1096,9 @@ let contact_form_name = {
     jewelryoutletinc: {
         form1: "Contact form 1",
         form2: "Credit Application"
+    },
+    paysondermatology: {
+        form1: "Request an Appointment"
     }
 }
 
@@ -1222,6 +1251,9 @@ let contact_form_shortcode = {
     jewelryoutletinc: {
         form1: '[contact-form-7 id="33" title="Contact form 1"]',
         form2: '[contact-form-7 id="891" title="Credit Application"]'
+    },
+    paysondermatology: {
+        form1: '[contact-form-7 id="453" title="Request an Appointment"]'
     }
 }
 
@@ -1258,7 +1290,8 @@ let range_recipient = {
     culpepper: "Culpepper & Associates!H2",
     aeroturbine: "Aero Turbine!H2",
     collisioncenternorthscottsdale: "Airpark Collision Center!H2",
-    jewelryoutletinc: "Jewelry Outlet!H2"
+    jewelryoutletinc: "Jewelry Outlet!H2",
+    paysondermatology: "Payson Dermatology!H2"
 }
 
 
@@ -1294,7 +1327,8 @@ let range_thankyou_page = {
     culpepper: "Culpepper & Associates!I2",
     aeroturbine: "Aero Turbine!I2",
     collisioncenternorthscottsdale: "Airpark Collision Center!I2",
-    jewelryoutletinc: "Jewelry Outlet!I2"
+    jewelryoutletinc: "Jewelry Outlet!I2",
+    paysondermatology: "Payson Dermatology!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1675,6 +1709,14 @@ let webforms = {
             form1: "Contact form 1",
             form2: "Credit Application"
         }
+    },
+    paysondermatology: {
+        dev: {
+            form1: "Request an Appointment"
+        },
+        live: {
+            form1: "Request an Appointment"
+        }
     }
 }
 
@@ -2040,6 +2082,14 @@ let form_page = {
         live: {
             form1: "/admin.php?page=wpcf7&post=33&action=edit",
             form2: "/admin.php?page=wpcf7&post=891&action=edit"
+        }
+    },
+    paysondermatology: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=453&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=453&action=edit"
         }
     }
 }
