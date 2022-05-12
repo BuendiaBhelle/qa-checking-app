@@ -92,10 +92,9 @@ const webforms_primeview_f5 = require("./modules/webforms/contactform7/forms/pri
 const webforms_primeview_f6 = require("./modules/webforms/contactform7/forms/primeview/form6/index");
 const webforms_primeview_f7 = require("./modules/webforms/contactform7/forms/primeview/form7/index");
 const webforms_randosouthwest_f1 = require("./modules/webforms/contactform7/forms/randosouthwest/form1/index");
-
 const webforms_renewscal_f1 = require("./modules/webforms/gravityform/forms/renewscal/form1/index");
 const webforms_renewscal_f2 = require("./modules/webforms/gravityform/forms/renewscal/form2/index");
-
+const webforms_risingsunmartialartsaz_f1 = require("./modules/webforms/contactform7/forms/risingsunmartialartsaz/form1/index");
 const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form1/index");
 const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
 const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
@@ -2000,6 +1999,63 @@ app.post('/post/webforms', async (req, res) => {
                                     webforms, 
                                     form_page
                                 );
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "risingsunmartialartsaz":
+                var site_risingsunmartialartsaz = req.body.site_risingsunmartialartsaz;
+                var sheetId = config.sheetId.risingsunmartialartsaz;
+                var ranges = config.ranges.risingsunmartialartsaz;
+                var range_recipient = config.range_recipient.risingsunmartialartsaz;
+                var range_thankyou_page = config.range_thankyou_page.risingsunmartialartsaz;
+
+                console.log("Site: " + site_risingsunmartialartsaz);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.risingsunmartialartsaz.dev;
+                        var wp_creds_username = config.wp_creds.risingsunmartialartsaz.username;
+                        var wp_creds_password = config.wp_creds.risingsunmartialartsaz.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_risingsunmartialartsaz) {
+                            case "form1":
+                                var forms = config.forms.risingsunmartialartsaz.form1;
+                                var webforms = config.webforms.risingsunmartialartsaz.dev.form1;
+                                var contact_form_name = config.contact_form_name.risingsunmartialartsaz.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.risingsunmartialartsaz.form1;
+                                var form_page = config.form_page.risingsunmartialartsaz.dev.form1;
+
+                                console.log("form1");
+                                webforms_risingsunmartialartsaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.risingsunmartialartsaz.live;
+                        var wp_creds_username = config.wp_creds.risingsunmartialartsaz.username;
+                        var wp_creds_password = config.wp_creds.risingsunmartialartsaz.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_risingsunmartialartsaz) {
+                            case "form1":
+                                var forms = config.forms.risingsunmartialartsaz.form1;
+                                var webforms = config.webforms.risingsunmartialartsaz.live.form1;
+                                var contact_form_name = config.contact_form_name.risingsunmartialartsaz.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.risingsunmartialartsaz.form1;
+                                var form_page = config.form_page.risingsunmartialartsaz.live.form1;
+
+                                console.log("form1");
+                                webforms_risingsunmartialartsaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;

@@ -39,7 +39,8 @@ const sites = [
     "collisioncenternorthscottsdale",
     "jewelryoutletinc",
     "paysondermatology",
-    "renewscal"
+    "renewscal",
+    "risingsunmartialartsaz"
 ]
 
 let wp_creds = {
@@ -179,6 +180,10 @@ let wp_creds = {
     renewscal: {
         username: "pvadmin",
         password: "(^Qpo(!LsSR2Zi$J$Gi417fy"
+    },
+    risingsunmartialartsaz: {
+        username: "pvadmin",
+        password: "uR3$hH0)tQ6%"
     }
 }
 
@@ -318,6 +323,10 @@ let domain = {
     renewscal: {
         dev: "",
         live: "https://renewscal.primeview.com/"
+    },
+    risingsunmartialartsaz: {
+        dev: "https://risingsunmartialartsdev.primeview.com/",
+        live: "https://www.risingsunmartialartsaz.com/"
     }
 }
 
@@ -481,6 +490,9 @@ let forms = {
     renewscal: {
         form1: "",
         form2: "contact-us/"
+    },
+    risingsunmartialartsaz: {
+        form1: "contact-us/"
     }
 }
 
@@ -518,7 +530,8 @@ let sheetId = {
     collisioncenternorthscottsdale: 657428829,
     jewelryoutletinc: 1528265251,
     paysondermatology: 1897422886,
-    renewscal: 1177615742
+    renewscal: 1177615742,
+    risingsunmartialartsaz: 2093063365
 }
 
 let range = [
@@ -929,6 +942,18 @@ let range = [
             "Renew Stem Cell & Laser!E2",
             "Renew Stem Cell & Laser!G2",
         ]
+    ],
+    sites[34] = [
+        [
+            "Rising Sun!Q2",
+            "Rising Sun!A2",
+            "Rising Sun!B2",
+            "Rising Sun!C2",
+            "Rising Sun!C3",
+            "Rising Sun!D2",
+            "Rising Sun!E2",
+            "Rising Sun!G2",
+        ]
     ]
 ]
 
@@ -966,7 +991,8 @@ let ranges = {
     collisioncenternorthscottsdale: range[30][0],
     jewelryoutletinc: range[31][0],
     paysondermatology: range[32][0],
-    renewscal: range[33][0]
+    renewscal: range[33][0],
+    risingsunmartialartsaz: range[34][0]
 }
 
 let launch = {
@@ -1130,6 +1156,9 @@ let contact_form_name = {
     renewscal: {
         form1: "Join Our VIP List",
         form2: "Schedule your consult"
+    },
+    risingsunmartialartsaz: {
+        form1: "Contact Us"
     }
 }
 
@@ -1289,6 +1318,9 @@ let contact_form_shortcode = {
     renewscal: {
         form1: 'gform_3',
         form2: 'gform_1'
+    },
+    risingsunmartialartsaz: {
+        form1: '[contact-form-7 id="5" title="Contact Us"]'
     }
 }
 
@@ -1327,7 +1359,8 @@ let range_recipient = {
     collisioncenternorthscottsdale: "Airpark Collision Center!H2",
     jewelryoutletinc: "Jewelry Outlet!H2",
     paysondermatology: "Payson Dermatology!H2",
-    renewscal: "Renew Stem Cell & Laser!H2"
+    renewscal: "Renew Stem Cell & Laser!H2",
+    risingsunmartialartsaz: "Rising Sun!H2"
 }
 
 
@@ -1365,7 +1398,8 @@ let range_thankyou_page = {
     collisioncenternorthscottsdale: "Airpark Collision Center!I2",
     jewelryoutletinc: "Jewelry Outlet!I2",
     paysondermatology: "Payson Dermatology!I2",
-    renewscal: "Renew Stem Cell & Laser!I2"
+    renewscal: "Renew Stem Cell & Laser!I2",
+    risingsunmartialartsaz: "Rising Sun!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1764,6 +1798,14 @@ let webforms = {
             form1: "Join Our VIP List",
             form2: "Schedule your consult"
         }
+    },
+    risingsunmartialartsaz: {
+        dev: {
+            form1: "Contact Us"
+        },
+        live: {
+            form1: "Contact Us"
+        }
     }
 }
 
@@ -2147,6 +2189,14 @@ let form_page = {
         live: {
             form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
             form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1"
+        }
+    },
+    risingsunmartialartsaz: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=5&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=5&action=edit"
         }
     }
 }
