@@ -12,122 +12,109 @@ var googleSheets;
 var driver;
 var current_page_url;
 
-
-async function wordpressStart(date, domain, checkbox, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, wp_menu_name, row_title, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms) {
-    // const wp_site = domain + "wp-admin";
-    const wp_site = domain + "members-login/";
+async function wordpressStart(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page) {
+    const wp_site = domain + "wp-admin";
     const client = await auth.getClient();
     googleSheets = google.sheets({ version: "v4", auth: client });
 
-    // let requests = [{
-    //     insertRange: {
-    //         range: {
-    //             sheetId: sheetId,
-    //             startRowIndex: 1,
-    //             endRowIndex: 4,
-    //             startColumnIndex: 0,
-    //         },
-    //         shiftDimension: "ROWS"
-    //     }
-    // }];   
+    let requests = [{
+        insertRange: {
+            range: {
+                sheetId: sheetId,
+                startRowIndex: 1,
+                endRowIndex: 4,
+                startColumnIndex: 0,
+            },
+            shiftDimension: "ROWS"
+        }
+    }];   
     
-    // const batchUpdateRequest = {requests};
+    const batchUpdateRequest = {requests};
     
-    // // add columns
-    // try {
-    //     await googleSheets.spreadsheets.batchUpdate({
-    //         auth,
-    //         spreadsheetId,
-    //         resource: batchUpdateRequest
-    //     });
-    //     logger.logger.log({ level: 'info', message: 'WEBFORMS - add columns success.', tester: server.userId });
-    //     console.log("WEBFORMS - add columns success.");
-    //     value = [ "", "", "info", "add columns success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
-    //     await sheet.addRow();
-    //     await sheet.appendValues(value);
-    // } catch (error) {
-    //     logger.logger.log({ level: 'error', message: 'WEBFORMS - add columns failed.', tester: server.userId });
-    //     console.log("WEBFORMS - add columns failed.");
-    //     value = [ "", "", "error", "add columns failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
-    //     await sheet.addRow();
-    //     await sheet.appendValues(value);
-    // }
+    // add columns
+    try {
+        await googleSheets.spreadsheets.batchUpdate({
+            auth,
+            spreadsheetId,
+            resource: batchUpdateRequest
+        });
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - add columns success.', tester: server.userId });
+        console.log("WEBFORMS - add columns success.");
+        value = [ "", "", "info", "add columns success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: 'WEBFORMS - add columns failed.', tester: server.userId });
+        console.log("WEBFORMS - add columns failed.");
+        value = [ "", "", "error", "add columns failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    }
 
     
-    // let values = [
-    //     "",
-    //     launch,
-    //     date,
-    //     wp_creds_username,
-    //     wp_creds_password,
-    //     domain + forms,
-    //     contact_form_name,
-    //     contact_form_shortcode
-    // ]
+    let values = [
+        "",
+        launch,
+        date,
+        wp_creds_username,
+        wp_creds_password,
+        domain + forms,
+        contact_form_name,
+        contact_form_shortcode
+    ]
 
-    // console.log(values);
+    console.log(values);
 
-    // // track form details
-    // try {
-    //     for (let index = 0; index < ranges.length; index++) {
-    //         await googleSheets.spreadsheets.values.append({
-    //             auth,
-    //             spreadsheetId,
-    //             range: ranges[index],
-    //             valueInputOption: "USER_ENTERED",
-    //             resource: {
-    //                 values: [
-    //                     [values[index]]
-    //                 ]
-    //             }
-    //         });
-    //     }
-    //     logger.logger.log({ level: 'info', message: 'WEBFORMS - track details success.', tester: server.userId });
-    //     console.log("WEBFORMS - track details success.");
-    //     value = [ "", "", "info", "track details success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
-    //     await sheet.addRow();
-    //     await sheet.appendValues(value);
-    // } catch (error) {
-    //     logger.logger.log({ level: 'error', message: 'WEBFORMS - track details failed.', tester: server.userId });
-    //     console.log("WEBFORMS - track details failed.");
-    //     value = [ "", "", "error", "track details failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
-    //     await sheet.addRow();
-    //     await sheet.appendValues(value);
-    // }
+    // track form details
+    try {
+        for (let index = 0; index < ranges.length; index++) {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: ranges[index],
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [values[index]]
+                    ]
+                }
+            });
+        }
+        logger.logger.log({ level: 'info', message: 'WEBFORMS - track details success.', tester: server.userId });
+        console.log("WEBFORMS - track details success.");
+        value = [ "", "", "info", "track details success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    } catch (error) {
+        logger.logger.log({ level: 'error', message: 'WEBFORMS - track details failed.', tester: server.userId });
+        console.log("WEBFORMS - track details failed.");
+        value = [ "", "", "error", "track details failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
+        await sheet.addRow();
+        await sheet.appendValues(value);
+    }
 
     driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get(wp_site);
 
-    // await driver.sleep(5000);
-
     // wp login
     try {
         if ((username) && (password)) {
-            let log = await driver.executeScript("return document.getElementsByName('log')[0]");
-            log.sendKeys(username);
-            let pwd = await driver.executeScript("return document.getElementsByName('pwd')[0]");
-            pwd.sendKeys(password);
-            await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
+            await driver.findElement(By.name("log")).sendKeys(username);
+            await driver.findElement(By.name("pwd")).sendKeys(password);
             logger.logger.log({ level: 'info', message: 'WEBFORMS - edit credentials success.', tester: server.userId });
             console.log("WEBFORMS - edit credentials success.");
             value = [ "", "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", webforms, "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
-            let log = await driver.executeScript("return document.getElementsByName('log')[0]");
-            log.sendKeys(wp_creds_username);
-            let pwd = await driver.executeScript("return document.getElementsByName('pwd')[0]");
-            pwd.sendKeys(wp_creds_password);
-            await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
-            console.log("enter wp");
+            await driver.findElement(By.id("user_login")).sendKeys("pvadmin");
+            await driver.findElement(By.id("user_pass")).sendKeys("lGmeVv#22rTn");
         }
 
-        // await driver.sleep(2000);
+        await driver.executeScript("return document.getElementsByName('submit')[0].click()");
 
-        
-
-        let login_error = await driver.executeScript("return document.getElementsByClassName('tml-error')[0]");
+        let login_error = await driver.executeScript("return document.getElementById('login_error')");
         if (login_error) {
             logger.logger.log({ level: 'error', message: 'WEBFORMS - wordpress login failed.', tester: server.userId });
             console.log("WEBFORMS - wordpress login failed.");
@@ -135,26 +122,22 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
             await sheet.addRow();
             await sheet.appendValues(value);
         } else {
-            // if ((username) && (password)) {
-            //     logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
-            //     console.log("WEBFORMS - wordpress login success.");
-            //     value = [ "", "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", webforms, "", "" ];
-            //     await sheet.addRow();
-            //     await sheet.appendValues(value);
-            // } else {
-            //     logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
-            //     console.log("WEBFORMS - wordpress login success.");
-            //     value = [ "", "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, wp_creds_username + "\n" + wp_creds_password, "", "", launch, "", webforms, "", "" ];
-            //     await sheet.addRow();
-            //     await sheet.appendValues(value);
-            // }
+            if ((username) && (password)) {
+                logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
+                console.log("WEBFORMS - wordpress login success.");
+                value = [ "", "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            } else {
+                logger.logger.log({ level: 'info', message: 'WEBFORMS - wordpress login success.', tester: server.userId });
+                console.log("WEBFORMS - wordpress login success.");
+                value = [ "", "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, wp_creds_username + "\n" + wp_creds_password, "", "", launch, "", webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            }
         }
 
-        await driver.sleep(2000);
-
-        await driver.executeScript("return document.getElementsByClassName('btn')[7].click()");
-
-        await driver.sleep(1000);
+        // await driver.sleep(1000);
         
         var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
         if (admin_email_verification === true) {
@@ -173,17 +156,20 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
         await sheet.appendValues(value);
     }
 
-    await driver.sleep(1000);
-    await driver.executeScript(wp_menu_name);
-    await driver.sleep(1000);
-    await driver.executeScript(row_title);
-    await driver.sleep(1000);
+    await driver.sleep(5000);
+
+    await driver.executeScript("return document.getElementsByClassName('btn')[7].click()");
+
+
+    // navigate to forms page
+    await driver.get(wp_site + form_page);
+    
     await driver.findElement(By.id("ui-id-2")).click();
-    let recipients_form1 = await driver.findElement(By.id("wpcf7-mail-recipient")).getAttribute('value');
-    console.log("recipients_form1: " + recipients_form1);
+    let recipients = await driver.findElement(By.id("wpcf7-mail-recipient")).getAttribute('value');
+    console.log("recipients: " + recipients);
 
     console.log(range_recipient);
-    console.log(recipients_form1);
+    console.log(recipients);
 
     // track form recipients
     try {
@@ -194,7 +180,7 @@ async function wordpressStart(date, domain, checkbox, username, password, email,
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
-                    [recipients_form1]
+                    [recipients]
                 ]
             }
         });
@@ -295,3 +281,4 @@ async function wordpressEnd(domain, timestamp, forms, range_recipient, module_na
 
 
 module.exports = { wordpressStart, wordpressEnd };
+
