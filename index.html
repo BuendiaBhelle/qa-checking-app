@@ -57,6 +57,9 @@
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="webForms()">Web Forms</button>
                             </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="newsletter()">Newsletter</button>
+                            </li>
                             <div class="dropdown">
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Responsiveness</button>
@@ -70,11 +73,12 @@
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Monitoring Tasks</button>
                                     <div class="dropdown-content">
-                                        <p style="margin-bottom: 6px;" onclick="responsivenessForm_lambdatest()">WPM</p>
-                                        <p onclick="responsiveness_manual()">Nitropack</p>
+                                        <p style="margin-bottom: 6px;" onclick="wpm()">WPM</p>
+                                        <p onclick="nitropack()">Nitropack</p>
                                     </div>
                                 </li>
                             </div>
+
 
                             <!-- <li class="nav-item"></li>
                                 <div class="dropdown">
@@ -99,6 +103,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="inputs">
+
                             <!-- Checkout Testing -->
                             <div id="checkout">
                                 <h1>Checkout Test</h1>
@@ -285,13 +290,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!-- <div id="checkbox_cfhec">
-                                                    <label for="checkbox_cfhec">Choose one:</label>
-                                                    <select name="checkbox_cfhec">
-                                                    <option value="dev1">Dev1 (dev)</option>
-                                                    <option value="dev2">Dev2 (primeview)</option>
-                                                    </select>
-                                                </div> -->
+
                                                 <!-- Accident Chiropractic -->
                                                 <div id="site_accidentchiropracticaz" data-id="site_accidentchiropracticaz">
                                                     <div class="form-group row">
@@ -312,6 +311,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- AIMS -->
                                                 <div id="site_advancedimagemedspa">
                                                     <div class="form-group row">
@@ -416,6 +416,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- APJ Art -->
                                                 <div id="site_andresperezjurado">
                                                     <div class="form-group row">
@@ -435,6 +436,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- AZ Door Doctor -->
                                                 <div id="site_azdoordoctor">
                                                     <div class="form-group row">
@@ -456,6 +458,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- BLJ -->
                                                 <div id="site_biltmoreloanandjewelry">
                                                     <div class="form-group row">
@@ -480,6 +483,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Buckeye Derm -->
                                                 <div id="site_buckeyederm">
                                                     <div class="form-group row">
@@ -499,6 +503,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Canyon Falls -->
                                                 <div id="site_canyonfallshairextensioncompany">
                                                     <div class="form-group row">
@@ -519,6 +524,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Crexendo -->
                                                 <div id="site_crexendo">
                                                     <div class="form-group row">
@@ -1079,7 +1085,27 @@
                                 </form>
                             </div>
 
-                            <!-- Responsiveness -->
+                            <!-- Newsletter -->
+                            <div id="newsletter">
+                                <h1>Newsletter</h1>
+                                <form action="/post/newsletter" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required /><br/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Responsiveness - Lambdatest -->
                             <div id="responsiveness_lambdatest">
                                 <h1>Responsiveness - Lambdatest</h1>
                                 <form action="/post/responsiveness_lambdatest" method="post">
@@ -1181,6 +1207,7 @@
                                 </form>
                             </div>
                 
+                            <!-- Responsiveness - Manual -->
                             <div id="responsiveness_manual">
                                 <h1>Responsiveness - Manual</h1>
                                 <form action="/post/responsiveness_manual" method="post">
@@ -1214,6 +1241,47 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
+
+                            <!-- Monitoring Sheets - WPM -->
+                            <div id="wpm">
+                                <h1>WPM</h1>
+                                <form action="/post/wpm" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required /><br/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Monitoring Sheets - Nitropack -->
+                            <div id="nitropack">
+                                <h1>Nitropack</h1>
+                                <form action="/post/nitropack" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required /><br/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -1226,50 +1294,103 @@
             document.getElementById('checkout').style.display = 'block';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
         }
         function image_optimizationForm() {
-            document.getElementById('image_optimization').style.display = 'block';
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'block';
             document.getElementById('visibility').style.display = 'none';
-            document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
         }
         function visibilityForm(){
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'block';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
         }
         function webForms(){
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'block';
+            document.getElementById('newsletter').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+        }
+        function newsletter() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'block';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
         }
         function responsivenessForm_lambdatest() {
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
-            document.getElementById('responsiveness_lambdatest').style.display = 'block';
-            document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'block';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
         }
         function responsiveness_manual() {
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
-            document.getElementById('responsiveness_lambdatest').style.display = 'none';
-            document.getElementById('responsiveness_manual').style.display = 'block';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'block';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+        }
+        function wpm() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('wpm').style.display = 'block';
+            document.getElementById('nitropack').style.display = 'none';
+        }
+        function nitropack() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'block';
         }
 
+        
         function versions() {
             var device = document.getElementById("device").value;
             if (device === "desktop") {
