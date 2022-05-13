@@ -5,6 +5,17 @@ let day = String(dateObj.getDate()).padStart(2, '0');
 let year = dateObj.getFullYear();
 const date = month  + "/" + day  + '/' + year;
 
+const usernameData_devs = [
+    "mbuendia@optimizex.com",
+    "jmagnaye@optimizex.com",
+    "jaguilar@optimizex.com"
+]
+
+const usernameData_marketing = [
+    "gale@optimizex.com",
+    "marketing@primeview.com"
+]
+
 const sites = [
     "accidentchiropracticaz",
     "advancedimagemedspa",
@@ -2365,6 +2376,8 @@ let device_tablet = {
 
 
 module.exports = {
+    usernameData_devs,
+    usernameData_marketing,
     date,
     wp_creds,
     domain,

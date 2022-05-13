@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OX QA Checking App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #158CBE;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+      color: #fff;
+      width: 100%;
+      height: 76px;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    </style>
+<body>
+    <div class="body-container">
+        <div class="sidebar-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="logo-container">
+                        <a href="/posts">
+                            <img src="img/pv-logo-white.png" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sidebar-nav-container">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="visibilityForm()">Visibility</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="webForms()">Web Forms</button>
+                            </li>
+                        </ul>
+                        <div class="logout">
+                            <button class="logout-botton" onclick="location.href='/logout'">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="inputs">
+                            <!-- Checkout Testing -->
+                            <div id="checkout">
+                                <h1>Checkout Test</h1>
+                                <form action="/post/checkout" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="checkout" class="col-sm-3 col-form-label">Choose a site:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="checkout" class="form-control">
+                                                            <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="checkbox_checkout" class="col-sm-3 col-form-label">Choose one:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="checkbox_checkout" class="form-control">
+                                                            <option value="dev">Dev</option>
+                                                            <option value="live">Live</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row">
+                                                    <label for="product" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="product" class="form-control">
+                                                            <option value="product1">White Buffalo Round Silver Earrings</option>
+                                                            <option value="product2">Kingman Turquoise Bracelet</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row align-items-baseline">
+                                                        <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>jX6#dN5?oR7#vU5#</i>
+                                                            <div>
+                                                                <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
+                                                                <div id="credentials_checkout">
+                                                                    <div class="form-group row">
+                                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" id="username" name="username" class="form-control"><br>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" id="password" name="password" class="form-control"><br>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group row ">
+                                                    <label for="Credentials" class="col-sm-3 col-form-label">QA Email: </label>
+                                                    <div class="col-sm-9">
+                                                        <p><i>mbuendia@optimizex.com, qa@primeview.com</i></p>
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showEmail()">Edit</button>
+                                                            <div id="qa_email">
+                                                                <div class="form-group row">
+                                                                    <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" id="email" name="email" class="form-control"><br>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Image Optimization -->
+                            <div id="image_optimization">
+                                <h1>Image Optimization</h1>
+                                <form action="/post/image_optimization" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required /><br/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Visibility -->
+                            <div id="visibility">
+                                <h1>Visibility</h1>
+                                <form action="/post/visibility" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <label for="Search Key" class="col-sm-3 col-form-label">Search Key:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="site_name" type="text" value="" class="form-control" name="site_name" placeholder="'Natina'" required /><br/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Web Forms -->
+                            <div id="webForms">
+                                <h1>Web Forms</h1>
+                                <form action="/post/webforms" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="site" class="col-sm-3 col-form-label">Choose a site:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="site" id="site" onchange="sites()">
+                                                            <option value="accidentchiropracticaz">Accident Chiropractic AZ</option>
+                                                            <option value="advancedimagemedspa">Advanced Image Med Spa</option>
+                                                            <option value="aerialengagement">Aerial Engagement</option>
+                                                            <option value="aeroturbine">Aero Turbine</option>
+                                                            <option value="collisioncenternorthscottsdale">Airpark Collision Center</option>
+                                                            <option value="americanleatherusa">American Leather USA</option>
+                                                            <option value="andresperezjurado">Andres Perez Jurado</option>
+                                                            <option value="azdoordoctor">AZ Door Doctor</option>
+                                                            <option value="biltmoreloanandjewelry">Biltmore Loan and Jewelry</option>
+                                                            <option value="buckeyederm">Buckeye Derm</option>
+                                                            <option value="canyonfallshairextensioncompany">Canyon Falls Hair Extension Company</option>
+                                                            <option value="crexendo">Crexendo</option>
+                                                            <option value="culpepper">Culpepper & Associates</option>
+                                                            <option value="ewingconstruction">Ewing Construction</option>
+                                                            <option value="frlawgroup">FR Law Group</option>
+                                                            <option value="freddabranyon">Fredda Branyon</option>
+                                                            <option value="indinspect">Industrial Inspection & Consulting</option>
+                                                            <option value="jewelryoutletinc">Jewelry Outlet</option>
+                                                            <option value="judefrancesjewelry">Jude Frances Jewelry</option>
+                                                            <option value="kyrenefamilydentistry">Kyrene Family Dentistry</option>
+                                                            <option value="lignans">Lignans</option>
+                                                            <option value="natina">Natina</option>
+                                                            <option value="newhopemedicalcenter">New Hope Medical Center</option>
+                                                            <option value="optimizex">OptimizeX</option>
+                                                            <option value="paysondermatology">Payson Dermatology</option>
+                                                            <option value="phoenixritecare">Phoenix Scottish Rite</option>
+                                                            <option value="primemedicalpain">Prime Medical Pain Management Centers</option>
+                                                            <option value="primeview">Primeview</option>
+                                                            <option value="randosouthwest">Rando South West</option>
+                                                            <option value="renewscal">Renew Stem Cell & Laser</option>
+                                                            <option value="risingsunmartialartsaz">Rising Sun</option>
+                                                            <option value="sellusyourcaraz">Sell Us Your Car AZ</option>
+                                                            <option value="solutionsforum">Solutions Forum</option>
+                                                            <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
+                                                            <option value="versatile">Versatile</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" id="checkbox">
+                                                    <label for="checkbox" class="col-sm-3 col-form-label">Choose one:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="checkbox" class="form-control">
+                                                            <option value="dev">Dev</option>
+                                                            <option value="live">Live</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Accident Chiropractic -->
+                                                <div id="site_accidentchiropracticaz" data-id="site_accidentchiropracticaz">
+                                                    <div class="form-group row">
+                                                        <label for="site_accidentchiropracticaz" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_accidentchiropracticaz" class="form-control">
+                                                                <option value="form1">Schedule an Appointment - Home</option>
+                                                                <option value="form2">Schedule an Appointment - Sidebar</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>^24)zwOSdIJsVJVK8K&YASRx</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- AIMS -->
+                                                <div id="site_advancedimagemedspa">
+                                                    <div class="form-group row">
+                                                        <label for="site_accidentchiropracticaz" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_advancedimagemedspa" class="form-control">
+                                                                <option value="form1">Contact Form ( Contact Us Page )</option>
+                                                                <option value="form2">Homepage Contact Us</option>
+                                                                <option value="form3">Request Form ( Sidebar ) - New Layout</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>kT*D3jzk%%ifOcY3N1lbB%sg</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Aerial Engagement -->
+                                                <div id="site_aerialengagement">
+                                                    <div class="form-group row">
+                                                        <label for="site_aerialengagement" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_aerialengagement" class="form-control">
+                                                                <option value="form1">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>CCa(c@[iDz*8</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Aero Turbine -->
+                                                <div id="site_aeroturbine">
+                                                    <div class="form-group row">
+                                                        <label for="site_aeroturbine" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_aeroturbine" class="form-control">
+                                                                <option value="form1">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>!kIKQGXHRc18</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Airpark Collision Center -->
+                                                <div id="site_collisioncenternorthscottsdale">
+                                                    <div class="form-group row">
+                                                        <label for="site_collisioncenternorthscottsdale" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_collisioncenternorthscottsdale" class="form-control">
+                                                                <option value="form1">ACC Authorization Form</option>
+                                                                <option value="form2">Appointment</option>
+                                                                <option value="form3">Body Shop Repair Estimate</option>
+                                                                <option value="form4">Body Shop Repair Estimate (Landing Page)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>Ida5v)MSFCT@Vwh7!2u2n0ZH</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- American Leather USA -->
+                                                <div id="site_americanleatherusa">
+                                                    <div class="form-group row">
+                                                        <label for="site_americanleatherusa" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_americanleatherusa" class="form-control">
+                                                                <option value="form1">Contact form 1</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>1L$YRb8ovrch5YpiHkYIf9WX</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- APJ Art -->
+                                                <div id="site_andresperezjurado">
+                                                    <div class="form-group row">
+                                                        <label for="site_andresperezjurado" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_andresperezjurado" class="form-control">
+                                                                <option value="form1">Custom Inquiry</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>t1tqAV@I}S>w</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- AZ Door Doctor -->
+                                                <div id="site_azdoordoctor">
+                                                    <div class="form-group row">
+                                                        <label for="site_azdoordoctor" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_azdoordoctor" class="form-control">
+                                                                <option value="form1">Contact Us</option>
+                                                                <option value="form2">Contact Us | Sidebar</option>
+                                                                <option value="form3">Schedule an Appointment</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>m*8ggXsJk7Py3Q*Ml)l0Z4WV</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- BLJ -->
+                                                <div id="site_biltmoreloanandjewelry">
+                                                    <div class="form-group row">
+                                                        <label for="site_biltmoreloanandjewelry" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_biltmoreloanandjewelry" class="form-control">
+                                                                <option value="form1">Request an Appraisal - Sell Your Jewelry</option>
+                                                                <option value="form2">Request an Appraisal - Get a Loan</option>
+                                                                <option value="form3">Book an Appointment (SB)</option>
+                                                                <option value="form4">Contact form 1</option>
+                                                                <option value="form5">Request an Appraisal | Landing Page 2019</option>
+                                                                <option value="form6">Book an Appointment (Page)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>%*j*4F^iQPLGi7e2aXV!3smf</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Buckeye Derm -->
+                                                <div id="site_buckeyederm">
+                                                    <div class="form-group row">
+                                                        <label for="site_buckeyederm" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_buckeyederm" class="form-control">
+                                                                <option value="form1">Schedule an Appointment</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>wd85cj5>}MF~</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Canyon Falls -->
+                                                <div id="site_canyonfallshairextensioncompany">
+                                                    <div class="form-group row">
+                                                        <label for="site_canyonfallshairextensioncompany" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_canyonfallshairextensioncompany" class="form-control">
+                                                                <option value="form1">Request an Appointment</option>
+                                                                <option value="form2">Return Request Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>p2@iH&8Lo1JHv02</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Crexendo -->
+                                                <div id="site_crexendo">
+                                                    <div class="form-group row">
+                                                        <label for="site_crexendo" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_crexendo" class="form-control">
+                                                                <option value="form1">Sign-Up for your Free Demonstration</option>
+                                                                <option value="form2">Talk to a Consultant Form</option>
+                                                                <option value="form3">Personalized Quote Form Step 1</option>
+                                                                <option value="form4">Refer a Business</option>
+                                                                <option value="form5">Register To Become A Channel Partner</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>S4INhCIRoGpIfI*ss8KGXLmN</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Culpepper & Associates -->
+                                                <div id="site_culpepper">
+                                                    <div class="form-group row">
+                                                        <label for="site_culpepper" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_culpepper" class="form-control">
+                                                                <option value="form1">Contact Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>Culpepper</i></p>
+                                                            <p><b>password:</b> <i>1Elizab3th</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Ewing Construction -->
+                                                <div id="site_ewingconstruction">
+                                                    <div class="form-group row">
+                                                        <label for="site_ewingconstruction" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_ewingconstruction" class="form-control">
+                                                                <option value="form1">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>pXq9]r?4+HNh</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- FR Law Group -->
+                                                <div id="site_frlawgroup">
+                                                    <div class="form-group row">
+                                                        <label for="site_frlawgroup" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_frlawgroup" class="form-control">
+                                                                <option value="form1">CTA Contact Form</option>
+                                                                <option value="form2">Contact Us Form - SB</option>
+                                                                <option value="form3">Contact Us Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>5M^S)oi5U4Krr5YugUNEJUSM</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Fredda Branyon -->
+                                                <div id="site_freddabranyon">
+                                                    <div class="form-group row">
+                                                        <label for="site_freddabranyon" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_freddabranyon" class="form-control">
+                                                                <option value="form1">Contact form 1</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>cHJxubk0*E8q^J$M1A%Hpk*P</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Industrial Inspection -->
+                                                <div id="site_indinspect">
+                                                    <div class="form-group row">
+                                                        <label for="site_indinspect" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_indinspect" class="form-control">
+                                                                <option value="form1">Contact Us</option>
+                                                                <option value="form2">Request Information</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>ChtB1]>Q3Zzw</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Jewelry Outlet -->
+                                                <div id="site_jewelryoutletinc">
+                                                    <div class="form-group row">
+                                                        <label for="site_jewelryoutletinc" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_jewelryoutletinc" class="form-control">
+                                                                <option value="form1">Contact form 1</option>
+                                                                <option value="form2">Credit Application</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>AuAKL4TTFeQ^2DlBF8l8VBE!</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Jude Frances -->
+                                                <div id="site_judefrancesjewelry">
+                                                    <div class="form-group row">
+                                                        <label for="site_judefrancesjewelry" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_judefrancesjewelry" class="form-control">
+                                                                <option value="form1">Returns</option>
+                                                                <option value="form2">Repairs</option>
+                                                                <option value="form3">Replacing Lost Jewelry</option>
+                                                                <option value="form4">Product Inquiry</option>
+                                                                <option value="form5">General Questions</option>
+                                                                <option value="form6">Feedback</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>%XsJl4Uu%/]5</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- KFD -->
+                                                <div id="site_kyrenefamilydentistry">
+                                                    <div class="form-group row">
+                                                        <label for="site_kyrenefamilydentistry" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_kyrenefamilydentistry" class="form-control">
+                                                                <option value="form1">Quick Contact</option>
+                                                                <option value="form2">Schedule an Appointment</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>JQR&H*i$fUA%wCcit@!TP8Jh</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Lignans -->
+                                                <div id="site_lignans">
+                                                    <div class="form-group row">
+                                                        <label for="site_lignans" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_lignans" class="form-control">
+                                                                <option value="form1">Contact Form - Basic</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>PrimeView</i></p>
+                                                            <p><b>password:</b> <i>wV0^7*FT4NZ$VfZM</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- OptimizeX -->
+                                                <div id="site_optimizex">
+                                                    <div class="form-group row">
+                                                        <label for="site_optimizex" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_optimizex">
+                                                                <option value="form1">SEO Quote</option>
+                                                                <option value="form2">Sidebar - SEO Quote</option>
+                                                                <option value="form3">Contact Us - Page</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>SwP!Dw3iJwqj#dOj%ZVVV7a7</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- OptimizeX -->
+                                                <div id="site_paysondermatology">
+                                                    <div class="form-group row">
+                                                        <label for="site_paysondermatology" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_paysondermatology">
+                                                                <option value="form1">Request an Appointment</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>ExvkE3I7$olXiHhAuDt6RJld</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Natina -->
+                                                <div id="site_natina">
+                                                    <div class="form-group row">
+                                                        <label for="site_natina" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_natina">
+                                                                <option value="form1">Request a quote</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>primeview</i></p>
+                                                            <p><b>password:</b> <i>pD5nE4sC8dD1</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- New Hope Medical Center -->
+                                                <div id="site_newhopemedicalcenter">
+                                                    <div class="form-group row">
+                                                        <label for="site_newhopemedicalcenter" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_newhopemedicalcenter">
+                                                                <option value="form1">Home Page Contact</option>
+                                                                <option value="form2">Stories of Hope Form</option>
+                                                                <option value="form3">New PPC Form</option>
+                                                                <option value="form4">Immunotherapy Form</option>
+                                                                <option value="form5">Cancer Page Sidebar Form</option>
+                                                                <option value="form6">Quick Contact Sidebar Form</option>
+                                                                <option value="form7">Contact Us Page Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>TK#%uA8ZrvZe9Au9*@jFm%Yd</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Phoenix Scottish Rite -->
+                                                <div id="site_phoenixritecare">
+                                                    <div class="form-group row">
+                                                        <label for="site_phoenixritecare" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_phoenixritecare">
+                                                                <option value="form1">Arizona Scholarship - Form</option>
+                                                                <option value="form2">National Scholarship - Form</option>
+                                                                <option value="form3">Voucher - Form</option>
+                                                                <option value="form4">Send Us a Message - Form</option>
+                                                                <option value="form5">Evaluation - Form</option>
+                                                                <option value="form6">Hearing Test - Form</option>
+                                                                <option value="form7">Coach Volunteer - Form</option>
+                                                                <option value="form8">Driver Volunteer - Form</option>
+                                                                <option value="form9">Evaluator Volunteer - Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>lGmeVv#22rTn</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Prime Medical Pain Management Centers -->
+                                                <div id="site_primemedicalpain">
+                                                    <div class="form-group row">
+                                                        <label for="site_primemedicalpain" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_primemedicalpain">
+                                                                <option value="form1">Contact us - Homepage (New Theme)</option>
+                                                                <option value="form2">Contact form @ Contact Us Page</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>^24)zwOSdIJsVJVK8K&YASRx</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Primeview -->
+                                                <div id="site_primeview">
+                                                    <div class="form-group row">
+                                                        <label for="site_primeview" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_primeview">
+                                                                <option value="form1">QUICK QUOTE (Footer)</option>
+                                                                <option value="form2">Contact Us ( Page )</option>
+                                                                <option value="form3">Free Website Quote</option>
+                                                                <option value="form4">Free SEO Quote</option>
+                                                                <option value="form5">Crankwheel Form</option>
+                                                                <option value="form6">Quote Form ( Sidebar )</option>
+                                                                <option value="form7">PDF Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>Nkp$leidilGxzKH*RcrKdPmJ</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Rando South West -->
+                                                <div id="site_randosouthwest">
+                                                    <div class="form-group row">
+                                                        <label for="site_randosouthwest" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_randosouthwest">
+                                                                <option value="form1">Contact Us ( Form )</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>&4c^I6WjO&SfVJ3fiSCz0dRd</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Renew Stem Cell & Laser -->
+                                                <div id="site_renewscal">
+                                                    <div class="form-group row">
+                                                        <label for="site_renewscal" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_renewscal">
+                                                                <option value="form1">Join Our VIP List</option>
+                                                                <option value="form2">Schedule your consult</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>(^Qpo(!LsSR2Zi$J$Gi417fy</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Renew Stem Cell & Laser -->
+                                                <div id="site_risingsunmartialartsaz">
+                                                    <div class="form-group row">
+                                                        <label for="site_risingsunmartialartsaz" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_risingsunmartialartsaz">
+                                                                <option value="form1">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>uR3$hH0)tQ6%</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sell Us Your Car AZ -->
+                                                <div id="site_sellusyourcaraz">
+                                                    <div class="form-group row">
+                                                        <label for="site_sellusyourcaraz" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_sellusyourcaraz">
+                                                                <option value="form1">Get A Quote Banner/Popup</option>
+                                                                <option value="form2">Get A Quote Modal</option>
+                                                                <option value="form3">Contact Page Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>admin</i></p>
+                                                            <p><b>password:</b> <i>bA9:kB0~eI8$gS</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Solutions Forum -->
+                                                <div id="site_solutionsforum">
+                                                    <div class="form-group row">
+                                                        <label for="site_solutionsforum" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_solutionsforum">
+                                                                <option value="form1">Contact form 1</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>p@iWoX3pvx0r2</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sunrise Jewelry -->
+                                                <div id="site_sunrisejewelryusa">
+                                                    <div class="form-group row">
+                                                        <label for="site_sunrisejewelryusa" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_sunrisejewelryusa">
+                                                                <option value="form1">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>jX6#dN5?oR7#vU5#</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Versatile -->
+                                                <div id="site_versatile">
+                                                    <div class="form-group row">
+                                                        <label for="site_versatile" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_versatile">
+                                                                <option value="form1">Get In Touch With Us - Contact Us</option>
+                                                                <option value="form2">Custom Tiles Form</option>
+                                                                <option value="form3">Newsletter-Footer</option>
+                                                                <option value="form4">Get In Touch With Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>bZX(?{Ua960</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="credentials">
+                                                    <div class="form-group row">
+                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="username" name="username" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="password" name="password" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="col-md-5">
+                                                <div class="form-group row align-items-baseline">
+                                                    <label class="col-sm-3 col-form-label">QA Email: </label>
+                                                    <div class="col-sm-9">
+                                                        <p><i>mbuendia@optimizex.com, qa@primeview.com</i></p>
+                                                        <button type="button" class="btn btn-primary-sm" onclick="showEmailWebforms()">Edit</button>
+                                                        <div id="qa_email_webforms" class="form-group row">
+                                                            <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="email" name="email" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Responsiveness -->
+                            <div id="responsiveness_lambdatest">
+                                <h1>Responsiveness - Lambdatest</h1>
+                                <form action="/post/responsiveness_lambdatest" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="device" class="col-sm-3 col-form-label">Choose a device:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="device" id="device" class="form-control" onchange="versions()">
+                                                            <option value="desktop">Desktop</option>
+                                                            <option value="mobile">Mobile</option>
+                                                            <option value="tablet">Tablet</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row" id="version_desktop">    
+                                                    <label for="version_desktop" class="col-sm-3 col-form-label">Choose a version:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="version_desktop" class="form-control">
+                                                            <option value="version1">Windows 11</option>
+                                                            <option value="version2">Windows 8</option>
+                                                            <option value="version3">Windows 7</option>
+                                                            <option value="version4">macOS Sierra 10.12</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="form-group row" id="version_mobile">
+                                                    <label for="version_mobile" class="col-sm-3 col-form-label">Choose a version:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="version_mobile" class="form-control">
+                                                            <option value="version1">Samsung Galaxy M30s</option>
+                                                            <option value="version2">Google Pixel 5</option>
+                                                            <option value="version3">OnePlus 9</option>
+                                                            <option value="version4">Xiaomi Mi 11</option>
+                                                            <option value="version5">Realme 5</option>
+                                                            <option value="version6">Huawei P30 Pro</option>
+                                                            <option value="version7">Sony Xperia xz2</option>
+                                                            <option value="version8">Moto G6</option>
+                                                            <option value="version9">LG G6</option>
+                                                            <option value="version10">iPhone 13 Pro Max</option>
+                                                            <option value="version11">iPhone 13 Pro</option>
+                                                            <option value="version12">iPhone 13</option>
+                                                            <option value="version13">iPhone 12 Pro Max</option>
+                                                            <option value="version14">iPhone 11 Pro Max</option>
+                                                            <option value="version15">iPhone X</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="form-group row" id="version_tablet">
+                                                    <label for="version_tablet" class="col-sm-3 col-form-label">Choose a version:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="version_tablet" class="form-control">
+                                                            <option value="version1">iPad Air (4th generation)</option>
+                                                            <option value="version2">Galaxy Tab S7 Plus</option>
+                                                            <option value="version3">Galaxy Tab S6</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Credentials (lambdatest): </label>
+                                                    <div class="col-sm-9">
+                                                        <p><b>email:</b> <i>pvqa@primeview.com</i></p>
+                                                        <p><b>password:</b> <i>iN1vN6lU1qD8</i></p>
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditResponsiveness()">Edit</button>
+                                                            <div id="credentials_responsiveness">
+                                                                <div class="form-group row">
+                                                                    <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" id="email" name="email" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" id="password" name="password" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                    
+                                                </div>    
+                                            </div>
+                                        </div>
+                                    </div>            
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+                
+                            <div id="responsiveness_manual">
+                                <h1>Responsiveness - Manual</h1>
+                                <form action="/post/responsiveness_manual" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="resolution" class="col-sm-3 col-form-label">Choose a resolution:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="resolution" id="resolution" class="form-control" onchange="versions()">
+                                                            <option value="1280x720">1280x720</option>
+                                                            <option value="1280x800">1280x800</option>
+                                                            <option value="1280x1024">1280x1024</option>
+                                                            <option value="1366x768">1366x768</option>
+                                                            <option value="1440x900">1440x900</option>
+                                                            <option value="1600x1200">1600x1200</option>
+                                                            <option value="1680x1050">1680x1050</option>
+                                                            <option value="1920x1080">1920x1080</option>
+                                                            <option value="1920x1200">1920x1200</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>            
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function visibilityForm(){
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'block';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+        }
+
+        function webForms(){
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('webForms').style.display = 'block';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+        }
+
+        function sites() {
+            var site = document.getElementById("site").value;
+            var site_names = [
+                "accidentchiropracticaz",
+                "advancedimagemedspa",
+                "aerialengagement",
+                "aeroturbine",
+                "collisioncenternorthscottsdale",
+                "americanleatherusa",
+                "andresperezjurado",
+                "azdoordoctor",
+                "biltmoreloanandjewelry",
+                "buckeyederm",
+                "canyonfallshairextensioncompany",
+                "crexendo",
+                "culpepper",
+                "ewingconstruction",
+                "frlawgroup",
+                "freddabranyon",
+                "indinspect",
+                "jewelryoutletinc",
+                "judefrancesjewelry",
+                "kyrenefamilydentistry",
+                "lignans",
+                "natina",
+                "newhopemedicalcenter",
+                "optimizex",
+                "paysondermatology",
+                "phoenixritecare",
+                "primemedicalpain",
+                "primeview",
+                "randosouthwest",
+                "renewscal",
+                "risingsunmartialartsaz",
+                "sellusyourcaraz",
+                "solutionsforum",
+                "sunrisejewelryusa",
+                "versatile"  
+            ]
+            var site_name_value = [
+                "site_accidentchiropracticaz",
+                "site_advancedimagemedspa",
+                "site_aerialengagement",
+                "site_aeroturbine",
+                "site_collisioncenternorthscottsdale",
+                "site_americanleatherusa",
+                "site_andresperezjurado",
+                "site_azdoordoctor",
+                "site_biltmoreloanandjewelry",
+                "site_buckeyederm",
+                "site_canyonfallshairextensioncompany",
+                "site_crexendo",
+                "site_culpepper",
+                "site_ewingconstruction",
+                "site_frlawgroup",
+                "site_freddabranyon",
+                "site_indinspect",
+                "site_jewelryoutletinc",
+                "site_judefrancesjewelry",
+                "site_kyrenefamilydentistry",
+                "site_lignans",
+                "site_natina",
+                "site_newhopemedicalcenter",
+                "site_optimizex",
+                "site_paysondermatology",
+                "site_phoenixritecare",
+                "site_primemedicalpain",
+                "site_primeview",
+                "site_randosouthwest",
+                "site_renewscal",
+                "site_risingsunmartialartsaz",
+                "site_sellusyourcaraz",
+                "site_solutionsforum",
+                "site_sunrisejewelryusa",
+                "site_versatile"  
+            ]
+
+            for (let index = 0; index < site_names.length; index++) {
+                var val = site_name_value[index];
+                if (site === site_names[index]) {
+                    document.getElementById(site_name_value[index]).style.display = 'block';
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                }
+            }
+            
+        }
+
+        function not_on_the_list() {
+            alert("Site must be tracked on the contact form tracker first.")
+        }
+
+        function showEmail() {
+            document.getElementById('qa_email').style.display = 'block';
+        }
+
+        function showEmailWebforms() {
+            document.getElementById('qa_email_webforms').style.display = 'flex';
+        }
+
+        function showCredEditCheckout() {
+            document.getElementById('credentials_checkout').style.display = 'block';
+        }
+
+        function showCredEditResponsiveness() {
+            document.getElementById('credentials_responsiveness').style.display = 'block';
+        }
+
+        function showCredEdit() {
+            document.getElementById('credentials').style.display = 'block';
+        }
+
+    </script>
+
+
+    <script src="dist/popupS.min.js"></script>
+
+</body>
+</html>

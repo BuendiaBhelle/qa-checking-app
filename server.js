@@ -108,6 +108,7 @@ const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desk
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
+const { log } = require('console');
 const expiry = 1000 * 60 * 60 * 24;
 var date = new Date();
 var timestamp = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
@@ -125,6 +126,7 @@ app.use(sessions({
 }));
 
 const success_msg = 'Success.<br><br><a href="http://localhost:3000/post">Return home</a>';
+const success_msg_marketing = 'Success.<br><br><a href="http://localhost:3000/posts">Return home</a>';
 
 app.get('/users', (req, res) => {
     res.json(users);
@@ -148,16 +150,28 @@ app.get('/post', function(req, res){
     }
 });
 
+app.get('/posts', function(req, res){
+    session=req.session;
+
+    var userId = session.userid;
+    
+    if(userId){
+        logger.errorLog();
+        res.sendFile(__dirname + '/index_marketing.html');
+    }
+    else {
+        res.sendFile(__dirname + '/login.html');
+    }
+});
+
 app.post('/login', async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     const passwordData = process.env.ADMIN_PASSWORD;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const usernameData = [
-        "mbuendia@optimizex.com",
-        "jmagnaye@optimizex.com",
-        "jaguilar@optimizex.com"
-    ]
+    const usernameData_devs = config.usernameData_devs;
+    const usernameData_marketing = config.usernameData_marketing;
+
     session=req.session;
     session.userid=req.body.username;
     console.log(req.session)
@@ -165,7 +179,7 @@ app.post('/login', async (req, res) => {
     
     try {
         logger.errorLog();
-        if (usernameData.includes(username)) {
+        if ((usernameData_devs) && (usernameData_devs.includes(username))) {
             console.log("user is allowed.");
             if (await bcrypt.compare(passwordData, hashedPassword)) {
                 res.redirect("/post");
@@ -182,7 +196,26 @@ app.post('/login', async (req, res) => {
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
-        } else {
+        } 
+        else if ((usernameData_marketing) && (usernameData_marketing.includes(username))) {
+            console.log("user is allowed.");
+            if (await bcrypt.compare(passwordData, hashedPassword)) {
+                res.redirect("/posts");
+                logger.logger.log({ level: 'info', message: 'login success.', tester: this.userId });
+                console.log("login success.");
+                let value = [ "", "", "info", "login success.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            } else {
+                res.send('Login failed.');
+                logger.logger.log({ level: 'error', message: 'login failed.', tester: this.userId });
+                console.log("login failed.");
+                let value = [ "", "", "error", "login failed.", this.userId, timestamp, "", "", "", "", "", "", "", "", "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            }
+        } 
+        else {
             res.send('User is not allowed.');
             logger.logger.log({ level: 'error', message: 'user is not allowed.', tester: this.userId });
             console.log("user is not allowed.");
@@ -308,12 +341,24 @@ app.post('/post/visibility', async (req, res) => {
     console.log("Site Name: " + site_name);
     try {
         await visibility.chrome(site_name, timestamp);
-        await visibility.firefox(site_name, timestamp);
+        // await visibility.firefox(site_name, timestamp);
         // await visibility.edge(site_name, timestamp);
     } catch (error) {
         console.log(error);
     }
-    res.send(success_msg);
+    
+    for (let index = 0; index < config.usernameData_devs.length; index++) {
+        if (this.userId === config.usernameData_devs[index]) {
+            res.send(success_msg);
+        }    
+    }
+
+    for (let index = 0; index < config.usernameData_marketing.length; index++) {
+        if (this.userId === config.usernameData_marketing[index]) {
+            res.send(success_msg_marketing);
+        }    
+    }
+    
 });
 
 
@@ -541,28 +586,29 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = config.domain.aerialengagement.live;
-                    //     var wp_creds_username = config.wp_creds.aerialengagement.username;
-                    //     var wp_creds_password = config.wp_creds.aerialengagement.password;
-                    //     var launch = config.launch.live;
+                    case "live":
+                        var domain = config.domain.aerialengagement.live;
+                        var wp_creds_username = config.wp_creds.aerialengagement.username;
+                        var wp_creds_password = config.wp_creds.aerialengagement.password;
+                        var launch = config.launch.live;
 
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_aerialengagement) {
-                    //         case "form1":
-                    //             var forms = config.forms.aerialengagement.form1;
-                    //             var webforms = config.webforms.aerialengagement.live.form1;
-                    //             var contact_form_name = config.contact_form_name.aerialengagement.form1;
-                    //             var contact_form_shortcode = config.contact_form_shortcode.aerialengagement.form1;
-
-                    //             console.log("form1");
-                    //             webforms_aerialengagement_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_aerialengagement) {
+                            case "form1":
+                                var forms = config.forms.aerialengagement.form1;
+                                var webforms = config.webforms.aerialengagement.live.form1;
+                                var contact_form_name = config.contact_form_name.aerialengagement.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.aerialengagement.form1;
+                                var form_page = config.form_page.aerialengagement.live.form1;
+                                
+                                console.log("form1");
+                                webforms_aerialengagement_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "aeroturbine":
@@ -3838,7 +3884,18 @@ app.post('/post/webforms', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    res.send(success_msg);
+
+    for (let index = 0; index < config.usernameData_devs.length; index++) {
+        if (this.userId === config.usernameData_devs[index]) {
+            res.send(success_msg);
+        }    
+    }
+
+    for (let index = 0; index < config.usernameData_marketing.length; index++) {
+        if (this.userId === config.usernameData_marketing[index]) {
+            res.send(success_msg_marketing);
+        }    
+    }
 });
 
 
