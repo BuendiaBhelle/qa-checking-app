@@ -107,11 +107,16 @@ const displayPricesDuringCartAndCheckout_script = "return document.getElementByI
 let product = {
     sunrisejewelryusa: {
             product1: "White Buffalo Round Silver Earrings",
-            product2: "Kingman Turquoise Bracelet"
+            product2: "Tear Shaped White Buffalo Silver Ring"
     }
 }
 
-
+let product_link = {
+    sunrisejewelryusa: {
+            product1: "product/white-buffalo-round-silver-earrings/",
+            product2: "product/tear-shaped-white-buffalo-silver-ring/"
+    }
+}
 
 
 
@@ -140,5 +145,6 @@ module.exports = {
     emails_failedOrder_page,
     coupons_page,
     range_coupons,
-    range_thankyou_page
+    range_thankyou_page,
+    product_link
 };

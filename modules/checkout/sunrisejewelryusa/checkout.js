@@ -1,15 +1,16 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
 
-const config = require("../../config");
-const logger = require('../../../../middleware/logger');
-const server = require('../../../../server');
-const sheet = require('../../../../middleware/gsheet');
+const config = require("../config");
+const logger = require('../../../middleware/logger');
+const server = require('../../../server');
+const sheet = require('../../../middleware/gsheet');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
-async function checkout(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page) {
+// async function checkout(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, product) {
+async function checkout(domain, username, password, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, product_name, range_coupons, range_thankyou_page, product_link, product) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -70,57 +71,19 @@ async function checkout(domain, username, password, email, module_name, launch, 
         await sheet.appendValues(value);
     }
 
-    // await driver.get(domain);
-    // await driver.sleep(1000);
-    
-    // await driver.switchTo().newWindow('tab');
-    await driver.get(domain + "product-category/earrings/?orderby=price");
-
     // add to cart
     try {
-        // let category_length = await driver.executeScript("return document.getElementsByTagName('h3').length");
-        // for (let index = 0; index < category_length; index++) {
-        //     let category_innertext = await driver.executeScript("return document.getElementsByTagName('h3')[" + index + "].innerText");
-        //     if (category_innertext === "EARRINGS") {
-        //         await driver.executeScript("return document.getElementsByTagName('h3')[" + index + "].click()");
-        //         break;
-        //     }
-        // }
-        // await driver.sleep(1000);
-        // let sort = await driver.executeScript("return document.getElementsByName('orderby')[0]");
-        // sort.sendKeys('ssss');
-        // // await driver.sleep(3000);
-        // let orderby = await driver.executeScript("return document.getElementsByName('orderby')[0].selectedOptions[0].innerHTML");
-        // if (orderby === "Sort by price: low to high") {
-        //     logger.logger.log({ level: 'info', message: 'CHECKOUT - sort success.', tester: server.userId });
-        //     console.log("CHECKOUT - sort success.");
-        //     value = [ "", "", "info", "sort success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-        //     await sheet.addRow();
-        //     await sheet.appendValues(value);
-        // } else {
-        //     logger.logger.log({ level: 'error', message: 'CHECKOUT - sort failed.', tester: server.userId });
-        //     console.log("CHECKOUT - sort failed.");
-        //     value = [ "", "", "error", "sort failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-        //     await sheet.addRow();
-        //     await sheet.appendValues(value);
-        // }
-
-        // await driver.sleep(1000);
-
-        let product_title_length = await driver.executeScript("return document.getElementsByClassName('product-card').length");
-        for (let index = 0; index < product_title_length; index++) {
-            let product_title_innertext = await driver.executeScript("return document.getElementsByClassName('product-card')[" + index + "].children[0].children[1].children[0].innerText");
-            if (product_title_innertext === product_name) {
-                console.log("product_title_innertext: " + product_title_innertext);
-                console.log("product_name: " + product_name);
-                await driver.executeScript("return document.getElementsByClassName('product-card')[" + index + "].children[1].click()");
-                break;
-            }
+        await driver.get(domain + product_link);
+        if (product === "product2") {
+            await driver.findElement(By.id("pa_sex")).sendKeys("women" + Key.ENTER);
+            await driver.findElement(By.id("pa_ring-size")).sendKeys("5" + Key.ENTER);
+            await driver.executeScript("return document.getElementsByClassName('single_add_to_cart_button button alt')[0].click()");
+        } else {
+            await driver.executeScript("return document.getElementsByName('add-to-cart')[0].click()");
+            // await driver.executeScript("return document.getElementsByClassName('button wc-forward')[0].click()");
         }
-
-        await driver.sleep(3000);
-        await driver.executeScript("return document.getElementsByClassName('wpmenucart-icon-shopping-cart-0')[0].click()");
-        
+        await driver.executeScript("return document.getElementsByClassName('button wc-forward')[0].click()");
+       
         // track product name
         try {
             let product_item_name = await driver.executeScript("return document.getElementsByClassName('product-item-name')[0].innerHTML");
@@ -147,7 +110,6 @@ async function checkout(domain, username, password, email, module_name, launch, 
             await sheet.addRow();
             await sheet.appendValues(value);      
         }
-        await driver.findElement(By.id("customer_notes_text")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thank you.");             
         await driver.executeScript("return document.getElementsByClassName('checkout-button button alt wc-forward')[0].click()");
         logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout page success.', tester: server.userId });
         console.log("CHECKOUT - checkout page success.");

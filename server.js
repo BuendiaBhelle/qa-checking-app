@@ -15,7 +15,7 @@ const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 
 // const checkout_sunrisejewelryusa_dev_p1 = require("./modules/checkout/sunrisejewelryusa/dev/product1/index");
-const checkout_sunrisejewelryusa_p1 = require("./modules/checkout/sunrisejewelryusa/product1/index");
+const checkout_sunrisejewelryusa = require("./modules/checkout/sunrisejewelryusa/index");
 // const checkout_sunrisejewelryusa_dev_p2 = require("./modules/checkout/sunrisejewelryusa/dev/product2/index");
 
 const image_optimization = require("./modules/image_optimization/image_optimization");
@@ -305,11 +305,14 @@ app.post('/post/checkout', async (req, res) => {
                         switch (product) {
                             case "product1":
                                 var product_name = config_checkout.product.sunrisejewelryusa.product1;
-                                await checkout_sunrisejewelryusa_p1.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page);
+                                var product_link = config_checkout.product_link.sunrisejewelryusa.product1;
+                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, product);
                                 break;
-                            // case "product2":
-                            //     checkout_sunrisejewelryusa.index(domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, tax_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script);
-                            //     break;
+                            case "product2":
+                                var product_name = config_checkout.product.sunrisejewelryusa.product2;
+                                var product_link = config_checkout.product_link.sunrisejewelryusa.product2;
+                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, product);
+                                break;
                             default:
                                 break;
                         }
