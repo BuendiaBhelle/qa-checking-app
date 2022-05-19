@@ -53,6 +53,7 @@ const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms
 const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
 const webforms_frlawgroup_f2 = require("./modules/webforms/contactform7/forms/frlawgroup/form2/index");
 const webforms_frlawgroup_f3 = require("./modules/webforms/contactform7/forms/frlawgroup/form3/index");
+const webforms_gatorskin_f1 = require("./modules/webforms/contactform7/forms/gatorskin/form1/index");
 const webforms_indinspect_f1 = require("./modules/webforms/gravityform/forms/indinspect/form1/index");
 const webforms_indinspect_f2 = require("./modules/webforms/gravityform/forms/indinspect/form2/index");
 const webforms_jewelryoutletinc_f1 = require("./modules/webforms/contactform7/forms/jewelryoutletinc/form1/index");
@@ -108,6 +109,7 @@ const webforms_versatile_f1 = require("./modules/webforms/contactform7/forms/ver
 const webforms_versatile_f2 = require("./modules/webforms/contactform7/forms/versatile/form2/index");
 const webforms_versatile_f3 = require("./modules/webforms/contactform7/forms/versatile/form3/index");
 const webforms_versatile_f4 = require("./modules/webforms/contactform7/forms/versatile/form4/index");
+const webforms_virtualassistantsoutsourcing_f1 = require("./modules/webforms/contactform7/forms/virtualassistantsoutsourcing/form1/index");
 const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/forms/solutionsforum/form1/index");
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
@@ -316,20 +318,6 @@ app.post('/post/checkout', async (req, res) => {
                             default:
                                 break;
                         }
-                        // switch (product) {
-                        //     case "product1":
-                        //         console.log("checkout: " + checkout);
-                        //         console.log("product1 selected.");
-                        //         checkout_sunrisejewelryusa.index(domain, username, password, email, timestamp);
-                        //         break;
-                        //     case "product2":
-                        //         console.log("checkout: " + checkout);
-                        //         console.log("product2 selected.");
-                        //         checkout_sunrisejewelryusa_dev_p2.index(domain, username, password, email, timestamp);
-                        //         break;
-                        //     default:
-                        //         break;
-                        // }
                         break;
                     // case "live":
                     //     var domain = "https://www.sunrisejewelryusa.com/";
@@ -479,7 +467,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.accidentchiropracticaz.live.form1;
 
                                 console.log("form1");
-                                webforms_accidentchiropracticaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_accidentchiropracticaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.accidentchiropracticaz.form2;
@@ -489,7 +477,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.accidentchiropracticaz.live.form2;
 
                                 console.log("form2");
-                                webforms_accidentchiropracticaz_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_accidentchiropracticaz_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -525,7 +513,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.advancedimagemedspa.dev.form1;
 
                                 console.log("form1");
-                                webforms_advancedimagemedspa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_advancedimagemedspa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.advancedimagemedspa.form2;
@@ -535,7 +523,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.advancedimagemedspa.dev.form2;
 
                                 console.log("form2");
-                                webforms_advancedimagemedspa_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_advancedimagemedspa_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             // case "form3":
                             //     var forms = config.forms.advancedimagemedspa.form3_dev;
@@ -544,7 +532,7 @@ app.post('/post/webforms', async (req, res) => {
                             //     var contact_form_shortcode = config.contact_form_shortcode.advancedimagemedspa.form3_dev;
 
                             //     console.log("form3");
-                            //     webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email, timestamp);
+                            //     await webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email, timestamp);
                             //     break;
                             default:
                                 break;
@@ -567,7 +555,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.advancedimagemedspa.live.form1;
 
                                 console.log("form1");
-                                webforms_advancedimagemedspa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_advancedimagemedspa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.advancedimagemedspa.form2;
@@ -577,7 +565,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.advancedimagemedspa.live.form2;
 
                                 console.log("form2");
-                                webforms_advancedimagemedspa_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_advancedimagemedspa_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             // case "form3":
                             //     var forms = config.forms.advancedimagemedspa.form3_live;
@@ -586,7 +574,7 @@ app.post('/post/webforms', async (req, res) => {
                             //     var contact_form_shortcode = config.contact_form_shortcode.advancedimagemedspa.form3_live;
 
                             //     console.log("form3");
-                            //     webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email, timestamp);
+                            //     await webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email, timestamp);
                             //     break;
                             default:
                                 break;
@@ -622,7 +610,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.aerialengagement.dev.form1;
                                 
                                 console.log("form1");
-                                webforms_aerialengagement_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_aerialengagement_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -645,7 +633,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.aerialengagement.live.form1;
                                 
                                 console.log("form1");
-                                webforms_aerialengagement_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_aerialengagement_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -679,7 +667,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.aeroturbine.dev.form1;
                                 
                                 console.log("form1");
-                                webforms_aeroturbine_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_aeroturbine_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -701,7 +689,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.aeroturbine.form1;
 
                     //             console.log("form1");
-                    //             webforms_aeroturbine_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_aeroturbine_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
@@ -735,7 +723,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.americanleatherusa.dev.form1;
 
                                 console.log("form1");
-                                webforms_americanleatherusa_f1.index(domain, username, password, email, timestamp)
+                                await webforms_americanleatherusa_f1.index(domain, username, password, email, timestamp)
                                 break;
                             default:
                                 break;
@@ -758,7 +746,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.americanleatherusa.live.form1;
 
                                 console.log("form1");
-                                webforms_americanleatherusa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_americanleatherusa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -792,7 +780,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.andresperezjurado.dev.form1;
 
                                 console.log("form1");
-                                webforms_andresperezjurado_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_andresperezjurado_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -815,7 +803,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.andresperezjurado.live.form1;
 
                                 console.log("form1");
-                                webforms_andresperezjurado_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_andresperezjurado_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -849,7 +837,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.azdoordoctor.dev.form1;
 
                                 console.log("form1");
-                                webforms_azdoordoctor_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_azdoordoctor_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.azdoordoctor.form2;
@@ -859,7 +847,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.azdoordoctor.dev.form2;
 
                                 console.log("form2");
-                                webforms_azdoordoctor_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_azdoordoctor_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.azdoordoctor.form3;
@@ -869,7 +857,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.azdoordoctor.dev.form3;
 
                                 console.log("form3");
-                                webforms_azdoordoctor_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_azdoordoctor_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -892,7 +880,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.azdoordoctor.live.form1;
 
                                 console.log("form1");
-                                webforms_azdoordoctor_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_azdoordoctor_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.azdoordoctor.form2;
@@ -902,7 +890,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.azdoordoctor.live.form2;
 
                                 console.log("form2");
-                                webforms_azdoordoctor_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_azdoordoctor_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.azdoordoctor.form3;
@@ -912,7 +900,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.azdoordoctor.live.form3;
 
                                 console.log("form3");
-                                webforms_azdoordoctor_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_azdoordoctor_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -946,7 +934,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.dev.form1;
 
                                 console.log("form1");
-                                webforms_biltmoreloanandjewelry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.biltmoreloanandjewelry.form2;
@@ -956,7 +944,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.dev.form2;
 
                                 console.log("form2");
-                                webforms_biltmoreloanandjewelry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.biltmoreloanandjewelry.form3;
@@ -966,7 +954,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.dev.form3;
 
                                 console.log("form3");
-                                webforms_biltmoreloanandjewelry_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form4":
                                 var forms = config.forms.biltmoreloanandjewelry.form4;
@@ -976,7 +964,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.dev.form4;
 
                                 console.log("form4");
-                                webforms_biltmoreloanandjewelry_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form5":
                                 var forms = config.forms.biltmoreloanandjewelry.form5;
@@ -986,7 +974,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.dev.form5;
 
                                 console.log("form5");
-                                webforms_biltmoreloanandjewelry_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form6":
                                 var forms = config.forms.biltmoreloanandjewelry.form6;
@@ -996,7 +984,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.dev.form6;
 
                                 console.log("form6");
-                                webforms_biltmoreloanandjewelry_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1019,7 +1007,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.live.form1;
 
                                 console.log("form1");
-                                webforms_biltmoreloanandjewelry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.biltmoreloanandjewelry.form2;
@@ -1029,7 +1017,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.live.form2;
 
                                 console.log("form2");
-                                webforms_biltmoreloanandjewelry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.biltmoreloanandjewelry.form3;
@@ -1039,7 +1027,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.live.form3;
 
                                 console.log("form3");
-                                webforms_biltmoreloanandjewelry_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form4":
                                 var forms = config.forms.biltmoreloanandjewelry.form4;
@@ -1049,7 +1037,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.live.form4;
 
                                 console.log("form4");
-                                webforms_biltmoreloanandjewelry_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form5":
                                 var forms = config.forms.biltmoreloanandjewelry.form5;
@@ -1059,7 +1047,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.live.form5;
 
                                 console.log("form5");
-                                webforms_biltmoreloanandjewelry_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form6":
                                 var forms = config.forms.biltmoreloanandjewelry.form6;
@@ -1069,7 +1057,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.biltmoreloanandjewelry.live.form6;
 
                                 console.log("form6");
-                                webforms_biltmoreloanandjewelry_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_biltmoreloanandjewelry_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1103,7 +1091,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.buckeyederm.dev.form1;
 
                                 console.log("form1");
-                                webforms_buckeyederm_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_buckeyederm_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1126,7 +1114,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.buckeyederm.live.form1;
 
                                 console.log("form1");
-                                webforms_buckeyederm_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_buckeyederm_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1160,7 +1148,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.canyonfallshairextensioncompany.dev.form1;
 
                                 console.log("form1");
-                                webforms_canyonfallshairextensioncompany_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_canyonfallshairextensioncompany_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.canyonfallshairextensioncompany.form2;
@@ -1170,7 +1158,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.canyonfallshairextensioncompany.dev.form2;
 
                                 console.log("form2");
-                                webforms_canyonfallshairextensioncompany_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_canyonfallshairextensioncompany_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1193,7 +1181,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.canyonfallshairextensioncompany.live.form1;
 
                                 console.log("form1");
-                                webforms_canyonfallshairextensioncompany_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_canyonfallshairextensioncompany_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.canyonfallshairextensioncompany.form2;
@@ -1203,7 +1191,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.canyonfallshairextensioncompany.live.form2;
 
                                 console.log("form2");
-                                webforms_canyonfallshairextensioncompany_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_canyonfallshairextensioncompany_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1237,7 +1225,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.dev.form1;
 
                                 console.log("form1");
-                                webforms_collisioncenternorthscottsdale_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.collisioncenternorthscottsdale.form2;
@@ -1247,7 +1235,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.dev.form2;
 
                                 console.log("form2");
-                                webforms_collisioncenternorthscottsdale_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.collisioncenternorthscottsdale.form3;
@@ -1257,7 +1245,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.dev.form3;
 
                                 console.log("form3");
-                                webforms_collisioncenternorthscottsdale_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form4":
                                 var forms = config.forms.collisioncenternorthscottsdale.form4;
@@ -1267,7 +1255,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.dev.form4;
 
                                 console.log("form4");
-                                webforms_collisioncenternorthscottsdale_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1290,7 +1278,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.live.form1;
 
                                 console.log("form1");
-                                webforms_collisioncenternorthscottsdale_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.collisioncenternorthscottsdale.form2;
@@ -1300,7 +1288,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.live.form2;
 
                                 console.log("form2");
-                                webforms_collisioncenternorthscottsdale_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.collisioncenternorthscottsdale.form3;
@@ -1310,7 +1298,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.live.form3;
 
                                 console.log("form3");
-                                webforms_collisioncenternorthscottsdale_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form4":
                                 var forms = config.forms.collisioncenternorthscottsdale.form4;
@@ -1320,7 +1308,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.collisioncenternorthscottsdale.live.form4;
 
                                 console.log("form4");
-                                webforms_collisioncenternorthscottsdale_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_collisioncenternorthscottsdale_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1354,7 +1342,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.crexendo.dev.form1;
 
                                 console.log("form1");
-                                webforms_crexendo_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_crexendo_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.crexendo.form2;
@@ -1364,7 +1352,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.crexendo.dev.form2;
 
                                 console.log("form2");
-                                webforms_crexendo_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_crexendo_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1377,11 +1365,11 @@ app.post('/post/webforms', async (req, res) => {
                     //     switch (site_canyonfallshairextensioncompany) {
                     //         case "form1":
                     //             console.log("form1");
-                    //             webforms_canyonfallshairextensioncompany_f1.index(domain, username, password, email);
+                    //             await webforms_canyonfallshairextensioncompany_f1.index(domain, username, password, email);
                     //             break;
                     //         case "form2":
                     //             console.log("form2");
-                    //             webforms_canyonfallshairextensioncompany_f2.index(domain, username, password, email);
+                    //             await webforms_canyonfallshairextensioncompany_f2.index(domain, username, password, email);
                     //             break;
                     //         default:
                     //             break;
@@ -1415,7 +1403,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var form_page = config.form_page.culpepper.dev.form1;
 
                     //             console.log("form1");
-                    //             webforms_culpepper_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_culpepper_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
@@ -1438,7 +1426,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.culpepper.live.form1;
 
                                 console.log("form1");
-                                webforms_culpepper_f1.index(
+                                await webforms_culpepper_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -1492,7 +1480,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.ewingconstruction.dev.form1;
 
                                 console.log("form1");
-                                webforms_ewingconstruction_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_ewingconstruction_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1515,7 +1503,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.ewingconstruction.live.form1;
 
                                 console.log("form1");
-                                webforms_ewingconstruction_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_ewingconstruction_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1549,7 +1537,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.freddabranyon.dev.form1;
 
                                 console.log("form1");
-                                webforms_freddabranyon_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_freddabranyon_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1572,7 +1560,64 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.freddabranyon.live.form1;
 
                                 console.log("form1");
-                                webforms_freddabranyon_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_freddabranyon_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "gatorskin":
+                var site_gatorskin = req.body.site_gatorskin;
+                var sheetId = config.sheetId.gatorskin;
+                var ranges = config.ranges.gatorskin;
+                var range_recipient = config.range_recipient.gatorskin;
+                var range_thankyou_page = config.range_thankyou_page.gatorskin;
+
+                console.log("Site: " + site_gatorskin);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.gatorskin.dev;
+                        var wp_creds_username = config.wp_creds.gatorskin.username;
+                        var wp_creds_password = config.wp_creds.gatorskin.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_gatorskin) {
+                            case "form1":
+                                var forms = config.forms.gatorskin.form1;
+                                var webforms = config.webforms.gatorskin.dev.form1;
+                                var contact_form_name = config.contact_form_name.gatorskin.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.gatorskin.form1;
+                                var form_page = config.form_page.gatorskin.dev.form1;
+
+                                console.log("form1");
+                                await webforms_gatorskin_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.gatorskin.live;
+                        var wp_creds_username = config.wp_creds.gatorskin.username;
+                        var wp_creds_password = config.wp_creds.gatorskin.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_gatorskin) {
+                            case "form1":
+                                var forms = config.forms.gatorskin.form1;
+                                var webforms = config.webforms.gatorskin.live.form1;
+                                var contact_form_name = config.contact_form_name.gatorskin.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.gatorskin.form1;
+                                var form_page = config.form_page.gatorskin.live.form1;
+
+                                console.log("form1");
+                                await webforms_gatorskin_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1606,7 +1651,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.frlawgroup.dev.form1;
 
                                 console.log("form1");
-                                webforms_frlawgroup_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_frlawgroup_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.frlawgroup.form2;
@@ -1616,7 +1661,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.frlawgroup.dev.form2;
 
                                 console.log("form2");
-                                webforms_frlawgroup_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_frlawgroup_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.frlawgroup.form3;
@@ -1626,7 +1671,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.frlawgroup.dev.form3;
 
                                 console.log("form3");
-                                webforms_frlawgroup_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_frlawgroup_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1649,7 +1694,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.frlawgroup.live.form1;
 
                                 console.log("form1");
-                                webforms_frlawgroup_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_frlawgroup_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.frlawgroup.form2;
@@ -1659,7 +1704,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.frlawgroup.live.form2;
 
                                 console.log("form2");
-                                webforms_frlawgroup_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_frlawgroup_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.frlawgroup.form3;
@@ -1669,7 +1714,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.frlawgroup.live.form3;
 
                                 console.log("form3");
-                                webforms_frlawgroup_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_frlawgroup_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1702,7 +1747,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.primemedicalpain.form1;
 
                     //             console.log("form1");
-                    //             webforms_primemedicalpain_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_primemedicalpain_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         case "form2":
                     //             var forms = config.forms.primemedicalpain.form2;
@@ -1711,7 +1756,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.primemedicalpain.form2;
 
                     //             console.log("form2");
-                    //             webforms_primemedicalpain_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_primemedicalpain_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
@@ -1734,7 +1779,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primemedicalpain.live.form1;
 
                                 console.log("form1");
-                                webforms_primemedicalpain_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primemedicalpain_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.primemedicalpain.form2;
@@ -1744,7 +1789,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primemedicalpain.live.form2;
 
                                 console.log("form2");
-                                webforms_primemedicalpain_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primemedicalpain_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1777,7 +1822,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.primeview.form1;
 
                     //             console.log("form1");
-                    //             webforms_primeview_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_primeview_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         case "form2":
                     //             var forms = config.forms.primeview.form2;
@@ -1786,7 +1831,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.primeview.form2;
 
                     //             console.log("form2");
-                    //             webforms_primeview_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_primeview_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
@@ -1809,7 +1854,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primeview.live.form1;
 
                                 console.log("form1");
-                                webforms_primeview_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primeview_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.primeview.form2;
@@ -1819,7 +1864,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primeview.live.form2;
 
                                 console.log("form2");
-                                webforms_primeview_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primeview_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.primeview.form3;
@@ -1829,7 +1874,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primeview.live.form3;
 
                                 console.log("form3");
-                                webforms_primeview_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primeview_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form4":
                                 var forms = config.forms.primeview.form4;
@@ -1839,7 +1884,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primeview.live.form4;
 
                                 console.log("form4");
-                                webforms_primeview_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primeview_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form5":
                                 var forms = config.forms.primeview.form5;
@@ -1849,7 +1894,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primeview.live.form5;
 
                                 console.log("form5");
-                                webforms_primeview_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primeview_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form6":
                                 var forms = config.forms.primeview.form6;
@@ -1859,7 +1904,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primeview.live.form6;
 
                                 console.log("form6");
-                                webforms_primeview_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primeview_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form7":
                                 var forms = config.forms.primeview.form7;
@@ -1869,7 +1914,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.primeview.live.form7;
 
                                 console.log("form7");
-                                webforms_primeview_f7.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_primeview_f7.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                                 default:
                         }
@@ -1902,7 +1947,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.randosouthwest.dev.form1;
 
                                 console.log("form1");
-                                webforms_randosouthwest_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_randosouthwest_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1925,7 +1970,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.randosouthwest.live.form1;
 
                                 console.log("form1");
-                                webforms_randosouthwest_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_randosouthwest_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -1959,7 +2004,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.renewscal.dev.form1;
 
                                 console.log("form1");
-                                webforms_renewscal_f1.index(
+                                await webforms_renewscal_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -1990,7 +2035,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.renewscal.dev.form2;
 
                                 console.log("form2");
-                                webforms_renewscal_f2.index(
+                                await webforms_renewscal_f2.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2034,7 +2079,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.renewscal.live.form1;
 
                                 console.log("form1");
-                                webforms_renewscal_f1.index(
+                                await webforms_renewscal_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2065,7 +2110,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.renewscal.live.form2;
 
                                 console.log("form2");
-                                webforms_renewscal_f2.index(
+                                await webforms_renewscal_f2.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2120,7 +2165,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.risingsunmartialartsaz.dev.form1;
 
                                 console.log("form1");
-                                webforms_risingsunmartialartsaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_risingsunmartialartsaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2143,7 +2188,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.risingsunmartialartsaz.live.form1;
 
                                 console.log("form1");
-                                webforms_risingsunmartialartsaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_risingsunmartialartsaz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2177,7 +2222,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.indinspect.dev.form1;
 
                                 console.log("form1");
-                                webforms_indinspect_f1.index(
+                                await webforms_indinspect_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2208,7 +2253,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.indinspect.dev.form2;
 
                                 console.log("form2");
-                                webforms_indinspect_f2.index(
+                                await webforms_indinspect_f2.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2252,7 +2297,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.indinspect.live.form1;
 
                                 console.log("form1");
-                                webforms_indinspect_f1.index(
+                                await webforms_indinspect_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2283,7 +2328,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.indinspect.live.form2;
 
                                 console.log("form2");
-                                webforms_indinspect_f2.index(
+                                await webforms_indinspect_f2.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2338,7 +2383,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.jewelryoutletinc.dev.form1;
 
                                 console.log("form1");
-                                webforms_jewelryoutletinc_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_jewelryoutletinc_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.jewelryoutletinc.form2;
@@ -2348,7 +2393,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.jewelryoutletinc.dev.form2;
 
                                 console.log("form2");
-                                webforms_jewelryoutletinc_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_jewelryoutletinc_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2371,7 +2416,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.jewelryoutletinc.live.form1;
 
                                 console.log("form1");
-                                webforms_jewelryoutletinc_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_jewelryoutletinc_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.jewelryoutletinc.form2;
@@ -2381,7 +2426,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.jewelryoutletinc.live.form2;
 
                                 console.log("form2");
-                                webforms_jewelryoutletinc_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_jewelryoutletinc_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2415,7 +2460,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.judefrancesjewelry.dev.form1;
 
                                 console.log("form1");
-                                webforms_judefrancesjewelry_f1.index(
+                                await webforms_judefrancesjewelry_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2446,7 +2491,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.judefrancesjewelry.dev.form2;
 
                                 console.log("form2");
-                                webforms_judefrancesjewelry_f2.index(
+                                await webforms_judefrancesjewelry_f2.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2477,7 +2522,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.judefrancesjewelry.dev.form3;
 
                                 console.log("form3");
-                                webforms_judefrancesjewelry_f3.index(
+                                await webforms_judefrancesjewelry_f3.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2508,7 +2553,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.judefrancesjewelry.dev.form4;
 
                                 console.log("form4");
-                                webforms_judefrancesjewelry_f4.index(
+                                await webforms_judefrancesjewelry_f4.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2539,7 +2584,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.judefrancesjewelry.dev.form5;
 
                                 console.log("form5");
-                                webforms_judefrancesjewelry_f5.index(
+                                await webforms_judefrancesjewelry_f5.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2570,7 +2615,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.judefrancesjewelry.dev.form6;
 
                                 console.log("form6");
-                                webforms_judefrancesjewelry_f6.index(
+                                await webforms_judefrancesjewelry_f6.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2614,7 +2659,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var form_page = config.form_page.judefrancesjewelry.live.form1;
 
                     //             console.log("form1");
-                    //             webforms_judefrancesjewelry_f1.index(
+                    //             await webforms_judefrancesjewelry_f1.index(
                     //                 date, 
                     //                 domain, 
                     //                 username, 
@@ -2645,7 +2690,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var form_page = config.form_page.judefrancesjewelry.live.form2;
 
                     //             console.log("form2");
-                    //             webforms_judefrancesjewelry_f2.index(
+                    //             await webforms_judefrancesjewelry_f2.index(
                     //                 date, 
                     //                 domain, 
                     //                 username, 
@@ -2700,7 +2745,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.kyrenefamilydentistry.dev.form1;
 
                                 console.log("form1");
-                                webforms_kyrenefamilydentistry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_kyrenefamilydentistry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.kyrenefamilydentistry.form2;
@@ -2710,7 +2755,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.kyrenefamilydentistry.dev.form2;
 
                                 console.log("form2");
-                                webforms_kyrenefamilydentistry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_kyrenefamilydentistry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2733,7 +2778,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.kyrenefamilydentistry.live.form1;
 
                                 console.log("form1");
-                                webforms_kyrenefamilydentistry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_kyrenefamilydentistry_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.kyrenefamilydentistry.form2;
@@ -2743,7 +2788,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.kyrenefamilydentistry.live.form2;
 
                                 console.log("form2");
-                                webforms_kyrenefamilydentistry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_kyrenefamilydentistry_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2777,7 +2822,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.lignans.dev.form1;
 
                                 console.log("form1");
-                                webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2799,7 +2844,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.lignans.form1;
 
                     //             console.log("form1");
-                    //             webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
@@ -2833,7 +2878,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.natina.dev.form1;
 
                                 console.log("form1");
-                                webforms_natina_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_natina_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -2855,7 +2900,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.natina.form1;
 
                     //             console.log("form1");
-                    //             webforms_natina_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_natina_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
@@ -2889,7 +2934,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.dev.form1;
 
                                 console.log("form1");
-                                webforms_newhopemedicalcenter_f1.index(
+                                await webforms_newhopemedicalcenter_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2920,7 +2965,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.dev.form2;
 
                                 console.log("form2");
-                                webforms_newhopemedicalcenter_f2.index(
+                                await webforms_newhopemedicalcenter_f2.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2951,7 +2996,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.dev.form3;
 
                                 console.log("form3");
-                                webforms_newhopemedicalcenter_f3.index(
+                                await webforms_newhopemedicalcenter_f3.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -2982,7 +3027,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.dev.form4;
 
                                 console.log("form4");
-                                webforms_newhopemedicalcenter_f4.index(
+                                await webforms_newhopemedicalcenter_f4.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3013,7 +3058,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.dev.form5;
 
                                 console.log("form5");
-                                webforms_newhopemedicalcenter_f5.index(
+                                await webforms_newhopemedicalcenter_f5.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3044,7 +3089,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.dev.form6;
 
                                 console.log("form6");
-                                webforms_newhopemedicalcenter_f6.index(
+                                await webforms_newhopemedicalcenter_f6.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3075,7 +3120,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.dev.form7;
 
                                 console.log("form7");
-                                webforms_newhopemedicalcenter_f7.index(
+                                await webforms_newhopemedicalcenter_f7.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3119,7 +3164,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.live.form1;
 
                                 console.log("form1");
-                                webforms_newhopemedicalcenter_f1.index(
+                                await webforms_newhopemedicalcenter_f1.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3150,7 +3195,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.live.form2;
 
                                 console.log("form2");
-                                webforms_newhopemedicalcenter_f2.index(
+                                await webforms_newhopemedicalcenter_f2.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3181,7 +3226,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.live.form3;
 
                                 console.log("form3");
-                                webforms_newhopemedicalcenter_f3.index(
+                                await webforms_newhopemedicalcenter_f3.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3212,7 +3257,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.live.form4;
 
                                 console.log("form4");
-                                webforms_newhopemedicalcenter_f4.index(
+                                await webforms_newhopemedicalcenter_f4.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3243,7 +3288,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.live.form5;
 
                                 console.log("form5");
-                                webforms_newhopemedicalcenter_f5.index(
+                                await webforms_newhopemedicalcenter_f5.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3274,7 +3319,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.live.form6;
 
                                 console.log("form6");
-                                webforms_newhopemedicalcenter_f6.index(
+                                await webforms_newhopemedicalcenter_f6.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3305,7 +3350,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.newhopemedicalcenter.live.form7;
 
                                 console.log("form7");
-                                webforms_newhopemedicalcenter_f7.index(
+                                await webforms_newhopemedicalcenter_f7.index(
                                     date, 
                                     domain, 
                                     username, 
@@ -3360,7 +3405,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.optimizex.dev.form1;
 
                                 console.log("form1");
-                                webforms_optimizex_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_optimizex_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.optimizex.form2;
@@ -3370,7 +3415,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.optimizex.dev.form2;
 
                                 console.log("form2");
-                                webforms_optimizex_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_optimizex_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.optimizex.form3;
@@ -3380,7 +3425,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.optimizex.dev.form3;
 
                                 console.log("form3");
-                                webforms_optimizex_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_optimizex_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3403,7 +3448,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.optimizex.live.form1;
 
                                 console.log("form1");
-                                webforms_optimizex_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_optimizex_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.optimizex.form2;
@@ -3413,7 +3458,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.optimizex.live.form2;
 
                                 console.log("form2");
-                                webforms_optimizex_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_optimizex_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.optimizex.form3;
@@ -3423,7 +3468,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.optimizex.live.form3;
 
                                 console.log("form3");
-                                webforms_optimizex_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_optimizex_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3457,7 +3502,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.paysondermatology.dev.form1;
 
                                 console.log("form1");
-                                webforms_paysondermatology_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_paysondermatology_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3480,7 +3525,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.paysondermatology.live.form1;
 
                                 console.log("form1");
-                                webforms_paysondermatology_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_paysondermatology_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3513,7 +3558,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.phoenixritecare.form1;
 
                     //             console.log("form1");
-                    //             webforms_phoenixritecare_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_phoenixritecare_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
@@ -3536,7 +3581,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form1;
 
                                 console.log("form1");
-                                webforms_phoenixritecare_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.phoenixritecare.form2;
@@ -3546,7 +3591,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form2;
 
                                 console.log("form2");
-                                webforms_phoenixritecare_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.phoenixritecare.form3;
@@ -3556,7 +3601,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form3;
 
                                 console.log("form3");
-                                webforms_phoenixritecare_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form4":
                                 var forms = config.forms.phoenixritecare.form4;
@@ -3566,7 +3611,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form4;
 
                                 console.log("form4");
-                                webforms_phoenixritecare_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form5":
                                 var forms = config.forms.phoenixritecare.form5;
@@ -3576,7 +3621,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form5;
 
                                 console.log("form5");
-                                webforms_phoenixritecare_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form6":
                                 var forms = config.forms.phoenixritecare.form6;
@@ -3586,7 +3631,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form6;
 
                                 console.log("form6");
-                                webforms_phoenixritecare_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form7":
                                 var forms = config.forms.phoenixritecare.form7;
@@ -3596,7 +3641,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form7;
 
                                 console.log("form7");
-                                webforms_phoenixritecare_f7.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f7.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form8":
                                 var forms = config.forms.phoenixritecare.form8;
@@ -3606,7 +3651,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form8;
 
                                 console.log("form8");
-                                webforms_phoenixritecare_f8.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f8.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form9":
                                 var forms = config.forms.phoenixritecare.form9;
@@ -3616,7 +3661,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.phoenixritecare.live.form9;
 
                                 console.log("form9");
-                                webforms_phoenixritecare_f9.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_phoenixritecare_f9.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3650,7 +3695,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sellusyourcaraz.dev.form1;
 
                                 console.log("form1");
-                                webforms_sellusyourcaraz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sellusyourcaraz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.sellusyourcaraz.form2;
@@ -3660,7 +3705,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sellusyourcaraz.dev.form2;
 
                                 console.log("form2");
-                                webforms_sellusyourcaraz_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sellusyourcaraz_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.sellusyourcaraz.form3;
@@ -3670,7 +3715,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sellusyourcaraz.dev.form3;
 
                                 console.log("form3");
-                                webforms_sellusyourcaraz_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sellusyourcaraz_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3693,7 +3738,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sellusyourcaraz.live.form1;
 
                                 console.log("form1");
-                                webforms_sellusyourcaraz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sellusyourcaraz_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.sellusyourcaraz.form2;
@@ -3703,7 +3748,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sellusyourcaraz.live.form2;
 
                                 console.log("form2");
-                                webforms_sellusyourcaraz_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sellusyourcaraz_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.sellusyourcaraz.form3;
@@ -3713,7 +3758,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sellusyourcaraz.live.form3;
 
                                 console.log("form3");
-                                webforms_sellusyourcaraz_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sellusyourcaraz_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3747,7 +3792,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sunrisejewelryusa.dev.form1;
 
                                 console.log("form1");
-                                webforms_sunrisejewelryusa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sunrisejewelryusa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3770,7 +3815,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.sunrisejewelryusa.live.form1;
 
                                 console.log("form1");
-                                webforms_sunrisejewelryusa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_sunrisejewelryusa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3804,7 +3849,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.versatile.dev.form1;
 
                                 console.log("form1");
-                                webforms_versatile_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_versatile_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form2":
                                 var forms = config.forms.versatile.form2;
@@ -3814,7 +3859,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.versatile.dev.form2;
 
                                 console.log("form2");
-                                webforms_versatile_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_versatile_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form3":
                                 var forms = config.forms.versatile.form3;
@@ -3824,7 +3869,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.versatile.dev.form3;
 
                                 console.log("form3");
-                                webforms_versatile_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_versatile_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             case "form4":
                                 var forms = config.forms.versatile.form4;
@@ -3834,7 +3879,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.versatile.dev.form4;
 
                                 console.log("form4");
-                                webforms_versatile_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_versatile_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3856,12 +3901,69 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.versatile.form1;
 
                     //             console.log("form1");
-                    //             webforms_versatile_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_versatile_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;
                     //     }
                     //     break;
+                }
+                break;
+            case "virtualassistantsoutsourcing":
+                var site_virtualassistantsoutsourcing = req.body.site_virtualassistantsoutsourcing;
+                var sheetId = config.sheetId.virtualassistantsoutsourcing;
+                var ranges = config.ranges.virtualassistantsoutsourcing;
+                var range_recipient = config.range_recipient.virtualassistantsoutsourcing;
+                var range_thankyou_page = config.range_thankyou_page.virtualassistantsoutsourcing;
+
+                console.log("Site: " + site_virtualassistantsoutsourcing);
+                switch (checkbox) {
+                    // case "dev":
+                    //     var domain = config.domain.virtualassistantsoutsourcing.dev;
+                    //     var wp_creds_username = config.wp_creds.virtualassistantsoutsourcing.username;
+                    //     var wp_creds_password = config.wp_creds.virtualassistantsoutsourcing.password;
+                    //     var launch = config.launch.dev;
+
+                    //     console.log(domain);
+                    //     console.log("dev");
+                    //     switch (site_virtualassistantsoutsourcing) {
+                    //         case "form1":
+                    //             var forms = config.forms.virtualassistantsoutsourcing.form1;
+                    //             var webforms = config.webforms.virtualassistantsoutsourcing.dev.form1;
+                    //             var contact_form_name = config.contact_form_name.virtualassistantsoutsourcing.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.virtualassistantsoutsourcing.form1;
+                    //             var form_page = config.form_page.virtualassistantsoutsourcing.dev.form1;
+
+                    //             console.log("form1");
+                    //             await webforms_virtualassistantsoutsourcing_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                    case "live":
+                        var domain = config.domain.virtualassistantsoutsourcing.live;
+                        var wp_creds_username = config.wp_creds.virtualassistantsoutsourcing.username;
+                        var wp_creds_password = config.wp_creds.virtualassistantsoutsourcing.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_virtualassistantsoutsourcing) {
+                            case "form1":
+                                var forms = config.forms.virtualassistantsoutsourcing.form1;
+                                var webforms = config.webforms.virtualassistantsoutsourcing.live.form1;
+                                var contact_form_name = config.contact_form_name.virtualassistantsoutsourcing.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.virtualassistantsoutsourcing.form1;
+                                var form_page = config.form_page.virtualassistantsoutsourcing.live.form1;
+
+                                console.log("form1");
+                                await webforms_virtualassistantsoutsourcing_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "solutionsforum":
@@ -3890,7 +3992,7 @@ app.post('/post/webforms', async (req, res) => {
                                 var form_page = config.form_page.solutionsforum.dev.form1;
 
                                 console.log("form1");
-                                webforms_solutionsforum_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                await webforms_solutionsforum_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
@@ -3912,7 +4014,7 @@ app.post('/post/webforms', async (req, res) => {
                     //             var contact_form_shortcode = config.contact_form_shortcode.solutionsforum.form1;
 
                     //             console.log("form1");
-                    //             webforms_solutionsforum_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             await webforms_solutionsforum_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                     //             break;
                     //         default:
                     //             break;

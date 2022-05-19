@@ -51,7 +51,9 @@ const sites = [
     "jewelryoutletinc",
     "paysondermatology",
     "renewscal",
-    "risingsunmartialartsaz"
+    "risingsunmartialartsaz",
+    "gatorskin",
+    "virtualassistantsoutsourcing"
 ]
 
 let wp_creds = {
@@ -195,6 +197,14 @@ let wp_creds = {
     risingsunmartialartsaz: {
         username: "pvadmin",
         password: "uR3$hH0)tQ6%"
+    },
+    gatorskin: {
+        username: "pvadmin",
+        password: "p5PBJAlQYA4jH*iI(dw!Gtml"
+    },
+    virtualassistantsoutsourcing: {
+        username: "pvadmin",
+        password: "[zJdPOoINX[8u(ed"
     }
 }
 
@@ -338,6 +348,14 @@ let domain = {
     risingsunmartialartsaz: {
         dev: "https://risingsunmartialartsdev.primeview.com/",
         live: "https://www.risingsunmartialartsaz.com/"
+    },
+    gatorskin: {
+        dev: "https://gatorskin.primeview.com/",
+        live: "https://www.gatorskin.us/"
+    },
+    virtualassistantsoutsourcing: {
+        dev: "",
+        live: "https://virtualassistantsoutsourcing.com/"
     }
 }
 
@@ -504,6 +522,12 @@ let forms = {
     },
     risingsunmartialartsaz: {
         form1: "contact-us/"
+    },
+    gatorskin: {
+        form1: "contact/"
+    },
+    virtualassistantsoutsourcing: {
+        form1: "contact/"
     }
 }
 
@@ -542,7 +566,9 @@ let sheetId = {
     jewelryoutletinc: 1528265251,
     paysondermatology: 1897422886,
     renewscal: 1177615742,
-    risingsunmartialartsaz: 2093063365
+    risingsunmartialartsaz: 2093063365,
+    gatorskin: 1363791668,
+    virtualassistantsoutsourcing: 763505033
 }
 
 let range = [
@@ -965,6 +991,30 @@ let range = [
             "Rising Sun!E2",
             "Rising Sun!G2",
         ]
+    ],
+    sites[35] = [
+        [
+            "Gatorskin!Q2",
+            "Gatorskin!A2",
+            "Gatorskin!B2",
+            "Gatorskin!C2",
+            "Gatorskin!C3",
+            "Gatorskin!D2",
+            "Gatorskin!E2",
+            "Gatorskin!G2",
+        ]
+    ],
+    sites[36] = [
+        [
+            "Virtual Assistant Outsourcing!Q2",
+            "Virtual Assistant Outsourcing!A2",
+            "Virtual Assistant Outsourcing!B2",
+            "Virtual Assistant Outsourcing!C2",
+            "Virtual Assistant Outsourcing!C3",
+            "Virtual Assistant Outsourcing!D2",
+            "Virtual Assistant Outsourcing!E2",
+            "Virtual Assistant Outsourcing!G2",
+        ]
     ]
 ]
 
@@ -1003,7 +1053,9 @@ let ranges = {
     jewelryoutletinc: range[31][0],
     paysondermatology: range[32][0],
     renewscal: range[33][0],
-    risingsunmartialartsaz: range[34][0]
+    risingsunmartialartsaz: range[34][0],
+    gatorskin: range[35][0],
+    virtualassistantsoutsourcing: range[36][0]
 }
 
 let launch = {
@@ -1170,6 +1222,12 @@ let contact_form_name = {
     },
     risingsunmartialartsaz: {
         form1: "Contact Us"
+    },
+    gatorskin: {
+        form1: "Contact Page | Form"
+    },
+    virtualassistantsoutsourcing: {
+        form1: "Get in Touch with Us - Bottom"
     }
 }
 
@@ -1332,6 +1390,12 @@ let contact_form_shortcode = {
     },
     risingsunmartialartsaz: {
         form1: '[contact-form-7 id="5" title="Contact Us"]'
+    },
+    gatorskin: {
+        form1: '[contact-form-7 id="23" title="Contact Page | Form"]'
+    },
+    virtualassistantsoutsourcing: {
+        form1: '[contact-form-7 id="66" title="Get in Touch with Us - Bottom"]'
     }
 }
 
@@ -1371,7 +1435,9 @@ let range_recipient = {
     jewelryoutletinc: "Jewelry Outlet!H2",
     paysondermatology: "Payson Dermatology!H2",
     renewscal: "Renew Stem Cell & Laser!H2",
-    risingsunmartialartsaz: "Rising Sun!H2"
+    risingsunmartialartsaz: "Rising Sun!H2",
+    gatorskin: "Gatorskin!H2",
+    virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2"
 }
 
 
@@ -1410,7 +1476,9 @@ let range_thankyou_page = {
     jewelryoutletinc: "Jewelry Outlet!I2",
     paysondermatology: "Payson Dermatology!I2",
     renewscal: "Renew Stem Cell & Laser!I2",
-    risingsunmartialartsaz: "Rising Sun!I2"
+    risingsunmartialartsaz: "Rising Sun!I2",
+    gatorskin: "Gatorskin!I2",
+    virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1817,6 +1885,22 @@ let webforms = {
         live: {
             form1: "Contact Us"
         }
+    },
+    gatorskin: {
+        dev: {
+            form1: "Contact Page | Form"
+        },
+        live: {
+            form1: "Contact Page | Form"
+        }
+    },
+    virtualassistantsoutsourcing: {
+        dev: {
+            form1: ""
+        },
+        live: {
+            form1: "Get in Touch with Us - Bottom"
+        }
     }
 }
 
@@ -2208,6 +2292,22 @@ let form_page = {
         },
         live: {
             form1: "/admin.php?page=wpcf7&post=5&action=edit"
+        }
+    },
+    gatorskin: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=23&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=23&action=edit"
+        }
+    },
+    virtualassistantsoutsourcing: {
+        dev: {
+            form1: ""
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=66&action=edit"
         }
     }
 }
