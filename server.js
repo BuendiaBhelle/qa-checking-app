@@ -47,6 +47,9 @@ const webforms_collisioncenternorthscottsdale_f3 = require("./modules/webforms/c
 const webforms_collisioncenternorthscottsdale_f4 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form4/index");
 const webforms_crexendo_f1 = require("./modules/webforms/contactform7/forms/crexendo/form1/index");
 const webforms_crexendo_f2 = require("./modules/webforms/contactform7/forms/crexendo/form2/index");
+const webforms_crexendo_f3 = require("./modules/webforms/contactform7/forms/crexendo/form3/index");
+const webforms_crexendo_f4 = require("./modules/webforms/contactform7/forms/crexendo/form4/index");
+const webforms_crexendo_f5 = require("./modules/webforms/contactform7/forms/crexendo/form5/index");
 const webforms_culpepper_f1 = require("./modules/webforms/ninjaform/forms/culpepper/form1/index");
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
 const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms/freddabranyon/form1/index");
@@ -1356,6 +1359,36 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form2");
                                 await webforms_crexendo_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.crexendo.form3;
+                                var webforms = config.webforms.crexendo.dev.form3;
+                                var contact_form_name = config.contact_form_name.crexendo.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form3;
+                                var form_page = config.form_page.crexendo.dev.form3;
+
+                                console.log("form3");
+                                await webforms_crexendo_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form4":
+                                var forms = config.forms.crexendo.form4;
+                                var webforms = config.webforms.crexendo.dev.form4;
+                                var contact_form_name = config.contact_form_name.crexendo.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form4;
+                                var form_page = config.form_page.crexendo.dev.form4;
+
+                                console.log("form4");
+                                await webforms_crexendo_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form5":
+                                var forms = config.forms.crexendo.form5;
+                                var webforms = config.webforms.crexendo.dev.form5;
+                                var contact_form_name = config.contact_form_name.crexendo.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form5;
+                                var form_page = config.form_page.crexendo.dev.form5;
+
+                                console.log("form5");
+                                await webforms_crexendo_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;

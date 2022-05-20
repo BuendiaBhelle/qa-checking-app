@@ -1104,7 +1104,10 @@ let contact_form_name = {
     },
     crexendo: {
         form1: "Sign-Up for your Free Demonstration",
-        form2: "Talk to a Consultant Form"
+        form2: "Talk to a Consultant Form",
+        form3: "Personalized Quote Form Step 1",
+        form4: "Refer a Business",
+        form5: "Register To Become A Channel Partner"
     },
     ewingconstruction: {
         form1: "Contact Us"
@@ -1272,7 +1275,10 @@ let contact_form_shortcode = {
     },
     crexendo: {
         form1: '[contact-form-7 id="7624" title="Sign-Up for your Free Demonstration"]',
-        form2: '[contact-form-7 id="7891" title="Talk to a Consultant Form"]'
+        form2: '[contact-form-7 id="7891" title="Talk to a Consultant Form"]',
+        form3: '[contact-form-7 id="7903" title="Personalized Quote Form Step 1"]',
+        form4: '[contact-form-7 id="8649" title="Refer a Business"]',
+        form5: '[contact-form-7 id="8646" title="Register To Become A Channel Partner"]'
     },
     ewingconstruction: {
         form1: '[contact-form-7 id="31" title="Contact Us"]'
@@ -2003,11 +2009,17 @@ let form_page = {
     crexendo: {
         dev: {
             form1: "/admin.php?page=wpcf7&post=7624&action=edit",
-            form2: "/admin.php?page=wpcf7&post=7891&action=edit"
+            form2: "/admin.php?page=wpcf7&post=7891&action=edit",
+            form3: "/admin.php?page=wpcf7&post=7903&action=edit",
+            form4: "/admin.php?page=wpcf7&post=8649&action=edit",
+            form5: "/admin.php?page=wpcf7&post=8646&action=edit"
         },
         live: {
             form1: "/admin.php?page=wpcf7&post=7624&action=edit",
-            form2: "/admin.php?page=wpcf7&post=7891&action=edit"
+            form2: "/admin.php?page=wpcf7&post=7891&action=edit",
+            form3: "/admin.php?page=wpcf7&post=7903&action=edit",
+            form4: "/admin.php?page=wpcf7&post=8649&action=edit",
+            form5: "/admin.php?page=wpcf7&post=8646&action=edit"
         }
     },
     ewingconstruction: {

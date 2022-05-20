@@ -18,7 +18,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     // form fill in
     try {
         await driver.get(domain + forms);
-        await driver.sleep(1000);
+        await driver.sleep(3000);
         await driver.findElement(By.name("first_name")).sendKeys("Primeview");
         await driver.findElement(By.name("last_name")).sendKeys("Test");
         await driver.findElement(By.name("email")).sendKeys("qa@primeview.com");
@@ -37,7 +37,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
         await sheet.appendValues(value);
     }
 
-    await driver.sleep(5000);
+    await driver.sleep(7000);
 
     // track thank you page
     let ty_url = await driver.getCurrentUrl();

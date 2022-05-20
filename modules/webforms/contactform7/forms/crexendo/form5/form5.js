@@ -19,11 +19,20 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     try {
         await driver.get(domain + forms);
         await driver.sleep(3000);
-        await driver.findElement(By.name("first_name")).sendKeys("Primeview");
-        await driver.findElement(By.name("last_name")).sendKeys("Test");
-        await driver.findElement(By.name("email")).sendKeys("qa@primeview.com");
-        await driver.findElement(By.name("contact_number")).sendKeys("4806480839");
-        await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
+        await driver.findElement(By.name("consult-first-name")).sendKeys("Primeview");
+        await driver.findElement(By.name("consult-last-name")).sendKeys("Test");
+        await driver.findElement(By.name("street-address")).sendKeys("7620 E McKellips Rd");
+        await driver.findElement(By.name("city")).sendKeys("Scottsdale");
+        await driver.findElement(By.name("state-region-province")).sendKeys("AZ");
+        await driver.findElement(By.name("postal-zip-code")).sendKeys("85257");
+        await driver.findElement(By.name("your-email")).sendKeys("qa@primeview.com");
+        await driver.findElement(By.name("phone")).sendKeys("4806480839");
+        await driver.findElement(By.name("company-name")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("website")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("number-of-employees")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("primary-industry")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("consult-message")).sendKeys("Please take note that this is a test submit form for Register To Become A Channel Partner. Please disregard if received. Thank you.");
+        await driver.executeScript("return document.getElementsByClassName('btn-primary')[1].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
         value = [ "", "", "info", "form fill in success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];

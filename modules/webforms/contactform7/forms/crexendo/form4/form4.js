@@ -19,11 +19,16 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     try {
         await driver.get(domain + forms);
         await driver.sleep(3000);
-        await driver.findElement(By.name("first_name")).sendKeys("Primeview");
-        await driver.findElement(By.name("last_name")).sendKeys("Test");
-        await driver.findElement(By.name("email")).sendKeys("qa@primeview.com");
-        await driver.findElement(By.name("contact_number")).sendKeys("4806480839");
-        await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
+        await driver.findElement(By.name("your-first-name")).sendKeys("Primeview");
+        await driver.findElement(By.name("your-last-name")).sendKeys("Test");
+        await driver.findElement(By.name("your-email")).sendKeys("qa@primeview.com");
+        await driver.findElement(By.name("crex-rep-name")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("referral-first-name")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("referral-last-name")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("referral-company")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("referral-email")).sendKeys("Lead Test Submission");
+        await driver.findElement(By.name("referral-phone-number")).sendKeys("Lead Test Submission");
+        await driver.executeScript("return document.getElementsByClassName('btn-primary')[1].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
         value = [ "", "", "info", "form fill in success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];

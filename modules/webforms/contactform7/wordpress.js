@@ -98,20 +98,36 @@ async function wordpressStart(date, domain, username, password, email, timestamp
 
     // wp login
     try {
-        if ((username) && (password)) {
-            await driver.findElement(By.name("log")).sendKeys(username);
-            await driver.findElement(By.name("pwd")).sendKeys(password);
-            logger.logger.log({ level: 'info', message: 'WEBFORMS - edit credentials success.', tester: server.userId });
-            console.log("WEBFORMS - edit credentials success.");
-            value = [ "", "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", webforms, "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value);
+        if (domain === "https://crexendoredesign.primeview.com/" || domain === "https://www.crexendo.com/") {
+            if ((username) && (password)) {
+                await driver.findElement(By.id("user_login")).sendKeys(username);
+                await driver.findElement(By.id("user_pass")).sendKeys(password);
+                logger.logger.log({ level: 'info', message: 'WEBFORMS - edit credentials success.', tester: server.userId });
+                console.log("WEBFORMS - edit credentials success.");
+                value = [ "", "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            } else {
+                await driver.findElement(By.id("user_login")).sendKeys(wp_creds_username);
+                await driver.findElement(By.id("user_pass")).sendKeys(wp_creds_password);
+            }
+            await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
         } else {
-            await driver.findElement(By.name("log")).sendKeys(wp_creds_username);
-            await driver.findElement(By.name("pwd")).sendKeys(wp_creds_password);
+            if ((username) && (password)) {
+                await driver.findElement(By.name("log")).sendKeys(username);
+                await driver.findElement(By.name("pwd")).sendKeys(password);
+                logger.logger.log({ level: 'info', message: 'WEBFORMS - edit credentials success.', tester: server.userId });
+                console.log("WEBFORMS - edit credentials success.");
+                value = [ "", "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, "", webforms, "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value);
+            } else {
+                await driver.findElement(By.name("log")).sendKeys(wp_creds_username);
+                await driver.findElement(By.name("pwd")).sendKeys(wp_creds_password);
+            }
+    
+            await driver.findElement(By.id("wp-submit")).click();
         }
-
-        await driver.findElement(By.id("wp-submit")).click();
 
         let login_error = await driver.executeScript("return document.getElementById('login_error')");
         if (login_error) {
@@ -158,15 +174,12 @@ async function wordpressStart(date, domain, username, password, email, timestamp
     // navigate to forms page
     await driver.get(wp_site + form_page);
 
-
-    // await driver.sleep(1000);
-    // await driver.findElement(By.className("dashicons-email")).click();
-    // await driver.sleep(1000);
-    // await driver.executeScript(row_title);
-    // await driver.sleep(1000);
-
+    if (domain === "https://crexendoredesign.primeview.com/" || domain === "https://www.crexendo.com/") {
+        await driver.findElement(By.id("mail-panel-tab")).click();
+    } else {
+        await driver.findElement(By.id("ui-id-2")).click();
+    }
     
-    await driver.findElement(By.id("ui-id-2")).click();
     let recipients = await driver.findElement(By.id("wpcf7-mail-recipient")).getAttribute('value');
     console.log("recipients: " + recipients);
 

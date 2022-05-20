@@ -19,10 +19,11 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     try {
         await driver.get(domain + forms);
         await driver.sleep(3000);
-        await driver.findElement(By.name("first_name")).sendKeys("Primeview");
-        await driver.findElement(By.name("last_name")).sendKeys("Test");
-        await driver.findElement(By.name("email")).sendKeys("qa@primeview.com");
-        await driver.findElement(By.name("contact_number")).sendKeys("4806480839");
+        await driver.findElement(By.name("quote-fname")).sendKeys("Primeview");
+        await driver.findElement(By.name("quote-lname")).sendKeys("Test");
+        await driver.findElement(By.name("quote-email")).sendKeys("qa@primeview.com");
+        await driver.findElement(By.name("quote-phone")).sendKeys("4806480839");
+        await driver.findElement(By.name("quote-company")).sendKeys("Lead Test Submission");
         await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
