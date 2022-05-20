@@ -111,6 +111,9 @@ const webforms_versatile_f3 = require("./modules/webforms/contactform7/forms/ver
 const webforms_versatile_f4 = require("./modules/webforms/contactform7/forms/versatile/form4/index");
 const webforms_virtualassistantsoutsourcing_f1 = require("./modules/webforms/contactform7/forms/virtualassistantsoutsourcing/form1/index");
 const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/forms/solutionsforum/form1/index");
+const newsletter = require("./modules/newsletter/newsletter");
+const nitropack = require("./modules/nitropack/index");
+const nitropack_reports = require("./modules/nitropack/nitropack");
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
@@ -4040,6 +4043,33 @@ app.post('/post/webforms', async (req, res) => {
             res.send(success_msg_marketing);
         }    
     }
+});
+
+app.post('/post/newsletter', async (req, res) => {
+    try {
+        await newsletter.executeTest(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/nitropack', async (req, res) => {
+    try {
+        await nitropack.index(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/nitropack/reports', async (req, res) => {
+    try {
+        await nitropack_reports.displayFails(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
 });
 
 

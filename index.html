@@ -60,6 +60,9 @@
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="newsletter()">Newsletter</button>
                             </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="nitropack()">Nitropack</button>
+                            </li>
                             <div class="dropdown">
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Responsiveness</button>
@@ -69,7 +72,7 @@
                                     </div>
                                 </li>
                             </div>
-                            <div class="dropdown">
+                            <!-- <div class="dropdown">
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Monitoring Tasks</button>
                                     <div class="dropdown-content">
@@ -77,18 +80,10 @@
                                         <p onclick="nitropack()">Nitropack</p>
                                     </div>
                                 </li>
-                            </div>
+                            </div> -->
 
 
-                            <!-- <li class="nav-item"></li>
-                                <div class="dropdown">
-                                    <button class="button sidebar-nav-item">Responsiveness</button>
-                                    <div class="dropdown-content">
-                                    <p onclick="responsivenessForm_lambdatest()">Lambdatest</p>
-                                    <p onclick="responsiveness_manual()">Manual</p>
-                                    </div>
-                                </div>
-                            </li> -->
+ 
                               
                         </ul>
                         <div class="logout">
@@ -1131,7 +1126,7 @@
                             <div id="newsletter">
                                 <h1>Newsletter</h1>
                                 <form action="/post/newsletter" method="post">
-                                    <div class="container-fluid">
+                                    <!-- <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group row">
@@ -1142,8 +1137,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                    </div> -->
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                            </div>
+
+                            <!-- Nitropack -->
+                            <div id="nitropack">
+                                <h1>Nitropack</h1>
+                                <form action="/post/nitropack" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                                <br>
+                                <form action="/post/nitropack/reports" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
                                 </form>
                             </div>
 
@@ -1284,45 +1291,6 @@
                                 </form>
                             </div>
 
-                            <!-- Monitoring Sheets - WPM -->
-                            <div id="wpm">
-                                <h1>WPM</h1>
-                                <!-- <form action="/post/wpm" method="post">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group row">
-                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
-                                                    <div class="col-sm-9">
-                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required /><br/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
-                                </form> -->
-                            </div>
-
-                            <!-- Monitoring Sheets - Nitropack -->
-                            <div id="nitropack">
-                                <h1>Nitropack</h1>
-                                <!-- <form action="/post/nitropack" method="post">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group row">
-                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
-                                                    <div class="col-sm-9">
-                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required /><br/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
-                                </form> -->
-                            </div>
 
                         </div>
                     </div>
@@ -1338,10 +1306,10 @@
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'none';
+            // document.getElementById('wpm').style.display = 'none';
         }
         function image_optimizationForm() {
             document.getElementById('checkout').style.display = 'none';
@@ -1349,10 +1317,10 @@
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'none';
+            // document.getElementById('wpm').style.display = 'none';
         }
         function visibilityForm(){
             document.getElementById('checkout').style.display = 'none';
@@ -1360,10 +1328,10 @@
             document.getElementById('visibility').style.display = 'block';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'none';
+            // document.getElementById('wpm').style.display = 'none';
         }
         function webForms(){
             document.getElementById('checkout').style.display = 'none';
@@ -1371,10 +1339,10 @@
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'block';
             document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'none';
+            // document.getElementById('wpm').style.display = 'none';
         }
         function newsletter() {
             document.getElementById('checkout').style.display = 'none';
@@ -1382,43 +1350,10 @@
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'block';
+            document.getElementById('nitropack').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'none';
-        }
-        function responsivenessForm_lambdatest() {
-            document.getElementById('checkout').style.display = 'none';
-            document.getElementById('image_optimization').style.display = 'none';
-            document.getElementById('visibility').style.display = 'none';
-            document.getElementById('webForms').style.display = 'none';
-            document.getElementById('newsletter').style.display = 'none';
-            document.getElementById('responsiveness_lambdatest').style.display = 'block';
-            document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'none';
-        }
-        function responsiveness_manual() {
-            document.getElementById('checkout').style.display = 'none';
-            document.getElementById('image_optimization').style.display = 'none';
-            document.getElementById('visibility').style.display = 'none';
-            document.getElementById('webForms').style.display = 'none';
-            document.getElementById('newsletter').style.display = 'none';
-            document.getElementById('responsiveness_lambdatest').style.display = 'none';
-            document.getElementById('responsiveness_manual').style.display = 'block';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'none';
-        }
-        function wpm() {
-            document.getElementById('checkout').style.display = 'none';
-            document.getElementById('image_optimization').style.display = 'none';
-            document.getElementById('visibility').style.display = 'none';
-            document.getElementById('webForms').style.display = 'none';
-            document.getElementById('newsletter').style.display = 'none';
-            document.getElementById('responsiveness_lambdatest').style.display = 'none';
-            document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'block';
-            document.getElementById('nitropack').style.display = 'none';
+            // document.getElementById('wpm').style.display = 'none';
         }
         function nitropack() {
             document.getElementById('checkout').style.display = 'none';
@@ -1426,11 +1361,44 @@
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'block';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('wpm').style.display = 'none';
-            document.getElementById('nitropack').style.display = 'block';
+            // document.getElementById('wpm').style.display = 'none';
         }
+        function responsivenessForm_lambdatest() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'block';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            // document.getElementById('wpm').style.display = 'none';
+        }
+        function responsiveness_manual() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'block';
+            // document.getElementById('wpm').style.display = 'none';
+        }
+        // function wpm() {
+        //     document.getElementById('checkout').style.display = 'none';
+        //     document.getElementById('image_optimization').style.display = 'none';
+        //     document.getElementById('visibility').style.display = 'none';
+        //     document.getElementById('webForms').style.display = 'none';
+        //     document.getElementById('newsletter').style.display = 'none';
+        //     document.getElementById('responsiveness_lambdatest').style.display = 'none';
+        //     document.getElementById('responsiveness_manual').style.display = 'none';
+        //     document.getElementById('wpm').style.display = 'block';
+        //     document.getElementById('nitropack').style.display = 'none';
+        // }
 
         
         function versions() {
