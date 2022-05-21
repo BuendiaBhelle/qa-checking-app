@@ -7,7 +7,6 @@ async function index(date, domain, username, password, email, timestamp, wp_cred
     await wordpress.wordpressEnd(domain, timestamp, forms, range_recipient, module_name, launch, webforms);
 }
 
-
 module.exports = { index };
 
 

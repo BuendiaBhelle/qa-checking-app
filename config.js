@@ -112,7 +112,6 @@ let wp_creds = {
     kyrenefamilydentistry: {
         username: "pvadmin",
         password: "JQR&H*i$fUA%wCcit@!TP8Jh"
-        // password: "admin"
     },
     optimizex: {
         username: "oxadmin",
@@ -422,8 +421,8 @@ let forms = {
         form6: "feedback/"
     },
     kyrenefamilydentistry: {
-        form1: "/",
-        form2: "/schedule-an-appointment/"
+        form1: "",
+        form2: "schedule-an-appointment/"
     },
     optimizex: {
         form1: "/",

@@ -18,7 +18,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     // form fill in
     try {
         await driver.get(domain + forms);
-        await driver.sleep(1000);
+        await driver.sleep(3000);
         await driver.findElement(By.name("text-101")).sendKeys("Primeview Test");
         await driver.findElement(By.name("email-101")).sendKeys("qa@primeview.com"); 
         await driver.findElement(By.name("tel-101")).sendKeys("4806480839");

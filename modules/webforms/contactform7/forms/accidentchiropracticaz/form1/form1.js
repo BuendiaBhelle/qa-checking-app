@@ -37,7 +37,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
         await sheet.appendValues(value);
     }
 
-    await driver.sleep(7000);
+    await driver.sleep(5000);
 
     // track thank you page
     let ty_url = await driver.getCurrentUrl();
