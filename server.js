@@ -117,6 +117,8 @@ const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/form
 const newsletter = require("./modules/newsletter/newsletter");
 const nitropack = require("./modules/nitropack/index");
 const nitropack_reports = require("./modules/nitropack/nitropack");
+const wpm = require("./modules/wpm/index");
+const wpm_reports = require("./modules/wpm/wpm");
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
@@ -4099,6 +4101,24 @@ app.post('/post/nitropack', async (req, res) => {
 app.post('/post/nitropack/reports', async (req, res) => {
     try {
         await nitropack_reports.displayFails(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/wpm', async (req, res) => {
+    try {
+        await wpm.index(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/wpm/reports', async (req, res) => {
+    try {
+        await wpm_reports.displaySitesToBeReported(timestamp);
     } catch (error) {
         console.log(error);
     }
