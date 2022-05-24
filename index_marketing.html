@@ -30,7 +30,21 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
-    </style>
+
+    #sheet-links {
+        text-align: right;
+        margin-right: -60px;
+    }
+
+    #sheet-links a:link, a:visited {
+        background-color: #158CBE;
+        padding: 10px 25px;
+        color:#fff;
+        font-size:16px;
+        border-radius: 4px;
+        margin-right: 5px;
+    }
+</style>
 <body>
     <div class="body-container">
         <div class="sidebar-nav">
@@ -64,6 +78,16 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="inputs">
+
+                            <div id="sheet-links">
+                                <a href="https://docs.google.com/spreadsheets/d/1LbeVGyrG23F6zvufk5y-EMaud3QqLq22iqe08cCEOsM/edit#gid=0" target="_blank">
+                                    Error Logs
+                                </a>
+                                <a href="https://docs.google.com/spreadsheets/d/12kLaYAzd0qsJ0v3jDZElfuR1x8GHP56gWG-3zmCf_48/edit#gid=212388123" target="_blank">
+                                    Contact Form Tracker
+                                </a>
+                            </div>
+
                             <!-- Checkout Testing -->
                             <div id="checkout">
                                 <h1>Checkout Test</h1>
@@ -1189,6 +1213,7 @@
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
         }
 
         function webForms(){
@@ -1198,6 +1223,7 @@
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
         }
 
         function sites() {
