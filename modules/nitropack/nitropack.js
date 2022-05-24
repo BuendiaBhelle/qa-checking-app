@@ -1,5 +1,5 @@
 const {google} = require("googleapis");
-const {Builder, By, Key, util} = require("selenium-webdriver");
+const {Builder, By, Key} = require("selenium-webdriver");
 require('dotenv').config();
 const { dirname } = require("path");
 const { spawn } = require("child_process");
@@ -332,7 +332,7 @@ async function displayFails(timestamp) {
         value = [ "", "", "info", "get page speed scores success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
-        process.exit();
+        // process.exit();
     } catch (error) {
         logger.logger.log({ level: 'error', message: 'WEBFORMS - get page speed scores failed.', tester: server.userId });
         console.log("WEBFORMS - get page speed scores failed.");

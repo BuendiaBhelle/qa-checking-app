@@ -1396,23 +1396,69 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = "https://thehairextensioncompany.primeview.com/";
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_canyonfallshairextensioncompany) {
-                    //         case "form1":
-                    //             console.log("form1");
-                    //             await webforms_canyonfallshairextensioncompany_f1.index(domain, username, password, email);
-                    //             break;
-                    //         case "form2":
-                    //             console.log("form2");
-                    //             await webforms_canyonfallshairextensioncompany_f2.index(domain, username, password, email);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                    case "live":
+                        var domain = config.domain.crexendo.live;
+                        var wp_creds_username = config.wp_creds.crexendo.username;
+                        var wp_creds_password = config.wp_creds.crexendo.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_crexendo) {
+                            case "form1":
+                                var forms = config.forms.crexendo.form1;
+                                var webforms = config.webforms.crexendo.live.form1;
+                                var contact_form_name = config.contact_form_name.crexendo.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form1;
+                                var form_page = config.form_page.crexendo.live.form1;
+
+                                console.log("form1");
+                                await webforms_crexendo_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.crexendo.form2;
+                                var webforms = config.webforms.crexendo.live.form2;
+                                var contact_form_name = config.contact_form_name.crexendo.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form2;
+                                var form_page = config.form_page.crexendo.live.form2;
+
+                                console.log("form2");
+                                await webforms_crexendo_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.crexendo.form3;
+                                var webforms = config.webforms.crexendo.live.form3;
+                                var contact_form_name = config.contact_form_name.crexendo.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form3;
+                                var form_page = config.form_page.crexendo.live.form3;
+
+                                console.log("form3");
+                                await webforms_crexendo_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form4":
+                                var forms = config.forms.crexendo.form4;
+                                var webforms = config.webforms.crexendo.live.form4;
+                                var contact_form_name = config.contact_form_name.crexendo.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form4;
+                                var form_page = config.form_page.crexendo.live.form4;
+
+                                console.log("form4");
+                                await webforms_crexendo_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form5":
+                                var forms = config.forms.crexendo.form5;
+                                var webforms = config.webforms.crexendo.live.form5;
+                                var contact_form_name = config.contact_form_name.crexendo.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.crexendo.form5;
+                                var form_page = config.form_page.crexendo.live.form5;
+
+                                console.log("form5");
+                                await webforms_crexendo_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "culpepper":

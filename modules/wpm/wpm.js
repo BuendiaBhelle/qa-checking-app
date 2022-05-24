@@ -254,6 +254,15 @@ async function listSitesWithIssues(timestamp) {
 }
 
 async function displaySitesToBeReported(timestamp) {
+    const program = 'C:/Program Files/Windows Application Driver/WinAppDriver.exe';
+    spawn(program, [], { cwd: dirname(program) });
+
+    const appExe = 'C:/Windows/System32/notepad.exe';
+    await driver.startWithCapabilities(windowsAppDriverCapabilities(appExe));
+
+    const element = By2.nativeXpath('//*[@ClassName="Edit"]');
+    await element.click();
+
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client });
 
@@ -270,6 +279,7 @@ async function displaySitesToBeReported(timestamp) {
 
     // Security Score
     try {
+        await element.sendKeys("Security Score Fails:" + "\n");
         console.log("Security Score Fails:")
         for (let i = 0; i < data.length; i++) {
             var site = data[i][0];
@@ -277,9 +287,11 @@ async function displaySitesToBeReported(timestamp) {
             var screenshot_link = data[i][12];
     
             if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC")) {
+                await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                 console.log("* " + site + " - " + screenshot_link)
             }
         }
+        await element.sendKeys("-----------------------" + "\n");
         console.log("-----------------------")
         logger.logger.log({ level: 'info', message: 'WEBFORMS - display security score fails success.', tester: server.userId });
         console.log("WEBFORMS - display security score fails success.");
@@ -296,6 +308,7 @@ async function displaySitesToBeReported(timestamp) {
 
     // First Byte Time
     try {
+        await element.sendKeys("First Byte Time Fails:" + "\n");
         console.log("First Byte Time Fails:")
         for (let j = 0; j < data.length; j++) {
             var site = data[j][0];
@@ -303,9 +316,11 @@ async function displaySitesToBeReported(timestamp) {
             var screenshot_link = data[j][12];
     
             if ((first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC")) {
+                await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                 console.log("* " + site + " - " + screenshot_link)
             }
         }
+        await element.sendKeys("-----------------------" + "\n");
         console.log("-----------------------")
         logger.logger.log({ level: 'info', message: 'WEBFORMS - display first byte time fails success.', tester: server.userId });
         console.log("WEBFORMS - display first byte time fails success.");
@@ -322,6 +337,7 @@ async function displaySitesToBeReported(timestamp) {
 
     // Effective Use of CDN
     try {
+        await element.sendKeys("Effective Use of CDN Fails:" + "\n");
         console.log("Effective Use of CDN Fails:")
         for (let k = 0; k < data.length; k++) {
             var site = data[k][0];
@@ -329,6 +345,7 @@ async function displaySitesToBeReported(timestamp) {
             var screenshot_link = data[k][12];
            
             if (effective_use_of_cdn === "X") {
+                await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                 console.log("* " + site + " - " + screenshot_link)
             }
         }
