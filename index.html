@@ -145,7 +145,8 @@
                                                 <div class="form-group row">
                                                     <label for="checkout" class="col-sm-3 col-form-label">Choose a site:</label>
                                                     <div class="col-sm-9">
-                                                        <select name="checkout" class="form-control">
+                                                        <select name="checkout" class="form-control" onchange="checkouts()">
+                                                            <option value="americanleatherusa">American Leather USA</option>
                                                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
                                                         </select>
                                                         <a href="" onclick="not_on_the_list()">Not on the list?</a>
@@ -161,40 +162,73 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="form-group row">
-                                                    <label for="product" class="col-sm-3 col-form-label">Choose a product:</label>
-                                                    <div class="col-sm-9">
-                                                        <select name="product" class="form-control">
-                                                            <option value="product1">White Buffalo Round Silver Earrings</option>
-                                                            <option value="product2">Tear Shaped White Buffalo Silver Ring</option>
-                                                        </select>
+                                                <!-- American Leather USA -->
+                                                <div id="co_americanleatherusa">
+                                                    <div class="form-group row">
+                                                        <label for="co_americanleatherusa" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_americanleatherusa" class="form-control">
+                                                                <option value="product1">Python Card Holder</option>
+                                                                <option value="product2">Ostrich Legs Card Holder</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
+
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>1L$YRb8ovrch5YpiHkYIf9WX</i>
+                                                            <div>
+                                                                <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                                 
-                                                <div class="form-group row align-items-baseline">
+                                                <!-- Sunrise Jewelry USA -->
+                                                <div id="co_sunrisejewelryusa">
+                                                    <div class="form-group row">
+                                                        <label for="co_sunrisejewelryusa" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_sunrisejewelryusa" class="form-control">
+                                                                <option value="product1">White Buffalo Round Silver Earrings</option>
+                                                                <option value="product2">Tear Shaped White Buffalo Silver Ring</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row align-items-baseline">
                                                         <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
                                                             <p><b>password:</b> <i>jX6#dN5?oR7#vU5#</i>
                                                             <div>
                                                                 <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
-                                                                <div id="credentials_checkout">
-                                                                    <div class="form-group row">
-                                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" id="username" name="username" class="form-control"><br>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" id="password" name="password" class="form-control"><br>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+
                                                 </div>
+
+                                                <div id="credentials_checkout">
+                                                    <div class="form-group row">
+                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="username" name="username" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="password" name="password" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                    
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group row ">
@@ -1572,6 +1606,38 @@
             
         }
 
+        function checkouts() {
+            var checkout = document.getElementsByName("checkout")[0].value;
+            var site_names_checkout = [
+                "americanleatherusa",
+                "sunrisejewelryusa"
+            ]
+            var site_name_checkout_value = [
+                "co_americanleatherusa",
+                "co_sunrisejewelryusa"
+            ]
+
+            // if (checkout === "sunrisejewelryusa") {
+            //     document.getElementById("co_sunrisejewelryusa").style.display = 'block';
+            //     document.getElementById("co_americanleatherusa").style.display = 'none';
+            // }
+            // else if (checkout === "americanleatherusa") {
+            //     document.getElementById("co_americanleatherusa").style.display = 'block';
+            //     document.getElementById("co_sunrisejewelryusa").style.display = 'none';
+            // }
+
+            for (let index = 0; index < site_names_checkout.length; index++) {
+                var val = site_name_checkout_value[index];
+                if (checkout === site_names_checkout[index]) {
+                    document.getElementById(site_name_checkout_value[index]).style.display = 'block';
+                }
+                else {
+                    document.getElementById(val).style.display = 'none';
+                }
+                
+            }
+        }
+        
         function not_on_the_list() {
             alert("Site must be tracked on the contact form tracker first.")
         }

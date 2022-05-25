@@ -9,8 +9,7 @@ const sheet = require('../../../middleware/gsheet');
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 
-// async function checkout(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, product) {
-async function checkout(domain, username, password, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, product_name, range_coupons, range_thankyou_page, product_link, product) {
+async function checkout(domain, username, password, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, product_name, range_coupons, range_thankyou_page, product_link, co_site) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
@@ -74,14 +73,25 @@ async function checkout(domain, username, password, module_name, launch, range_p
     // add to cart
     try {
         await driver.get(domain + product_link);
-        if (product === "product2") {
-            await driver.findElement(By.id("pa_sex")).sendKeys("women" + Key.ENTER);
-            await driver.findElement(By.id("pa_ring-size")).sendKeys("5" + Key.ENTER);
-            await driver.executeScript("return document.getElementsByClassName('single_add_to_cart_button button alt')[0].click()");
-        } else {
-            await driver.executeScript("return document.getElementsByName('add-to-cart')[0].click()");
-            // await driver.executeScript("return document.getElementsByClassName('button wc-forward')[0].click()");
+        // if (co_site === "product2") {
+        //     await driver.findElement(By.id("pa_sex")).sendKeys("women" + Key.ENTER);
+        //     await driver.findElement(By.id("pa_ring-size")).sendKeys("5" + Key.ENTER);
+        //     await driver.executeScript("return document.getElementsByClassName('single_add_to_cart_button button alt')[0].click()");
+        // } else {
+        //     await driver.executeScript("return document.getElementsByName('add-to-cart')[0].click()");
+        // }
+
+        if ((domain === "https://sunrisejewelryusa.primeview.com/") || (domain === "https://www.sunrisejewelryusa.com/")) {
+            if (co_site === "product2") {
+                await driver.findElement(By.id("pa_sex")).sendKeys("women" + Key.ENTER);
+                await driver.findElement(By.id("pa_ring-size")).sendKeys("5" + Key.ENTER);
+                await driver.executeScript("return document.getElementsByClassName('single_add_to_cart_button button alt')[0].click()");
+            }
         }
+
+        await driver.executeScript("return document.getElementsByName('add-to-cart')[0].click()");
+
+
         await driver.executeScript("return document.getElementsByClassName('button wc-forward')[0].click()");
        
         // track product name

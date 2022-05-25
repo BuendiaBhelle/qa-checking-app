@@ -274,18 +274,20 @@ app.post('/post/checkout', async (req, res) => {
     var email = req.body.email;
     const checkout = req.body.checkout;
     var checkbox_checkout = req.body.checkbox_checkout;
-    const product = req.body.product;
+    // const product = req.body.product;
     var module_name = config_checkout.module_name;
+    var co_site;
 
     console.log("email: " + email);
     console.log("checkout: " + checkout);
-    console.log("product: " + product);
+    // console.log("product: " + product);
 
     console.log("username_server: " + username);
     console.log("password_server: " + password);
     try {
         switch (checkout) {
             case "sunrisejewelryusa":
+                co_site = req.body.co_sunrisejewelryusa;
                 var wp_creds_username = config_checkout.wp_creds.sunrisejewelryusa.username;
                 var wp_creds_password = config_checkout.wp_creds.sunrisejewelryusa.password;
                 var tax_page = config_checkout.tax_page;
@@ -306,22 +308,24 @@ app.post('/post/checkout', async (req, res) => {
                 var range_coupons = config_checkout.range_coupons.sunrisejewelryusa;
                 var range_product_name = config_checkout.range_product_name.sunrisejewelryusa;
                 var range_thankyou_page = config_checkout.range_thankyou_page.sunrisejewelryusa;
+                
+                console.log("Site: " + co_site);
                 switch (checkbox_checkout) {
                     case "dev":
                         var domain = config_checkout.domain.sunrisejewelryusa.dev;
                         var launch = config_checkout.launch.dev;
                         console.log(domain);
                         console.log("dev");
-                        switch (product) {
+                        switch (co_site) {
                             case "product1":
                                 var product_name = config_checkout.product.sunrisejewelryusa.product1;
                                 var product_link = config_checkout.product_link.sunrisejewelryusa.product1;
-                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, product);
+                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             case "product2":
                                 var product_name = config_checkout.product.sunrisejewelryusa.product2;
                                 var product_link = config_checkout.product_link.sunrisejewelryusa.product2;
-                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, product);
+                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:
                                 break;

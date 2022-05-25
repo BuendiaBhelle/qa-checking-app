@@ -1,4 +1,5 @@
 const {google} = require("googleapis");
+const server_config = require("../../config");
 
 
 const auth = new google.auth.GoogleAuth({
@@ -15,44 +16,37 @@ let day = String(dateObj.getDate()).padStart(2, '0');
 let year = dateObj.getFullYear();
 const date = month  + "/" + day  + '/' + year;
 
-const sites = [
-    "sunrisejewelryusa"
-]
 
 let wp_creds = {
     sunrisejewelryusa: {
-        username: "pvadmin",
-        password: "jX6#dN5?oR7#vU5#"
+        username: server_config.wp_creds.sunrisejewelryusa.username,
+        password: server_config.wp_creds.sunrisejewelryusa.password
+    },
+    americanleatherusa: {
+        username: server_config.wp_creds.americanleatherusa.username,
+        password: server_config.wp_creds.americanleatherusa.password
     }
 }
 
 let domain = {
     sunrisejewelryusa: {
-        dev: "https://sunrisejewelryusa.primeview.com/",
-        live: "https://www.sunrisejewelryusa.com/"
+        dev: server_config.domain.sunrisejewelryusa.dev,
+        live: server_config.domain.sunrisejewelryusa.live
+    },
+    americanleatherusa: {
+        dev: server_config.domain.americanleatherusa.dev,
+        live: server_config.domain.americanleatherusa.live
     }
 }
 
 let sheetId = {
-    sunrisejewelryusa: 1340779865
+    sunrisejewelryusa: 1340779865,
+    americanleatherusa: 1204224677
 }
 
-// let range = [
-//     sites[0] = [
-//         [
-//             "Sunrise Jewelry USA!A2",
-//             "Sunrise Jewelry USA!B2",
-//             "Sunrise Jewelry USA!C2"
-//         ]
-//     ]
-// ]
-
-// let ranges = {
-//     sunrisejewelryusa: range[0][0]
-// }
-
 let ranges = {
-    sunrisejewelryusa: "Sunrise Jewelry USA!A2:C2"
+    sunrisejewelryusa: "Sunrise Jewelry USA!A2:C2",
+    americanleatherusa: "American Leather USA!A2:C2"
 }
 
 let launch = {
@@ -61,7 +55,8 @@ let launch = {
 }
 
 let range_product_name = {
-    sunrisejewelryusa: "Sunrise Jewelry USA!E2"
+    sunrisejewelryusa: "Sunrise Jewelry USA!E2",
+    americanleatherusa: "American Leather USA!E2"
 }
 
 let range_recipients = {
@@ -69,15 +64,22 @@ let range_recipients = {
         new_order: "Sunrise Jewelry USA!F2",
         cancelled_order: "Sunrise Jewelry USA!G2",
         failed_order: "Sunrise Jewelry USA!H2"
+    },
+    americanleatherusa: {
+        new_order: "American Leather USA!F2",
+        cancelled_order: "American Leather USA!G2",
+        failed_order: "American Leather USA!H2"
     }
 }
 
 let range_coupons = {
-    sunrisejewelryusa: "Sunrise Jewelry USA!M2:N2"
+    sunrisejewelryusa: "Sunrise Jewelry USA!M2:N2",
+    americanleatherusa: "American Leather USA!M2:N2"
 }
 
 let range_thankyou_page = {
-    sunrisejewelryusa: "Sunrise Jewelry USA!I2"
+    sunrisejewelryusa: "Sunrise Jewelry USA!I2",
+    americanleatherusa: "American Leather USA!M2:I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -108,14 +110,22 @@ let product = {
     sunrisejewelryusa: {
             product1: "White Buffalo Round Silver Earrings",
             product2: "Tear Shaped White Buffalo Silver Ring"
-    }
+    },
+    americanleatherusa: {
+        product1: "Python Card Holder",
+        product2: "Ostrich Legs Card Holder"
+}
 }
 
 let product_link = {
     sunrisejewelryusa: {
             product1: "product/white-buffalo-round-silver-earrings/",
             product2: "product/tear-shaped-white-buffalo-silver-ring/"
-    }
+    },
+    americanleatherusa: {
+        product1: "product/python-card-holder/",
+        product2: "product/ostrich-legs-card-holder/"
+}
 }
 
 
