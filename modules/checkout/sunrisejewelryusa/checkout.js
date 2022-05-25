@@ -73,13 +73,6 @@ async function checkout(domain, username, password, module_name, launch, range_p
     // add to cart
     try {
         await driver.get(domain + product_link);
-        // if (co_site === "product2") {
-        //     await driver.findElement(By.id("pa_sex")).sendKeys("women" + Key.ENTER);
-        //     await driver.findElement(By.id("pa_ring-size")).sendKeys("5" + Key.ENTER);
-        //     await driver.executeScript("return document.getElementsByClassName('single_add_to_cart_button button alt')[0].click()");
-        // } else {
-        //     await driver.executeScript("return document.getElementsByName('add-to-cart')[0].click()");
-        // }
 
         if ((domain === "https://sunrisejewelryusa.primeview.com/") || (domain === "https://www.sunrisejewelryusa.com/")) {
             if (co_site === "product2") {
@@ -90,8 +83,6 @@ async function checkout(domain, username, password, module_name, launch, range_p
         }
 
         await driver.executeScript("return document.getElementsByName('add-to-cart')[0].click()");
-
-
         await driver.executeScript("return document.getElementsByClassName('button wc-forward')[0].click()");
        
         // track product name
