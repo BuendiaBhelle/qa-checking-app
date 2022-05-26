@@ -1,4 +1,4 @@
-const {Builder, By} = require("selenium-webdriver");
+const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config_webforms = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
@@ -23,7 +23,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
         await driver.findElement(By.name("nl-email")).sendKeys("qa@primeview.com");
         await driver.findElement(By.name("nl-phone")).sendKeys("4806480839");
         await driver.findElement(By.name("nl-services")).click();
-        await driver.findElement(By.name("nl-services")).sendKeys("botox");
+        await driver.findElement(By.name("nl-services")).sendKeys("botox" + Key.ENTER);
         await driver.findElement(By.name("nl-services")).sendKeys(Key.ENTER);
         await driver.findElement(By.name("nl-message")).sendKeys("Please take note that this is a test submit form for Request Form ( Sidebar ) - New Layout. Please disregard if received. Thank you.");
         await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
