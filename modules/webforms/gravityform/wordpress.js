@@ -162,7 +162,7 @@ async function wordpressStart(date, domain, username, password, email, timestamp
     // navigate to forms page
     await driver.get(wp_site + form_page);
     await driver.sleep(1000);
-    let strong_tag_length = await driver.executeScript("return document.getElementsByTagName('strong').length");
+    var strong_tag_length = await driver.executeScript("return document.getElementsByTagName('strong').length");
     var recipients;
 
     for (let index = 0; index < strong_tag_length; index++) {
@@ -265,13 +265,17 @@ async function wordpressStart(date, domain, username, password, email, timestamp
 
     // set form email recipients to qa's
     async function setAdminOff() {
-        let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
-        console.log("admin_notif_status: " + admin_notif_status);
-    
-        // set admin notif to inactive
         try {
-            if (admin_notif_status === "Active") {
-                await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].click()");
+            let notif_list_length = await driver.executeScript("return document.getElementById('the-list').children.length");
+            for (let index = 0; index < notif_list_length; index++) {
+                let notif_list_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[1].children[0].children[0].innerHTML");
+                if (notif_list_innerhtml === "Admin Notification") {
+                    let status_qa_notif_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].children[1].innerHTML");
+                    if (status_qa_notif_innerhtml === "Active") {
+                        await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].click()");
+                        break;
+                    }
+                }
             }
             logger.logger.log({ level: 'info', message: 'WEBFORMS - set admin notif to inactive success.', tester: server.userId });
             console.log("WEBFORMS - set admin notif to inactive success.");
@@ -288,13 +292,17 @@ async function wordpressStart(date, domain, username, password, email, timestamp
     }
 
     async function setQAOn() {
-        let qa_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].innerHTML");
-        console.log("qa_notif_status: " + qa_notif_status);
-    
-        // set qa notif to active
         try {
-            if (qa_notif_status === "Inactive") {
-                await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].click()");
+            let notif_list_length = await driver.executeScript("return document.getElementById('the-list').children.length");
+            for (let index = 0; index < notif_list_length; index++) {
+                let notif_list_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[1].children[0].children[0].innerHTML");
+                if (notif_list_innerhtml === "QA Notification") {
+                    let status_qa_notif_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].children[1].innerHTML");
+                    if (status_qa_notif_innerhtml === "Inactive") {
+                        await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].click()");
+                        break;
+                    }
+                }
             }
             logger.logger.log({ level: 'info', message: 'WEBFORMS - set qa notif to active success.', tester: server.userId });
             console.log("WEBFORMS - set qa notif to active success.");
@@ -322,13 +330,8 @@ async function wordpressEnd(domain, timestamp, forms, module_name, launch, webfo
     await driver.get(current_page_url);
 
     // set admin notif to active
-    let admin_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].innerHTML");
-    console.log("admin_notif_status: " + admin_notif_status);
-
     try {
-        if (admin_notif_status === "Inactive") {
-            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[0].click()");
-        }
+        await setAdminOn();
         logger.logger.log({ level: 'info', message: 'WEBFORMS - set admin notif to active success.', tester: server.userId });
         console.log("WEBFORMS - set admin notif to active success.");
         value = [ "", "", "info", "set admin notif to active success", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
@@ -343,13 +346,8 @@ async function wordpressEnd(domain, timestamp, forms, module_name, launch, webfo
     }
  
     // set qa notif to inactive
-    let qa_notif_status = await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].innerHTML");
-    console.log("qa_notif_status: " + qa_notif_status);
-
     try {
-        if (qa_notif_status === "Active") {
-            await driver.executeScript("return document.getElementsByClassName('gform-status-indicator-status')[1].click()");
-        }
+        await setQAOff();
         logger.logger.log({ level: 'info', message: 'WEBFORMS - set qa notif to inactive success.', tester: server.userId });
         console.log("WEBFORMS - set qa notif to inactive success.");
         value = [ "", "", "info", "set qa notif to inactive success", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
@@ -370,6 +368,45 @@ async function wordpressEnd(domain, timestamp, forms, module_name, launch, webfo
     value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];
     await sheet.addRow();
     await sheet.appendValues(value);
+
+    async function setAdminOn() {
+        try {
+            let notif_list_length = await driver.executeScript("return document.getElementById('the-list').children.length");
+            for (let index = 0; index < notif_list_length; index++) {
+                let notif_list_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[1].children[0].innerText");
+                if (notif_list_innerhtml === "Admin Notification") {
+                    console.log("admin notif");
+                    let status_admin_notif_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].children[1].innerHTML");
+                    if (status_admin_notif_innerhtml === "Inactive") {
+                        console.log("admin to inactive");
+                        await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].click()");
+                        // await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].children[1].click()");
+                        break;
+                    }
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function setQAOff() {
+        try {
+            let notif_list_length = await driver.executeScript("return document.getElementById('the-list').children.length");
+            for (let index = 0; index < notif_list_length; index++) {
+                let notif_list_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[1].children[0].children[0].innerHTML");
+                if (notif_list_innerhtml === "QA Notification") {
+                    let status_qa_notif_innerhtml = await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].children[1].innerHTML");
+                    if (status_qa_notif_innerhtml === "Active") {
+                        await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].click()");
+                        break;
+                    }
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return true;
 }
