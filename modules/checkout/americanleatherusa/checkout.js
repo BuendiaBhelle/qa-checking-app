@@ -74,13 +74,6 @@ async function checkout(domain, username, password, module_name, launch, range_p
     // add to cart
     try {
         await driver.get(domain + product_link);
-
-        if (co_site === "product2") {
-            await driver.findElement(By.id("pa_sex")).sendKeys("women" + Key.ENTER);
-            await driver.findElement(By.id("pa_ring-size")).sendKeys("5" + Key.ENTER);
-            await driver.executeScript("return document.getElementsByClassName('single_add_to_cart_button button alt')[0].click()");
-        }
-
         await driver.executeScript("return document.getElementsByName('add-to-cart')[0].click()");
         await driver.executeScript("return document.getElementsByClassName('button wc-forward')[0].click()");
        
@@ -111,6 +104,45 @@ async function checkout(domain, username, password, module_name, launch, range_p
             await sheet.appendValues(value);      
         }
 
+        // get coupon code
+        try {
+            let coupon_code = await googleSheets.spreadsheets.values.get({
+                auth,
+                spreadsheetId,
+                range: range_coupons,
+            });
+
+            let coupon = coupon_code.data.values[0][0];
+            console.log("coupon: " + coupon);
+
+            await driver.findElement(By.id("coupon_code")).sendKeys(coupon);
+            await driver.executeScript("return document.getElementsByName('apply_coupon')[0].click()");
+            await driver.sleep(1000);
+
+            let woocommerce_error = await driver.executeScript("return document.getElementsByClassName('woocommerce-error')[0]");        
+            let woocommerce_message = await driver.executeScript("return document.getElementsByClassName('woocommerce-message')[0]");
+
+            if (woocommerce_error) {
+                logger.logger.log({ level: 'error', message: 'CHECKOUT - apply coupon failed.', tester: server.userId });
+                console.log("CHECKOUT - apply coupon failed.");
+                value = [ "", "", "error", "apply coupon failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value); 
+            }
+            else if (woocommerce_message) {
+                logger.logger.log({ level: 'info', message: 'CHECKOUT - apply coupon success.', tester: server.userId });
+                console.log("CHECKOUT - apply coupon success.");
+                value = [ "", "", "info", "apply coupon success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                await sheet.addRow();
+                await sheet.appendValues(value); 
+            } 
+        } catch (error) {
+            logger.logger.log({ level: 'error', message: error, tester: server.userId });
+            console.log(error);
+            value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value); 
+        }
         await driver.findElement(By.id("customer_notes_text")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
         await driver.sleep(1000);
         await driver.executeScript("return document.getElementsByClassName('checkout-button button alt wc-forward')[0].click()");
@@ -126,87 +158,42 @@ async function checkout(domain, username, password, module_name, launch, range_p
         await sheet.addRow();
         await sheet.appendValues(value);     
     }
-    
-    // get coupon code
-    try {
-        let coupon_code = await googleSheets.spreadsheets.values.get({
-            auth,
-            spreadsheetId,
-            range: range_coupons,
-        });
-
-        let coupon = coupon_code.data.values[0][0];
-        console.log("coupon: " + coupon);
-
-        await driver.findElement(By.id("coupon_code")).sendKeys(coupon);
-        await driver.executeScript("return document.getElementsByName('apply_coupon')[0].click()");
-        await driver.sleep(1000);
-
-        let woocommerce_error = await driver.executeScript("return document.getElementsByClassName('woocommerce-error')[0]");        
-        let woocommerce_message = await driver.executeScript("return document.getElementsByClassName('woocommerce-message')[0]");
-
-        if (woocommerce_error) {
-            logger.logger.log({ level: 'error', message: 'CHECKOUT - apply coupon failed.', tester: server.userId });
-            console.log("CHECKOUT - apply coupon failed.");
-            value = [ "", "", "error", "apply coupon failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value); 
-        }
-        else if (woocommerce_message) {
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - apply coupon success.', tester: server.userId });
-            console.log("CHECKOUT - apply coupon success.");
-            value = [ "", "", "info", "apply coupon success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value); 
-        } 
-    } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
-        console.log(error);
-        value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value); 
-    }
 
     // form fill in
     try {
-        await driver.findElement(By.id("shipping_first_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
-        await driver.findElement(By.id("shipping_first_name")).sendKeys("Primeview"); 
+        await driver.findElement(By.id("billing_first_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
+        await driver.findElement(By.id("billing_first_name")).sendKeys("Primeview"); 
     
-        await driver.findElement(By.id("shipping_last_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
-        await driver.findElement(By.id("shipping_last_name")).sendKeys("Test"); 
-    
-        await driver.findElement(By.id("shipping_wooccm10")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_wooccm10")).sendKeys("qa@primeview.com");
-    
-        await driver.findElement(By.id("shipping_wooccm9")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_wooccm9")).sendKeys("4806480839");
-    
-        await driver.findElement(By.id("shipping_company")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_company")).sendKeys("Lead Test Submission");
-    
-        await driver.findElement(By.id("select2-shipping_country-container")).click();
+        await driver.findElement(By.id("billing_last_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
+        await driver.findElement(By.id("billing_last_name")).sendKeys("Test"); 
+
+        await driver.findElement(By.id("select2-billing_country-container")).click();
         let country = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
         country.sendKeys(Key.CONTROL, "a" + Key.DELETE);
         country.sendKeys("united states" + Key.ENTER);
-    
-        await driver.findElement(By.id("shipping_address_1")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_address_1")).sendKeys("7620 E McKellips Rd");
-    
-        await driver.findElement(By.id("shipping_city")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_city")).sendKeys("Scottsdale");
-    
-        await driver.findElement(By.id("select2-shipping_state-container")).click();
+
+        await driver.findElement(By.id("billing_address_1")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("billing_address_1")).sendKeys("7620 E McKellips Rd");
+
+        await driver.findElement(By.id("billing_city")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("billing_city")).sendKeys("Scottsdale");
+
+        await driver.findElement(By.id("select2-billing_state-container")).click();
         let state = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
         state.sendKeys(Key.CONTROL, "a" + Key.DELETE);
         state.sendKeys("arizona" + Key.ENTER);
-    
-        await driver.findElement(By.id("shipping_postcode")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_postcode")).sendKeys("85257");
+
+        await driver.findElement(By.id("billing_postcode")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("billing_postcode")).sendKeys("85257");
+
+        await driver.findElement(By.id("billing_phone")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("billing_phone")).sendKeys("4806480839");
+
+        await driver.findElement(By.id("billing_email")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("billing_email")).sendKeys("qa@primeview.com");
     
         await driver.findElement(By.id("order_comments")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         await driver.findElement(By.id("order_comments")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
-
-        await driver.findElement(By.id("bill-to-same-address-checkbox")).click();
 
         logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout form fill in success.', tester: server.userId });
         console.log("CHECKOUT - checkout form fill in success.");

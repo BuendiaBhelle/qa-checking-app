@@ -119,6 +119,21 @@ async function wordpressStart(domain, username, password, email, module_name, la
                     if (stripe_enabled === "Yes") {
                         await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].click()");
                         await driver.sleep(3000);
+
+                        if (domain === "https://www.americanleatherusa.com/") {
+                            await driver.findElement(By.id("tab-panel-0-settings")).click();
+                            let enable_test_mode = await driver.executeScript("return document.getElementById('inspector-checkbox-control-9').checked");
+                            if (enable_test_mode === false) {
+                                await driver.findElement(By.id("inspector-checkbox-control-9")).click();
+                                await driver.executeScript("return document.getElementsByClassName('components-button is-primary')[0].click()");
+                                logger.logger.log({ level: 'info', message: 'CHECKOUT - test mode enabled.', tester: server.userId });
+                                console.log("CHECKOUT - test mode enabled.");
+                                value = [ "", "", "info", "test mode enabled.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                                await sheet.addRow();
+                                await sheet.appendValues(value);
+                            }
+                        }
+
                         let enable_stripe = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].checked");
                         let enable_test_mode = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].checked");
 

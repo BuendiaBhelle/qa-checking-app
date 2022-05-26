@@ -14,9 +14,8 @@ const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 
-// const checkout_sunrisejewelryusa_dev_p1 = require("./modules/checkout/sunrisejewelryusa/dev/product1/index");
+const checkout_americanleatherusa = require("./modules/checkout/americanleatherusa/index");
 const checkout_sunrisejewelryusa = require("./modules/checkout/sunrisejewelryusa/index");
-// const checkout_sunrisejewelryusa_dev_p2 = require("./modules/checkout/sunrisejewelryusa/dev/product2/index");
 
 const image_optimization = require("./modules/image_optimization/image_optimization");
 const visibility = require("./modules/visibility/visibility");
@@ -337,17 +336,16 @@ app.post('/post/checkout', async (req, res) => {
                     //     //     case "product1":
                     //     //         console.log("checkout: " + checkout);
                     //     //         console.log("product1 selected.");
-                    //     //         checkout_sunrisejewelryusa_dev_p1.index(domain, username, password, email);
+                    //     //         await checkout_sunrisejewelryusa.index(domain, username, password, email);
                     //     //         break;
                     //     //     case "product2":
                     //     //         console.log("checkout: " + checkout);
                     //     //         console.log("product2 selected.");
-                    //     //         checkout_sunrisejewelryusa_dev_p2.index(domain, username, password, email);
+                    //     //         await checkout_sunrisejewelryusa.index(domain, username, password, email);
                     //     //         break;
                     //     //     default:
                     //     //         break;
                     //     // }
-                        break;
                 
                     default:
                         break;
@@ -416,7 +414,6 @@ app.post('/post/checkout', async (req, res) => {
                     //     //     default:
                     //     //         break;
                     //     // }
-                        break;
                 
                     default:
                         break;
@@ -604,15 +601,16 @@ app.post('/post/webforms', async (req, res) => {
                                 console.log("form2");
                                 await webforms_advancedimagemedspa_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
-                            // case "form3":
-                            //     var forms = config.forms.advancedimagemedspa.form3_dev;
-                            //     var webforms = config.webforms.advancedimagemedspa.dev.form3;
-                            //     var contact_form_name = config.contact_form_name.advancedimagemedspa.;
-                            //     var contact_form_shortcode = config.contact_form_shortcode.advancedimagemedspa.form3_dev;
+                            case "form3":
+                                var forms = config.forms.advancedimagemedspa.form3;
+                                var webforms = config.webforms.advancedimagemedspa.dev.form3;
+                                var contact_form_name = config.contact_form_name.advancedimagemedspa.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.advancedimagemedspa.form3;
+                                var form_page = config.form_page.advancedimagemedspa.dev.form3;
 
-                            //     console.log("form3");
-                            //     await webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email, timestamp);
-                            //     break;
+                                console.log("form3");
+                                await webforms_advancedimagemedspa_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
                             default:
                                 break;
                         }
@@ -646,15 +644,16 @@ app.post('/post/webforms', async (req, res) => {
                                 console.log("form2");
                                 await webforms_advancedimagemedspa_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
-                            // case "form3":
-                            //     var forms = config.forms.advancedimagemedspa.form3_live;
-                            //     var webforms = config.webforms.advancedimagemedspa.live.form3;
-                            //     var contact_form_name = config.contact_form_name.advancedimagemedspa.;
-                            //     var contact_form_shortcode = config.contact_form_shortcode.advancedimagemedspa.form3_live;
+                            case "form3":
+                                var forms = config.forms.advancedimagemedspa.form3;
+                                var webforms = config.webforms.advancedimagemedspa.live.form3;
+                                var contact_form_name = config.contact_form_name.advancedimagemedspa.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.advancedimagemedspa.form3;
+                                var form_page = config.form_page.advancedimagemedspa.live.form3;
 
-                            //     console.log("form3");
-                            //     await webforms_advancedimagemedspa_f3.index(domain, checkbox, username, password, email, timestamp);
-                            //     break;
+                                console.log("form3");
+                                await webforms_advancedimagemedspa_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
                             default:
                                 break;
                         }

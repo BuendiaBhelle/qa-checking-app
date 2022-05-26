@@ -79,7 +79,7 @@ let range_coupons = {
 
 let range_thankyou_page = {
     sunrisejewelryusa: "Sunrise Jewelry USA!I2",
-    americanleatherusa: "American Leather USA!M2:I2"
+    americanleatherusa: "American Leather USA!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";

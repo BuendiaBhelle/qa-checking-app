@@ -365,9 +365,8 @@ let forms = {
     },
     advancedimagemedspa: {
         form1: "contact/",
-        form2: "/",
-        form3_dev: "boost-your-beauty-club/",
-        form3_live: "join-our-clubs/"
+        form2: "",
+        form3: "join-our-clubs/"
     },
     aerialengagement: {
         form1: "contact-us/"
