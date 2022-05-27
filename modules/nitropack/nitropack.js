@@ -138,16 +138,26 @@ async function mobileScore(timestamp) {
                 await driver.findElement(By.name("url")).sendKeys(urls[index], Key.RETURN);
                 let current_page_url = await driver.getCurrentUrl();
                 await driver.get(current_page_url + "&form_factor=mobile");
-                await driver.sleep(30000);
+                await driver.sleep(50000);
+
+                await driver.executeScript("window.scrollBy(0,650)", "");
         
                 let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
                 if (loading) {
+                    console.log("loading....");
                     await driver.sleep(20000);
                 }
         
                 let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerText");
                 var scoreFin = Number(score);
                 console.log(scoreFin);
+
+                // if (scoreFin === 0) {
+                //     console.log("FAILED TO LOAD");
+                //     await driver.sleep(20000);
+                //     let scoreFin = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerText");
+                //     console.log(scoreFin);
+                // }
             } catch (error) {
                 console.log(error);
             }
@@ -215,9 +225,12 @@ async function desktopScore(timestamp) {
                 let current_page_url = await driver.getCurrentUrl();
                 await driver.get(current_page_url + "&form_factor=desktop");
                 await driver.sleep(30000);
+
+                await driver.executeScript("window.scrollBy(0,650)", "");
         
                 let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
                 if (loading) {
+                    console.log("loading....");
                     await driver.sleep(20000);
                 }
         

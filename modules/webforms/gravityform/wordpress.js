@@ -62,9 +62,6 @@ async function wordpressStart(date, domain, username, password, email, timestamp
         contact_form_shortcode
     ]
 
-    // values.splice(6, 0, contact_form_name)
-    // values.splice(7, 0, contact_form_shortcode);
-    // values.join()
     console.log(values);
 
     // track form details
@@ -380,7 +377,6 @@ async function wordpressEnd(domain, timestamp, forms, module_name, launch, webfo
                     if (status_admin_notif_innerhtml === "Inactive") {
                         console.log("admin to inactive");
                         await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].click()");
-                        // await driver.executeScript("return document.getElementById('the-list').children[" + index + "].children[0].children[0].children[1].click()");
                         break;
                     }
                 }
