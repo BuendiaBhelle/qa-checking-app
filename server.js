@@ -328,25 +328,26 @@ app.post('/post/checkout', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = "https://www.sunrisejewelryusa.com/";
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     // switch (product) {
-                    //     //     case "product1":
-                    //     //         console.log("checkout: " + checkout);
-                    //     //         console.log("product1 selected.");
-                    //     //         await checkout_sunrisejewelryusa.index(domain, username, password, email);
-                    //     //         break;
-                    //     //     case "product2":
-                    //     //         console.log("checkout: " + checkout);
-                    //     //         console.log("product2 selected.");
-                    //     //         await checkout_sunrisejewelryusa.index(domain, username, password, email);
-                    //     //         break;
-                    //     //     default:
-                    //     //         break;
-                    //     // }
-                
+                    case "live":
+                        var domain = config_checkout.domain.sunrisejewelryusa.live;
+                        var launch = config_checkout.launch.live;
+                        console.log(domain);
+                        console.log("live");
+                        switch (co_site) {
+                            case "product1":
+                                var product_name = config_checkout.product.sunrisejewelryusa.product1;
+                                var product_link = config_checkout.product_link.sunrisejewelryusa.product1;
+                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
+                                break;
+                            case "product2":
+                                var product_name = config_checkout.product.sunrisejewelryusa.product2;
+                                var product_link = config_checkout.product_link.sunrisejewelryusa.product2;
+                                await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -396,25 +397,26 @@ app.post('/post/checkout', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = "https://www.americanleatherusa.com/";
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     // switch (product) {
-                    //     //     case "product1":
-                    //     //         console.log("checkout: " + checkout);
-                    //     //         console.log("product1 selected.");
-                    //     //         checkout_americanleatherusa_dev_p1.index(domain, username, password, email);
-                    //     //         break;
-                    //     //     case "product2":
-                    //     //         console.log("checkout: " + checkout);
-                    //     //         console.log("product2 selected.");
-                    //     //         checkout_americanleatherusa_dev_p2.index(domain, username, password, email);
-                    //     //         break;
-                    //     //     default:
-                    //     //         break;
-                    //     // }
-                
+                    case "live":
+                        var domain = config_checkout.domain.americanleatherusa.live;
+                        var launch = config_checkout.launch.live;
+                        console.log(domain);
+                        console.log("live");
+                        switch (co_site) {
+                            case "product1":
+                                var product_name = config_checkout.product.americanleatherusa.product1;
+                                var product_link = config_checkout.product_link.americanleatherusa.product1;
+                                await checkout_americanleatherusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
+                                break;
+                            case "product2":
+                                var product_name = config_checkout.product.americanleatherusa.product2;
+                                var product_link = config_checkout.product_link.americanleatherusa.product2;
+                                await checkout_americanleatherusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                     default:
                         break;
                 }
