@@ -447,8 +447,8 @@ app.post('/post/visibility', async (req, res) => {
     console.log("Site Name: " + site_name);
     try {
         await visibility.chrome(site_name, timestamp);
-        // await visibility.firefox(site_name, timestamp);
-        // await visibility.edge(site_name, timestamp);
+        await visibility.firefox(site_name, timestamp);
+        await visibility.edge(site_name, timestamp);
     } catch (error) {
         console.log(error);
     }
