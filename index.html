@@ -1196,19 +1196,62 @@
                             <div id="newsletter">
                                 <h1>Newsletter</h1>
                                 <form action="/post/newsletter" method="post">
-                                    <!-- <div class="container-fluid">
+
+                                    <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-7">
                                                 <div class="form-group row">
-                                                    <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                                    <label for="site" class="col-sm-3 col-form-label">Choose a site:</label>
                                                     <div class="col-sm-9">
-                                                        <input id="url" type="text" value="" name="url" class="form-control" placeholder="'https://www.primeview.com/'" required /><br/>
+                                                        <select name="site" id="site" onchange="sites()">
+                                                            <option value="freddabranyon">Fredda Branyon</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row" id="checkbox">
+                                                    <label for="checkbox" class="col-sm-3 col-form-label">Choose one:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="checkbox" class="form-control">
+                                                            <!-- <option value="dev">Dev</option> -->
+                                                            <option value="live">Live</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row align-items-baseline">
+                                                    <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                    <div class="col-sm-9">
+                                                        <p><b>username:</b> <i>pvadmin</i></p>
+                                                        <p><b>password:</b> <i>cHJxubk0*E8q^J$M1A%Hpk*P</i>
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNewsletter()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="credentials_newsletter">
+                                                    <div class="form-group row">
+                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="username" name="username" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="password" name="password" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
+                                           
                                         </div>
-                                    </div> -->
+                                    </div>            
+
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                    
                                 </form>
                             </div>
 
@@ -1639,6 +1682,10 @@
 
         function showEmailWebforms() {
             document.getElementById('qa_email_webforms').style.display = 'flex';
+        }
+
+        function showCredEditNewsletter() {
+            document.getElementById('credentials_newsletter').style.display = 'block';
         }
 
         function showCredEditCheckout() {

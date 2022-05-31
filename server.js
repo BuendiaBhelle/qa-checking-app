@@ -4199,8 +4199,26 @@ app.post('/post/webforms', async (req, res) => {
 });
 
 app.post('/post/newsletter', async (req, res) => {
+    var username = req.body.username;
+    var password = req.body.password;
+    var checkbox = req.body.checkbox;
+
     try {
-        await newsletter.executeTest(timestamp);
+        switch (checkbox) {
+            // case "dev":
+            //     await newsletter.executeTest(timestamp, username, password);
+            //     break;
+            case "live":
+                var domain = config.domain.freddabranyon.live;
+                console.log(username);
+                console.log(password);
+                console.log(checkbox);
+                console.log(domain);
+                await newsletter.executeTest(timestamp, username, password, domain);
+                break;
+            default:
+                break;
+        }
     } catch (error) {
         console.log(error);
     }
