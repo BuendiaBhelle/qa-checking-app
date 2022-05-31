@@ -53,7 +53,8 @@ const sites = [
     "renewscal",
     "risingsunmartialartsaz",
     "gatorskin",
-    "virtualassistantsoutsourcing"
+    "virtualassistantsoutsourcing",
+    "dentistryatthebiltmore"
 ]
 
 let wp_creds = {
@@ -204,6 +205,10 @@ let wp_creds = {
     virtualassistantsoutsourcing: {
         username: "pvadmin",
         password: "[zJdPOoINX[8u(ed"
+    },
+    dentistryatthebiltmore: {
+        username: "pvadmin",
+        password: "sbDDKFc0VYqf39LgP0SrZGh4"
     }
 }
 
@@ -355,6 +360,10 @@ let domain = {
     virtualassistantsoutsourcing: {
         dev: "",
         live: "https://virtualassistantsoutsourcing.com/"
+    },
+    dentistryatthebiltmore: {
+        dev: "",
+        live: "https://www.dentistryatthebiltmore.com/"
     }
 }
 
@@ -526,7 +535,12 @@ let forms = {
     },
     virtualassistantsoutsourcing: {
         form1: "contact/"
-    }
+    },
+    dentistryatthebiltmore: {
+        form1: "",
+        form2: "about-us/",
+        form3: "contact/"
+    },
 }
 
 let sheetId = {
@@ -566,7 +580,8 @@ let sheetId = {
     renewscal: 1177615742,
     risingsunmartialartsaz: 2093063365,
     gatorskin: 1363791668,
-    virtualassistantsoutsourcing: 763505033
+    virtualassistantsoutsourcing: 763505033,
+    dentistryatthebiltmore: 968628360
 }
 
 let range = [
@@ -1013,6 +1028,18 @@ let range = [
             "Virtual Assistant Outsourcing!E2",
             "Virtual Assistant Outsourcing!G2",
         ]
+    ],
+    sites[37] = [
+        [
+            "Dentistry At The Biltmore!Q2",
+            "Dentistry At The Biltmore!A2",
+            "Dentistry At The Biltmore!B2",
+            "Dentistry At The Biltmore!C2",
+            "Dentistry At The Biltmore!C3",
+            "Dentistry At The Biltmore!D2",
+            "Dentistry At The Biltmore!E2",
+            "Dentistry At The Biltmore!G2",
+        ]
     ]
 ]
 
@@ -1053,7 +1080,8 @@ let ranges = {
     renewscal: range[33][0],
     risingsunmartialartsaz: range[34][0],
     gatorskin: range[35][0],
-    virtualassistantsoutsourcing: range[36][0]
+    virtualassistantsoutsourcing: range[36][0],
+    dentistryatthebiltmore: range[37][0]
 }
 
 let launch = {
@@ -1229,6 +1257,11 @@ let contact_form_name = {
     },
     virtualassistantsoutsourcing: {
         form1: "Get in Touch with Us - Bottom"
+    },
+    dentistryatthebiltmore: {
+        form1: "Book a Consultation",
+        form2: "Get Started!",
+        form3: "Contact"
     }
 }
 
@@ -1400,6 +1433,11 @@ let contact_form_shortcode = {
     },
     virtualassistantsoutsourcing: {
         form1: '[contact-form-7 id="66" title="Get in Touch with Us - Bottom"]'
+    },
+    dentistryatthebiltmore: {
+        form1: '[contact-form-7 id="804" title="Book a Consultation"]',
+        form2: '[contact-form-7 id="805" title="Get Started!"]',
+        form3: '[contact-form-7 id="155" title="Contact"]'
     }
 }
 
@@ -1441,7 +1479,8 @@ let range_recipient = {
     renewscal: "Renew Stem Cell & Laser!H2",
     risingsunmartialartsaz: "Rising Sun!H2",
     gatorskin: "Gatorskin!H2",
-    virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2"
+    virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2",
+    dentistryatthebiltmore: "Dentistry At The Biltmore!H2"
 }
 
 
@@ -1482,7 +1521,8 @@ let range_thankyou_page = {
     renewscal: "Renew Stem Cell & Laser!I2",
     risingsunmartialartsaz: "Rising Sun!I2",
     gatorskin: "Gatorskin!I2",
-    virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2"
+    virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2",
+    dentistryatthebiltmore: "Dentistry At The Biltmore!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1905,6 +1945,18 @@ let webforms = {
         live: {
             form1: "Get in Touch with Us - Bottom"
         }
+    },
+    dentistryatthebiltmore: {
+        dev: {
+            form1: "",
+            form2: "",
+            form3: ""
+        },
+        live: {
+            form1: "Book a Consultation",
+            form2: "Get Started!",
+            form3: "Contact"
+        }
     }
 }
 
@@ -2318,6 +2370,18 @@ let form_page = {
         },
         live: {
             form1: "/admin.php?page=wpcf7&post=66&action=edit"
+        }
+    },
+    dentistryatthebiltmore: {
+        dev: {
+            form1: "",
+            form2: "",
+            form3: ""
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=804&action=edit",
+            form2: "/admin.php?page=wpcf7&post=805&action=edit",
+            form3: "/admin.php?page=wpcf7&post=155&action=edit"
         }
     }
 }

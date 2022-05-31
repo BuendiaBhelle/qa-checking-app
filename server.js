@@ -50,6 +50,11 @@ const webforms_crexendo_f3 = require("./modules/webforms/contactform7/forms/crex
 const webforms_crexendo_f4 = require("./modules/webforms/contactform7/forms/crexendo/form4/index");
 const webforms_crexendo_f5 = require("./modules/webforms/contactform7/forms/crexendo/form5/index");
 const webforms_culpepper_f1 = require("./modules/webforms/ninjaform/forms/culpepper/form1/index");
+
+const webforms_dentistryatthebiltmore_f1 = require("./modules/webforms/contactform7/forms/dentistryatthebiltmore/form1/index");
+const webforms_dentistryatthebiltmore_f2 = require("./modules/webforms/contactform7/forms/dentistryatthebiltmore/form2/index");
+const webforms_dentistryatthebiltmore_f3 = require("./modules/webforms/contactform7/forms/dentistryatthebiltmore/form3/index");
+
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
 const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms/freddabranyon/form1/index");
 const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
@@ -1603,6 +1608,103 @@ app.post('/post/webforms', async (req, res) => {
                                     webforms, 
                                     form_page
                                 );
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "dentistryatthebiltmore":
+                var site_dentistryatthebiltmore = req.body.site_dentistryatthebiltmore;
+                var sheetId = config.sheetId.dentistryatthebiltmore;
+                var ranges = config.ranges.dentistryatthebiltmore;
+                var range_recipient = config.range_recipient.dentistryatthebiltmore;
+                var range_thankyou_page = config.range_thankyou_page.dentistryatthebiltmore;
+
+                console.log("Site: " + site_dentistryatthebiltmore);
+                switch (checkbox) {
+                    // case "dev":
+                    //     var domain = config.domain.dentistryatthebiltmore.dev;
+                    //     var wp_creds_username = config.wp_creds.dentistryatthebiltmore.username;
+                    //     var wp_creds_password = config.wp_creds.dentistryatthebiltmore.password;
+                    //     var launch = config.launch.dev;
+
+                    //     console.log(domain);
+                    //     console.log("dev");
+                    //     switch (site_dentistryatthebiltmore) {
+                    //         case "form1":
+                    //             var forms = config.forms.dentistryatthebiltmore.form1;
+                    //             var webforms = config.webforms.dentistryatthebiltmore.dev.form1;
+                    //             var contact_form_name = config.contact_form_name.dentistryatthebiltmore.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.dentistryatthebiltmore.form1;
+                    //             var form_page = config.form_page.dentistryatthebiltmore.dev.form1;
+
+                    //             console.log("form1");
+                    //             await webforms_dentistryatthebiltmore_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         case "form2":
+                    //             var forms = config.forms.dentistryatthebiltmore.form2;
+                    //             var webforms = config.webforms.dentistryatthebiltmore.dev.form2;
+                    //             var contact_form_name = config.contact_form_name.dentistryatthebiltmore.form2;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.dentistryatthebiltmore.form2;
+                    //             var form_page = config.form_page.dentistryatthebiltmore.dev.form2;
+
+                    //             console.log("form2");
+                    //             await webforms_dentistryatthebiltmore_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         case "form3":
+                    //             var forms = config.forms.dentistryatthebiltmore.form3;
+                    //             var webforms = config.webforms.dentistryatthebiltmore.dev.form3;
+                    //             var contact_form_name = config.contact_form_name.dentistryatthebiltmore.form3;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.dentistryatthebiltmore.form3;
+                    //             var form_page = config.form_page.dentistryatthebiltmore.dev.form3;
+
+                    //             console.log("form3");
+                    //             await webforms_dentistryatthebiltmore_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
+                    case "live":
+                        var domain = config.domain.dentistryatthebiltmore.live;
+                        var wp_creds_username = config.wp_creds.dentistryatthebiltmore.username;
+                        var wp_creds_password = config.wp_creds.dentistryatthebiltmore.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_dentistryatthebiltmore) {
+                            case "form1":
+                                var forms = config.forms.dentistryatthebiltmore.form1;
+                                var webforms = config.webforms.dentistryatthebiltmore.live.form1;
+                                var contact_form_name = config.contact_form_name.dentistryatthebiltmore.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.dentistryatthebiltmore.form1;
+                                var form_page = config.form_page.dentistryatthebiltmore.live.form1;
+
+                                console.log("form1");
+                                await webforms_dentistryatthebiltmore_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.dentistryatthebiltmore.form2;
+                                var webforms = config.webforms.dentistryatthebiltmore.live.form2;
+                                var contact_form_name = config.contact_form_name.dentistryatthebiltmore.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.dentistryatthebiltmore.form2;
+                                var form_page = config.form_page.dentistryatthebiltmore.live.form2;
+
+                                console.log("form2");
+                                await webforms_dentistryatthebiltmore_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.dentistryatthebiltmore.form3;
+                                var webforms = config.webforms.dentistryatthebiltmore.live.form3;
+                                var contact_form_name = config.contact_form_name.dentistryatthebiltmore.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.dentistryatthebiltmore.form3;
+                                var form_page = config.form_page.dentistryatthebiltmore.live.form3;
+
+                                console.log("form3");
+                                await webforms_dentistryatthebiltmore_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;
