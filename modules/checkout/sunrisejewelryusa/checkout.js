@@ -169,42 +169,103 @@ async function checkout(domain, username, password, module_name, launch, range_p
 
     // form fill in
     try {
-        await driver.findElement(By.id("shipping_first_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
-        await driver.findElement(By.id("shipping_first_name")).sendKeys("Primeview"); 
-    
-        await driver.findElement(By.id("shipping_last_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
-        await driver.findElement(By.id("shipping_last_name")).sendKeys("Test"); 
-    
-        await driver.findElement(By.id("shipping_wooccm10")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_wooccm10")).sendKeys("qa@primeview.com");
-    
-        await driver.findElement(By.id("shipping_wooccm9")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_wooccm9")).sendKeys("4806480839");
-    
-        await driver.findElement(By.id("shipping_company")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_company")).sendKeys("Lead Test Submission");
-    
-        await driver.findElement(By.id("select2-shipping_country-container")).click();
-        let country = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
-        country.sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        country.sendKeys("united states" + Key.ENTER);
-    
-        await driver.findElement(By.id("shipping_address_1")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_address_1")).sendKeys("7620 E McKellips Rd");
-    
-        await driver.findElement(By.id("shipping_city")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_city")).sendKeys("Scottsdale");
-    
-        await driver.findElement(By.id("select2-shipping_state-container")).click();
-        let state = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
-        state.sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        state.sendKeys("arizona" + Key.ENTER);
-    
-        await driver.findElement(By.id("shipping_postcode")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("shipping_postcode")).sendKeys("85257");
-    
-        await driver.findElement(By.id("order_comments")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        await driver.findElement(By.id("order_comments")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
+        if (domain === config_server.domain.sunrisejewelryusa.live) {
+            console.log("Live");
+            await driver.findElement(By.id("shipping_first_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
+            await driver.findElement(By.id("shipping_first_name")).sendKeys("Primeview"); 
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("shipping_last_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
+            await driver.findElement(By.id("shipping_last_name")).sendKeys("Test"); 
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("shipping_wooccm9")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_wooccm9")).sendKeys("qa@primeview.com");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("shipping_wooccm10")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_wooccm10")).sendKeys("4806480839");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("shipping_company")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_company")).sendKeys("Lead Test Submission");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("select2-shipping_country-container")).click();
+            let country = await driver.executeScript("return document.getElementById('shipping_country').children[235]");
+            country.click();
+            await driver.sleep(3000);
+        
+            await driver.findElement(By.id("shipping_address_1")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_address_1")).sendKeys("7620 E McKellips Rd");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("shipping_city")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_city")).sendKeys("Scottsdale");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("select2-shipping_state-container")).click();
+            let state = await driver.executeScript("return document.getElementById('shipping_state').children[3]");
+            state.click();
+            await driver.sleep(3000);
+        
+            await driver.findElement(By.id("shipping_postcode")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_postcode")).sendKeys("85257");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("order_comments")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("order_comments")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
+            await driver.sleep(1000);
+
+        } 
+        else if (domain === config_server.domain.sunrisejewelryusa.dev) {
+            console.log("Dev");
+            await driver.findElement(By.id("shipping_first_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
+            await driver.findElement(By.id("shipping_first_name")).sendKeys("Primeview");
+            await driver.sleep(1000); 
+        
+            await driver.findElement(By.id("shipping_last_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
+            await driver.findElement(By.id("shipping_last_name")).sendKeys("Test"); 
+            await driver.sleep(1000);
+        
+            await driver.findElement(By.id("shipping_wooccm10")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_wooccm10")).sendKeys("qa@primeview.com");
+            await driver.sleep(1000);
+        
+            await driver.findElement(By.id("shipping_wooccm9")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_wooccm9")).sendKeys("4806480839");
+            await driver.sleep(1000);
+        
+            await driver.findElement(By.id("shipping_company")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_company")).sendKeys("Lead Test Submission");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("select2-shipping_country-container")).click();
+            let country = await driver.executeScript("return document.getElementById('shipping_country').children[235]");
+            country.click();
+            await driver.sleep(3000);
+        
+            await driver.findElement(By.id("shipping_address_1")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_address_1")).sendKeys("7620 E McKellips Rd");
+            await driver.sleep(1000);
+        
+            await driver.findElement(By.id("shipping_city")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_city")).sendKeys("Scottsdale");
+            await driver.sleep(1000);
+
+            await driver.findElement(By.id("select2-shipping_state-container")).click();
+            let state = await driver.executeScript("return document.getElementById('shipping_state').children[3]");
+            state.click();
+            await driver.sleep(3000);
+        
+            await driver.findElement(By.id("shipping_postcode")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("shipping_postcode")).sendKeys("85257");
+            await driver.sleep(1000);
+        
+            await driver.findElement(By.id("order_comments")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+            await driver.findElement(By.id("order_comments")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
+            await driver.sleep(1000);
+        }
 
         await driver.findElement(By.id("bill-to-same-address-checkbox")).click();
 

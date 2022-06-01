@@ -143,6 +143,7 @@ async function checkout(domain, username, password, module_name, launch, range_p
             await sheet.addRow();
             await sheet.appendValues(value); 
         }
+
         await driver.findElement(By.id("customer_notes_text")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
         await driver.sleep(1000);
         await driver.executeScript("return document.getElementsByClassName('checkout-button button alt wc-forward')[0].click()");
@@ -163,37 +164,49 @@ async function checkout(domain, username, password, module_name, launch, range_p
     try {
         await driver.findElement(By.id("billing_first_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
         await driver.findElement(By.id("billing_first_name")).sendKeys("Primeview"); 
+        await driver.sleep(1000);
     
         await driver.findElement(By.id("billing_last_name")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
         await driver.findElement(By.id("billing_last_name")).sendKeys("Test"); 
+        await driver.sleep(1000);
+
+        await driver.findElement(By.id("billing_company")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("billing_company")).sendKeys("Lead Test Submission");
+        await driver.sleep(1000);
 
         await driver.findElement(By.id("select2-billing_country-container")).click();
-        let country = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
-        country.sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        country.sendKeys("united states" + Key.ENTER);
+        let country = await driver.executeScript("return document.getElementById('billing_country').children[235]");
+        country.click();
+        await driver.sleep(3000);
 
         await driver.findElement(By.id("billing_address_1")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         await driver.findElement(By.id("billing_address_1")).sendKeys("7620 E McKellips Rd");
+        await driver.sleep(1000);
 
         await driver.findElement(By.id("billing_city")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         await driver.findElement(By.id("billing_city")).sendKeys("Scottsdale");
+        await driver.sleep(1000);
 
         await driver.findElement(By.id("select2-billing_state-container")).click();
-        let state = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
-        state.sendKeys(Key.CONTROL, "a" + Key.DELETE);
-        state.sendKeys("arizona" + Key.ENTER);
+        let state = await driver.executeScript("return document.getElementById('billing_state').children[3]");
+        state.click();
+        await driver.sleep(3000);
 
         await driver.findElement(By.id("billing_postcode")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         await driver.findElement(By.id("billing_postcode")).sendKeys("85257");
+        await driver.sleep(1000);
 
         await driver.findElement(By.id("billing_phone")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         await driver.findElement(By.id("billing_phone")).sendKeys("4806480839");
+        await driver.sleep(1000);
 
         await driver.findElement(By.id("billing_email")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         await driver.findElement(By.id("billing_email")).sendKeys("qa@primeview.com");
+        await driver.sleep(1000);
     
         await driver.findElement(By.id("order_comments")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
         await driver.findElement(By.id("order_comments")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
+        await driver.sleep(1000);
 
         logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout form fill in success.', tester: server.userId });
         console.log("CHECKOUT - checkout form fill in success.");
