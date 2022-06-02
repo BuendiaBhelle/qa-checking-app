@@ -108,7 +108,7 @@ let wp_creds = {
     },
     judefrancesjewelry: {
         username: "pvadmin",
-        password: "%XsJl4Uu%/]5"   
+        password: "rM6qH2pO3cC2tO4e"   
     },
     kyrenefamilydentistry: {
         username: "pvadmin",
@@ -263,7 +263,7 @@ let domain = {
     },
     judefrancesjewelry: {
         dev: "https://dev.judefrances.com/",
-        live: ""
+        live: "https://www.judefrances.com/"
     },
     kyrenefamilydentistry: {
         dev: "https://kyrenefamilydentistry.primeview.com/",
@@ -503,6 +503,8 @@ let forms = {
         form5: "liver-cancer/",
         form6: "the-journey-to-nhu/",
         form7: "contact-us/",
+        form8: "treatments-for-cancer/",
+        form9: "ppc-3-test/",
     },
     culpepper: {
         form1: "contact/"
@@ -1225,6 +1227,8 @@ let contact_form_name = {
         form5: "Cancer Page Sidebar Form",
         form6: "Quick Contact Sidebar Form",
         form7: "Contact Us Page Form",
+        form8: "Cancer Page Template Form",
+        form9: "New PPC Form Test"
     },
     culpepper: {
         form1: "Contact Form"
@@ -1401,6 +1405,8 @@ let contact_form_shortcode = {
         form5: 'gform_6',
         form6: 'gform_7',
         form7: 'gform_8',
+        form8: 'gform_4',
+        form9: 'gform_10'
     },
     culpepper: {
         form1: '[ninja_form id=1]'
@@ -1852,7 +1858,9 @@ let webforms = {
             form4: "Immunotherapy Form",
             form5: "Cancer Page Sidebar Form",
             form6: "Quick Contact Sidebar Form",
-            form7: "Contact Us Page Form"
+            form7: "Contact Us Page Form",
+            form8: "Cancer Page Template Form",
+            form9: "New PPC Form Test"
         },
         live: {
             form1: "Home Page Contact",
@@ -1861,7 +1869,9 @@ let webforms = {
             form4: "Immunotherapy Form",
             form5: "Cancer Page Sidebar Form",
             form6: "Quick Contact Sidebar Form",
-            form7: "Contact Us Page Form"
+            form7: "Contact Us Page Form",
+            form8: "Cancer Page Template Form",
+            form9: "New PPC Form Test"
         }
     },
     culpepper: {
@@ -2276,18 +2286,22 @@ let form_page = {
             form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2",
             form3: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
             form4: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=5",
-            form5: "",
+            form5: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=6",
             form6: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=7",
-            form7: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=8"
+            form7: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=8",
+            form8: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=4",
+            form9: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=10"
         },
         live: {
             form1: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=1",
             form2: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=2",
             form3: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=3",
             form4: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=5",
-            form5: "",
+            form5: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=6",
             form6: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=7",
-            form7: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=8"
+            form7: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=8",
+            form8: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=4",
+            form9: "/admin.php?page=gf_edit_forms&view=settings&subview=notification&id=10"
         }
     },
     culpepper: {

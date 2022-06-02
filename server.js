@@ -82,6 +82,10 @@ const webforms_newhopemedicalcenter_f4 = require("./modules/webforms/gravityform
 const webforms_newhopemedicalcenter_f5 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form5/index");
 const webforms_newhopemedicalcenter_f6 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form6/index");
 const webforms_newhopemedicalcenter_f7 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form7/index");
+
+const webforms_newhopemedicalcenter_f8 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form8/index");
+const webforms_newhopemedicalcenter_f9 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form9/index");
+
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
 const webforms_optimizex_f2 = require("./modules/webforms/contactform7/forms/optimizex/form2/index");
 const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/optimizex/form3/index");
@@ -2900,81 +2904,205 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = config.domain.judefrancesjewelry.live;
-                    //     var wp_creds_username = config.wp_creds.judefrancesjewelry.username;
-                    //     var wp_creds_password = config.wp_creds.judefrancesjewelry.password;
-                    //     var launch = config.launch.live;
+                    case "live":
+                        var domain = config.domain.judefrancesjewelry.live;
+                        var wp_creds_username = config.wp_creds.judefrancesjewelry.username;
+                        var wp_creds_password = config.wp_creds.judefrancesjewelry.password;
+                        var launch = config.launch.live;
 
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_judefrancesjewelry) {
-                    //         case "form1":
-                    //             var forms = config.forms.judefrancesjewelry.form1;
-                    //             var webforms = config.webforms.judefrancesjewelry.live.form1;
-                    //             var contact_form_name = config.contact_form_name.judefrancesjewelry.form1;
-                    //             var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form1;
-                    //             var form_page = config.form_page.judefrancesjewelry.live.form1;
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_judefrancesjewelry) {
+                            case "form1":
+                                var forms = config.forms.judefrancesjewelry.form1;
+                                var webforms = config.webforms.judefrancesjewelry.live.form1;
+                                var contact_form_name = config.contact_form_name.judefrancesjewelry.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form1;
+                                var form_page = config.form_page.judefrancesjewelry.live.form1;
 
-                    //             console.log("form1");
-                    //             await webforms_judefrancesjewelry_f1.index(
-                    //                 date, 
-                    //                 domain, 
-                    //                 username, 
-                    //                 password, 
-                    //                 email, 
-                    //                 timestamp, 
-                    //                 wp_creds_username, 
-                    //                 wp_creds_password, 
-                    //                 forms, 
-                    //                 sheetId, 
-                    //                 ranges, 
-                    //                 range_recipient, 
-                    //                 range_thankyou_page, 
-                    //                 qa_email, 
-                    //                 module_name, 
-                    //                 launch, 
-                    //                 contact_form_name, 
-                    //                 contact_form_shortcode, 
-                    //                 webforms, 
-                    //                 form_page
-                    //             );
-                    //             break;
-                    //         case "form2":
-                    //             var forms = config.forms.judefrancesjewelry.form2;
-                    //             var webforms = config.webforms.judefrancesjewelry.live.form2;
-                    //             var contact_form_name = config.contact_form_name.judefrancesjewelry.form2;
-                    //             var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form2;
-                    //             var form_page = config.form_page.judefrancesjewelry.live.form2;
+                                console.log("form1");
+                                await webforms_judefrancesjewelry_f1.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form2":
+                                var forms = config.forms.judefrancesjewelry.form2;
+                                var webforms = config.webforms.judefrancesjewelry.live.form2;
+                                var contact_form_name = config.contact_form_name.judefrancesjewelry.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form2;
+                                var form_page = config.form_page.judefrancesjewelry.live.form2;
 
-                    //             console.log("form2");
-                    //             await webforms_judefrancesjewelry_f2.index(
-                    //                 date, 
-                    //                 domain, 
-                    //                 username, 
-                    //                 password, 
-                    //                 email, 
-                    //                 timestamp, 
-                    //                 wp_creds_username, 
-                    //                 wp_creds_password, 
-                    //                 forms, 
-                    //                 sheetId, 
-                    //                 ranges, 
-                    //                 range_recipient, 
-                    //                 range_thankyou_page, 
-                    //                 qa_email, 
-                    //                 module_name, 
-                    //                 launch, 
-                    //                 contact_form_name, 
-                    //                 contact_form_shortcode, 
-                    //                 webforms, 
-                    //                 form_page
-                    //             );
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                                console.log("form2");
+                                await webforms_judefrancesjewelry_f2.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form3":
+                                var forms = config.forms.judefrancesjewelry.form3;
+                                var webforms = config.webforms.judefrancesjewelry.live.form3;
+                                var contact_form_name = config.contact_form_name.judefrancesjewelry.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form3;
+                                var form_page = config.form_page.judefrancesjewelry.live.form3;
+
+                                console.log("form3");
+                                await webforms_judefrancesjewelry_f3.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form4":
+                                var forms = config.forms.judefrancesjewelry.form4;
+                                var webforms = config.webforms.judefrancesjewelry.live.form4;
+                                var contact_form_name = config.contact_form_name.judefrancesjewelry.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form4;
+                                var form_page = config.form_page.judefrancesjewelry.live.form4;
+
+                                console.log("form4");
+                                await webforms_judefrancesjewelry_f4.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form5":
+                                var forms = config.forms.judefrancesjewelry.form5;
+                                var webforms = config.webforms.judefrancesjewelry.live.form5;
+                                var contact_form_name = config.contact_form_name.judefrancesjewelry.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form5;
+                                var form_page = config.form_page.judefrancesjewelry.live.form5;
+
+                                console.log("form5");
+                                await webforms_judefrancesjewelry_f5.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form6":
+                                var forms = config.forms.judefrancesjewelry.form6;
+                                var webforms = config.webforms.judefrancesjewelry.live.form6;
+                                var contact_form_name = config.contact_form_name.judefrancesjewelry.form6;
+                                var contact_form_shortcode = config.contact_form_shortcode.judefrancesjewelry.form6;
+                                var form_page = config.form_page.judefrancesjewelry.live.form6;
+
+                                console.log("form6");
+                                await webforms_judefrancesjewelry_f6.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "kyrenefamilydentistry":
@@ -3401,6 +3529,68 @@ app.post('/post/webforms', async (req, res) => {
                                     form_page
                                 );
                                 break;
+                            case "form8":
+                                var forms = config.forms.newhopemedicalcenter.form8;
+                                var webforms = config.webforms.newhopemedicalcenter.dev.form8;
+                                var contact_form_name = config.contact_form_name.newhopemedicalcenter.form8;
+                                var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form8;
+                                var form_page = config.form_page.newhopemedicalcenter.dev.form8;
+
+                                console.log("form8");
+                                await webforms_newhopemedicalcenter_f8.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form9":
+                                var forms = config.forms.newhopemedicalcenter.form9;
+                                var webforms = config.webforms.newhopemedicalcenter.dev.form9;
+                                var contact_form_name = config.contact_form_name.newhopemedicalcenter.form9;
+                                var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form9;
+                                var form_page = config.form_page.newhopemedicalcenter.dev.form9;
+
+                                console.log("form9");
+                                await webforms_newhopemedicalcenter_f9.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
                             default:
                                 break;
                         }
@@ -3609,6 +3799,68 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form7");
                                 await webforms_newhopemedicalcenter_f7.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form8":
+                                var forms = config.forms.newhopemedicalcenter.form8;
+                                var webforms = config.webforms.newhopemedicalcenter.live.form8;
+                                var contact_form_name = config.contact_form_name.newhopemedicalcenter.form8;
+                                var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form8;
+                                var form_page = config.form_page.newhopemedicalcenter.live.form8;
+
+                                console.log("form8");
+                                await webforms_newhopemedicalcenter_f8.index(
+                                    date, 
+                                    domain, 
+                                    username, 
+                                    password, 
+                                    email, 
+                                    timestamp, 
+                                    wp_creds_username, 
+                                    wp_creds_password, 
+                                    forms, 
+                                    sheetId, 
+                                    ranges, 
+                                    range_recipient, 
+                                    range_thankyou_page, 
+                                    qa_email, 
+                                    module_name, 
+                                    launch, 
+                                    contact_form_name, 
+                                    contact_form_shortcode, 
+                                    webforms, 
+                                    form_page
+                                );
+                                break;
+                            case "form9":
+                                var forms = config.forms.newhopemedicalcenter.form9;
+                                var webforms = config.webforms.newhopemedicalcenter.live.form9;
+                                var contact_form_name = config.contact_form_name.newhopemedicalcenter.form9;
+                                var contact_form_shortcode = config.contact_form_shortcode.newhopemedicalcenter.form9;
+                                var form_page = config.form_page.newhopemedicalcenter.live.form9;
+
+                                console.log("form9");
+                                await webforms_newhopemedicalcenter_f9.index(
                                     date, 
                                     domain, 
                                     username, 
