@@ -315,7 +315,7 @@ let domain = {
     },
     lignans: {
         dev: "https://lignansdev.primeview.com/",
-        live: ""
+        live: "https://www.lignans.net/"
     },
     natina: {
         dev: "https://natinadev.primeview.com/",
@@ -1839,7 +1839,7 @@ let webforms = {
             form1: "Contact Form - Basic"
         },
         live: {
-            form1: ""
+            form1: "Contact Form - Basic"
         }
     },
     natina: {

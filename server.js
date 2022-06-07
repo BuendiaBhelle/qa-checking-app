@@ -3214,28 +3214,29 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = config.domain.lignans.live;
-                    //     var wp_creds_username = config.wp_creds.lignans.username;
-                    //     var wp_creds_password = config.wp_creds.lignans.password;
-                    //     var launch = config.launch.live;
+                    case "live":
+                        var domain = config.domain.lignans.live;
+                        var wp_creds_username = config.wp_creds.lignans.username;
+                        var wp_creds_password = config.wp_creds.lignans.password;
+                        var launch = config.launch.live;
 
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_lignans) {
-                    //         case "form1":
-                    //             var forms = config.forms.lignans.form1;
-                    //             var webforms = config.webforms.lignans.live.form1;
-                    //             var contact_form_name = config.contact_form_name.lignans.form1;
-                    //             var contact_form_shortcode = config.contact_form_shortcode.lignans.form1;
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_lignans) {
+                            case "form1":
+                                var forms = config.forms.lignans.form1;
+                                var webforms = config.webforms.lignans.live.form1;
+                                var contact_form_name = config.contact_form_name.lignans.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.lignans.form1;
+                                var form_page = config.form_page.lignans.live.form1;
 
-                    //             console.log("form1");
-                    //             await webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                                console.log("form1");
+                                await webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "natina":
