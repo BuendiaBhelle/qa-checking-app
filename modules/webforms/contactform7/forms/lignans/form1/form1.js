@@ -18,16 +18,21 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     // form fill in
     try {
         await driver.get(domain + forms);
-        await driver.sleep(3000);
+        await driver.sleep(5000);
         let name = await driver.executeScript("return document.getElementsByName('your-name')[0]");
         name.sendKeys("Primeview Test");
+
         let email = await driver.executeScript("return document.getElementsByName('your-email')[0]");
         email.sendKeys("qa@primeview.com");
+
         let subject = await driver.executeScript("return document.getElementsByName('your-subject')[0]");
         subject.sendKeys("Lead Test Submission");
+
         let message = await driver.executeScript("return document.getElementsByName('your-message')[0]");
         message.sendKeys("Please take note that this is a test submit form for Contact Form - Basic. Please disregard if received. Thank you.");
+        
         await driver.executeScript("return document.getElementsByClassName('btn-lg')[0].click()");
+
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
         value = [ "", "", "info", "form fill in success.", server.userId, timestamp, module_name, domain, "", "", "", launch, "", webforms, "", "" ];

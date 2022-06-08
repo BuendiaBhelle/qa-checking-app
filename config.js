@@ -8,7 +8,8 @@ const date = month  + "/" + day  + '/' + year;
 const usernameData_devs = [
     "mbuendia@optimizex.com",
     "jmagnaye@optimizex.com",
-    "jaguilar@optimizex.com"
+    "jaguilar@optimizex.com",
+    "jolligue@optimizex.com"
 ]
 
 const usernameData_marketing = [
