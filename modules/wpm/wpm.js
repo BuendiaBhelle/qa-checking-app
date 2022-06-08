@@ -78,7 +78,78 @@ async function listSitesWithIssues(timestamp) {
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
     // Read rows from google sheets
-    // ACC - LIG SITES ARE NOT INCLUDED YET SINCE SHEETS FOR THOSE AREN'T UNIFORM.
+    const acc = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "ACC!A4:N4",
+    });
+
+    const blj = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "BLJ!A4:O4",
+    });
+
+    const rlx = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "RLX!A171:N171",
+    });
+
+    const aims = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "AIMS!A4:M4",
+    });
+
+    const aims_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "AIMS!M4:M5",
+    });
+
+    const ox = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "OX!A4:N4",
+    });
+
+    const pma = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "PMA!A4:N4",
+    });
+
+    const pma_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "PMA!N4:N5",
+    });
+
+    const pv = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "PV!A4:N4",
+    });
+
+    const pv_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "PV!N4:N5",
+    });
+
+    const lig = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "LIG!A4:N4",
+    });
+
+    const lig_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "LIG!N4:N5",
+    });
+
     const gps = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
@@ -118,7 +189,7 @@ async function listSitesWithIssues(timestamp) {
     const isc = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "ISC!A20:O20",
+        range: "ISC!A20:P20",
     });
 
     const al = await googleSheets.spreadsheets.values.get({
@@ -130,46 +201,54 @@ async function listSitesWithIssues(timestamp) {
     const scaz = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "SCAZ!A4:O4",
+        range: "SCAZ!A4:P4",
     });
 
     const i_n = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "IN!A4:O4",
+        range: "IN!A4:P4",
     });
 
     const np = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "NP!A4:O4",
+        range: "NP!A4:P4",
     });
 
     const frl = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "FRL!A4:O4",
+        range: "FRL!A4:P4",
     });
 
     const bd = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "BD!A4:O4",
+        range: "BD!A4:P4",
     });
 
     const cfhec = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "CFHEC!A4:O4",
+        range: "CFHEC!A4:P4",
     });
 
     const apj = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "APJ!A4:O4",
+        range: "APJ!A4:P4",
     });
 
     const sites = [
+        acc.data.values,
+        blj.data.values,
+        rlx.data.values,
+        aims.data.values,
+        ox.data.values,
+        pma.data.values,
+        pv.data.values,
+        lig.data.values,
         gps.data.values,
         nhu.data.values,
         fb.data.values,
@@ -187,57 +266,87 @@ async function listSitesWithIssues(timestamp) {
         apj.data.values,
     ]
 
-    console.log(sites.length);
+    // console.log(sites.length);
 
-    for (let j = 0; j < site_names.length; j++) {
-        sites[j][0].splice(0, 0, site_names[j]);
-        sites[j][0].splice(13, 0, '');
-
+    let screenshot_link_md = {
+        aims: aims_screenshot_link_mobile.data.values[0] + "\n" + aims_screenshot_link_mobile.data.values[1],
+        pma: pma_screenshot_link_mobile.data.values[0] + "\n" + pma_screenshot_link_mobile.data.values[1],
+        pv: pv_screenshot_link_mobile.data.values[0] + "\n" + pv_screenshot_link_mobile.data.values[1],
+        lignans: lig_screenshot_link_mobile.data.values[0] + "\n" + lig_screenshot_link_mobile.data.values[1]
     }
 
-    // list sites
+    console.log("ALL SITES WITH ISSUES:");
+
+    // ACC-LIG
+    for (let index = 0; index <= 7; index++) {
+        sites[index][0].splice(0, 0, site_names[index]);
+        sites[index][0].splice(5, 0, '');
+        
+        if (sites[index][0][0] === "AIMS") {
+            sites[index][0].splice(11, 0, '');
+        }
+
+        sites[index][0].splice(13, 0, '');        
+    }
+
+    sites[3][0].splice(16, 1, screenshot_link_md.aims);
+    sites[5][0].splice(16, 1, screenshot_link_md.pma);
+    sites[6][0].splice(16, 1, screenshot_link_md.pv);
+    sites[7][0].splice(16, 1, screenshot_link_md.lignans);
+
+    // GPS-APJ
+    for (let index = 8; index < sites.length; index++) {
+        sites[index][0].splice(0, 0, site_names[index]);
+        sites[index][0].splice(13, 0, '');
+    }
+
+
+    // check site with issues
     try {
-        for (let i = 0; i < sites.length; i++) {
-            for (let j = 0; j < sites[i].length; j++) {
-                let security_score = sites[i][j][5];
-                let site = sites[i][j][0];
-                let url = sites[i][j][2];
-                let date = sites[i][j][3];
-                let first_byte_time = sites[i][j][6];
-                let keep_alive_enabled = sites[i][j][7];
-                let compress_transfer = sites[i][j][8];
-                let compress_images = sites[i][j][9];
-                let cache_static_content = sites[i][j][10];
-                let effective_use_of_cdn = sites[i][j][11];
+        var array_count=0;
+        for (let index = 0; index < sites.length; index++) {
+            let site = sites[index][0][0];
+            let security_score = sites[index][0][5];
+            let first_byte_time = sites[index][0][6];
+            let keep_alive_enabled = sites[index][0][7];
+            let compress_transfer = sites[index][0][8];
+            let compress_images = sites[index][0][9];
+            let cache_static_content = sites[index][0][10];
+            let effective_use_of_cdn = sites[index][0][11];
     
-                if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) ||
-                (first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) ||
-                (keep_alive_enabled === score[0] || keep_alive_enabled === score[1] || keep_alive_enabled === score[2] || keep_alive_enabled === score[3]) ||
-                (compress_transfer === score[0] || compress_transfer === score[1] || compress_transfer === score[2] || compress_transfer === score[3]) ||
-                (compress_images === score[0] || compress_images === score[1] || compress_images === score[2] || compress_images === score[3]) ||
-                (cache_static_content === score[0] || cache_static_content === score[1] || cache_static_content === score[2] || cache_static_content === score[3]) ||
-                (effective_use_of_cdn === "X")) {
+            if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) ||
+            (first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) ||
+            (keep_alive_enabled === score[0] || keep_alive_enabled === score[1] || keep_alive_enabled === score[2] || keep_alive_enabled === score[3]) ||
+            (compress_transfer === score[0] || compress_transfer === score[1] || compress_transfer === score[2] || compress_transfer === score[3]) ||
+            (compress_images === score[0] || compress_images === score[1] || compress_images === score[2] || compress_images === score[3]) ||
+            (cache_static_content === score[0] || cache_static_content === score[1] || cache_static_content === score[2] || cache_static_content === score[3]) ||
+            (effective_use_of_cdn === "X")) {
+                
+                array_count+=1;
     
-                    console.log(site);
+                console.log(site);
     
-                    // Write rows to google sheet
-                    try {
-                        await googleSheets.spreadsheets.values.append({
-                            auth,
-                            spreadsheetId,
-                            range: list_sites_range,
-                            valueInputOption: "USER_ENTERED",
-                            resource: {
-                                values: [
-                                    sites[i][j]
-                                ]
-                            }
-                        });
-                    } catch (error) {
-                        console.log(error);
-                    }
+                // Write rows to google sheet
+                try {
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: list_sites_range,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                sites[index][0]
+                            ]
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
                 }
-            } 
+    
+                // console.log(sites[index][0]);
+                
+            }
+    
         }
         logger.logger.log({ level: 'info', message: 'WEBFORMS - list sites with issue success.', tester: server.userId });
         console.log("WEBFORMS - list sites with issue success.");
@@ -251,7 +360,11 @@ async function listSitesWithIssues(timestamp) {
         await sheet.addRow();
         await sheet.appendValues(value);
     }
+
+    console.log(array_count);
+
 }
+
 
 async function displaySitesToBeReported(timestamp) {
     const program = 'C:/Program Files/Windows Application Driver/WinAppDriver.exe';

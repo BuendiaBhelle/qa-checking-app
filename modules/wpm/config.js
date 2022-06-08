@@ -24,6 +24,14 @@ const endRowIndex = 25;
 const startColumnIndex = 0;
 
 let site_names = [
+    "ACC",
+    "BLJ",
+    "RLX",
+    "AIMS",
+    "OX",
+    "PMA",
+    "PV",
+    "LIG",
     "GPS",
     "NHU",
     "FB",
@@ -43,11 +51,9 @@ let site_names = [
 
 let score = ['C', 'D', 'E', 'F'];
 
-const list_sites_range = "Summary!A7:Q17";
+const list_sites_range = "Summary!A7:Q25";
 
-const display_sites_range = "Summary!A7:Q21";
-
-
+const display_sites_range = "Summary!A7:Q25";
 
 
 module.exports = { 
