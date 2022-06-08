@@ -70,7 +70,6 @@ async function insertRow(timestamp) {
         await sheet.addRow();
         await sheet.appendValues(value);
     }
-
 }
 
 async function listSitesWithIssues(timestamp) {
@@ -189,7 +188,13 @@ async function listSitesWithIssues(timestamp) {
     const isc = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "ISC!A20:P20",
+        range: "ISC!A20:O20",
+    });
+
+    const isc_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "ISC!O20:P20",
     });
 
     const al = await googleSheets.spreadsheets.values.get({
@@ -201,43 +206,85 @@ async function listSitesWithIssues(timestamp) {
     const scaz = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "SCAZ!A4:P4",
+        range: "SCAZ!A4:O4",
+    });
+
+    const scaz_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "SCAZ!O4:P4",
     });
 
     const i_n = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "IN!A4:P4",
+        range: "IN!A4:O4",
+    });
+
+    const i_n_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "IN!O4:P4",
     });
 
     const np = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "NP!A4:P4",
+        range: "NP!A4:O4",
+    });
+
+    const np_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "NP!O4:P4",
     });
 
     const frl = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "FRL!A4:P4",
+        range: "FRL!A4:O4",
+    });
+
+    const frl_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "FRL!O4:P4",
     });
 
     const bd = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "BD!A4:P4",
+        range: "BD!A4:O4",
+    });
+
+    const bd_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "BD!O4:P4",
     });
 
     const cfhec = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "CFHEC!A4:P4",
+        range: "CFHEC!A4:O4",
+    });
+
+    const cfhec_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "CFHEC!O4:P4",
     });
 
     const apj = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "APJ!A4:P4",
+        range: "APJ!A4:O4",
+    });
+
+    const apj_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "APJ!O4:P4",
     });
 
     const sites = [
@@ -272,7 +319,15 @@ async function listSitesWithIssues(timestamp) {
         aims: aims_screenshot_link_mobile.data.values[0] + "\n" + aims_screenshot_link_mobile.data.values[1],
         pma: pma_screenshot_link_mobile.data.values[0] + "\n" + pma_screenshot_link_mobile.data.values[1],
         pv: pv_screenshot_link_mobile.data.values[0] + "\n" + pv_screenshot_link_mobile.data.values[1],
-        lignans: lig_screenshot_link_mobile.data.values[0] + "\n" + lig_screenshot_link_mobile.data.values[1]
+        lignans: lig_screenshot_link_mobile.data.values[0] + "\n" + lig_screenshot_link_mobile.data.values[1],
+        isc: isc_screenshot_link_mobile.data.values[0][0] + "\n" + isc_screenshot_link_mobile.data.values[0][1],
+        scaz: scaz_screenshot_link_mobile.data.values[0][0] + "\n" + scaz_screenshot_link_mobile.data.values[0][1],
+        i_n: i_n_screenshot_link_mobile.data.values[0][0] + "\n" + i_n_screenshot_link_mobile.data.values[0][1],
+        np: np_screenshot_link_mobile.data.values[0][0] + "\n" + np_screenshot_link_mobile.data.values[0][1],
+        frl: frl_screenshot_link_mobile.data.values[0][0] + "\n" + frl_screenshot_link_mobile.data.values[0][1],
+        bd: bd_screenshot_link_mobile.data.values[0][0] + "\n" + bd_screenshot_link_mobile.data.values[0][1],
+        cfhec: cfhec_screenshot_link_mobile.data.values[0][0] + "\n" + cfhec_screenshot_link_mobile.data.values[0][1],
+        apj: apj_screenshot_link_mobile.data.values[0][0] + "\n" + apj_screenshot_link_mobile.data.values[0][1]
     }
 
     console.log("ALL SITES WITH ISSUES:");
@@ -299,6 +354,15 @@ async function listSitesWithIssues(timestamp) {
         sites[index][0].splice(0, 0, site_names[index]);
         sites[index][0].splice(13, 0, '');
     }
+
+    sites[14][0].splice(16, 1, screenshot_link_md.isc);
+    sites[16][0].splice(16, 1, screenshot_link_md.scaz);
+    sites[17][0].splice(16, 1, screenshot_link_md.i_n);
+    sites[18][0].splice(16, 1, screenshot_link_md.np);
+    sites[19][0].splice(16, 1, screenshot_link_md.frl);
+    sites[20][0].splice(16, 1, screenshot_link_md.bd);
+    sites[21][0].splice(16, 1, screenshot_link_md.cfhec);
+    sites[22][0].splice(16, 1, screenshot_link_md.apj);
 
 
     // check site with issues
