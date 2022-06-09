@@ -50,11 +50,9 @@ const webforms_crexendo_f3 = require("./modules/webforms/contactform7/forms/crex
 const webforms_crexendo_f4 = require("./modules/webforms/contactform7/forms/crexendo/form4/index");
 const webforms_crexendo_f5 = require("./modules/webforms/contactform7/forms/crexendo/form5/index");
 const webforms_culpepper_f1 = require("./modules/webforms/ninjaform/forms/culpepper/form1/index");
-
 const webforms_dentistryatthebiltmore_f1 = require("./modules/webforms/contactform7/forms/dentistryatthebiltmore/form1/index");
 const webforms_dentistryatthebiltmore_f2 = require("./modules/webforms/contactform7/forms/dentistryatthebiltmore/form2/index");
 const webforms_dentistryatthebiltmore_f3 = require("./modules/webforms/contactform7/forms/dentistryatthebiltmore/form3/index");
-
 const webforms_ewingconstruction_f1 = require("./modules/webforms/contactform7/forms/ewingconstruction/form1/index");
 const webforms_freddabranyon_f1 = require("./modules/webforms/contactform7/forms/freddabranyon/form1/index");
 const webforms_frlawgroup_f1 = require("./modules/webforms/contactform7/forms/frlawgroup/form1/index");
@@ -74,6 +72,10 @@ const webforms_judefrancesjewelry_f6 = require("./modules/webforms/gravityform/f
 const webforms_kyrenefamilydentistry_f1 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form1/index");
 const webforms_kyrenefamilydentistry_f2 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form2/index");
 const webforms_lignans_f1 = require("./modules/webforms/contactform7/forms/lignans/form1/index")
+
+const webforms_mcbuildingmaintenance_f1 = require("./modules/webforms/contactform7/forms/mcbuildingmaintenance/form1/index")
+const webforms_mcbuildingmaintenance_f2 = require("./modules/webforms/contactform7/forms/mcbuildingmaintenance/form2/index")
+
 const webforms_natina_f1 = require("./modules/webforms/contactform7/forms/natina/form1/index");
 const webforms_newhopemedicalcenter_f1 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form1/index");
 const webforms_newhopemedicalcenter_f2 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form2/index");
@@ -3237,6 +3239,73 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
+                }
+                break;
+            case "mcbuildingmaintenance":
+                var site_mcbuildingmaintenance = req.body.site_mcbuildingmaintenance;
+                var sheetId = config.sheetId.mcbuildingmaintenance;
+                var ranges = config.ranges.mcbuildingmaintenance;
+                var range_recipient = config.range_recipient.mcbuildingmaintenance;
+                var range_thankyou_page = config.range_thankyou_page.mcbuildingmaintenance;
+                
+                console.log("Site: " + site_mcbuildingmaintenance);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.mcbuildingmaintenance.dev;
+                        var wp_creds_username = config.wp_creds.mcbuildingmaintenance.username;
+                        var wp_creds_password = config.wp_creds.mcbuildingmaintenance.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_mcbuildingmaintenance) {
+                            case "form1":
+                                var forms = config.forms.mcbuildingmaintenance.form1;
+                                var webforms = config.webforms.mcbuildingmaintenance.dev.form1;
+                                var contact_form_name = config.contact_form_name.mcbuildingmaintenance.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.mcbuildingmaintenance.form1;
+                                var form_page = config.form_page.mcbuildingmaintenance.dev.form1;
+
+                                console.log("form1");
+                                await webforms_mcbuildingmaintenance_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.mcbuildingmaintenance.form2;
+                                var webforms = config.webforms.mcbuildingmaintenance.dev.form2;
+                                var contact_form_name = config.contact_form_name.mcbuildingmaintenance.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.mcbuildingmaintenance.form2;
+                                var form_page = config.form_page.mcbuildingmaintenance.dev.form2;
+
+                                console.log("form2");
+                                await webforms_mcbuildingmaintenance_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = config.domain.lignans.live;
+                    //     var wp_creds_username = config.wp_creds.lignans.username;
+                    //     var wp_creds_password = config.wp_creds.lignans.password;
+                    //     var launch = config.launch.live;
+
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_lignans) {
+                    //         case "form1":
+                    //             var forms = config.forms.lignans.form1;
+                    //             var webforms = config.webforms.lignans.live.form1;
+                    //             var contact_form_name = config.contact_form_name.lignans.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.lignans.form1;
+                    //             var form_page = config.form_page.lignans.live.form1;
+
+                    //             console.log("form1");
+                    //             await webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
                 }
                 break;
             case "natina":

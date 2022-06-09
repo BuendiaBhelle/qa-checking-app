@@ -55,7 +55,8 @@ const sites = [
     "risingsunmartialartsaz",
     "gatorskin",
     "virtualassistantsoutsourcing",
-    "dentistryatthebiltmore"
+    "dentistryatthebiltmore",
+    "mcbuildingmaintenance"
 ]
 
 let wp_creds = {
@@ -210,6 +211,10 @@ let wp_creds = {
     dentistryatthebiltmore: {
         username: "pvadmin",
         password: "sbDDKFc0VYqf39LgP0SrZGh4"
+    },
+    mcbuildingmaintenance: {
+        username: "pvadmin",
+        password: "]wuB34Q{DbhF"
     }
 }
 
@@ -365,6 +370,10 @@ let domain = {
     dentistryatthebiltmore: {
         dev: "",
         live: "https://www.dentistryatthebiltmore.com/"
+    },
+    mcbuildingmaintenance: {
+        dev: "https://mcbuildingmaintenancedev.primeview.com/",
+        live: ""
     }
 }
 
@@ -544,6 +553,10 @@ let forms = {
         form2: "about-us/",
         form3: "contact/"
     },
+    mcbuildingmaintenance: {
+        form1: "contact-us/",
+        form2: "about-us/"
+    }
 }
 
 let sheetId = {
@@ -584,7 +597,8 @@ let sheetId = {
     risingsunmartialartsaz: 2093063365,
     gatorskin: 1363791668,
     virtualassistantsoutsourcing: 763505033,
-    dentistryatthebiltmore: 968628360
+    dentistryatthebiltmore: 968628360,
+    mcbuildingmaintenance: 283258278
 }
 
 let range = [
@@ -1043,6 +1057,18 @@ let range = [
             "Dentistry At The Biltmore!E2",
             "Dentistry At The Biltmore!G2",
         ]
+    ],
+    sites[38] = [
+        [
+            "MC Building Maintenance!Q2",
+            "MC Building Maintenance!A2",
+            "MC Building Maintenance!B2",
+            "MC Building Maintenance!C2",
+            "MC Building Maintenance!C3",
+            "MC Building Maintenance!D2",
+            "MC Building Maintenance!E2",
+            "MC Building Maintenance!G2",
+        ]
     ]
 ]
 
@@ -1084,7 +1110,8 @@ let ranges = {
     risingsunmartialartsaz: range[34][0],
     gatorskin: range[35][0],
     virtualassistantsoutsourcing: range[36][0],
-    dentistryatthebiltmore: range[37][0]
+    dentistryatthebiltmore: range[37][0],
+    mcbuildingmaintenance: range[38][0]
 }
 
 let launch = {
@@ -1267,6 +1294,10 @@ let contact_form_name = {
         form1: "Book a Consultation",
         form2: "Get Started!",
         form3: "Contact"
+    },
+    mcbuildingmaintenance: {
+        form1: "Contact form 1",
+        form2: "Sidebar Form"
     }
 }
 
@@ -1445,6 +1476,10 @@ let contact_form_shortcode = {
         form1: '[contact-form-7 id="804" title="Book a Consultation"]',
         form2: '[contact-form-7 id="805" title="Get Started!"]',
         form3: '[contact-form-7 id="155" title="Contact"]'
+    },
+    mcbuildingmaintenance: {
+        form1: '[contact-form-7 id="8" title="Contact form 1"]',
+        form2: '[contact-form-7 id="407" title="Sidebar Form"]'
     }
 }
 
@@ -1487,7 +1522,8 @@ let range_recipient = {
     risingsunmartialartsaz: "Rising Sun!H2",
     gatorskin: "Gatorskin!H2",
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2",
-    dentistryatthebiltmore: "Dentistry At The Biltmore!H2"
+    dentistryatthebiltmore: "Dentistry At The Biltmore!H2",
+    mcbuildingmaintenance: "MC Building Maintenance!H2"
 }
 
 
@@ -1529,7 +1565,8 @@ let range_thankyou_page = {
     risingsunmartialartsaz: "Rising Sun!I2",
     gatorskin: "Gatorskin!I2",
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2",
-    dentistryatthebiltmore: "Dentistry At The Biltmore!I2"
+    dentistryatthebiltmore: "Dentistry At The Biltmore!I2",
+    mcbuildingmaintenance: "MC Building Maintenance!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -1968,6 +2005,16 @@ let webforms = {
             form2: "Get Started!",
             form3: "Contact"
         }
+    },
+    mcbuildingmaintenance: {
+        dev: {
+            form1: "Contact form 1",
+            form2: "Sidebar Form"
+        },
+        live: {
+            form1: "Contact form 1",
+            form2: "Sidebar Form"
+        }
     }
 }
 
@@ -2397,6 +2444,16 @@ let form_page = {
             form1: "/admin.php?page=wpcf7&post=804&action=edit",
             form2: "/admin.php?page=wpcf7&post=805&action=edit",
             form3: "/admin.php?page=wpcf7&post=155&action=edit"
+        }
+    },
+    mcbuildingmaintenance: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=8&action=edit",
+            form2: "/admin.php?page=wpcf7&post=407&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=8&action=edit",
+            form2: "/admin.php?page=wpcf7&post=407&action=edit"
         }
     }
 }
