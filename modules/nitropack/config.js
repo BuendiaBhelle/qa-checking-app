@@ -23,7 +23,8 @@ let site_ids = [
     1557671517,
     7802066,
     1988369747,
-    2001892666
+    2001892666,
+    1422241829
 ]
 
 const urls = [
@@ -36,7 +37,8 @@ const urls = [
     "https://www.newhopemedicalcenter.com/",
     "https://www.freddabranyon.com/",
     "https://www.everythingjustrocks.com/",
-    "https://www.judefrances.com/"
+    "https://www.judefrances.com/",
+    "https://thehairextensioncompany.com/"
 ]
 
 let ranges_other = [
@@ -49,7 +51,8 @@ let ranges_other = [
     "NHU!A4:C4",
     "Fredda Branyon!A4:C4",
     "EJR!A4:C4",
-    "JFJ!A4:C4"
+    "JFJ!A4:C4",
+    "HEC!A4:C4"
 ]
 
 const pagespeed_url = "https://developers.google.com/speed/pagespeed/insights/";
@@ -64,7 +67,8 @@ let ranges_mobile = [
     "NHU!E4",
     "Fredda Branyon!E4",
     "EJR!E4",
-    "JFJ!E4"
+    "JFJ!E4",
+    "HEC!E4"
 ]
 
 let ranges_desktop = [
@@ -77,7 +81,8 @@ let ranges_desktop = [
     "NHU!D4",
     "Fredda Branyon!D4",
     "EJR!D4",
-    "JFJ!D4"
+    "JFJ!D4",
+    "HEC!D4"
 ]
 
 var sheet_names = [
@@ -90,7 +95,8 @@ var sheet_names = [
     "NHU",
     "Fredda Branyon",
     "EJR",
-    "JFJ"
+    "JFJ",
+    "HEC"
 ]
 
 const module_name = "NITROPACK";

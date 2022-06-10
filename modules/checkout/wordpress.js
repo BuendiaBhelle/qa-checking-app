@@ -121,8 +121,7 @@ async function wordpressStart(domain, username, password, email, module_name, la
                         await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].click()");
                         await driver.sleep(3000);
 
-                        if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.sunrisejewelryusa.live)) {
-                            console.log("LIVE");
+                        if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.andresperezjurado.dev) || (domain === config_server.domain.sunrisejewelryusa.live)) {
                             await driver.findElement(By.id("tab-panel-0-settings")).click();
                             await driver.sleep(3000);
                             let enable_test_mode_checked = await driver.executeScript("return document.getElementById('inspector-checkbox-control-9')");
@@ -505,7 +504,7 @@ async function wordpressEnd(domain, module_name, launch, timestamp, payments_pag
                 await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].click()");
                 await driver.sleep(3000);
 
-                if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.sunrisejewelryusa.live)) {
+                if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.andresperezjurado.dev) || (domain === config_server.domain.sunrisejewelryusa.live)) {
                     console.log("LIVE");
                     await driver.findElement(By.id("tab-panel-0-settings")).click();
                     await driver.sleep(3000);

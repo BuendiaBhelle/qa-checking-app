@@ -15,6 +15,7 @@ const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 
 const checkout_americanleatherusa = require("./modules/checkout/americanleatherusa/index");
+const checkout_andresperezjurado = require("./modules/checkout/andresperezjurado/index");
 const checkout_sunrisejewelryusa = require("./modules/checkout/sunrisejewelryusa/index");
 
 const image_optimization = require("./modules/image_optimization/image_optimization");
@@ -428,6 +429,65 @@ app.post('/post/checkout', async (req, res) => {
                                 break;
                         }
                         break;
+                    default:
+                        break;
+                }
+                break;
+            case "andresperezjurado":
+                co_site = req.body.co_andresperezjurado;
+                var wp_creds_username = config_checkout.wp_creds.andresperezjurado.username;
+                var wp_creds_password = config_checkout.wp_creds.andresperezjurado.password;
+                var tax_page = config_checkout.tax_page;
+                var payments_page = config_checkout.payments_page;
+                var emails_page = config_checkout.emails_page;
+                var pricesEnteredWithTax_script = config_checkout.pricesEnteredWithTax_script;
+                var displayPricesInTheShop_script = config_checkout.displayPricesInTheShop_script;
+                var displayPricesDuringCartAndCheckout_script = config_checkout.displayPricesDuringCartAndCheckout_script;
+                var sheetId = config_checkout.sheetId.andresperezjurado;
+                var ranges = config_checkout.ranges.andresperezjurado;
+                var range_recipients_newOrder = config_checkout.range_recipients.andresperezjurado.new_order;
+                var range_recipients_cancelledOrder = config_checkout.range_recipients.andresperezjurado.cancelled_order;
+                var range_recipients_failedOrder = config_checkout.range_recipients.andresperezjurado.failed_order;
+                var emails_newOrder_page = config_checkout.emails_newOrder_page;
+                var emails_cancelledOrder_page = config_checkout.emails_cancelledOrder_page;
+                var emails_failedOrder_page = config_checkout.emails_failedOrder_page;
+                var coupons_page = config_checkout.coupons_page;
+                var range_coupons = config_checkout.range_coupons.andresperezjurado;
+                var range_product_name = config_checkout.range_product_name.andresperezjurado;
+                var range_thankyou_page = config_checkout.range_thankyou_page.andresperezjurado;
+                
+                console.log("Site: " + co_site);
+                switch (checkbox_checkout) {
+                    case "dev":
+                        var domain = config_checkout.domain.andresperezjurado.dev;
+                        var launch = config_checkout.launch.dev;
+                        console.log(domain);
+                        console.log("dev");
+                        switch (co_site) {
+                            case "product1":
+                                var product_name = config_checkout.product.andresperezjurado.product1;
+                                var product_link = config_checkout.product_link.andresperezjurado.product1;
+                                await checkout_andresperezjurado.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = config_checkout.domain.andresperezjurado.live;
+                    //     var launch = config_checkout.launch.live;
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (co_site) {
+                    //         case "product1":
+                    //             var product_name = config_checkout.product.andresperezjurado.product1;
+                    //             var product_link = config_checkout.product_link.andresperezjurado.product1;
+                    //             await checkout_andresperezjurado.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
                     default:
                         break;
                 }

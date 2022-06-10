@@ -147,6 +147,7 @@
                                                     <div class="col-sm-9">
                                                         <select name="checkout" class="form-control" onchange="checkouts()">
                                                             <option value="americanleatherusa">American Leather USA</option>
+                                                            <option value="andresperezjurado">Andres Perez Jurado</option>
                                                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
                                                         </select>
                                                         <a href="" onclick="not_on_the_list()">Not on the list?</a>
@@ -179,6 +180,30 @@
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
                                                             <p><b>password:</b> <i>1L$YRb8ovrch5YpiHkYIf9WX</i>
+                                                            <div>
+                                                                <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Andres Perez Jurado -->
+                                                <div id="co_andresperezjurado">
+                                                    <div class="form-group row">
+                                                        <label for="co_andresperezjurado" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_andresperezjurado" class="form-control">
+                                                                <option value="product1">Red Flowers Coffee Mug</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>t1tqAV@I}S>w</i>
                                                             <div>
                                                                 <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
                                                             </div>
@@ -1704,10 +1729,12 @@
             var checkout = document.getElementsByName("checkout")[0].value;
             var site_names_checkout = [
                 "americanleatherusa",
+                "andresperezjurado",
                 "sunrisejewelryusa"
             ]
             var site_name_checkout_value = [
                 "co_americanleatherusa",
+                "co_andresperezjurado",
                 "co_sunrisejewelryusa"
             ]
 

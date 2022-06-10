@@ -25,6 +25,10 @@ let wp_creds = {
     americanleatherusa: {
         username: server_config.wp_creds.americanleatherusa.username,
         password: server_config.wp_creds.americanleatherusa.password
+    },
+    andresperezjurado: {
+        username: server_config.wp_creds.andresperezjurado.username,
+        password: server_config.wp_creds.andresperezjurado.password
     }
 }
 
@@ -36,17 +40,23 @@ let domain = {
     americanleatherusa: {
         dev: server_config.domain.americanleatherusa.dev,
         live: server_config.domain.americanleatherusa.live
+    },
+    andresperezjurado: {
+        dev: server_config.domain.andresperezjurado.dev,
+        live: server_config.domain.andresperezjurado.live
     }
 }
 
 let sheetId = {
     sunrisejewelryusa: 1340779865,
-    americanleatherusa: 1204224677
+    americanleatherusa: 1204224677,
+    andresperezjurado: 830580824
 }
 
 let ranges = {
     sunrisejewelryusa: "Sunrise Jewelry USA!A2:C2",
-    americanleatherusa: "American Leather USA!A2:C2"
+    americanleatherusa: "American Leather USA!A2:C2",
+    andresperezjurado: "Andres Perez Jurado!A2:C2"
 }
 
 let launch = {
@@ -56,7 +66,8 @@ let launch = {
 
 let range_product_name = {
     sunrisejewelryusa: "Sunrise Jewelry USA!E2",
-    americanleatherusa: "American Leather USA!E2"
+    americanleatherusa: "American Leather USA!E2",
+    andresperezjurado: "Andres Perez Jurado!E2"
 }
 
 let range_recipients = {
@@ -69,17 +80,24 @@ let range_recipients = {
         new_order: "American Leather USA!F2",
         cancelled_order: "American Leather USA!G2",
         failed_order: "American Leather USA!H2"
+    },
+    andresperezjurado: {
+        new_order: "Andres Perez Jurado!F2",
+        cancelled_order: "Andres Perez Jurado!G2",
+        failed_order: "Andres Perez Jurado!H2"
     }
 }
 
 let range_coupons = {
     sunrisejewelryusa: "Sunrise Jewelry USA!M2:N2",
-    americanleatherusa: "American Leather USA!M2:N2"
+    americanleatherusa: "American Leather USA!M2:N2",
+    andresperezjurado: "Andres Perez Jurado!M2:N2"
 }
 
 let range_thankyou_page = {
     sunrisejewelryusa: "Sunrise Jewelry USA!I2",
-    americanleatherusa: "American Leather USA!I2"
+    americanleatherusa: "American Leather USA!I2",
+    andresperezjurado: "Andres Perez Jurado!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -114,7 +132,10 @@ let product = {
     americanleatherusa: {
         product1: "Python Card Holder",
         product2: "Ostrich Legs Card Holder"
-}
+    },
+    andresperezjurado: {
+        product1: "Red Flowers Coffee Mug"
+    }
 }
 
 let product_link = {
@@ -125,7 +146,10 @@ let product_link = {
     americanleatherusa: {
         product1: "product/python-card-holder/",
         product2: "product/ostrich-legs-card-holder/"
-}
+    },
+    andresperezjurado: {
+        product1: "shop/red-flowers-coffee-mug/",
+    }
 }
 
 
