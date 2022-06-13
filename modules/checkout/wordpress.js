@@ -110,14 +110,14 @@ async function wordpressStart(domain, username, password, email, module_name, la
 
             // stripe
             let method_length = await driver.executeScript("return document.getElementsByTagName('tr').length");
-            for (let index = 2; index < method_length; index++) {
+            for (let index = 4; index < method_length; index++) {
                 let stripe_innertext = await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].innerText");
                 if (stripe_innertext === "Stripe") {
                     console.log(stripe_innertext);
-                    let stripe_enabled = await driver.executeScript("return document.getElementsByClassName('woocommerce-input-toggle woocommerce-input-toggle--enabled')[0].innerText");
+                    let stripe_enabled = await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[2].children[0].children[0].getAttribute('aria-label')");
                     console.log("stripe_enabled: " + stripe_enabled);
                     
-                    if (stripe_enabled === "Yes") {
+                    if (stripe_enabled === 'The "Stripe" payment method is currently enabled') {
                         await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].click()");
                         await driver.sleep(3000);
 
@@ -143,44 +143,24 @@ async function wordpressStart(domain, username, password, email, module_name, la
                                 await sheet.appendValues(value);
                             }
                         } else {
-                            let enable_stripe = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].checked");
-                            let enable_test_mode = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].checked");
-    
-                            if ((enable_stripe === true) && (enable_test_mode === true)) {
-                                logger.logger.log({ level: 'info', message: 'CHECKOUT - payments tab checked.', tester: server.userId });
-                                console.log("CHECKOUT - payments tab checked.");
-                                value = [ "", "", "info", "payments tab checked.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-                                await sheet.addRow();
-                                await sheet.appendValues(value);
-                            } else if ((enable_stripe === false) && (enable_test_mode === true)) {
-                                await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].click()");
+                            let test_mode = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].checked");
+                    
+                            if (test_mode === false) {
+                                await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].click()");
                                 await driver.executeScript("return document.getElementsByName('save')[0].click()");
                                 logger.logger.log({ level: 'info', message: 'CHECKOUT - enable stripe success.', tester: server.userId });
                                 console.log("CHECKOUT - enable stripe success.");
                                 value = [ "", "", "info", "enable stripe success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
                                 await sheet.addRow();
                                 await sheet.appendValues(value);
-                            } else if ((enable_stripe === true) && (enable_test_mode === false)) {
-                                await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].click()");
-                                await driver.executeScript("return document.getElementsByName('save')[0].click()");
-                                logger.logger.log({ level: 'info', message: 'CHECKOUT - test mode enabled.', tester: server.userId });
-                                console.log("CHECKOUT - test mode enabled.");
-                                value = [ "", "", "info", "test mode enabled.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-                                await sheet.addRow();
-                                await sheet.appendValues(value);
-                            } else if ((enable_stripe === false) && (enable_test_mode === false)) {
-                                await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].click()");
-                                await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].click()");
-                                await driver.executeScript("return document.getElementsByName('save')[0].click()");
-                                logger.logger.log({ level: 'info', message: 'CHECKOUT - stripe test mode enabled.', tester: server.userId });
-                                console.log("CHECKOUT - stripe test mode enabled.");
-                                value = [ "", "", "info", "stripe test mode enabled.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                            } else {
+                                logger.logger.log({ level: 'info', message: 'CHECKOUT - already enabled.', tester: server.userId });
+                                console.log("CHECKOUT - already enabled.");
+                                value = [ "", "", "info", "already enabled.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
                                 await sheet.addRow();
                                 await sheet.appendValues(value);
                             }
                         }
-
-
                     }
                     break;
                 }
@@ -304,7 +284,7 @@ async function wordpressStart(domain, username, password, email, module_name, la
                     await sheet.addRow();
                     await sheet.appendValues(value);  
                 }
-                await driver.findElement(By.name("save")).click();
+                await driver.executeScript("return document.getElementsByName('save')[0].click()");
             } catch (error) {
                 logger.logger.log({ level: 'error', message: error, tester: server.userId });
                 console.log(error);
@@ -428,37 +408,43 @@ async function wordpressStart(domain, username, password, email, module_name, la
                 await sheet.addRow();
                 await sheet.appendValues(value);            
             }
-
+            
             // get coupons
-            await driver.switchTo().newWindow('tab');
-            await driver.get(wp_site + coupons_page);
-            await driver.sleep(1000);
-            try {
-                let coupon_code = await driver.executeScript("return document.getElementsByClassName('row-title')[0].innerHTML");
-                let coupon_expiry_date = await driver.executeScript("return document.getElementsByClassName('expiry_date column-expiry_date')[0].innerHTML");
-                await googleSheets.spreadsheets.values.append({
-                    auth,
-                    spreadsheetId,
-                    range: range_coupons,
-                    valueInputOption: "USER_ENTERED",
-                    resource: {
-                        values: [
-                            [coupon_code, coupon_expiry_date]
-                        ]
-                    }
-                });
-                logger.logger.log({ level: 'info', message: 'CHECKOUT - list coupon details success.', tester: server.userId });
-                console.log("CHECKOUT - list coupon details success.");
-                value = [ "", "", "info", "list coupon details success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-                await sheet.addRow();
-                await sheet.appendValues(value);                   
-            } catch (error) {
-                logger.logger.log({ level: 'error', message: error, tester: server.userId });
-                console.log(error);
-                value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-                await sheet.addRow();
-                await sheet.appendValues(value);                 
+            if (domain != config_server.domain.randosouthwest.dev) {
+                console.log("site is not randosouthwest");
+                await driver.switchTo().newWindow('tab');
+                await driver.get(wp_site + coupons_page);
+                await driver.sleep(1000);
+                try {
+                    let coupon_code = await driver.executeScript("return document.getElementsByClassName('row-title')[0].innerHTML");
+                    let coupon_expiry_date = await driver.executeScript("return document.getElementsByClassName('expiry_date column-expiry_date')[0].innerHTML");
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: range_coupons,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [coupon_code, coupon_expiry_date]
+                            ]
+                        }
+                    });
+                    logger.logger.log({ level: 'info', message: 'CHECKOUT - list coupon details success.', tester: server.userId });
+                    console.log("CHECKOUT - list coupon details success.");
+                    value = [ "", "", "info", "list coupon details success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                    await sheet.addRow();
+                    await sheet.appendValues(value);                   
+                } catch (error) {
+                    logger.logger.log({ level: 'error', message: error, tester: server.userId });
+                    console.log(error);
+                    value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                    await sheet.addRow();
+                    await sheet.appendValues(value);                 
+                }
+            } else {
+                console.log("site is randosouthwest");
             }
+
         }
         else {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - tax tab failed.', tester: server.userId });
@@ -493,14 +479,14 @@ async function wordpressEnd(domain, module_name, launch, timestamp, payments_pag
     
     // stripe
     let method_length = await driver.executeScript("return document.getElementsByTagName('tr').length");
-    for (let index = 2; index < method_length; index++) {
+    for (let index = 4; index < method_length; index++) {
         let stripe_innertext = await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].innerText");
         if (stripe_innertext === "Stripe") {
             console.log(stripe_innertext);
-            let stripe_enabled = await driver.executeScript("return document.getElementsByClassName('woocommerce-input-toggle woocommerce-input-toggle--enabled')[0].innerText");
+            let stripe_enabled = await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[2].children[0].children[0].getAttribute('aria-label')");
             console.log("stripe_enabled: " + stripe_enabled);
             
-            if (stripe_enabled === "Yes") {
+            if (stripe_enabled === 'The "Stripe" payment method is currently enabled') {
                 await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].click()");
                 await driver.sleep(3000);
 
@@ -527,38 +513,20 @@ async function wordpressEnd(domain, module_name, launch, timestamp, payments_pag
                         await sheet.appendValues(value);
                     }
                 } else {
-                    let enable_stripe = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].checked");
-                    let enable_test_mode = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].checked");
-
-                    if ((enable_stripe === true) && (enable_test_mode === true)) {
-                        logger.logger.log({ level: 'info', message: 'CHECKOUT - payments tab checked.', tester: server.userId });
-                        console.log("CHECKOUT - payments tab checked.");
-                        value = [ "", "", "info", "payments tab checked.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-                        await sheet.addRow();
-                        await sheet.appendValues(value);
-                    } else if ((enable_stripe === false) && (enable_test_mode === true)) {
-                        await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].click()");
-                        await driver.executeScript("return document.getElementsByName('save')[0].click()");
-                        logger.logger.log({ level: 'info', message: 'CHECKOUT - enable stripe success.', tester: server.userId });
-                        console.log("CHECKOUT - enable stripe success.");
-                        value = [ "", "", "info", "enable stripe success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
-                        await sheet.addRow();
-                        await sheet.appendValues(value);
-                    } else if ((enable_stripe === true) && (enable_test_mode === false)) {
+                    let test_mode = await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].checked");
+                    
+                    if (test_mode === true) {
                         await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].click()");
                         await driver.executeScript("return document.getElementsByName('save')[0].click()");
-                        logger.logger.log({ level: 'info', message: 'CHECKOUT - test mode enabled.', tester: server.userId });
-                        console.log("CHECKOUT - test mode enabled.");
-                        value = [ "", "", "info", "test mode enabled.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - disable stripe success.', tester: server.userId });
+                        console.log("CHECKOUT - disable stripe success.");
+                        value = [ "", "", "info", "disable stripe success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);
-                    } else if ((enable_stripe === false) && (enable_test_mode === false)) {
-                        await driver.executeScript("return document.getElementsByName('woocommerce_stripe_enabled')[0].click()");
-                        await driver.executeScript("return document.getElementsByName('woocommerce_stripe_testmode')[0].click()");
-                        await driver.executeScript("return document.getElementsByName('save')[0].click()");
-                        logger.logger.log({ level: 'info', message: 'CHECKOUT - stripe test mode enabled.', tester: server.userId });
-                        console.log("CHECKOUT - stripe test mode enabled.");
-                        value = [ "", "", "info", "stripe test mode enabled.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
+                    } else {
+                        logger.logger.log({ level: 'info', message: 'CHECKOUT - already disabled.', tester: server.userId });
+                        console.log("CHECKOUT - already disabled.");
+                        value = [ "", "", "info", "already disabled.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
                         await sheet.addRow();
                         await sheet.appendValues(value);
                     }
@@ -593,7 +561,7 @@ async function wordpressEnd(domain, module_name, launch, timestamp, payments_pag
             // put new order recipients
             await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
             await driver.findElement(By.id("woocommerce_new_order_recipient")).sendKeys(no_recipients);
-            await driver.findElement(By.name("save")).click();
+            await driver.executeScript("return document.getElementsByName('save')[0].click()");
             logger.logger.log({ level: 'info', message: 'CHECKOUT - get new order recipient success.', tester: server.userId });
             console.log("CHECKOUT - get new order recipient success.");
             value = [ "", "", "info", "get new order recipient success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];

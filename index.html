@@ -148,6 +148,7 @@
                                                         <select name="checkout" class="form-control" onchange="checkouts()">
                                                             <option value="americanleatherusa">American Leather USA</option>
                                                             <option value="andresperezjurado">Andres Perez Jurado</option>
+                                                            <option value="randosouthwest">Rando Southwest</option>
                                                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
                                                         </select>
                                                         <a href="" onclick="not_on_the_list()">Not on the list?</a>
@@ -204,6 +205,30 @@
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
                                                             <p><b>password:</b> <i>t1tqAV@I}S>w</i>
+                                                            <div>
+                                                                <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Rando Southwest -->
+                                                <div id="co_randosouthwest">
+                                                    <div class="form-group row">
+                                                        <label for="co_randosouthwest" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_randosouthwest" class="form-control">
+                                                                <option value="product1">Regular Seasoning (2.5 ounce)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>&4c^I6WjO&SfVJ3fiSCz0dRd</i>
                                                             <div>
                                                                 <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
                                                             </div>
@@ -1730,11 +1755,13 @@
             var site_names_checkout = [
                 "americanleatherusa",
                 "andresperezjurado",
+                "randosouthwest",
                 "sunrisejewelryusa"
             ]
             var site_name_checkout_value = [
                 "co_americanleatherusa",
                 "co_andresperezjurado",
+                "co_randosouthwest",
                 "co_sunrisejewelryusa"
             ]
 

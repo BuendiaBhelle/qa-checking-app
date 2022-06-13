@@ -29,6 +29,10 @@ let wp_creds = {
     andresperezjurado: {
         username: server_config.wp_creds.andresperezjurado.username,
         password: server_config.wp_creds.andresperezjurado.password
+    },
+    randosouthwest: {
+        username: server_config.wp_creds.randosouthwest.username,
+        password: server_config.wp_creds.randosouthwest.password
     }
 }
 
@@ -44,19 +48,25 @@ let domain = {
     andresperezjurado: {
         dev: server_config.domain.andresperezjurado.dev,
         live: server_config.domain.andresperezjurado.live
+    },
+    randosouthwest: {
+        dev: server_config.domain.randosouthwest.dev,
+        live: server_config.domain.randosouthwest.live
     }
 }
 
 let sheetId = {
     sunrisejewelryusa: 1340779865,
     americanleatherusa: 1204224677,
-    andresperezjurado: 830580824
+    andresperezjurado: 830580824,
+    randosouthwest: 157692758
 }
 
 let ranges = {
     sunrisejewelryusa: "Sunrise Jewelry USA!A2:C2",
     americanleatherusa: "American Leather USA!A2:C2",
-    andresperezjurado: "Andres Perez Jurado!A2:C2"
+    andresperezjurado: "Andres Perez Jurado!A2:C2",
+    randosouthwest: "Rando Southwest!A2:C2"
 }
 
 let launch = {
@@ -67,7 +77,8 @@ let launch = {
 let range_product_name = {
     sunrisejewelryusa: "Sunrise Jewelry USA!E2",
     americanleatherusa: "American Leather USA!E2",
-    andresperezjurado: "Andres Perez Jurado!E2"
+    andresperezjurado: "Andres Perez Jurado!E2",
+    randosouthwest: "Rando Southwest!E2"
 }
 
 let range_recipients = {
@@ -85,19 +96,26 @@ let range_recipients = {
         new_order: "Andres Perez Jurado!F2",
         cancelled_order: "Andres Perez Jurado!G2",
         failed_order: "Andres Perez Jurado!H2"
+    },
+    randosouthwest: {
+        new_order: "Rando Southwest!F2",
+        cancelled_order: "Rando Southwest!G2",
+        failed_order: "Rando Southwest!H2"
     }
 }
 
 let range_coupons = {
     sunrisejewelryusa: "Sunrise Jewelry USA!M2:N2",
     americanleatherusa: "American Leather USA!M2:N2",
-    andresperezjurado: "Andres Perez Jurado!M2:N2"
+    andresperezjurado: "Andres Perez Jurado!M2:N2",
+    randosouthwest: "Rando Southwest!M2:N2"
 }
 
 let range_thankyou_page = {
     sunrisejewelryusa: "Sunrise Jewelry USA!I2",
     americanleatherusa: "American Leather USA!I2",
-    andresperezjurado: "Andres Perez Jurado!I2"
+    andresperezjurado: "Andres Perez Jurado!I2",
+    randosouthwest: "Rando Southwest!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -135,6 +153,9 @@ let product = {
     },
     andresperezjurado: {
         product1: "Red Flowers Coffee Mug"
+    },
+    randosouthwest: {
+        product1: "Regular Seasoning (2.5 ounce)"
     }
 }
 
@@ -149,6 +170,9 @@ let product_link = {
     },
     andresperezjurado: {
         product1: "shop/red-flowers-coffee-mug/",
+    },
+    randosouthwest: {
+        product1: "product/regular-seasoning-2-5-ounce/",
     }
 }
 
