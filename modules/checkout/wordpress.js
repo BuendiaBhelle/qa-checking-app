@@ -121,7 +121,7 @@ async function wordpressStart(domain, username, password, email, module_name, la
                         await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].click()");
                         await driver.sleep(3000);
 
-                        if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.andresperezjurado.dev) || (domain === config_server.domain.sunrisejewelryusa.live)) {
+                        if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.andresperezjurado.dev) || (domain === config_server.domain.sunrisejewelryusa.live) || (domain === config_server.domain.randosouthwest.live)) {
                             await driver.findElement(By.id("tab-panel-0-settings")).click();
                             await driver.sleep(3000);
                             let enable_test_mode_checked = await driver.executeScript("return document.getElementById('inspector-checkbox-control-9')");
@@ -408,9 +408,14 @@ async function wordpressStart(domain, username, password, email, module_name, la
                 await sheet.addRow();
                 await sheet.appendValues(value);            
             }
-            
+
+            console.log("DOMAIN: " + domain);
+            console.log("DOMAIN_SERVER: " + config_server.domain.randosouthwest.live);
+
             // get coupons
-            if (domain != config_server.domain.randosouthwest.dev) {
+            if ((domain === config_server.domain.randosouthwest.dev) || (domain === config_server.domain.randosouthwest.live)) {
+                console.log("site is randosouthwest");
+            } else {
                 console.log("site is not randosouthwest");
                 await driver.switchTo().newWindow('tab');
                 await driver.get(wp_site + coupons_page);
@@ -441,10 +446,7 @@ async function wordpressStart(domain, username, password, email, module_name, la
                     await sheet.addRow();
                     await sheet.appendValues(value);                 
                 }
-            } else {
-                console.log("site is randosouthwest");
             }
-
         }
         else {
             logger.logger.log({ level: 'error', message: 'CHECKOUT - tax tab failed.', tester: server.userId });
@@ -476,7 +478,6 @@ async function wordpressEnd(domain, module_name, launch, timestamp, payments_pag
     await driver.get(wp_site + payments_page);
     await driver.sleep(3000);
     
-    
     // stripe
     let method_length = await driver.executeScript("return document.getElementsByTagName('tr').length");
     for (let index = 4; index < method_length; index++) {
@@ -490,7 +491,7 @@ async function wordpressEnd(domain, module_name, launch, timestamp, payments_pag
                 await driver.executeScript("return document.getElementsByTagName('tr')[" + index + "].children[1].children[0].click()");
                 await driver.sleep(3000);
 
-                if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.andresperezjurado.dev) || (domain === config_server.domain.sunrisejewelryusa.live)) {
+                if ((domain === config_server.domain.americanleatherusa.live) || (domain === config_server.domain.andresperezjurado.dev) || (domain === config_server.domain.sunrisejewelryusa.live) || (domain === config_server.domain.randosouthwest.live)) {
                     console.log("LIVE");
                     await driver.findElement(By.id("tab-panel-0-settings")).click();
                     await driver.sleep(3000);

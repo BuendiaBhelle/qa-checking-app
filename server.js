@@ -533,21 +533,21 @@ app.post('/post/checkout', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = config_checkout.domain.andresperezjurado.live;
-                    //     var launch = config_checkout.launch.live;
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (co_site) {
-                    //         case "product1":
-                    //             var product_name = config_checkout.product.andresperezjurado.product1;
-                    //             var product_link = config_checkout.product_link.andresperezjurado.product1;
-                    //             await checkout_andresperezjurado.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                    case "live":
+                        var domain = config_checkout.domain.randosouthwest.live;
+                        var launch = config_checkout.launch.live;
+                        console.log(domain);
+                        console.log("live");
+                        switch (co_site) {
+                            case "product1":
+                                var product_name = config_checkout.product.randosouthwest.product1;
+                                var product_link = config_checkout.product_link.randosouthwest.product1;
+                                await checkout_randosouthwest.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                     default:
                         break;
                 }
