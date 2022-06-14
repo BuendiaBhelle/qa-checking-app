@@ -32,6 +32,7 @@
     }
 
     #sheet-links {
+        /* margin-top: -140px; */
         text-align: right;
         margin-right: -60px;
     }
@@ -51,7 +52,7 @@
             <div class="container">
                 <div class="row">
                     <div class="logo-container">
-                        <a href="/posts">
+                        <a href="/post">
                             <img src="img/pv-logo-white.png" class="img-fluid">
                         </a>
                     </div>
@@ -59,12 +60,41 @@
                 <div class="row">
                     <div class="sidebar-nav-container">
                         <ul class="nav flex-column">
+                            <!-- <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="checkoutForm()">Checkout</button>
+                            </li> -->
+                            <!-- <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="image_optimizationForm()">Image Optimization</button>
+                            </li> -->
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="visibilityForm()">Visibility</button>
                             </li>
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="webForms()">Web Forms</button>
                             </li>
+                            <!-- <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="newsletter()">Newsletter</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="nitropack()">Nitropack</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="wpm()">Website Performance Monitoring</button>
+                            </li>
+                            <div class="dropdown">
+                                <li class="nav-item">
+                                    <button class="button sidebar-nav-item">Responsiveness</button>
+                                    <div class="dropdown-content">
+                                        <p style="margin-bottom: 6px;" onclick="responsivenessForm_lambdatest()">Lambdatest</p>
+                                        <p onclick="responsiveness_manual()">Manual</p>
+                                    </div>
+                                </li>
+                            </div> -->
+          
+
+
+ 
+                              
                         </ul>
                         <div class="logout">
                             <button class="logout-botton" onclick="location.href='/logout'">Logout</button>
@@ -86,6 +116,15 @@
                                 <a href="https://docs.google.com/spreadsheets/d/12kLaYAzd0qsJ0v3jDZElfuR1x8GHP56gWG-3zmCf_48/edit#gid=212388123" target="_blank">
                                     Contact Form Tracker
                                 </a>
+                                <a href="https://docs.google.com/spreadsheets/d/1hu8GFGLvC9W53BFn-eO_fsP--pcqGgF39sajOwam-6I/edit#gid=0" target="_blank">
+                                    Test Purchase Tracker
+                                </a>
+                                <a href="https://docs.google.com/spreadsheets/d/1I5m_V-g6IVToKCuuTscbXf1geKa2wlrwF-IyJ14o2_Q/edit#gid=282054145" target="_blank">
+                                    WPM
+                                </a>
+                                <a href="https://docs.google.com/spreadsheets/d/1JZyOiOF6g4M4TQDjzXMmtNKJujGQvMYKIgmmuHgxwhQ/edit#gid=0" target="_blank">
+                                    Nitropack
+                                </a>
                             </div>
 
                             <!-- Checkout Testing -->
@@ -98,7 +137,10 @@
                                                 <div class="form-group row">
                                                     <label for="checkout" class="col-sm-3 col-form-label">Choose a site:</label>
                                                     <div class="col-sm-9">
-                                                        <select name="checkout" class="form-control">
+                                                        <select name="checkout" class="form-control" onchange="checkouts()">
+                                                            <option value="americanleatherusa">American Leather USA</option>
+                                                            <option value="andresperezjurado">Andres Perez Jurado</option>
+                                                            <option value="randosouthwest">Rando Southwest</option>
                                                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
                                                         </select>
                                                         <a href="" onclick="not_on_the_list()">Not on the list?</a>
@@ -114,40 +156,121 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="form-group row">
-                                                    <label for="product" class="col-sm-3 col-form-label">Choose a product:</label>
-                                                    <div class="col-sm-9">
-                                                        <select name="product" class="form-control">
-                                                            <option value="product1">White Buffalo Round Silver Earrings</option>
-                                                            <option value="product2">Kingman Turquoise Bracelet</option>
-                                                        </select>
+                                                <!-- American Leather USA -->
+                                                <div id="co_americanleatherusa">
+                                                    <div class="form-group row">
+                                                        <label for="co_americanleatherusa" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_americanleatherusa" class="form-control">
+                                                                <option value="product1">Python Card Holder</option>
+                                                                <option value="product2">Ostrich Legs Card Holder</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
+
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>1L$YRb8ovrch5YpiHkYIf9WX</i>
+                                                            <div>
+                                                                <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Andres Perez Jurado -->
+                                                <div id="co_andresperezjurado">
+                                                    <div class="form-group row">
+                                                        <label for="co_andresperezjurado" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_andresperezjurado" class="form-control">
+                                                                <option value="product1">Red Flowers Coffee Mug</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>t1tqAV@I}S>w</i>
+                                                            <div>
+                                                                <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Rando Southwest -->
+                                                <div id="co_randosouthwest">
+                                                    <div class="form-group row">
+                                                        <label for="co_randosouthwest" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_randosouthwest" class="form-control">
+                                                                <option value="product1">Regular Seasoning (2.5 ounce)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>&4c^I6WjO&SfVJ3fiSCz0dRd</i>
+                                                            <div>
+                                                                <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                                 
-                                                <div class="form-group row align-items-baseline">
+                                                <!-- Sunrise Jewelry USA -->
+                                                <div id="co_sunrisejewelryusa">
+                                                    <div class="form-group row">
+                                                        <label for="co_sunrisejewelryusa" class="col-sm-3 col-form-label">Choose a product:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="co_sunrisejewelryusa" class="form-control">
+                                                                <option value="product1">White Buffalo Round Silver Earrings</option>
+                                                                <option value="product2">Tear Shaped White Buffalo Silver Ring</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row align-items-baseline">
                                                         <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
                                                             <p><b>password:</b> <i>jX6#dN5?oR7#vU5#</i>
                                                             <div>
                                                                 <button type="button" class="btn btn-primary-sm" onclick="showCredEditCheckout()">Edit</button>
-                                                                <div id="credentials_checkout">
-                                                                    <div class="form-group row">
-                                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" id="username" name="username" class="form-control"><br>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" id="password" name="password" class="form-control"><br>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+
                                                 </div>
+
+                                                <div id="credentials_checkout">
+                                                    <div class="form-group row">
+                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="username" name="username" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="password" name="password" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                    
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group row ">
@@ -239,19 +362,22 @@
                                                             <option value="canyonfallshairextensioncompany">Canyon Falls Hair Extension Company</option>
                                                             <option value="crexendo">Crexendo</option>
                                                             <option value="culpepper">Culpepper & Associates</option>
+                                                            <option value="dentistryatthebiltmore">Dentistry At The Biltmore</option>
                                                             <option value="ewingconstruction">Ewing Construction</option>
                                                             <option value="frlawgroup">FR Law Group</option>
                                                             <option value="freddabranyon">Fredda Branyon</option>
+                                                            <option value="gatorskin">Gatorskin</option>
                                                             <option value="indinspect">Industrial Inspection & Consulting</option>
                                                             <option value="jewelryoutletinc">Jewelry Outlet</option>
                                                             <option value="judefrancesjewelry">Jude Frances Jewelry</option>
                                                             <option value="kyrenefamilydentistry">Kyrene Family Dentistry</option>
                                                             <option value="lignans">Lignans</option>
+                                                            <option value="mcbuildingmaintenance">MC Building Maintenance</option>
                                                             <option value="natina">Natina</option>
                                                             <option value="newhopemedicalcenter">New Hope Medical Center</option>
                                                             <option value="optimizex">OptimizeX</option>
                                                             <option value="paysondermatology">Payson Dermatology</option>
-                                                            <option value="phoenixritecare">Phoenix Scottish Rite</option>
+                                                            <!-- <option value="phoenixritecare">Phoenix Scottish Rite</option> -->
                                                             <option value="primemedicalpain">Prime Medical Pain Management Centers</option>
                                                             <option value="primeview">Primeview</option>
                                                             <option value="randosouthwest">Rando South West</option>
@@ -261,6 +387,7 @@
                                                             <option value="solutionsforum">Solutions Forum</option>
                                                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
                                                             <option value="versatile">Versatile</option>
+                                                            <option value="virtualassistantsoutsourcing">Virtual Assistant Outsourcing</option>
                                                         </select>
                                                         <a href="" onclick="not_on_the_list()">Not on the list?</a>
                                                     </div>
@@ -295,7 +422,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <!-- AIMS -->
                                                 <div id="site_advancedimagemedspa">
                                                     <div class="form-group row">
@@ -400,6 +527,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- APJ Art -->
                                                 <div id="site_andresperezjurado">
                                                     <div class="form-group row">
@@ -419,6 +547,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- AZ Door Doctor -->
                                                 <div id="site_azdoordoctor">
                                                     <div class="form-group row">
@@ -440,6 +569,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- BLJ -->
                                                 <div id="site_biltmoreloanandjewelry">
                                                     <div class="form-group row">
@@ -464,6 +594,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Buckeye Derm -->
                                                 <div id="site_buckeyederm">
                                                     <div class="form-group row">
@@ -483,6 +614,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Canyon Falls -->
                                                 <div id="site_canyonfallshairextensioncompany">
                                                     <div class="form-group row">
@@ -503,6 +635,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Crexendo -->
                                                 <div id="site_crexendo">
                                                     <div class="form-group row">
@@ -542,6 +675,28 @@
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>Culpepper</i></p>
                                                             <p><b>password:</b> <i>1Elizab3th</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Dentistry At The Biltmore -->
+                                                <div id="site_dentistryatthebiltmore">
+                                                    <div class="form-group row">
+                                                        <label for="site_dentistryatthebiltmore" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_dentistryatthebiltmore" class="form-control">
+                                                                <option value="form1">Book a Consultation</option>
+                                                                <option value="form2">Get Started!</option>
+                                                                <option value="form3">Contact</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>sbDDKFc0VYqf39LgP0SrZGh4</i></p>
                                                             <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
                                                         </div>
                                                     </div>
@@ -608,6 +763,26 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <!-- Gatorskin -->
+                                                <div id="site_gatorskin">
+                                                    <div class="form-group row">
+                                                        <label for="site_gatorskin" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_gatorskin" class="form-control">
+                                                                <option value="form1">Contact Page | Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>p5PBJAlQYA4jH*iI(dw!Gtml</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 
                                                 <!-- Industrial Inspection -->
                                                 <div id="site_indinspect">
@@ -670,7 +845,7 @@
                                                         <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
-                                                            <p><b>password:</b> <i>%XsJl4Uu%/]5</i></p>
+                                                            <p><b>password:</b> <i>rM6qH2pO3cC2tO4e</i></p>
                                                             <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
                                                         </div>
                                                     </div>
@@ -712,6 +887,27 @@
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>PrimeView</i></p>
                                                             <p><b>password:</b> <i>wV0^7*FT4NZ$VfZM</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- MC Building Maintenance -->
+                                                <div id="site_mcbuildingmaintenance">
+                                                    <div class="form-group row">
+                                                        <label for="site_mcbuildingmaintenance" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_mcbuildingmaintenance" class="form-control">
+                                                                <option value="form1">Contact form 1</option>
+                                                                <option value="form2">Sidebar Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>]wuB34Q{DbhF</i></p>
                                                             <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
                                                         </div>
                                                     </div>
@@ -792,6 +988,8 @@
                                                                 <option value="form5">Cancer Page Sidebar Form</option>
                                                                 <option value="form6">Quick Contact Sidebar Form</option>
                                                                 <option value="form7">Contact Us Page Form</option>
+                                                                <option value="form8">Cancer Page Template Form</option>
+                                                                <option value="form9">New PPC Form Test</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -1026,6 +1224,26 @@
                                                     </div>
                                                 </div>
 
+                                                <!-- Virtual Assistant Outsourcing -->
+                                                <div id="site_virtualassistantsoutsourcing">
+                                                    <div class="form-group row">
+                                                        <label for="site_virtualassistantsoutsourcing" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_virtualassistantsoutsourcing">
+                                                                <option value="form1">Get in Touch with Us - Bottom</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>[zJdPOoINX[8u(ed</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div id="credentials">
                                                     <div class="form-group row">
                                                         <label for="username" class="col-sm-3 col-form-label">Username:</label>
@@ -1063,9 +1281,96 @@
                                 </form>
                             </div>
 
-                            <!-- Responsiveness -->
+                            <!-- Newsletter -->
+                            <div id="newsletter">
+                                <h1>Newsletter</h1>
+                                <form action="/post/newsletter" method="post">
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="site" class="col-sm-3 col-form-label">Choose a site:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="site" id="site" onchange="sites()">
+                                                            <option value="freddabranyon">Fredda Branyon</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" id="checkbox">
+                                                    <label for="checkbox" class="col-sm-3 col-form-label">Choose one:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="checkbox" class="form-control">
+                                                            <!-- <option value="dev">Dev</option> -->
+                                                            <option value="live">Live</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row align-items-baseline">
+                                                    <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                    <div class="col-sm-9">
+                                                        <p><b>username:</b> <i>pvadmin</i></p>
+                                                        <p><b>password:</b> <i>cHJxubk0*E8q^J$M1A%Hpk*P</i>
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNewsletter()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="credentials_newsletter">
+                                                    <div class="form-group row">
+                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="username" name="username" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="password" name="password" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                           
+                                        </div>
+                                    </div>            
+
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                    
+                                </form>
+                            </div>
+
+                            <!-- Nitropack -->
+                            <div id="nitropack">
+                                <h1>Nitropack</h1>
+                                <form action="/post/nitropack" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                                <br>
+                                <form action="/post/nitropack/reports" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
+                                </form>
+                            </div>
+
+                            <!-- WPM -->
+                            <div id="wpm">
+                                <h1>WPM</h1>
+                                <form action="/post/wpm" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                                <br>
+                                <form action="/post/wpm/reports" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
+                                </form>
+                            </div>
+
+                            <!-- Responsiveness - Lambdatest -->
                             <div id="responsiveness_lambdatest">
-                                <h1>Responsiveness - Lambdatest</h1>
+                                <h1>Lambdatest</h1>
                                 <form action="/post/responsiveness_lambdatest" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -1165,8 +1470,9 @@
                                 </form>
                             </div>
                 
+                            <!-- Responsiveness - Manual -->
                             <div id="responsiveness_manual">
-                                <h1>Responsiveness - Manual</h1>
+                                <h1>Manual</h1>
                                 <form action="/post/responsiveness_manual" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -1198,33 +1504,147 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
     </div>
 
     <script>
+        function checkoutForm() {
+            document.getElementById('checkout').style.display = 'block';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function image_optimizationForm() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'block';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
         function visibilityForm(){
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'block';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('webForms').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
-
         function webForms(){
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'block';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
-            document.getElementById('visibility').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
+        function newsletter() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'block';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function nitropack() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'block';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function wpm() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'block';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function responsivenessForm_lambdatest() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'block';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function responsiveness_manual() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'block';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+
+        
+        function versions() {
+            var device = document.getElementById("device").value;
+            if (device === "desktop") {
+                document.getElementById('version_desktop').style.display = 'flex';
+                document.getElementById('version_mobile').style.display = 'none';
+                document.getElementById('version_tablet').style.display = 'none';
+            }
+            else if (device === "mobile") {
+                document.getElementById('version_mobile').style.display = 'flex';
+                document.getElementById('version_desktop').style.display = 'none';
+                document.getElementById('version_tablet').style.display = 'none';
+            }
+            else if (device === "tablet") {
+                document.getElementById('version_tablet').style.display = 'flex';
+                document.getElementById('version_desktop').style.display = 'none';
+                document.getElementById('version_mobile').style.display = 'none';
+            }
+        }
+
 
         function sites() {
             var site = document.getElementById("site").value;
@@ -1242,19 +1662,22 @@
                 "canyonfallshairextensioncompany",
                 "crexendo",
                 "culpepper",
+                "dentistryatthebiltmore",
                 "ewingconstruction",
                 "frlawgroup",
                 "freddabranyon",
+                "gatorskin",
                 "indinspect",
                 "jewelryoutletinc",
                 "judefrancesjewelry",
                 "kyrenefamilydentistry",
                 "lignans",
+                "mcbuildingmaintenance",
                 "natina",
                 "newhopemedicalcenter",
                 "optimizex",
                 "paysondermatology",
-                "phoenixritecare",
+                // "phoenixritecare",
                 "primemedicalpain",
                 "primeview",
                 "randosouthwest",
@@ -1263,7 +1686,8 @@
                 "sellusyourcaraz",
                 "solutionsforum",
                 "sunrisejewelryusa",
-                "versatile"  
+                "versatile",
+                "virtualassistantsoutsourcing"  
             ]
             var site_name_value = [
                 "site_accidentchiropracticaz",
@@ -1279,19 +1703,22 @@
                 "site_canyonfallshairextensioncompany",
                 "site_crexendo",
                 "site_culpepper",
+                "site_dentistryatthebiltmore",
                 "site_ewingconstruction",
                 "site_frlawgroup",
                 "site_freddabranyon",
+                "site_gatorskin",
                 "site_indinspect",
                 "site_jewelryoutletinc",
                 "site_judefrancesjewelry",
                 "site_kyrenefamilydentistry",
                 "site_lignans",
+                "site_mcbuildingmaintenance",
                 "site_natina",
                 "site_newhopemedicalcenter",
                 "site_optimizex",
                 "site_paysondermatology",
-                "site_phoenixritecare",
+                // "site_phoenixritecare",
                 "site_primemedicalpain",
                 "site_primeview",
                 "site_randosouthwest",
@@ -1300,7 +1727,8 @@
                 "site_sellusyourcaraz",
                 "site_solutionsforum",
                 "site_sunrisejewelryusa",
-                "site_versatile"  
+                "site_versatile",
+                "site_virtualassistantsoutsourcing"  
             ]
 
             for (let index = 0; index < site_names.length; index++) {
@@ -1314,6 +1742,33 @@
             
         }
 
+        function checkouts() {
+            var checkout = document.getElementsByName("checkout")[0].value;
+            var site_names_checkout = [
+                "americanleatherusa",
+                "andresperezjurado",
+                "randosouthwest",
+                "sunrisejewelryusa"
+            ]
+            var site_name_checkout_value = [
+                "co_americanleatherusa",
+                "co_andresperezjurado",
+                "co_randosouthwest",
+                "co_sunrisejewelryusa"
+            ]
+
+            for (let index = 0; index < site_names_checkout.length; index++) {
+                var val = site_name_checkout_value[index];
+                if (checkout === site_names_checkout[index]) {
+                    document.getElementById(site_name_checkout_value[index]).style.display = 'block';
+                }
+                else {
+                    document.getElementById(val).style.display = 'none';
+                }
+                
+            }
+        }
+        
         function not_on_the_list() {
             alert("Site must be tracked on the contact form tracker first.")
         }
@@ -1324,6 +1779,10 @@
 
         function showEmailWebforms() {
             document.getElementById('qa_email_webforms').style.display = 'flex';
+        }
+
+        function showCredEditNewsletter() {
+            document.getElementById('credentials_newsletter').style.display = 'block';
         }
 
         function showCredEditCheckout() {
