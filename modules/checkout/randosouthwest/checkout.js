@@ -1,5 +1,6 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
+const alert = require("alert"); 
 
 const config = require("../config");
 const logger = require('../../../middleware/logger');
@@ -188,7 +189,8 @@ async function checkout(domain, username, password, module_name, launch, range_p
     }
 
     // add credit card details
-    await driver.sleep(10000);
+    alert("Please input card details.")
+    await driver.sleep(20000);
 
     // track thank you page
     let ty_page_url = await driver.getCurrentUrl();

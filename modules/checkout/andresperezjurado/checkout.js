@@ -1,5 +1,6 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
+const alert = require("alert"); 
 
 const config = require("../config");
 const logger = require('../../../middleware/logger');
@@ -118,6 +119,32 @@ async function checkout(domain, username, password, module_name, launch, range_p
             await sheet.appendValues(value); 
         }
 
+        await driver.executeScript("return document.getElementsByClassName('shipping-calculator-button')[0].click()");
+        
+        await driver.findElement(By.id("select2-calc_shipping_country-container")).click();
+        await driver.sleep(1000);
+        let country = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
+        country.sendKeys("united states" + Key.ENTER);
+        await driver.sleep(1000);
+
+        await driver.findElement(By.id("select2-calc_shipping_state-container")).click();
+        await driver.sleep(1000);
+        let state = await driver.executeScript("return document.getElementsByClassName('select2-search__field')[0]");
+        state.sendKeys("arizona" + Key.ENTER);
+        await driver.sleep(1000);
+
+        await driver.findElement(By.id("calc_shipping_city")).sendKeys(Key.CONTROL, "a" + Key.DELETE); 
+        await driver.findElement(By.id("calc_shipping_city")).sendKeys("Scottsdale"); 
+        await driver.sleep(1000);
+
+        await driver.findElement(By.id("calc_shipping_postcode")).sendKeys(Key.CONTROL, "a" + Key.DELETE);
+        await driver.findElement(By.id("calc_shipping_postcode")).sendKeys("85257");
+        await driver.sleep(1000);
+
+        await driver.findElement(By.name("calc_shipping")).click();
+
+        await driver.sleep(2000);
+
         await driver.executeScript("return document.getElementsByClassName('checkout-button button alt wc-forward')[0].click()");
 
         logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout page success.', tester: server.userId });
@@ -199,7 +226,8 @@ async function checkout(domain, username, password, module_name, launch, range_p
     }
 
     // add credit card details
-    await driver.sleep(10000);
+    alert("Please input card details.")
+    await driver.sleep(20000);
 
 
     // track thank you page
