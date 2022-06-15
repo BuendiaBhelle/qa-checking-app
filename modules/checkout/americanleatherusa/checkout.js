@@ -87,7 +87,7 @@ async function checkout(domain, username, password, module_name, launch, range_p
                 valueInputOption: "USER_ENTERED",
                 resource: {
                     values: [
-                        [product_item_name]
+                        [domain + product_link, product_item_name]
                     ]
                 }
             });

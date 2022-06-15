@@ -75,10 +75,10 @@ let launch = {
 }
 
 let range_product_name = {
-    sunrisejewelryusa: "Sunrise Jewelry USA!E2",
-    americanleatherusa: "American Leather USA!E2",
-    andresperezjurado: "Andres Perez Jurado!E2",
-    randosouthwest: "Rando Southwest!E2"
+    sunrisejewelryusa: "Sunrise Jewelry USA!D2:E2",
+    americanleatherusa: "American Leather USA!D2:E2",
+    andresperezjurado: "Andres Perez Jurado!D2:E2",
+    randosouthwest: "Rando Southwest!D2:E2"
 }
 
 let range_recipients = {
