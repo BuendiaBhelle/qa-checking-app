@@ -1,5 +1,6 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
+const alert = require("alert"); 
 const config_webforms = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
@@ -40,9 +41,12 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
         await driver.findElement(By.id("input_2_6")).sendKeys("2");
         await driver.sleep(1000);
         await driver.findElement(By.id("input_2_7")).sendKeys("444");
-        // image attachment
-        await driver.sleep(1000);
-        await driver.findElement(By.id("input_2_9")).sendKeys("Lead Test Submission");
+
+        // add attachment
+        alert("Please manually insert attachment.")
+        await driver.sleep(20000);
+
+        await driver.findElement(By.id("input_2_9")).sendKeys("Please take note that this is a test submit form for Repairs. Please disregard if received. Thank you.");
         await driver.executeScript("return document.getElementsByClassName('btn-gform')[0].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");

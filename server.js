@@ -18,7 +18,6 @@ const checkout_americanleatherusa = require("./modules/checkout/americanleatheru
 const checkout_andresperezjurado = require("./modules/checkout/andresperezjurado/index");
 const checkout_randosouthwest = require("./modules/checkout/randosouthwest/index");
 const checkout_sunrisejewelryusa = require("./modules/checkout/sunrisejewelryusa/index");
-
 const image_optimization = require("./modules/image_optimization/image_optimization");
 const visibility = require("./modules/visibility/visibility");
 const webforms_accidentchiropracticaz_f1 = require("./modules/webforms/contactform7/forms/accidentchiropracticaz/form1/index");
@@ -74,10 +73,8 @@ const webforms_judefrancesjewelry_f6 = require("./modules/webforms/gravityform/f
 const webforms_kyrenefamilydentistry_f1 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form1/index");
 const webforms_kyrenefamilydentistry_f2 = require("./modules/webforms/contactform7/forms/kyrenefamilydentistry/form2/index");
 const webforms_lignans_f1 = require("./modules/webforms/contactform7/forms/lignans/form1/index")
-
 const webforms_mcbuildingmaintenance_f1 = require("./modules/webforms/contactform7/forms/mcbuildingmaintenance/form1/index")
 const webforms_mcbuildingmaintenance_f2 = require("./modules/webforms/contactform7/forms/mcbuildingmaintenance/form2/index")
-
 const webforms_natina_f1 = require("./modules/webforms/contactform7/forms/natina/form1/index");
 const webforms_newhopemedicalcenter_f1 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form1/index");
 const webforms_newhopemedicalcenter_f2 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form2/index");
@@ -86,10 +83,8 @@ const webforms_newhopemedicalcenter_f4 = require("./modules/webforms/gravityform
 const webforms_newhopemedicalcenter_f5 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form5/index");
 const webforms_newhopemedicalcenter_f6 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form6/index");
 const webforms_newhopemedicalcenter_f7 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form7/index");
-
 const webforms_newhopemedicalcenter_f8 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form8/index");
 const webforms_newhopemedicalcenter_f9 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form9/index");
-
 const webforms_optimizex_f1 = require("./modules/webforms/contactform7/forms/optimizex/form1/index");
 const webforms_optimizex_f2 = require("./modules/webforms/contactform7/forms/optimizex/form2/index");
 const webforms_optimizex_f3 = require("./modules/webforms/contactform7/forms/optimizex/form3/index");
@@ -135,6 +130,7 @@ const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desk
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
+
 const { log } = require('console');
 const expiry = 1000 * 60 * 60 * 24;
 var date = new Date();
@@ -154,6 +150,8 @@ app.use(sessions({
 
 const success_msg = 'Success.<br><br><a href="http://localhost:3000/post">Return home</a>';
 const success_msg_marketing = 'Success.<br><br><a href="http://localhost:3000/posts">Return home</a>';
+
+app.use("/static", express.static('./static/'));
 
 app.get('/users', (req, res) => {
     res.json(users);
@@ -599,7 +597,6 @@ app.post('/post/visibility', async (req, res) => {
     }
     
 });
-
 
 app.post('/post/webforms', async (req, res) => {
     logger.errorLog();
@@ -4805,7 +4802,6 @@ app.post('/post/wpm/reports', async (req, res) => {
     res.send(success_msg);
 });
 
-
 app.post('/post/responsiveness_lambdatest', function(req, res) {
     logger.errorLog();
     var url = req.body.url;
@@ -5405,7 +5401,6 @@ app.post('/post/responsiveness_lambdatest', function(req, res) {
     res.send(success_msg);
 });
 
-
 app.post('/post/responsiveness_manual', function(req, res) {
     logger.errorLog();
     var url = req.body.url;
@@ -5427,6 +5422,7 @@ app.post('/post/responsiveness_manual', function(req, res) {
     }
     res.send(success_msg);
 });
+
 
 
 http.listen(3000, function(){

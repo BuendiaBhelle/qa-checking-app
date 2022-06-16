@@ -1,5 +1,6 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
+const alert = require("alert"); 
 const config_webforms = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
@@ -19,6 +20,13 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     try {
         await driver.get(domain + forms);
         await driver.sleep(3000);
+
+        // add attachment
+        alert("Please manually insert attachment.")
+        await driver.sleep(20000);
+
+        await driver.executeScript("return document.getElementsByClassName('color-box')[0].click()");
+
         let name = await driver.executeScript("return document.getElementsByName('design-full-name')[0]");
         name.sendKeys("Primeview Test");
         let email = await driver.executeScript("return document.getElementsByName('design-email')[0]");
