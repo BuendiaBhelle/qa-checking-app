@@ -56,7 +56,8 @@ const sites = [
     "gatorskin",
     "virtualassistantsoutsourcing",
     "dentistryatthebiltmore",
-    "mcbuildingmaintenance"
+    "mcbuildingmaintenance",
+    "cma"
 ]
 
 let wp_creds = {
@@ -215,6 +216,10 @@ let wp_creds = {
     mcbuildingmaintenance: {
         username: "pvadmin",
         password: "]wuB34Q{DbhF"
+    },
+    cma: {
+        username: "pvadmin",
+        password: "iR4wW]uPU1V("
     }
 }
 
@@ -373,6 +378,10 @@ let domain = {
     },
     mcbuildingmaintenance: {
         dev: "https://mcbuildingmaintenancedev.primeview.com/",
+        live: "https://www.mcbuildingmaintenance.com/"
+    },
+    cma: {
+        dev: "https://cmahrdev.primeview.com/",
         live: ""
     }
 }
@@ -556,6 +565,9 @@ let forms = {
     mcbuildingmaintenance: {
         form1: "contact-us/",
         form2: "about-us/"
+    },
+    cma: {
+        form1: ""
     }
 }
 
@@ -598,7 +610,8 @@ let sheetId = {
     gatorskin: 1363791668,
     virtualassistantsoutsourcing: 763505033,
     dentistryatthebiltmore: 968628360,
-    mcbuildingmaintenance: 283258278
+    mcbuildingmaintenance: 283258278,
+    cma: 2088597437
 }
 
 let range = [
@@ -1069,6 +1082,18 @@ let range = [
             "MC Building Maintenance!E2",
             "MC Building Maintenance!G2",
         ]
+    ],
+    sites[39] = [
+        [
+            "CMA!Q2",
+            "CMA!A2",
+            "CMA!B2",
+            "CMA!C2",
+            "CMA!C3",
+            "CMA!D2",
+            "CMA!E2",
+            "CMA!G2",
+        ]
     ]
 ]
 
@@ -1111,7 +1136,8 @@ let ranges = {
     gatorskin: range[35][0],
     virtualassistantsoutsourcing: range[36][0],
     dentistryatthebiltmore: range[37][0],
-    mcbuildingmaintenance: range[38][0]
+    mcbuildingmaintenance: range[38][0],
+    cma: range[39][0]
 }
 
 let launch = {
@@ -1298,6 +1324,9 @@ let contact_form_name = {
     mcbuildingmaintenance: {
         form1: "Contact form 1",
         form2: "Sidebar Form"
+    },
+    cma: {
+        form1: "CMA - Contact Form"
     }
 }
 
@@ -1480,6 +1509,9 @@ let contact_form_shortcode = {
     mcbuildingmaintenance: {
         form1: '[contact-form-7 id="8" title="Contact form 1"]',
         form2: '[contact-form-7 id="407" title="Sidebar Form"]'
+    },
+    cma: {
+        form1: '[contact-form-7 id="56" title="CMA - Contact Form"]'
     }
 }
 
@@ -1523,7 +1555,8 @@ let range_recipient = {
     gatorskin: "Gatorskin!H2",
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!H2",
-    mcbuildingmaintenance: "MC Building Maintenance!H2"
+    mcbuildingmaintenance: "MC Building Maintenance!H2",
+    cma: "CMA!H2"
 }
 
 
@@ -1566,7 +1599,8 @@ let range_thankyou_page = {
     gatorskin: "Gatorskin!I2",
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!I2",
-    mcbuildingmaintenance: "MC Building Maintenance!I2"
+    mcbuildingmaintenance: "MC Building Maintenance!I2",
+    cma: "CMA!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -2015,6 +2049,14 @@ let webforms = {
             form1: "Contact form 1",
             form2: "Sidebar Form"
         }
+    },
+    cma: {
+        dev: {
+            form1: "CMA - Contact Form"
+        },
+        live: {
+            form1: "CMA - Contact Form"
+        }
     }
 }
 
@@ -2454,6 +2496,14 @@ let form_page = {
         live: {
             form1: "/admin.php?page=wpcf7&post=8&action=edit",
             form2: "/admin.php?page=wpcf7&post=407&action=edit"
+        }
+    },
+    cma: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=56&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=56&action=edit"
         }
     }
 }

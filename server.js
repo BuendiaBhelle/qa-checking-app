@@ -3,16 +3,15 @@ const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
 const fs = require('file-system');
+const bcrypt = require('bcrypt');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
+const express = require('express');
+
 const logger = require("./middleware/logger.js");
 const sheet = require('./middleware/gsheet.js');
 const config = require("./config");
 const config_checkout = require("../qa-checking-app/modules/checkout/config");
-
-const express = require('express');
-app.use(express.static(__dirname + '/public'));
-const bcrypt = require('bcrypt');
-const cookieParser = require("cookie-parser");
-const sessions = require('express-session');
 
 const checkout_americanleatherusa = require("./modules/checkout/americanleatherusa/index");
 const checkout_andresperezjurado = require("./modules/checkout/andresperezjurado/index");
@@ -41,6 +40,7 @@ const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/contactfo
 const webforms_buckeyederm_f1 = require("./modules/webforms/contactform7/forms/buckeyederm/form1/index");
 const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form1/index");
 const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form2/index");
+const webforms_cma_f1 = require("./modules/webforms/contactform7/forms/cma/form1/index");
 const webforms_collisioncenternorthscottsdale_f1 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form1/index");
 const webforms_collisioncenternorthscottsdale_f2 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form2/index");
 const webforms_collisioncenternorthscottsdale_f3 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form3/index");
@@ -131,11 +131,11 @@ const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
 
-const { log } = require('console');
 const expiry = 1000 * 60 * 60 * 24;
 var date = new Date();
 var timestamp = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
 
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false })) 
 app.use(bodyParser.json());
 app.use(express.json());
@@ -1405,6 +1405,63 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
+                }
+                break;
+            case "cma":
+                var site_cma = req.body.site_cma;
+                var sheetId = config.sheetId.cma;
+                var ranges = config.ranges.cma;
+                var range_recipient = config.range_recipient.cma;
+                var range_thankyou_page = config.range_thankyou_page.cma;
+
+                console.log("Site: " + site_cma);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.cma.dev;
+                        var wp_creds_username = config.wp_creds.cma.username;
+                        var wp_creds_password = config.wp_creds.cma.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_cma) {
+                            case "form1":
+                                var forms = config.forms.cma.form1;
+                                var webforms = config.webforms.cma.dev.form1;
+                                var contact_form_name = config.contact_form_name.cma.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.cma.form1;
+                                var form_page = config.form_page.cma.dev.form1;
+
+                                console.log("form1");
+                                await webforms_cma_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    // case "live":
+                    //     var domain = config.domain.cma.live;
+                    //     var wp_creds_username = config.wp_creds.cma.username;
+                    //     var wp_creds_password = config.wp_creds.cma.password;
+                    //     var launch = config.launch.live;
+
+                    //     console.log(domain);
+                    //     console.log("live");
+                    //     switch (site_cma) {
+                    //         case "form1":
+                    //             var forms = config.forms.cma.form1;
+                    //             var webforms = config.webforms.cma.live.form1;
+                    //             var contact_form_name = config.contact_form_name.cma.form1;
+                    //             var contact_form_shortcode = config.contact_form_shortcode.cma.form1;
+                    //             var form_page = config.form_page.cma.live.form1;
+
+                    //             console.log("form1");
+                    //             await webforms_cma_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    //     break;
                 }
                 break;
             case "collisioncenternorthscottsdale":
@@ -3400,29 +3457,39 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = config.domain.lignans.live;
-                    //     var wp_creds_username = config.wp_creds.lignans.username;
-                    //     var wp_creds_password = config.wp_creds.lignans.password;
-                    //     var launch = config.launch.live;
+                    case "live":
+                        var domain = config.domain.mcbuildingmaintenance.live;
+                        var wp_creds_username = config.wp_creds.mcbuildingmaintenance.username;
+                        var wp_creds_password = config.wp_creds.mcbuildingmaintenance.password;
+                        var launch = config.launch.live;
 
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_lignans) {
-                    //         case "form1":
-                    //             var forms = config.forms.lignans.form1;
-                    //             var webforms = config.webforms.lignans.live.form1;
-                    //             var contact_form_name = config.contact_form_name.lignans.form1;
-                    //             var contact_form_shortcode = config.contact_form_shortcode.lignans.form1;
-                    //             var form_page = config.form_page.lignans.live.form1;
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_mcbuildingmaintenance) {
+                            case "form1":
+                                var forms = config.forms.mcbuildingmaintenance.form1;
+                                var webforms = config.webforms.mcbuildingmaintenance.live.form1;
+                                var contact_form_name = config.contact_form_name.mcbuildingmaintenance.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.mcbuildingmaintenance.form1;
+                                var form_page = config.form_page.mcbuildingmaintenance.live.form1;
 
-                    //             console.log("form1");
-                    //             await webforms_lignans_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                                console.log("form1");
+                                await webforms_mcbuildingmaintenance_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.mcbuildingmaintenance.form2;
+                                var webforms = config.webforms.mcbuildingmaintenance.live.form2;
+                                var contact_form_name = config.contact_form_name.mcbuildingmaintenance.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.mcbuildingmaintenance.form2;
+                                var form_page = config.form_page.mcbuildingmaintenance.live.form2;
+
+                                console.log("form2");
+                                await webforms_mcbuildingmaintenance_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "natina":
@@ -5422,7 +5489,6 @@ app.post('/post/responsiveness_manual', function(req, res) {
     }
     res.send(success_msg);
 });
-
 
 
 http.listen(3000, function(){
