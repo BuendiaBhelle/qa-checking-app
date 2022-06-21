@@ -1,5 +1,6 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
+const alert = require("alert"); 
 const config_webforms = require("../../../../config");
 const logger = require('../../../../../../middleware/logger.js');
 const server = require('../../../../../../server.js');
@@ -37,6 +38,10 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
 
         let message = await driver.executeScript("return document.getElementsByName('your-message')[0]");
         message.sendKeys("Please take note that this is a test submit form for Contact form 1. Please disregard if received. Thank you.");
+
+        // add attachment
+        alert("Please manually insert attachment.")
+        await driver.sleep(20000);
         
         await driver.executeScript("return document.getElementsByClassName('wpcf7-submit')[0].click()");
 
