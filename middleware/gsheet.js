@@ -23,7 +23,7 @@ async function addRow() {
     
     const batchUpdateRequest = {requests};
     
-    // add columns
+    // add rows
     await googleSheets.spreadsheets.batchUpdate({
         auth,
         spreadsheetId,

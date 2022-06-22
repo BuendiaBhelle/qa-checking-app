@@ -21,7 +21,7 @@ async function wordpressStart(date, domain, username, password, email, timestamp
             range: {
                 sheetId: sheetId,
                 startRowIndex: 1,
-                endRowIndex: 4,
+                endRowIndex: 2,
                 startColumnIndex: 0,
             },
             shiftDimension: "ROWS"
@@ -50,13 +50,11 @@ async function wordpressStart(date, domain, username, password, email, timestamp
         await sheet.appendValues(value);
     }
 
-    
     let values = [
         "",
         launch,
         date,
-        wp_creds_username,
-        wp_creds_password,
+        wp_creds_username + "\n" + wp_creds_password,
         domain + forms,
         contact_form_name,
         contact_form_shortcode
