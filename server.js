@@ -122,8 +122,11 @@ const webforms_versatile_f4 = require("./modules/webforms/contactform7/forms/ver
 const webforms_virtualassistantsoutsourcing_f1 = require("./modules/webforms/contactform7/forms/virtualassistantsoutsourcing/form1/index");
 const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/forms/solutionsforum/form1/index");
 const newsletter = require("./modules/newsletter/newsletter");
-const nitropack = require("./modules/nitropack/index");
-const nitropack_reports = require("./modules/nitropack/nitropack");
+const nitropack = require("./modules/nitropack/reports/index");
+const nitropack_reports = require("./modules/nitropack/reports/nitropack");
+
+const nitropack_settings = require("./modules/nitropack/settings/settings");
+
 const wpm = require("./modules/wpm/index");
 const wpm_reports = require("./modules/wpm/wpm");
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
@@ -4834,17 +4837,54 @@ app.post('/post/newsletter', async (req, res) => {
 });
 
 app.post('/post/nitropack', async (req, res) => {
+    var write = req.body.write;
+    var display = req.body.display;
+
     try {
-        await nitropack.index(timestamp);
+        if (write) {
+            console.log(write);
+            await nitropack.index(timestamp);
+        } else if (display) {
+            console.log(display);
+            await nitropack_reports.displayFails(timestamp);
+        }
     } catch (error) {
         console.log(error);
     }
+
     res.send(success_msg);
 });
 
-app.post('/post/nitropack/reports', async (req, res) => {
+app.post('/post/nitropack/settings', async (req, res) => {
+    var site = req.body.site;
+    console.log(site);
+
     try {
-        await nitropack_reports.displayFails(timestamp);
+        switch (site) {
+            case "www.freddabranyon.com/":
+                await nitropack_settings.displayNitropackSettings(site);
+                break;
+            case "freddabranyondev.primeview.com/":
+                await nitropack_settings.displayNitropackSettings(site);
+                break;
+            case "www.lignans.net/":
+                await nitropack_settings.displayNitropackSettings(site);
+                break;
+            case "lignansdev.primeview.com/":
+                await nitropack_settings.displayNitropackSettings(site);
+                break;
+            case "www.newhopemedicalcenter.com/":
+                await nitropack_settings.displayNitropackSettings(site);
+                break;
+            case "phoenixritecare.org/":
+                await nitropack_settings.displayNitropackSettings(site);
+                break;
+            case "www.primeview.com/":
+                await nitropack_settings.displayNitropackSettings(site);
+                break;
+            default:
+                break;
+        }
     } catch (error) {
         console.log(error);
     }

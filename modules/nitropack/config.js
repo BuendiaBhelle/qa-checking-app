@@ -102,6 +102,16 @@ var sheet_names = [
 const module_name = "NITROPACK";
 
 
+// -------------------Nitropack Settings-------------------
+
+const nitropack_url = "https://nitropack.io/";
+
+const email = "software@primeview.com";
+
+const password = "nH1}tE9+gN4!kA2%";
+
+
+
 module.exports = { 
     output, 
     strTime,
@@ -112,5 +122,8 @@ module.exports = {
     ranges_mobile,
     ranges_desktop,
     sheet_names,
-    module_name
+    module_name,
+    nitropack_url,
+    email,
+    password
 };

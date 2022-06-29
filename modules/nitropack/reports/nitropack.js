@@ -5,10 +5,10 @@ const { dirname } = require("path");
 const { spawn } = require("child_process");
 const { driver, By2, windowsAppDriverCapabilities } = require("selenium-appium");
 
-const config = require("./config");
-const logger = require('../../middleware/logger');
-const server = require('../../server');
-const sheet = require('../../middleware/gsheet');
+const config = require("../config");
+const logger = require('../../../middleware/logger');
+const server = require('../../../server');
+const sheet = require('../../../middleware/gsheet');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",

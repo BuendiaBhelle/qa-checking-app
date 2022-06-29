@@ -42,13 +42,6 @@ async function appendValues(value) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
-    // let ranges = [
-    //     "Logs!E2",
-    //     "Logs!A2",
-    //     "Logs!B2",
-    //     "Logs!C2",
-    //     "Logs!D2"
-    // ]
 
     let ranges = [
         "Logs!O2",

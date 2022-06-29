@@ -1386,12 +1386,89 @@
                             <!-- Nitropack -->
                             <div id="nitropack">
                                 <h1 style="margin-top: 100px;">Nitropack</h1>
-                                <form action="/post/nitropack" method="post">
+                                <p style="margin-top: 100px; font-size: 150%;">Nitropack Website Monitoring Sheet:</p>
+                                <!-- <form action="/post/nitropack" method="post">
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
                                 </form>
                                 <br>
                                 <form action="/post/nitropack/reports" method="post">
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
+                                </form> -->
+
+                                <form action="/post/nitropack" method="post">
+                                    <input type="radio" id="write" name="write" value="write reports">
+                                    <label for="write">Write Reports</label><br>
+                                    <input type="radio" id="display" name="display" value="display reports">
+                                    <label for="display">Display Reports</label><br>
+                                  
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+
+                                <p style="margin-top: 100px; font-size: 150%;">Check for Nitropack Settings:</p>
+                                <form action="/post/nitropack/settings" method="post">
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="site" class="col-sm-3 col-form-label">Choose a site:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="site" id="site" onchange="sites()">
+                                                            <option value="www.freddabranyon.com/">www.freddabranyon.com/ (freddabranyon)</option>
+                                                            <option value="freddabranyondev.primeview.com/">freddabranyondev.primeview.com/ (freddabranyondev)</option>
+                                                            <option value="www.lignans.net/">www.lignans.net/ (Lingnans for Life)</option>
+                                                            <option value="lignansdev.primeview.com/">lignansdev.primeview.com/ (lignansdev)</option>
+                                                            <option value="www.newhopemedicalcenter.com/">www.newhopemedicalcenter.com/ (newhopemedicalcenter)</option>
+                                                            <option value="phoenixritecare.org/">phoenixritecare.org/ (Phoenix Scottish Rite)</option>
+                                                            <option value="www.primeview.com/">www.primeview.com/ (primeview)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="form-group row" id="checkbox">
+                                                    <label for="checkbox" class="col-sm-3 col-form-label">Choose one:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="checkbox" class="form-control">
+                                                            <option value="dev">Dev</option>
+                                                            <option value="live">Live</option>
+                                                        </select>
+                                                    </div>
+                                                </div> -->
+
+                                                <!-- <div class="form-group row align-items-baseline">
+                                                    <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                    <div class="col-sm-9">
+                                                        <p><b>username:</b> <i>pvadmin</i></p>
+                                                        <p><b>password:</b> <i>cHJxubk0*E8q^J$M1A%Hpk*P</i>
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNewsletter()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>  -->
+
+
+                                                <!-- <div id="credentials_newsletter">
+                                                    <div class="form-group row">
+                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="username" name="username" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="password" name="password" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                            </div>
+                                           
+                                        </div>
+                                        <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                    </div>            
+
+                                    
+                                    
                                 </form>
                             </div>
 
