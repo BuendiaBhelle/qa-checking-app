@@ -448,8 +448,14 @@ let forms = {
         form6: "feedback/"
     },
     kyrenefamilydentistry: {
-        form1: "",
-        form2: "schedule-an-appointment/"
+        form1: "cancellation-policy/",
+        form2: "composite-disclaimer/",
+        form3: "demandforce-consent/",
+        form4: "dental-insurance-and-financial-arrangements/",
+        form5: "dental-treatment-consent-form/",
+        form6: "patient-hippa-consent-form/",
+        form7: "",
+        form8: "schedule-an-appointment/"
     },
     optimizex: {
         form1: "/",
@@ -1167,8 +1173,14 @@ let contact_form_name = {
         form6: "Feedback",
     },
     kyrenefamilydentistry: {
-        form1: "Quick Contact",
-        form2: "Schedule an Appointment"
+        form1: "Cancellation Policy",
+        form2: "Composite Disclaimer",
+        form3: "Demandforce Consent",
+        form4: "Dental Insurance and Financial Arrangements",
+        form5: "Dental Treatment Consent Form",
+        form6: "Patient HIPPA Consent Form",
+        form7: "Quick Contact",
+        form8: "Schedule an Appointment"
     },
     optimizex: {
         form1: "SEO Quote",
@@ -1352,8 +1364,14 @@ let contact_form_shortcode = {
         form6: 'gform_6',
     },
     kyrenefamilydentistry: {
-        form1: '[contact-form-7 id="2476" title="Quick Contact"]',
-        form2: '[contact-form-7 id="2481" title="Schedule an Appointment"]'
+        form1: '[contact-form-7 id="19784" title="Cancellation Policy"]',
+        form2: '[contact-form-7 id="19820" title="Composite Disclaimer"]',
+        form3: '[contact-form-7 id="19793" title="Demandforce Consent"]',
+        form4: '[contact-form-7 id="19797" title="Dental Insurance and Financial Arrangements"]',
+        form5: '[contact-form-7 id="19834" title="Dental Treatment Consent Form"]',
+        form6: '[contact-form-7 id="19777" title="Patient HIPPA Consent Form"]',
+        form7: '[contact-form-7 id="2476" title="Quick Contact"]',
+        form8: '[contact-form-7 id="2481" title="Schedule an Appointment"]'
     },
     optimizex: {
         form1: '[contact-form-7 id="11882" title="SEO Quote"]',
@@ -1722,12 +1740,24 @@ let webforms = {
     },
     kyrenefamilydentistry: {
         dev: {
-            form1: "Quick Contact",
-            form2: "Schedule an Appointment"
+            form1: "Cancellation Policy",
+            form2: "Composite Disclaimer",
+            form3: "Demandforce Consent",
+            form4: "Dental Insurance and Financial Arrangements",
+            form5: "Dental Treatment Consent Form",
+            form6: "Patient HIPPA Consent Form",
+            form7: "Quick Contact",
+            form8: "Schedule an Appointment"
         },
         live: {
-            form1: "Quick Contact",
-            form2: "Schedule an Appointment"
+            form1: "Cancellation Policy",
+            form2: "Composite Disclaimer",
+            form3: "Demandforce Consent",
+            form4: "Dental Insurance and Financial Arrangements",
+            form5: "Dental Treatment Consent Form",
+            form6: "Patient HIPPA Consent Form",
+            form7: "Quick Contact",
+            form8: "Schedule an Appointment"
         }
     },
     optimizex: {
@@ -2170,12 +2200,24 @@ let form_page = {
     },
     kyrenefamilydentistry: {
         dev: {
-            form1: "/admin.php?page=wpcf7&post=2476&action=edit",
-            form2: "/admin.php?page=wpcf7&post=2481&action=edit"
+            form1: "/admin.php?page=wpcf7&post=19784&action=edit",
+            form2: "/admin.php?page=wpcf7&post=19820&action=edit",
+            form3: "/admin.php?page=wpcf7&post=19793&action=edit",
+            form4: "/admin.php?page=wpcf7&post=19797&action=edit",
+            form5: "/admin.php?page=wpcf7&post=19834&action=edit",
+            form6: "/admin.php?page=wpcf7&post=19777&action=edit",
+            form7: "/admin.php?page=wpcf7&post=2476&action=edit",
+            form8: "/admin.php?page=wpcf7&post=2481&action=edit"
         },
         live: {
-            form1: "/admin.php?page=wpcf7&post=2476&action=edit",
-            form2: "/admin.php?page=wpcf7&post=2481&action=edit"
+            form1: "/admin.php?page=wpcf7&post=19784&action=edit",
+            form2: "/admin.php?page=wpcf7&post=19820&action=edit",
+            form3: "/admin.php?page=wpcf7&post=19793&action=edit",
+            form4: "/admin.php?page=wpcf7&post=19797&action=edit",
+            form5: "/admin.php?page=wpcf7&post=19834&action=edit",
+            form6: "/admin.php?page=wpcf7&post=19777&action=edit",
+            form7: "/admin.php?page=wpcf7&post=2476&action=edit",
+            form8: "/admin.php?page=wpcf7&post=2481&action=edit"
         }
     },
     optimizex: {

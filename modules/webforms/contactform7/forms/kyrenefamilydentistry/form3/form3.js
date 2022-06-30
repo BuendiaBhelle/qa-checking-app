@@ -19,6 +19,9 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     try {
         await driver.get(domain + forms);
         await driver.sleep(3000);
+        let email1 = await driver.executeScript("return document.getElementsByName('email')[0]");
+        email1.sendKeys("qa@primeview.com");
+
         let name = await driver.executeScript("return document.getElementsByName('signee')[0]");
         name.sendKeys("Primeview Test");
         
@@ -27,8 +30,8 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
         let date = await driver.executeScript("return document.getElementsByName('date-1')[0]");
         date.sendKeys("29/06/2022");
 
-        let email = await driver.executeScript("return document.getElementsByName('pdf-copy-email')[0]");
-        email.sendKeys("qa@primeview.com");
+        let email2 = await driver.executeScript("return document.getElementsByName('pdf-copy-email')[0]");
+        email2.sendKeys("qa@primeview.com");
 
         await driver.executeScript("return document.getElementsByClassName('wpcf7-form-control has-spinner wpcf7-submit btn btn-primary')[0].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });

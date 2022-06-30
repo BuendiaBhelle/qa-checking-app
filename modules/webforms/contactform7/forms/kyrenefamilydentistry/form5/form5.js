@@ -18,10 +18,15 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     // form fill in
     try {
         await driver.get(domain + forms);
-        await driver.sleep(3000);
+        await driver.sleep(5000);
+        await driver.executeScript("return document.getElementsByClassName('wpcf7-list-item-label')[1].click()");
+
+        let message = await driver.executeScript("return document.getElementsByName('notes-1')[0]");
+        message.sendKeys("Please take note that this is a test submit form for Dental Treatment Consent Form. Please disregard if received. Thank you.");
+
         let name = await driver.executeScript("return document.getElementsByName('signee')[0]");
         name.sendKeys("Primeview Test");
-        
+
         await driver.findElement(By.id("wpcf7_signature-1_signature")).click();
 
         let date = await driver.executeScript("return document.getElementsByName('date-1')[0]");

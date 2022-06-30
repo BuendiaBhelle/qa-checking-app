@@ -18,15 +18,29 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     // form fill in
     try {
         await driver.get(domain + forms);
-        await driver.sleep(3000);
-        let name = await driver.executeScript("return document.getElementsByName('signee')[0]");
-        name.sendKeys("Primeview Test");
-        
+        await driver.sleep(5000);
         await driver.findElement(By.id("wpcf7_signature-1_signature")).click();
 
         let date = await driver.executeScript("return document.getElementsByName('date-1')[0]");
         date.sendKeys("29/06/2022");
 
+        let rep_name = await driver.executeScript("return document.getElementsByName('rep-name')[0]");
+        rep_name.sendKeys("Primeview Test");
+
+        let relationship = await driver.executeScript("return document.getElementsByName('rep-relationship')[0]");
+        relationship.sendKeys("Test");
+
+        let rep_name_1 = await driver.executeScript("return document.getElementsByName('rep-name-1')[0]");
+        rep_name_1.sendKeys("Primeview Test");
+
+        let relationship_1 = await driver.executeScript("return document.getElementsByName('rep-relationship-1')[0]");
+        relationship_1.sendKeys("Test");
+
+        await driver.findElement(By.id("wpcf7_signature-2_signature")).click();
+
+        let date2 = await driver.executeScript("return document.getElementsByName('date-2')[0]");
+        date2.sendKeys("29/06/2022");
+        
         let email = await driver.executeScript("return document.getElementsByName('pdf-copy-email')[0]");
         email.sendKeys("qa@primeview.com");
 
