@@ -1,30 +1,21 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
-// const config_webforms = require("../config");
 const logger = require('../../../middleware/logger.js');
 const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
 const config = require("../config");
 
-// const auth = config_webforms.auth;
-// const spreadsheetId = config_webforms.spreadsheetId;
-
 const nitropack_url = config.nitropack_url;
-
 const np_email = config.np_email;
-
 const np_password = config.np_password;
-
 const module_name = "NITROPACK SETTINGS";
+
 
 async function displayNitropackSettings(site, email, password, timestamp) {
     let driver = await new Builder().forBrowser("chrome").build();
-
     await driver.get(nitropack_url);
 
-    
     await driver.executeScript("return document.getElementsByClassName('btn nav-link-btn px-xl-2 py-xl-3 sign-in-dashboard text-dark')[0].click()");
-
     
     try {
         // nitropack login
