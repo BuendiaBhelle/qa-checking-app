@@ -4983,30 +4983,34 @@ app.post('/post/nitropack', async (req, res) => {
 
 app.post('/post/nitropack/settings', async (req, res) => {
     var site = req.body.site;
+    var email = req.body.email;
+    var password = req.body.password;
     console.log(site);
+    console.log(email);
+    console.log(password);
 
     try {
         switch (site) {
             case "www.freddabranyon.com/":
-                await nitropack_settings.displayNitropackSettings(site);
+                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
                 break;
             case "freddabranyondev.primeview.com/":
-                await nitropack_settings.displayNitropackSettings(site);
+                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
                 break;
             case "www.lignans.net/":
-                await nitropack_settings.displayNitropackSettings(site);
+                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
                 break;
             case "lignansdev.primeview.com/":
-                await nitropack_settings.displayNitropackSettings(site);
+                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
                 break;
             case "www.newhopemedicalcenter.com/":
-                await nitropack_settings.displayNitropackSettings(site);
+                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
                 break;
             case "phoenixritecare.org/":
-                await nitropack_settings.displayNitropackSettings(site);
+                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
                 break;
             case "www.primeview.com/":
-                await nitropack_settings.displayNitropackSettings(site);
+                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
                 break;
             default:
                 break;

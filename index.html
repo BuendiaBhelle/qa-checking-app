@@ -1359,7 +1359,7 @@
                                                         <p><b>username:</b> <i>pvadmin</i></p>
                                                         <p><b>password:</b> <i>cHJxubk0*E8q^J$M1A%Hpk*P</i>
                                                         <div>
-                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNewsletter()">Edit</button>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNitropackSettings()">Edit</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1440,23 +1440,24 @@
                                                     </div>
                                                 </div> -->
 
-                                                <!-- <div class="form-group row align-items-baseline">
-                                                    <label for="Credentials" class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                <div class="form-group row align-items-baseline">
+                                                    <label for="Credentials" class="col-sm-3 col-form-label">Credentials (nitropack): </label>
                                                     <div class="col-sm-9">
-                                                        <p><b>username:</b> <i>pvadmin</i></p>
-                                                        <p><b>password:</b> <i>cHJxubk0*E8q^J$M1A%Hpk*P</i>
+                                                        <p><b>email:</b> <i>software@primeview.com</i></p>
+                                                        <p><b>password:</b> <i>nH1}tE9+gN4!kA2%</i>
                                                         <div>
-                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNewsletter()">Edit</button>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNitropackSettings()">Edit</button>
                                                         </div>
                                                     </div>
-                                                </div>  -->
+                                                </div> 
+                                                
 
 
-                                                <!-- <div id="credentials_newsletter">
+                                                <div id="credentials_nitropacksettings">
                                                     <div class="form-group row">
-                                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                                        <label for="email" class="col-sm-3 col-form-label">Email:</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" id="username" name="username" class="form-control"><br>
+                                                            <input type="text" id="email" name="email" class="form-control"><br>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -1465,7 +1466,7 @@
                                                             <input type="text" id="password" name="password" class="form-control"><br>
                                                         </div>
                                                     </div>
-                                                </div> -->
+                                                </div>
 
                                             </div>
                                            
@@ -1907,6 +1908,10 @@
 
         function showCredEditNewsletter() {
             document.getElementById('credentials_newsletter').style.display = 'block';
+        }
+
+        function showCredEditNitropackSettings() {
+            document.getElementById('credentials_nitropacksettings').style.display = 'block';
         }
 
         function showCredEditCheckout() {

@@ -106,9 +106,9 @@ const module_name = "NITROPACK";
 
 const nitropack_url = "https://nitropack.io/";
 
-const email = "software@primeview.com";
+const np_email = "software@primeview.com";
 
-const password = "nH1}tE9+gN4!kA2%";
+const np_password = "nH1}tE9+gN4!kA2%";
 
 
 
@@ -124,6 +124,6 @@ module.exports = {
     sheet_names,
     module_name,
     nitropack_url,
-    email,
-    password
+    np_email,
+    np_password
 };
