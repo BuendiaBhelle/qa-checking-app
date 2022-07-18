@@ -1,5 +1,4 @@
-const {Builder, By, Key} = require("selenium-webdriver");
-const {google} = require("googleapis");
+const {Builder, By} = require("selenium-webdriver");
 const logger = require('../../../middleware/logger.js');
 const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
