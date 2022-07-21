@@ -57,7 +57,6 @@ const sites = [
     "virtualassistantsoutsourcing",
     "dentistryatthebiltmore",
     "mcbuildingmaintenance",
-    "cma",
     "tmpc"
 ]
 
@@ -217,10 +216,6 @@ let wp_creds = {
     mcbuildingmaintenance: {
         username: "pvadmin",
         password: "]wuB34Q{DbhF"
-    },
-    cma: {
-        username: "pvadmin",
-        password: "iR4wW]uPU1V("
     },
     tmpc: {
         username: "pvadmin",
@@ -384,10 +379,6 @@ let domain = {
     mcbuildingmaintenance: {
         dev: "https://mcbuildingmaintenancedev.primeview.com/",
         live: "https://www.mcbuildingmaintenance.com/"
-    },
-    cma: {
-        dev: "https://cmahrdev.primeview.com/",
-        live: ""
     },
     tmpc: {
         dev: "https://www.tmpcincdev.primeview.com/",
@@ -581,9 +572,6 @@ let forms = {
         form1: "contact-us/",
         form2: "about-us/"
     },
-    cma: {
-        form1: ""
-    },
     tmpc: {
         form1: "become-a-partner/",
         form2: "commercial/cybersecurity-compliance/",
@@ -635,7 +623,6 @@ let sheetId = {
     virtualassistantsoutsourcing: 763505033,
     dentistryatthebiltmore: 968628360,
     mcbuildingmaintenance: 283258278,
-    cma: 2088597437,
     tmpc: 1801063836
 }
 
@@ -1071,17 +1058,6 @@ let range = [
     ],
     sites[39] = [
         [
-            "CMA!Q2",
-            "CMA!A2",
-            "CMA!B2",
-            "CMA!C2",
-            "CMA!D2",
-            "CMA!E2",
-            "CMA!G2",
-        ]
-    ],
-    sites[40] = [
-        [
             "TMPC!Q2",
             "TMPC!A2",
             "TMPC!B2",
@@ -1133,8 +1109,7 @@ let ranges = {
     virtualassistantsoutsourcing: range[36][0],
     dentistryatthebiltmore: range[37][0],
     mcbuildingmaintenance: range[38][0],
-    cma: range[39][0],
-    tmpc: range[40][0]
+    tmpc: range[39][0]
 }
 
 let launch = {
@@ -1327,9 +1302,6 @@ let contact_form_name = {
     mcbuildingmaintenance: {
         form1: "Contact form 1",
         form2: "Sidebar Form"
-    },
-    cma: {
-        form1: "CMA - Contact Form"
     },
     tmpc: {
         form1: "Become a Partner",
@@ -1528,9 +1500,6 @@ let contact_form_shortcode = {
         form1: '[contact-form-7 id="8" title="Contact form 1"]',
         form2: '[contact-form-7 id="407" title="Sidebar Form"]'
     },
-    cma: {
-        form1: '[contact-form-7 id="56" title="CMA - Contact Form"]'
-    },
     tmpc: {
         form1: '[contact-form-7 id="3177" title="Become a Partner"]',
         form2: '[contact-form-7 id="3010" title="Commercial - Cybersecurity Compliance"]',
@@ -1583,7 +1552,6 @@ let range_recipient = {
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!H2",
     mcbuildingmaintenance: "MC Building Maintenance!H2",
-    cma: "CMA!H2",
     tmpc: "TMPC!H2"
 }
 
@@ -1628,7 +1596,6 @@ let range_thankyou_page = {
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!I2",
     mcbuildingmaintenance: "MC Building Maintenance!I2",
-    cma: "CMA!I2",
     tmpc: "TMPC!I2"
 }
 
@@ -2089,14 +2056,6 @@ let webforms = {
         live: {
             form1: "Contact form 1",
             form2: "Sidebar Form"
-        }
-    },
-    cma: {
-        dev: {
-            form1: "CMA - Contact Form"
-        },
-        live: {
-            form1: "CMA - Contact Form"
         }
     },
     tmpc: {
@@ -2569,14 +2528,6 @@ let form_page = {
         live: {
             form1: "/admin.php?page=wpcf7&post=8&action=edit",
             form2: "/admin.php?page=wpcf7&post=407&action=edit"
-        }
-    },
-    cma: {
-        dev: {
-            form1: "/admin.php?page=wpcf7&post=56&action=edit"
-        },
-        live: {
-            form1: "/admin.php?page=wpcf7&post=56&action=edit"
         }
     },
     tmpc: {
