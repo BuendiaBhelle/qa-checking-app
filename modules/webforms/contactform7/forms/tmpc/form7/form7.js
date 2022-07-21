@@ -36,7 +36,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
         message.sendKeys("Please take note that this is a test submit form for Contact Us. Please disregard if received. Thank you.");
         await driver.sleep(1000);
 
-        // await driver.executeScript("return document.getElementsByClassName('wpcf7-form-control has-spinner wpcf7-submit')[0].click()");
+        await driver.executeScript("return document.getElementsByClassName('wpcf7-form-control has-spinner wpcf7-submit')[0].click()");
 
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });
         console.log("WEBFORMS - form fill in success.");
