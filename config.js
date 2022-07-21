@@ -57,7 +57,8 @@ const sites = [
     "virtualassistantsoutsourcing",
     "dentistryatthebiltmore",
     "mcbuildingmaintenance",
-    "cma"
+    "cma",
+    "tmpc"
 ]
 
 let wp_creds = {
@@ -220,6 +221,10 @@ let wp_creds = {
     cma: {
         username: "pvadmin",
         password: "iR4wW]uPU1V("
+    },
+    tmpc: {
+        username: "pvadmin",
+        password: "^ywEC8wMOs(*"
     }
 }
 
@@ -382,6 +387,10 @@ let domain = {
     },
     cma: {
         dev: "https://cmahrdev.primeview.com/",
+        live: ""
+    },
+    tmpc: {
+        dev: "https://www.tmpcincdev.primeview.com/",
         live: ""
     }
 }
@@ -574,6 +583,15 @@ let forms = {
     },
     cma: {
         form1: ""
+    },
+    tmpc: {
+        form1: "become-a-partner/",
+        form2: "commercial/cybersecurity-compliance/",
+        form3: "commercial/hipaa-hitrust-gdpr/",
+        form4: "commercial/iso-27001/",
+        form5: "commercial/pci-dss/",
+        form6: "commercial/soc-2-audits-and-review/",
+        form7: "contact-us/"
     }
 }
 
@@ -617,7 +635,8 @@ let sheetId = {
     virtualassistantsoutsourcing: 763505033,
     dentistryatthebiltmore: 968628360,
     mcbuildingmaintenance: 283258278,
-    cma: 2088597437
+    cma: 2088597437,
+    tmpc: 1801063836
 }
 
 let range = [
@@ -1060,6 +1079,17 @@ let range = [
             "CMA!E2",
             "CMA!G2",
         ]
+    ],
+    sites[40] = [
+        [
+            "TMPC!Q2",
+            "TMPC!A2",
+            "TMPC!B2",
+            "TMPC!C2",
+            "TMPC!D2",
+            "TMPC!E2",
+            "TMPC!G2",
+        ]
     ]
 ]
 
@@ -1103,7 +1133,8 @@ let ranges = {
     virtualassistantsoutsourcing: range[36][0],
     dentistryatthebiltmore: range[37][0],
     mcbuildingmaintenance: range[38][0],
-    cma: range[39][0]
+    cma: range[39][0],
+    tmpc: range[40][0]
 }
 
 let launch = {
@@ -1299,6 +1330,15 @@ let contact_form_name = {
     },
     cma: {
         form1: "CMA - Contact Form"
+    },
+    tmpc: {
+        form1: "Become a Partner",
+        form2: "Commercial - Cybersecurity Compliance",
+        form3: "Commercial - HIPAA, HITRUST, GDPR",
+        form4: "Commercial - ISO 27001",
+        form5: "Commercial - PCI DSS",
+        form6: "Commercial - SOC 2 Audits and Review",
+        form7: "Contact Us"
     }
 }
 
@@ -1490,6 +1530,15 @@ let contact_form_shortcode = {
     },
     cma: {
         form1: '[contact-form-7 id="56" title="CMA - Contact Form"]'
+    },
+    tmpc: {
+        form1: '[contact-form-7 id="3177" title="Become a Partner"]',
+        form2: '[contact-form-7 id="3010" title="Commercial - Cybersecurity Compliance"]',
+        form3: '[contact-form-7 id="2996" title="Commercial - HIPAA, HITRUST, GDPR"]',
+        form4: '[contact-form-7 id="2989" title="Commercial - ISO 27001"]',
+        form5: '[contact-form-7 id="3003" title="Commercial - PCI DSS"]',
+        form6: '[contact-form-7 id="2967" title="Commercial - SOC 2 Audits and Review"]',
+        form7: '[contact-form-7 id="565" title="Contact Us"]'
     }
 }
 
@@ -1534,7 +1583,8 @@ let range_recipient = {
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!H2",
     mcbuildingmaintenance: "MC Building Maintenance!H2",
-    cma: "CMA!H2"
+    cma: "CMA!H2",
+    tmpc: "TMPC!H2"
 }
 
 
@@ -1578,7 +1628,8 @@ let range_thankyou_page = {
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!I2",
     mcbuildingmaintenance: "MC Building Maintenance!I2",
-    cma: "CMA!I2"
+    cma: "CMA!I2",
+    tmpc: "TMPC!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -2047,6 +2098,26 @@ let webforms = {
         live: {
             form1: "CMA - Contact Form"
         }
+    },
+    tmpc: {
+        dev: {
+            form1: "Become a Partner",
+            form2: "Commercial - Cybersecurity Compliance",
+            form3: "Commercial - HIPAA, HITRUST, GDPR",
+            form4: "Commercial - ISO 27001",
+            form5: "Commercial - PCI DSS",
+            form6: "Commercial - SOC 2 Audits and Review",
+            form7: "Contact Us"
+        },
+        live: {
+            form1: "Become a Partner",
+            form2: "Commercial - Cybersecurity Compliance",
+            form3: "Commercial - HIPAA, HITRUST, GDPR",
+            form4: "Commercial - ISO 27001",
+            form5: "Commercial - PCI DSS",
+            form6: "Commercial - SOC 2 Audits and Review",
+            form7: "Contact Us"
+        }
     }
 }
 
@@ -2506,6 +2577,26 @@ let form_page = {
         },
         live: {
             form1: "/admin.php?page=wpcf7&post=56&action=edit"
+        }
+    },
+    tmpc: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=3177&action=edit",
+            form2: "/admin.php?page=wpcf7&post=3010&action=edit",
+            form3: "/admin.php?page=wpcf7&post=2996&action=edit",
+            form4: "/admin.php?page=wpcf7&post=2989&action=edit",
+            form5: "/admin.php?page=wpcf7&post=3003&action=edit",
+            form6: "/admin.php?page=wpcf7&post=2967&action=edit",
+            form7: "/admin.php?page=wpcf7&post=565&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=3177&action=edit",
+            form2: "/admin.php?page=wpcf7&post=3010&action=edit",
+            form3: "/admin.php?page=wpcf7&post=2996&action=edit",
+            form4: "/admin.php?page=wpcf7&post=2989&action=edit",
+            form5: "/admin.php?page=wpcf7&post=3003&action=edit",
+            form6: "/admin.php?page=wpcf7&post=2967&action=edit",
+            form7: "/admin.php?page=wpcf7&post=565&action=edit"
         }
     }
 }
