@@ -1,5 +1,4 @@
 const {google} = require("googleapis");
-const {Builder, By, Key, util} = require("selenium-webdriver");
 require('dotenv').config();
 const { dirname } = require("path");
 const { spawn } = require("child_process");
@@ -135,18 +134,6 @@ async function listSitesWithIssues(timestamp) {
         auth,
         spreadsheetId,
         range: "PV!N4:N5",
-    });
-
-    const lig = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "LIG!A4:N4",
-    });
-
-    const lig_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "LIG!N4:N5",
     });
 
     const gps = await googleSheets.spreadsheets.values.get({
@@ -295,7 +282,6 @@ async function listSitesWithIssues(timestamp) {
         ox.data.values,
         pma.data.values,
         pv.data.values,
-        lig.data.values,
         gps.data.values,
         nhu.data.values,
         fb.data.values,
@@ -319,7 +305,6 @@ async function listSitesWithIssues(timestamp) {
         aims: aims_screenshot_link_mobile.data.values[0] + "\n" + aims_screenshot_link_mobile.data.values[1],
         pma: pma_screenshot_link_mobile.data.values[0] + "\n" + pma_screenshot_link_mobile.data.values[1],
         pv: pv_screenshot_link_mobile.data.values[0] + "\n" + pv_screenshot_link_mobile.data.values[1],
-        lignans: lig_screenshot_link_mobile.data.values[0] + "\n" + lig_screenshot_link_mobile.data.values[1],
         isc: isc_screenshot_link_mobile.data.values[0][0] + "\n" + isc_screenshot_link_mobile.data.values[0][1],
         scaz: scaz_screenshot_link_mobile.data.values[0][0] + "\n" + scaz_screenshot_link_mobile.data.values[0][1],
         i_n: i_n_screenshot_link_mobile.data.values[0][0] + "\n" + i_n_screenshot_link_mobile.data.values[0][1],
@@ -333,7 +318,7 @@ async function listSitesWithIssues(timestamp) {
     console.log("ALL SITES WITH ISSUES:");
 
     // ACC-LIG
-    for (let index = 0; index <= 7; index++) {
+    for (let index = 0; index <= 6; index++) {
         sites[index][0].splice(0, 0, site_names[index]);
         sites[index][0].splice(5, 0, '');
         
@@ -347,22 +332,21 @@ async function listSitesWithIssues(timestamp) {
     sites[3][0].splice(16, 1, screenshot_link_md.aims);
     sites[5][0].splice(16, 1, screenshot_link_md.pma);
     sites[6][0].splice(16, 1, screenshot_link_md.pv);
-    sites[7][0].splice(16, 1, screenshot_link_md.lignans);
 
     // GPS-APJ
-    for (let index = 8; index < sites.length; index++) {
+    for (let index = 7; index < sites.length; index++) {
         sites[index][0].splice(0, 0, site_names[index]);
         sites[index][0].splice(13, 0, '');
     }
 
-    sites[14][0].splice(16, 1, screenshot_link_md.isc);
-    sites[16][0].splice(16, 1, screenshot_link_md.scaz);
-    sites[17][0].splice(16, 1, screenshot_link_md.i_n);
-    sites[18][0].splice(16, 1, screenshot_link_md.np);
-    sites[19][0].splice(16, 1, screenshot_link_md.frl);
-    sites[20][0].splice(16, 1, screenshot_link_md.bd);
-    sites[21][0].splice(16, 1, screenshot_link_md.cfhec);
-    sites[22][0].splice(16, 1, screenshot_link_md.apj);
+    sites[13][0].splice(16, 1, screenshot_link_md.isc);
+    sites[15][0].splice(16, 1, screenshot_link_md.scaz);
+    sites[16][0].splice(16, 1, screenshot_link_md.i_n);
+    sites[17][0].splice(16, 1, screenshot_link_md.np);
+    sites[18][0].splice(16, 1, screenshot_link_md.frl);
+    sites[19][0].splice(16, 1, screenshot_link_md.bd);
+    sites[20][0].splice(16, 1, screenshot_link_md.cfhec);
+    sites[21][0].splice(16, 1, screenshot_link_md.apj);
 
 
     // check site with issues

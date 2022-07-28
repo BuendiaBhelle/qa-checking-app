@@ -31,7 +31,6 @@ let site_names = [
     "OX",
     "PMA",
     "PV",
-    "LIG",
     "GPS",
     "NHU",
     "FB",
