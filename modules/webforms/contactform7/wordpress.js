@@ -171,11 +171,21 @@ async function wordpressStart(date, domain, username, password, email, timestamp
 
     // navigate to forms page
     await driver.get(wp_site + form_page);
+    await driver.sleep(1000);
 
     if (domain === "https://crexendoredesign.primeview.com/" || domain === "https://www.crexendo.com/") {
         await driver.findElement(By.id("mail-panel-tab")).click();
-    } else {
-        await driver.findElement(By.id("ui-id-2")).click();
+    } 
+    else {
+        let tabs_anchor_length = await driver.executeScript("return document.getElementsByClassName('ui-tabs-anchor').length");
+        for (let index = 0; index < tabs_anchor_length; index++) {
+            let tabs_anchor_innertext = await driver.executeScript("return document.getElementsByClassName('ui-tabs-anchor')[" + index + "].innerText");
+            if (tabs_anchor_innertext === "Mail") {
+                console.log("Mail");
+                await driver.executeScript("return document.getElementsByClassName('ui-tabs-anchor')[" + index + "].click()");
+                break;
+            }
+        }
     }
     
     let recipients = await driver.findElement(By.id("wpcf7-mail-recipient")).getAttribute('value');

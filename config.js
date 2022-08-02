@@ -382,7 +382,7 @@ let domain = {
     },
     tmpc: {
         dev: "https://www.tmpcincdev.primeview.com/",
-        live: ""
+        live: "https://www.tmpcinc.com/"
     }
 }
 

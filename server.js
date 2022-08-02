@@ -4757,29 +4757,89 @@ app.post('/post/webforms', async (req, res) => {
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = config.domain.sunrisejewelryusa.live;
-                    //     var wp_creds_username = config.wp_creds.sunrisejewelryusa.username;
-                    //     var wp_creds_password = config.wp_creds.sunrisejewelryusa.password;
-                    //     var launch = config.launch.live;
+                    case "live":
+                        var domain = config.domain.tmpc.live;
+                        var wp_creds_username = config.wp_creds.tmpc.username;
+                        var wp_creds_password = config.wp_creds.tmpc.password;
+                        var launch = config.launch.live;
 
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (site_sunrisejewelryusa) {
-                    //         case "form1":
-                    //             var forms = config.forms.sunrisejewelryusa.form1;
-                    //             var webforms = config.webforms.sunrisejewelryusa.live.form1;
-                    //             var contact_form_name = config.contact_form_name.sunrisejewelryusa.form1;
-                    //             var contact_form_shortcode = config.contact_form_shortcode.sunrisejewelryusa.form1;
-                    //             var form_page = config.form_page.sunrisejewelryusa.live.form1;
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_tmpc) {
+                            case "form1":
+                                var forms = config.forms.tmpc.form1;
+                                var webforms = config.webforms.tmpc.live.form1;
+                                var contact_form_name = config.contact_form_name.tmpc.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.tmpc.form1;
+                                var form_page = config.form_page.tmpc.live.form1;
 
-                    //             console.log("form1");
-                    //             await webforms_sunrisejewelryusa_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
+                                console.log("form1");
+                                await webforms_tmpc_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.tmpc.form2;
+                                var webforms = config.webforms.tmpc.live.form2;
+                                var contact_form_name = config.contact_form_name.tmpc.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.tmpc.form2;
+                                var form_page = config.form_page.tmpc.live.form2;
+
+                                console.log("form2");
+                                await webforms_tmpc_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.tmpc.form3;
+                                var webforms = config.webforms.tmpc.live.form3;
+                                var contact_form_name = config.contact_form_name.tmpc.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.tmpc.form3;
+                                var form_page = config.form_page.tmpc.live.form3;
+
+                                console.log("form3");
+                                await webforms_tmpc_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form4":
+                                var forms = config.forms.tmpc.form4;
+                                var webforms = config.webforms.tmpc.live.form4;
+                                var contact_form_name = config.contact_form_name.tmpc.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.tmpc.form4;
+                                var form_page = config.form_page.tmpc.live.form4;
+
+                                console.log("form4");
+                                await webforms_tmpc_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form5":
+                                var forms = config.forms.tmpc.form5;
+                                var webforms = config.webforms.tmpc.live.form5;
+                                var contact_form_name = config.contact_form_name.tmpc.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.tmpc.form5;
+                                var form_page = config.form_page.tmpc.live.form5;
+
+                                console.log("form5");
+                                await webforms_tmpc_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form6":
+                                var forms = config.forms.tmpc.form6;
+                                var webforms = config.webforms.tmpc.live.form6;
+                                var contact_form_name = config.contact_form_name.tmpc.form6;
+                                var contact_form_shortcode = config.contact_form_shortcode.tmpc.form6;
+                                var form_page = config.form_page.tmpc.live.form6;
+
+                                console.log("form6");
+                                await webforms_tmpc_f6.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form7":
+                                var forms = config.forms.tmpc.form7;
+                                var webforms = config.webforms.tmpc.live.form7;
+                                var contact_form_name = config.contact_form_name.tmpc.form7;
+                                var contact_form_shortcode = config.contact_form_shortcode.tmpc.form7;
+                                var form_page = config.form_page.tmpc.live.form7;
+
+                                console.log("form7");
+                                await webforms_tmpc_f7.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             case "versatile":
