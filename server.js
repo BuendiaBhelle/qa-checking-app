@@ -40,6 +40,7 @@ const webforms_biltmoreloanandjewelry_f6 = require("./modules/webforms/contactfo
 const webforms_buckeyederm_f1 = require("./modules/webforms/contactform7/forms/buckeyederm/form1/index");
 const webforms_canyonfallshairextensioncompany_f1 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form1/index");
 const webforms_canyonfallshairextensioncompany_f2 = require("./modules/webforms/contactform7/forms/canyonfallshairextensioncompany/form2/index");
+const webforms_cma_f1 = require("./modules/webforms/contactform7/forms/cma/form1/index");
 const webforms_collisioncenternorthscottsdale_f1 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form1/index");
 const webforms_collisioncenternorthscottsdale_f2 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form2/index");
 const webforms_collisioncenternorthscottsdale_f3 = require("./modules/webforms/contactform7/forms/collisioncenternorthscottsdale/form3/index");
@@ -1415,6 +1416,63 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form2");
                                 await webforms_canyonfallshairextensioncompany_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "cma":
+                var site_cma = req.body.site_cma;
+                var sheetId = config.sheetId.cma;
+                var ranges = config.ranges.cma;
+                var range_recipient = config.range_recipient.cma;
+                var range_thankyou_page = config.range_thankyou_page.cma;
+
+                console.log("Site: " + site_cma);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.cma.dev;
+                        var wp_creds_username = config.wp_creds.cma.username;
+                        var wp_creds_password = config.wp_creds.cma.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_cma) {
+                            case "form1":
+                                var forms = config.forms.cma.form1;
+                                var webforms = config.webforms.cma.dev.form1;
+                                var contact_form_name = config.contact_form_name.cma.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.cma.form1;
+                                var form_page = config.form_page.cma.dev.form1;
+
+                                console.log("form1");
+                                await webforms_cma_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.cma.live;
+                        var wp_creds_username = config.wp_creds.cma.username;
+                        var wp_creds_password = config.wp_creds.cma.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_cma) {
+                            case "form1":
+                                var forms = config.forms.cma.form1;
+                                var webforms = config.webforms.cma.live.form1;
+                                var contact_form_name = config.contact_form_name.cma.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.cma.form1;
+                                var form_page = config.form_page.cma.live.form1;
+
+                                console.log("form1");
+                                await webforms_cma_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;

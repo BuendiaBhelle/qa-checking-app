@@ -57,7 +57,8 @@ const sites = [
     "virtualassistantsoutsourcing",
     "dentistryatthebiltmore",
     "mcbuildingmaintenance",
-    "tmpc"
+    "tmpc",
+    "cma"
 ]
 
 let wp_creds = {
@@ -220,6 +221,10 @@ let wp_creds = {
     tmpc: {
         username: "pvadmin",
         password: "^ywEC8wMOs(*"
+    },
+    cma: {
+        username: "pvadmin",
+        password: "iR4wW]uPU1V("
     }
 }
 
@@ -383,6 +388,10 @@ let domain = {
     tmpc: {
         dev: "https://www.tmpcincdev.primeview.com/",
         live: "https://www.tmpcinc.com/"
+    },
+    cma: {
+        dev: "https://cmahrdev.primeview.com/",
+        live: "https://www.cmahr.com/"
     }
 }
 
@@ -580,6 +589,9 @@ let forms = {
         form5: "commercial/pci-dss/",
         form6: "commercial/soc-2-audits-and-review/",
         form7: "contact-us/"
+    },
+    cma: {
+        form1: ""
     }
 }
 
@@ -623,7 +635,8 @@ let sheetId = {
     virtualassistantsoutsourcing: 763505033,
     dentistryatthebiltmore: 968628360,
     mcbuildingmaintenance: 283258278,
-    tmpc: 1801063836
+    tmpc: 1801063836,
+    cma: 929743110
 }
 
 let range = [
@@ -1066,6 +1079,17 @@ let range = [
             "TMPC!E2",
             "TMPC!G2",
         ]
+    ],
+    sites[40] = [
+        [
+            "CMA!Q2",
+            "CMA!A2",
+            "CMA!B2",
+            "CMA!C2",
+            "CMA!D2",
+            "CMA!E2",
+            "CMA!G2",
+        ]
     ]
 ]
 
@@ -1109,7 +1133,8 @@ let ranges = {
     virtualassistantsoutsourcing: range[36][0],
     dentistryatthebiltmore: range[37][0],
     mcbuildingmaintenance: range[38][0],
-    tmpc: range[39][0]
+    tmpc: range[39][0],
+    cma: range[40][0]
 }
 
 let launch = {
@@ -1311,6 +1336,9 @@ let contact_form_name = {
         form5: "Commercial - PCI DSS",
         form6: "Commercial - SOC 2 Audits and Review",
         form7: "Contact Us"
+    },
+    cma: {
+        form1: "CMA - Contact Form"
     }
 }
 
@@ -1508,6 +1536,9 @@ let contact_form_shortcode = {
         form5: '[contact-form-7 id="3003" title="Commercial - PCI DSS"]',
         form6: '[contact-form-7 id="2967" title="Commercial - SOC 2 Audits and Review"]',
         form7: '[contact-form-7 id="565" title="Contact Us"]'
+    },
+    cma: {
+        form1: '[contact-form-7 id="56" title="CMA - Contact Form"]'
     }
 }
 
@@ -1552,7 +1583,8 @@ let range_recipient = {
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!H2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!H2",
     mcbuildingmaintenance: "MC Building Maintenance!H2",
-    tmpc: "TMPC!H2"
+    tmpc: "TMPC!H2",
+    cma: "CMA!H2"
 }
 
 
@@ -1596,7 +1628,8 @@ let range_thankyou_page = {
     virtualassistantsoutsourcing: "Virtual Assistant Outsourcing!I2",
     dentistryatthebiltmore: "Dentistry At The Biltmore!I2",
     mcbuildingmaintenance: "MC Building Maintenance!I2",
-    tmpc: "TMPC!I2"
+    tmpc: "TMPC!I2",
+    cma: "CMA!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -2077,6 +2110,14 @@ let webforms = {
             form6: "Commercial - SOC 2 Audits and Review",
             form7: "Contact Us"
         }
+    },
+    cma: {
+        dev: {
+            form1: "CMA - Contact Form"
+        },
+        live: {
+            form1: "CMA - Contact Form"
+        }
     }
 }
 
@@ -2548,6 +2589,14 @@ let form_page = {
             form5: "/admin.php?page=wpcf7&post=3003&action=edit",
             form6: "/admin.php?page=wpcf7&post=2967&action=edit",
             form7: "/admin.php?page=wpcf7&post=565&action=edit"
+        }
+    },
+    cma: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=56&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=56&action=edit"
         }
     }
 }
