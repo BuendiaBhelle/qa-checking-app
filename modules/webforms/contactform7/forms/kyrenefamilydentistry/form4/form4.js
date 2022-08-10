@@ -20,9 +20,13 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
         await driver.get(domain + forms);
         await driver.sleep(5000);
         await driver.executeScript("return document.getElementsByClassName('wpcf7-list-item-label')[0].click()");
+        await driver.sleep(1000);
 
         let name = await driver.executeScript("return document.getElementsByName('persons-name')[0]");
         name.sendKeys("PRIMEVIEW TEST");
+        await driver.sleep(1000);
+
+        
         // await driver.sleep(1000);
 
         // await driver.executeScript("return document.getElementById('wpcf7_signature-1_signature').click()");
@@ -33,9 +37,11 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
 
         let date = await driver.executeScript("return document.getElementsByName('date-1')[0]");
         date.sendKeys("29/06/2022");
+        await driver.sleep(1000);
 
         let email = await driver.executeScript("return document.getElementsByName('pdf-copy-email')[0]");
         email.sendKeys("qa@primeview.com");
+        await driver.sleep(1000);
 
         await driver.executeScript("return document.getElementsByClassName('wpcf7-form-control has-spinner wpcf7-submit btn btn-primary')[0].click()");
         logger.logger.log({ level: 'info', message: 'WEBFORMS - form fill in success.', tester: server.userId });

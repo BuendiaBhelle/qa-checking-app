@@ -19,6 +19,10 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     try {
         await driver.get(domain + forms);
         await driver.sleep(3000);
+
+        await driver.executeScript("return document.getElementsByName('acceptance')[0].click()"); 
+        await driver.sleep(3000);
+
         await driver.findElement(By.name("date")).sendKeys("03/17/2022");
         await driver.findElement(By.name("time")).sendKeys("10:00am" + Key.ENTER);
         await driver.findElement(By.name("first-name")).sendKeys("Primeview");

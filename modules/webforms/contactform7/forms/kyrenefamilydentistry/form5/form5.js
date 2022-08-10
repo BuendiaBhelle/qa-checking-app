@@ -18,7 +18,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     // form fill in
     try {
         await driver.get(domain + forms);
-        await driver.sleep(5000);
+        // await driver.sleep(5000);
         await driver.executeScript("return document.getElementsByClassName('wpcf7-list-item-label')[1].click()");
 
         let message = await driver.executeScript("return document.getElementsByName('notes-1')[0]");

@@ -18,7 +18,7 @@ async function webforms(domain, timestamp, forms, range_thankyou_page, module_na
     // form fill in
     try {
         await driver.get(domain + forms);
-        await driver.sleep(5000);
+        await driver.sleep(7000);
         await driver.findElement(By.id("wpcf7_signature-1_signature")).click();
 
         let date = await driver.executeScript("return document.getElementsByName('date-1')[0]");
