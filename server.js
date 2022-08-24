@@ -142,6 +142,11 @@ const nitropack_settings = require("./modules/nitropack/settings/settings");
 
 const wpm = require("./modules/wpm/index");
 const wpm_reports = require("./modules/wpm/wpm");
+
+const waum_backend = require("./modules/website_autoupdate_monitoring/backend/backend");
+const waum_blc = require("./modules/website_autoupdate_monitoring/blc/blc");
+const waum_frontend = require("./modules/website_autoupdate_monitoring/frontend/frontend");
+
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
@@ -5208,6 +5213,33 @@ app.post('/post/nitropack/settings', async (req, res) => {
 app.post('/post/wpm', async (req, res) => {
     try {
         await wpm.index(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/waum_backend', async (req, res) => {
+    try {
+        await waum_backend.backend(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/waum_blc', async (req, res) => {
+    try {
+        await waum_blc.blc(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/waum_frontend', async (req, res) => {
+    try {
+        await waum_frontend.frontend(timestamp);
     } catch (error) {
         console.log(error);
     }

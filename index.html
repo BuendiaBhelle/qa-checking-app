@@ -31,6 +31,28 @@
       display: block;
     }
 
+    .dropdown_waum {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown_waum-content {
+      display: none;
+      position: absolute;
+      background-color: #158CBE;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+      color: #fff;
+      width: 100%;
+      height: 107px;
+    }
+    
+    .dropdown_waum:hover .dropdown_waum-content {
+      display: block;
+    }
+
     #sheet-links {
         /* margin-top: -140px; */
         text-align: right;
@@ -81,6 +103,15 @@
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="wpm()">Website Performance Monitoring</button>
                             </li>
+                            <!-- <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="waum_backend()">Backend Monitoring</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="waum_blc()">BLC Plugin Checking</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="waum_frontend()">Frontend Monitoring</button>
+                            </li> -->
                             <div class="dropdown">
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Responsiveness</button>
@@ -90,6 +121,18 @@
                                     </div>
                                 </li>
                             </div>
+                            <div class="dropdown_waum">
+                                <li class="nav-item">
+                                    <button class="button sidebar-nav-item">Website Auto-Update Monitoring</button>
+                                    <div class="dropdown_waum-content">
+                                        <p style="margin-bottom: 6px;" onclick="waum_backend()">Backend</p>
+                                        <p style="margin-bottom: 6px;" onclick="waum_blc()">BLC</p>
+                                        <p onclick="waum_frontend()">Frontend</p>
+                                    </div>
+                                </li>
+                            </div>
+
+
                             <!-- <div class="dropdown">
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Monitoring Tasks</button>
@@ -1517,6 +1560,30 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
                                 </form>
                             </div>
+                            
+                            <!-- WEBSITE AUTOUPDATE MONITORING - BACKEND -->
+                            <div id="waum_backend">
+                                <h1 style="margin-top: 100px;">Backend</h1>
+                                <form action="/post/waum_backend" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                            </div>
+                            
+                            <!-- WEBSITE AUTOUPDATE MONITORING - BLC -->
+                            <div id="waum_blc">
+                                <h1 style="margin-top: 100px;">BLC</h1>
+                                <form action="/post/waum_blc" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                            </div>
+                            
+                            <!-- WEBSITE AUTOUPDATE MONITORING - FRONTEND -->
+                            <div id="waum_frontend">
+                                <h1 style="margin-top: 100px;">Frontend</h1>
+                                <form action="/post/waum_frontend" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                            </div>
 
                             <!-- Responsiveness - Lambdatest -->
                             <div id="responsiveness_lambdatest">
@@ -1674,6 +1741,9 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1686,6 +1756,9 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1698,6 +1771,9 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1710,6 +1786,9 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1722,6 +1801,9 @@
             document.getElementById('newsletter').style.display = 'block';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1734,6 +1816,9 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'block';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1746,6 +1831,54 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'block';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function waum_backend() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'block';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function waum_blc() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'block';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function waum_frontend() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'block';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1758,6 +1891,9 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'block';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1770,6 +1906,9 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'block';
             document.getElementById('sheet-links').style.display = 'block';

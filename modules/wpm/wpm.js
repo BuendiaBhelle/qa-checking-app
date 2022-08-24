@@ -506,8 +506,12 @@ async function displaySitesToBeReported(timestamp) {
             var screenshot_link = data[k][12];
            
             if (effective_use_of_cdn === "X") {
-                await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
-                console.log("* " + site + " - " + screenshot_link)
+                if (site === "IN") {
+                    console.log("No Effective Use of SDN for IN.");
+                } else {
+                    await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
+                    console.log("* " + site + " - " + screenshot_link)
+                }
             }
         }
         logger.logger.log({ level: 'info', message: 'WEBFORMS - display effective use of cdn fails success.', tester: server.userId });
