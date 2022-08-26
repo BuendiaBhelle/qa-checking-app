@@ -47,7 +47,13 @@ async function backend(timestamp) {
             }
         });
         
-        await driver.get(wp_dashboard);
+
+        
+        if (credentials[index][0] === "https://www.hospiceofyuma.com") {
+            await driver.get(credentials[index][0] + "/hoylogin");
+        } else {
+            await driver.get(wp_dashboard);
+        }
 
         // wp login
         try {
