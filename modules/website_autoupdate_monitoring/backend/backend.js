@@ -10,10 +10,10 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
 let credentials = config.credentials;
 let output = config_nitropack.output;
-const module_name = "WEBSITE AUTOUPDATE MONITORING - BLC";
+const module_name = "WEBSITE AUTOUPDATE MONITORING - BACKEND";
 
 
-async function blc(timestamp) {
+async function backend(timestamp) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
     var driver = await new Builder().forBrowser("chrome").build();
@@ -22,7 +22,7 @@ async function blc(timestamp) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "BLC!A1",
+        range: "BACKEND!A1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
@@ -30,7 +30,7 @@ async function blc(timestamp) {
             ]
         }
     });
-    
+
     for (let index = 0; index < credentials.length; index++) {
         const wp_dashboard = credentials[index][0] + "/wp-admin";
 
@@ -38,23 +38,16 @@ async function blc(timestamp) {
         await googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "BLC!A1",
+            range: "BACKEND!A1",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
-                    [
-                        credentials[index][0]
-                    ]
+                    [ credentials[index][0] ]
                 ]
             }
         });
         
-
-        if (credentials[index][0] === "https://www.hospiceofyuma.com") {
-            await driver.get(credentials[index][0] + "/hoylogin/plugins.php");
-        } else {
-            await driver.get(wp_dashboard + "/plugins.php");
-        }
+        await driver.get(wp_dashboard);
 
         // wp login
         try {
@@ -90,7 +83,7 @@ async function blc(timestamp) {
     
             let login_error = await driver.executeScript("return document.getElementById('login_error')");
             if (login_error) {
-                console.log("BLC - wordpress login failed.");
+                console.log("BACKEND - wordpress login failed.");
                 value = [ "", "", "error", "wordpress login failed.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -98,12 +91,12 @@ async function blc(timestamp) {
                 var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
                 if (admin_email_verification === true) {
                     await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
-                    console.log("BLC - admin email verification.");
+                    console.log("BACKEND - admin email verification.");
                     value = [ "", "", "info", "admin email verification.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);
                 } else {
-                    console.log("BLC - wordpress login success.");
+                    console.log("BACKEND - wordpress login success.");
                     value = [ "", "", "info", "wordpress login success.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);
@@ -112,56 +105,29 @@ async function blc(timestamp) {
     
         } catch (error) {
             console.log(error);
-            value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
+            value= [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
             await sheet.addRow();
-            await sheet.appendValues(value);
+            await sheet.appendValues(value); 
         }
 
 
-        // conditional statement for sites with issues - not redirecting to plugins page
-        if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
-        (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
-        (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com")) {
-            await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
-        } 
-
-
-        // check for BLC plugin 
-        try {            
-            let plugin_list = await driver.executeScript("return document.getElementsByTagName('strong').length");
-            for (let index = 0; index < plugin_list; index++) {
-                let plugin = await driver.executeScript("return document.getElementsByTagName('strong')[" + index + "].innerText");
-                if (plugin === "Broken Link Checker") {
-                    console.log("With BLC Plugin.");
-                    // write blc plugin status to sheets
-                    try {
-                        await googleSheets.spreadsheets.values.append({
-                            auth,
-                            spreadsheetId,
-                            range: "BLC!B2",
-                            valueInputOption: "USER_ENTERED",
-                            resource: {
-                                values: [
-                                    ["With BLC Plugin."]
-                                ]
-                            }
-                        });
-                    } catch (error) {
-                        console.log(error);
-                    }
+        let error = await driver.executeScript("return document.getElementsByClassName('update-plugins').length");
+        if (error > 0) {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "BACKEND!B2",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        ["With Update Error."]
+                    ]
                 }
-            }
-            console.log("BLC - check for BLC plugin success.");
-            value = [ "", "", "info", "check for BLC plugin success.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value);
-        } catch (error) {
-            console.log(error);
-            value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
-            await sheet.addRow();
-            await sheet.appendValues(value);
+            });
+            console.log("With Update Error.");
         }
         
+
         await driver.switchTo().newWindow('tab');
         
     }
@@ -175,4 +141,4 @@ async function blc(timestamp) {
 
 
 
-module.exports = { blc };
+module.exports = { backend };
