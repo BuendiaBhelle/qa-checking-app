@@ -8,7 +8,7 @@ const sheet = require('../../../middleware/gsheet.js');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
-let credentials = config.credentials;
+let frontend_sites = config.frontend_sites;
 let output = config_nitropack.output;
 const module_name = "WEBSITE AUTOUPDATE MONITORING - FRONTEND";
 
@@ -31,7 +31,7 @@ async function frontend(timestamp) {
         }
     });
 
-    for (let index = 0; index < credentials.length; index++) {
+    for (let index = 0; index < frontend_sites.length; index++) {
         // write site to sheets
         await googleSheets.spreadsheets.values.append({
             auth,
@@ -40,19 +40,19 @@ async function frontend(timestamp) {
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
-                    [ credentials[index][0] ]
+                    [ frontend_sites[index] ]
                 ]
             }
         });
         
-        await driver.get(credentials[index][0]);
+        await driver.get(frontend_sites[index]);
         
         await driver.switchTo().newWindow('tab');
         
     }
     // end test
     console.log("test ends.");
-    value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
+    value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, frontend_sites[index], "", "", "", "", "", "", "", "" ];
     await sheet.addRow();
     await sheet.appendValues
     
