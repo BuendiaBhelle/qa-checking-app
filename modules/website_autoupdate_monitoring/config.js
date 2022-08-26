@@ -194,7 +194,6 @@ let frontend_sites = [
     "https://www.thesolutionsforum.com",
     "https://www.primeleisures.com",
     "https://www.businesstrendstoday.com",
-    "https://www.cmafed.com",
     "https://www.honphoto.com",
     "https://www.ourskincares.shop",
     "https://www.mcbuildingmaintenance.com",
