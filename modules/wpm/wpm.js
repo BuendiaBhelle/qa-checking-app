@@ -274,6 +274,42 @@ async function listSitesWithIssues(timestamp) {
         range: "APJ!O4:P4",
     });
 
+    const dmm = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "DMM!A4:P4",
+    });
+
+    const dmm_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "DMM!O4:P4",
+    });
+
+    const at = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "AT!A4:P4",
+    });
+
+    const at_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "AT!O4:P4",
+    });
+
+    const iic = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "IIC!A4:P4",
+    });
+
+    const iic_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "IIC!O4:P4",
+    });
+
     const sites = [
         acc.data.values,
         blj.data.values,
@@ -297,6 +333,9 @@ async function listSitesWithIssues(timestamp) {
         bd.data.values,
         cfhec.data.values,
         apj.data.values,
+        dmm.data.values,
+        at.data.values,
+        iic.data.values
     ]
 
     // console.log(sites.length);
@@ -312,7 +351,10 @@ async function listSitesWithIssues(timestamp) {
         frl: frl_screenshot_link_mobile.data.values[0][0] + "\n" + frl_screenshot_link_mobile.data.values[0][1],
         bd: bd_screenshot_link_mobile.data.values[0][0] + "\n" + bd_screenshot_link_mobile.data.values[0][1],
         cfhec: cfhec_screenshot_link_mobile.data.values[0][0] + "\n" + cfhec_screenshot_link_mobile.data.values[0][1],
-        apj: apj_screenshot_link_mobile.data.values[0][0] + "\n" + apj_screenshot_link_mobile.data.values[0][1]
+        apj: apj_screenshot_link_mobile.data.values[0][0] + "\n" + apj_screenshot_link_mobile.data.values[0][1],
+        dmm: dmm_screenshot_link_mobile.data.values[0][0] + "\n" + dmm_screenshot_link_mobile.data.values[0][1],
+        at: at_screenshot_link_mobile.data.values[0][0] + "\n" + at_screenshot_link_mobile.data.values[0][1],
+        iic: iic_screenshot_link_mobile.data.values[0][0] + "\n" + iic_screenshot_link_mobile.data.values[0][1]
     }
 
     console.log("ALL SITES WITH ISSUES:");
@@ -347,6 +389,9 @@ async function listSitesWithIssues(timestamp) {
     sites[19][0].splice(16, 1, screenshot_link_md.bd);
     sites[20][0].splice(16, 1, screenshot_link_md.cfhec);
     sites[21][0].splice(16, 1, screenshot_link_md.apj);
+    sites[22][0].splice(16, 1, screenshot_link_md.dmm);
+    sites[23][0].splice(16, 1, screenshot_link_md.at);
+    sites[24][0].splice(16, 1, screenshot_link_md.iic);
 
 
     // check site with issues
@@ -498,8 +543,8 @@ async function displaySitesToBeReported(timestamp) {
 
     // Effective Use of CDN
     try {
-        await element.sendKeys("Effective Use of CDN Fails:" + "\n");
-        console.log("Effective Use of CDN Fails:")
+        await element.sendKeys("No Effective Use of CDN:" + "\n");
+        console.log("No Effective Use of CDN:")
         for (let k = 0; k < data.length; k++) {
             var site = data[k][0];
             var effective_use_of_cdn = data[k][11];

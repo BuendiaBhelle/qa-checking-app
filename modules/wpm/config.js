@@ -45,7 +45,10 @@ let site_names = [
     "FRL",
     "BD",
     "CFHEC",
-    "APJ"
+    "APJ",
+    "DMM",
+    "AT",
+    "IIC"
 ]
 
 let score = ['C', 'D', 'E', 'F'];
