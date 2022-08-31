@@ -52,6 +52,8 @@ async function blc(timestamp) {
 
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
+        } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
+            await driver.get(credentials[index][0] + "/wp-login.php");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
         }
@@ -65,22 +67,18 @@ async function blc(timestamp) {
             } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
                 await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
-                await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
-    
-                await driver.sleep(1000);
-    
+                await driver.executeScript("return document.getElementsByClassName('button button-primary button-large')[0].click()");
+        
                 let button_length = await driver.executeScript("return document.getElementsByClassName('btn').length");
                 for (let index = 0; index < button_length; index++) {
-                    let button_innertext = await driver.executeScript("return document.getElementsByClassName('btn')[7].innerText");
+                    let button_innertext = await driver.executeScript("return document.getElementsByClassName('btn')[" + index + "].innerText");
                     if (button_innertext === "Website") {
                         await driver.executeScript("return document.getElementsByClassName('btn')[" + index + "].click()");
                         console.log("WEBSITE");
                         break;
                     }
                 }
-    
-                await driver.sleep(1000);
-    
+        
                 await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
             } else {
                 await driver.findElement(By.name("log")).sendKeys(credentials[index][1]);
