@@ -492,7 +492,7 @@ async function displaySitesToBeReported(timestamp) {
             var security_score = data[i][5];
             var screenshot_link = data[i][12];
     
-            if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC")) {
+            if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC" && site !== "DMM")) {
                 await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                 console.log("* " + site + " - " + screenshot_link)
             }
@@ -521,7 +521,7 @@ async function displaySitesToBeReported(timestamp) {
             var first_byte_time = data[j][6];
             var screenshot_link = data[j][12];
     
-            if ((first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC")) {
+            if ((first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC" && site !== "DMM")) {
                 await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                 console.log("* " + site + " - " + screenshot_link)
             }
