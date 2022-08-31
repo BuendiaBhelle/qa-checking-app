@@ -128,7 +128,7 @@ let wp_creds = {
     },
     freddabranyon: {
         username: "pvadmin",
-        password: "cHJxubk0*E8q^J$M1A%Hpk*P"
+        password: "aB3lQ7yZ9vX6jE1x"
     },
     frlawgroup: {
         username: "pvadmin",
@@ -152,7 +152,7 @@ let wp_creds = {
     },
     phoenixritecare: {
         username: "pvadmin",
-        password: "lGmeVv#22rTn"
+        password: "eL1hD7pN7eV4bD5s"
     },
     versatile: {
         username: "pvadmin",

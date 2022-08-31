@@ -51,7 +51,7 @@ async function blc(timestamp) {
         
 
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
-            await driver.get(credentials[index][0] + "/hoylogin/plugins.php");
+            await driver.get(credentials[index][0] + "/hoylogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
         }
@@ -121,7 +121,7 @@ async function blc(timestamp) {
         // conditional statement for sites with issues - not redirecting to plugins page
         if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
         (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
-        (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com")) {
+        (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
 
