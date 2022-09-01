@@ -51,7 +51,10 @@ async function backend(timestamp) {
         
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
-        } else {
+        } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
+            await driver.get(credentials[index][0] + "/wp-login.php");
+        }
+        else {
             await driver.get(wp_dashboard);
         }
 
@@ -64,23 +67,17 @@ async function backend(timestamp) {
             } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
                 await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
-                await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
-    
-                await driver.sleep(1000);
-    
+                await driver.executeScript("return document.getElementsByClassName('button button-primary button-large')[0].click()");
+        
                 let button_length = await driver.executeScript("return document.getElementsByClassName('btn').length");
                 for (let index = 0; index < button_length; index++) {
-                    let button_innertext = await driver.executeScript("return document.getElementsByClassName('btn')[7].innerText");
+                    let button_innertext = await driver.executeScript("return document.getElementsByClassName('btn')[" + index + "].innerText");
                     if (button_innertext === "Website") {
                         await driver.executeScript("return document.getElementsByClassName('btn')[" + index + "].click()");
                         console.log("WEBSITE");
                         break;
                     }
-                }
-    
-                await driver.sleep(1000);
-    
-                await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
+                }        
             } else {
                 await driver.findElement(By.name("log")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.name("pwd")).sendKeys(credentials[index][2]);
@@ -117,22 +114,45 @@ async function backend(timestamp) {
         }
 
 
-        let error = await driver.executeScript("return document.getElementsByClassName('update-plugins').length");
-        if (error > 0) {
-            await googleSheets.spreadsheets.values.append({
-                auth,
-                spreadsheetId,
-                range: "BACKEND!B2",
-                valueInputOption: "USER_ENTERED",
-                resource: {
-                    values: [
-                        ["With Update Error."]
-                    ]
+        // get plugins update errors
+        try {
+            let wp_menu_name_length = await driver.executeScript("return document.getElementsByClassName('wp-menu-name').length");
+            for (let index = 0; index < wp_menu_name_length; index++) {
+                let wp_menu_name_error_count = await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[" + index + "].children[0]");
+                let wp_menu_name_error_innertext = JSON.stringify(await driver.executeScript("return document.getElementsByClassName('wp-menu-name')[" + index + "].innerText"));
+                if (wp_menu_name_error_count === undefined) {
+                    console.log("Undefined");
+                } else {
+                    if (wp_menu_name_error_count != null) {
+                        const regex = /\d+/g;
+                        let wp_menu_with_error = wp_menu_name_error_innertext.match(regex);
+                        if (wp_menu_with_error != null) {
+                            await googleSheets.spreadsheets.values.append({
+                                auth,
+                                spreadsheetId,
+                                range: "BACKEND!B2",
+                                valueInputOption: "USER_ENTERED",
+                                resource: {
+                                    values: [
+                                        [wp_menu_name_error_innertext]
+                                    ]
+                                }
+                            });
+                            console.log(wp_menu_name_error_innertext);
+                        }
+                    } 
                 }
-            });
-            console.log("With Update Error.");
+            }
+            console.log("BACKEND - get plugins update success.");
+            value = [ "", "", "info", "get plugins update success.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value);
+        } catch (error) {
+            console.log(error);
+            value= [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
+            await sheet.addRow();
+            await sheet.appendValues(value); 
         }
-        
 
         await driver.switchTo().newWindow('tab');
         
