@@ -22,11 +22,11 @@ async function backend(timestamp) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "BACKEND!A1",
+        range: "BACKEND!A1:B1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
-                [ output ]
+                [ output, "IT Comments" ]
             ]
         }
     });

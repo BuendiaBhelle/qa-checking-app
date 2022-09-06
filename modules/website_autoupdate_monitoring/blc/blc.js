@@ -22,11 +22,11 @@ async function blc(timestamp) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "BLC!A1",
+        range: "BLC!A1:B1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
-                [ output ]
+                [ output, "IT Comments" ]
             ]
         }
     });
