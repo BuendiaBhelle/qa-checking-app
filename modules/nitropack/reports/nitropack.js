@@ -6,7 +6,6 @@ const { spawn } = require("child_process");
 const { driver, By2, windowsAppDriverCapabilities } = require("selenium-appium");
 
 const config = require("../config");
-const logger = require('../../../middleware/logger');
 const server = require('../../../server');
 const sheet = require('../../../middleware/gsheet');
 
@@ -60,13 +59,11 @@ async function insertRow(timestamp) {
                 }
             });
         }  
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - add row success.', tester: server.userId });
         console.log("WEBFORMS - add row success.");
         value = [ "", "", "info", "add row success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - add row failed.', tester: server.userId });
         console.log("WEBFORMS - add row failed.");
         value = [ "", "", "error", "add row failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -106,13 +103,11 @@ async function listTestDetails(timestamp) {
             });
             console.log(range);
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - list other test details success.', tester: server.userId });
         console.log("WEBFORMS - list other test details success.");
         value = [ "", "", "info", "list other test details success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - list other test details failed.', tester: server.userId });
         console.log("WEBFORMS - list other test details failed.");
         value = [ "", "", "error", "list other test details failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -184,7 +179,6 @@ async function mobileScore(timestamp) {
                 });
                 console.log(range);
             } catch (error) {
-                logger.logger.log({ level: 'error', message: 'WEBFORMS - write mobile score to sheet failed.', tester: server.userId });
                 console.log("WEBFORMS - write mobile score to sheet failed.");
                 value = [ "", "", "error", "write mobile score to sheet failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
@@ -193,13 +187,11 @@ async function mobileScore(timestamp) {
     
             await driver.switchTo().newWindow('tab');
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - write mobile score to sheet success.', tester: server.userId });
         console.log("WEBFORMS - write mobile score to sheet success.");
         value = [ "", "", "info", "write mobile score to sheet success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - write mobile score to sheet failed.', tester: server.userId });
         console.log("WEBFORMS - write mobile score to sheet failed.");
         value = [ "", "", "error", "write mobile score to sheet failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -268,13 +260,11 @@ async function desktopScore(timestamp) {
     
             await driver.switchTo().newWindow('tab');
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - write desktop score to sheet success.', tester: server.userId });
         console.log("WEBFORMS - write desktop score to sheet success.");
         value = [ "", "", "info", "write desktop score to sheet success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - write desktop score to sheet failed.', tester: server.userId });
         console.log("WEBFORMS - write desktop score to sheet failed.");
         value = [ "", "", "error", "write desktop score to sheet failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -340,21 +330,18 @@ async function displayFails(timestamp) {
                 }
             }
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - get page speed scores success.', tester: server.userId });
         console.log("WEBFORMS - get page speed scores success.");
         value = [ "", "", "info", "get page speed scores success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
         // process.exit();
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - get page speed scores failed.', tester: server.userId });
         console.log("WEBFORMS - get page speed scores failed.");
         value = [ "", "", "error", "get page speed scores failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
     // end test
-    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
     console.log("test ends.");
     value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
     await sheet.addRow();

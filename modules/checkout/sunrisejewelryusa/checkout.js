@@ -2,7 +2,6 @@ const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
 
 const config = require("../config");
-const logger = require('../../../middleware/logger');
 const server = require('../../../server');
 const sheet = require('../../../middleware/gsheet');
 const config_server = require("../../../config");
@@ -23,7 +22,6 @@ async function checkout(domain, username, password, module_name, launch, range_p
             await driver.findElement(By.id("username")).sendKeys(username);
             await driver.findElement(By.id("password")).sendKeys(password);
             await driver.findElement(By.name("login")).click();
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - edit credentials success.', tester: server.userId });
             console.log("CHECKOUT - edit credentials success.");
             value = [ "", "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", launch, product_name, "", "", "" ];
             await sheet.addRow();
@@ -32,14 +30,12 @@ async function checkout(domain, username, password, module_name, launch, range_p
             await driver.findElement(By.id("username")).sendKeys(wp_creds_username);
             await driver.findElement(By.id("password")).sendKeys(wp_creds_password);
             await driver.findElement(By.name("login")).click();
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - same credentials.', tester: server.userId });
             console.log("CHECKOUT - same credentials.");
             value = [ "", "", "info", "same credentials.", server.userId, timestamp, module_name, domain, wp_creds_username + "\n" + wp_creds_password, "", "", launch, product_name, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
@@ -57,14 +53,12 @@ async function checkout(domain, username, password, module_name, launch, range_p
                 var index_updated = index-1;
                 await driver.executeScript("return document.getElementsByClassName('remove-item')[" + index_updated + "].click()");
             }
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - empty cart success.', tester: server.userId });
             console.log("CHECKOUT - empty cart success.");
             value = [ "", "", "info", "empty cart success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
@@ -98,13 +92,11 @@ async function checkout(domain, username, password, module_name, launch, range_p
                     ]
                 }
             });
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - list product name success.', tester: server.userId });
             console.log("CHECKOUT - list product name success.");
             value = [ "", "", "info", "list product name success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value); 
         } catch (error) {
-            logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
             value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
             await sheet.addRow();
@@ -114,13 +106,11 @@ async function checkout(domain, username, password, module_name, launch, range_p
         await driver.findElement(By.id("customer_notes_text")).sendKeys("Please take note that this is a test purchase. Disregard or do not complete the purchase. Thanks.");
         await driver.sleep(1000);
         await driver.executeScript("return document.getElementsByClassName('checkout-button button alt wc-forward')[0].click()");
-        logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout page success.', tester: server.userId });
         console.log("CHECKOUT - checkout page success.");
         value = [ "", "", "info", "checkout page success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value); 
     } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
@@ -146,21 +136,18 @@ async function checkout(domain, username, password, module_name, launch, range_p
         let woocommerce_message = await driver.executeScript("return document.getElementsByClassName('woocommerce-message')[0]");
 
         if (woocommerce_error) {
-            logger.logger.log({ level: 'error', message: 'CHECKOUT - apply coupon failed.', tester: server.userId });
             console.log("CHECKOUT - apply coupon failed.");
             value = [ "", "", "error", "apply coupon failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value); 
         }
         else if (woocommerce_message) {
-            logger.logger.log({ level: 'info', message: 'CHECKOUT - apply coupon success.', tester: server.userId });
             console.log("CHECKOUT - apply coupon success.");
             value = [ "", "", "info", "apply coupon success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value); 
         } 
     } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
@@ -269,13 +256,11 @@ async function checkout(domain, username, password, module_name, launch, range_p
 
         await driver.findElement(By.id("bill-to-same-address-checkbox")).click();
 
-        logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout form fill in success.', tester: server.userId });
         console.log("CHECKOUT - checkout form fill in success.");
         value = [ "", "", "info", "checkout form fill in success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value); 
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'CHECKOUT - checkout form fill in failed.', tester: server.userId });
         console.log(error);
         value = [ "", "", "error", 'checkout form fill in failed.', server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
@@ -290,7 +275,6 @@ async function checkout(domain, username, password, module_name, launch, range_p
             if (saved_payment_method_innertext === "Visa ending in 4242 (expires 07/24)") {
                 await driver.executeScript("return document.getElementsByClassName('woocommerce-SavedPaymentMethods wc-saved-payment-methods')[0].children[" + index + "].children[0].click()");
                 await driver.executeScript("return document.getElementsByClassName('button alt')[0].click()");
-                logger.logger.log({ level: 'info', message: 'CHECKOUT - checkout success.', tester: server.userId });
                 console.log("CHECKOUT - checkout success.");
                 value = [ "", "", "info", "checkout success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
                 await sheet.addRow();
@@ -299,7 +283,6 @@ async function checkout(domain, username, password, module_name, launch, range_p
             }
         }
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'CHECKOUT - checkout failed.', tester: server.userId });
         console.log("CHECKOUT - checkout failed.");
         value = [ "", "", "error", "checkout failed.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
@@ -323,13 +306,11 @@ async function checkout(domain, username, password, module_name, launch, range_p
                 ]
             }
         });
-        logger.logger.log({ level: 'info', message: 'CHECKOUT - list thank you page success.', tester: server.userId });
         console.log("CHECKOUT - list thank you page success.");
         value = [ "", "", "info", "list thank you page success.", server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value); 
     } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", launch, product_name, "", "", "" ];
         await sheet.addRow();

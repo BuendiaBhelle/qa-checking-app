@@ -1,6 +1,5 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const config = require("../image_optimization/config");
-const logger = require('../../middleware/logger.js');
 const server = require('../../server.js');
 const sheet = require('../../middleware/gsheet.js');
 
@@ -22,13 +21,11 @@ async function imageOptimization(url, timestamp) {
         //     console.log("Waiting...");
         //     await driver_web.sleep(10000);
         // }
-        logger.logger.log({ level: 'info', message: 'IMAGE_OPTIMIZATION - webpagetest url success.', tester: server.userId });
         console.log("IMAGE_OPTIMIZATION - webpagetest url success.");
         value = [ "", "", "info", "webpagetest url success.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -47,21 +44,18 @@ async function imageOptimization(url, timestamp) {
             await driver_web.get(webpagetest_result_url);
         
             console.log("Webpagetest Result URL: " + webpagetest_result_url);
-            logger.logger.log({ level: 'info', message: 'IMAGE_OPTIMIZATION - image optimization page success.', tester: server.userId });
             console.log("IMAGE_OPTIMIZATION - image optimization page success.");
             value = [ "", "", "info", "image optimization page success.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         }
     } catch (error) {
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
     // end test
-    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
     console.log("test ends.");
     value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, url, "", "", "", "", "", "", "", "" ];
     await sheet.addRow();

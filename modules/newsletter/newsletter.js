@@ -2,7 +2,6 @@ const webdriver = require("selenium-webdriver");
 const key = webdriver.Key;
 const By = webdriver.By;
 const until = webdriver.until;
-const logger = require('../../middleware/logger');
 const server = require('../../server');
 const sheet = require('../../middleware/gsheet');
 const config = require("./config");
@@ -27,7 +26,6 @@ async function executeTest(timestamp, username, password, domain){
             if ((username) && (password)) {
                 await driver.findElement(By.id("user_login")).sendKeys(username);
                 await driver.findElement(By.id("user_pass")).sendKeys(password);
-                logger.logger.log({ level: 'info', message: 'NEWSLETTER - edit credentials success.', tester: server.userId });
                 console.log("NEWSLETTER - edit credentials success.");
                 value = [ "", "", "info", "edit credentials success.", server.userId, timestamp, module_name, domain, username + "\n" + password, "", "", "", "", "", "", "" ];
                 await sheet.addRow();
@@ -35,7 +33,6 @@ async function executeTest(timestamp, username, password, domain){
             } else {
                 await driver.findElement(By.id("user_login")).sendKeys(wp_creds_username);
                 await driver.findElement(By.id("user_pass")).sendKeys(wp_creds_password);
-                logger.logger.log({ level: 'info', message: 'NEWSLETTER - same credentials.', tester: server.userId });
                 console.log("NEWSLETTER - same credentials.");
                 value = [ "", "", "info", "same credentials.", server.userId, timestamp, module_name, domain, wp_creds_username + "\n" + wp_creds_password, "", "", "", "", "", "", "" ];
                 await sheet.addRow();
@@ -47,13 +44,11 @@ async function executeTest(timestamp, username, password, domain){
 
             let login_error = await driver.executeScript("return document.getElementById('login_error')");
             if (login_error) {
-                logger.logger.log({ level: 'error', message: 'NEWSLETTER - wordpress login failed.', tester: server.userId });
                 console.log("NEWSLETTER - wordpress login failed.");
                 value = [ "", "", "error", "wordpress login failed.", server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
-                logger.logger.log({ level: 'info', message: 'NEWSLETTER - wordpress login success.', tester: server.userId });
                 console.log("NEWSLETTER - wordpress login success.");
                 value = [ "", "", "info", "wordpress login success.", server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
@@ -63,20 +58,17 @@ async function executeTest(timestamp, username, password, domain){
             var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
             if (admin_email_verification === true) {
                 await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
-                logger.logger.log({ level: 'info', message: 'NEWSLETTER - admin email verification.', tester: server.userId });
                 console.log("NEWSLETTER - admin email verification.");
                 value = [ "", "", "info", "admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             } else {
-                logger.logger.log({ level: 'info', message: 'NEWSLETTER - no admin email verification.', tester: server.userId });
                 console.log("NEWSLETTER - no admin email verification.");
                 value = [ "", "", "info", "no admin email verification.", server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
             }
         } catch (error) {
-            logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
             value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
@@ -103,13 +95,11 @@ async function executeTest(timestamp, username, password, domain){
                     done = true;
                 }
             }
-            logger.logger.log({ level: 'info', message: 'NEWSLETTER - click send now success.', tester: server.userId });
             console.log("NEWSLETTER - click send now success.");
             value = [ "", "", "info", "click send now success.", server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
             await sheet.appendValues(value);
         } catch (error) {
-            logger.logger.log({ level: 'error', message: error, tester: server.userId });
             console.log(error);
             value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
             await sheet.addRow();
@@ -117,7 +107,6 @@ async function executeTest(timestamp, username, password, domain){
         }
     }
     catch(error) {  
-        logger.logger.log({ level: 'error', message: error, tester: server.userId });
         console.log(error);
         value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -126,7 +115,6 @@ async function executeTest(timestamp, username, password, domain){
 
     await driver.quit();
     // end test
-    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
     console.log("test ends.");
     value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, domain, "", "", "", "", "", "", "", "" ];
     await sheet.addRow();
