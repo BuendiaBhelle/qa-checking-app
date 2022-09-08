@@ -131,12 +131,16 @@ async function blc(timestamp) {
         // check for BLC plugin 
         try {            
             let plugin_list = await driver.executeScript("return document.getElementsByTagName('strong').length");
-            for (let index = 0; index < plugin_list; index++) {
-                let plugin = await driver.executeScript("return document.getElementsByTagName('strong')[" + index + "].innerText");
+            for (let i = 0; i < plugin_list; i++) {
+                let plugin = await driver.executeScript("return document.getElementsByTagName('strong')[" + i + "].innerText");
                 if (plugin === "Broken Link Checker") {
                     console.log("With BLC Plugin.");
 
-                    await driver.get(wp_dashboard + "/options-general.php?page=link-checker-settings");
+                    if (credentials[index][0] === "https://www.hospiceofyuma.com") {
+                        await driver.get("https://hospiceofyuma.com/hoylogin/options-general.php?page=link-checker-settings");
+                    } else {
+                        await driver.get(wp_dashboard + "/options-general.php?page=link-checker-settings");
+                    }
 
                     await driver.sleep(5000);
 
