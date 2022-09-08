@@ -5,6 +5,7 @@ const config_nitropack = require("../../nitropack/config");
 const logger = require('../../../middleware/logger.js');
 const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
+const { drive } = require("googleapis/build/src/apis/drive");
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId;
@@ -22,11 +23,17 @@ async function blc(timestamp) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "BLC!A1:B1",
+        range: "BLC!A1:E1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
-                [ output, "IT Comments" ]
+                [ 
+                    output,
+                    "WITH BLC PLUGIN? (Y/N)",
+                    "BROKEN LINKS FOUND",
+                    "IT",
+                    "DEV"
+                ]
             ]
         }
     });
@@ -49,7 +56,6 @@ async function blc(timestamp) {
             }
         });
         
-
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
         } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
@@ -115,14 +121,12 @@ async function blc(timestamp) {
             await sheet.appendValues(value);
         }
 
-
         // conditional statement for sites with issues - not redirecting to plugins page
         if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
         (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
         (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
-
 
         // check for BLC plugin 
         try {            
@@ -131,22 +135,52 @@ async function blc(timestamp) {
                 let plugin = await driver.executeScript("return document.getElementsByTagName('strong')[" + index + "].innerText");
                 if (plugin === "Broken Link Checker") {
                     console.log("With BLC Plugin.");
-                    // write blc plugin status to sheets
-                    try {
-                        await googleSheets.spreadsheets.values.append({
-                            auth,
-                            spreadsheetId,
-                            range: "BLC!B2",
-                            valueInputOption: "USER_ENTERED",
-                            resource: {
-                                values: [
-                                    ["With BLC Plugin."]
-                                ]
-                            }
-                        });
-                    } catch (error) {
-                        console.log(error);
+
+                    await driver.get(wp_dashboard + "/options-general.php?page=link-checker-settings");
+
+                    await driver.sleep(5000);
+
+                    let broken_link_status = await driver.executeScript("return document.getElementById('wsblc_full_status').children[0].innerText");
+
+                    console.log(broken_link_status);
+
+                    if (!broken_link_status) {
+                        console.log("NULL");
+                        // write blc plugin status to sheets
+                        try {
+                            await googleSheets.spreadsheets.values.append({
+                                auth,
+                                spreadsheetId,
+                                range: "BLC!B1:C1",
+                                valueInputOption: "USER_ENTERED",
+                                resource: {
+                                    values: [
+                                        ["Y", "No broken links found"]
+                                    ]
+                                }
+                            });
+                        } catch (error) {
+                            console.log(error);
+                        }     
+                    } else {
+                        // write blc plugin status to sheets
+                        try {
+                            await googleSheets.spreadsheets.values.append({
+                                auth,
+                                spreadsheetId,
+                                range: "BLC!B1:C1",
+                                valueInputOption: "USER_ENTERED",
+                                resource: {
+                                    values: [
+                                        ["Y", broken_link_status]
+                                    ]
+                                }
+                            });
+                        } catch (error) {
+                            console.log(error);
+                        }      
                     }
+                    break;
                 }
             }
             console.log("BLC - check for BLC plugin success.");
