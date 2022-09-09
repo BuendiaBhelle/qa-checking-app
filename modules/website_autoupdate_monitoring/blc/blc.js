@@ -23,7 +23,7 @@ async function blc(timestamp) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "BLC!A1:E1",
+        range: "BLC!A1:F1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
@@ -32,7 +32,8 @@ async function blc(timestamp) {
                     "WITH BLC PLUGIN? (Y/N)",
                     "BROKEN LINKS FOUND",
                     "IT",
-                    "DEV"
+                    "DEV",
+                    "QA"
                 ]
             ]
         }
