@@ -135,11 +135,23 @@ async function blc(timestamp) {
             for (let i = 0; i < plugin_list; i++) {
                 let plugin = await driver.executeScript("return document.getElementsByTagName('strong')[" + i + "].innerText");
                 if (plugin === "Broken Link Checker") {
-                    console.log("With BLC Plugin.");
+                    console.log("With BLC Plugin.");    
 
                     if (credentials[index][0] === "https://www.hospiceofyuma.com") {
                         await driver.get("https://hospiceofyuma.com/hoylogin/options-general.php?page=link-checker-settings");
-                    } else {
+                    } 
+                    else if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || (credentials[index][0] === "https://www.trezpro.com")) {
+                        let settings_inner_link_length = await driver.executeScript("return document.getElementsByTagName('a').length");
+                        for (let j = 0; j < settings_inner_link_length; j++) {
+                            let link_checker_innertext = await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].innerText");
+                            if (link_checker_innertext === "Link Checker") {
+                                console.log("Link Checker");
+                                await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].click()");
+                                break;
+                            }
+                        }
+                    }
+                    else {
                         await driver.get(wp_dashboard + "/options-general.php?page=link-checker-settings");
                     }
 
