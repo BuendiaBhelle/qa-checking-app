@@ -142,7 +142,7 @@ async function blc(timestamp) {
                     } 
                     else if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
                     (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
-                    (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com")) {
+                    (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://sellusyourcaraz.com")) {
                         let settings_inner_link_length = await driver.executeScript("return document.getElementsByTagName('a').length");
                         for (let j = 0; j < settings_inner_link_length; j++) {
                             let link_checker_innertext = await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].innerText");
