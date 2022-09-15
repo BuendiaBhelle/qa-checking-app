@@ -112,7 +112,7 @@ let wp_creds = {
     },
     judefrancesjewelry: {
         username: "pvadmin",
-        password: "rM6qH2pO3cC2tO4e"   
+        password: "xN3?jB0.eO4?rJ3{oH9}"   
     },
     kyrenefamilydentistry: {
         username: "pvadmin",
@@ -148,7 +148,7 @@ let wp_creds = {
     },
     primeview: {
         username: "pvadmin",
-        password: "Nkp$leidilGxzKH*RcrKdPmJ"
+        password: 'cB0&oV9}aN8"gR4$pZ5?kO7<'
     },
     phoenixritecare: {
         username: "pvadmin",

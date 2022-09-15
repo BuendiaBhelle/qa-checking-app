@@ -138,32 +138,71 @@ async function blc(timestamp) {
                     console.log("With BLC Plugin.");    
 
                     if (credentials[index][0] === "https://www.hospiceofyuma.com") {
-                        await driver.get("https://hospiceofyuma.com/hoylogin/options-general.php?page=link-checker-settings");
+                        await driver.get("https://hospiceofyuma.com/hoylogin/tools.php?page=view-broken-links");
                     } 
-                    else if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || (credentials[index][0] === "https://www.trezpro.com")) {
+                    else if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
+                    (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
+                    (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com")) {
                         let settings_inner_link_length = await driver.executeScript("return document.getElementsByTagName('a').length");
                         for (let j = 0; j < settings_inner_link_length; j++) {
                             let link_checker_innertext = await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].innerText");
                             if (link_checker_innertext === "Link Checker") {
                                 console.log("Link Checker");
                                 await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].click()");
+
+                                await driver.sleep(5000);
+
+                                let broken_link_status = await driver.executeScript("return document.getElementById('wsblc_full_status').children[0].innerText");
+            
+                                console.log(broken_link_status);
+            
+                                if (!broken_link_status) {
+                                    console.log("NULL");
+                                    try {
+                                        await googleSheets.spreadsheets.values.append({
+                                            auth,
+                                            spreadsheetId,
+                                            range: "BLC!B1:C1",
+                                            valueInputOption: "USER_ENTERED",
+                                            resource: {
+                                                values: [
+                                                    ["Y", "No broken links found"]
+                                                ]
+                                            }
+                                        });
+                                    } catch (error) {
+                                        console.log(error);
+                                    }     
+                                } else {
+                                    try {
+                                        await googleSheets.spreadsheets.values.append({
+                                            auth,
+                                            spreadsheetId,
+                                            range: "BLC!B1:C1",
+                                            valueInputOption: "USER_ENTERED",
+                                            resource: {
+                                                values: [
+                                                    ["Y", broken_link_status]
+                                                ]
+                                            }
+                                        });
+                                    } catch (error) {
+                                        console.log(error);
+                                    }      
+                                }
                                 break;
                             }
                         }
                     }
                     else {
-                        await driver.get(wp_dashboard + "/options-general.php?page=link-checker-settings");
+                        await driver.get(wp_dashboard + "/tools.php?page=view-broken-links");
                     }
+                    
+                    let broken_link_count = await driver.executeScript("return document.getElementsByClassName('filter-broken-link-count current-link-count')[0].innerText");
+                    let broken_link_count_result = "Found " + broken_link_count + " broken links";
 
-                    await driver.sleep(5000);
-
-                    let broken_link_status = await driver.executeScript("return document.getElementById('wsblc_full_status').children[0].innerText");
-
-                    console.log(broken_link_status);
-
-                    if (!broken_link_status) {
-                        console.log("NULL");
-                        // write blc plugin status to sheets
+                    // write blc plugin status to sheets
+                    if (broken_link_count === "0") {
                         try {
                             await googleSheets.spreadsheets.values.append({
                                 auth,
@@ -178,9 +217,8 @@ async function blc(timestamp) {
                             });
                         } catch (error) {
                             console.log(error);
-                        }     
+                        } 
                     } else {
-                        // write blc plugin status to sheets
                         try {
                             await googleSheets.spreadsheets.values.append({
                                 auth,
@@ -189,14 +227,15 @@ async function blc(timestamp) {
                                 valueInputOption: "USER_ENTERED",
                                 resource: {
                                     values: [
-                                        ["Y", broken_link_status]
+                                        ["Y", broken_link_count_result]
                                     ]
                                 }
                             });
                         } catch (error) {
                             console.log(error);
-                        }      
+                        }  
                     }
+
                     break;
                 }
             }
