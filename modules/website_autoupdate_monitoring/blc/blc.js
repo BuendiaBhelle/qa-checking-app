@@ -61,6 +61,8 @@ async function blc(timestamp) {
             await driver.get(credentials[index][0] + "/hoylogin");
         } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
             await driver.get(credentials[index][0] + "/wp-login.php");
+        } else if (credentials[index][0] === "https://www.businesstrendstoday.com") {
+            await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
         }
@@ -125,7 +127,8 @@ async function blc(timestamp) {
         // conditional statement for sites with issues - not redirecting to plugins page
         if ((credentials[index][0] === "https://www.keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
         (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
-        (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com")) {
+        (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com") || 
+        (credentials[index][0] === "https://www.businesstrendstoday.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
 

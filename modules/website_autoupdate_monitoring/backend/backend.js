@@ -53,8 +53,9 @@ async function backend(timestamp) {
             await driver.get(credentials[index][0] + "/hoylogin");
         } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
             await driver.get(credentials[index][0] + "/wp-login.php");
-        }
-        else {
+        } else if (credentials[index][0] === "https://www.businesstrendstoday.com") {
+            await driver.get(credentials[index][0] + "/pvlogin");
+        } else {
             await driver.get(wp_dashboard);
         }
 
