@@ -31,24 +31,19 @@ let site_names = [
     "OX",
     "PMA",
     "PV",
-    "GPS",
-    "NHU",
     "FB",
-    "SJ",
-    "AZRS",
+    "GPS",
     "KFD",
-    "ISC",
-    "AL",
-    "SCAZ",
-    "IN",
+    "NHU",
+    "AZRS",
     "NP",
+    "IN",
     "FRL",
     "BD",
     "CFHEC",
-    "APJ",
-    "DMM",
     "AT",
-    "IIC"
+    "IIC",
+    "JFJ"
 ]
 
 let score = ['C', 'D', 'E', 'F'];

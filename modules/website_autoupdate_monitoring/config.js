@@ -88,7 +88,8 @@ let credentials = [
     ["https://www.thesolutionsforum.com", config_server.wp_creds.solutionsforum.username, config_server.wp_creds.solutionsforum.password],
     ["https://www.primeleisures.com", "pvadmin", "mK4:rQ5{dI6?zO8?"],
     ["https://www.businesstrendstoday.com", "pvadmin", "|fWs[qDSGrO6"],
-    ["https://www.mcbuildingmaintenance.com", config_server.wp_creds.mcbuildingmaintenance.username, config_server.wp_creds.mcbuildingmaintenance.password]
+    ["https://www.mcbuildingmaintenance.com", config_server.wp_creds.mcbuildingmaintenance.username, config_server.wp_creds.mcbuildingmaintenance.password],
+    ["https://www.sunpressurewash.com", "pvadmin", "dZ*8AKwqRk1"]
 ]
 
 
@@ -192,8 +193,8 @@ let frontend_sites = [
     "https://www.honphoto.com",
     "https://www.ourskincares.shop",
     "https://www.mcbuildingmaintenance.com",
-    "https://www.phoenixcampus.com"
-
+    "https://www.phoenixcampus.com",
+    "https://www.sunpressurewash.com"
 ]
 
 
