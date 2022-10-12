@@ -101,6 +101,7 @@ var sheet_names = [
 
 const module_name = "NITROPACK";
 
+const reports_range = "Reports!A1:A1000";
 
 // -------------------Nitropack Settings-------------------
 
@@ -123,6 +124,7 @@ module.exports = {
     ranges_desktop,
     sheet_names,
     module_name,
+    reports_range,
     nitropack_url,
     np_email,
     np_password

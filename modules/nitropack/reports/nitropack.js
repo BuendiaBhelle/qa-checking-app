@@ -25,6 +25,7 @@ let ranges_mobile = config.ranges_mobile;
 let ranges_desktop = config.ranges_desktop;
 let sheet_names = config.sheet_names;
 const module_name = config.module_name;
+const reports_range = config.reports_range;
 
 async function insertRow(timestamp) {
     const client = await auth.getClient();
@@ -275,15 +276,6 @@ async function desktopScore(timestamp) {
 }
 
 async function displayFails(timestamp) {
-    const program = 'C:/Program Files/Windows Application Driver/WinAppDriver.exe';
-    spawn(program, [], { cwd: dirname(program) });
-
-    const appExe = 'C:/Windows/System32/notepad.exe';
-    await driver.startWithCapabilities(windowsAppDriverCapabilities(appExe));
-
-    const element = By2.nativeXpath('//*[@ClassName="Edit"]');
-    await element.click();
-
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client });
 
@@ -297,8 +289,23 @@ async function displayFails(timestamp) {
 
     // Read PageSpeed Scores from google sheet
     try {
-        await element.sendKeys("Nitropack fails (" + date_data + "):" + "\n");
-        console.log("Nitropack fails (" + config.output + "):");
+        try {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: reports_range,
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [
+                            "Nitropack fails (" + config.output + "):"
+                        ]
+                    ]
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
         for (let index = 0; index < sheet_names.length; index++) {
             const getPageSpeedScore = await googleSheets.spreadsheets.values.get({
                 auth,
@@ -310,23 +317,120 @@ async function displayFails(timestamp) {
             const data_mobile = getPageSpeedScore.data.values[0][1];
 
             if (data_mobile <= 49) {
-                await element.sendKeys("   * " + sheet_names[index] + "\n");
                 console.log("   * " + sheet_names[index]);
-                if (data_desktop <= 49) {
-                    await element.sendKeys("     - Desktop: " + data_desktop + "\n");
-                    console.log("     - Desktop: " + data_desktop);
+                try {
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: reports_range,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [
+                                    "* " + sheet_names[index]
+                                ]
+                            ]
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
                 }
-                await element.sendKeys("     - Mobile: " + data_mobile + "\n");
+                if (data_desktop <= 49) {
+                    console.log("   - Desktop: " + data_desktop);
+                    try {
+                        await googleSheets.spreadsheets.values.append({
+                            auth,
+                            spreadsheetId,
+                            range: reports_range,
+                            valueInputOption: "USER_ENTERED",
+                            resource: {
+                                values: [
+                                    [
+                                        "   - Desktop: " + data_desktop
+                                    ]
+                                ]
+                            }
+                        });
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
                 console.log("     - Mobile: " + data_mobile);
+                try {
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: reports_range,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [
+                                    "   - Mobile: " + data_mobile
+                                ]
+                            ]
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
             }
             else if (data_desktop <= 49) {
-                await element.sendKeys("   * " + sheet_names[index] + "\n");
-                await element.sendKeys("     - Desktop: " + data_desktop + "\n");
                 console.log("   * " + sheet_names[index]);
                 console.log("     - Desktop: " + data_desktop);
+                try {
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: reports_range,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [
+                                    "* " + sheet_names[index],
+                                ]
+                            ]
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+
+                try {
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: reports_range,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [
+                                    "   - Desktop: " + data_desktop
+                                ]
+                            ]
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
                 if (data_mobile <= 49) {
-                    await element.sendKeys("     - Mobile: " + data_mobile + "\n");
                     console.log("     - Mobile: " + data_mobile);
+                    try {
+                        await googleSheets.spreadsheets.values.append({
+                            auth,
+                            spreadsheetId,
+                            range: reports_range,
+                            valueInputOption: "USER_ENTERED",
+                            resource: {
+                                values: [
+                                    [
+                                        "   - Mobile: " + data_mobile
+                                    ]
+                                ]
+                            }
+                        });
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
             }
         }

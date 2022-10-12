@@ -1,13 +1,10 @@
 const {google} = require("googleapis");
 require('dotenv').config();
-const { dirname } = require("path");
-const { spawn } = require("child_process");
-const { driver, By2, windowsAppDriverCapabilities } = require("selenium-appium");
 
 const config = require("./config");
-const logger = require('../../middleware/logger');
 const server = require('../../server');
 const sheet = require('../../middleware/gsheet');
+const config_nitropack = require("../../modules/nitropack/config");
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -23,7 +20,9 @@ const startColumnIndex = config.startColumnIndex;
 let site_names = config.site_names;
 let score = config.score;
 const list_sites_range = config.list_sites_range;
+const reports_range = config.reports_range;
 const display_sites_range = config.display_sites_range;
+let output = config_nitropack.output;
 
 
 async function insertRow(timestamp) {
@@ -57,13 +56,11 @@ async function insertRow(timestamp) {
                 console.log("rows added.");
             }
         });
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - add rows success.', tester: server.userId });
         console.log("WEBFORMS - add rows success.");
         value = [ "", "", "info", "add rows success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - add rows failed.', tester: server.userId });
         console.log("WEBFORMS - add rows failed.");
         value = [ "", "", "error", "add rows failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -135,35 +132,17 @@ async function listSitesWithIssues(timestamp) {
         spreadsheetId,
         range: "PV!N4:N5",
     });
-
-    const gps = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "GPS!A4:O4",
-    });
-
-    const nhu = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "NHU!A174:O174",
-    });
-
+    
     const fb = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
         range: "FB!A175:O175",
     });
 
-    const sj = await googleSheets.spreadsheets.values.get({
+    const gps = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "SJ!A4:O4",
-    });
-
-    const azrs = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "AZRS!A4:O4",
+        range: "GPS!A4:O4",
     });
 
     const kfd = await googleSheets.spreadsheets.values.get({
@@ -172,46 +151,16 @@ async function listSitesWithIssues(timestamp) {
         range: "KFD!A4:O4",
     });
 
-    const isc = await googleSheets.spreadsheets.values.get({
+    const nhu = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "ISC!A20:O20",
+        range: "NHU!A174:O174",
     });
 
-    const isc_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+    const azrs = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "ISC!O20:P20",
-    });
-
-    const al = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "AL!A4:O4",
-    });
-
-    const scaz = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "SCAZ!A4:O4",
-    });
-
-    const scaz_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "SCAZ!O4:P4",
-    });
-
-    const i_n = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "IN!A4:O4",
-    });
-
-    const i_n_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "IN!O4:P4",
+        range: "AZRS!A4:O4",
     });
 
     const np = await googleSheets.spreadsheets.values.get({
@@ -224,6 +173,18 @@ async function listSitesWithIssues(timestamp) {
         auth,
         spreadsheetId,
         range: "NP!O4:P4",
+    });
+
+    const i_n = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "IN!A4:O4",
+    });
+
+    const i_n_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "IN!O4:P4",
     });
 
     const frl = await googleSheets.spreadsheets.values.get({
@@ -262,30 +223,6 @@ async function listSitesWithIssues(timestamp) {
         range: "CFHEC!O4:P4",
     });
 
-    const apj = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "APJ!A4:O4",
-    });
-
-    const apj_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "APJ!O4:P4",
-    });
-
-    const dmm = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "DMM!A4:P4",
-    });
-
-    const dmm_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "DMM!O4:P4",
-    });
-
     const at = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
@@ -310,6 +247,13 @@ async function listSitesWithIssues(timestamp) {
         range: "IIC!O4:P4",
     });
 
+    const jfj = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "JFJ!A4:O4",
+    });
+
+
     const sites = [
         acc.data.values,
         blj.data.values,
@@ -318,24 +262,19 @@ async function listSitesWithIssues(timestamp) {
         ox.data.values,
         pma.data.values,
         pv.data.values,
-        gps.data.values,
-        nhu.data.values,
         fb.data.values,
-        sj.data.values,
-        azrs.data.values,
+        gps.data.values,
         kfd.data.values,
-        isc.data.values,
-        al.data.values,
-        scaz.data.values,    
-        i_n.data.values,
+        nhu.data.values,
+        azrs.data.values,
         np.data.values,
+        i_n.data.values,
         frl.data.values,
         bd.data.values,
         cfhec.data.values,
-        apj.data.values,
-        dmm.data.values,
         at.data.values,
-        iic.data.values
+        iic.data.values,
+        jfj.data.values
     ]
 
     // console.log(sites.length);
@@ -344,15 +283,11 @@ async function listSitesWithIssues(timestamp) {
         aims: aims_screenshot_link_mobile.data.values[0] + "\n" + aims_screenshot_link_mobile.data.values[1],
         pma: pma_screenshot_link_mobile.data.values[0] + "\n" + pma_screenshot_link_mobile.data.values[1],
         pv: pv_screenshot_link_mobile.data.values[0] + "\n" + pv_screenshot_link_mobile.data.values[1],
-        isc: isc_screenshot_link_mobile.data.values[0][0] + "\n" + isc_screenshot_link_mobile.data.values[0][1],
-        scaz: scaz_screenshot_link_mobile.data.values[0][0] + "\n" + scaz_screenshot_link_mobile.data.values[0][1],
         i_n: i_n_screenshot_link_mobile.data.values[0][0] + "\n" + i_n_screenshot_link_mobile.data.values[0][1],
         np: np_screenshot_link_mobile.data.values[0][0] + "\n" + np_screenshot_link_mobile.data.values[0][1],
         frl: frl_screenshot_link_mobile.data.values[0][0] + "\n" + frl_screenshot_link_mobile.data.values[0][1],
         bd: bd_screenshot_link_mobile.data.values[0][0] + "\n" + bd_screenshot_link_mobile.data.values[0][1],
         cfhec: cfhec_screenshot_link_mobile.data.values[0][0] + "\n" + cfhec_screenshot_link_mobile.data.values[0][1],
-        apj: apj_screenshot_link_mobile.data.values[0][0] + "\n" + apj_screenshot_link_mobile.data.values[0][1],
-        dmm: dmm_screenshot_link_mobile.data.values[0][0] + "\n" + dmm_screenshot_link_mobile.data.values[0][1],
         at: at_screenshot_link_mobile.data.values[0][0] + "\n" + at_screenshot_link_mobile.data.values[0][1],
         iic: iic_screenshot_link_mobile.data.values[0][0] + "\n" + iic_screenshot_link_mobile.data.values[0][1]
     }
@@ -381,17 +316,13 @@ async function listSitesWithIssues(timestamp) {
         sites[index][0].splice(13, 0, '');
     }
 
-    sites[13][0].splice(16, 1, screenshot_link_md.isc);
-    sites[15][0].splice(16, 1, screenshot_link_md.scaz);
-    sites[16][0].splice(16, 1, screenshot_link_md.i_n);
-    sites[17][0].splice(16, 1, screenshot_link_md.np);
-    sites[18][0].splice(16, 1, screenshot_link_md.frl);
-    sites[19][0].splice(16, 1, screenshot_link_md.bd);
-    sites[20][0].splice(16, 1, screenshot_link_md.cfhec);
-    sites[21][0].splice(16, 1, screenshot_link_md.apj);
-    sites[22][0].splice(16, 1, screenshot_link_md.dmm);
-    sites[23][0].splice(16, 1, screenshot_link_md.at);
-    sites[24][0].splice(16, 1, screenshot_link_md.iic);
+    sites[12][0].splice(16, 1, screenshot_link_md.np);
+    sites[13][0].splice(16, 1, screenshot_link_md.i_n);
+    sites[14][0].splice(16, 1, screenshot_link_md.frl);
+    sites[15][0].splice(16, 1, screenshot_link_md.bd);
+    sites[16][0].splice(16, 1, screenshot_link_md.cfhec);
+    sites[17][0].splice(16, 1, screenshot_link_md.at);
+    sites[18][0].splice(16, 1, screenshot_link_md.iic);
 
 
     // check site with issues
@@ -441,13 +372,11 @@ async function listSitesWithIssues(timestamp) {
             }
     
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - list sites with issue success.', tester: server.userId });
         console.log("WEBFORMS - list sites with issue success.");
         value = [ "", "", "info", "list sites with issue success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - list sites with issue failed.', tester: server.userId });
         console.log("WEBFORMS - list sites with issue failed.");
         value = [ "", "", "error", "list sites with issue failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -460,19 +389,9 @@ async function listSitesWithIssues(timestamp) {
 
 
 async function displaySitesToBeReported(timestamp) {
-    const program = 'C:/Program Files/Windows Application Driver/WinAppDriver.exe';
-    spawn(program, [], { cwd: dirname(program) });
-
-    const appExe = 'C:/Windows/System32/notepad.exe';
-    await driver.startWithCapabilities(windowsAppDriverCapabilities(appExe));
-
-    const element = By2.nativeXpath('//*[@ClassName="Edit"]');
-    await element.click();
-
     const client = await auth.getClient();
-    const googleSheets = google.sheets({ version: "v4", auth: client });
+    const googleSheets = google.sheets({ version: "v4", auth: client })
 
-    // Read rows from google sheet
     const getRows = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
@@ -483,29 +402,76 @@ async function displaySitesToBeReported(timestamp) {
 
     console.log(data.length)
 
+    try {
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: reports_range,
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [
+                        output,
+                    ]
+                ]
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
     // Security Score
     try {
-        await element.sendKeys("Security Score Fails:" + "\n");
         console.log("Security Score Fails:")
+        try {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: reports_range,
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [
+                            "Security Score Fails:"
+                        ]
+                    ]
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
         for (let i = 0; i < data.length; i++) {
             var site = data[i][0];
             var security_score = data[i][5];
             var screenshot_link = data[i][12];
     
             if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC" && site !== "DMM" && site !== "SCAZ")) {
-                await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                 console.log("* " + site + " - " + screenshot_link)
+                try {
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: reports_range,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [
+                                    "* " + site + " - " + screenshot_link,
+                                ]
+                            ]
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
             }
         }
-        await element.sendKeys("-----------------------" + "\n");
         console.log("-----------------------")
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - display security score fails success.', tester: server.userId });
         console.log("WEBFORMS - display security score fails success.");
         value = [ "", "", "info", "display security score fails success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - display security score fails failed.', tester: server.userId });
         console.log("WEBFORMS - display security score fails failed.");
         value = [ "", "", "error", "display security score fails failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -514,27 +480,56 @@ async function displaySitesToBeReported(timestamp) {
 
     // First Byte Time
     try {
-        await element.sendKeys("First Byte Time Fails:" + "\n");
         console.log("First Byte Time Fails:")
+        try {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: reports_range,
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [
+                            "First Byte Time Fails:"
+                        ]
+                    ]
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
         for (let j = 0; j < data.length; j++) {
             var site = data[j][0];
             var first_byte_time = data[j][6];
             var screenshot_link = data[j][12];
     
             if ((first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC" && site !== "DMM" && site !== "SCAZ")) {
-                await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                 console.log("* " + site + " - " + screenshot_link)
+                try {
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: reports_range,
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [
+                                    "* " + site + " - " + screenshot_link,
+                                ]
+                            ]
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
             }
         }
-        await element.sendKeys("-----------------------" + "\n");
         console.log("-----------------------")
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - display first byte time fails success.', tester: server.userId });
         console.log("WEBFORMS - display first byte time fails success.");
         value = [ "", "", "info", "display first byte time fails success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - display first byte time fails failed.', tester: server.userId });
         console.log("WEBFORMS - display first byte time fails failed.");
         value = [ "", "", "error", "display first byte time fails failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
@@ -543,8 +538,24 @@ async function displaySitesToBeReported(timestamp) {
 
     // Effective Use of CDN
     try {
-        await element.sendKeys("No Effective Use of CDN:" + "\n");
         console.log("No Effective Use of CDN:")
+        try {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: reports_range,
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [
+                            "No Effective Use of CDN:"
+                        ]
+                    ]
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
         for (let k = 0; k < data.length; k++) {
             var site = data[k][0];
             var effective_use_of_cdn = data[k][11];
@@ -552,27 +563,40 @@ async function displaySitesToBeReported(timestamp) {
            
             if (effective_use_of_cdn === "X") {
                 if (site === "IN") {
-                    console.log("No Effective Use of SDN for IN.");
+                    console.log("No Effective Use of CDN for IN.");
                 } else {
-                    await element.sendKeys("* " + site + " - " + screenshot_link + "\n");
                     console.log("* " + site + " - " + screenshot_link)
+                    try {
+                        await googleSheets.spreadsheets.values.append({
+                            auth,
+                            spreadsheetId,
+                            range: reports_range,
+                            valueInputOption: "USER_ENTERED",
+                            resource: {
+                                values: [
+                                    [
+                                        "* " + site + " - " + screenshot_link,
+                                    ]
+                                ]
+                            }
+                        });
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
             }
         }
-        logger.logger.log({ level: 'info', message: 'WEBFORMS - display effective use of cdn fails success.', tester: server.userId });
         console.log("WEBFORMS - display effective use of cdn fails success.");
         value = [ "", "", "info", "display effective use of cdn fails success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        logger.logger.log({ level: 'error', message: 'WEBFORMS - display effective use of cdn fails failed.', tester: server.userId });
         console.log("WEBFORMS - display effective use of cdn fails failed.");
         value = [ "", "", "error", "display effective use of cdn fails failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     }
     // end test
-    logger.logger.log({ level: 'info', message: 'test ends.', tester: server.userId });
     console.log("test ends.");
     value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
     await sheet.addRow();

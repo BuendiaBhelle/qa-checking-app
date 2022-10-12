@@ -52,6 +52,8 @@ const list_sites_range = "Summary!A7:Q25";
 
 const display_sites_range = "Summary!A7:Q25";
 
+const reports_range = "Reports!A1:A1000";
+
 
 module.exports = { 
     output, 
@@ -64,5 +66,6 @@ module.exports = {
     site_names,
     score,
     list_sites_range,
+    reports_range,
     display_sites_range
 };
