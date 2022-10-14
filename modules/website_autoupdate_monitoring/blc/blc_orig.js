@@ -41,6 +41,21 @@ async function blc(timestamp) {
     
     for (let index = 0; index < credentials.length; index++) {
         const wp_dashboard = credentials[index][0] + "/wp-admin";
+
+        // write site to sheets
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "BLC!A1",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [
+                        credentials[index][0]
+                    ]
+                ]
+            }
+        });
         
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
@@ -168,11 +183,11 @@ async function blc(timestamp) {
                                         await googleSheets.spreadsheets.values.append({
                                             auth,
                                             spreadsheetId,
-                                            range: "BLC!A2:C2",
+                                            range: "BLC!B1:C1",
                                             valueInputOption: "USER_ENTERED",
                                             resource: {
                                                 values: [
-                                                    [ credentials[index][0], "Y", "No broken links found"]
+                                                    ["Y", "No broken links found"]
                                                 ]
                                             }
                                         });
@@ -184,11 +199,11 @@ async function blc(timestamp) {
                                         await googleSheets.spreadsheets.values.append({
                                             auth,
                                             spreadsheetId,
-                                            range: "BLC!A2:C2",
+                                            range: "BLC!B1:C1",
                                             valueInputOption: "USER_ENTERED",
                                             resource: {
                                                 values: [
-                                                    [credentials[index][0], "Y", broken_link_status]
+                                                    ["Y", broken_link_status]
                                                 ]
                                             }
                                         });
@@ -213,11 +228,11 @@ async function blc(timestamp) {
                             await googleSheets.spreadsheets.values.append({
                                 auth,
                                 spreadsheetId,
-                                range: "BLC!A2:C2",
+                                range: "BLC!B1:C1",
                                 valueInputOption: "USER_ENTERED",
                                 resource: {
                                     values: [
-                                        [credentials[index][0], "Y", "No broken links found"]
+                                        ["Y", "No broken links found"]
                                     ]
                                 }
                             });
@@ -229,11 +244,11 @@ async function blc(timestamp) {
                             await googleSheets.spreadsheets.values.append({
                                 auth,
                                 spreadsheetId,
-                                range: "BLC!A2:C2",
+                                range: "BLC!B1:C1",
                                 valueInputOption: "USER_ENTERED",
                                 resource: {
                                     values: [
-                                        [credentials[index][0], "Y", broken_link_count_result]
+                                        ["Y", broken_link_count_result]
                                     ]
                                 }
                             });
@@ -255,33 +270,10 @@ async function blc(timestamp) {
             await sheet.addRow();
             await sheet.appendValues(value);
         }
-
-        let current_page_url = await driver.getCurrentUrl();
-        console.log(current_page_url);
-
-        if (current_page_url === credentials[index][0] + "/wp-admin/plugins.php") {
-            try {
-                await googleSheets.spreadsheets.values.append({
-                    auth,
-                    spreadsheetId,
-                    range: "BLC!A2:C2",
-                    valueInputOption: "USER_ENTERED",
-                    resource: {
-                        values: [
-                            [credentials[index][0], "N", ""]
-                        ]
-                    }
-                });
-            } catch (error) {
-                console.log(error);
-            }  
-        }
         
         await driver.switchTo().newWindow('tab');
         
     }
-
-
     // end test
     console.log("test ends.");
     value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
