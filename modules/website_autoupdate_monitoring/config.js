@@ -11,7 +11,6 @@ let credentials = [
     ["https://www.accidentchiropracticaz.com", config_server.wp_creds.accidentchiropracticaz.username, config_server.wp_creds.accidentchiropracticaz.password],
     ["https://www.aerotecinternational.com", "pvadmin", "aK^iiLyljF4%18vTg9xDYEvi"],
     ["https://www.alliancedermatology.com", "pvadmin", "ExvkE3I7$olXiHhAuDt6RJld"],
-    ["https://www.azdoordoctor.com", config_server.wp_creds.azdoordoctor.username, config_server.wp_creds.azdoordoctor.password],
     ["https://www.buckeyelot.com", "pvadmin", "kP2HZYs!HWywFW@ZgPeI7vhw"],
     ["https://www.dentistryatthebiltmore.com", config_server.wp_creds.dentistryatthebiltmore.username, config_server.wp_creds.dentistryatthebiltmore.password],
     ["https://www.fccongoaz.com", "pvadmin", "fIB{D27)5}sv"],
@@ -89,7 +88,11 @@ let credentials = [
     ["https://www.primeleisures.com", "pvadmin", "mK4:rQ5{dI6?zO8?"],
     ["https://www.businesstrendstoday.com", "pvadmin", "|fWs[qDSGrO6"],
     ["https://www.mcbuildingmaintenance.com", config_server.wp_creds.mcbuildingmaintenance.username, config_server.wp_creds.mcbuildingmaintenance.password],
-    ["https://www.sunpressurewash.com", "pvadmin", "dZ*8AKwqRk1"]
+    ["https://www.sunpressurewash.com", "pvadmin", "dZ*8AKwqRk1"],
+    ["https://www.airgain.com", "pvadmin", "rl5V@8MeJq@U"],
+    ["https://truckerpath.com", "developer@primeview.com", "%Fx@K$oUl(s%dEWiSDyMRPYS"],
+    ["https://www.jechvac.com", "pvadmin", "{E>e|9wS|6sf"],
+    ["https://www.maintenancebest.com", "pvadmin", "7(%QF2GGHQ_r"]
 ]
 
 
@@ -99,7 +102,6 @@ let frontend_sites = [
     "https://www.accidentchiropracticaz.com",
     "https://www.aerotecinternational.com",
     "https://www.alliancedermatology.com",
-    "https://www.azdoordoctor.com",
     "https://www.buckeyelot.com",
     "https://pondsafeproducts.com/",
     "https://www.dentistryatthebiltmore.com",
@@ -194,7 +196,11 @@ let frontend_sites = [
     "https://www.ourskincares.shop",
     "https://www.mcbuildingmaintenance.com",
     "https://www.phoenixcampus.com",
-    "https://www.sunpressurewash.com"
+    "https://www.sunpressurewash.com",
+    "https://www.airgain.com",
+    "https://truckerpath.com",
+    "https://www.jechvac.com",
+    "https://www.maintenancebest.com"
 ]
 
 

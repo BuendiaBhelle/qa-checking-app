@@ -55,7 +55,13 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.southwestdirectmortgage.com") || (credentials[index][0] === "https://www.turbineaero.com")
         || (credentials[index][0] === "https://www.torontostravel.com") || (credentials[index][0] === "https://www.westechrecyclers.com")
         || (credentials[index][0] === "https://www.collisioncenternorthscottsdale.com") || (credentials[index][0] === "https://www.trezpro.com")
-        || (credentials[index][0] === "https://www.primemedicalpain.com")) {
+        || (credentials[index][0] === "https://www.primemedicalpain.com") || (credentials[index][0] === "https://www.frlawgroup.com")
+        || (credentials[index][0] === "https://www.indinspect.com") || (credentials[index][0] === "https://www.indinspect.com")
+        || (credentials[index][0] === "https://www.kyrenefamilydentistry.com") || (credentials[index][0] === "https://www.onlinebrandreputation.com")
+        || (credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.randosouthwest.com")
+        || (credentials[index][0] === "https://www.accidentchiropracticaz.com") || (credentials[index][0] === "https://www.aerotecinternational.com")
+        || (credentials[index][0] === "https://www.alliancedermatology.com") || (credentials[index][0] === "https://www.jechvac.com")
+        || (credentials[index][0] === "https://www.oxlocalsearch.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
@@ -131,7 +137,13 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.opakapakagrillandbar.com") || (credentials[index][0] === "https://www.southwestdirectmortgage.com") || 
         (credentials[index][0] === "https://www.turbineaero.com") || (credentials[index][0] === "https://www.torontostravel.com") || 
         (credentials[index][0] === "https://www.westechrecyclers.com") || (credentials[index][0] === "https://www.collisioncenternorthscottsdale.com") || 
-        (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.primemedicalpain.com")) {
+        (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.primemedicalpain.com") ||
+        (credentials[index][0] === "https://www.frlawgroup.com") || (credentials[index][0] === "https://www.indinspect.com") ||
+        (credentials[index][0] === "https://www.kyrenefamilydentistry.com") || (credentials[index][0] === "https://www.onlinebrandreputation.com") || 
+        (credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.randosouthwest.com") ||
+        (credentials[index][0] === "https://www.accidentchiropracticaz.com") || (credentials[index][0] === "https://www.aerotecinternational.com") ||
+        (credentials[index][0] === "https://www.alliancedermatology.com") || (credentials[index][0] === "https://www.jechvac.com") ||
+        (credentials[index][0] === "https://www.oxlocalsearch.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
 
