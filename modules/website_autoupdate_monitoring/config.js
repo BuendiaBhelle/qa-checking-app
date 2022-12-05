@@ -21,7 +21,7 @@ let credentials = [
     ["https://www.inspired-engagement.com", "pvadmin", "Jvr2fcF(f8Hzg@*NEr6$djVS"],
     ["https://www.inspirednetworks.com", "pvadmin", "lN2xJ9hS5mA2pF1u"],
     ["https://www.johnsoninjurylaw.com", "johngregadmin", "M2^NNycoR&7dmcdadek)o3TQ"],
-    ["https://www.keenindependent.com", "pvadmin", "qn%kShjd$mLxZJQpiO7CWVSS"],
+    ["https://keenindependent.com", "pvadmin", "qn%kShjd$mLxZJQpiO7CWVSS"],
     ["https://www.mhsjackrabbitsfoundation.com", "pvadmin", "&RguT&P^vurj@Jl3Rn@VuszM"],
     ["https://www.myseoagency.com", "pvadmin", "v6ahbRXTHf87nbmM2)464zxt"],
     ["https://www.ngaaz.org", "pvadmin", "iP2rKyIGJAq2FEAse%7X*x(N"],
@@ -56,7 +56,6 @@ let credentials = [
     ["https://www.amblaw.com", "pvadmin", "MV*y792!N$Uw8y38Y18UT(fO"],
     ["https://www.amissionofmercy.org", "pvadmin", "fFcflnUTHV4g@u6^KZ$3Xd5g"],
     ["https://www.biltmoreloanandjewelry.com", "pvadmin", "%*j*4F^iQPLGi7e2aXV!3smf"],
-    ["https://www.crexendo.com", config_server.wp_creds.crexendo.username, config_server.wp_creds.crexendo.password],
     ["https://www.everythingjustrocks.com", "pvadmin", "Skkj@MI&xkEbA4Fov84eYKot"],
     ["https://www.natina.com", config_server.wp_creds.natina.username, config_server.wp_creds.natina.password],
     ["https://www.frlawgroup.com", config_server.wp_creds.frlawgroup.username, config_server.wp_creds.frlawgroup.password],
@@ -90,7 +89,6 @@ let credentials = [
     ["https://www.mcbuildingmaintenance.com", config_server.wp_creds.mcbuildingmaintenance.username, config_server.wp_creds.mcbuildingmaintenance.password],
     ["https://www.sunpressurewash.com", "pvadmin", "dZ*8AKwqRk1"],
     ["https://www.airgain.com", "pvadmin", "rl5V@8MeJq@U"],
-    ["https://truckerpath.com", "developer@primeview.com", "%Fx@K$oUl(s%dEWiSDyMRPYS"],
     ["https://www.jechvac.com", "pvadmin", "{E>e|9wS|6sf"],
     ["https://www.maintenancebest.com", "pvadmin", "7(%QF2GGHQ_r"]
 ]
@@ -150,7 +148,6 @@ let frontend_sites = [
     "https://www.amblaw.com",
     "https://www.amissionofmercy.org",
     "https://www.biltmoreloanandjewelry.com",
-    "https://www.crexendo.com",
     "https://www.everythingjustrocks.com",
     "https://www.natina.com",
     "https://www.frlawgroup.com",
@@ -198,7 +195,6 @@ let frontend_sites = [
     "https://www.phoenixcampus.com",
     "https://www.sunpressurewash.com",
     "https://www.airgain.com",
-    "https://truckerpath.com",
     "https://www.jechvac.com",
     "https://www.maintenancebest.com"
 ]
