@@ -68,7 +68,21 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.johnsoninjurylaw.com")
         || (credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.mhsjackrabbitsfoundation.com")
         || (credentials[index][0] === "https://www.myseoagency.com") || (credentials[index][0] === "https://www.ngaaz.org")
-        || (credentials[index][0] === "https://www.ocmedspa.com")) {
+        || (credentials[index][0] === "https://www.ocmedspa.com") || (credentials[index][0] === "https://search.optimizex.com")
+        || (credentials[index][0] === "https://www.orionisg.com") || (credentials[index][0] === "https://www.pmrtimeshares.com")
+        || (credentials[index][0] === "https://www.suncliffsedona.com") || (credentials[index][0] === "https://www.jmrestoration.com")
+        || (credentials[index][0] === "https://www.valuesquest.com") || (credentials[index][0] === "https://www.paysondermatology.com")
+        || (credentials[index][0] === "https://www.americanleatherusa.com") || (credentials[index][0] === "https://amblaw.com")
+        || (credentials[index][0] === "https://www.teamleadership.org") || (credentials[index][0] === "https://www.kyotoscottsdale.com")
+        || (credentials[index][0] === "https://www.americanwestpallets.com") || (credentials[index][0] === "https://www.coachingliteracy.com")
+        || (credentials[index][0] === "https://www.drgholampeyman.com") || (credentials[index][0] === "https://www.pressuresystemsinc.com")
+        || (credentials[index][0] === "https://www.risingsunmartialartsaz.com") || (credentials[index][0] === "https://www.goimpacttechnology.com")
+        || (credentials[index][0] === "https://www.hbmgov.com") || (credentials[index][0] === "https://www.primeview.com")
+        || (credentials[index][0] === "https://www.sunrisejewelryusa.com") || (credentials[index][0] === "https://www.andresperezjurado.com")
+        || (credentials[index][0] === "https://www.jewelryoutletinc.com") || (credentials[index][0] === "https://www.advancedimagemedspa.com")
+        || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || (credentials[index][0] === "https://www.amissionofmercy.org")
+        || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || (credentials[index][0] === "https://www.everythingjustrocks.com")
+        || (credentials[index][0] === "https://www.truckerpaths.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
@@ -156,7 +170,21 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.genovation.com") || (credentials[index][0] === "https://gentryrealestategroup.com") || 
         (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.johnsoninjurylaw.com") ||
         (credentials[index][0] === "https://www.mhsjackrabbitsfoundation.com") || (credentials[index][0] === "https://www.myseoagency.com") || 
-        (credentials[index][0] === "https://www.ngaaz.org") || (credentials[index][0] === "https://www.ocmedspa.com")) {
+        (credentials[index][0] === "https://www.ngaaz.org") || (credentials[index][0] === "https://www.ocmedspa.com") ||
+        (credentials[index][0] === "https://search.optimizex.com") || (credentials[index][0] === "https://www.orionisg.com") || 
+        (credentials[index][0] === "https://www.pmrtimeshares.com") || (credentials[index][0] === "https://www.suncliffsedona.com") || 
+        (credentials[index][0] === "https://www.jmrestoration.com") || (credentials[index][0] === "https://www.valuesquest.com") || 
+        (credentials[index][0] === "https://www.paysondermatology.com") || (credentials[index][0] === "https://www.americanleatherusa.com") || 
+        (credentials[index][0] === "https://amblaw.com") || (credentials[index][0] === "https://www.teamleadership.org") ||
+        (credentials[index][0] === "https://www.kyotoscottsdale.com") || (credentials[index][0] === "https://www.americanwestpallets.com") ||
+        (credentials[index][0] === "https://www.coachingliteracy.com") || (credentials[index][0] === "https://www.drgholampeyman.com") || 
+        (credentials[index][0] === "https://www.pressuresystemsinc.com") || (credentials[index][0] === "https://www.risingsunmartialartsaz.com") || 
+        (credentials[index][0] === "https://www.goimpacttechnology.com") || (credentials[index][0] === "https://www.hbmgov.com") || 
+        (credentials[index][0] === "https://www.primeview.com") || (credentials[index][0] === "https://www.sunrisejewelryusa.com") || 
+        (credentials[index][0] === "https://www.andresperezjurado.com") || (credentials[index][0] === "https://www.jewelryoutletinc.com") || 
+        (credentials[index][0] === "https://www.advancedimagemedspa.com") || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || 
+        (credentials[index][0] === "https://www.amissionofmercy.org") || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || 
+        (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.truckerpaths.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
 

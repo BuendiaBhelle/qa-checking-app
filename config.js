@@ -88,7 +88,7 @@ let wp_creds = {
     },
     biltmoreloanandjewelry: {
         username: "pvadmin",
-        password: "%*j*4F^iQPLGi7e2aXV!3smf"
+        password: "^WMWpmY%3#bL09$Fd)g)g*WQ"
     },
     buckeyederm: {
         username: "pvadmin",
@@ -140,7 +140,7 @@ let wp_creds = {
     },
     sunrisejewelryusa: {
         username: "pvadmin",
-        password: "jX6#dN5?oR7#vU5#"
+        password: "3J2FU0Shv(UfoLKTftU1N(4i"
     },
     randosouthwest: {
         username: "pvadmin",
@@ -188,7 +188,7 @@ let wp_creds = {
     },
     jewelryoutletinc: {
         username: "pvadmin",
-        password: "AuAKL4TTFeQ^2DlBF8l8VBE!"
+        password: "gf5yR#0F1XOOSV4cymCKn)#T"
     },
     paysondermatology: {
         username: "pvadmin",

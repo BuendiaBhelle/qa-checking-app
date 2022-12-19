@@ -34,14 +34,14 @@ let credentials = [
     ["https://www.pmrtimeshares.com", "pvadmin", "NMoiE$!uoOMwiE1vxxd05tH*"],
     ["https://www.suncliffsedona.com", "pvadmin", "1YdGjQHCcHPJ4w81MeSd!Q(u"],
     ["https://www.thesolutionsforum.net", "pvadmin", "p@iWoX3pvx0r2"],
-    ["https://www.jmrestoration.com", "pvadmin", "GUqW!R@XNUj2!s2m#nULQXM5"],
+    // ["https://www.jmrestoration.com", "pvadmin", "GUqW!R@XNUj2!s2m#nULQXM5"],
     ["https://www.valuesquest.com", "pvadmin", "Js*h6qXd(t)krrAECi0T5jbV"],
     ["https://www.paysondermatology.com", config_server.wp_creds.paysondermatology.username, config_server.wp_creds.paysondermatology.password],
     ["https://www.teamleadership.org", "pvadmin", "2yob9g2J5Y3^8e4Af#b56p@5"],
     ["https://www.kyotoscottsdale.com", "pvadmin", "MHWzM!JlkCTmtVmHMuCY(lHk"],
-    ["https://www.americanwestpallets.com", "pvadmin", "7*xo67gdN0sYqNKJs)6AaOEB"],
+    // ["https://www.americanwestpallets.com", "pvadmin", "7*xo67gdN0sYqNKJs)6AaOEB"],
     ["https://www.coachingliteracy.com", "pvadmin", "dzf19x(8cIGpLCuzs9ffe5V5"],
-    ["https://www.drmandiconway.com", "pvadmin", "N*zeX3ye27T@IUZVw*c7!96T"],
+    // ["https://www.drmandiconway.com", "pvadmin", "N*zeX3ye27T@IUZVw*c7!96T"],
     ["https://www.hospiceofyuma.com", "pvadmin", "NzORBXnz6!zqzG*tcDuTecPy"],
     ["https://www.drgholampeyman.com", "pvadmin", "^GXaoAwIAdZ20HjE$tCovvtF"],
     ["https://www.pressuresystemsinc.com", "pvadmin", "XkWb@#BuZJfcDTsqp3MDlp4h"],
@@ -53,10 +53,10 @@ let credentials = [
     ["https://www.jewelryoutletinc.com", config_server.wp_creds.jewelryoutletinc.username, config_server.wp_creds.jewelryoutletinc.password],
     ["https://www.advancedimagemedspa.com", config_server.wp_creds.advancedimagemedspa.username, config_server.wp_creds.advancedimagemedspa.password],
     ["https://www.arizonaretinalspecialists.com", "pvadmin", "#tyG0P3zd(I%pl@sXNin%3(R"],
-    ["https://www.amblaw.com", "pvadmin", "MV*y792!N$Uw8y38Y18UT(fO"],
+    ["https://amblaw.com", "pvadmin", "cXID^LR&KtydwZ58T2)MxA&$"],
     ["https://www.amissionofmercy.org", "pvadmin", "fFcflnUTHV4g@u6^KZ$3Xd5g"],
-    ["https://www.biltmoreloanandjewelry.com", "pvadmin", "%*j*4F^iQPLGi7e2aXV!3smf"],
-    ["https://www.everythingjustrocks.com", "pvadmin", "Skkj@MI&xkEbA4Fov84eYKot"],
+    ["https://www.biltmoreloanandjewelry.com", "pvadmin", "^WMWpmY%3#bL09$Fd)g)g*WQ"],
+    ["https://www.everythingjustrocks.com", "pvadmin", "bW#Cnv0CjQsrPjC%$oS@&)nM"],
     ["https://www.natina.com", config_server.wp_creds.natina.username, config_server.wp_creds.natina.password],
     ["https://www.frlawgroup.com", config_server.wp_creds.frlawgroup.username, config_server.wp_creds.frlawgroup.password],
     ["https://www.indinspect.com", config_server.wp_creds.indinspect.username, config_server.wp_creds.indinspect.password],
@@ -90,7 +90,11 @@ let credentials = [
     ["https://www.sunpressurewash.com", "pvadmin", "dZ*8AKwqRk1"],
     ["https://www.airgain.com", "pvadmin", "rl5V@8MeJq@U"],
     ["https://www.jechvac.com", "pvadmin", "{E>e|9wS|6sf"],
-    ["https://www.maintenancebest.com", "pvadmin", "7(%QF2GGHQ_r"]
+    ["https://www.maintenancebest.com", "pvadmin", "7(%QF2GGHQ_r"],
+    ["https://www.goimpacttechnology.com", "pvadmin", "ZHput2^7%r>n"],
+    ["https://www.hbmgov.com", "pvadmin", "uWX.>62hP7[d"],
+    ["https://www.truckerpaths.com", "pvadmin", "3gOtl{2OaV9]"]
+
 ]
 
 
