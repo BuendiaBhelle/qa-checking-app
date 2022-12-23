@@ -82,7 +82,8 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.jewelryoutletinc.com") || (credentials[index][0] === "https://www.advancedimagemedspa.com")
         || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || (credentials[index][0] === "https://www.amissionofmercy.org")
         || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || (credentials[index][0] === "https://www.everythingjustrocks.com")
-        || (credentials[index][0] === "https://www.truckerpaths.com")) {
+        || (credentials[index][0] === "https://www.truckerpaths.com") || (credentials[index][0] === "https://www.natina.com")
+        || (credentials[index][0] === "https://www.airgain.com") || (credentials[index][0] === "https://www.maintenancebest.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
@@ -184,7 +185,9 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.andresperezjurado.com") || (credentials[index][0] === "https://www.jewelryoutletinc.com") || 
         (credentials[index][0] === "https://www.advancedimagemedspa.com") || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || 
         (credentials[index][0] === "https://www.amissionofmercy.org") || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || 
-        (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.truckerpaths.com")) {
+        (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.truckerpaths.com") ||
+        (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") || 
+        (credentials[index][0] === "https://www.maintenancebest.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
 
