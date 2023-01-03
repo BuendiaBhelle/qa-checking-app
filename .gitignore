@@ -117,4 +117,5 @@ modules/nitropack/config.js
 modules/webforms/config.js
 modules/website_autoupdate_monitoring/config.js
 modules/wpm/config.js
+middleware/config.js
 config.js
