@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@microsoft/edge-selenium-tools": "^3.6.2",
-    "alert": "^5.0.12",
+    "alert": "^5.1.4",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "child_process": "^1.0.2",

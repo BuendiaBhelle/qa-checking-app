@@ -149,6 +149,7 @@ const wpm_reports = require("./modules/wpm/wpm");
 const waum_backend = require("./modules/website_autoupdate_monitoring/backend/backend");
 const waum_blc = require("./modules/website_autoupdate_monitoring/blc/blc");
 const waum_frontend = require("./modules/website_autoupdate_monitoring/frontend/frontend");
+const plugins = require("./modules/plugins/plugins");
 
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
@@ -5380,6 +5381,16 @@ app.post('/post/waum_frontend', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+    res.send(success_msg);
+});
+
+app.post('/post/plugins', async (req, res) => {
+    var domains = req.body.domains;
+    var broken_link_checker = req.body.broken_link_checker;
+    var yoast = req.body.yoast;
+
+    await plugins.plugins(timestamp, domains, broken_link_checker, yoast);
+
     res.send(success_msg);
 });
 

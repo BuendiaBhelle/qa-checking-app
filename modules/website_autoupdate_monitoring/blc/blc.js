@@ -91,11 +91,7 @@ async function blc(timestamp) {
 
         // wp login
         try {
-            if (credentials[index][0] === "https://www.crexendo.com") {
-                await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
-                await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
-                await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
-            } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
+            if (credentials[index][0] === "https://www.phoenixritecare.org") {
                 await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
                 await driver.executeScript("return document.getElementsByClassName('button button-primary button-large')[0].click()");
@@ -342,7 +338,7 @@ async function blc(timestamp) {
     console.log("test ends.");
     value = [ "", "", "info", "test ends.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
     await sheet.addRow();
-    await sheet.appendValues
+    await sheet.appendValues(value);
     
 }
 

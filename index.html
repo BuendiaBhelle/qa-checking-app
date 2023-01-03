@@ -103,15 +103,9 @@
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="wpm()">Website Performance Monitoring</button>
                             </li>
-                            <!-- <li class="nav-item">
-                                <button class="button sidebar-nav-item" onclick="waum_backend()">Backend Monitoring</button>
-                            </li>
                             <li class="nav-item">
-                                <button class="button sidebar-nav-item" onclick="waum_blc()">BLC Plugin Checking</button>
+                                <button class="button sidebar-nav-item" onclick="plugins()">Plugins</button>
                             </li>
-                            <li class="nav-item">
-                                <button class="button sidebar-nav-item" onclick="waum_frontend()">Frontend Monitoring</button>
-                            </li> -->
                             <div class="dropdown">
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Responsiveness</button>
@@ -131,17 +125,6 @@
                                     </div>
                                 </li>
                             </div>
-
-
-                            <!-- <div class="dropdown">
-                                <li class="nav-item">
-                                    <button class="button sidebar-nav-item">Monitoring Tasks</button>
-                                    <div class="dropdown-content">
-                                        <p style="margin-bottom: 6px;" onclick="wpm()">WPM</p>
-                                        <p onclick="nitropack()">Nitropack</p>
-                                    </div>
-                                </li>
-                            </div> -->
 
 
  
@@ -1606,6 +1589,78 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
                                 </form>
                             </div>
+
+                            <!-- PLUGINS -->
+                            <div id="plugins">
+                                <h1 style="margin-top: 100px;">Plugins</h1>
+                                <form action="/post/plugins" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="domains" class="col-sm-3 col-form-label">Choose a site:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="domains" id="domains">
+                                                            <option value="accidentchiropracticaz">Accident Chiropractic AZ</option>
+                                                            <option value="advancedimagemedspa">Advanced Image Med Spa</option>
+                                                            <option value="aerialengagement">Aerial Engagement</option>
+                                                            <option value="aeroturbine">Aero Turbine</option>
+                                                            <option value="collisioncenternorthscottsdale">Airpark Collision Center</option>
+                                                            <option value="americanleatherusa">American Leather USA</option>
+                                                            <option value="andresperezjurado">Andres Perez Jurado</option>
+                                                            <option value="airgain">Airgain</option>
+                                                            <option value="azdoordoctor">AZ Door Doctor</option>
+                                                            <option value="biltmoreloanandjewelry">Biltmore Loan and Jewelry</option>
+                                                            <option value="buckeyederm">Buckeye Derm</option>
+                                                            <option value="canyonfallshairextensioncompany">Canyon Falls Hair Extension Company</option>
+                                                            <option value="cma">CMA</option>
+                                                            <option value="culpepper">Culpepper & Associates</option>
+                                                            <option value="dentistryatthebiltmore">Dentistry At The Biltmore</option>
+                                                            <option value="ewingconstruction">Ewing Construction</option>
+                                                            <option value="frlawgroup">FR Law Group</option>
+                                                            <option value="freddabranyon">Fredda Branyon</option>
+                                                            <option value="gatorskin">Gatorskin</option>
+                                                            <option value="hospiceofyuma">Hospice of Yuma</option>
+                                                            <option value="indinspect">Industrial Inspection & Consulting</option>
+                                                            <option value="jewelryoutletinc">Jewelry Outlet</option>
+                                                            <option value="judefrancesjewelry">Jude Frances Jewelry</option>
+                                                            <option value="kyrenefamilydentistry">Kyrene Family Dentistry</option>
+                                                            <option value="mcbuildingmaintenance">MC Building Maintenance</option>
+                                                            <option value="natina">Natina</option>
+                                                            <option value="newhopemedicalcenter">New Hope Medical Center</option>
+                                                            <option value="optimizex">OptimizeX</option>
+                                                            <option value="paysondermatology">Payson Dermatology</option>
+                                                            <option value="phoenixritecare">Phoenix Scottish Rite</option>
+                                                            <option value="primemedicalpain">Prime Medical Pain Management Centers</option>
+                                                            <option value="primeview">Primeview</option>
+                                                            <option value="randosouthwest">Rando South West</option>
+                                                            <option value="renewscal">Renew Stem Cell & Laser</option>
+                                                            <option value="risingsunmartialartsaz">Rising Sun</option>
+                                                            <option value="sellusyourcaraz">Sell Us Your Car AZ</option>
+                                                            <option value="signsofthetimes">Signs of the Times</option>
+                                                            <option value="solutionsforum">Solutions Forum</option>
+                                                            <option value="sunpressurewash">Sun Pressure Wash</option>
+                                                            <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
+                                                            <option value="tmpc">TMPC</option>
+                                                            <option value="versatile">Versatile</option>
+                                                            <option value="virtualassistantsoutsourcing">Virtual Assistant Outsourcing</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="radio" id="broken_link_checker" name="broken_link_checker" value="broken_link_checker">
+                                    <label for="broken_link_checker">Broken Link Checker</label><br>
+                                    <input type="radio" id="yoast" name="yoast" value="yoast">
+                                    <label for="yoast">Yoast SEO</label><br>
+                                  
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+
+                                </form>
+                            </div>
                             
                             <!-- WEBSITE AUTOUPDATE MONITORING - BACKEND -->
                             <div id="waum_backend">
@@ -1787,6 +1842,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1802,6 +1858,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1817,6 +1874,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1832,6 +1890,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1847,6 +1906,7 @@
             document.getElementById('newsletter').style.display = 'block';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1862,6 +1922,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'block';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1877,6 +1938,23 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'block';
+            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function plugins() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1892,6 +1970,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'block';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1907,6 +1986,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'block';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1922,6 +2002,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'block';
@@ -1937,6 +2018,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1952,6 +2034,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
