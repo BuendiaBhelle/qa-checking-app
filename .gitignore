@@ -110,4 +110,4 @@ credentials.json
 request.rest
 
 # configs
-config.js
+modules/website_autoupdate_monitoring/config.js
