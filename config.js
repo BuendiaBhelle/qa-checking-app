@@ -58,7 +58,9 @@ const sites = [
     "dentistryatthebiltmore",
     "mcbuildingmaintenance",
     "tmpc",
-    "cma"
+    "cma",
+    "signsofthetimes",
+    "sunpressurewash"
 ]
 
 let wp_creds = {
@@ -225,6 +227,14 @@ let wp_creds = {
     cma: {
         username: "pvadmin",
         password: "iR4wW]uPU1V("
+    },
+    signsofthetimes: {
+        username: "pvadmin",
+        password: "AFMC(/cH5NKH"
+    },
+    sunpressurewash: {
+        username: "pvadmin",
+        password: "dZ*8AKwqRk1"
     }
 }
 
@@ -392,6 +402,14 @@ let domain = {
     cma: {
         dev: "https://cmahrdev.primeview.com/",
         live: "https://www.cmahr.com/"
+    },
+    signsofthetimes: {
+        dev: "https://signsofthetimesazwpdev.primeview.com/",
+        live: "https://www.signsofthetimesaz.com/"
+    },
+    sunpressurewash: {
+        dev: "https://sunpressurewashdev.primeview.com/",
+        live: "https://www.sunpressurewash.com/"
     }
 }
 
@@ -592,6 +610,13 @@ let forms = {
     },
     cma: {
         form1: ""
+    },
+    signsofthetimes: {
+        form1: "contact-us/"
+    },
+    sunpressurewash: {
+        form1: "",
+        form2: "contact/"
     }
 }
 
@@ -636,7 +661,9 @@ let sheetId = {
     dentistryatthebiltmore: 968628360,
     mcbuildingmaintenance: 283258278,
     tmpc: 1801063836,
-    cma: 929743110
+    cma: 929743110,
+    signsofthetimes: 209541498,
+    sunpressurewash: 947061366
 }
 
 let range = [
@@ -1090,6 +1117,28 @@ let range = [
             "CMA!E2",
             "CMA!G2",
         ]
+    ],
+    sites[41] = [
+        [
+            "Signs of the Times!Q2",
+            "Signs of the Times!A2",
+            "Signs of the Times!B2",
+            "Signs of the Times!C2",
+            "Signs of the Times!D2",
+            "Signs of the Times!E2",
+            "Signs of the Times!G2",
+        ]
+    ],
+    sites[42] = [
+        [
+            "Sun Pressure Wash!Q2",
+            "Sun Pressure Wash!A2",
+            "Sun Pressure Wash!B2",
+            "Sun Pressure Wash!C2",
+            "Sun Pressure Wash!D2",
+            "Sun Pressure Wash!E2",
+            "Sun Pressure Wash!G2",
+        ]
     ]
 ]
 
@@ -1134,7 +1183,9 @@ let ranges = {
     dentistryatthebiltmore: range[37][0],
     mcbuildingmaintenance: range[38][0],
     tmpc: range[39][0],
-    cma: range[40][0]
+    cma: range[40][0],
+    signsofthetimes: range[41][0],
+    sunpressurewash: range[42][0]
 }
 
 let launch = {
@@ -1339,6 +1390,13 @@ let contact_form_name = {
     },
     cma: {
         form1: "CMA - Contact Form"
+    },
+    signsofthetimes: {
+        form1: "Contact form 1"
+    },
+    sunpressurewash: {
+        form1: "Get in Touch",
+        form2: "Contact Us"
     }
 }
 
@@ -1539,6 +1597,13 @@ let contact_form_shortcode = {
     },
     cma: {
         form1: '[contact-form-7 id="56" title="CMA - Contact Form"]'
+    },
+    signsofthetimes: {
+        form1: '[contact-form-7 id="426" title="Contact form 1"]'
+    },
+    sunpressurewash: {
+        form1: '[contact-form-7 id="183" title="Get in Touch"]',
+        form2: '[contact-form-7 id="349" title="Contact Us"]'
     }
 }
 
@@ -1584,7 +1649,9 @@ let range_recipient = {
     dentistryatthebiltmore: "Dentistry At The Biltmore!H2",
     mcbuildingmaintenance: "MC Building Maintenance!H2",
     tmpc: "TMPC!H2",
-    cma: "CMA!H2"
+    cma: "CMA!H2",
+    signsofthetimes: "Signs of the Times!H2",
+    sunpressurewash: "Sun Pressure Wash!H2"
 }
 
 
@@ -1629,7 +1696,9 @@ let range_thankyou_page = {
     dentistryatthebiltmore: "Dentistry At The Biltmore!I2",
     mcbuildingmaintenance: "MC Building Maintenance!I2",
     tmpc: "TMPC!I2",
-    cma: "CMA!I2"
+    cma: "CMA!I2",
+    signsofthetimes: "Signs of the Times!I2",
+    sunpressurewash: "Sun Pressure Wash!I2"
 }
 
 const qa_email = "mbuendia@optimizex.com, qa@primeview.com";
@@ -2118,6 +2187,24 @@ let webforms = {
         live: {
             form1: "CMA - Contact Form"
         }
+    },
+    signsofthetimes: {
+        dev: {
+            form1: "Contact form 1"
+        },
+        live: {
+            form1: "Contact form 1"
+        }
+    },
+    sunpressurewash: {
+        dev: {
+            form1: "Get in Touch",
+            form2: "Contact Us"
+        },
+        live: {
+            form1: "Get in Touch",
+            form2: "Contact Us"
+        }
     }
 }
 
@@ -2597,6 +2684,24 @@ let form_page = {
         },
         live: {
             form1: "/admin.php?page=wpcf7&post=56&action=edit"
+        }
+    },
+    signsofthetimes: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=426&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=426&action=edit"
+        }
+    },
+    sunpressurewash: {
+        dev: {
+            form1: "/admin.php?page=wpcf7&post=183&action=edit",
+            form2: "/admin.php?page=wpcf7&post=349&action=edit"
+        },
+        live: {
+            form1: "/admin.php?page=wpcf7&post=183&action=edit",
+            form2: "/admin.php?page=wpcf7&post=349&action=edit"
         }
     }
 }

@@ -120,6 +120,7 @@ const webforms_risingsunmartialartsaz_f1 = require("./modules/webforms/contactfo
 const webforms_sellusyourcaraz_f1 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form1/index");
 const webforms_sellusyourcaraz_f2 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form2/index");
 const webforms_sellusyourcaraz_f3 = require("./modules/webforms/contactform7/forms/sellusyourcaraz/form3/index");
+const webforms_signsofthetimes_f1 = require("./modules/webforms/contactform7/forms/signsofthetimes/form1/index");
 const webforms_sunrisejewelryusa_f1 = require("./modules/webforms/contactform7/forms/sunrisejewelryusa/form1/index");
 const webforms_tmpc_f1 = require("./modules/webforms/contactform7/forms/tmpc/form1/index");
 const webforms_tmpc_f2 = require("./modules/webforms/contactform7/forms/tmpc/form2/index");
@@ -134,6 +135,8 @@ const webforms_versatile_f3 = require("./modules/webforms/contactform7/forms/ver
 const webforms_versatile_f4 = require("./modules/webforms/contactform7/forms/versatile/form4/index");
 const webforms_virtualassistantsoutsourcing_f1 = require("./modules/webforms/contactform7/forms/virtualassistantsoutsourcing/form1/index");
 const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/forms/solutionsforum/form1/index");
+const webforms_sunpressurewash_f1 = require("./modules/webforms/contactform7/forms/sunpressurewash/form1/index");
+const webforms_sunpressurewash_f2 = require("./modules/webforms/contactform7/forms/sunpressurewash/form2/index");
 const newsletter = require("./modules/newsletter/newsletter");
 const nitropack = require("./modules/nitropack/reports/index");
 const nitropack_reports = require("./modules/nitropack/reports/nitropack");
@@ -4671,6 +4674,63 @@ app.post('/post/webforms', async (req, res) => {
                         break;
                 }
                 break;
+            case "signsofthetimes":
+                var site_signsofthetimes = req.body.site_signsofthetimes;
+                var sheetId = config.sheetId.signsofthetimes;
+                var ranges = config.ranges.signsofthetimes;
+                var range_recipient = config.range_recipient.signsofthetimes;
+                var range_thankyou_page = config.range_thankyou_page.signsofthetimes;
+
+                console.log("Site: " + site_signsofthetimes);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.signsofthetimes.dev;
+                        var wp_creds_username = config.wp_creds.signsofthetimes.username;
+                        var wp_creds_password = config.wp_creds.signsofthetimes.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_signsofthetimes) {
+                            case "form1":
+                                var forms = config.forms.signsofthetimes.form1;
+                                var webforms = config.webforms.signsofthetimes.dev.form1;
+                                var contact_form_name = config.contact_form_name.signsofthetimes.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.signsofthetimes.form1;
+                                var form_page = config.form_page.signsofthetimes.dev.form1;
+
+                                console.log("form1");
+                                await webforms_signsofthetimes_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.signsofthetimes.live;
+                        var wp_creds_username = config.wp_creds.signsofthetimes.username;
+                        var wp_creds_password = config.wp_creds.signsofthetimes.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_signsofthetimes) {
+                            case "form1":
+                                var forms = config.forms.signsofthetimes.form1;
+                                var webforms = config.webforms.signsofthetimes.live.form1;
+                                var contact_form_name = config.contact_form_name.signsofthetimes.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.signsofthetimes.form1;
+                                var form_page = config.form_page.signsofthetimes.live.form1;
+
+                                console.log("form1");
+                                await webforms_signsofthetimes_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
             case "sunrisejewelryusa":
                 var site_sunrisejewelryusa = req.body.site_sunrisejewelryusa;
                 var sheetId = config.sheetId.sunrisejewelryusa;
@@ -5102,6 +5162,83 @@ app.post('/post/webforms', async (req, res) => {
                     //             break;
                     //     }
                     //     break;
+                }
+                break;
+            case "sunpressurewash":
+                var site_sunpressurewash = req.body.site_sunpressurewash;
+                var sheetId = config.sheetId.sunpressurewash;
+                var ranges = config.ranges.sunpressurewash;
+                var range_recipient = config.range_recipient.sunpressurewash;
+                var range_thankyou_page = config.range_thankyou_page.sunpressurewash;
+
+                console.log("Site: " + site_sunpressurewash);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.sunpressurewash.dev;
+                        var wp_creds_username = config.wp_creds.sunpressurewash.username;
+                        var wp_creds_password = config.wp_creds.sunpressurewash.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_sunpressurewash) {
+                            case "form1":
+                                var forms = config.forms.sunpressurewash.form1;
+                                var webforms = config.webforms.sunpressurewash.dev.form1;
+                                var contact_form_name = config.contact_form_name.sunpressurewash.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.sunpressurewash.form1;
+                                var form_page = config.form_page.sunpressurewash.dev.form1;
+
+                                console.log("form1");
+                                await webforms_sunpressurewash_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.sunpressurewash.form2;
+                                var webforms = config.webforms.sunpressurewash.dev.form2;
+                                var contact_form_name = config.contact_form_name.sunpressurewash.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.sunpressurewash.form2;
+                                var form_page = config.form_page.sunpressurewash.dev.form2;
+
+                                console.log("form2");
+                                await webforms_sunpressurewash_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.sunpressurewash.live;
+                        var wp_creds_username = config.wp_creds.sunpressurewash.username;
+                        var wp_creds_password = config.wp_creds.sunpressurewash.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_sunpressurewash) {
+                            case "form1":
+                                var forms = config.forms.sunpressurewash.form1;
+                                var webforms = config.webforms.sunpressurewash.live.form1;
+                                var contact_form_name = config.contact_form_name.sunpressurewash.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.sunpressurewash.form1;
+                                var form_page = config.form_page.sunpressurewash.live.form1;
+
+                                console.log("form1");
+                                await webforms_sunpressurewash_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.sunpressurewash.form2;
+                                var webforms = config.webforms.sunpressurewash.live.form2;
+                                var contact_form_name = config.contact_form_name.sunpressurewash.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.sunpressurewash.form2;
+                                var form_page = config.form_page.sunpressurewash.live.form2;
+
+                                console.log("form2");
+                                await webforms_sunpressurewash_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                 }
                 break;
             default:

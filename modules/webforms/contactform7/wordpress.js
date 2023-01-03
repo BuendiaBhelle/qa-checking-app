@@ -171,6 +171,7 @@ async function wordpressStart(date, domain, username, password, email, timestamp
 
     // navigate to forms page
     await driver.get(wp_site + form_page);
+    console.log("FORM PAGE: " + form_page);
     await driver.sleep(1000);
 
     if (domain === "https://crexendoredesign.primeview.com/" || domain === "https://www.crexendo.com/") {
