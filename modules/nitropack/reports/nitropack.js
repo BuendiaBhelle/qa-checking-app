@@ -227,7 +227,7 @@ async function desktopScore(timestamp) {
                     await driver.sleep(20000);
                 }
         
-                let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[1].innerText");
+                let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[20].innerText");
                 var scoreFin = Number(score);
                 console.log(scoreFin);
             } catch (error) {
