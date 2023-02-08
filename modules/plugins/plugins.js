@@ -120,7 +120,8 @@ async function plugins(timestamp, domains, broken_link_checker, yoast) {
             || (url === "https://www.arizonaretinalspecialists.com") || (url === "https://www.amissionofmercy.org")
             || (url === "https://www.biltmoreloanandjewelry.com") || (url === "https://www.everythingjustrocks.com")
             || (url === "https://www.truckerpaths.com") || (url === "https://www.natina.com")
-            || (url === "https://www.airgain.com") || (url === "https://www.maintenancebest.com")) {
+            || (url === "https://www.airgain.com") || (url === "https://www.maintenancebest.com"
+            || (url === "https://www.molnarwalkingy.com"))) {
                 await driver.get(url + "/pvlogin");
 
                 await driver.findElement(By.name("log")).sendKeys(username);

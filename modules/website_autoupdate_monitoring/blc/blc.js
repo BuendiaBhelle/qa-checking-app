@@ -45,9 +45,9 @@ async function blc(timestamp) {
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
         } else if ((credentials[index][0] === "https://www.businesstrendstoday.com") || (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com")
-        || (credentials[index][0] === "https://www.bbllessons.com") || (credentials[index][0] === "https://www.thesolutionsforum.com") 
+        || (credentials[index][0] === "https://www.thesolutionsforum.com") 
         || (credentials[index][0] === "https://www.primeleisures.com") || (credentials[index][0] === "https://www.mcbuildingmaintenance.com")
-        || (credentials[index][0] === "https://www.drmazaheri.com") || (credentials[index][0] === "https://www.phoenixritecare.org")
+        || (credentials[index][0] === "https://www.drmazaheri.com")
         || (credentials[index][0] === "https://www.aerialengagement.com") || (credentials[index][0] === "https://www.ewingconstruction.com")
         || (credentials[index][0] === "https://www.buckeyederm.com") || (credentials[index][0] === "https://www.jelleyvision.com")
         || (credentials[index][0] === "https://staffportal.optimizex.com") || (credentials[index][0] === "https://www.gatorskin.us")
@@ -82,8 +82,9 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.jewelryoutletinc.com") || (credentials[index][0] === "https://www.advancedimagemedspa.com")
         || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || (credentials[index][0] === "https://www.amissionofmercy.org")
         || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || (credentials[index][0] === "https://www.everythingjustrocks.com")
-        || (credentials[index][0] === "https://www.truckerpaths.com") || (credentials[index][0] === "https://www.natina.com")
-        || (credentials[index][0] === "https://www.airgain.com") || (credentials[index][0] === "https://www.maintenancebest.com")) {
+        || (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") 
+        || (credentials[index][0] === "https://www.maintenancebest.com") || (credentials[index][0] === "https://www.molnarwalkingy.com")
+        || (credentials[index][0] === "https://www.drmandiconway.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
@@ -94,7 +95,7 @@ async function blc(timestamp) {
             if (credentials[index][0] === "https://www.phoenixritecare.org") {
                 await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
-                await driver.executeScript("return document.getElementsByClassName('button button-primary button-large')[0].click()");
+                await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
         
                 let button_length = await driver.executeScript("return document.getElementsByClassName('btn').length");
                 for (let index = 0; index < button_length; index++) {
@@ -146,7 +147,7 @@ async function blc(timestamp) {
         if ((credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
         (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
         (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com") || 
-        (credentials[index][0] === "https://www.businesstrendstoday.com") || (credentials[index][0] === "https://www.bbllessons.com") ||
+        (credentials[index][0] === "https://www.businesstrendstoday.com") ||
         (credentials[index][0] === "https://www.thesolutionsforum.com") || (credentials[index][0] === "https://www.primeleisures.com") ||
         (credentials[index][0] === "https://www.mcbuildingmaintenance.com") || (credentials[index][0] === "https://www.drmazaheri.com") ||
         (credentials[index][0] === "https://www.aerialengagement.com") || (credentials[index][0] === "https://www.ewingconstruction.com") ||
@@ -181,9 +182,9 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.andresperezjurado.com") || (credentials[index][0] === "https://www.jewelryoutletinc.com") || 
         (credentials[index][0] === "https://www.advancedimagemedspa.com") || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || 
         (credentials[index][0] === "https://www.amissionofmercy.org") || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || 
-        (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.truckerpaths.com") ||
-        (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") || 
-        (credentials[index][0] === "https://www.maintenancebest.com")) {
+        (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.natina.com") || 
+        (credentials[index][0] === "https://www.airgain.com") || (credentials[index][0] === "https://www.maintenancebest.com") ||
+        (credentials[index][0] === "https://www.molnarwalkingy.com") || (credentials[index][0] === "https://www.drmandiconway.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
 
