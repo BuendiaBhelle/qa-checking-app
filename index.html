@@ -104,7 +104,7 @@
                                 <button class="button sidebar-nav-item" onclick="wpm()">Website Performance Monitoring</button>
                             </li>
                             <li class="nav-item">
-                                <button class="button sidebar-nav-item" onclick="plugins()">Plugins</button>
+                                <button class="button sidebar-nav-item" onclick="plugins_yoast_or_blc()">Plugins</button>
                             </li>
                             <div class="dropdown">
                                 <li class="nav-item">
@@ -1516,7 +1516,7 @@
                             <!-- Nitropack -->
                             <div id="nitropack">
                                 <h1 style="margin-top: 100px;">Nitropack</h1>
-                                <p style="margin-top: 100px; font-size: 150%;">Nitropack Website Monitoring Sheet:</p>
+                                <p style="margin-top: 50; font-size: 150%;">Nitropack Website Monitoring Sheet:</p>
                                 <!-- <form action="/post/nitropack" method="post">
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
                                 </form>
@@ -1534,7 +1534,7 @@
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
                                 </form>
 
-                                <p style="margin-top: 100px; font-size: 150%;">Check for Nitropack Settings:</p>
+                                <p style="margin-top: 50px; font-size: 150%;">Check for Nitropack Settings:</p>
                                 <form action="/post/nitropack/settings" method="post">
 
                                     <div class="container-fluid">
@@ -1615,10 +1615,10 @@
                                 </form>
                             </div>
 
-                            <!-- PLUGINS -->
-                            <div id="plugins">
+                            <!-- plugins_yoast_or_blc -->
+                            <div id="plugins_yoast_or_blc">
                                 <h1 style="margin-top: 100px;">Plugins</h1>
-                                <form action="/post/plugins" method="post">
+                                <form action="/post/plugins_yoast_or_blc" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-7">
@@ -1868,7 +1868,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1884,7 +1884,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1900,7 +1900,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1916,7 +1916,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1932,7 +1932,7 @@
             document.getElementById('newsletter').style.display = 'block';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1948,7 +1948,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'block';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1964,7 +1964,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'block';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1972,7 +1972,7 @@
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
-        function plugins() {
+        function plugins_yoast_or_blc() {
             document.getElementById('checkout').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
@@ -1980,7 +1980,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'block';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1996,7 +1996,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'block';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -2012,7 +2012,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'block';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -2028,7 +2028,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'block';
@@ -2044,7 +2044,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -2060,7 +2060,7 @@
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
-            document.getElementById('plugins').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';

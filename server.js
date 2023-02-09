@@ -5526,7 +5526,7 @@ app.post('/post/waum_frontend', async (req, res) => {
     res.send(success_msg);
 });
 
-app.post('/post/plugins', async (req, res) => {
+app.post('/post/plugins_yoast_or_blc', async (req, res) => {
     var domains = req.body.domains;
     var broken_link_checker = req.body.broken_link_checker;
     var yoast = req.body.yoast;
