@@ -81,6 +81,11 @@ const webforms_kyrenefamilydentistry_f8 = require("./modules/webforms/contactfor
 const webforms_lignans_f1 = require("./modules/webforms/contactform7/forms/lignans/form1/index")
 const webforms_mcbuildingmaintenance_f1 = require("./modules/webforms/contactform7/forms/mcbuildingmaintenance/form1/index")
 const webforms_mcbuildingmaintenance_f2 = require("./modules/webforms/contactform7/forms/mcbuildingmaintenance/form2/index")
+const webforms_molnarwalkingy_f1 = require("./modules/webforms/contactform7/forms/molnarwalkingy/form1/index")
+const webforms_molnarwalkingy_f2 = require("./modules/webforms/contactform7/forms/molnarwalkingy/form2/index")
+const webforms_molnarwalkingy_f3 = require("./modules/webforms/contactform7/forms/molnarwalkingy/form3/index")
+const webforms_molnarwalkingy_f4 = require("./modules/webforms/contactform7/forms/molnarwalkingy/form4/index")
+const webforms_molnarwalkingy_f5 = require("./modules/webforms/contactform7/forms/molnarwalkingy/form5/index")
 const webforms_natina_f1 = require("./modules/webforms/contactform7/forms/natina/form1/index");
 const webforms_newhopemedicalcenter_f1 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form1/index");
 const webforms_newhopemedicalcenter_f2 = require("./modules/webforms/gravityform/forms/newhopemedicalcenter/form2/index");
@@ -3630,6 +3635,143 @@ app.post('/post/webforms', async (req, res) => {
 
                                 console.log("form2");
                                 await webforms_mcbuildingmaintenance_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case "molnarwalkingy":
+                var site_molnarwalkingy = req.body.site_molnarwalkingy;
+                var sheetId = config.sheetId.molnarwalkingy;
+                var ranges = config.ranges.molnarwalkingy;
+                var range_recipient = config.range_recipient.molnarwalkingy;
+                var range_thankyou_page = config.range_thankyou_page.molnarwalkingy;
+                
+                console.log("Site: " + site_molnarwalkingy);
+                switch (checkbox) {
+                    case "dev":
+                        var domain = config.domain.molnarwalkingy.dev;
+                        var wp_creds_username = config.wp_creds.molnarwalkingy.username;
+                        var wp_creds_password = config.wp_creds.molnarwalkingy.password;
+                        var launch = config.launch.dev;
+
+                        console.log(domain);
+                        console.log("dev");
+                        switch (site_molnarwalkingy) {
+                            case "form1":
+                                var forms = config.forms.molnarwalkingy.form1;
+                                var webforms = config.webforms.molnarwalkingy.dev.form1;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form1;
+                                var form_page = config.form_page.molnarwalkingy.dev.form1;
+
+                                console.log("form1");
+                                await webforms_molnarwalkingy_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.molnarwalkingy.form2;
+                                var webforms = config.webforms.molnarwalkingy.dev.form2;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form2;
+                                var form_page = config.form_page.molnarwalkingy.dev.form2;
+
+                                console.log("form2");
+                                await webforms_molnarwalkingy_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.molnarwalkingy.form3;
+                                var webforms = config.webforms.molnarwalkingy.dev.form3;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form3;
+                                var form_page = config.form_page.molnarwalkingy.dev.form3;
+
+                                console.log("form3");
+                                await webforms_molnarwalkingy_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form4":
+                                var forms = config.forms.molnarwalkingy.form4;
+                                var webforms = config.webforms.molnarwalkingy.dev.form4;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form4;
+                                var form_page = config.form_page.molnarwalkingy.dev.form4;
+
+                                console.log("form4");
+                                await webforms_molnarwalkingy_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form5":
+                                var forms = config.forms.molnarwalkingy.form5;
+                                var webforms = config.webforms.molnarwalkingy.dev.form5;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form5;
+                                var form_page = config.form_page.molnarwalkingy.dev.form5;
+
+                                console.log("form5");
+                                await webforms_molnarwalkingy_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "live":
+                        var domain = config.domain.molnarwalkingy.live;
+                        var wp_creds_username = config.wp_creds.molnarwalkingy.username;
+                        var wp_creds_password = config.wp_creds.molnarwalkingy.password;
+                        var launch = config.launch.live;
+
+                        console.log(domain);
+                        console.log("live");
+                        switch (site_molnarwalkingy) {
+                            case "form1":
+                                var forms = config.forms.molnarwalkingy.form1;
+                                var webforms = config.webforms.molnarwalkingy.live.form1;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form1;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form1;
+                                var form_page = config.form_page.molnarwalkingy.live.form1;
+
+                                console.log("form1");
+                                await webforms_molnarwalkingy_f1.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form2":
+                                var forms = config.forms.molnarwalkingy.form2;
+                                var webforms = config.webforms.molnarwalkingy.live.form2;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form2;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form2;
+                                var form_page = config.form_page.molnarwalkingy.live.form2;
+
+                                console.log("form2");
+                                await webforms_molnarwalkingy_f2.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form3":
+                                var forms = config.forms.molnarwalkingy.form3;
+                                var webforms = config.webforms.molnarwalkingy.live.form3;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form3;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form3;
+                                var form_page = config.form_page.molnarwalkingy.live.form3;
+
+                                console.log("form3");
+                                await webforms_molnarwalkingy_f3.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form4":
+                                var forms = config.forms.molnarwalkingy.form4;
+                                var webforms = config.webforms.molnarwalkingy.live.form4;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form4;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form4;
+                                var form_page = config.form_page.molnarwalkingy.live.form4;
+
+                                console.log("form4");
+                                await webforms_molnarwalkingy_f4.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
+                                break;
+                            case "form5":
+                                var forms = config.forms.molnarwalkingy.form5;
+                                var webforms = config.webforms.molnarwalkingy.live.form5;
+                                var contact_form_name = config.contact_form_name.molnarwalkingy.form5;
+                                var contact_form_shortcode = config.contact_form_shortcode.molnarwalkingy.form5;
+                                var form_page = config.form_page.molnarwalkingy.live.form5;
+
+                                console.log("form5");
+                                await webforms_molnarwalkingy_f5.index(date, domain, username, password, email, timestamp, wp_creds_username, wp_creds_password, forms, sheetId, ranges, range_recipient, range_thankyou_page, qa_email, module_name, launch, contact_form_name, contact_form_shortcode, webforms, form_page);
                                 break;
                             default:
                                 break;

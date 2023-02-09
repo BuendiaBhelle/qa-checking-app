@@ -92,7 +92,12 @@ async function wordpressStart(date, domain, username, password, email, timestamp
 
     driver = await new Builder().forBrowser("chrome").build();
 
-    await driver.get(wp_site);
+    if ((domain === "https://molnarwalkingydev.primeview.com/" || "https://www.molnarwalkingy.com/")) {
+        await driver.get(domain + "pvlogin");
+    } else {
+        await driver.get(wp_site);
+    }
+    
 
     // wp login
     try {
