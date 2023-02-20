@@ -84,7 +84,8 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || (credentials[index][0] === "https://www.everythingjustrocks.com")
         || (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") 
         || (credentials[index][0] === "https://www.maintenancebest.com") || (credentials[index][0] === "https://www.molnarwalkingy.com")
-        || (credentials[index][0] === "https://www.drmandiconway.com")) {
+        || (credentials[index][0] === "https://www.drmandiconway.com") || (credentials[index][0] === "https://www.inspired-engagement.com")
+        || (credentials[index][0] === "https://www.elevatebytempusjets.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
@@ -184,7 +185,8 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.amissionofmercy.org") || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || 
         (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.natina.com") || 
         (credentials[index][0] === "https://www.airgain.com") || (credentials[index][0] === "https://www.maintenancebest.com") ||
-        (credentials[index][0] === "https://www.molnarwalkingy.com") || (credentials[index][0] === "https://www.drmandiconway.com")) {
+        (credentials[index][0] === "https://www.molnarwalkingy.com") || (credentials[index][0] === "https://www.drmandiconway.com") ||
+        (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.elevatebytempusjets.com")) {
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
 
