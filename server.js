@@ -155,6 +155,7 @@ const waum_backend = require("./modules/website_autoupdate_monitoring/backend/ba
 const waum_blc = require("./modules/website_autoupdate_monitoring/blc/blc");
 const waum_frontend = require("./modules/website_autoupdate_monitoring/frontend/frontend");
 const plugins = require("./modules/plugins/plugins");
+const calendar = require("./modules/calendar/calendar");
 
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
@@ -5533,6 +5534,16 @@ app.post('/post/plugins_yoast_or_blc', async (req, res) => {
 
     await plugins.plugins(timestamp, domains, broken_link_checker, yoast);
 
+    res.send(success_msg);
+});
+
+app.post('/post/calendar', async (req, res) => {
+    var dev = req.body.dev;
+    try {
+        await calendar.calendar(timestamp, dev);
+    } catch (error) {
+        console.log(error);
+    }
     res.send(success_msg);
 });
 

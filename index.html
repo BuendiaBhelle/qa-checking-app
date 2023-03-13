@@ -63,7 +63,7 @@
         background-color: #158CBE;
         padding: 10px 25px;
         color:#fff;
-        font-size:16px;
+        font-size:12px;
         border-radius: 4px;
         margin-right: 5px;
     }
@@ -105,6 +105,9 @@
                             </li>
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="plugins_yoast_or_blc()">Plugins</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="calendar()">Calendar</button>
                             </li>
                             <div class="dropdown">
                                 <li class="nav-item">
@@ -171,6 +174,9 @@
                                 </a>
                                 <a href="https://docs.google.com/spreadsheets/d/1j8xVmSmWSD90vNcGA_kU9H7kaJxq5crpDNUVaAkELsY/edit#gid=0" target="_blank">
                                     Website Auto-Update Monitoring
+                                </a>
+                                <a href="https://docs.google.com/spreadsheets/d/1koZJFJGPvPHHMB8JuRqKOcWy_BQNXES6uyWWhqbciBM/edit#gid=383657523" target="_blank">
+                                    Task Calendar
                                 </a>
                             </div>
 
@@ -1687,6 +1693,35 @@
 
                                 </form>
                             </div>
+
+                            <!-- CALENDAR -->
+                            <div id="calendar">
+                                <h1 style="margin-top: 100px;">Task Calendar</h1>
+                                <form action="/post/calendar" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="dev" class="col-sm-3 col-form-label">Choose a Dev:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="dev" id="dev">
+                                                            <option value="dev1">Janfred</option>
+                                                            <option value="dev2">Joshua</option>
+                                                            <option value="dev3">Janfred</option>
+                                                            <option value="dev4">Belle</option>
+                                                            <option value="dev5">Yardi</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+
+                                </form>
+                            </div>
                             
                             <!-- WEBSITE AUTOUPDATE MONITORING - BACKEND -->
                             <div id="waum_backend">
@@ -1869,6 +1904,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1885,6 +1921,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1901,6 +1938,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1917,6 +1955,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1933,6 +1972,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1949,6 +1989,7 @@
             document.getElementById('nitropack').style.display = 'block';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1965,6 +2006,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'block';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1981,6 +2023,24 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'block';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function calendar() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'block';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -1997,6 +2057,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'block';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -2013,6 +2074,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'block';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -2029,6 +2091,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'block';
@@ -2045,6 +2108,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
@@ -2061,6 +2125,7 @@
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
             document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';

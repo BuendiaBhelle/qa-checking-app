@@ -44,17 +44,17 @@ async function blc(timestamp) {
         
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
-        } else if ((credentials[index][0] === "https://www.businesstrendstoday.com") || (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com")
+        } else if ((credentials[index][0] === "https://www.businesstrendstoday.com") || (credentials[index][0] === "https://virtualassistantsoutsourcing.com")
         || (credentials[index][0] === "https://www.thesolutionsforum.com") 
         || (credentials[index][0] === "https://www.primeleisures.com") || (credentials[index][0] === "https://www.mcbuildingmaintenance.com")
         || (credentials[index][0] === "https://www.drmazaheri.com")
         || (credentials[index][0] === "https://www.aerialengagement.com") || (credentials[index][0] === "https://www.ewingconstruction.com")
-        || (credentials[index][0] === "https://www.buckeyederm.com") || (credentials[index][0] === "https://www.jelleyvision.com")
+        || (credentials[index][0] === "https://www.buckeyederm.com") || (credentials[index][0] === "https://jelleyvision.com")
         || (credentials[index][0] === "https://staffportal.optimizex.com") || (credentials[index][0] === "https://www.gatorskin.us")
         || (credentials[index][0] === "https://www.culpepper-associates.com") || (credentials[index][0] === "https://www.opakapakagrillandbar.com")
         || (credentials[index][0] === "https://www.southwestdirectmortgage.com") || (credentials[index][0] === "https://www.turbineaero.com")
         || (credentials[index][0] === "https://www.torontostravel.com") || (credentials[index][0] === "https://www.westechrecyclers.com")
-        || (credentials[index][0] === "https://www.collisioncenternorthscottsdale.com") || (credentials[index][0] === "https://www.trezpro.com")
+        || (credentials[index][0] === "https://www.collisioncenternorthscottsdale.com") || (credentials[index][0] === "https://trezpro.com")
         || (credentials[index][0] === "https://www.primemedicalpain.com") || (credentials[index][0] === "https://www.frlawgroup.com")
         || (credentials[index][0] === "https://www.indinspect.com") || (credentials[index][0] === "https://www.indinspect.com")
         || (credentials[index][0] === "https://www.kyrenefamilydentistry.com") || (credentials[index][0] === "https://www.onlinebrandreputation.com")
@@ -146,8 +146,8 @@ async function blc(timestamp) {
 
         // conditional statement for sites with issues - not redirecting to plugins page
         if ((credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
-        (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
-        (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com") || 
+        (credentials[index][0] === "https://jelleyvision.com") || 
+        (credentials[index][0] === "https://virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com") || 
         (credentials[index][0] === "https://www.businesstrendstoday.com") ||
         (credentials[index][0] === "https://www.thesolutionsforum.com") || (credentials[index][0] === "https://www.primeleisures.com") ||
         (credentials[index][0] === "https://www.mcbuildingmaintenance.com") || (credentials[index][0] === "https://www.drmazaheri.com") ||
@@ -157,7 +157,7 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.opakapakagrillandbar.com") || (credentials[index][0] === "https://www.southwestdirectmortgage.com") || 
         (credentials[index][0] === "https://www.turbineaero.com") || (credentials[index][0] === "https://www.torontostravel.com") || 
         (credentials[index][0] === "https://www.westechrecyclers.com") || (credentials[index][0] === "https://www.collisioncenternorthscottsdale.com") || 
-        (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.primemedicalpain.com") ||
+        (credentials[index][0] === "https://trezpro.com") || (credentials[index][0] === "https://www.primemedicalpain.com") ||
         (credentials[index][0] === "https://www.frlawgroup.com") || (credentials[index][0] === "https://www.indinspect.com") ||
         (credentials[index][0] === "https://www.kyrenefamilydentistry.com") || (credentials[index][0] === "https://www.onlinebrandreputation.com") || 
         (credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.randosouthwest.com") ||
@@ -199,64 +199,62 @@ async function blc(timestamp) {
                     console.log("With BLC Plugin.");    
 
                     if (credentials[index][0] === "https://www.hospiceofyuma.com") {
-                        await driver.get("https://hospiceofyuma.com/hoylogin/tools.php?page=view-broken-links");
+                        await driver.get("https://hospiceofyuma.com/hoylogin/admin.php?page=view-broken-links");
                     } 
-                    else if ((credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
-                    (credentials[index][0] === "https://www.trezpro.com") || (credentials[index][0] === "https://www.jelleyvision.com") || 
-                    (credentials[index][0] === "https://www.virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://sellusyourcaraz.com")) {
-                        let settings_inner_link_length = await driver.executeScript("return document.getElementsByTagName('a').length");
-                        for (let j = 0; j < settings_inner_link_length; j++) {
-                            let link_checker_innertext = await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].innerText");
-                            if (link_checker_innertext === "Link Checker") {
-                                console.log("Link Checker");
-                                await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].click()");
+                    // else if ((credentials[index][0] === "https://www.bbllessons.com") ||  (credentials[index][0] === "https://truckerpath.com")) {
+                    //     let settings_inner_link_length = await driver.executeScript("return document.getElementsByTagName('a').length");
+                    //     for (let j = 0; j < settings_inner_link_length; j++) {
+                    //         let link_checker_innertext = await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].innerText");
+                    //         if (link_checker_innertext === "Link Checker") {
+                    //             console.log("Link Checker");
+                    //             await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].click()");
 
-                                await driver.sleep(5000);
+                    //             await driver.sleep(5000);
 
-                                let broken_link_status = await driver.executeScript("return document.getElementById('wsblc_full_status').children[0].innerText");
+                    //             let broken_link_status = await driver.executeScript("return document.getElementById('wsblc_full_status').children[0].innerText");
             
-                                console.log(broken_link_status);
+                    //             console.log(broken_link_status);
             
-                                if (!broken_link_status) {
-                                    console.log("NULL");
-                                    try {
-                                        await googleSheets.spreadsheets.values.append({
-                                            auth,
-                                            spreadsheetId,
-                                            range: "BLC!A2:C2",
-                                            valueInputOption: "USER_ENTERED",
-                                            resource: {
-                                                values: [
-                                                    [ credentials[index][0], "Y", "No broken links found"]
-                                                ]
-                                            }
-                                        });
-                                    } catch (error) {
-                                        console.log(error);
-                                    }     
-                                } else {
-                                    try {
-                                        await googleSheets.spreadsheets.values.append({
-                                            auth,
-                                            spreadsheetId,
-                                            range: "BLC!A2:C2",
-                                            valueInputOption: "USER_ENTERED",
-                                            resource: {
-                                                values: [
-                                                    [credentials[index][0], "Y", broken_link_status]
-                                                ]
-                                            }
-                                        });
-                                    } catch (error) {
-                                        console.log(error);
-                                    }      
-                                }
-                                break;
-                            }
-                        }
-                    }
+                    //             if (!broken_link_status) {
+                    //                 console.log("NULL");
+                    //                 try {
+                    //                     await googleSheets.spreadsheets.values.append({
+                    //                         auth,
+                    //                         spreadsheetId,
+                    //                         range: "BLC!A2:C2",
+                    //                         valueInputOption: "USER_ENTERED",
+                    //                         resource: {
+                    //                             values: [
+                    //                                 [ credentials[index][0], "Y", "No broken links found"]
+                    //                             ]
+                    //                         }
+                    //                     });
+                    //                 } catch (error) {
+                    //                     console.log(error);
+                    //                 }     
+                    //             } else {
+                    //                 try {
+                    //                     await googleSheets.spreadsheets.values.append({
+                    //                         auth,
+                    //                         spreadsheetId,
+                    //                         range: "BLC!A2:C2",
+                    //                         valueInputOption: "USER_ENTERED",
+                    //                         resource: {
+                    //                             values: [
+                    //                                 [credentials[index][0], "Y", broken_link_status]
+                    //                             ]
+                    //                         }
+                    //                     });
+                    //                 } catch (error) {
+                    //                     console.log(error);
+                    //                 }      
+                    //             }
+                    //             break;
+                    //         }
+                    //     }
+                    // }
                     else {
-                        await driver.get(wp_dashboard + "/tools.php?page=view-broken-links");
+                        await driver.get(wp_dashboard + "/admin.php?page=view-broken-links");
                     }
                     
                     let broken_link_count = await driver.executeScript("return document.getElementsByClassName('filter-broken-link-count current-link-count')[0].innerText");
