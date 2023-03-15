@@ -46,6 +46,8 @@ async function frontend(timestamp) {
         });
         
         await driver.get(frontend_sites[index]);
+
+        await driver.sleep(20000);
         
         await driver.switchTo().newWindow('tab');
         
