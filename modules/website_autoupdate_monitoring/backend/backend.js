@@ -1,15 +1,13 @@
 const {Builder, By} = require("selenium-webdriver");
 const {google} = require("googleapis");
-const config = require("../config");
-const config_nitropack = require("../../nitropack/config");
-const logger = require('../../../middleware/logger.js');
+const config = require("../../../config");
 const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
 
 const auth = config.auth;
-const spreadsheetId = config.spreadsheetId;
-let credentials = config.credentials;
-let output = config_nitropack.output;
+const spreadsheetId = config.spreadsheetId_waum;
+let credentials = config.credentials_blc_backend;
+let output = config.date;
 const module_name = "WEBSITE AUTOUPDATE MONITORING - BACKEND";
 
 
