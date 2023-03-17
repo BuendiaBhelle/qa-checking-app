@@ -1,13 +1,13 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
 
-const config = require("../config");
+const config = require("../../../config");
 const server = require('../../../server');
 const sheet = require('../../../middleware/gsheet');
 const config_server = require("../../../config");
 
 const auth = config.auth;
-const spreadsheetId = config.spreadsheetId;
+const spreadsheetId = config.spreadsheetId_checkout;
 
 async function checkout(domain, username, password, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, product_name, range_coupons, range_thankyou_page, product_link, co_site) {
     const client = await auth.getClient();

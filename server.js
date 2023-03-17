@@ -11,7 +11,7 @@ const express = require('express');
 const logger = require("./middleware/logger.js");
 const sheet = require('./middleware/gsheet.js');
 const config = require("./config");
-const config_checkout = require("../qa-checking-app/modules/checkout/config");
+const abort = require("./middleware/abort/abort");
 
 const checkout_americanleatherusa = require("./modules/checkout/americanleatherusa/index");
 const checkout_andresperezjurado = require("./modules/checkout/andresperezjurado/index");
@@ -206,6 +206,15 @@ app.get('/post', function(req, res){
     }
 });
 
+app.post('/cancel', async (req, res) => {
+    // signal.addEventListener("abort", () => {
+    //     console.log("The abort signal was triggered");
+    //   }, { once: true });
+      
+    // controller.abort();
+    await abort.makeRequest();
+});
+
 app.get('/posts', function(req, res){
     session=req.session;
 
@@ -315,7 +324,7 @@ app.post('/post/checkout', async (req, res) => {
     var email = req.body.email;
     const checkout = req.body.checkout;
     var checkbox_checkout = req.body.checkbox_checkout;
-    var module_name = config_checkout.module_name;
+    var module_name = config.module_name.checkout;
     var co_site;
 
     console.log("email: " + email);
@@ -327,43 +336,43 @@ app.post('/post/checkout', async (req, res) => {
         switch (checkout) {
             case "sunrisejewelryusa":
                 co_site = req.body.co_sunrisejewelryusa;
-                var wp_creds_username = config_checkout.wp_creds.sunrisejewelryusa.username;
-                var wp_creds_password = config_checkout.wp_creds.sunrisejewelryusa.password;
-                var tax_page = config_checkout.tax_page;
-                var payments_page = config_checkout.payments_page;
-                var emails_page = config_checkout.emails_page;
-                var pricesEnteredWithTax_script = config_checkout.pricesEnteredWithTax_script;
-                var displayPricesInTheShop_script = config_checkout.displayPricesInTheShop_script;
-                var displayPricesDuringCartAndCheckout_script = config_checkout.displayPricesDuringCartAndCheckout_script;
-                var sheetId = config_checkout.sheetId.sunrisejewelryusa;
-                var ranges = config_checkout.ranges.sunrisejewelryusa;
-                var range_recipients_newOrder = config_checkout.range_recipients.sunrisejewelryusa.new_order;
-                var range_recipients_cancelledOrder = config_checkout.range_recipients.sunrisejewelryusa.cancelled_order;
-                var range_recipients_failedOrder = config_checkout.range_recipients.sunrisejewelryusa.failed_order;
-                var emails_newOrder_page = config_checkout.emails_newOrder_page;
-                var emails_cancelledOrder_page = config_checkout.emails_cancelledOrder_page;
-                var emails_failedOrder_page = config_checkout.emails_failedOrder_page;
-                var coupons_page = config_checkout.coupons_page;
-                var range_coupons = config_checkout.range_coupons.sunrisejewelryusa;
-                var range_product_name = config_checkout.range_product_name.sunrisejewelryusa;
-                var range_thankyou_page = config_checkout.range_thankyou_page.sunrisejewelryusa;
+                var wp_creds_username = config.wp_creds.sunrisejewelryusa.username;
+                var wp_creds_password = config.wp_creds.sunrisejewelryusa.password;
+                var tax_page = config.tax_page_checkout;
+                var payments_page = config.payments_page_checkout;
+                var emails_page = config.emails_page_checkout;
+                var pricesEnteredWithTax_script = config.pricesEnteredWithTax_script_checkout;
+                var displayPricesInTheShop_script = config.displayPricesInTheShop_script_checkout;
+                var displayPricesDuringCartAndCheckout_script = config.displayPricesDuringCartAndCheckout_script_checkout;
+                var sheetId = config.sheetId_checkout.sunrisejewelryusa;
+                var ranges = config.ranges_checkout.sunrisejewelryusa;
+                var range_recipients_newOrder = config.range_recipients_checkout.sunrisejewelryusa.new_order;
+                var range_recipients_cancelledOrder = config.range_recipients_checkout.sunrisejewelryusa.cancelled_order;
+                var range_recipients_failedOrder = config.range_recipients_checkout.sunrisejewelryusa.failed_order;
+                var emails_newOrder_page = config.emails_newOrder_page_checkout;
+                var emails_cancelledOrder_page = config.emails_cancelledOrder_page_checkout;
+                var emails_failedOrder_page = config.emails_failedOrder_page_checkout;
+                var coupons_page = config.coupons_page_checkout;
+                var range_coupons = config.range_coupons_checkout.sunrisejewelryusa;
+                var range_product_name = config.range_product_name_checkout.sunrisejewelryusa;
+                var range_thankyou_page = config.range_thankyou_page_checkout.sunrisejewelryusa;
                 
                 console.log("Site: " + co_site);
                 switch (checkbox_checkout) {
                     case "dev":
-                        var domain = config_checkout.domain.sunrisejewelryusa.dev;
-                        var launch = config_checkout.launch.dev;
+                        var domain = config.domain.sunrisejewelryusa.dev;
+                        var launch = config.launch.dev;
                         console.log(domain);
                         console.log("dev");
                         switch (co_site) {
                             case "product1":
-                                var product_name = config_checkout.product.sunrisejewelryusa.product1;
-                                var product_link = config_checkout.product_link.sunrisejewelryusa.product1;
+                                var product_name = config.product_checkout.sunrisejewelryusa.product1;
+                                var product_link = config.product_link_checkout.sunrisejewelryusa.product1;
                                 await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             case "product2":
-                                var product_name = config_checkout.product.sunrisejewelryusa.product2;
-                                var product_link = config_checkout.product_link.sunrisejewelryusa.product2;
+                                var product_name = config.product_checkout.sunrisejewelryusa.product2;
+                                var product_link = config.product_link_checkout.sunrisejewelryusa.product2;
                                 await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:
@@ -371,19 +380,19 @@ app.post('/post/checkout', async (req, res) => {
                         }
                         break;
                     case "live":
-                        var domain = config_checkout.domain.sunrisejewelryusa.live;
-                        var launch = config_checkout.launch.live;
+                        var domain = config.domain.sunrisejewelryusa.live;
+                        var launch = config.launch.live;
                         console.log(domain);
                         console.log("live");
                         switch (co_site) {
                             case "product1":
-                                var product_name = config_checkout.product.sunrisejewelryusa.product1;
-                                var product_link = config_checkout.product_link.sunrisejewelryusa.product1;
+                                var product_name = config.product_checkout.sunrisejewelryusa.product1;
+                                var product_link = config.product_link_checkout.sunrisejewelryusa.product1;
                                 await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             case "product2":
-                                var product_name = config_checkout.product.sunrisejewelryusa.product2;
-                                var product_link = config_checkout.product_link.sunrisejewelryusa.product2;
+                                var product_name = config.product_checkout.sunrisejewelryusa.product2;
+                                var product_link = config.product_link_checkout.sunrisejewelryusa.product2;
                                 await checkout_sunrisejewelryusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:
@@ -396,43 +405,43 @@ app.post('/post/checkout', async (req, res) => {
                 break;
             case "americanleatherusa":
                 co_site = req.body.co_americanleatherusa;
-                var wp_creds_username = config_checkout.wp_creds.americanleatherusa.username;
-                var wp_creds_password = config_checkout.wp_creds.americanleatherusa.password;
-                var tax_page = config_checkout.tax_page;
-                var payments_page = config_checkout.payments_page;
-                var emails_page = config_checkout.emails_page;
-                var pricesEnteredWithTax_script = config_checkout.pricesEnteredWithTax_script;
-                var displayPricesInTheShop_script = config_checkout.displayPricesInTheShop_script;
-                var displayPricesDuringCartAndCheckout_script = config_checkout.displayPricesDuringCartAndCheckout_script;
-                var sheetId = config_checkout.sheetId.americanleatherusa;
-                var ranges = config_checkout.ranges.americanleatherusa;
-                var range_recipients_newOrder = config_checkout.range_recipients.americanleatherusa.new_order;
-                var range_recipients_cancelledOrder = config_checkout.range_recipients.americanleatherusa.cancelled_order;
-                var range_recipients_failedOrder = config_checkout.range_recipients.americanleatherusa.failed_order;
-                var emails_newOrder_page = config_checkout.emails_newOrder_page;
-                var emails_cancelledOrder_page = config_checkout.emails_cancelledOrder_page;
-                var emails_failedOrder_page = config_checkout.emails_failedOrder_page;
-                var coupons_page = config_checkout.coupons_page;
-                var range_coupons = config_checkout.range_coupons.americanleatherusa;
-                var range_product_name = config_checkout.range_product_name.americanleatherusa;
-                var range_thankyou_page = config_checkout.range_thankyou_page.americanleatherusa;
+                var wp_creds_username = config.wp_creds.americanleatherusa.username;
+                var wp_creds_password = config.wp_creds.americanleatherusa.password;
+                var tax_page = config.tax_page_checkout;
+                var payments_page = config.payments_page_checkout;
+                var emails_page = config.emails_page_checkout;
+                var pricesEnteredWithTax_script = config.pricesEnteredWithTax_script_checkout;
+                var displayPricesInTheShop_script = config.displayPricesInTheShop_script_checkout;
+                var displayPricesDuringCartAndCheckout_script = config.displayPricesDuringCartAndCheckout_script_checkout;
+                var sheetId = config.sheetId_checkout.americanleatherusa;
+                var ranges = config.ranges_checkout.americanleatherusa;
+                var range_recipients_newOrder = config.range_recipients_checkout.americanleatherusa.new_order;
+                var range_recipients_cancelledOrder = config.range_recipients_checkout.americanleatherusa.cancelled_order;
+                var range_recipients_failedOrder = config.range_recipients_checkout.americanleatherusa.failed_order;
+                var emails_newOrder_page = config.emails_newOrder_page_checkout;
+                var emails_cancelledOrder_page = config.emails_cancelledOrder_page_checkout;
+                var emails_failedOrder_page = config.emails_failedOrder_page_checkout;
+                var coupons_page = config.coupons_page_checkout;
+                var range_coupons = config.range_coupons_checkout.americanleatherusa;
+                var range_product_name = config.range_product_name_checkout.americanleatherusa;
+                var range_thankyou_page = config.range_thankyou_page_checkout.americanleatherusa;
                 
                 console.log("Site: " + co_site);
                 switch (checkbox_checkout) {
                     case "dev":
-                        var domain = config_checkout.domain.americanleatherusa.dev;
-                        var launch = config_checkout.launch.dev;
+                        var domain = config.domain.americanleatherusa.dev;
+                        var launch = config.launch.dev;
                         console.log(domain);
                         console.log("dev");
                         switch (co_site) {
                             case "product1":
-                                var product_name = config_checkout.product.americanleatherusa.product1;
-                                var product_link = config_checkout.product_link.americanleatherusa.product1;
+                                var product_name = config.product_checkout.americanleatherusa.product1;
+                                var product_link = config.product_link_checkout.americanleatherusa.product1;
                                 await checkout_americanleatherusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             case "product2":
-                                var product_name = config_checkout.product.americanleatherusa.product2;
-                                var product_link = config_checkout.product_link.americanleatherusa.product2;
+                                var product_name = config.product_checkout.americanleatherusa.product2;
+                                var product_link = config.product_link_checkout.americanleatherusa.product2;
                                 await checkout_americanleatherusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:
@@ -440,19 +449,19 @@ app.post('/post/checkout', async (req, res) => {
                         }
                         break;
                     case "live":
-                        var domain = config_checkout.domain.americanleatherusa.live;
-                        var launch = config_checkout.launch.live;
+                        var domain = config.domain.americanleatherusa.live;
+                        var launch = config.launch.live;
                         console.log(domain);
                         console.log("live");
                         switch (co_site) {
                             case "product1":
-                                var product_name = config_checkout.product.americanleatherusa.product1;
-                                var product_link = config_checkout.product_link.americanleatherusa.product1;
+                                var product_name = config.product_checkout.americanleatherusa.product1;
+                                var product_link = config.product_link_checkout.americanleatherusa.product1;
                                 await checkout_americanleatherusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             case "product2":
-                                var product_name = config_checkout.product.americanleatherusa.product2;
-                                var product_link = config_checkout.product_link.americanleatherusa.product2;
+                                var product_name = config.product_checkout.americanleatherusa.product2;
+                                var product_link = config.product_link_checkout.americanleatherusa.product2;
                                 await checkout_americanleatherusa.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:
@@ -465,97 +474,82 @@ app.post('/post/checkout', async (req, res) => {
                 break;
             case "andresperezjurado":
                 co_site = req.body.co_andresperezjurado;
-                var wp_creds_username = config_checkout.wp_creds.andresperezjurado.username;
-                var wp_creds_password = config_checkout.wp_creds.andresperezjurado.password;
-                var tax_page = config_checkout.tax_page;
-                var payments_page = config_checkout.payments_page;
-                var emails_page = config_checkout.emails_page;
-                var pricesEnteredWithTax_script = config_checkout.pricesEnteredWithTax_script;
-                var displayPricesInTheShop_script = config_checkout.displayPricesInTheShop_script;
-                var displayPricesDuringCartAndCheckout_script = config_checkout.displayPricesDuringCartAndCheckout_script;
-                var sheetId = config_checkout.sheetId.andresperezjurado;
-                var ranges = config_checkout.ranges.andresperezjurado;
-                var range_recipients_newOrder = config_checkout.range_recipients.andresperezjurado.new_order;
-                var range_recipients_cancelledOrder = config_checkout.range_recipients.andresperezjurado.cancelled_order;
-                var range_recipients_failedOrder = config_checkout.range_recipients.andresperezjurado.failed_order;
-                var emails_newOrder_page = config_checkout.emails_newOrder_page;
-                var emails_cancelledOrder_page = config_checkout.emails_cancelledOrder_page;
-                var emails_failedOrder_page = config_checkout.emails_failedOrder_page;
-                var coupons_page = config_checkout.coupons_page;
-                var range_coupons = config_checkout.range_coupons.andresperezjurado;
-                var range_product_name = config_checkout.range_product_name.andresperezjurado;
-                var range_thankyou_page = config_checkout.range_thankyou_page.andresperezjurado;
+                var wp_creds_username = config.wp_creds.andresperezjurado.username;
+                var wp_creds_password = config.wp_creds.andresperezjurado.password;
+                var tax_page = config.tax_page_checkout;
+                var payments_page = config.payments_page_checkout;
+                var emails_page = config.emails_page_checkout;
+                var pricesEnteredWithTax_script = config.pricesEnteredWithTax_script_checkout;
+                var displayPricesInTheShop_script = config.displayPricesInTheShop_script_checkout;
+                var displayPricesDuringCartAndCheckout_script = config.displayPricesDuringCartAndCheckout_script_checkout;
+                var sheetId = config.sheetId_checkout.andresperezjurado;
+                var ranges = config.ranges_checkout.andresperezjurado;
+                var range_recipients_newOrder = config.range_recipients_checkout.andresperezjurado.new_order;
+                var range_recipients_cancelledOrder = config.range_recipients_checkout.andresperezjurado.cancelled_order;
+                var range_recipients_failedOrder = config.range_recipients_checkout.andresperezjurado.failed_order;
+                var emails_newOrder_page = config.emails_newOrder_page_checkout;
+                var emails_cancelledOrder_page = config.emails_cancelledOrder_page_checkout;
+                var emails_failedOrder_page = config.emails_failedOrder_page_checkout;
+                var coupons_page = config.coupons_page_checkout;
+                var range_coupons = config.range_coupons_checkout.andresperezjurado;
+                var range_product_name = config.range_product_name_checkout.andresperezjurado;
+                var range_thankyou_page = config.range_thankyou_page_checkout.andresperezjurado;
                 
                 console.log("Site: " + co_site);
                 switch (checkbox_checkout) {
                     case "dev":
-                        var domain = config_checkout.domain.andresperezjurado.dev;
-                        var launch = config_checkout.launch.dev;
+                        var domain = config.domain.andresperezjurado.dev;
+                        var launch = config.launch.dev;
                         console.log(domain);
                         console.log("dev");
                         switch (co_site) {
                             case "product1":
-                                var product_name = config_checkout.product.andresperezjurado.product1;
-                                var product_link = config_checkout.product_link.andresperezjurado.product1;
+                                var product_name = config.product_checkout.andresperezjurado.product1;
+                                var product_link = config.product_link_checkout.andresperezjurado.product1;
                                 await checkout_andresperezjurado.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:
                                 break;
                         }
                         break;
-                    // case "live":
-                    //     var domain = config_checkout.domain.andresperezjurado.live;
-                    //     var launch = config_checkout.launch.live;
-                    //     console.log(domain);
-                    //     console.log("live");
-                    //     switch (co_site) {
-                    //         case "product1":
-                    //             var product_name = config_checkout.product.andresperezjurado.product1;
-                    //             var product_link = config_checkout.product_link.andresperezjurado.product1;
-                    //             await checkout_andresperezjurado.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    //     break;
                     default:
                         break;
                 }
                 break;
             case "randosouthwest":
                 co_site = req.body.co_randosouthwest;
-                var wp_creds_username = config_checkout.wp_creds.randosouthwest.username;
-                var wp_creds_password = config_checkout.wp_creds.randosouthwest.password;
-                var tax_page = config_checkout.tax_page;
-                var payments_page = config_checkout.payments_page;
-                var emails_page = config_checkout.emails_page;
-                var pricesEnteredWithTax_script = config_checkout.pricesEnteredWithTax_script;
-                var displayPricesInTheShop_script = config_checkout.displayPricesInTheShop_script;
-                var displayPricesDuringCartAndCheckout_script = config_checkout.displayPricesDuringCartAndCheckout_script;
-                var sheetId = config_checkout.sheetId.randosouthwest;
-                var ranges = config_checkout.ranges.randosouthwest;
-                var range_recipients_newOrder = config_checkout.range_recipients.randosouthwest.new_order;
-                var range_recipients_cancelledOrder = config_checkout.range_recipients.randosouthwest.cancelled_order;
-                var range_recipients_failedOrder = config_checkout.range_recipients.randosouthwest.failed_order;
-                var emails_newOrder_page = config_checkout.emails_newOrder_page;
-                var emails_cancelledOrder_page = config_checkout.emails_cancelledOrder_page;
-                var emails_failedOrder_page = config_checkout.emails_failedOrder_page;
-                var coupons_page = config_checkout.coupons_page;
-                var range_coupons = config_checkout.range_coupons.randosouthwest;
-                var range_product_name = config_checkout.range_product_name.randosouthwest;
-                var range_thankyou_page = config_checkout.range_thankyou_page.randosouthwest;
+                var wp_creds_username = config.wp_creds.randosouthwest.username;
+                var wp_creds_password = config.wp_creds.randosouthwest.password;
+                var tax_page = config.tax_page_checkout;
+                var payments_page = config.payments_page_checkout;
+                var emails_page = config.emails_page_checkout;
+                var pricesEnteredWithTax_script = config.pricesEnteredWithTax_script_checkout;
+                var displayPricesInTheShop_script = config.displayPricesInTheShop_script_checkout;
+                var displayPricesDuringCartAndCheckout_script = config.displayPricesDuringCartAndCheckout_script_checkout;
+                var sheetId = config.sheetId_checkout.randosouthwest;
+                var ranges = config.ranges_checkout.randosouthwest;
+                var range_recipients_newOrder = config.range_recipients_checkout.randosouthwest.new_order;
+                var range_recipients_cancelledOrder = config.range_recipients_checkout.randosouthwest.cancelled_order;
+                var range_recipients_failedOrder = config.range_recipients_checkout.randosouthwest.failed_order;
+                var emails_newOrder_page = config.emails_newOrder_page_checkout;
+                var emails_cancelledOrder_page = config.emails_cancelledOrder_page_checkout;
+                var emails_failedOrder_page = config.emails_failedOrder_page_checkout;
+                var coupons_page = config.coupons_page_checkout;
+                var range_coupons = config.range_coupons_checkout.randosouthwest;
+                var range_product_name = config.range_product_name_checkout.randosouthwest;
+                var range_thankyou_page = config.range_thankyou_page_checkout.randosouthwest;
                 
                 console.log("Site: " + co_site);
                 switch (checkbox_checkout) {
                     case "dev":
-                        var domain = config_checkout.domain.randosouthwest.dev;
-                        var launch = config_checkout.launch.dev;
+                        var domain = config.domain.randosouthwest.dev;
+                        var launch = config.launch.dev;
                         console.log(domain);
                         console.log("dev");
                         switch (co_site) {
                             case "product1":
-                                var product_name = config_checkout.product.randosouthwest.product1;
-                                var product_link = config_checkout.product_link.randosouthwest.product1;
+                                var product_name = config.product_checkout.randosouthwest.product1;
+                                var product_link = config.product_link_checkout.randosouthwest.product1;
                                 await checkout_randosouthwest.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:
@@ -563,14 +557,14 @@ app.post('/post/checkout', async (req, res) => {
                         }
                         break;
                     case "live":
-                        var domain = config_checkout.domain.randosouthwest.live;
-                        var launch = config_checkout.launch.live;
+                        var domain = config.domain.randosouthwest.live;
+                        var launch = config.launch.live;
                         console.log(domain);
                         console.log("live");
                         switch (co_site) {
                             case "product1":
-                                var product_name = config_checkout.product.randosouthwest.product1;
-                                var product_link = config_checkout.product_link.randosouthwest.product1;
+                                var product_name = config.product_checkout.randosouthwest.product1;
+                                var product_link = config.product_link_checkout.randosouthwest.product1;
                                 await checkout_randosouthwest.index(domain, username, password, email, module_name, launch, range_product_name, timestamp, wp_creds_username, wp_creds_password, tax_page, payments_page, emails_page, pricesEnteredWithTax_script, displayPricesInTheShop_script, displayPricesDuringCartAndCheckout_script, product_name, sheetId, ranges, range_recipients_newOrder, range_recipients_cancelledOrder, range_recipients_failedOrder, emails_newOrder_page, emails_cancelledOrder_page, emails_failedOrder_page, coupons_page, range_coupons, range_thankyou_page, product_link, co_site);
                                 break;
                             default:

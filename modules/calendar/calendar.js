@@ -1,6 +1,6 @@
 const {Builder, By} = require("selenium-webdriver");
 const {google} = require("googleapis");
-const config = require("./config");
+const config = require("../../config");
 // const logger = require('../../../middleware/logger.js');
 // const server = require('../../../server.js');
 // const sheet = require('../../../middleware/gsheet.js');
@@ -10,8 +10,8 @@ const auth = new google.auth.GoogleAuth({
     scopes: "https://www.googleapis.com/auth/spreadsheets"
 });
 
-const spreadsheetId_belle = config.sheet_id.Belle;
-const spreadsheetId = config.spreadsheetId;
+const spreadsheetId_belle = config.sheet_id_calendar.Belle;
+const spreadsheetId = config.spreadsheetId_calendar;
 
 // let credentials = config.credentials;
 // let output = config_nitropack.output;

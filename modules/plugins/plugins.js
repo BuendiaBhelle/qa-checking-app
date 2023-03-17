@@ -1,10 +1,10 @@
 const {Builder, By} = require("selenium-webdriver");
 const alert = require("alert"); 
-const config = require("../website_autoupdate_monitoring/config");
+const config = require("../../config");
 const server = require('../../server.js');
 const sheet = require('../../middleware/gsheet.js');
 
-let credentials = config.credentials;
+let credentials = config.credentials_blc_backend;
 const module_name = "PLUGIN";
 
 let url;
