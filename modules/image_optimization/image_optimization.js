@@ -1,5 +1,5 @@
 const {Builder, By, Key} = require("selenium-webdriver");
-const config = require("../image_optimization/config");
+const config = require("../../config");
 const server = require('../../server.js');
 const sheet = require('../../middleware/gsheet.js');
 

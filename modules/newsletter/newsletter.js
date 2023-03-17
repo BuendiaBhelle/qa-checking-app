@@ -4,14 +4,13 @@ const By = webdriver.By;
 const until = webdriver.until;
 const server = require('../../server');
 const sheet = require('../../middleware/gsheet');
-const config = require("./config");
+const config = require("../../config");
 
-var siteUrl = config.siteUrl;
-var adminUrl = config.adminUrl;
-var esReportUrl = config.esReportUrl;
-var wp_creds_username = config.wp_creds_username;
-var wp_creds_password = config.wp_creds_password;
-const module_name = config.module_name;
+var adminUrl = config.adminUrl_newsletter;
+var esReportUrl = config.esReportUrl_newsletter;
+var wp_creds_username = config.wp_creds.freddabranyon.username;
+var wp_creds_password = config.wp_creds.freddabranyon.password;
+const module_name = config.module_name_newsletter;
 
 async function executeTest(timestamp, username, password, domain){
     let driver = await new webdriver.Builder().forBrowser("chrome").build();
