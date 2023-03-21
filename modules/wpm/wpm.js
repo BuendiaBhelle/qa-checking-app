@@ -1,10 +1,9 @@
 const {google} = require("googleapis");
 require('dotenv').config();
 
-const config = require("./config");
+const config = require("../../config");
 const server = require('../../server');
 const sheet = require('../../middleware/gsheet');
-const config_nitropack = require("../../modules/nitropack/config");
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -13,16 +12,16 @@ const auth = new google.auth.GoogleAuth({
 
 const spreadsheetId = process.env.SPREADSHEETID_WPM;
 const sheet_id = config.sheet_id;
-const module_name = config.module_name;
+const module_name = config.module_name_wpm;
 const startRowIndex = config.startRowIndex;
 const endRowIndex = config.endRowIndex;
 const startColumnIndex = config.startColumnIndex;
 let site_names = config.site_names;
 let score = config.score;
 const list_sites_range = config.list_sites_range;
-const reports_range = config.reports_range;
+const reports_range = config.reports_range_wpm;
 const display_sites_range = config.display_sites_range;
-let output = config_nitropack.output;
+let output = config.date;
 
 
 async function insertRow(timestamp) {

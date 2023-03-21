@@ -2,12 +2,12 @@ const {Builder, By} = require("selenium-webdriver");
 const logger = require('../../../middleware/logger.js');
 const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
-const config = require("../config");
+const config = require("../../../config");
 
 const nitropack_url = config.nitropack_url;
 const np_email = config.np_email;
 const np_password = config.np_password;
-const module_name = "NITROPACK SETTINGS";
+const module_name = config.module_name_nitropack_settings;
 
 
 async function displayNitropackSettings(site, email, password, timestamp) {

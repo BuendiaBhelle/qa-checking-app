@@ -1,12 +1,12 @@
 const {Builder, By, Key} = require("selenium-webdriver");
 const {google} = require("googleapis");
-const config_webforms = require("../../../config.js");
+const config_webforms = require("../../../../../config");
 const logger = require('../../../../../middleware/logger.js');
 const server = require('../../../../../server.js');
 const sheet = require('../../../../../middleware/gsheet.js');
 
 const auth = config_webforms.auth;
-const spreadsheetId = config_webforms.spreadsheetId;
+const spreadsheetId = config_webforms.spreadsheetId_webforms;
 
 var googleSheets;
 var driver;

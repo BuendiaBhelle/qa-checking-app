@@ -5,7 +5,7 @@ const { dirname } = require("path");
 const { spawn } = require("child_process");
 const { driver, By2, windowsAppDriverCapabilities } = require("selenium-appium");
 
-const config = require("../config");
+const config = require("../../../config");
 const server = require('../../../server');
 const sheet = require('../../../middleware/gsheet');
 
@@ -15,7 +15,7 @@ const auth = new google.auth.GoogleAuth({
 });
 
 const spreadsheetId = process.env.SPREADSHEETID_NITROPACK;
-let output = config.output;
+let output = config.date;
 let strTime = config.strTime;
 let site_ids = config.site_ids;
 let urls = config.urls;
@@ -24,7 +24,7 @@ let pagespeed_url = config.pagespeed_url;
 let ranges_mobile = config.ranges_mobile;
 let ranges_desktop = config.ranges_desktop;
 let sheet_names = config.sheet_names;
-const module_name = config.module_name;
+const module_name = config.module_name_nitropack;
 const reports_range = config.reports_range;
 
 async function insertRow(timestamp) {
