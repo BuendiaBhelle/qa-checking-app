@@ -1,8 +1,8 @@
 const {google} = require("googleapis");
-const config = require("./config");
+const config = require("../config");
 
 const auth = config.auth;
-const spreadsheetId = config.spreadsheetId;
+const spreadsheetId = config.spreadsheetId_gsheet;
 
 
 async function addRow() {
