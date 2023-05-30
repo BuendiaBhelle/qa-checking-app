@@ -83,7 +83,10 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") 
         || (credentials[index][0] === "https://www.maintenancebest.com") || (credentials[index][0] === "https://www.molnarwalkingy.com")
         || (credentials[index][0] === "https://www.drmandiconway.com") || (credentials[index][0] === "https://www.inspired-engagement.com")
-        || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")) {
+        || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")
+        || (credentials[index][0] === "https://www.salesproformance.com") || (credentials[index][0] === "https://www.desertcustomfireplacedoors.com")
+        || (credentials[index][0] === "https://www.bbllessons.com") || (credentials[index][0] === "https://www.sunpressurewash.com")
+        || (credentials[index][0] === "https://www.thehairextensioncompany.com") || (credentials[index][0] === "https://www.newhopemedicalcenter.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard + "/plugins.php");
@@ -185,7 +188,10 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.airgain.com") || (credentials[index][0] === "https://www.maintenancebest.com") ||
         (credentials[index][0] === "https://www.molnarwalkingy.com") || (credentials[index][0] === "https://www.drmandiconway.com") ||
         (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.elevatebytempusjets.com") || 
-        (credentials[index][0] === "https://www.signsofthetimesaz.com")) {
+        (credentials[index][0] === "https://www.signsofthetimesaz.com") || (credentials[index][0] === "https://www.salesproformance.com") ||
+        (credentials[index][0] === "https://www.desertcustomfireplacedoors.com") || (credentials[index][0] === "https://www.bbllessons.com") ||
+        (credentials[index][0] === "https://www.sunpressurewash.com") || (credentials[index][0] === "https://www.thehairextensioncompany.com") ||
+        (credentials[index][0] === "https://www.newhopemedicalcenter.com")) {
         
             await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
         } 
@@ -199,7 +205,7 @@ async function blc(timestamp) {
                     console.log("With BLC Plugin.");    
 
                     if (credentials[index][0] === "https://www.hospiceofyuma.com") {
-                        await driver.get("https://hospiceofyuma.com/hoylogin/admin.php?page=view-broken-links");
+                        await driver.get("https://hospiceofyuma.com/hoylogin/admin.php?page=blc_local");
                     } 
                     // else if ((credentials[index][0] === "https://www.bbllessons.com") ||  (credentials[index][0] === "https://truckerpath.com")) {
                     //     let settings_inner_link_length = await driver.executeScript("return document.getElementsByTagName('a').length");
@@ -253,8 +259,11 @@ async function blc(timestamp) {
                     //         }
                     //     }
                     // }
-                    else {
+                    else if ((credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.salesproformance.com")) {
                         await driver.get(wp_dashboard + "/admin.php?page=view-broken-links");
+                    }
+                    else {
+                        await driver.get(wp_dashboard + "/admin.php?page=blc_local");
                     }
                     
                     let broken_link_count = await driver.executeScript("return document.getElementsByClassName('filter-broken-link-count current-link-count')[0].innerText");

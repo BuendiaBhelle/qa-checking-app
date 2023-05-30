@@ -298,7 +298,7 @@ async function displayFails(timestamp) {
                 resource: {
                     values: [
                         [
-                            "Nitropack fails (" + config.output + "):"
+                            "Nitropack fails (" + config.date + "):"
                         ]
                     ]
                 }

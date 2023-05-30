@@ -92,7 +92,10 @@ async function backend(timestamp) {
         || (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") 
         || (credentials[index][0] === "https://www.maintenancebest.com") || (credentials[index][0] === "https://www.molnarwalkingy.com")
         || (credentials[index][0] === "https://www.drmandiconway.com") || (credentials[index][0] === "https://www.inspired-engagement.com")
-        || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")) {
+        || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")
+        || (credentials[index][0] === "https://www.salesproformance.com") || (credentials[index][0] === "https://www.desertcustomfireplacedoors.com")
+        || (credentials[index][0] === "https://www.bbllessons.com") || (credentials[index][0] === "https://www.sunpressurewash.com")
+        || (credentials[index][0] === "https://www.thehairextensioncompany.com") || (credentials[index][0] === "https://www.newhopemedicalcenter.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard);
