@@ -3,6 +3,7 @@ const {google} = require("googleapis");
 const config = require("../../../config");
 const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
+require('chromedriver');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId_waum;

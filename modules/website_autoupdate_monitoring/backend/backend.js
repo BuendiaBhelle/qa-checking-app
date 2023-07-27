@@ -3,6 +3,7 @@ const {google} = require("googleapis");
 const config = require("../../../config");
 const server = require('../../../server.js');
 const sheet = require('../../../middleware/gsheet.js');
+require('chromedriver');
 
 const auth = config.auth;
 const spreadsheetId = config.spreadsheetId_waum;
@@ -55,7 +56,7 @@ async function backend(timestamp) {
         || (credentials[index][0] === "https://www.thesolutionsforum.com") 
         || (credentials[index][0] === "https://www.primeleisures.com") || (credentials[index][0] === "https://www.mcbuildingmaintenance.com")
         || (credentials[index][0] === "https://www.drmazaheri.com")
-        || (credentials[index][0] === "https://www.aerialengagement.com") || (credentials[index][0] === "https://www.ewingconstruction.com")
+        || (credentials[index][0] === "https://www.ewingconstruction.com")
         || (credentials[index][0] === "https://www.buckeyederm.com") || (credentials[index][0] === "https://jelleyvision.com")
         || (credentials[index][0] === "https://staffportal.optimizex.com") || (credentials[index][0] === "https://www.gatorskin.us")
         || (credentials[index][0] === "https://www.culpepper-associates.com") || (credentials[index][0] === "https://www.opakapakagrillandbar.com")
@@ -95,7 +96,10 @@ async function backend(timestamp) {
         || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")
         || (credentials[index][0] === "https://www.salesproformance.com") || (credentials[index][0] === "https://www.desertcustomfireplacedoors.com")
         || (credentials[index][0] === "https://www.bbllessons.com") || (credentials[index][0] === "https://www.sunpressurewash.com")
-        || (credentials[index][0] === "https://www.thehairextensioncompany.com") || (credentials[index][0] === "https://www.newhopemedicalcenter.com")) {
+        || (credentials[index][0] === "https://www.newhopemedicalcenter.com")
+        || (credentials[index][0] === "https://www.canyonfalls.com") || (credentials[index][0] === "https://www.judefrances.com")
+        || (credentials[index][0] === "https://revivecommunityhealth.org") || (credentials[index][0] === "https://www.ryanspetworld.com")
+        || (credentials[index][0] === "https://www.brunoshooters.com") || (credentials[index][0] === "https://www.verbenathesalon.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard);
