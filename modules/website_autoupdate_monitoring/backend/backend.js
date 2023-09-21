@@ -99,7 +99,12 @@ async function backend(timestamp) {
         || (credentials[index][0] === "https://www.newhopemedicalcenter.com")
         || (credentials[index][0] === "https://www.canyonfalls.com") || (credentials[index][0] === "https://www.judefrances.com")
         || (credentials[index][0] === "https://revivecommunityhealth.org") || (credentials[index][0] === "https://www.ryanspetworld.com")
-        || (credentials[index][0] === "https://www.brunoshooters.com") || (credentials[index][0] === "https://www.verbenathesalon.com")) {
+        || (credentials[index][0] === "https://www.brunoshooters.com") || (credentials[index][0] === "https://www.verbenathesalon.com")
+        || (credentials[index][0] === "https://www.aeroturbineinc.com") || (credentials[index][0] === "https://assistantsourcing.com")
+        || (credentials[index][0] === "https://www.cmahr.com") || (credentials[index][0] === "https://www.fivestarmedicalclinic.com")
+        || (credentials[index][0] === "https://www.satellitecab.com") || (credentials[index][0] === "https://www.taskh2o.com")
+        || (credentials[index][0] === "https://www.tmpcinc.com") || (credentials[index][0] === "https://www.bizsuccess.school")
+        || (credentials[index][0] === "https://www.gallerytcr.com")) {
             await driver.get(credentials[index][0] + "/pvlogin");
         } else {
             await driver.get(wp_dashboard);
