@@ -43,6 +43,8 @@ async function blc(timestamp) {
         
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
+        } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
+            await driver.get(credentials[index][0] + "/members-login/");
         } else if ((credentials[index][0] === "https://www.businesstrendstoday.com") || (credentials[index][0] === "https://virtualassistantsoutsourcing.com")
         || (credentials[index][0] === "https://www.thesolutionsforum.com") 
         || (credentials[index][0] === "https://www.primeleisures.com") || (credentials[index][0] === "https://www.mcbuildingmaintenance.com")
@@ -67,7 +69,7 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.johnsoninjurylaw.com")
         || (credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.mhsjackrabbitsfoundation.com")
         || (credentials[index][0] === "https://www.myseoagency.com") || (credentials[index][0] === "https://www.ngaaz.org")
-        || (credentials[index][0] === "https://www.ocmedspa.com") || (credentials[index][0] === "https://search.optimizex.com")
+        || (credentials[index][0] === "https://search.optimizex.com")
         || (credentials[index][0] === "https://www.orionisg.com") || (credentials[index][0] === "https://www.pmrtimeshares.com")
         || (credentials[index][0] === "https://www.suncliffsedona.com") || (credentials[index][0] === "https://www.jmrestoration.com")
         || (credentials[index][0] === "https://www.valuesquest.com") || (credentials[index][0] === "https://www.paysondermatology.com")
@@ -82,7 +84,7 @@ async function blc(timestamp) {
         || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || (credentials[index][0] === "https://www.amissionofmercy.org")
         || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || (credentials[index][0] === "https://www.everythingjustrocks.com")
         || (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") 
-        || (credentials[index][0] === "https://www.maintenancebest.com") || (credentials[index][0] === "https://www.molnarwalkingy.com")
+        || (credentials[index][0] === "https://www.molnarwalkingy.com")
         || (credentials[index][0] === "https://www.drmandiconway.com") || (credentials[index][0] === "https://www.inspired-engagement.com")
         || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")
         || (credentials[index][0] === "https://www.salesproformance.com") || (credentials[index][0] === "https://www.desertcustomfireplacedoors.com")
@@ -119,7 +121,12 @@ async function blc(timestamp) {
                 }
         
                 await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
-            } else {
+            } if (credentials[index][0] === "https://www.maintenancebest.com") {
+                await driver.findElement(By.id("1helauaoii80")).sendKeys(credentials[index][1]);
+                await driver.findElement(By.id("6afbbvfn0560")).sendKeys(credentials[index][2]);
+                await driver.executeScript("return document.getElementsByClassName('pp-submit-form ppform-submit-button')[0].click()");
+            } 
+            else {
                 await driver.findElement(By.name("log")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.name("pwd")).sendKeys(credentials[index][2]);
                 await driver.findElement(By.id("wp-submit")).click();
@@ -179,7 +186,7 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.genovation.com") || (credentials[index][0] === "https://gentryrealestategroup.com") || 
         (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.johnsoninjurylaw.com") ||
         (credentials[index][0] === "https://www.mhsjackrabbitsfoundation.com") || (credentials[index][0] === "https://www.myseoagency.com") || 
-        (credentials[index][0] === "https://www.ngaaz.org") || (credentials[index][0] === "https://www.ocmedspa.com") ||
+        (credentials[index][0] === "https://www.ngaaz.org") || 
         (credentials[index][0] === "https://search.optimizex.com") || (credentials[index][0] === "https://www.orionisg.com") || 
         (credentials[index][0] === "https://www.pmrtimeshares.com") || (credentials[index][0] === "https://www.suncliffsedona.com") || 
         (credentials[index][0] === "https://www.jmrestoration.com") || (credentials[index][0] === "https://www.valuesquest.com") || 
@@ -194,7 +201,7 @@ async function blc(timestamp) {
         (credentials[index][0] === "https://www.advancedimagemedspa.com") || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || 
         (credentials[index][0] === "https://www.amissionofmercy.org") || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || 
         (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.natina.com") || 
-        (credentials[index][0] === "https://www.airgain.com") || (credentials[index][0] === "https://www.maintenancebest.com") ||
+        (credentials[index][0] === "https://www.airgain.com") ||
         (credentials[index][0] === "https://www.molnarwalkingy.com") || (credentials[index][0] === "https://www.drmandiconway.com") ||
         (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.elevatebytempusjets.com") || 
         (credentials[index][0] === "https://www.signsofthetimesaz.com") || (credentials[index][0] === "https://www.salesproformance.com") ||
@@ -275,9 +282,6 @@ async function blc(timestamp) {
                     //         }
                     //     }
                     // }
-                    else if ((credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.salesproformance.com")) {
-                        await driver.get(wp_dashboard + "/admin.php?page=view-broken-links");
-                    }
                     else {
                         await driver.get(wp_dashboard + "/admin.php?page=blc_local");
                     }

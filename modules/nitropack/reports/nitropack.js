@@ -141,7 +141,7 @@ async function mobileScore(timestamp) {
                 let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
                 if (loading) {
                     console.log("loading....");
-                    await driver.sleep(20000);
+                    await driver.sleep(40000);
                 }
         
                 let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerText");
@@ -217,14 +217,14 @@ async function desktopScore(timestamp) {
                 await driver.findElement(By.name("url")).sendKeys(urls[index], Key.RETURN);
                 let current_page_url = await driver.getCurrentUrl();
                 await driver.get(current_page_url + "&form_factor=desktop");
-                await driver.sleep(30000);
+                await driver.sleep(50000);
 
                 await driver.executeScript("window.scrollBy(0,650)", "");
         
                 let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
                 if (loading) {
                     console.log("loading....");
-                    await driver.sleep(20000);
+                    await driver.sleep(40000);
                 }
         
                 let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[20].innerText");
