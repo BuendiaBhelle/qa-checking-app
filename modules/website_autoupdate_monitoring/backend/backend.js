@@ -50,8 +50,8 @@ async function backend(timestamp) {
         
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
-        } else if (credentials[index][0] === "https://www.hospiceofyuma.com") {
-            await driver.get(credentials[index][0] + "/hoylogin");
+        } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
+            await driver.get(credentials[index][0] + "/members-login/");
         } else if ((credentials[index][0] === "https://www.businesstrendstoday.com") || (credentials[index][0] === "https://virtualassistantsoutsourcing.com")
         || (credentials[index][0] === "https://www.thesolutionsforum.com") 
         || (credentials[index][0] === "https://www.primeleisures.com") || (credentials[index][0] === "https://www.mcbuildingmaintenance.com")
@@ -76,7 +76,7 @@ async function backend(timestamp) {
         || (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.johnsoninjurylaw.com")
         || (credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.mhsjackrabbitsfoundation.com")
         || (credentials[index][0] === "https://www.myseoagency.com") || (credentials[index][0] === "https://www.ngaaz.org")
-        || (credentials[index][0] === "https://www.ocmedspa.com") || (credentials[index][0] === "https://search.optimizex.com")
+        || (credentials[index][0] === "https://search.optimizex.com")
         || (credentials[index][0] === "https://www.orionisg.com") || (credentials[index][0] === "https://www.pmrtimeshares.com")
         || (credentials[index][0] === "https://www.suncliffsedona.com") || (credentials[index][0] === "https://www.jmrestoration.com")
         || (credentials[index][0] === "https://www.valuesquest.com") || (credentials[index][0] === "https://www.paysondermatology.com")
@@ -91,7 +91,7 @@ async function backend(timestamp) {
         || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || (credentials[index][0] === "https://www.amissionofmercy.org")
         || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || (credentials[index][0] === "https://www.everythingjustrocks.com")
         || (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") 
-        || (credentials[index][0] === "https://www.maintenancebest.com") || (credentials[index][0] === "https://www.molnarwalkingy.com")
+        || (credentials[index][0] === "https://www.molnarwalkingy.com")
         || (credentials[index][0] === "https://www.drmandiconway.com") || (credentials[index][0] === "https://www.inspired-engagement.com")
         || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")
         || (credentials[index][0] === "https://www.salesproformance.com") || (credentials[index][0] === "https://www.desertcustomfireplacedoors.com")
@@ -119,7 +119,7 @@ async function backend(timestamp) {
             } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
                 await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
-                await driver.executeScript("return document.getElementsByClassName('button button-primary button-large')[0].click()");
+                await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
         
                 let button_length = await driver.executeScript("return document.getElementsByClassName('btn').length");
                 for (let index = 0; index < button_length; index++) {
