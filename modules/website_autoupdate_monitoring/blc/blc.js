@@ -275,9 +275,6 @@ async function blc(timestamp) {
                     //         }
                     //     }
                     // }
-                    else if ((credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.salesproformance.com")) {
-                        await driver.get(wp_dashboard + "/admin.php?page=view-broken-links");
-                    }
                     else {
                         await driver.get(wp_dashboard + "/admin.php?page=blc_local");
                     }
