@@ -50,7 +50,23 @@ async function broken_links(timestamp, link, username, password) {
         "Sheet!A12:B12",
         "Sheet!A13:B13",
         "Sheet!A14:B14",
-        "Sheet!A15:B15"
+        "Sheet!A15:B15",
+        "Sheet!A16:B16",
+        "Sheet!A17:B17",
+        "Sheet!A18:B18",
+        "Sheet!A19:B19",
+        "Sheet!A20:B20",
+        "Sheet!A21:B21",
+        "Sheet!A22:B22",
+        "Sheet!A23:B23",
+        "Sheet!A24:B24",
+        "Sheet!A25:B25",
+        "Sheet!A26:B26",
+        "Sheet!A27:B27",
+        "Sheet!A28:B28",
+        "Sheet!A29:B29",
+        "Sheet!A30:B30",
+        "Sheet!A31:B31",
     ]
 
     let ranges_j = [
@@ -67,7 +83,23 @@ async function broken_links(timestamp, link, username, password) {
         "Sheet!C12",
         "Sheet!C13",
         "Sheet!C14",
-        "Sheet!C15"
+        "Sheet!C15",
+        "Sheet!C16",
+        "Sheet!C17",
+        "Sheet!C18",
+        "Sheet!C19",
+        "Sheet!C20",
+        "Sheet!C21",
+        "Sheet!C22",
+        "Sheet!C23",
+        "Sheet!C24",
+        "Sheet!C25",
+        "Sheet!C26",
+        "Sheet!C27",
+        "Sheet!C28",
+        "Sheet!C29",
+        "Sheet!C30",
+        "Sheet!C31",
     ]
 
     let ranges_k = [
@@ -84,7 +116,24 @@ async function broken_links(timestamp, link, username, password) {
         "Sheet!D12:E12",
         "Sheet!D13:E13",
         "Sheet!D14:E14",
-        "Sheet!D15:E15"
+        "Sheet!D15:E15",
+        "Sheet!D16:E16",
+        "Sheet!D16:E16",
+        "Sheet!D17:E17",
+        "Sheet!D18:E18",
+        "Sheet!D19:E19",
+        "Sheet!D20:E20",
+        "Sheet!D21:E21",
+        "Sheet!D22:E22",
+        "Sheet!D23:E23",
+        "Sheet!D24:E24",
+        "Sheet!D25:E25",
+        "Sheet!D26:E26",
+        "Sheet!D27:E27",
+        "Sheet!D28:E28",
+        "Sheet!D29:E29",
+        "Sheet!D30:E30",
+        "Sheet!D31:E31",
     ]
 
     //navigate to broken link page
@@ -104,6 +153,10 @@ async function broken_links(timestamp, link, username, password) {
 
             if (status === "Not Found") {
                 status = "404 Not Found";
+            } else if (status === "Forbidden") {
+                status = "403 Forbidden";
+            } else if (status === "Internal Server Error") {
+                status = "500 Internal Server Error";
             }
 
             const r_i = ranges_i[i];
