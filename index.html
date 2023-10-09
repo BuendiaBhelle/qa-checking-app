@@ -56,7 +56,7 @@
     #sheet-links {
         /* margin-top: -140px; */
         text-align: right;
-        margin-right: -60px;
+        margin-right: -10px;
     }
 
     #sheet-links a:link, a:visited {
@@ -84,6 +84,9 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="checkoutForm()">Checkout</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="daily_fixes_broken_links()">Daily Fixes: Broken Links</button>
                             </li>
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="image_optimizationForm()">Image Optimization</button>
@@ -347,6 +350,30 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- DAILY FIXES: BROKEN LINKS -->
+                            <div id="daily_fixes_broken_links">
+                                <h1 style="margin-top: 100px;">Broken Links</h1>
+                                <form action="/post/broken_links" method="post">
+                                    <div class="form-group row">
+                                        <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                        <div class="col-sm-9">
+                                            <input id="link" type="text" value="" name="link" class="form-control" placeholder="'https://www.primeview.com/'" required />
+                                            <br>
+                                        </div>
+                                        <label for="Sheet Name" class="col-sm-3 col-form-label">Username:</label>
+                                        <div class="col-sm-9">
+                                            <input id="username" type="text" value="" name="username" required />
+                                        </div>
+                                        <label for="Sheet Name" class="col-sm-3 col-form-label">Password:</label>
+                                        <div class="col-sm-9">
+                                            <input id="password" type="text" value="" name="password" required />
+                                        </div>
+                                    </div>
+                                    <br>
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
                                 </form>
                             </div>
@@ -1906,6 +1933,25 @@
     <script>
         function checkoutForm() {
             document.getElementById('checkout').style.display = 'block';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function daily_fixes_broken_links() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'block';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -1923,6 +1969,7 @@
         }
         function image_optimizationForm() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'block';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -1940,6 +1987,7 @@
         }
         function visibilityForm(){
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'block';
             document.getElementById('webForms').style.display = 'none';
@@ -1957,6 +2005,7 @@
         }
         function webForms(){
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'block';
@@ -1974,6 +2023,7 @@
         }
         function newsletter() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -1991,6 +2041,7 @@
         }
         function nitropack() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2008,6 +2059,7 @@
         }
         function wpm() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2025,6 +2077,7 @@
         }
         function plugins_yoast_or_blc() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2042,6 +2095,7 @@
         }
         function calendar() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2059,6 +2113,7 @@
         }
         function waum_backend() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2076,6 +2131,7 @@
         }
         function waum_blc() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2093,6 +2149,7 @@
         }
         function waum_frontend() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2110,6 +2167,7 @@
         }
         function responsivenessForm_lambdatest() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
@@ -2127,6 +2185,7 @@
         }
         function responsiveness_manual() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';

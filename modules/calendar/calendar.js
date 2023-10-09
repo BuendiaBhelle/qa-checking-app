@@ -11,7 +11,6 @@ const auth = new google.auth.GoogleAuth({
     scopes: "https://www.googleapis.com/auth/spreadsheets"
 });
 
-const spreadsheetId_Sheet = config.sheet_id_calendar.Sheet;
 const spreadsheetId = config.spreadsheetId_calendar;
 
 // let credentials = config.credentials;

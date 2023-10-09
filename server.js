@@ -156,6 +156,8 @@ const waum_blc = require("./modules/website_autoupdate_monitoring/blc/blc");
 const waum_frontend = require("./modules/website_autoupdate_monitoring/frontend/frontend");
 const plugins = require("./modules/plugins/plugins");
 const calendar = require("./modules/calendar/calendar");
+const broken_links = require("./modules/website_autoupdate_monitoring/blc/broken_links");
+
 
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
@@ -5506,6 +5508,18 @@ app.post('/post/waum_backend', async (req, res) => {
 app.post('/post/waum_blc', async (req, res) => {
     try {
         await waum_blc.blc(timestamp);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/broken_links', async (req, res) => {
+    var link = req.body.link;
+    var username = req.body.username;
+    var password = req.body.password;
+    try {
+        await broken_links.broken_links(timestamp, link, username, password);
     } catch (error) {
         console.log(error);
     }
