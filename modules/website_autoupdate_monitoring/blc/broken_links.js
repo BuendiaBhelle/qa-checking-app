@@ -118,7 +118,6 @@ async function broken_links(timestamp, link, username, password) {
         "Sheet!D14:E14",
         "Sheet!D15:E15",
         "Sheet!D16:E16",
-        "Sheet!D16:E16",
         "Sheet!D17:E17",
         "Sheet!D18:E18",
         "Sheet!D19:E19",
@@ -139,6 +138,7 @@ async function broken_links(timestamp, link, username, password) {
     //navigate to broken link page
     try {
         await driver.get(link + "wp-admin/admin.php?page=blc_local");
+        await driver.sleep(3000);
 
         let broken_link_count = await driver.executeScript("return document.getElementsByClassName('blc-link-url').length");
 
@@ -179,6 +179,7 @@ async function broken_links(timestamp, link, username, password) {
             } catch (error) {
                 console.log(error);
             }
+            await driver.sleep(1000);
         }
         
         //column link text
@@ -205,6 +206,7 @@ async function broken_links(timestamp, link, username, password) {
             } catch (error) {
                 console.log(error);
             }
+            await driver.sleep(1000);
         }
 
         //columns source to source link
@@ -235,6 +237,7 @@ async function broken_links(timestamp, link, username, password) {
             } catch (error) {
                 console.log(error);
             }
+            await driver.sleep(1000);
         }
 
     } catch (error) {
