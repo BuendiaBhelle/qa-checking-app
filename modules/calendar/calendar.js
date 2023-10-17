@@ -1,4 +1,4 @@
-const {Builder, By} = require("selenium-webdriver");
+const {Builder, By, until} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config = require("../../config");
 
@@ -65,11 +65,11 @@ async function calendar(timestamp, user) {
     }
 
     await driver.findElement(By.id("signinFormButton")).click();
-    await driver.sleep(3000);
 
-    await driver.findElement(By.id("prevDayBtn")).click();
+    await driver.sleep(10000);
 
-    await driver.sleep(5000);
+    // await driver.findElement(By.id("prevDayBtn")).click();
+    // await driver.sleep(5000);
 
     let ranges = [
         "Sheet!C3:E3",
