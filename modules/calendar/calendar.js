@@ -1,10 +1,6 @@
 const {Builder, By} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config = require("../../config");
-const { logger } = require("../../middleware/logger");
-// const logger = require('../../../middleware/logger.js');
-// const server = require('../../../server.js');
-// const sheet = require('../../../middleware/gsheet.js');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -12,21 +8,62 @@ const auth = new google.auth.GoogleAuth({
 });
 
 const spreadsheetId = config.spreadsheetId_calendar;
+const td_url = config.td_url;
+const creds_td_email = config.creds_td_email;
+const creds_td_password = config.creds_td_password;
+const tw_url = config.tw_url;
+const creds_tw_email = config.creds_tw_email;
+const creds_tw_password = config.creds_tw_password;
 
-// let credentials = config.credentials;
-// let output = config_nitropack.output;
-// const module_name = "WEBSITE AUTOUPDATE MONITORING - BACKEND";
 
-
-async function calendar(timestamp, dev) {
+async function calendar(timestamp, user) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
     var driver = await new Builder().forBrowser("chrome").build();
 
-    await driver.get("https://primeviewllc.timedoctor.com/v2/index.php?page=time_use_report");
+    await driver.get(td_url);
 
-    await driver.findElement(By.id("email")).sendKeys("mbuendia@optimizex.com");
-    await driver.findElement(By.id("password")).sendKeys("mA1+sN5>bZ6%");
+    switch (user) {
+        case "user1":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user1);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user1);
+            break;
+        case "user2":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user2);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user2);
+            break;
+        case "user3":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user3);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user3);
+            break;
+        case "user4":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user4);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user4);
+            break;
+        case "user5":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user5);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user5);
+            break;
+        case "user6":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user6);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user6);
+            break;
+        case "user7":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user7);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user7);
+            break;
+        case "user8":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user8);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user8);
+            break;
+        case "user9":
+            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user9);
+            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user9);
+            break;
+        default:
+            break;
+    }
+
     await driver.findElement(By.id("signinFormButton")).click();
     await driver.sleep(3000);
 
@@ -54,21 +91,6 @@ async function calendar(timestamp, dev) {
         "Sheet!C19:E19",
         "Sheet!C20:E20",
     ]
-
-    // let ranges = [
-    //     "Sheet!C18:E18",
-    //     "Sheet!C19:E19",
-    //     "Sheet!C20:E20",
-    //     "Sheet!C21:E21",
-    //     "Sheet!C22:E22",
-    //     "Sheet!C23:E23",
-    //     "Sheet!C24:E24",
-    //     "Sheet!C25:E25",
-    //     "Sheet!C26:E26",
-    //     "Sheet!C27:E27",
-    //     "Sheet!C28:E28",
-    //     "Sheet!C29:E29",
-    // ]
 
     let task_link_count = await driver.executeScript("return document.getElementsByClassName('task-link').length");
 
@@ -105,24 +127,121 @@ async function calendar(timestamp, dev) {
 
     }
 
-    // for (let i = 0; i < task_link_count; i++) {
-    //     let task_links = await driver.executeScript("return document.getElementsByClassName('task-link')[" + i + "].href");
-    //     await driver.switchTo().newWindow('tab');
-    //     console.log(task_links);
-    //     await driver.get(task_links);
+    const task_links = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "Sheet!D3:D20",
+    });
 
-    //     await driver.sleep(5000);
+    let client_name = task_links.data.values;
+    let task_links_length = client_name.length;
 
-    //     await driver.findElement(By.id("loginemail")).sendKeys("mbuendia@optimizex.com");
-    //     await driver.findElement(By.id("loginpassword")).sendKeys("mA1+sN5>bZ6%");
-    //     let teamwork_login = await driver.executeScript("return document.getElementsByClassName('w-button w-button--blue')[0]");
-    //     teamwork_login.click();
-    //     await driver.sleep(3000);
+    await driver.switchTo().newWindow('tab');
 
+    await driver.sleep(3000);
 
-    //     let client_name = await driver.executeScript("return document.getElementsByClassName('truncate max-w-full canClickToEdit')[0].innerText");
-    //     console.log(client_name);
-    // }
+    await driver.get(tw_url);
+
+    await driver.sleep(5000);
+
+    switch (user) {
+        case "user1":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user1);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user1);
+            break;
+        case "user2":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user2);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user2);
+            break;
+        case "user3":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user3);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user3);
+            break;
+        case "user4":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user4);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user4);
+            break;
+        case "user5":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user5);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user5);
+            break;
+        case "user6":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user6);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user6);
+            break;
+        case "user7":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user7);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user7);
+            break;
+        case "user8":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user8);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user8);
+            break;
+        case "user9":
+            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user9);
+            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user9);
+            break;
+        default:
+            break;
+    }
+
+    await driver.executeScript("return document.getElementsByClassName('w-button w-button--blue')[0].click()");
+
+    await driver.sleep(3000);
+
+    let ranges_client = [
+        "Sheet!B3",
+        "Sheet!B4",
+        "Sheet!B5",
+        "Sheet!B6",
+        "Sheet!B7",
+        "Sheet!B8",
+        "Sheet!B9",
+        "Sheet!B10",
+        "Sheet!B11",
+        "Sheet!B12",
+        "Sheet!B13",
+        "Sheet!B14",
+        "Sheet!B15",
+        "Sheet!B16",
+        "Sheet!B17",
+        "Sheet!B18",
+        "Sheet!B19",
+        "Sheet!B20",
+    ]
+
+    for (let index = 0; index < task_links_length; index++) {
+        await driver.switchTo().newWindow('tab');
+
+        await driver.get(client_name[index][0]);
+    
+        await driver.sleep(5000);
+
+        let client = await driver.executeScript("return document.getElementsByClassName('truncate max-w-full canClickToEdit')[0].innerText");
+        
+        console.log(client);
+
+        const range_client = ranges_client[index];
+    
+        try {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: range_client,
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [ 
+                            client
+                        ]
+                    ]
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 }
 
 

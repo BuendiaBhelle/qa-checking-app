@@ -5546,9 +5546,9 @@ app.post('/post/plugins_yoast_or_blc', async (req, res) => {
 });
 
 app.post('/post/calendar', async (req, res) => {
-    var dev = req.body.dev;
+    var user = req.body.user;
     try {
-        await calendar.calendar(timestamp, dev);
+        await calendar.calendar(timestamp, user);
     } catch (error) {
         console.log(error);
     }

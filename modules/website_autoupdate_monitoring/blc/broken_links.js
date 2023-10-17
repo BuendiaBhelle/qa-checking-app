@@ -138,6 +138,7 @@ async function broken_links(timestamp, link, username, password) {
     //navigate to broken link page
     try {
         await driver.get(link + "wp-admin/admin.php?page=blc_local");
+        // await driver.get(link + "wp-admin/admin.php?page=blc_local&paged=2");
         await driver.sleep(3000);
 
         let broken_link_count = await driver.executeScript("return document.getElementsByClassName('blc-link-url').length");
@@ -157,6 +158,10 @@ async function broken_links(timestamp, link, username, password) {
                 status = "403 Forbidden";
             } else if (status === "Internal Server Error") {
                 status = "500 Internal Server Error";
+            } else if (status === "Gone") {
+                status = "410 Gone";
+            } else if (status === "Service Unavailable") {
+                status = "503 Service Unavailable";
             }
 
             const r_i = ranges_i[i];
