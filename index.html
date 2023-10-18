@@ -54,9 +54,8 @@
     }
 
     #sheet-links {
-        /* margin-top: -140px; */
+        margin-top: -140px;
         text-align: right;
-        margin-right: -10px;
     }
 
     #sheet-links a:link, a:visited {
@@ -65,7 +64,7 @@
         color:#fff;
         font-size:12px;
         border-radius: 4px;
-        margin-right: 5px;
+        margin-right: 3px;
     }
 </style>
 <body>
@@ -172,11 +171,8 @@
                                 <a href="https://docs.google.com/spreadsheets/d/1JZyOiOF6g4M4TQDjzXMmtNKJujGQvMYKIgmmuHgxwhQ/edit#gid=0" target="_blank">
                                     Nitropack
                                 </a>
-                                <a href="https://docs.google.com/spreadsheets/d/1en7A-zdZKaS7mqQrWtW3hyCO97J3fz6Cxx2yD64TRz4/edit#gid=0" target="_blank">
-                                    Site Update QA
-                                </a>
                                 <a href="https://docs.google.com/spreadsheets/d/1j8xVmSmWSD90vNcGA_kU9H7kaJxq5crpDNUVaAkELsY/edit#gid=0" target="_blank">
-                                    Website Auto-Update Monitoring
+                                    Site Monitoring
                                 </a>
                                 <a href="https://docs.google.com/spreadsheets/d/1koZJFJGPvPHHMB8JuRqKOcWy_BQNXES6uyWWhqbciBM/edit#gid=383657523" target="_blank">
                                     Task Calendar
@@ -1735,7 +1731,7 @@
                                         <div class="row">
                                             <div class="col-md-7">
                                                 <div class="form-group row">
-                                                    <label for="user" class="col-sm-3 col-form-label">Choose a User:</label>
+                                                    <!-- <label for="user" class="col-sm-3 col-form-label">Choose a User:</label>
                                                     <div class="col-sm-9">
                                                         <select name="user" id="user">
                                                             <option value="user1">Allan</option>
@@ -1749,7 +1745,26 @@
                                                             <option value="user9">Yardi</option>
                                                         </select>
                                                         <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div> -->
+                                              
+                                                    <label for="username_td" class="col-sm-3 col-form-label">Username(TD):</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="username_td" type="text" value="" name="username_td" required />
                                                     </div>
+                                                    <label for="password_td" class="col-sm-3 col-form-label">Password(TD):</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="password_td" type="password" value="" name="password_td" required  autocomplete="off" />
+                                                    </div>
+                                                
+                                                    <label for="username_tw" class="col-sm-3 col-form-label" style="margin-top: 35px;">Username(TW):</label>
+                                                    <div class="col-sm-9" style="margin-top: 35px;">
+                                                        <input id="username_tw" type="text" value="" name="username_tw" required />
+                                                    </div>
+                                                    <label for="password_tw" class="col-sm-3 col-form-label">Password(TW):</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="password_tw" type="password" value="" name="password_tw" required  autocomplete="off" />
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>

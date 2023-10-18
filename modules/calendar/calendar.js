@@ -9,61 +9,18 @@ const auth = new google.auth.GoogleAuth({
 
 const spreadsheetId = config.spreadsheetId_calendar;
 const td_url = config.td_url;
-const creds_td_email = config.creds_td_email;
-const creds_td_password = config.creds_td_password;
 const tw_url = config.tw_url;
-const creds_tw_email = config.creds_tw_email;
-const creds_tw_password = config.creds_tw_password;
 
 
-async function calendar(timestamp, user) {
+async function calendar(timestamp, username_td, password_td, username_tw, password_tw) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
     var driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get(td_url);
 
-    switch (user) {
-        case "user1":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user1);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user1);
-            break;
-        case "user2":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user2);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user2);
-            break;
-        case "user3":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user3);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user3);
-            break;
-        case "user4":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user4);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user4);
-            break;
-        case "user5":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user5);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user5);
-            break;
-        case "user6":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user6);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user6);
-            break;
-        case "user7":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user7);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user7);
-            break;
-        case "user8":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user8);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user8);
-            break;
-        case "user9":
-            await driver.findElement(By.id("email")).sendKeys(creds_td_email.user9);
-            await driver.findElement(By.id("password")).sendKeys(creds_td_password.user9);
-            break;
-        default:
-            break;
-    }
-
+    await driver.findElement(By.id("email")).sendKeys(username_td);
+    await driver.findElement(By.id("password")).sendKeys(password_td);
     await driver.findElement(By.id("signinFormButton")).click();
 
     await driver.sleep(10000);
@@ -144,47 +101,8 @@ async function calendar(timestamp, user) {
 
     await driver.sleep(5000);
 
-    switch (user) {
-        case "user1":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user1);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user1);
-            break;
-        case "user2":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user2);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user2);
-            break;
-        case "user3":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user3);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user3);
-            break;
-        case "user4":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user4);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user4);
-            break;
-        case "user5":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user5);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user5);
-            break;
-        case "user6":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user6);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user6);
-            break;
-        case "user7":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user7);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user7);
-            break;
-        case "user8":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user8);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user8);
-            break;
-        case "user9":
-            await driver.findElement(By.id("loginemail")).sendKeys(creds_tw_email.user9);
-            await driver.findElement(By.id("loginpassword")).sendKeys(creds_tw_password.user9);
-            break;
-        default:
-            break;
-    }
-
+    await driver.findElement(By.id("loginemail")).sendKeys(username_tw);
+    await driver.findElement(By.id("loginpassword")).sendKeys(password_tw);
     await driver.executeScript("return document.getElementsByClassName('w-button w-button--blue')[0].click()");
 
     await driver.sleep(3000);
@@ -241,7 +159,7 @@ async function calendar(timestamp, user) {
             console.log(error);
         }
     }
-
+    console.log("CALENDAR AUTOMATION DONE.");
 }
 
 
