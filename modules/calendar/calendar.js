@@ -99,7 +99,7 @@ async function calendar(timestamp, username_td, password_td, username_tw, passwo
 
     await driver.get(tw_url);
 
-    await driver.sleep(5000);
+    await driver.sleep(7000);
 
     await driver.findElement(By.id("loginemail")).sendKeys(username_tw);
     await driver.findElement(By.id("loginpassword")).sendKeys(password_tw);
