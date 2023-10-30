@@ -12,7 +12,7 @@ const td_url = config.td_url;
 const tw_url = config.tw_url;
 
 
-async function calendar(timestamp, user, username_td, password_td, username_tw, password_tw) {
+async function calendar(timestamp, user) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
     var driver = await new Builder().forBrowser("chrome").build();
@@ -24,15 +24,10 @@ async function calendar(timestamp, user, username_td, password_td, username_tw, 
         await driver.sleep(30000);
         await driver.get(td_url);
     } else {
-        await driver.findElement(By.id("email")).sendKeys(username_td);
-        await driver.findElement(By.id("password")).sendKeys(password_td);
-        await driver.findElement(By.id("signinFormButton")).click();
+        await driver.sleep(30000);
     }
 
     await driver.sleep(10000);
-
-    // await driver.findElement(By.id("prevDayBtn")).click();
-    // await driver.sleep(5000);
 
     let ranges = [
         "Sheet!C3:E3",
@@ -110,9 +105,7 @@ async function calendar(timestamp, user, username_td, password_td, username_tw, 
         await driver.executeScript("return document.getElementsByClassName('w-button__label')[1].click()");
         await driver.executeScript("return document.getElementsByClassName('wLBAL')[0].click()");
     } else {
-        await driver.findElement(By.id("loginemail")).sendKeys(username_tw);
-        await driver.findElement(By.id("loginpassword")).sendKeys(password_tw);
-        await driver.executeScript("return document.getElementsByClassName('w-button w-button--blue')[0].click()");
+        await driver.sleep(30000);
     }
 
     await driver.sleep(3000);

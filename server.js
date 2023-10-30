@@ -5547,12 +5547,8 @@ app.post('/post/plugins_yoast_or_blc', async (req, res) => {
 
 app.post('/post/calendar', async (req, res) => {
     var user = req.body.user;
-    var username_td = req.body.username_td;
-    var password_td = req.body.password_td;
-    var username_tw = req.body.username_tw;
-    var password_tw = req.body.password_tw;
     try {
-        await calendar.calendar(timestamp, user, username_td, password_td, username_tw, password_tw);
+        await calendar.calendar(timestamp, user);
     } catch (error) {
         console.log(error);
     }
