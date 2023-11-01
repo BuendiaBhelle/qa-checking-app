@@ -45,6 +45,8 @@ async function backend(timestamp) {
                 ]
             }
         });
+
+        await driver.sleep(1000);
         
 
         
@@ -194,6 +196,7 @@ async function backend(timestamp) {
                         }
                     } 
                 }
+                await driver.sleep(1000);
             }
             console.log("BACKEND - get plugins update success.");
             value = [ "", "", "info", "get plugins update success.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
