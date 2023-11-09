@@ -317,7 +317,7 @@ async function displayFails(timestamp) {
             const data_mobile = getPageSpeedScore.data.values[0][1];
 
             if (data_mobile <= 49) {
-                console.log("   * " + sheet_names[index]);
+                console.log("   * " + urls[index]);
                 try {
                     await googleSheets.spreadsheets.values.append({
                         auth,
@@ -327,7 +327,7 @@ async function displayFails(timestamp) {
                         resource: {
                             values: [
                                 [
-                                    "* " + sheet_names[index]
+                                    "* " + urls[index]
                                 ]
                             ]
                         }
@@ -375,7 +375,7 @@ async function displayFails(timestamp) {
                 }
             }
             else if (data_desktop <= 49) {
-                console.log("   * " + sheet_names[index]);
+                console.log("   * " + urls[index]);
                 console.log("     - Desktop: " + data_desktop);
                 try {
                     await googleSheets.spreadsheets.values.append({
@@ -386,7 +386,7 @@ async function displayFails(timestamp) {
                         resource: {
                             values: [
                                 [
-                                    "* " + sheet_names[index],
+                                    "* " + urls[index],
                                 ]
                             ]
                         }

@@ -67,6 +67,26 @@ async function broken_links(timestamp, link, username, password) {
         "Sheet!A29:B29",
         "Sheet!A30:B30",
         "Sheet!A31:B31",
+        "Sheet!A31:B32",
+        "Sheet!A31:B33",
+        "Sheet!A31:B34",
+        "Sheet!A31:B35",
+        "Sheet!A31:B36",
+        "Sheet!A31:B37",
+        "Sheet!A31:B38",
+        "Sheet!A31:B39",
+        "Sheet!A31:B40",
+        "Sheet!A31:B41",
+        "Sheet!A31:B42",
+        "Sheet!A31:B43",
+        "Sheet!A31:B44",
+        "Sheet!A31:B45",
+        "Sheet!A31:B46",
+        "Sheet!A31:B47",
+        "Sheet!A31:B48",
+        "Sheet!A31:B49",
+        "Sheet!A31:B50",
+        "Sheet!A31:B51",
     ]
 
     let ranges_j = [
@@ -100,6 +120,26 @@ async function broken_links(timestamp, link, username, password) {
         "Sheet!C29",
         "Sheet!C30",
         "Sheet!C31",
+        "Sheet!C32",
+        "Sheet!C33",
+        "Sheet!C34",
+        "Sheet!C35",
+        "Sheet!C36",
+        "Sheet!C37",
+        "Sheet!C38",
+        "Sheet!C39",
+        "Sheet!C40",
+        "Sheet!C41",
+        "Sheet!C42",
+        "Sheet!C43",
+        "Sheet!C44",
+        "Sheet!C45",
+        "Sheet!C46",
+        "Sheet!C47",
+        "Sheet!C48",
+        "Sheet!C49",
+        "Sheet!C50",
+        "Sheet!C51",
     ]
 
     let ranges_k = [
@@ -133,12 +173,32 @@ async function broken_links(timestamp, link, username, password) {
         "Sheet!D29:E29",
         "Sheet!D30:E30",
         "Sheet!D31:E31",
+        "Sheet!D32:E32",
+        "Sheet!D33:E33",
+        "Sheet!D34:E34",
+        "Sheet!D35:E35",
+        "Sheet!D36:E36",
+        "Sheet!D37:E37",
+        "Sheet!D38:E38",
+        "Sheet!D39:E39",
+        "Sheet!D40:E40",
+        "Sheet!D41:E41",
+        "Sheet!D42:E42",
+        "Sheet!D43:E43",
+        "Sheet!D44:E44",
+        "Sheet!D45:E45",
+        "Sheet!D46:E46",
+        "Sheet!D47:E47",
+        "Sheet!D48:E48",
+        "Sheet!D49:E49",
+        "Sheet!D50:E50",
+        "Sheet!D51:E51",
     ]
 
     //navigate to broken link page
     try {
         await driver.get(link + "wp-admin/admin.php?page=blc_local");
-        // await driver.get(link + "wp-admin/admin.php?page=blc_local&paged=4");
+        // await driver.get(link + "wp-admin/admin.php?page=blc_local&paged=3");
         await driver.sleep(3000);
 
         let broken_link_count = await driver.executeScript("return document.getElementsByClassName('blc-link-url').length");
