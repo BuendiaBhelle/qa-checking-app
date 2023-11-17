@@ -38,69 +38,15 @@ async function blc(timestamp) {
         }
     });
     
-    for (let index = 0; index < credentials.length; index++) {
-        const wp_dashboard = credentials[index][0] + "/wp-admin";
-        
+    for (let index = 0; index < credentials.length; index++) {        
         if (credentials[index][0] === "https://www.hospiceofyuma.com") {
             await driver.get(credentials[index][0] + "/hoylogin");
         } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
             await driver.get(credentials[index][0] + "/members-login/");
-        } else if ((credentials[index][0] === "https://www.businesstrendstoday.com") || (credentials[index][0] === "https://virtualassistantsoutsourcing.com")
-        || (credentials[index][0] === "https://www.thesolutionsforum.com") 
-        || (credentials[index][0] === "https://www.primeleisures.com") || (credentials[index][0] === "https://www.mcbuildingmaintenance.com")
-        || (credentials[index][0] === "https://www.drmazaheri.com")
-        || (credentials[index][0] === "https://www.ewingconstruction.com")
-        || (credentials[index][0] === "https://www.buckeyederm.com") || (credentials[index][0] === "https://jelleyvision.com")
-        || (credentials[index][0] === "https://staffportal.optimizex.com") || (credentials[index][0] === "https://www.gatorskin.us")
-        || (credentials[index][0] === "https://www.culpepper-associates.com") || (credentials[index][0] === "https://www.opakapakagrillandbar.com")
-        || (credentials[index][0] === "https://www.southwestdirectmortgage.com") || (credentials[index][0] === "https://www.turbineaero.com")
-        || (credentials[index][0] === "https://www.torontostravel.com") || (credentials[index][0] === "https://www.westechrecyclers.com")
-        || (credentials[index][0] === "https://www.collisioncenternorthscottsdale.com") || (credentials[index][0] === "https://trezpro.com")
-        || (credentials[index][0] === "https://www.primemedicalpain.com") || (credentials[index][0] === "https://www.frlawgroup.com")
-        || (credentials[index][0] === "https://www.indinspect.com") || (credentials[index][0] === "https://www.indinspect.com")
-        || (credentials[index][0] === "https://www.kyrenefamilydentistry.com") || (credentials[index][0] === "https://www.onlinebrandreputation.com")
-        || (credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.randosouthwest.com")
-        || (credentials[index][0] === "https://www.accidentchiropracticaz.com") || (credentials[index][0] === "https://www.aerotecinternational.com")
-        || (credentials[index][0] === "https://www.alliancedermatology.com") || (credentials[index][0] === "https://www.jechvac.com")
-        || (credentials[index][0] === "https://www.oxlocalsearch.com") || (credentials[index][0] === "https://www.buckeyelot.com")
-        || (credentials[index][0] === "https://www.dentistryatthebiltmore.com") || (credentials[index][0] === "https://www.fccongoaz.com")
-        || (credentials[index][0] === "https://www.freddabranyon.com") || (credentials[index][0] === "https://www.gebionline.com")
-        || (credentials[index][0] === "https://www.genovation.com") || (credentials[index][0] === "https://gentryrealestategroup.com")
-        || (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.johnsoninjurylaw.com")
-        || (credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.mhsjackrabbitsfoundation.com")
-        || (credentials[index][0] === "https://www.myseoagency.com") || (credentials[index][0] === "https://www.ngaaz.org")
-        || (credentials[index][0] === "https://search.optimizex.com")
-        || (credentials[index][0] === "https://www.orionisg.com") || (credentials[index][0] === "https://www.pmrtimeshares.com")
-        || (credentials[index][0] === "https://www.suncliffsedona.com") || (credentials[index][0] === "https://www.jmrestoration.com")
-        || (credentials[index][0] === "https://www.valuesquest.com") || (credentials[index][0] === "https://www.paysondermatology.com")
-        || (credentials[index][0] === "https://www.americanleatherusa.com") || (credentials[index][0] === "https://amblaw.com")
-        || (credentials[index][0] === "https://www.teamleadership.org") || (credentials[index][0] === "https://www.kyotoscottsdale.com")
-        || (credentials[index][0] === "https://www.americanwestpallets.com") || (credentials[index][0] === "https://www.coachingliteracy.com")
-        || (credentials[index][0] === "https://www.drgholampeyman.com") || (credentials[index][0] === "https://www.pressuresystemsinc.com")
-        || (credentials[index][0] === "https://www.risingsunmartialartsaz.com") || (credentials[index][0] === "https://www.goimpacttechnology.com")
-        || (credentials[index][0] === "https://www.hbmgov.com") || (credentials[index][0] === "https://www.primeview.com")
-        || (credentials[index][0] === "https://www.sunrisejewelryusa.com") || (credentials[index][0] === "https://www.andresperezjurado.com")
-        || (credentials[index][0] === "https://www.jewelryoutletinc.com") || (credentials[index][0] === "https://www.advancedimagemedspa.com")
-        || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || (credentials[index][0] === "https://www.amissionofmercy.org")
-        || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || (credentials[index][0] === "https://www.everythingjustrocks.com")
-        || (credentials[index][0] === "https://www.natina.com") || (credentials[index][0] === "https://www.airgain.com") 
-        || (credentials[index][0] === "https://www.molnarwalkingy.com")
-        || (credentials[index][0] === "https://www.drmandiconway.com") || (credentials[index][0] === "https://www.inspired-engagement.com")
-        || (credentials[index][0] === "https://www.elevatebytempusjets.com") || (credentials[index][0] === "https://www.signsofthetimesaz.com")
-        || (credentials[index][0] === "https://www.salesproformance.com") || (credentials[index][0] === "https://www.desertcustomfireplacedoors.com")
-        || (credentials[index][0] === "https://www.bbllessons.com") || (credentials[index][0] === "https://www.sunpressurewash.com")
-        || (credentials[index][0] === "https://www.newhopemedicalcenter.com")
-        || (credentials[index][0] === "https://www.canyonfalls.com") || (credentials[index][0] === "https://www.judefrances.com")
-        || (credentials[index][0] === "https://revivecommunityhealth.org") || (credentials[index][0] === "https://www.ryanspetworld.com")
-        || (credentials[index][0] === "https://www.brunoshooters.com") || (credentials[index][0] === "https://www.verbenathesalon.com")
-        || (credentials[index][0] === "https://www.aeroturbineinc.com") || (credentials[index][0] === "https://assistantsourcing.com")
-        || (credentials[index][0] === "https://www.cmahr.com") || (credentials[index][0] === "https://www.fivestarmedicalclinic.com")
-        || (credentials[index][0] === "https://www.satellitecab.com") || (credentials[index][0] === "https://www.taskh2o.com")
-        || (credentials[index][0] === "https://www.tmpcinc.com") || (credentials[index][0] === "https://www.bizsuccess.school")
-        || (credentials[index][0] === "https://www.gallerytcr.com")) {
-            await driver.get(credentials[index][0] + "/pvlogin");
+        } else if ((credentials[index][0] === "https://www.thehairextensioncompany.com") || (credentials[index][0] === "https://www.inspirednetworks.com")) {
+            await driver.get(credentials[index][0] + "/wp-admin");
         } else {
-            await driver.get(wp_dashboard + "/plugins.php");
+            await driver.get(credentials[index][0] + "/pvlogin");
         }
 
         // wp login
@@ -133,14 +79,13 @@ async function blc(timestamp) {
             }
     
             let login_error = await driver.executeScript("return document.getElementById('login_error')");
+            var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
             if (login_error) {
                 console.log("BLC - wordpress login failed.");
                 value = [ "", "", "error", "wordpress login failed.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
-            } else {
-                var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
-                if (admin_email_verification === true) {
+            } else if (admin_email_verification === true) {
                     await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
                     console.log("BLC - admin email verification.");
                     value = [ "", "", "info", "admin email verification.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
@@ -151,9 +96,7 @@ async function blc(timestamp) {
                     value = [ "", "", "info", "wordpress login success.", server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
                     await sheet.addRow();
                     await sheet.appendValues(value);
-                }
-            }
-    
+                }    
         } catch (error) {
             console.log(error);
             value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
@@ -161,63 +104,16 @@ async function blc(timestamp) {
             await sheet.appendValues(value);
         }
 
-        // conditional statement for sites with issues - not redirecting to plugins page
-        if ((credentials[index][0] === "https://keenindependent.com") || (credentials[index][0] === "https://www.amblaw.com") || 
-        (credentials[index][0] === "https://jelleyvision.com") || 
-        (credentials[index][0] === "https://virtualassistantsoutsourcing.com") || (credentials[index][0] === "https://www.hospiceofyuma.com") || 
-        (credentials[index][0] === "https://www.businesstrendstoday.com") ||
-        (credentials[index][0] === "https://www.thesolutionsforum.com") || (credentials[index][0] === "https://www.primeleisures.com") ||
-        (credentials[index][0] === "https://www.mcbuildingmaintenance.com") || (credentials[index][0] === "https://www.drmazaheri.com") ||
-        (credentials[index][0] === "https://www.ewingconstruction.com") ||
-        (credentials[index][0] === "https://www.buckeyederm.com") || (credentials[index][0] === "https://staffportal.optimizex.com") ||
-        (credentials[index][0] === "https://www.gatorskin.us") || (credentials[index][0] === "https://www.culpepper-associates.com") ||
-        (credentials[index][0] === "https://www.opakapakagrillandbar.com") || (credentials[index][0] === "https://www.southwestdirectmortgage.com") || 
-        (credentials[index][0] === "https://www.turbineaero.com") || (credentials[index][0] === "https://www.torontostravel.com") || 
-        (credentials[index][0] === "https://www.westechrecyclers.com") || (credentials[index][0] === "https://www.collisioncenternorthscottsdale.com") || 
-        (credentials[index][0] === "https://trezpro.com") || (credentials[index][0] === "https://www.primemedicalpain.com") ||
-        (credentials[index][0] === "https://www.frlawgroup.com") || (credentials[index][0] === "https://www.indinspect.com") ||
-        (credentials[index][0] === "https://www.kyrenefamilydentistry.com") || (credentials[index][0] === "https://www.onlinebrandreputation.com") || 
-        (credentials[index][0] === "https://www.optimizex.com") || (credentials[index][0] === "https://www.randosouthwest.com") ||
-        (credentials[index][0] === "https://www.accidentchiropracticaz.com") || (credentials[index][0] === "https://www.aerotecinternational.com") ||
-        (credentials[index][0] === "https://www.alliancedermatology.com") || (credentials[index][0] === "https://www.jechvac.com") ||
-        (credentials[index][0] === "https://www.oxlocalsearch.com") || (credentials[index][0] === "https://www.buckeyelot.com") ||
-        (credentials[index][0] === "https://www.dentistryatthebiltmore.com") || (credentials[index][0] === "https://www.fccongoaz.com") ||
-        (credentials[index][0] === "https://www.freddabranyon.com") || (credentials[index][0] === "https://www.gebionline.com") || 
-        (credentials[index][0] === "https://www.genovation.com") || (credentials[index][0] === "https://gentryrealestategroup.com") || 
-        (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.johnsoninjurylaw.com") ||
-        (credentials[index][0] === "https://www.mhsjackrabbitsfoundation.com") || (credentials[index][0] === "https://www.myseoagency.com") || 
-        (credentials[index][0] === "https://www.ngaaz.org") || 
-        (credentials[index][0] === "https://search.optimizex.com") || (credentials[index][0] === "https://www.orionisg.com") || 
-        (credentials[index][0] === "https://www.pmrtimeshares.com") || (credentials[index][0] === "https://www.suncliffsedona.com") || 
-        (credentials[index][0] === "https://www.jmrestoration.com") || (credentials[index][0] === "https://www.valuesquest.com") || 
-        (credentials[index][0] === "https://www.paysondermatology.com") || (credentials[index][0] === "https://www.americanleatherusa.com") || 
-        (credentials[index][0] === "https://amblaw.com") || (credentials[index][0] === "https://www.teamleadership.org") ||
-        (credentials[index][0] === "https://www.kyotoscottsdale.com") || (credentials[index][0] === "https://www.americanwestpallets.com") ||
-        (credentials[index][0] === "https://www.coachingliteracy.com") || (credentials[index][0] === "https://www.drgholampeyman.com") || 
-        (credentials[index][0] === "https://www.pressuresystemsinc.com") || (credentials[index][0] === "https://www.risingsunmartialartsaz.com") || 
-        (credentials[index][0] === "https://www.goimpacttechnology.com") || (credentials[index][0] === "https://www.hbmgov.com") || 
-        (credentials[index][0] === "https://www.primeview.com") || (credentials[index][0] === "https://www.sunrisejewelryusa.com") || 
-        (credentials[index][0] === "https://www.andresperezjurado.com") || (credentials[index][0] === "https://www.jewelryoutletinc.com") || 
-        (credentials[index][0] === "https://www.advancedimagemedspa.com") || (credentials[index][0] === "https://www.arizonaretinalspecialists.com") || 
-        (credentials[index][0] === "https://www.amissionofmercy.org") || (credentials[index][0] === "https://www.biltmoreloanandjewelry.com") || 
-        (credentials[index][0] === "https://www.everythingjustrocks.com") || (credentials[index][0] === "https://www.natina.com") || 
-        (credentials[index][0] === "https://www.airgain.com") ||
-        (credentials[index][0] === "https://www.molnarwalkingy.com") || (credentials[index][0] === "https://www.drmandiconway.com") ||
-        (credentials[index][0] === "https://www.inspired-engagement.com") || (credentials[index][0] === "https://www.elevatebytempusjets.com") || 
-        (credentials[index][0] === "https://www.signsofthetimesaz.com") || (credentials[index][0] === "https://www.salesproformance.com") ||
-        (credentials[index][0] === "https://www.desertcustomfireplacedoors.com") || (credentials[index][0] === "https://www.bbllessons.com") ||
-        (credentials[index][0] === "https://www.sunpressurewash.com") || 
-        (credentials[index][0] === "https://www.newhopemedicalcenter.com") || (credentials[index][0] === "https://www.canyonfalls.com") ||
-        (credentials[index][0] === "https://www.judefrances.com") || (credentials[index][0] === "https://revivecommunityhealth.org") ||
-        (credentials[index][0] === "https://www.ryanspetworld.com") || (credentials[index][0] === "https://www.brunoshooters.com") ||
-        (credentials[index][0] === "https://www.verbenathesalon.com") || (credentials[index][0] === "https://www.aeroturbineinc.com") ||
-        (credentials[index][0] === "https://assistantsourcing.com") || (credentials[index][0] === "https://www.cmahr.com") ||
-        (credentials[index][0] === "https://www.fivestarmedicalclinic.com") || (credentials[index][0] === "https://www.satellitecab.com") ||
-        (credentials[index][0] === "https://www.taskh2o.com") || (credentials[index][0] === "https://www.tmpcinc.com") ||
-        (credentials[index][0] === "https://www.bizsuccess.school") || (credentials[index][0] === "https://www.gallerytcr.com")) {
-        
-            await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
-        } 
+        // navigate to plugins page
+        try {
+            if (credentials[index][0] === "https://www.hospiceofyuma.com") {
+                await driver.get(credentials[index][0] + "/hoylogin/plugins.php");
+            } else {
+                await driver.get(credentials[index][0] + "/wp-admin/plugins.php");
+            }
+        } catch (error) {
+            console.log(error);
+        }
 
         // check for BLC plugin 
         try {            
@@ -228,62 +124,9 @@ async function blc(timestamp) {
                     console.log("With BLC Plugin.");    
 
                     if (credentials[index][0] === "https://www.hospiceofyuma.com") {
-                        await driver.get("https://hospiceofyuma.com/hoylogin/admin.php?page=blc_local");
-                    } 
-                    // else if ((credentials[index][0] === "https://www.bbllessons.com") ||  (credentials[index][0] === "https://truckerpath.com")) {
-                    //     let settings_inner_link_length = await driver.executeScript("return document.getElementsByTagName('a').length");
-                    //     for (let j = 0; j < settings_inner_link_length; j++) {
-                    //         let link_checker_innertext = await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].innerText");
-                    //         if (link_checker_innertext === "Link Checker") {
-                    //             console.log("Link Checker");
-                    //             await driver.executeScript("return document.getElementsByTagName('a')[" + j + "].click()");
-
-                    //             await driver.sleep(5000);
-
-                    //             let broken_link_status = await driver.executeScript("return document.getElementById('wsblc_full_status').children[0].innerText");
-            
-                    //             console.log(broken_link_status);
-            
-                    //             if (!broken_link_status) {
-                    //                 console.log("NULL");
-                    //                 try {
-                    //                     await googleSheets.spreadsheets.values.append({
-                    //                         auth,
-                    //                         spreadsheetId,
-                    //                         range: "BLC!A2:C2",
-                    //                         valueInputOption: "USER_ENTERED",
-                    //                         resource: {
-                    //                             values: [
-                    //                                 [ credentials[index][0], "Y", "No broken links found"]
-                    //                             ]
-                    //                         }
-                    //                     });
-                    //                 } catch (error) {
-                    //                     console.log(error);
-                    //                 }     
-                    //             } else {
-                    //                 try {
-                    //                     await googleSheets.spreadsheets.values.append({
-                    //                         auth,
-                    //                         spreadsheetId,
-                    //                         range: "BLC!A2:C2",
-                    //                         valueInputOption: "USER_ENTERED",
-                    //                         resource: {
-                    //                             values: [
-                    //                                 [credentials[index][0], "Y", broken_link_status]
-                    //                             ]
-                    //                         }
-                    //                     });
-                    //                 } catch (error) {
-                    //                     console.log(error);
-                    //                 }      
-                    //             }
-                    //             break;
-                    //         }
-                    //     }
-                    // }
-                    else {
-                        await driver.get(wp_dashboard + "/admin.php?page=blc_local");
+                        await driver.get(credentials[index][0] + "/hoylogin/admin.php?page=blc_local");
+                    } else {
+                        await driver.get(credentials[index][0] + "/wp-admin/admin.php?page=blc_local");
                     }
                     
                     let broken_link_count = await driver.executeScript("return document.getElementsByClassName('filter-broken-link-count current-link-count')[0].innerText");
