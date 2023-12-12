@@ -198,7 +198,7 @@ async function broken_links(timestamp, link, username, password) {
     //navigate to broken link page
     try {
         await driver.get(link + "wp-admin/admin.php?page=blc_local");
-        // await driver.get(link + "wp-admin/admin.php?page=blc_local&paged=3");
+        // await driver.get(link + "wp-admin/admin.php?page=blc_local&paged=9");
         await driver.sleep(3000);
 
         let broken_link_count = await driver.executeScript("return document.getElementsByClassName('blc-link-url').length");
@@ -222,7 +222,9 @@ async function broken_links(timestamp, link, username, password) {
                 status = "410 Gone";
             } else if (status === "Service Unavailable") {
                 status = "503 Service Unavailable";
-            }
+            } else if (status === "Playlist Restricted") {
+                status = "403 Playlist Restricted";
+            } 
 
             const r_i = ranges_i[i];
 

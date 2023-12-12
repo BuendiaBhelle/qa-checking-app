@@ -163,6 +163,7 @@ const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desk
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
+const { log } = require('console');
 
 const expiry = 1000 * 60 * 60 * 24;
 var date = new Date();
@@ -214,7 +215,18 @@ app.post('/cancel', async (req, res) => {
     //   }, { once: true });
       
     // controller.abort();
-    await abort.makeRequest();
+    // await abort.makeRequest();
+    console.log("ABORT");
+    // return process.exit(1);
+    // process.kill(process.pid, 'SIGINT');
+
+    setTimeout(() => {
+        console.log('Exiting.'); 
+        process.exit(0);
+    }, 100);
+    
+    // kill the process with pid and signal = 'SIGHUP'
+    process.kill(process.pid, 'SIGHUP');
 });
 
 app.get('/posts', function(req, res){
