@@ -158,11 +158,18 @@ const plugins = require("./modules/plugins/plugins");
 const calendar = require("./modules/calendar/calendar");
 const broken_links = require("./modules/website_autoupdate_monitoring/blc/broken_links");
 
-
 const responsiveness_desktop_lambdatest = require("./modules/responsiveness/desktop/desktop");
 const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/manual");
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
+
+const site_title = require("./modules/dev_checklist/site_title");
+const default_plugins = require("./modules/dev_checklist/default_plugins");
+const top_nav_bar = require("./modules/dev_checklist/top_nav_bar");
+const copyright = require("./modules/dev_checklist/copyright");
+const images = require("./modules/dev_checklist/images");
+
+
 const { log } = require('console');
 
 const expiry = 1000 * 60 * 60 * 24;
@@ -5532,6 +5539,60 @@ app.post('/post/broken_links', async (req, res) => {
     var password = req.body.password;
     try {
         await broken_links.broken_links(timestamp, link, username, password);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/site_title', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await site_title.site_title(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/default_plugins', async (req, res) => {
+    var link = req.body.link;
+    var username = req.body.username;
+    var password = req.body.password;
+
+    await default_plugins.default_plugins(timestamp, link, username, password);
+
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/top_nav_bar', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await top_nav_bar.top_nav_bar(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/copyright', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await copyright.copyright(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/images', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await images.images(timestamp, link);
     } catch (error) {
         console.log(error);
     }

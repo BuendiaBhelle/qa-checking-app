@@ -31,19 +31,40 @@
       display: block;
     }
 
+    .dropdown_waum {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown_waum-content {
+      display: none;
+      position: absolute;
+      background-color: #158CBE;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+      color: #fff;
+      width: 100%;
+      height: 107px;
+    }
+    
+    .dropdown_waum:hover .dropdown_waum-content {
+      display: block;
+    }
+
     #sheet-links {
-        /* margin-top: -140px; */
+        margin-top: -140px;
         text-align: right;
-        margin-right: -60px;
     }
 
     #sheet-links a:link, a:visited {
         background-color: #158CBE;
         padding: 10px 25px;
         color:#fff;
-        font-size:16px;
+        font-size:12px;
         border-radius: 4px;
-        margin-right: 5px;
+        margin-right: 3px;
     }
 </style>
 <body>
@@ -64,8 +85,11 @@
                                 <button class="button sidebar-nav-item" onclick="checkoutForm()">Checkout</button>
                             </li> -->
                             <!-- <li class="nav-item">
-                                <button class="button sidebar-nav-item" onclick="image_optimizationForm()">Image Optimization</button>
-                            </li> -->
+                                <button class="button sidebar-nav-item" onclick="daily_fixes_broken_links()">Daily Fixes: Broken Links</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="image_optimizationForm()">Image Optimization</button> -->
+                            </li>
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="visibilityForm()">Visibility</button>
                             </li>
@@ -81,7 +105,13 @@
                             <li class="nav-item">
                                 <button class="button sidebar-nav-item" onclick="wpm()">Website Performance Monitoring</button>
                             </li>
-                            <div class="dropdown">
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="plugins_yoast_or_blc()">Plugins</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="button sidebar-nav-item" onclick="calendar()">Calendar</button>
+                            </li> -->
+                            <!-- <div class="dropdown">
                                 <li class="nav-item">
                                     <button class="button sidebar-nav-item">Responsiveness</button>
                                     <div class="dropdown-content">
@@ -90,7 +120,16 @@
                                     </div>
                                 </li>
                             </div> -->
-          
+                            <!-- <div class="dropdown_waum">
+                                <li class="nav-item">
+                                    <button class="button sidebar-nav-item">Website Auto-Update Monitoring</button>
+                                    <div class="dropdown_waum-content">
+                                        <p style="margin-bottom: 6px;" onclick="waum_backend()">Backend</p>
+                                        <p style="margin-bottom: 6px;" onclick="waum_blc()">BLC</p>
+                                        <p onclick="waum_frontend()">Frontend</p>
+                                    </div>
+                                </li>
+                            </div> -->
 
 
  
@@ -108,6 +147,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="inputs">
+                            
+                            <!-- <p>Hello, <span id="name"></span></p>
+                            <script type="text/javascript" src="static/user.js"></script>
+                            <script>
+                              let name = user_logged_in().user;
+                              document.getElementById("name").innerHTML = name;
+                            </script> -->
 
                             <div id="sheet-links">
                                 <a href="https://docs.google.com/spreadsheets/d/1LbeVGyrG23F6zvufk5y-EMaud3QqLq22iqe08cCEOsM/edit#gid=0" target="_blank">
@@ -125,11 +171,17 @@
                                 <a href="https://docs.google.com/spreadsheets/d/1JZyOiOF6g4M4TQDjzXMmtNKJujGQvMYKIgmmuHgxwhQ/edit#gid=0" target="_blank">
                                     Nitropack
                                 </a>
+                                <a href="https://docs.google.com/spreadsheets/d/1j8xVmSmWSD90vNcGA_kU9H7kaJxq5crpDNUVaAkELsY/edit#gid=0" target="_blank">
+                                    Site Monitoring
+                                </a>
+                                <a href="https://docs.google.com/spreadsheets/d/1koZJFJGPvPHHMB8JuRqKOcWy_BQNXES6uyWWhqbciBM/edit#gid=383657523" target="_blank">
+                                    Task Calendar
+                                </a>
                             </div>
 
                             <!-- Checkout Testing -->
                             <div id="checkout">
-                                <h1>Checkout Test</h1>
+                                <h1 style="margin-top: 100px;">Checkout Test</h1>
                                 <form action="/post/checkout" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -298,9 +350,33 @@
                                 </form>
                             </div>
 
+                            <!-- DAILY FIXES: BROKEN LINKS -->
+                            <div id="daily_fixes_broken_links">
+                                <h1 style="margin-top: 100px;">Broken Links</h1>
+                                <form action="/post/broken_links" method="post">
+                                    <div class="form-group row">
+                                        <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                        <div class="col-sm-9">
+                                            <input id="link" type="text" value="" name="link" class="form-control" placeholder="'https://www.primeview.com/'" required />
+                                            <br>
+                                        </div>
+                                        <label for="Sheet Name" class="col-sm-3 col-form-label">Username:</label>
+                                        <div class="col-sm-9">
+                                            <input id="username" type="text" value="" name="username" required />
+                                        </div>
+                                        <label for="Sheet Name" class="col-sm-3 col-form-label">Password:</label>
+                                        <div class="col-sm-9">
+                                            <input id="password" type="text" value="" name="password" required />
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                </form>
+                            </div>
+
                             <!-- Image Optimization -->
                             <div id="image_optimization">
-                                <h1>Image Optimization</h1>
+                                <h1 style="margin-top: 100px;">Image Optimization</h1>
                                 <form action="/post/image_optimization" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -320,7 +396,7 @@
 
                             <!-- Visibility -->
                             <div id="visibility">
-                                <h1>Visibility</h1>
+                                <h1 style="margin-top: 100px;">Visibility</h1>
                                 <form action="/post/visibility" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -334,13 +410,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" id="submit" class="btn btn-primary-lg">Submit</button>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg" style="margin-bottom: 25px;">Submit</button>
+                                </form>
+                                <form action="/cancel" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg" style="background-color: #f44336;">Cancel</button>
                                 </form>
                             </div>
 
                             <!-- Web Forms -->
                             <div id="webForms">
-                                <h1>Web Forms</h1>
+                                <h1 style="margin-top: 100px;">Web Forms</h1>
                                 <form action="/post/webforms" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -360,6 +439,7 @@
                                                             <option value="biltmoreloanandjewelry">Biltmore Loan and Jewelry</option>
                                                             <option value="buckeyederm">Buckeye Derm</option>
                                                             <option value="canyonfallshairextensioncompany">Canyon Falls Hair Extension Company</option>
+                                                            <option value="cma">CMA</option>
                                                             <option value="crexendo">Crexendo</option>
                                                             <option value="culpepper">Culpepper & Associates</option>
                                                             <option value="dentistryatthebiltmore">Dentistry At The Biltmore</option>
@@ -371,8 +451,9 @@
                                                             <option value="jewelryoutletinc">Jewelry Outlet</option>
                                                             <option value="judefrancesjewelry">Jude Frances Jewelry</option>
                                                             <option value="kyrenefamilydentistry">Kyrene Family Dentistry</option>
-                                                            <option value="lignans">Lignans</option>
+                                                            <!-- <option value="lignans">Lignans</option> -->
                                                             <option value="mcbuildingmaintenance">MC Building Maintenance</option>
+                                                            <option value="molnarwalkingy">Molnar Walking Y</option>
                                                             <option value="natina">Natina</option>
                                                             <option value="newhopemedicalcenter">New Hope Medical Center</option>
                                                             <option value="optimizex">OptimizeX</option>
@@ -384,8 +465,11 @@
                                                             <option value="renewscal">Renew Stem Cell & Laser</option>
                                                             <option value="risingsunmartialartsaz">Rising Sun</option>
                                                             <option value="sellusyourcaraz">Sell Us Your Car AZ</option>
+                                                            <option value="signsofthetimes">Signs of the Times</option>
                                                             <option value="solutionsforum">Solutions Forum</option>
+                                                            <option value="sunpressurewash">Sun Pressure Wash</option>
                                                             <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
+                                                            <option value="tmpc">TMPC</option>
                                                             <option value="versatile">Versatile</option>
                                                             <option value="virtualassistantsoutsourcing">Virtual Assistant Outsourcing</option>
                                                         </select>
@@ -636,6 +720,26 @@
                                                     </div>
                                                 </div>
 
+                                                <!-- CMA -->
+                                                <div id="site_cma">
+                                                    <div class="form-group row">
+                                                        <label for="site_cma" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_cma" class="form-control">
+                                                                <option value="form1">CMA - Contact Form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>iR4wW]uPU1V(</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <!-- Crexendo -->
                                                 <div id="site_crexendo">
                                                     <div class="form-group row">
@@ -857,8 +961,14 @@
                                                         <label for="site_kyrenefamilydentistry" class="col-sm-3 col-form-label">Choose a form:</label>
                                                         <div class="col-sm-9">
                                                             <select name="site_kyrenefamilydentistry" class="form-control">
-                                                                <option value="form1">Quick Contact</option>
-                                                                <option value="form2">Schedule an Appointment</option>
+                                                                <option value="form1">Cancellation Policy</option>
+                                                                <option value="form2">Composite Disclaimer</option>
+                                                                <option value="form3">Demandforce Consent</option>
+                                                                <option value="form4">Dental Insurance and Financial Arrangements</option>
+                                                                <option value="form5">Dental Treatment Consent Form</option>
+                                                                <option value="form6">Patient HIPPA Consent Form</option>
+                                                                <option value="form7">Quick Contact</option>
+                                                                <option value="form8">Schedule an Appointment</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -873,7 +983,7 @@
                                                 </div>
 
                                                 <!-- Lignans -->
-                                                <div id="site_lignans">
+                                                <!-- <div id="site_lignans">
                                                     <div class="form-group row">
                                                         <label for="site_lignans" class="col-sm-3 col-form-label">Choose a form:</label>
                                                         <div class="col-sm-9">
@@ -890,7 +1000,7 @@
                                                             <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <!-- MC Building Maintenance -->
                                                 <div id="site_mcbuildingmaintenance">
@@ -908,6 +1018,30 @@
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
                                                             <p><b>password:</b> <i>]wuB34Q{DbhF</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Molnar Walking Y -->
+                                                <div id="site_molnarwalkingy">
+                                                    <div class="form-group row">
+                                                        <label for="site_molnarwalkingye" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_molnarwalkingy" class="form-control">
+                                                                <option value="form1">Book now - Guided Hunting</option>
+                                                                <option value="form2">Book now - Overnight Stay</option>
+                                                                <option value="form3">Book now - Ranch Activity</option>
+                                                                <option value="form4">Book now form</option>
+                                                                <option value="form5">Contact Us form</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>zu9Hsvn{T%xM</i></p>
                                                             <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
                                                         </div>
                                                     </div>
@@ -1161,6 +1295,26 @@
                                                     </div>
                                                 </div>
 
+                                                <!-- Signs of the Times -->
+                                                <div id="site_signsofthetimes">
+                                                    <div class="form-group row">
+                                                        <label for="site_signsofthetimes" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_signsofthetimes">
+                                                                <option value="form1">Contact form 1</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>AFMC(/cH5NKH</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <!-- Solutions Forum -->
                                                 <div id="site_solutionsforum">
                                                     <div class="form-group row">
@@ -1181,6 +1335,27 @@
                                                     </div>
                                                 </div>
 
+                                                <!-- Sun Pressure Wash -->
+                                                <div id="site_sunpressurewash">
+                                                    <div class="form-group row">
+                                                        <label for="site_sunpressurewash" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_sunpressurewash">
+                                                                <option value="form1">Get in Touch</option>
+                                                                <option value="form2">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>dZ*8AKwqRk1</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <!-- Sunrise Jewelry -->
                                                 <div id="site_sunrisejewelryusa">
                                                     <div class="form-group row">
@@ -1196,6 +1371,32 @@
                                                         <div class="col-sm-9">
                                                             <p><b>username:</b> <i>pvadmin</i></p>
                                                             <p><b>password:</b> <i>jX6#dN5?oR7#vU5#</i></p>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- TMPC -->
+                                                <div id="site_tmpc">
+                                                    <div class="form-group row">
+                                                        <label for="site_tmpc" class="col-sm-3 col-form-label">Choose a form:</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="site_tmpc">
+                                                                <option value="form1">Become a Partner</option>
+                                                                <option value="form2">Commercial - Cybersecurity Compliance</option>
+                                                                <option value="form3">Commercial - HIPAA, HITRUST, GDPR</option>
+                                                                <option value="form4">Commercial - ISO 27001</option>
+                                                                <option value="form5">Commercial - PCI DSS</option>
+                                                                <option value="form6">Commercial - SOC 2 Audits and Review</option>
+                                                                <option value="form7">Contact Us</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row align-items-baseline">
+                                                        <label class="col-sm-3 col-form-label">Credentials (wordpress): </label>
+                                                        <div class="col-sm-9">
+                                                            <p><b>username:</b> <i>pvadmin</i></p>
+                                                            <p><b>password:</b> <i>^ywEC8wMOs(*</i></p>
                                                             <button type="button" class="btn btn-primary-sm" onclick="showCredEdit()">Edit</button>
                                                         </div>
                                                     </div>
@@ -1283,7 +1484,7 @@
 
                             <!-- Newsletter -->
                             <div id="newsletter">
-                                <h1>Newsletter</h1>
+                                <h1 style="margin-top: 100px;">Newsletter</h1>
                                 <form action="/post/newsletter" method="post">
 
                                     <div class="container-fluid">
@@ -1314,7 +1515,7 @@
                                                         <p><b>username:</b> <i>pvadmin</i></p>
                                                         <p><b>password:</b> <i>cHJxubk0*E8q^J$M1A%Hpk*P</i>
                                                         <div>
-                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNewsletter()">Edit</button>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNitropackSettings()">Edit</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1346,31 +1547,246 @@
 
                             <!-- Nitropack -->
                             <div id="nitropack">
-                                <h1>Nitropack</h1>
-                                <form action="/post/nitropack" method="post">
+                                <h1 style="margin-top: 100px;">Nitropack</h1>
+                                <p style="margin-top: 50; font-size: 150%;">Nitropack Website Monitoring Sheet:</p>
+                                <!-- <form action="/post/nitropack" method="post">
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
                                 </form>
                                 <br>
                                 <form action="/post/nitropack/reports" method="post">
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
+                                </form> -->
+
+                                <form action="/post/nitropack" method="post">
+                                    <input type="radio" id="write" name="write" value="write reports">
+                                    <label for="write">Write Reports</label><br>
+                                    <input type="radio" id="display" name="display" value="display reports">
+                                    <label for="display">Display Reports</label><br>
+                                  
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+
+                                <p style="margin-top: 50px; font-size: 150%;">Check for Nitropack Settings:</p>
+                                <form action="/post/nitropack/settings" method="post">
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="site" class="col-sm-3 col-form-label">Choose a site:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="site" id="site" onchange="sites()">
+                                                            <option value="www.freddabranyon.com/">www.freddabranyon.com/ (freddabranyon)</option>
+                                                            <option value="freddabranyondev.primeview.com/">freddabranyondev.primeview.com/ (freddabranyondev)</option>
+                                                            <!-- <option value="www.lignans.net/">www.lignans.net/ (Lingnans for Life)</option>
+                                                            <option value="lignansdev.primeview.com/">lignansdev.primeview.com/ (lignansdev)</option> -->
+                                                            <option value="www.newhopemedicalcenter.com/">www.newhopemedicalcenter.com/ (newhopemedicalcenter)</option>
+                                                            <option value="phoenixritecare.org/">phoenixritecare.org/ (Phoenix Scottish Rite)</option>
+                                                            <option value="www.primeview.com/">www.primeview.com/ (primeview)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="form-group row" id="checkbox">
+                                                    <label for="checkbox" class="col-sm-3 col-form-label">Choose one:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="checkbox" class="form-control">
+                                                            <option value="dev">Dev</option>
+                                                            <option value="live">Live</option>
+                                                        </select>
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="form-group row align-items-baseline">
+                                                    <label for="Credentials" class="col-sm-3 col-form-label">Credentials (nitropack): </label>
+                                                    <div class="col-sm-9">
+                                                        <p><b>email:</b> <i>software@primeview.com</i></p>
+                                                        <p><b>password:</b> <i>nH1}tE9+gN4!kA2%</i>
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary-sm" onclick="showCredEditNitropackSettings()">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                
+
+
+                                                <div id="credentials_nitropacksettings">
+                                                    <div class="form-group row">
+                                                        <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="email" name="email" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="password" name="password" class="form-control"><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                           
+                                        </div>
+                                        <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                    </div>            
+
+                                    
+                                    
                                 </form>
                             </div>
 
                             <!-- WPM -->
                             <div id="wpm">
-                                <h1>WPM</h1>
+                                <h1 style="margin-top: 100px;">WPM</h1>
                                 <form action="/post/wpm" method="post">
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
                                 </form>
                                 <br>
                                 <form action="/post/wpm/reports" method="post">
-                                    <button type="submit" id="submit" class="btn btn-primary-lg">Reports</button>
+                                    <button type="submit" id="submit" class="btn btn-primary-lg" style="margin-bottom: 25px;">Reports</button>
+                                </form>
+                                <form action="/cancel" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg" style="background-color: #f44336;">Cancel</button>
+                                </form>
+                            </div>
+
+                            <!-- plugins_yoast_or_blc -->
+                            <div id="plugins_yoast_or_blc">
+                                <h1 style="margin-top: 100px;">Plugins</h1>
+                                <form action="/post/plugins_yoast_or_blc" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="domains" class="col-sm-3 col-form-label">Choose a site:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="domains" id="domains">
+                                                            <option value="accidentchiropracticaz">Accident Chiropractic AZ</option>
+                                                            <option value="advancedimagemedspa">Advanced Image Med Spa</option>
+                                                            <option value="aerialengagement">Aerial Engagement</option>
+                                                            <option value="aeroturbine">Aero Turbine</option>
+                                                            <option value="collisioncenternorthscottsdale">Airpark Collision Center</option>
+                                                            <option value="americanleatherusa">American Leather USA</option>
+                                                            <option value="andresperezjurado">Andres Perez Jurado</option>
+                                                            <option value="airgain">Airgain</option>
+                                                            <option value="azdoordoctor">AZ Door Doctor</option>
+                                                            <option value="biltmoreloanandjewelry">Biltmore Loan and Jewelry</option>
+                                                            <option value="buckeyederm">Buckeye Derm</option>
+                                                            <option value="canyonfallshairextensioncompany">Canyon Falls Hair Extension Company</option>
+                                                            <option value="cma">CMA</option>
+                                                            <option value="culpepper">Culpepper & Associates</option>
+                                                            <option value="dentistryatthebiltmore">Dentistry At The Biltmore</option>
+                                                            <option value="ewingconstruction">Ewing Construction</option>
+                                                            <option value="frlawgroup">FR Law Group</option>
+                                                            <option value="freddabranyon">Fredda Branyon</option>
+                                                            <option value="gatorskin">Gatorskin</option>
+                                                            <option value="hospiceofyuma">Hospice of Yuma</option>
+                                                            <option value="indinspect">Industrial Inspection & Consulting</option>
+                                                            <option value="jewelryoutletinc">Jewelry Outlet</option>
+                                                            <option value="judefrancesjewelry">Jude Frances Jewelry</option>
+                                                            <option value="kyrenefamilydentistry">Kyrene Family Dentistry</option>
+                                                            <option value="mcbuildingmaintenance">MC Building Maintenance</option>
+                                                            <option value="molnarwalkingy">Molnar Waking Y</option>
+                                                            <option value="natina">Natina</option>
+                                                            <option value="newhopemedicalcenter">New Hope Medical Center</option>
+                                                            <option value="optimizex">OptimizeX</option>
+                                                            <option value="paysondermatology">Payson Dermatology</option>
+                                                            <option value="phoenixritecare">Phoenix Scottish Rite</option>
+                                                            <option value="primemedicalpain">Prime Medical Pain Management Centers</option>
+                                                            <option value="primeview">Primeview</option>
+                                                            <option value="randosouthwest">Rando South West</option>
+                                                            <option value="renewscal">Renew Stem Cell & Laser</option>
+                                                            <option value="risingsunmartialartsaz">Rising Sun</option>
+                                                            <option value="sellusyourcaraz">Sell Us Your Car AZ</option>
+                                                            <option value="signsofthetimes">Signs of the Times</option>
+                                                            <option value="solutionsforum">Solutions Forum</option>
+                                                            <option value="sunpressurewash">Sun Pressure Wash</option>
+                                                            <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
+                                                            <option value="tmpc">TMPC</option>
+                                                            <option value="versatile">Versatile</option>
+                                                            <option value="virtualassistantsoutsourcing">Virtual Assistant Outsourcing</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="radio" id="broken_link_checker" name="broken_link_checker" value="broken_link_checker">
+                                    <label for="broken_link_checker">Broken Link Checker</label><br>
+                                    <input type="radio" id="yoast" name="yoast" value="yoast">
+                                    <label for="yoast">Yoast SEO</label><br>
+                                  
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+
+                                </form>
+                            </div>
+
+                            <!-- CALENDAR -->
+                            <div id="calendar">
+                                <h1 style="margin-top: 100px;">Task Calendar</h1>
+                                <form action="/post/calendar" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="user" class="col-sm-3 col-form-label">Choose a User:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="user" id="user">
+                                                            <option value="user1">Allan</option>
+                                                            <option value="user2">Arjay</option>
+                                                            <option value="user3">Belle</option>
+                                                            <option value="user4">Dion</option>
+                                                            <option value="user5">Janfred</option>
+                                                            <option value="user6">Jester</option>
+                                                            <option value="user7">Karlo</option>
+                                                            <option value="user8">Ryan</option>
+                                                            <option value="user9">Yardi</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+
+                                </form>
+                            </div>
+
+                            <!-- WEBSITE AUTOUPDATE MONITORING - BACKEND -->
+                            <div id="waum_backend">
+                                <h1 style="margin-top: 100px;">Backend</h1>
+                                <form action="/post/waum_backend" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                            </div>
+                            
+                            <!-- WEBSITE AUTOUPDATE MONITORING - BLC -->
+                            <div id="waum_blc">
+                                <h1 style="margin-top: 100px;">BLC</h1>
+                                <form action="/post/waum_blc" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg" style="margin-bottom: 25px;">Send</button>
+                                </form>
+                                <form action="/cancel" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg" style="background-color: #f44336;">Cancel</button>
+                                </form>
+                            </div>
+                            
+                            <!-- WEBSITE AUTOUPDATE MONITORING - FRONTEND -->
+                            <div id="waum_frontend">
+                                <h1 style="margin-top: 100px;">Frontend</h1>
+                                <form action="/post/waum_frontend" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
                                 </form>
                             </div>
 
                             <!-- Responsiveness - Lambdatest -->
                             <div id="responsiveness_lambdatest">
-                                <h1>Lambdatest</h1>
+                                <h1 style="margin-top: 100px;">Lambdatest</h1>
                                 <form action="/post/responsiveness_lambdatest" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -1472,7 +1888,7 @@
                 
                             <!-- Responsiveness - Manual -->
                             <div id="responsiveness_manual">
-                                <h1>Manual</h1>
+                                <h1 style="margin-top: 100px;">Manual</h1>
                                 <form action="/post/responsiveness_manual" method="post">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -1518,108 +1934,270 @@
     <script>
         function checkoutForm() {
             document.getElementById('checkout').style.display = 'block';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function daily_fixes_broken_links() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'block';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function image_optimizationForm() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'block';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function visibilityForm(){
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'block';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function webForms(){
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'block';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function newsletter() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'block';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function nitropack() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'block';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function wpm() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'block';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function plugins_yoast_or_blc() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'block';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function calendar() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'block';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function waum_backend() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'block';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function waum_blc() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'block';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function waum_frontend() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'block';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function responsivenessForm_lambdatest() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'block';
             document.getElementById('responsiveness_manual').style.display = 'none';
             document.getElementById('sheet-links').style.display = 'block';
         }
         function responsiveness_manual() {
             document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
             document.getElementById('image_optimization').style.display = 'none';
             document.getElementById('visibility').style.display = 'none';
             document.getElementById('webForms').style.display = 'none';
             document.getElementById('newsletter').style.display = 'none';
             document.getElementById('nitropack').style.display = 'none';
             document.getElementById('wpm').style.display = 'none';
+            document.getElementById('plugins_yoast_or_blc').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'block';
             document.getElementById('sheet-links').style.display = 'block';
@@ -1660,6 +2238,7 @@
                 "biltmoreloanandjewelry",
                 "buckeyederm",
                 "canyonfallshairextensioncompany",
+                "cma",
                 "crexendo",
                 "culpepper",
                 "dentistryatthebiltmore",
@@ -1671,8 +2250,9 @@
                 "jewelryoutletinc",
                 "judefrancesjewelry",
                 "kyrenefamilydentistry",
-                "lignans",
+                // "lignans",
                 "mcbuildingmaintenance",
+                "molnarwalkingy",
                 "natina",
                 "newhopemedicalcenter",
                 "optimizex",
@@ -1684,8 +2264,11 @@
                 "renewscal",
                 "risingsunmartialartsaz",
                 "sellusyourcaraz",
+                "signsofthetimes",
                 "solutionsforum",
+                "sunpressurewash",
                 "sunrisejewelryusa",
+                "tmpc",
                 "versatile",
                 "virtualassistantsoutsourcing"  
             ]
@@ -1701,6 +2284,7 @@
                 "site_biltmoreloanandjewelry",
                 "site_buckeyederm",
                 "site_canyonfallshairextensioncompany",
+                "site_cma",
                 "site_crexendo",
                 "site_culpepper",
                 "site_dentistryatthebiltmore",
@@ -1712,8 +2296,9 @@
                 "site_jewelryoutletinc",
                 "site_judefrancesjewelry",
                 "site_kyrenefamilydentistry",
-                "site_lignans",
+                // "site_lignans",
                 "site_mcbuildingmaintenance",
+                "site_molnarwalkingy",
                 "site_natina",
                 "site_newhopemedicalcenter",
                 "site_optimizex",
@@ -1725,8 +2310,11 @@
                 "site_renewscal",
                 "site_risingsunmartialartsaz",
                 "site_sellusyourcaraz",
+                "site_signsofthetimes",
                 "site_solutionsforum",
+                "site_sunpressurewash",
                 "site_sunrisejewelryusa",
+                "site_tmpc",
                 "site_versatile",
                 "site_virtualassistantsoutsourcing"  
             ]
@@ -1785,6 +2373,10 @@
             document.getElementById('credentials_newsletter').style.display = 'block';
         }
 
+        function showCredEditNitropackSettings() {
+            document.getElementById('credentials_nitropacksettings').style.display = 'block';
+        }
+
         function showCredEditCheckout() {
             document.getElementById('credentials_checkout').style.display = 'block';
         }
@@ -1800,7 +2392,7 @@
     </script>
 
 
-    <script src="dist/popupS.min.js"></script>
+    <!-- <script src="dist/popupS.min.js"></script> -->
 
 </body>
 </html>
