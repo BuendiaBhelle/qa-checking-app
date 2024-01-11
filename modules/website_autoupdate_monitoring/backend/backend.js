@@ -78,10 +78,14 @@ async function backend(timestamp) {
                 }
         
                 await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
-            } if (credentials[index][0] === "https://www.maintenancebest.com") {
+            } else if (credentials[index][0] === "https://www.maintenancebest.com") {
                 await driver.findElement(By.id("1helauaoii80")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("6afbbvfn0560")).sendKeys(credentials[index][2]);
                 await driver.executeScript("return document.getElementsByClassName('pp-submit-form ppform-submit-button')[0].click()");
+            } else if ((credentials[index][0] === "https://www.inspirednetworks.com") || (credentials[index][0] === "https://www.canyonfalls.com")) {
+                await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
+                await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
+                await driver.executeScript("return document.getElementsByClassName('button button-primary button-large')[0].click()"); 
             } 
             else {
                 await driver.findElement(By.name("log")).sendKeys(credentials[index][1]);
@@ -110,9 +114,9 @@ async function backend(timestamp) {
                 }    
         } catch (error) {
             console.log(error);
-            value= [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
+            value = [ "", "", "error", JSON.stringify(error), server.userId, timestamp, module_name, credentials[index][0], credentials[index][1] + "\n" + credentials[index][2], "", "", "", "", "", "", "" ];
             await sheet.addRow();
-            await sheet.appendValues(value); 
+            await sheet.appendValues(value);
         }
 
 

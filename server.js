@@ -168,6 +168,9 @@ const default_plugins = require("./modules/dev_checklist/default_plugins");
 const top_nav_bar = require("./modules/dev_checklist/top_nav_bar");
 const copyright = require("./modules/dev_checklist/copyright");
 const images = require("./modules/dev_checklist/images");
+const external_links = require("./modules/dev_checklist/external_links");
+const contact_numbers = require("./modules/dev_checklist/contact_numbers");
+const email_addresses = require("./modules/dev_checklist/email_addresses");
 
 
 const { log } = require('console');
@@ -5593,6 +5596,39 @@ app.post('/post/dev_checklist/images', async (req, res) => {
 
     try {
         await images.images(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/external_links', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await external_links.external_links(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/contact_numbers', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await contact_numbers.contact_numbers(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/email_addresses', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await email_addresses.email_addresses(timestamp, link);
     } catch (error) {
         console.log(error);
     }
