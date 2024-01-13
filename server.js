@@ -171,6 +171,10 @@ const images = require("./modules/dev_checklist/images");
 const external_links = require("./modules/dev_checklist/external_links");
 const contact_numbers = require("./modules/dev_checklist/contact_numbers");
 const email_addresses = require("./modules/dev_checklist/email_addresses");
+const recaptcha = require("./modules/dev_checklist/recaptcha");
+const privacy_and_terms = require("./modules/dev_checklist/privacy_and_terms");
+const social_media_links = require("./modules/dev_checklist/social_media_links");
+const copyright_year = require("./modules/dev_checklist/copyright_year");
 
 
 const { log } = require('console');
@@ -5629,6 +5633,50 @@ app.post('/post/dev_checklist/email_addresses', async (req, res) => {
 
     try {
         await email_addresses.email_addresses(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/recaptcha', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await recaptcha.recaptcha(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/privacy_and_terms', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await privacy_and_terms.privacy_and_terms(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/social_media_links', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await social_media_links.social_media_links(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist/copyright_year', async (req, res) => {
+    var link = req.body.link;
+
+    try {
+        await copyright_year.copyright_year(timestamp, link);
     } catch (error) {
         console.log(error);
     }
