@@ -23,8 +23,24 @@ async function site_title(timestamp, link) {
     let site_title = await driver.executeScript("return document.getElementsByTagName('title')[0].innerText");
     console.log(site_title);
 
+    try {
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Sheet1!C2",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [ 
+                        site_title
+                    ]
+                ]
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
-
 
 
 module.exports = { site_title };

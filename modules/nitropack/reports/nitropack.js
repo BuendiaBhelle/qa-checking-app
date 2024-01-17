@@ -136,13 +136,13 @@ async function mobileScore(timestamp) {
                 await driver.get(current_page_url + "&form_factor=mobile");
                 await driver.sleep(50000);
 
-                await driver.executeScript("window.scrollBy(0,650)", "");
+                // await driver.executeScript("window.scrollBy(0,650)", "");
         
-                let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
-                if (loading) {
-                    console.log("loading....");
-                    await driver.sleep(40000);
-                }
+                // let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
+                // if (loading) {
+                //     console.log("loading....");
+                //     await driver.sleep(40000);
+                // }
         
                 let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerText");
                 var scoreFin = Number(score);
@@ -219,13 +219,13 @@ async function desktopScore(timestamp) {
                 await driver.get(current_page_url + "&form_factor=desktop");
                 await driver.sleep(50000);
 
-                await driver.executeScript("window.scrollBy(0,650)", "");
+                // await driver.executeScript("window.scrollBy(0,650)", "");
         
-                let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
-                if (loading) {
-                    console.log("loading....");
-                    await driver.sleep(40000);
-                }
+                // let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
+                // if (loading) {
+                //     console.log("loading....");
+                //     await driver.sleep(40000);
+                // }
         
                 let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[20].innerText");
                 var scoreFin = Number(score);
@@ -284,8 +284,6 @@ async function displayFails(timestamp) {
         spreadsheetId,
         range: "ACC!B4",
     });
-
-    const date_data = date.data.values[0][0];
 
     // Read PageSpeed Scores from google sheet
     try {
