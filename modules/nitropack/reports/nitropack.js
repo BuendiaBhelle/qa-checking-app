@@ -1,9 +1,6 @@
 const {google} = require("googleapis");
 const {Builder, By, Key} = require("selenium-webdriver");
 require('dotenv').config();
-const { dirname } = require("path");
-const { spawn } = require("child_process");
-const { driver, By2, windowsAppDriverCapabilities } = require("selenium-appium");
 
 const config = require("../../../config");
 const server = require('../../../server');
@@ -21,8 +18,7 @@ let site_ids = config.site_ids;
 let urls = config.urls;
 let ranges_other = config.ranges_other;
 let pagespeed_url = config.pagespeed_url;
-let ranges_mobile = config.ranges_mobile;
-let ranges_desktop = config.ranges_desktop;
+let ranges_mobile_and_desktop = config.ranges_mobile_and_desktop;
 let sheet_names = config.sheet_names;
 const module_name = config.module_name_nitropack;
 const reports_range = config.reports_range;
@@ -60,12 +56,12 @@ async function insertRow(timestamp) {
                 }
             });
         }  
-        console.log("WEBFORMS - add row success.");
+        console.log("NITROPACK - add row success.");
         value = [ "", "", "info", "add row success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        console.log("WEBFORMS - add row failed.");
+        console.log("NITROPACK - add row failed.");
         value = [ "", "", "error", "add row failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -104,12 +100,12 @@ async function listTestDetails(timestamp) {
             });
             console.log(range);
         }
-        console.log("WEBFORMS - list other test details success.");
+        console.log("NITROPACK - list other test details success.");
         value = [ "", "", "info", "list other test details success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        console.log("WEBFORMS - list other test details failed.");
+        console.log("NITROPACK - list other test details failed.");
         value = [ "", "", "error", "list other test details failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -118,50 +114,39 @@ async function listTestDetails(timestamp) {
     console.log("other details");
 }
 
-async function mobileScore(timestamp) {
+async function mobile_and_desktopScore(timestamp) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
-    const driver = await new Builder().forBrowser("chrome").build();
+    let driver = await new Builder().forBrowser('MicrosoftEdge').build();
     
     try {
         for (let index = 0; index < urls.length; index++) {
-            const range = ranges_mobile[index];
+            const range = ranges_mobile_and_desktop[index];
       
             // get mobile score
             try {
                 await driver.get(pagespeed_url);
                 await driver.findElement(By.name("url")).sendKeys(urls[index], Key.RETURN);
-                let current_page_url = await driver.getCurrentUrl();
-                await driver.get(current_page_url + "&form_factor=mobile");
+
                 await driver.sleep(50000);
-
-                // await driver.executeScript("window.scrollBy(0,650)", "");
         
-                // let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
-                // if (loading) {
-                //     console.log("loading....");
-                //     await driver.sleep(40000);
-                // }
-        
-                let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerText");
-                var scoreFin = Number(score);
-                console.log(scoreFin);
+                let mobile_score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerHTML");
+                var mobile_scoreFin = Number(mobile_score);
+                console.log(mobile_scoreFin);
 
-                // if (scoreFin === 0) {
-                //     console.log("FAILED TO LOAD");
-                //     await driver.sleep(20000);
-                //     let scoreFin = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerText");
-                //     console.log(scoreFin);
-                // }
+                let desktop_score = await driver.executeScript("return document.getElementsByClassName('lh-exp-gauge__percentage')[1].innerHTML");
+                var desktop_scoreFin = Number(desktop_score);
+                console.log(desktop_scoreFin);
+
             } catch (error) {
                 console.log(error);
             }
     
-    
             let values = [
                 [
-                    scoreFin
+                    desktop_scoreFin,
+                    mobile_scoreFin
                 ],
             ];
     
@@ -180,7 +165,7 @@ async function mobileScore(timestamp) {
                 });
                 console.log(range);
             } catch (error) {
-                console.log("WEBFORMS - write mobile score to sheet failed.");
+                console.log("NITROPACK - write mobile score to sheet failed.");
                 value = [ "", "", "error", "write mobile score to sheet failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
                 await sheet.addRow();
                 await sheet.appendValues(value);
@@ -188,12 +173,12 @@ async function mobileScore(timestamp) {
     
             await driver.switchTo().newWindow('tab');
         }
-        console.log("WEBFORMS - write mobile score to sheet success.");
+        console.log("NITROPACK - write mobile score to sheet success.");
         value = [ "", "", "info", "write mobile score to sheet success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
     } catch (error) {
-        console.log("WEBFORMS - write mobile score to sheet failed.");
+        console.log("NITROPACK - write mobile score to sheet failed.");
         value = [ "", "", "error", "write mobile score to sheet failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -202,88 +187,9 @@ async function mobileScore(timestamp) {
     console.log("mobile");
 }
 
-async function desktopScore(timestamp) {
-    const client = await auth.getClient();
-    const googleSheets = google.sheets({ version: "v4", auth: client })
-    const driver = await new Builder().forBrowser("chrome").build();
-    
-    try {
-        for (let index = 0; index < urls.length; index++) {
-            const range = ranges_desktop[index];
-      
-            // get desktop score
-            try {
-                await driver.get(pagespeed_url);
-                await driver.findElement(By.name("url")).sendKeys(urls[index], Key.RETURN);
-                let current_page_url = await driver.getCurrentUrl();
-                await driver.get(current_page_url + "&form_factor=desktop");
-                await driver.sleep(50000);
-
-                // await driver.executeScript("window.scrollBy(0,650)", "");
-        
-                // let loading = await driver.executeScript("return document.getElementsByClassName('VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G')[0]");
-                // if (loading) {
-                //     console.log("loading....");
-                //     await driver.sleep(40000);
-                // }
-        
-                let score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[20].innerText");
-                var scoreFin = Number(score);
-                console.log(scoreFin);
-            } catch (error) {
-                console.log(error);
-            }
-    
-    
-            let values = [
-                [
-                    scoreFin
-                ],
-            ];
-    
-            const resource = {
-                values,
-            };
-    
-            // write the scores to sheet
-            try {
-                await googleSheets.spreadsheets.values.append({
-                    auth,
-                    spreadsheetId,
-                    range: range,
-                    valueInputOption: "RAW",
-                    resource: resource
-                });
-                console.log(range);
-            } catch (error) {
-                console.log(error);
-            }
-    
-            await driver.switchTo().newWindow('tab');
-        }
-        console.log("WEBFORMS - write desktop score to sheet success.");
-        value = [ "", "", "info", "write desktop score to sheet success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    } catch (error) {
-        console.log("WEBFORMS - write desktop score to sheet failed.");
-        value = [ "", "", "error", "write desktop score to sheet failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
-        await sheet.addRow();
-        await sheet.appendValues(value);
-    }
-
-    console.log("desktop");
-}
-
 async function displayFails(timestamp) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client });
-
-    let date = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "ACC!B4",
-    });
 
     // Read PageSpeed Scores from google sheet
     try {
@@ -432,13 +338,13 @@ async function displayFails(timestamp) {
                 }
             }
         }
-        console.log("WEBFORMS - get page speed scores success.");
+        console.log("NITROPACK - get page speed scores success.");
         value = [ "", "", "info", "get page speed scores success.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
         // process.exit();
     } catch (error) {
-        console.log("WEBFORMS - get page speed scores failed.");
+        console.log("NITROPACK - get page speed scores failed.");
         value = [ "", "", "error", "get page speed scores failed.", server.userId, timestamp, module_name, "", "", "", "", "", "", "", "", "" ];
         await sheet.addRow();
         await sheet.appendValues(value);
@@ -458,7 +364,6 @@ async function displayFails(timestamp) {
 module.exports = {
     insertRow,
     listTestDetails,
-    mobileScore,
-    desktopScore,
+    mobile_and_desktopScore,
     displayFails
 }

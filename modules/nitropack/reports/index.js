@@ -2,8 +2,7 @@ const app = require("./nitropack");
 
 // insertRow,
 // listTestDetails,
-// mobileScore,
-// desktopScore,
+// mobile_and_desktopScore,
 
 
 async function index(timestamp) {
@@ -13,12 +12,7 @@ async function index(timestamp) {
         await app.listTestDetails(timestamp);
 
         setTimeout(async function() {
-            await app.mobileScore(timestamp);
-
-            setTimeout(async function() {
-                await app.desktopScore(timestamp);
-
-            }, 3000); 
+            await app.mobile_and_desktopScore(timestamp);
 
         }, 3000); 
 

@@ -14,7 +14,8 @@ const spreadsheetId = config.spreadsheetId_broken_links;
 async function broken_links(timestamp, link, username, password) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
-    var driver = await new Builder().forBrowser("chrome").build();
+    // var driver = await new Builder().forBrowser("chrome").build();
+    let driver = await new Builder().forBrowser('MicrosoftEdge').build();
 
     await driver.get(link + "pvlogin");
     await driver.sleep(3000);
@@ -197,8 +198,8 @@ async function broken_links(timestamp, link, username, password) {
 
     //navigate to broken link page
     try {
-        // await driver.get(link + "wp-admin/admin.php?page=blc_local");
-        await driver.get(link + "wp-admin/admin.php?page=blc_local&paged=15");
+        await driver.get(link + "wp-admin/admin.php?page=blc_local");
+        // await driver.get(link + "wp-admin/admin.php?page=blc_local&paged=15");
         await driver.sleep(3000);
 
         let broken_link_count = await driver.executeScript("return document.getElementsByClassName('blc-link-url').length");
