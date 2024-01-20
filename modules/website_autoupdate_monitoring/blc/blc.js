@@ -16,8 +16,8 @@ const module_name = "WEBSITE AUTOUPDATE MONITORING - BLC";
 async function blc(timestamp) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
-    // var driver = await new Builder().forBrowser("chrome").build();
-    let driver = await new Builder().forBrowser('MicrosoftEdge').build();
+    var driver = await new Builder().forBrowser("chrome").build();
+    // let driver = await new Builder().forBrowser('MicrosoftEdge').build();
 
     // let driver = await new Builder()
     // .withCapabilities(Capabilities.firefox())

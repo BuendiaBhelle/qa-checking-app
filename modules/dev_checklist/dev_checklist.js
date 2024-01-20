@@ -1,0 +1,345 @@
+const {Builder, By} = require("selenium-webdriver");
+const {google} = require("googleapis");
+const config = require("../../config.js");
+require('chromedriver');
+
+const auth = config.auth;
+const spreadsheetId = config.spreadsheetId_dev_checklist;
+
+
+async function dev_checklist(timestamp, link, username, password) {
+    const client = await auth.getClient();
+    var googleSheets = google.sheets({ version: "v4", auth: client });
+    var driver = await new Builder().forBrowser("chrome").build();
+    
+    // DEFAULT PLUGINS
+    if (link === "https://www.hospiceofyuma.com") {
+        await driver.get(link + "hoylogin");
+    } else if (link === "https://www.phoenixritecare.org") {
+        await driver.get(link + "members-login/");
+    } else if ((link === "https://www.thehairextensioncompany.com") || (link === "https://www.inspirednetworks.com")) {
+        await driver.get(link + "wp-admin");
+    } else {
+        await driver.get(link + "pvlogin");
+    }
+
+    // wp login
+    try {
+        if (link === "https://www.phoenixritecare.org") {
+            await driver.findElement(By.id("user_login")).sendKeys(username);
+            await driver.findElement(By.id("user_pass")).sendKeys(password);
+            await driver.executeScript("return document.getElementsByClassName('tml-button')[0].click()");
+    
+            let button_length = await driver.executeScript("return document.getElementsByClassName('btn').length");
+            for (let index = 0; index < button_length; index++) {
+                let button_innertext = await driver.executeScript("return document.getElementsByClassName('btn')[" + index + "].innerText");
+                if (button_innertext === "Website") {
+                    await driver.executeScript("return document.getElementsByClassName('btn')[" + index + "].click()");
+                    console.log("WEBSITE");
+                    break;
+                }
+            }
+    
+            await driver.executeScript("return document.getElementsByClassName('wp-menu-image dashicons-before dashicons-admin-plugins')[0].click()");
+            await driver.sleep(1000);
+            await driver.get(link + "wp-admin/plugins.php");
+        } if (link === "https://www.maintenancebest.com") {
+            await driver.findElement(By.id("1helauaoii80")).sendKeys(username);
+            await driver.findElement(By.id("6afbbvfn0560")).sendKeys(password);
+            await driver.executeScript("return document.getElementsByClassName('pp-submit-form ppform-submit-button')[0].click()");
+            await driver.sleep(1000);
+            await driver.get(link + "wp-admin/plugins.php");
+        } 
+        else {
+            await driver.findElement(By.name("log")).sendKeys(username);
+            await driver.findElement(By.name("pwd")).sendKeys(password);
+            await driver.findElement(By.id("wp-submit")).click();
+            await driver.sleep(1000);
+            await driver.get(link + "wp-admin/plugins.php");
+        }
+
+        let login_error = await driver.executeScript("return document.getElementById('login_error')");
+        var admin_email_verification = await driver.executeScript("return document.querySelector('form').classList.contains('admin-email-confirm-form')");  
+        if (login_error) {
+            console.log("DEFAULT PLUGINS - wordpress login failed.");
+        } else if (admin_email_verification === true) {
+                await driver.executeScript("return document.getElementsByTagName('a')[3].click()");
+                await driver.sleep(1000);
+                await driver.get(link + "wp-admin/plugins.php");
+                console.log("DEFAULT PLUGINS - admin email verification.");
+            } else {
+                console.log("DEFAULT PLUGINS - wordpress login success.");
+            }    
+    } catch (error) {
+        console.log(error);
+    }
+
+    // check for default plugins
+    try {            
+        let plugin_active_is_uninstallable_length = await driver.executeScript("return document.getElementsByClassName('active is-uninstallable').length");
+        var plugins_count = plugin_active_is_uninstallable_length-1;
+        for (let i = 0; i <= plugins_count; i++) {
+            let plugin_active_is_uninstallable = await driver.executeScript("return document.getElementsByClassName('active is-uninstallable')[" + i + "].getAttribute('data-slug')");
+
+            // check for Broken Link Checker plugin 
+            if (plugin_active_is_uninstallable === "broken-link-checker") {
+                console.log("With Broken Link Checker.");   
+                await googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Sheet1!C4",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                "With Broken Link Checker."
+                            ]
+                        ]
+                    }
+                });
+            }
+            // check for Yoast SEO plugin 
+            if (plugin_active_is_uninstallable === "wordpress-seo") {
+                console.log("With Yoast SEO.");   
+                await googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Sheet1!C5",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                "With Yoast SEO."
+                            ]
+                        ]
+                    }
+                });
+            }
+        }
+        console.log("DEFAULT PLUGINS - check for plugin success.");
+        await driver.sleep(1000);
+    } catch (error) {
+        console.log(error);
+        await driver.sleep(1000);
+    }
+
+    // COPYRIGHT 
+    await driver.switchTo().newWindow('tab');
+    await driver.get(link);
+
+    let p_count = await driver.executeScript("return document.getElementsByTagName('p').length");
+
+    for (let index = 0; index < p_count; index++) {
+        let copyright = await driver.executeScript("return document.getElementsByTagName('p')[" + index + "].innerText");
+
+        if ((copyright.length !=0) && (copyright.includes("All Rights Reserved"))) {
+            console.log(copyright);
+            try {
+                // write date to sheet
+                await googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Sheet1!C6",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                copyright
+                            ]
+                        ]
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
+
+    // IMAGES
+    let images_count = await driver.executeScript("return document.getElementsByTagName('img').length");
+    for (let index = 0; index < images_count; index++) {
+        let image_source = await driver.executeScript("return document.getElementsByTagName('img')[" + index + "].src");
+    
+        var img_jpg = ".jpg";
+        var img_png = ".png";
+        var img_jpeg = ".jpeg";
+        
+        if ((image_source.includes(img_jpg) || (image_source.includes(img_png)) || (image_source.includes(img_jpeg)))) {
+
+            try {
+                // write date to sheet
+                await googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Images!A1",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                image_source
+                            ]
+                        ]
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+            }
+
+          console.log(image_source);
+        } 
+
+    }
+
+    try {
+        // write link to sheet
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Sheet1!C8",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [ 
+                        "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=592523417"
+                    ]
+                ]
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+
+    // EXTERNAL LINKS
+    let external_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
+    console.log(external_links_count);
+
+    try {
+        for (let index = 0; index < external_links_count; index++) {
+            let external_links = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].getAttribute('href')");
+
+            if (external_links != null) {
+                let host = await driver.executeScript("return window.location.hostname");
+                let link_checker = external_links.slice(0, 1);
+                let link_checker2 = external_links.slice(0, 3);
+
+                if ((!external_links.includes(host)) && (external_links.length != 0)) {
+                    if ((link_checker != "/") && (link_checker != "#") && (link_checker2 != "tel")) {
+                        console.log(external_links);
+
+                        let target_attribute = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].getAttribute('target')");
+                        console.log(target_attribute);
+                        try {
+                            // write to sheet
+                            await googleSheets.spreadsheets.values.append({
+                                auth,
+                                spreadsheetId,
+                                range: "External Links!A1:B1",
+                                valueInputOption: "USER_ENTERED",
+                                resource: {
+                                    values: [
+                                        [ 
+                                            external_links,
+                                            target_attribute
+                                        ]
+                                    ]
+                                }
+                            });
+                            await driver.sleep(1000);
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+                }
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    try {
+        // write link to sheet
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Sheet1!C9",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [ 
+                        "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1250732519"
+                    ]
+                ]
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+
+    // CONTACT NUMBERS
+    try {
+        for (let index = 0; index < p_count; index++) {
+
+            let contact_number = await driver.executeScript("return document.getElementsByTagName('p')[" + index + "].innerText");
+            let hasNumber = /\d/;
+    
+            if ((hasNumber.test(contact_number) === true) && (contact_number.includes("480"))) {
+                console.log(contact_number);
+                try {
+                    // write to sheet
+                    await googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: "Contact Numbers!A1",
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [ 
+                                    contact_number
+                                ]
+                            ]
+                        }
+                    });
+                    await driver.sleep(1000);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    try {
+        // write link to sheet
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Sheet1!C10",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [ 
+                        "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=989210029"
+                    ]
+                ]
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+
+
+    // end test
+    console.log("test ends.");
+    
+}
+
+
+
+module.exports = { dev_checklist };

@@ -1792,64 +1792,21 @@
                                 <h1 style="margin-top: 100px;">Dev Checklist</h1>
                                 <form action="/post/dev_checklist" method="post">
                                     <a href="https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=0" target="_blank">Dev Checklist</a><br>
-                                    <!-- <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-7">
-                                                <div class="form-group row">
-                                                    <label for="domains" class="col-sm-3 col-form-label">Choose a site:</label>
-                                                    <div class="col-sm-9">
-                                                        <select name="domains" id="domains">
-                                                            <option value="accidentchiropracticaz">Accident Chiropractic AZ</option>
-                                                            <option value="advancedimagemedspa">Advanced Image Med Spa</option>
-                                                            <option value="aerialengagement">Aerial Engagement</option>
-                                                            <option value="aeroturbine">Aero Turbine</option>
-                                                            <option value="collisioncenternorthscottsdale">Airpark Collision Center</option>
-                                                            <option value="americanleatherusa">American Leather USA</option>
-                                                            <option value="andresperezjurado">Andres Perez Jurado</option>
-                                                            <option value="airgain">Airgain</option>
-                                                            <option value="azdoordoctor">AZ Door Doctor</option>
-                                                            <option value="biltmoreloanandjewelry">Biltmore Loan and Jewelry</option>
-                                                            <option value="buckeyederm">Buckeye Derm</option>
-                                                            <option value="canyonfallshairextensioncompany">Canyon Falls Hair Extension Company</option>
-                                                            <option value="cma">CMA</option>
-                                                            <option value="culpepper">Culpepper & Associates</option>
-                                                            <option value="dentistryatthebiltmore">Dentistry At The Biltmore</option>
-                                                            <option value="ewingconstruction">Ewing Construction</option>
-                                                            <option value="frlawgroup">FR Law Group</option>
-                                                            <option value="freddabranyon">Fredda Branyon</option>
-                                                            <option value="gatorskin">Gatorskin</option>
-                                                            <option value="hospiceofyuma">Hospice of Yuma</option>
-                                                            <option value="indinspect">Industrial Inspection & Consulting</option>
-                                                            <option value="jewelryoutletinc">Jewelry Outlet</option>
-                                                            <option value="judefrancesjewelry">Jude Frances Jewelry</option>
-                                                            <option value="kyrenefamilydentistry">Kyrene Family Dentistry</option>
-                                                            <option value="mcbuildingmaintenance">MC Building Maintenance</option>
-                                                            <option value="molnarwalkingy">Molnar Waking Y</option>
-                                                            <option value="natina">Natina</option>
-                                                            <option value="newhopemedicalcenter">New Hope Medical Center</option>
-                                                            <option value="optimizex">OptimizeX</option>
-                                                            <option value="paysondermatology">Payson Dermatology</option>
-                                                            <option value="phoenixritecare">Phoenix Scottish Rite</option>
-                                                            <option value="primemedicalpain">Prime Medical Pain Management Centers</option>
-                                                            <option value="primeview">Primeview</option>
-                                                            <option value="randosouthwest">Rando South West</option>
-                                                            <option value="renewscal">Renew Stem Cell & Laser</option>
-                                                            <option value="risingsunmartialartsaz">Rising Sun</option>
-                                                            <option value="sellusyourcaraz">Sell Us Your Car AZ</option>
-                                                            <option value="signsofthetimes">Signs of the Times</option>
-                                                            <option value="solutionsforum">Solutions Forum</option>
-                                                            <option value="sunpressurewash">Sun Pressure Wash</option>
-                                                            <option value="sunrisejewelryusa">Sunrise Jewelry USA</option>
-                                                            <option value="tmpc">TMPC</option>
-                                                            <option value="versatile">Versatile</option>
-                                                            <option value="virtualassistantsoutsourcing">Virtual Assistant Outsourcing</option>
-                                                        </select>
-                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
+                                        <div class="col-sm-9">
+                                            <input id="link" type="text" value="" name="link" class="form-control" placeholder="'https://www.primeview.com/'" required />
+                                            <br>
                                         </div>
-                                    </div> -->
+                                        <label for="Sheet Name" class="col-sm-3 col-form-label">Username:</label>
+                                        <div class="col-sm-9">
+                                            <input id="username" type="text" value="" name="username" required />
+                                        </div>
+                                        <label for="Sheet Name" class="col-sm-3 col-form-label">Password:</label>
+                                        <div class="col-sm-9">
+                                            <input id="password" type="text" value="" name="password" required />
+                                        </div>
+                                    </div>
 
                                     <input type="radio" id="copyright_year" name="copyright_year" value="copyright_year">
                                     <label for="copyright_year">Copyright (year)</label><br>
@@ -1867,6 +1824,8 @@
                                     <label for="privacy_and_terms">Privacy Policy/Terms of Use (must-have pages)</label><br>
                                     <input type="radio" id="soacial_media_links" name="soacial_media_links" value="soacial_media_links">
                                     <label for="soacial_media_links">Social Media Links (should open in new tab)</label><br>
+                                    <input type="radio" id="h1" name="h1" value="h1">
+                                    <label for="h1">H1 Tags (should be just one in each page)</label><br>
                                     
                                   
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>

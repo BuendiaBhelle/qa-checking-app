@@ -164,17 +164,13 @@ const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
 
 const site_title = require("./modules/dev_checklist/site_title");
-const default_plugins = require("./modules/dev_checklist/default_plugins");
 const top_nav_bar = require("./modules/dev_checklist/top_nav_bar");
-const copyright = require("./modules/dev_checklist/copyright");
-const images = require("./modules/dev_checklist/images");
-const external_links = require("./modules/dev_checklist/external_links");
-const contact_numbers = require("./modules/dev_checklist/contact_numbers");
 const email_addresses = require("./modules/dev_checklist/email_addresses");
 const recaptcha = require("./modules/dev_checklist/recaptcha");
 const privacy_and_terms = require("./modules/dev_checklist/privacy_and_terms");
 const social_media_links = require("./modules/dev_checklist/social_media_links");
-const copyright_year = require("./modules/dev_checklist/copyright_year");
+const h1 = require("./modules/dev_checklist/h1");
+const dev_checklist = require("./modules/dev_checklist/dev_checklist");
 
 
 const { log } = require('console');
@@ -5563,65 +5559,11 @@ app.post('/post/dev_checklist/site_title', async (req, res) => {
     res.send(success_msg);
 });
 
-app.post('/post/dev_checklist/default_plugins', async (req, res) => {
-    var link = req.body.link;
-    var username = req.body.username;
-    var password = req.body.password;
-
-    await default_plugins.default_plugins(timestamp, link, username, password);
-
-    res.send(success_msg);
-});
-
 app.post('/post/dev_checklist/top_nav_bar', async (req, res) => {
     var link = req.body.link;
 
     try {
         await top_nav_bar.top_nav_bar(timestamp, link);
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(success_msg);
-});
-
-app.post('/post/dev_checklist/copyright', async (req, res) => {
-    var link = req.body.link;
-
-    try {
-        await copyright.copyright(timestamp, link);
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(success_msg);
-});
-
-app.post('/post/dev_checklist/images', async (req, res) => {
-    var link = req.body.link;
-
-    try {
-        await images.images(timestamp, link);
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(success_msg);
-});
-
-app.post('/post/dev_checklist/external_links', async (req, res) => {
-    var link = req.body.link;
-
-    try {
-        await external_links.external_links(timestamp, link);
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(success_msg);
-});
-
-app.post('/post/dev_checklist/contact_numbers', async (req, res) => {
-    var link = req.body.link;
-
-    try {
-        await contact_numbers.contact_numbers(timestamp, link);
     } catch (error) {
         console.log(error);
     }
@@ -5672,11 +5614,24 @@ app.post('/post/dev_checklist/social_media_links', async (req, res) => {
     res.send(success_msg);
 });
 
-app.post('/post/dev_checklist/copyright_year', async (req, res) => {
+app.post('/post/dev_checklist/h1', async (req, res) => {
     var link = req.body.link;
 
     try {
-        await copyright_year.copyright_year(timestamp, link);
+        await h1.h1(timestamp, link);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/dev_checklist', async (req, res) => {
+    var link = req.body.link;
+    var username = req.body.username;
+    var password = req.body.password;
+
+    try {
+        await dev_checklist.dev_checklist(timestamp, link, username, password);
     } catch (error) {
         console.log(error);
     }
