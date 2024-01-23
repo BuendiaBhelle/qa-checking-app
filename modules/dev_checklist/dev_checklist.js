@@ -7,10 +7,33 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId_dev_checklist;
 
 
-async function dev_checklist(timestamp, link, username, password) {
+async function dev_checklist(link, username, password) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
     var driver = await new Builder().forBrowser("chrome").build();
+
+
+    function write_link_to_sheets(range, values) {
+        try {
+            setTimeout(() => {
+                googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: range,
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                values
+                            ]
+                        ]
+                    }
+                });
+            }, 2000);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     
     // DEFAULT PLUGINS
     if (link === "https://www.hospiceofyuma.com") {
@@ -126,13 +149,14 @@ async function dev_checklist(timestamp, link, username, password) {
     // COPYRIGHT 
     await driver.switchTo().newWindow('tab');
     await driver.get(link);
+    await driver.sleep(3000);
 
     let p_count = await driver.executeScript("return document.getElementsByTagName('p').length");
 
     for (let index = 0; index < p_count; index++) {
         let copyright = await driver.executeScript("return document.getElementsByTagName('p')[" + index + "].innerText");
 
-        if ((copyright.length !=0) && (copyright.includes("All Rights Reserved"))) {
+        if (copyright.includes("All Rights Reserved")) {
             console.log(copyright);
             try {
                 // write date to sheet
@@ -154,9 +178,12 @@ async function dev_checklist(timestamp, link, username, password) {
             }
         }
     }
+    await driver.sleep(1000);
 
 
     // IMAGES
+    var range = "Sheet1!C8";
+    var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=592523417";
     let images_count = await driver.executeScript("return document.getElementsByTagName('img').length");
     for (let index = 0; index < images_count; index++) {
         let image_source = await driver.executeScript("return document.getElementsByTagName('img')[" + index + "].src");
@@ -166,52 +193,34 @@ async function dev_checklist(timestamp, link, username, password) {
         var img_jpeg = ".jpeg";
         
         if ((image_source.includes(img_jpg) || (image_source.includes(img_png)) || (image_source.includes(img_jpeg)))) {
-
             try {
-                // write date to sheet
-                await googleSheets.spreadsheets.values.append({
-                    auth,
-                    spreadsheetId,
-                    range: "Images!A1",
-                    valueInputOption: "USER_ENTERED",
-                    resource: {
-                        values: [
-                            [ 
-                                image_source
+                setTimeout(() => {
+                    googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: "Images!A1",
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [ 
+                                    image_source
+                                ]
                             ]
-                        ]
-                    }
-                });
+                        }
+                    });
+                }, 1000);
             } catch (error) {
                 console.log(error);
             }
-
           console.log(image_source);
         } 
-
     }
-
-    try {
-        // write link to sheet
-        await googleSheets.spreadsheets.values.append({
-            auth,
-            spreadsheetId,
-            range: "Sheet1!C8",
-            valueInputOption: "USER_ENTERED",
-            resource: {
-                values: [
-                    [ 
-                        "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=592523417"
-                    ]
-                ]
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
+    write_link_to_sheets(range, values);
 
 
     // EXTERNAL LINKS
+    var range = "Sheet1!C9";
+    var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1250732519";
     let external_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
     console.log(external_links_count);
 
@@ -231,22 +240,22 @@ async function dev_checklist(timestamp, link, username, password) {
                         let target_attribute = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].getAttribute('target')");
                         console.log(target_attribute);
                         try {
-                            // write to sheet
-                            await googleSheets.spreadsheets.values.append({
-                                auth,
-                                spreadsheetId,
-                                range: "External Links!A1:B1",
-                                valueInputOption: "USER_ENTERED",
-                                resource: {
-                                    values: [
-                                        [ 
-                                            external_links,
-                                            target_attribute
+                            setTimeout(() => {
+                                googleSheets.spreadsheets.values.append({
+                                    auth,
+                                    spreadsheetId,
+                                    range: "External Links!A1:B1",
+                                    valueInputOption: "USER_ENTERED",
+                                    resource: {
+                                        values: [
+                                            [ 
+                                                external_links,
+                                                target_attribute
+                                            ]
                                         ]
-                                    ]
-                                }
-                            });
-                            await driver.sleep(1000);
+                                    }
+                                });
+                            }, 1000);
                         } catch (error) {
                             console.log(error);
                         }
@@ -257,28 +266,12 @@ async function dev_checklist(timestamp, link, username, password) {
     } catch (error) {
         console.log(error);
     }
-
-    try {
-        // write link to sheet
-        await googleSheets.spreadsheets.values.append({
-            auth,
-            spreadsheetId,
-            range: "Sheet1!C9",
-            valueInputOption: "USER_ENTERED",
-            resource: {
-                values: [
-                    [ 
-                        "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1250732519"
-                    ]
-                ]
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
+    write_link_to_sheets(range, values);
 
 
     // CONTACT NUMBERS
+    var range = "Sheet1!C10";
+    var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=989210029";
     try {
         for (let index = 0; index < p_count; index++) {
 
@@ -288,21 +281,21 @@ async function dev_checklist(timestamp, link, username, password) {
             if ((hasNumber.test(contact_number) === true) && (contact_number.includes("480"))) {
                 console.log(contact_number);
                 try {
-                    // write to sheet
-                    await googleSheets.spreadsheets.values.append({
-                        auth,
-                        spreadsheetId,
-                        range: "Contact Numbers!A1",
-                        valueInputOption: "USER_ENTERED",
-                        resource: {
-                            values: [
-                                [ 
-                                    contact_number
+                    setTimeout(() => {
+                        googleSheets.spreadsheets.values.append({
+                            auth,
+                            spreadsheetId,
+                            range: "Contact Numbers!A1",
+                            valueInputOption: "USER_ENTERED",
+                            resource: {
+                                values: [
+                                    [ 
+                                        contact_number
+                                    ]
                                 ]
-                            ]
-                        }
-                    });
-                    await driver.sleep(1000);
+                            }
+                        });
+                    }, 1000);
                 } catch (error) {
                     console.log(error);
                 }
@@ -313,33 +306,93 @@ async function dev_checklist(timestamp, link, username, password) {
     } catch (error) {
         console.log(error);
     }
+    write_link_to_sheets(range, values);
 
+
+    // EMAIL ADDRESSES
+    var range = "Sheet1!C11";
+    var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=447596669";
     try {
-        // write link to sheet
-        await googleSheets.spreadsheets.values.append({
-            auth,
-            spreadsheetId,
-            range: "Sheet1!C10",
-            valueInputOption: "USER_ENTERED",
-            resource: {
-                values: [
-                    [ 
-                        "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=989210029"
-                    ]
-                ]
+        for (let index = 0; index < p_count; index++) {
+
+            let email_addresses = await driver.executeScript("return document.getElementsByTagName('p')[" + index + "].innerText");
+    
+            if (email_addresses.includes("@")) {
+                console.log(email_addresses);
+                try {
+                    setTimeout(() => {
+                        googleSheets.spreadsheets.values.append({
+                            auth,
+                            spreadsheetId,
+                            range: "Email Addresses!A1",
+                            valueInputOption: "USER_ENTERED",
+                            resource: {
+                                values: [
+                                    [ 
+                                        email_addresses
+                                    ]
+                                ]
+                            }
+                        });
+                    }, 1000);
+                } catch (error) {
+                    console.log(error);
+                }
             }
-        });
+        }
     } catch (error) {
         console.log(error);
     }
+    write_link_to_sheets(range, values);
 
 
+    // TERMS & PRIVACY
+    var range = "Sheet1!C16";
+    var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1894558610";
+    let links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
+
+    var privacy_or_terms_link;
+    for (let index = 0; index < links_count; index++) {
+        let privacy_or_terms_text = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].innerText");
+        privacy_or_terms_link = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].getAttribute('href')");
+        let hostname = await driver.executeScript("return window.location.hostname");
+        
+        if ((privacy_or_terms_text.includes("Privacy Policy")) || (privacy_or_terms_text.includes("Terms and Conditions")) || (privacy_or_terms_text.includes("Terms & Conditions"))) {
+            console.log(privacy_or_terms_text);
+
+            if (privacy_or_terms_link.substring(0,1) === "/") {
+                privacy_or_terms_link = hostname + privacy_or_terms_link;
+                console.log(privacy_or_terms_link);
+            } else {
+                console.log(privacy_or_terms_link);
+            }
+            try {
+                setTimeout(() => {
+                    googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: "Privacy Policy/Terms and Conditions!A1:B1",
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [ 
+                                    privacy_or_terms_text,
+                                    privacy_or_terms_link
+                                ]
+                            ]
+                        }
+                    });
+                }, 1000);
+            } catch (error) {
+                console.log(error);
+            }
+        } 
+    }
+    write_link_to_sheets(range, values);
 
     // end test
     console.log("test ends.");
-    
 }
-
 
 
 module.exports = { dev_checklist };

@@ -15,8 +15,8 @@ const tw_url = config.tw_url;
 async function calendar(timestamp, user) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
-    // var driver = await new Builder().forBrowser("chrome").build();
-    let driver = await new Builder().forBrowser('MicrosoftEdge').build();
+    var driver = await new Builder().forBrowser("chrome").build();
+    // let driver = await new Builder().forBrowser('MicrosoftEdge').build();
 
     await driver.get(td_url);
 

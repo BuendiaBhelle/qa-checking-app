@@ -2,9 +2,9 @@ const {google} = require("googleapis");
 const {Builder, By, Key} = require("selenium-webdriver");
 require('dotenv').config();
 
-const config = require("../../../config");
-const server = require('../../../server');
-const sheet = require('../../../middleware/gsheet');
+const config = require("../../config");
+const server = require('../../server');
+const sheet = require('../../middleware/gsheet');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -118,7 +118,9 @@ async function mobile_and_desktopScore(timestamp) {
     const client = await auth.getClient();
     const googleSheets = google.sheets({ version: "v4", auth: client })
 
-    let driver = await new Builder().forBrowser('MicrosoftEdge').build();
+    // let driver = await new Builder().forBrowser('MicrosoftEdge').build();
+
+    var driver = await new Builder().forBrowser("chrome").build();
     
     try {
         for (let index = 0; index < urls.length; index++) {

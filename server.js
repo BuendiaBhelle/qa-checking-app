@@ -143,10 +143,8 @@ const webforms_solutionsforum_f1 = require("./modules/webforms/contactform7/form
 const webforms_sunpressurewash_f1 = require("./modules/webforms/contactform7/forms/sunpressurewash/form1/index");
 const webforms_sunpressurewash_f2 = require("./modules/webforms/contactform7/forms/sunpressurewash/form2/index");
 const newsletter = require("./modules/newsletter/newsletter");
-const nitropack = require("./modules/nitropack/reports/index");
-const nitropack_reports = require("./modules/nitropack/reports/nitropack");
-
-const nitropack_settings = require("./modules/nitropack/settings/settings");
+const nitropack = require("./modules/nitropack/index");
+const nitropack_reports = require("./modules/nitropack/nitropack");
 
 const wpm = require("./modules/wpm/index");
 const wpm_reports = require("./modules/wpm/wpm");
@@ -154,7 +152,6 @@ const wpm_reports = require("./modules/wpm/wpm");
 const waum_backend = require("./modules/website_autoupdate_monitoring/backend/backend");
 const waum_blc = require("./modules/website_autoupdate_monitoring/blc/blc");
 const waum_frontend = require("./modules/website_autoupdate_monitoring/frontend/frontend");
-const plugins = require("./modules/plugins/plugins");
 const calendar = require("./modules/calendar/calendar");
 const broken_links = require("./modules/website_autoupdate_monitoring/blc/broken_links");
 
@@ -165,13 +162,11 @@ const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
 
 const site_title = require("./modules/dev_checklist/site_title");
 const top_nav_bar = require("./modules/dev_checklist/top_nav_bar");
-const email_addresses = require("./modules/dev_checklist/email_addresses");
 const recaptcha = require("./modules/dev_checklist/recaptcha");
 const privacy_and_terms = require("./modules/dev_checklist/privacy_and_terms");
 const social_media_links = require("./modules/dev_checklist/social_media_links");
 const h1 = require("./modules/dev_checklist/h1");
 const dev_checklist = require("./modules/dev_checklist/dev_checklist");
-
 
 const { log } = require('console');
 
@@ -5469,46 +5464,6 @@ app.post('/post/nitropack', async (req, res) => {
     res.send(success_msg);
 });
 
-app.post('/post/nitropack/settings', async (req, res) => {
-    var site = req.body.site;
-    var email = req.body.email;
-    var password = req.body.password;
-    console.log(site);
-    console.log(email);
-    console.log(password);
-
-    try {
-        switch (site) {
-            case "www.freddabranyon.com/":
-                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
-                break;
-            case "freddabranyondev.primeview.com/":
-                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
-                break;
-            case "www.lignans.net/":
-                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
-                break;
-            case "lignansdev.primeview.com/":
-                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
-                break;
-            case "www.newhopemedicalcenter.com/":
-                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
-                break;
-            case "phoenixritecare.org/":
-                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
-                break;
-            case "www.primeview.com/":
-                await nitropack_settings.displayNitropackSettings(site, email, password, timestamp);
-                break;
-            default:
-                break;
-        }
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(success_msg);
-});
-
 app.post('/post/wpm', async (req, res) => {
     try {
         await wpm.index(timestamp);
@@ -5557,6 +5512,7 @@ app.post('/post/dev_checklist/site_title', async (req, res) => {
         console.log(error);
     }
     res.send(success_msg);
+    
 });
 
 app.post('/post/dev_checklist/top_nav_bar', async (req, res) => {
@@ -5564,17 +5520,6 @@ app.post('/post/dev_checklist/top_nav_bar', async (req, res) => {
 
     try {
         await top_nav_bar.top_nav_bar(timestamp, link);
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(success_msg);
-});
-
-app.post('/post/dev_checklist/email_addresses', async (req, res) => {
-    var link = req.body.link;
-
-    try {
-        await email_addresses.email_addresses(timestamp, link);
     } catch (error) {
         console.log(error);
     }
@@ -5631,11 +5576,12 @@ app.post('/post/dev_checklist', async (req, res) => {
     var password = req.body.password;
 
     try {
-        await dev_checklist.dev_checklist(timestamp, link, username, password);
+        await dev_checklist.dev_checklist(link, username, password);
     } catch (error) {
         console.log(error);
     }
     res.send(success_msg);
+
 });
 
 app.post('/post/waum_frontend', async (req, res) => {
@@ -5644,16 +5590,6 @@ app.post('/post/waum_frontend', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    res.send(success_msg);
-});
-
-app.post('/post/plugins_yoast_or_blc', async (req, res) => {
-    var domains = req.body.domains;
-    var broken_link_checker = req.body.broken_link_checker;
-    var yoast = req.body.yoast;
-
-    await plugins.plugins(timestamp, domains, broken_link_checker, yoast);
-
     res.send(success_msg);
 });
 
