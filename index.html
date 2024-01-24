@@ -318,7 +318,7 @@
                                         </div>
                                         <label for="Sheet Name" class="col-sm-3 col-form-label">Password:</label>
                                         <div class="col-sm-9">
-                                            <input id="password" type="text" value="" name="password" required />
+                                            <input id="password" type="password" value="" name="password" required />
                                         </div>
                                     </div>
                                     <br>
@@ -1234,8 +1234,21 @@
                             <!-- DEV CHECKLIST -->
                             <div id="dev_checklist">
                                 <h1 style="margin-top: 100px;">Dev Checklist</h1>
-                                <form action="/post/dev_checklist" method="post">
-                                    <a href="https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=0" target="_blank">Dev Checklist</a><br>
+                                
+                                <!-- <div style="margin-bottom: 50px;">
+                                    <span>&#10003; Copyright (must be in the present year - 2024)</span><br>
+                                    <span>&#10003; Images (should be in webP format)</span><br>
+                                    <span>&#10003; External Links (should open in new tab)</span><br>
+                                    <span>&#10003; Contact Numbers (must be a hyperlink)</span><br>
+                                    <span>&#10003; Email Addresses (must be a hyperlink)</span><br>
+                                    <span>&#10003; Privacy Policy/Terms of Use (must-have pages)</span><br>
+                                    <span>&#10003; Social Media Links (should open in new tab)</span><br>
+                                    <span>&#10003; H1 Tags (should have only one in each page)</span><br>
+                                </div> -->
+
+                                <a href="https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=0" style="color: #158CBE;" target="_blank"><span>&#10003; Checklist</span><br></a>
+                                
+                                <form action="/post/dev_checklist" method="post" style="margin-top: 50px;">
                                     <div class="form-group row">
                                         <label for="Site URL" class="col-sm-3 col-form-label">Site URL:</label>
                                         <div class="col-sm-9">
@@ -1248,30 +1261,10 @@
                                         </div>
                                         <label for="Sheet Name" class="col-sm-3 col-form-label">Password:</label>
                                         <div class="col-sm-9">
-                                            <input id="password" type="text" value="" name="password" required />
+                                            <input id="password" type="password" value="" name="password" required />
                                         </div>
                                     </div>
 
-                                    <input type="radio" id="copyright_year" name="copyright_year" value="copyright_year">
-                                    <label for="copyright_year">Copyright (year)</label><br>
-                                    <input type="radio" id="yoast" name="yoast" value="yoast">
-                                    <label for="yoast">Copyright</label><br>
-                                    <input type="radio" id="images" name="images" value="images">
-                                    <label for="images">Images (should be in webP format)</label><br>
-                                    <input type="radio" id="external_links" name="external_links" value="external_links">
-                                    <label for="external_links">External Links (should open in new tab)</label><br>
-                                    <input type="radio" id="contact_numbers" name="contact_numbers" value="contact_numbers">
-                                    <label for="contact_numbers">Contact Numbers (must be a hyperlink)</label><br>
-                                    <input type="radio" id="email_addresses" name="email_addresses" value="email_addresses">
-                                    <label for="email_addresses">Email Addresses (must be a hyperlink)</label><br>
-                                    <input type="radio" id="privacy_and_terms" name="privacy_and_terms" value="privacy_and_terms">
-                                    <label for="privacy_and_terms">Privacy Policy/Terms of Use (must-have pages)</label><br>
-                                    <input type="radio" id="soacial_media_links" name="soacial_media_links" value="soacial_media_links">
-                                    <label for="soacial_media_links">Social Media Links (should open in new tab)</label><br>
-                                    <input type="radio" id="h1" name="h1" value="h1">
-                                    <label for="h1">H1 Tags (should be just one in each page)</label><br>
-                                    
-                                  
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
 
                                 </form>

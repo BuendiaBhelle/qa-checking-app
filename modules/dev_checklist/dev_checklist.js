@@ -29,7 +29,7 @@ async function dev_checklist(link, username, password) {
                         ]
                     }
                 });
-            }, 2000);
+            }, 3000);
         } catch (error) {
             console.log(error);
         }
@@ -194,21 +194,20 @@ async function dev_checklist(link, username, password) {
         
         if ((image_source.includes(img_jpg) || (image_source.includes(img_png)) || (image_source.includes(img_jpeg)))) {
             try {
-                setTimeout(() => {
-                    googleSheets.spreadsheets.values.append({
-                        auth,
-                        spreadsheetId,
-                        range: "Images!A1",
-                        valueInputOption: "USER_ENTERED",
-                        resource: {
-                            values: [
-                                [ 
-                                    image_source
-                                ]
+                googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Images!A2",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                image_source
                             ]
-                        }
-                    });
-                }, 1000);
+                        ]
+                    }
+                });
+                await driver.sleep(1000);
             } catch (error) {
                 console.log(error);
             }
@@ -216,6 +215,7 @@ async function dev_checklist(link, username, password) {
         } 
     }
     write_link_to_sheets(range, values);
+    await driver.sleep(1000);
 
 
     // EXTERNAL LINKS
@@ -240,22 +240,21 @@ async function dev_checklist(link, username, password) {
                         let target_attribute = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].getAttribute('target')");
                         console.log(target_attribute);
                         try {
-                            setTimeout(() => {
-                                googleSheets.spreadsheets.values.append({
-                                    auth,
-                                    spreadsheetId,
-                                    range: "External Links!A1:B1",
-                                    valueInputOption: "USER_ENTERED",
-                                    resource: {
-                                        values: [
-                                            [ 
-                                                external_links,
-                                                target_attribute
-                                            ]
+                            googleSheets.spreadsheets.values.append({
+                                auth,
+                                spreadsheetId,
+                                range: "External Links!A2:B2",
+                                valueInputOption: "USER_ENTERED",
+                                resource: {
+                                    values: [
+                                        [ 
+                                            external_links,
+                                            target_attribute
                                         ]
-                                    }
-                                });
-                            }, 1000);
+                                    ]
+                                }
+                            });
+                            await driver.sleep(1000);
                         } catch (error) {
                             console.log(error);
                         }
@@ -267,6 +266,7 @@ async function dev_checklist(link, username, password) {
         console.log(error);
     }
     write_link_to_sheets(range, values);
+    await driver.sleep(1000);
 
 
     // CONTACT NUMBERS
@@ -281,21 +281,20 @@ async function dev_checklist(link, username, password) {
             if ((hasNumber.test(contact_number) === true) && (contact_number.includes("480"))) {
                 console.log(contact_number);
                 try {
-                    setTimeout(() => {
-                        googleSheets.spreadsheets.values.append({
-                            auth,
-                            spreadsheetId,
-                            range: "Contact Numbers!A1",
-                            valueInputOption: "USER_ENTERED",
-                            resource: {
-                                values: [
-                                    [ 
-                                        contact_number
-                                    ]
+                    googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: "Contact Numbers!A2",
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [ 
+                                    contact_number
                                 ]
-                            }
-                        });
-                    }, 1000);
+                            ]
+                        }
+                    });
+                    await driver.sleep(1000);
                 } catch (error) {
                     console.log(error);
                 }
@@ -307,6 +306,7 @@ async function dev_checklist(link, username, password) {
         console.log(error);
     }
     write_link_to_sheets(range, values);
+    await driver.sleep(1000);
 
 
     // EMAIL ADDRESSES
@@ -320,21 +320,20 @@ async function dev_checklist(link, username, password) {
             if (email_addresses.includes("@")) {
                 console.log(email_addresses);
                 try {
-                    setTimeout(() => {
-                        googleSheets.spreadsheets.values.append({
-                            auth,
-                            spreadsheetId,
-                            range: "Email Addresses!A1",
-                            valueInputOption: "USER_ENTERED",
-                            resource: {
-                                values: [
-                                    [ 
-                                        email_addresses
-                                    ]
+                    googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: "Email Addresses!A2",
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [ 
+                                    email_addresses
                                 ]
-                            }
-                        });
-                    }, 1000);
+                            ]
+                        }
+                    });
+                    await driver.sleep(1000);
                 } catch (error) {
                     console.log(error);
                 }
@@ -344,6 +343,7 @@ async function dev_checklist(link, username, password) {
         console.log(error);
     }
     write_link_to_sheets(range, values);
+    await driver.sleep(1000);
 
 
     // TERMS & PRIVACY
@@ -367,28 +367,96 @@ async function dev_checklist(link, username, password) {
                 console.log(privacy_or_terms_link);
             }
             try {
-                setTimeout(() => {
-                    googleSheets.spreadsheets.values.append({
-                        auth,
-                        spreadsheetId,
-                        range: "Privacy Policy/Terms and Conditions!A1:B1",
-                        valueInputOption: "USER_ENTERED",
-                        resource: {
-                            values: [
-                                [ 
-                                    privacy_or_terms_text,
-                                    privacy_or_terms_link
-                                ]
+                googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Privacy Policy/Terms and Conditions!A2:B2",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                privacy_or_terms_text,
+                                privacy_or_terms_link
                             ]
-                        }
-                    });
-                }, 1000);
+                        ]
+                    }
+                });
+                await driver.sleep(1000);
             } catch (error) {
                 console.log(error);
             }
         } 
     }
     write_link_to_sheets(range, values);
+    await driver.sleep(1000);
+
+
+    // SOCIAL MEDIA LINKS
+    var range = "Sheet1!C17";
+    var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=633909758";
+    let social_media_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
+
+    try {
+        for (let index = 0; index < social_media_links_count; index++) {
+            let social_media_links = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].getAttribute('href')");
+
+            if (social_media_links != null) {
+                if ((social_media_links.includes("facebook")) || (social_media_links.includes("twitter")) || (social_media_links.includes("instagram")) || (social_media_links.includes("linkedin"))) {
+                    console.log(social_media_links);
+
+                    try {
+                        // write to sheet
+                        googleSheets.spreadsheets.values.append({
+                            auth,
+                            spreadsheetId,
+                            range: "Social Media Links!A2",
+                            valueInputOption: "USER_ENTERED",
+                            resource: {
+                                values: [
+                                    [ 
+                                        social_media_links
+                                    ]
+                                ]
+                            }
+                        });
+                        await driver.sleep(1000);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    write_link_to_sheets(range, values);
+    await driver.sleep(1000);
+
+
+    // H1 TAGS
+    let h1_count = await driver.executeScript("return document.getElementsByTagName('h1').length");
+    console.log(h1_count);
+    try {
+        // write data to sheet
+        googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Sheet1!C19",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [ 
+                        h1_count
+                    ]
+                ]
+            }
+        });
+        await driver.sleep(1000);
+    } catch (error) {
+        console.log(error);
+    }
+    await driver.sleep(1000);
+
 
     // end test
     console.log("test ends.");
