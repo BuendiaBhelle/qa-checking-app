@@ -160,7 +160,6 @@ const responsiveness_desktop_manual = require("./modules/responsiveness/desktop/
 const responsiveness_mobile = require("./modules/responsiveness/mobile/mobile");
 const responsiveness_tablet = require("./modules/responsiveness/tablet/tablet");
 
-const site_title = require("./modules/dev_checklist/site_title");
 const top_nav_bar = require("./modules/dev_checklist/top_nav_bar");
 const recaptcha = require("./modules/dev_checklist/recaptcha");
 const dev_checklist = require("./modules/dev_checklist/dev_checklist");
@@ -5498,18 +5497,6 @@ app.post('/post/broken_links', async (req, res) => {
         console.log(error);
     }
     res.send(success_msg);
-});
-
-app.post('/post/dev_checklist/site_title', async (req, res) => {
-    var link = req.body.link;
-
-    try {
-        await site_title.site_title(timestamp, link);
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(success_msg);
-    
 });
 
 app.post('/post/dev_checklist/top_nav_bar', async (req, res) => {

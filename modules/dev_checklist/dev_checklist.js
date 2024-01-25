@@ -138,6 +138,23 @@ async function dev_checklist(link, username, password) {
                     }
                 });
             }
+            // check for SMTP plugin 
+            if (plugin_active_is_uninstallable === "wp-mail-smtp") {
+                console.log("With SMTP.");   
+                await googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Sheet1!C6",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                "With SMTP."
+                            ]
+                        ]
+                    }
+                });
+            }
         }
         console.log("DEFAULT PLUGINS - check for plugin success.");
         await driver.sleep(1000);
@@ -146,11 +163,36 @@ async function dev_checklist(link, username, password) {
         await driver.sleep(1000);
     }
 
-    // COPYRIGHT 
+    // SITE TITLE
     await driver.switchTo().newWindow('tab');
     await driver.get(link);
     await driver.sleep(3000);
 
+    let site_title = await driver.executeScript("return document.getElementsByTagName('title')[0].innerText");
+    console.log(site_title);
+
+    try {
+        googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Sheet1!C2",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [ 
+                        "[ " + site_title + " ]"
+                    ]
+                ]
+            }
+        });
+        await driver.sleep(1000);
+    } catch (error) {
+        console.log(error);
+    }
+    await driver.sleep(1000);
+
+
+    // COPYRIGHT 
     let p_count = await driver.executeScript("return document.getElementsByTagName('p').length");
 
     for (let index = 0; index < p_count; index++) {
@@ -163,12 +205,12 @@ async function dev_checklist(link, username, password) {
                 await googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C6",
+                    range: "Sheet1!C7",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
                             [ 
-                                copyright
+                                "[ " + copyright + " ]"
                             ]
                         ]
                     }
@@ -182,7 +224,7 @@ async function dev_checklist(link, username, password) {
 
 
     // IMAGES
-    var range = "Sheet1!C8";
+    var range = "Sheet1!C9";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=592523417";
     let images_count = await driver.executeScript("return document.getElementsByTagName('img').length");
     for (let index = 0; index < images_count; index++) {
@@ -219,7 +261,7 @@ async function dev_checklist(link, username, password) {
 
 
     // EXTERNAL LINKS
-    var range = "Sheet1!C9";
+    var range = "Sheet1!C10";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1250732519";
     let external_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
     console.log(external_links_count);
@@ -270,7 +312,7 @@ async function dev_checklist(link, username, password) {
 
 
     // CONTACT NUMBERS
-    var range = "Sheet1!C10";
+    var range = "Sheet1!C11";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=989210029";
     try {
         for (let index = 0; index < p_count; index++) {
@@ -310,7 +352,7 @@ async function dev_checklist(link, username, password) {
 
 
     // EMAIL ADDRESSES
-    var range = "Sheet1!C11";
+    var range = "Sheet1!C12";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=447596669";
     try {
         for (let index = 0; index < p_count; index++) {
@@ -346,8 +388,64 @@ async function dev_checklist(link, username, password) {
     await driver.sleep(1000);
 
 
+    // SEARCH FUNCTION
+    let search1 = await driver.executeScript("return document.getElementsByClassName('search-field')[0]");
+    let search2 = await driver.executeScript("return document.getElementsByClassName('fa fa-search')[0]");
+    let search3 = await driver.executeScript("return document.getElementsByClassName('vantage-icon-search')[0]");
+    let search4 = await driver.executeScript("return document.getElementsByClassName('adas_search')[1]");
+    let search5 = await driver.executeScript("return document.getElementsByClassName('fas fa-search')[0]");
+
+    try {
+        if ((search1 != undefined) || (search2 != undefined) || (search3 != undefined) || (search4 != undefined)
+        || (search5 != undefined)) {
+            console.log("With Search function.");
+            try {
+                googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Sheet1!C14",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                "With Search function."
+                            ]
+                        ]
+                    }
+                });
+                await driver.sleep(1000);
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            console.log("Without Search function.");
+            try {
+                googleSheets.spreadsheets.values.append({
+                    auth,
+                    spreadsheetId,
+                    range: "Sheet1!C14",
+                    valueInputOption: "USER_ENTERED",
+                    resource: {
+                        values: [
+                            [ 
+                                "Without Search function."
+                            ]
+                        ]
+                    }
+                });
+                await driver.sleep(1000);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    await driver.sleep(1000);
+
+
     // TERMS & PRIVACY
-    var range = "Sheet1!C16";
+    var range = "Sheet1!C17";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1894558610";
     let links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
 
@@ -392,7 +490,7 @@ async function dev_checklist(link, username, password) {
 
 
     // SOCIAL MEDIA LINKS
-    var range = "Sheet1!C17";
+    var range = "Sheet1!C18";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=633909758";
     let social_media_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
 
@@ -441,12 +539,12 @@ async function dev_checklist(link, username, password) {
         googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "Sheet1!C19",
+            range: "Sheet1!C20",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
                     [ 
-                        h1_count
+                        "[ " + h1_count + " ]"
                     ]
                 ]
             }
