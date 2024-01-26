@@ -18,45 +18,31 @@ async function recaptcha(timestamp, link) {
     var driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get(link);
-    await driver.sleep(10000);
 
-    await driver.executeScript("window.scrollBy(0,700)", "");
+    await driver.executeScript("window.scrollBy(0,1000)", "");
+    await driver.sleep(2000);
 
-    let recaptcha = await driver.executeScript("return document.getElementsByClassName('rc-anchor-normal-footer')[0].children[1].innerText");
-    console.log(recaptcha);
-    // for (let index = 0; index < images_count; index++) {
-    //     let image_source = await driver.executeScript("return document.getElementsByTagName('img')[" + index + "].src");
-    
-    //     var img_jpg = ".jpg";
-    //     var img_png = ".png";
-    //     var img_jpeg = ".jpeg";
-        
-    //     if ((image_source.includes(img_jpg) || (image_source.includes(img_png)) || (image_source.includes(img_jpeg)))) {
+    let recaptcha = await driver.executeScript("return document.getElementsByClassName('rc-anchor-pt')[0]");
 
-    //         try {
-    //             // write date to sheet
-    //             await googleSheets.spreadsheets.values.append({
-    //                 auth,
-    //                 spreadsheetId,
-    //                 range: "Images!A1",
-    //                 valueInputOption: "USER_ENTERED",
-    //                 resource: {
-    //                     values: [
-    //                         [ 
-    //                             image_source
-    //                         ]
-    //                     ]
-    //                 }
-    //             });
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-
-    //       console.log(image_source);
-    //     } 
-
+    // if (recaptcha != undefined) {
+    //     console.log("With Recaptcha");
+    // } else {
+    //     console.log("Without Recaptcha");
     // }
-    
+
+    console.log(JSON.stringify(recaptcha));
+
+
+
+    // let site_title = await driver.executeScript("return document.getElementsByTagName('title')[0].innerText");
+    // console.log(site_title);
+
+    // if (site_title === "XML Sitemap") {
+    //     console.log("With Sitemap.");
+    // } else if (site_title.includes("Page Not Found")) {
+    //     console.log("Without Sitemap.");
+    // }
+
 
 }
 

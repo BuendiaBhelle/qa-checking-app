@@ -1,6 +1,7 @@
 const {Builder, By} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config = require("../../config.js");
+const alert = require("alert");
 require('chromedriver');
 
 const auth = config.auth;
@@ -403,7 +404,7 @@ async function dev_checklist(link, username, password) {
                 googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C14",
+                    range: "Sheet1!C13",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -445,7 +446,7 @@ async function dev_checklist(link, username, password) {
 
 
     // TERMS & PRIVACY
-    var range = "Sheet1!C17";
+    var range = "Sheet1!C15";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1894558610";
     let links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
 
@@ -490,7 +491,7 @@ async function dev_checklist(link, username, password) {
 
 
     // SOCIAL MEDIA LINKS
-    var range = "Sheet1!C18";
+    var range = "Sheet1!C16";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=633909758";
     let social_media_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
 
@@ -531,6 +532,59 @@ async function dev_checklist(link, username, password) {
     await driver.sleep(1000);
 
 
+    // SITEMAP
+    await driver.switchTo().newWindow('tab');
+    await driver.get(link + "sitemap_index.xml");
+    await driver.sleep(1000);
+    let xml_url = await driver.executeScript("return document.getElementsByTagName('title')[0].innerText");
+    console.log(xml_url);
+
+    if (xml_url.includes("XML Sitemap")) {
+        console.log("With Sitemap.");
+        try {
+            // write data to sheet
+            googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "Sheet1!C17",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [ 
+                            "With Sitemap."
+                        ]
+                    ]
+                }
+            });
+            await driver.sleep(1000);
+        } catch (error) {
+            console.log(error);
+        }
+    } else if ((xml_url.includes("Page Not Found")) || (xml_url.includes("404 not found"))) {
+        console.log("Without Sitemap.");
+        try {
+            // write data to sheet
+            googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "Sheet1!C18",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [ 
+                            "Without Sitemap."
+                        ]
+                    ]
+                }
+            });
+            await driver.sleep(1000);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    await driver.sleep(1000);
+
+
     // H1 TAGS
     let h1_count = await driver.executeScript("return document.getElementsByTagName('h1').length");
     console.log(h1_count);
@@ -539,7 +593,7 @@ async function dev_checklist(link, username, password) {
         googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "Sheet1!C20",
+            range: "Sheet1!C18",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
@@ -558,6 +612,7 @@ async function dev_checklist(link, username, password) {
 
     // end test
     console.log("test ends.");
+    alert("DONE");
 }
 
 
