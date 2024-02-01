@@ -8,11 +8,12 @@ const auth = config.auth;
 const spreadsheetId = config.spreadsheetId_dev_checklist;
 
 
-async function dev_checklist(link, username, password) {
+async function dev_checklist(link, username, password, woocommerce) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
     var driver = await new Builder().forBrowser("chrome").build();
 
+    console.log(woocommerce);
 
     function write_link_to_sheets(range, values) {
         try {
@@ -100,15 +101,15 @@ async function dev_checklist(link, username, password) {
 
     // check for default plugins
     try {            
-        let plugin_active_is_uninstallable_length = await driver.executeScript("return document.getElementsByClassName('active is-uninstallable').length");
+        let plugin_active_is_uninstallable_length = await driver.executeScript("return document.getElementsByClassName('active').length");
         var plugins_count = plugin_active_is_uninstallable_length-1;
         for (let i = 0; i <= plugins_count; i++) {
-            let plugin_active_is_uninstallable = await driver.executeScript("return document.getElementsByClassName('active is-uninstallable')[" + i + "].getAttribute('data-slug')");
+            let plugin_active_is_uninstallable = await driver.executeScript("return document.getElementsByClassName('active')[" + i + "].getAttribute('data-slug')");
 
             // check for Broken Link Checker plugin 
             if (plugin_active_is_uninstallable === "broken-link-checker") {
                 console.log("With Broken Link Checker.");   
-                await googleSheets.spreadsheets.values.append({
+                googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
                     range: "Sheet1!C4",
@@ -121,11 +122,12 @@ async function dev_checklist(link, username, password) {
                         ]
                     }
                 });
+                await driver.sleep(1000);
             }
             // check for Yoast SEO plugin 
             if (plugin_active_is_uninstallable === "wordpress-seo") {
                 console.log("With Yoast SEO.");   
-                await googleSheets.spreadsheets.values.append({
+                googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
                     range: "Sheet1!C5",
@@ -138,11 +140,11 @@ async function dev_checklist(link, username, password) {
                         ]
                     }
                 });
-            }
+                await driver.sleep(1000);            }
             // check for SMTP plugin 
             if (plugin_active_is_uninstallable === "wp-mail-smtp") {
                 console.log("With SMTP.");   
-                await googleSheets.spreadsheets.values.append({
+                googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
                     range: "Sheet1!C6",
@@ -155,6 +157,7 @@ async function dev_checklist(link, username, password) {
                         ]
                     }
                 });
+                await driver.sleep(1000);
             }
         }
         console.log("DEFAULT PLUGINS - check for plugin success.");
@@ -198,8 +201,9 @@ async function dev_checklist(link, username, password) {
 
     for (let index = 0; index < p_count; index++) {
         let copyright = await driver.executeScript("return document.getElementsByTagName('p')[" + index + "].innerText");
-
-        if (copyright.includes("All Rights Reserved")) {
+        
+        if ((copyright.includes("Copyright")) || (copyright.includes("All Rights Reserved")) || (copyright.includes("©")) 
+        || (copyright.includes("ALL RIGHTS RESERVED"))) {
             console.log(copyright);
             try {
                 // write date to sheet
@@ -608,6 +612,170 @@ async function dev_checklist(link, username, password) {
         console.log(error);
     }
     await driver.sleep(1000);
+
+
+    // RECAPTCHA
+    await driver.switchTo().newWindow('tab');
+    await driver.get(link);
+    await driver.sleep(1000);
+    await driver.executeScript("window.scrollBy(0,9999)", "");
+    await driver.sleep(5000);
+
+    let recaptcha = await driver.executeScript("return document.getElementsByClassName('grecaptcha-badge')[0]");
+
+    if ((recaptcha === undefined) || (recaptcha === null)) {
+        console.log("Without Recaptcha");
+        try {
+            // write data to sheet
+            googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "Sheet1!C14",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [ 
+                            "Without Recaptcha."
+                        ]
+                    ]
+                }
+            });
+            await driver.sleep(1000);
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        console.log("With Recaptcha");
+        try {
+            // write data to sheet
+            googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "Sheet1!C14",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [ 
+                            "With Recaptcha."
+                        ]
+                    ]
+                }
+            });
+            await driver.sleep(1000);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    if (woocommerce) {
+        console.log("WOOCOMMERCE--------------------------");
+        // SHIPPING AND RETURN POLICY
+        let a_count = await driver.executeScript("return document.getElementsByTagName('a').length");
+
+        try {
+            for (let index = 0; index < a_count; index++) {
+                let footer_link = await driver.executeScript("return document.getElementsByTagName('a')[" + index + "].innerText");
+
+                if (footer_link != undefined) {
+                    if ((footer_link.includes("Shipping / Exchange Policy")) || (footer_link.includes("Shipping and Return Policy")) || (footer_link.includes("Shipping"))) {
+                        console.log("With Shipping Policy.");
+                        try {
+                            // write data to sheet
+                            googleSheets.spreadsheets.values.append({
+                                auth,
+                                spreadsheetId,
+                                range: "Sheet1!C19",
+                                valueInputOption: "USER_ENTERED",
+                                resource: {
+                                    values: [
+                                        [ 
+                                            "With Shipping Policy."
+                                        ]
+                                    ]
+                                }
+                            });
+                            await driver.sleep(1000);
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+                    if ((footer_link.includes("Request for Return")) || (footer_link.includes("Refund & Store Policies")) || (footer_link.includes("Refund Policy"))
+                    || (footer_link.includes("Shipping and Return Policy")) || (footer_link.includes("Return & Refund Policy")) || (footer_link.includes("Returns Policy"))) {
+                        console.log("With Return & Refund Policy.");
+                        try {
+                            // write data to sheet
+                            googleSheets.spreadsheets.values.append({
+                                auth,
+                                spreadsheetId,
+                                range: "Sheet1!C20",
+                                valueInputOption: "USER_ENTERED",
+                                resource: {
+                                    values: [
+                                        [ 
+                                            "With Return & Refund Policy."
+                                        ]
+                                    ]
+                                }
+                            });
+                            await driver.sleep(1000);
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+                }
+            
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+
+        // COUPONS
+        var range = "Sheet1!C21";
+        var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1156654261";
+        await driver.switchTo().newWindow('tab');
+        await driver.get(link + "wp-admin/edit.php?post_type=shop_coupon");
+
+        // check for coupons
+        try {            
+            let code_length = await driver.executeScript("return document.getElementsByClassName('row-title').length");
+            for (let i = 0; i < code_length; i++) {
+                let code = await driver.executeScript("return document.getElementsByClassName('row-title')[" + i + "].innerText");
+                let expiry_date = await driver.executeScript("return document.getElementsByClassName('expiry_date column-expiry_date')[" + i + "].innerText");
+                console.log(code);
+                console.log(expiry_date);
+                try {
+                    // write to sheet
+                    googleSheets.spreadsheets.values.append({
+                        auth,
+                        spreadsheetId,
+                        range: "Coupons!A2:B2",
+                        valueInputOption: "USER_ENTERED",
+                        resource: {
+                            values: [
+                                [ 
+                                    code,
+                                    expiry_date
+                                ]
+                            ]
+                        }
+                    });
+                    await driver.sleep(1000);
+                } catch (error) {
+                    console.log(error);
+                }
+
+            }
+            await driver.sleep(1000);
+        } catch (error) {
+            console.log(error);
+            await driver.sleep(1000);
+        }
+        write_link_to_sheets(range, values);
+        await driver.sleep(1000);
+    }
+
 
 
     // end test

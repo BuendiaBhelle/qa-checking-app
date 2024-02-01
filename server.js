@@ -5512,9 +5512,11 @@ app.post('/post/dev_checklist/top_nav_bar', async (req, res) => {
 
 app.post('/post/dev_checklist/recaptcha', async (req, res) => {
     var link = req.body.link;
+    var username = req.body.username;
+    var password = req.body.password;
 
     try {
-        await recaptcha.recaptcha(timestamp, link);
+        await recaptcha.recaptcha(link, username, password);
     } catch (error) {
         console.log(error);
     }
@@ -5525,9 +5527,10 @@ app.post('/post/dev_checklist', async (req, res) => {
     var link = req.body.link;
     var username = req.body.username;
     var password = req.body.password;
+    var woocommerce = req.body.woocommerce;
 
     try {
-        await dev_checklist.dev_checklist(link, username, password);
+        await dev_checklist.dev_checklist(link, username, password, woocommerce);
     } catch (error) {
         console.log(error);
     }
