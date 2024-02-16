@@ -131,7 +131,7 @@ async function mobile_and_desktopScore(timestamp) {
                 await driver.get(pagespeed_url);
                 await driver.findElement(By.name("url")).sendKeys(urls[index], Key.RETURN);
 
-                await driver.sleep(50000);
+                await driver.sleep(60000);
         
                 let mobile_score = await driver.executeScript("return document.getElementsByClassName('lh-gauge__percentage')[0].innerHTML");
                 var mobile_scoreFin = Number(mobile_score);

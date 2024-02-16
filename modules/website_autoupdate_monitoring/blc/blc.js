@@ -48,8 +48,6 @@ async function blc(timestamp) {
             await driver.get(credentials[index][0] + "/hoylogin");
         } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
             await driver.get(credentials[index][0] + "/members-login/");
-        } else if (credentials[index][0] === "https://www.thehairextensioncompany.com") {
-            await driver.get(credentials[index][0] + "/wp-admin");
         } else {
             await driver.get(credentials[index][0] + "/pvlogin");
         }
@@ -76,7 +74,8 @@ async function blc(timestamp) {
                 await driver.findElement(By.id("1helauaoii80")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("6afbbvfn0560")).sendKeys(credentials[index][2]);
                 await driver.executeScript("return document.getElementsByClassName('pp-submit-form ppform-submit-button')[0].click()");
-            } else if ((credentials[index][0] === "https://www.inspirednetworks.com") || (credentials[index][0] === "https://www.canyonfalls.com")) {
+            } else if ((credentials[index][0] === "https://www.inspirednetworks.com") || (credentials[index][0] === "https://www.canyonfalls.com")
+            || (credentials[index][0] === "https://www.thehairextensioncompany.com")) {
                 await driver.findElement(By.id("user_login")).sendKeys(credentials[index][1]);
                 await driver.findElement(By.id("user_pass")).sendKeys(credentials[index][2]);
                 await driver.executeScript("return document.getElementsByClassName('button button-primary button-large')[0].click()"); 
