@@ -112,7 +112,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                 googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C4",
+                    range: "Sheet1!C3",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -130,7 +130,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                 googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C5",
+                    range: "Sheet1!C4",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -147,7 +147,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                 googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C6",
+                    range: "Sheet1!C5",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -210,7 +210,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                 await googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C7",
+                    range: "Sheet1!C6",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -229,7 +229,7 @@ async function dev_checklist(link, username, password, woocommerce) {
 
 
     // IMAGES
-    var range = "Sheet1!C9";
+    var range = "Sheet1!C8";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=592523417";
     let images_count = await driver.executeScript("return document.getElementsByTagName('img').length");
     for (let index = 0; index < images_count; index++) {
@@ -266,7 +266,7 @@ async function dev_checklist(link, username, password, woocommerce) {
 
 
     // EXTERNAL LINKS
-    var range = "Sheet1!C10";
+    var range = "Sheet1!C9";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1250732519";
     let external_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
     console.log(external_links_count);
@@ -317,7 +317,7 @@ async function dev_checklist(link, username, password, woocommerce) {
 
 
     // CONTACT NUMBERS
-    var range = "Sheet1!C11";
+    var range = "Sheet1!C10";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=989210029";
     try {
         for (let index = 0; index < p_count; index++) {
@@ -357,7 +357,7 @@ async function dev_checklist(link, username, password, woocommerce) {
 
 
     // EMAIL ADDRESSES
-    var range = "Sheet1!C12";
+    var range = "Sheet1!C11";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=447596669";
     try {
         for (let index = 0; index < p_count; index++) {
@@ -408,7 +408,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                 googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C13",
+                    range: "Sheet1!C12",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -428,7 +428,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                 googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C14",
+                    range: "Sheet1!C13",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -450,7 +450,7 @@ async function dev_checklist(link, username, password, woocommerce) {
 
 
     // TERMS & PRIVACY
-    var range = "Sheet1!C15";
+    var range = "Sheet1!C14";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1894558610";
     let links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
 
@@ -495,7 +495,7 @@ async function dev_checklist(link, username, password, woocommerce) {
 
 
     // SOCIAL MEDIA LINKS
-    var range = "Sheet1!C16";
+    var range = "Sheet1!C15";
     var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=633909758";
     let social_media_links_count = await driver.executeScript("return document.getElementsByTagName('a').length");
 
@@ -550,7 +550,7 @@ async function dev_checklist(link, username, password, woocommerce) {
             googleSheets.spreadsheets.values.append({
                 auth,
                 spreadsheetId,
-                range: "Sheet1!C17",
+                range: "Sheet1!C16",
                 valueInputOption: "USER_ENTERED",
                 resource: {
                     values: [
@@ -571,7 +571,7 @@ async function dev_checklist(link, username, password, woocommerce) {
             googleSheets.spreadsheets.values.append({
                 auth,
                 spreadsheetId,
-                range: "Sheet1!C18",
+                range: "Sheet1!C17",
                 valueInputOption: "USER_ENTERED",
                 resource: {
                     values: [
@@ -685,7 +685,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                             googleSheets.spreadsheets.values.append({
                                 auth,
                                 spreadsheetId,
-                                range: "Sheet1!C19",
+                                range: "Sheet1!C18",
                                 valueInputOption: "USER_ENTERED",
                                 resource: {
                                     values: [
@@ -708,7 +708,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                             googleSheets.spreadsheets.values.append({
                                 auth,
                                 spreadsheetId,
-                                range: "Sheet1!C20",
+                                range: "Sheet1!C19",
                                 valueInputOption: "USER_ENTERED",
                                 resource: {
                                     values: [
@@ -732,7 +732,7 @@ async function dev_checklist(link, username, password, woocommerce) {
 
 
         // COUPONS
-        var range = "Sheet1!C21";
+        var range = "Sheet1!C20";
         var values = "https://docs.google.com/spreadsheets/d/1Fnni9jm4brdAzJk8btvQ-pJ_0467mmBktiOWBCN9rjg/edit#gid=1156654261";
         await driver.switchTo().newWindow('tab');
         await driver.get(link + "wp-admin/edit.php?post_type=shop_coupon");
