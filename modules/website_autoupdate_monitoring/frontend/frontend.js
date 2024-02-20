@@ -21,7 +21,7 @@ async function frontend(timestamp) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "FRONTEND!A1",
+        range: "FrontEnd Daily Monitoring!A1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
@@ -35,7 +35,7 @@ async function frontend(timestamp) {
         await googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "FRONTEND!A1",
+            range: "FrontEnd Daily Monitoring!A1",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
