@@ -428,7 +428,7 @@ async function dev_checklist(link, username, password, woocommerce) {
                 googleSheets.spreadsheets.values.append({
                     auth,
                     spreadsheetId,
-                    range: "Sheet1!C13",
+                    range: "Sheet1!C12",
                     valueInputOption: "USER_ENTERED",
                     resource: {
                         values: [
@@ -597,7 +597,7 @@ async function dev_checklist(link, username, password, woocommerce) {
         googleSheets.spreadsheets.values.append({
             auth,
             spreadsheetId,
-            range: "Sheet1!C18",
+            range: "Sheet1!C17",
             valueInputOption: "USER_ENTERED",
             resource: {
                 values: [
@@ -630,7 +630,7 @@ async function dev_checklist(link, username, password, woocommerce) {
             googleSheets.spreadsheets.values.append({
                 auth,
                 spreadsheetId,
-                range: "Sheet1!C14",
+                range: "Sheet1!C13",
                 valueInputOption: "USER_ENTERED",
                 resource: {
                     values: [
@@ -651,7 +651,7 @@ async function dev_checklist(link, username, password, woocommerce) {
             googleSheets.spreadsheets.values.append({
                 auth,
                 spreadsheetId,
-                range: "Sheet1!C14",
+                range: "Sheet1!C13",
                 valueInputOption: "USER_ENTERED",
                 resource: {
                     values: [
