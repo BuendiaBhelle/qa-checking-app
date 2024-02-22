@@ -1226,8 +1226,29 @@
                             <!-- WEBSITE AUTOUPDATE MONITORING - FRONTEND -->
                             <div id="waum_frontend">
                                 <h1 style="margin-top: 100px;">Frontend</h1>
+
                                 <form action="/post/waum_frontend" method="post">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group row">
+                                                    <label for="browser" class="col-sm-3 col-form-label">Choose a Browser:</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="browser" id="browser">
+                                                            <option value="chrome">Chrome</option>
+                                                            <option value="firefox">Firefox</option>
+                                                            <option value="edge">Edge</option>
+                                                        </select>
+                                                        <a href="" onclick="not_on_the_list()">Not on the list?</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
                                     <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+
                                 </form>
                             </div>
 

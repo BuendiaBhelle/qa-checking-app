@@ -1,4 +1,4 @@
-const {Builder, By} = require("selenium-webdriver");
+const {Builder, By, Capabilities} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config = require("../../../config");
 const server = require('../../../server.js');
@@ -11,11 +11,21 @@ let frontend_sites = config.frontend_sites;
 let output = config.date;
 const module_name = "WEBSITE AUTOUPDATE MONITORING - FRONTEND";
 
-
-async function frontend(timestamp) {
+var driver;
+async function frontend(browser) {
     const client = await auth.getClient();
     var googleSheets = google.sheets({ version: "v4", auth: client });
-    var driver = await new Builder().forBrowser("chrome").build();
+
+    console.log(browser);
+
+    if (browser === "chrome") {
+        driver = await new Builder().forBrowser("chrome").build();
+    } else if (browser === "firefox") {
+        driver = await new Builder().withCapabilities(Capabilities.firefox()).build();
+    } else if (browser === "edge") {
+        driver = await new Builder().forBrowser('MicrosoftEdge').build();
+    }
+    
 
     // write date to sheet
     await googleSheets.spreadsheets.values.append({

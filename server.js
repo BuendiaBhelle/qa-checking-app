@@ -5539,8 +5539,10 @@ app.post('/post/dev_checklist', async (req, res) => {
 });
 
 app.post('/post/waum_frontend', async (req, res) => {
+    var browser = req.body.browser;
+
     try {
-        await waum_frontend.frontend(timestamp);
+        await waum_frontend.frontend(browser);
     } catch (error) {
         console.log(error);
     }
