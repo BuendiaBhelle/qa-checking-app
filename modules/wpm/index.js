@@ -9,7 +9,7 @@ async function index(timestamp) {
 
     setTimeout(async function() {
         await app.listSitesWithIssues(timestamp);
-    }, 3000);  
+    }, 4000);  
 }
 
 

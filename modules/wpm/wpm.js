@@ -252,6 +252,42 @@ async function listSitesWithIssues(timestamp) {
         range: "JFJ!A4:O4",
     });
 
+    const al = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "AL!A4:O4",
+    });
+
+    const sj = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "SJ!A4:O4",
+    });
+
+    const bs = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "BS!A4:P4",
+    });
+
+    const bs_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "BS!O4:P4",
+    });
+
+    const vts = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "BS!A4:P4",
+    });
+
+    const vts_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "VTS!O4:P4",
+    });
+
 
     const sites = [
         acc.data.values,
@@ -273,7 +309,11 @@ async function listSitesWithIssues(timestamp) {
         cfhec.data.values,
         atu.data.values,
         iic.data.values,
-        jfj.data.values
+        jfj.data.values,
+        al.data.values,
+        sj.data.values,
+        bs.data.values,
+        vts.data.values
     ]
 
     // console.log(sites.length);
@@ -288,7 +328,9 @@ async function listSitesWithIssues(timestamp) {
         bd: bd_screenshot_link_mobile.data.values[0][0] + "\n" + bd_screenshot_link_mobile.data.values[0][1],
         cfhec: cfhec_screenshot_link_mobile.data.values[0][0] + "\n" + cfhec_screenshot_link_mobile.data.values[0][1],
         atu: atu_screenshot_link_mobile.data.values[0][0] + "\n" + atu_screenshot_link_mobile.data.values[0][1],
-        iic: iic_screenshot_link_mobile.data.values[0][0] + "\n" + iic_screenshot_link_mobile.data.values[0][1]
+        iic: iic_screenshot_link_mobile.data.values[0][0] + "\n" + iic_screenshot_link_mobile.data.values[0][1],
+        bs: bs_screenshot_link_mobile.data.values[0][0] + "\n" + bs_screenshot_link_mobile.data.values[0][1],
+        vts: vts_screenshot_link_mobile.data.values[0][0] + "\n" + vts_screenshot_link_mobile.data.values[0][1]
     }
 
     console.log("ALL SITES WITH ISSUES:");
@@ -322,6 +364,9 @@ async function listSitesWithIssues(timestamp) {
     sites[16][0].splice(16, 1, screenshot_link_md.cfhec);
     sites[17][0].splice(16, 1, screenshot_link_md.atu);
     sites[18][0].splice(16, 1, screenshot_link_md.iic);
+    sites[22][0].splice(16, 1, screenshot_link_md.bs);
+    sites[23][0].splice(16, 1, screenshot_link_md.vts);
+
 
 
     // check site with issues
