@@ -198,17 +198,17 @@ async function listSitesWithIssues(timestamp) {
         range: "FRL!O4:P4",
     });
 
-    const bd = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "BD!A4:O4",
-    });
+    // const bd = await googleSheets.spreadsheets.values.get({
+    //     auth,
+    //     spreadsheetId,
+    //     range: "BD!A4:O4",
+    // });
 
-    const bd_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId,
-        range: "BD!O4:P4",
-    });
+    // const bd_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+    //     auth,
+    //     spreadsheetId,
+    //     range: "BD!O4:P4",
+    // });
 
     const cfhec = await googleSheets.spreadsheets.values.get({
         auth,
@@ -279,7 +279,7 @@ async function listSitesWithIssues(timestamp) {
     const vts = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "BS!A4:P4",
+        range: "VTS!A4:P4",
     });
 
     const vts_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
@@ -305,7 +305,6 @@ async function listSitesWithIssues(timestamp) {
         np.data.values,
         i_n.data.values,
         frl.data.values,
-        bd.data.values,
         cfhec.data.values,
         atu.data.values,
         iic.data.values,
@@ -325,7 +324,6 @@ async function listSitesWithIssues(timestamp) {
         i_n: i_n_screenshot_link_mobile.data.values[0][0] + "\n" + i_n_screenshot_link_mobile.data.values[0][1],
         np: np_screenshot_link_mobile.data.values[0][0] + "\n" + np_screenshot_link_mobile.data.values[0][1],
         frl: frl_screenshot_link_mobile.data.values[0][0] + "\n" + frl_screenshot_link_mobile.data.values[0][1],
-        bd: bd_screenshot_link_mobile.data.values[0][0] + "\n" + bd_screenshot_link_mobile.data.values[0][1],
         cfhec: cfhec_screenshot_link_mobile.data.values[0][0] + "\n" + cfhec_screenshot_link_mobile.data.values[0][1],
         atu: atu_screenshot_link_mobile.data.values[0][0] + "\n" + atu_screenshot_link_mobile.data.values[0][1],
         iic: iic_screenshot_link_mobile.data.values[0][0] + "\n" + iic_screenshot_link_mobile.data.values[0][1],
@@ -360,12 +358,11 @@ async function listSitesWithIssues(timestamp) {
     sites[12][0].splice(16, 1, screenshot_link_md.np);
     sites[13][0].splice(16, 1, screenshot_link_md.i_n);
     sites[14][0].splice(16, 1, screenshot_link_md.frl);
-    sites[15][0].splice(16, 1, screenshot_link_md.bd);
-    sites[16][0].splice(16, 1, screenshot_link_md.cfhec);
-    sites[17][0].splice(16, 1, screenshot_link_md.atu);
-    sites[18][0].splice(16, 1, screenshot_link_md.iic);
-    sites[22][0].splice(16, 1, screenshot_link_md.bs);
-    sites[23][0].splice(16, 1, screenshot_link_md.vts);
+    sites[15][0].splice(16, 1, screenshot_link_md.cfhec);
+    sites[16][0].splice(16, 1, screenshot_link_md.atu);
+    sites[17][0].splice(16, 1, screenshot_link_md.iic);
+    sites[21][0].splice(16, 1, screenshot_link_md.bs);
+    sites[22][0].splice(16, 1, screenshot_link_md.vts);
 
 
 
