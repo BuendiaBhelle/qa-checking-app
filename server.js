@@ -152,6 +152,8 @@ const wpm_reports = require("./modules/wpm/wpm");
 const waum_backend = require("./modules/website_autoupdate_monitoring/backend/backend");
 const waum_blc = require("./modules/website_autoupdate_monitoring/blc/blc");
 const waum_frontend = require("./modules/website_autoupdate_monitoring/frontend/frontend");
+const waum_visibility = require("./modules/website_autoupdate_monitoring/visibility/visibility.js");
+const waum_searchability = require("./modules/website_autoupdate_monitoring/searchability/searchability.js");
 const calendar = require("./modules/calendar/calendar");
 const broken_links = require("./modules/website_autoupdate_monitoring/blc/broken_links");
 
@@ -5543,6 +5545,27 @@ app.post('/post/waum_frontend', async (req, res) => {
 
     try {
         await waum_frontend.frontend(browser);
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/waum_visibility', async (req, res) => {
+
+    try {
+        await waum_visibility.visibility();
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(success_msg);
+});
+
+app.post('/post/waum_searchability', async (req, res) => {
+    var browser = req.body.browser;
+
+    try {
+        await waum_searchability.searchability(browser);
     } catch (error) {
         console.log(error);
     }
