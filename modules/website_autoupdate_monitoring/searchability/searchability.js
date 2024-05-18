@@ -31,11 +31,11 @@ async function searchability(browser) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "SEARCHABILITY!A1",
+        range: "SEARCHABILITY!A1:B1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
-                [ output ]
+                [ output, "Visible? (Y/N)" ]
             ]
         }
     });
@@ -61,18 +61,18 @@ async function searchability(browser) {
             console.log(error);
         }
 
-        let search_results_count = await driver.executeScript("return document.getElementsByClassName('yuRUbf').length");
-        for (let index = 0; index < search_results_count; index++) {
-            let search_results = JSON.stringify(await driver.executeScript("return document.getElementsByClassName('yuRUbf')[" + index + "].childNodes[0].childNodes[0].childNodes[0].href"));
-            console.log(search_results);
+        // let search_results_count = await driver.executeScript("return document.getElementsByClassName('yuRUbf').length");
+        // for (let index = 0; index < search_results_count; index++) {
+        //     let search_results = JSON.stringify(await driver.executeScript("return document.getElementsByClassName('yuRUbf')[" + index + "].childNodes[0].childNodes[0].childNodes[0].href"));
+        //     console.log(search_results);
 
-            if (search_results.includes(search_key[index][0])) {
-                console.log("Searchable");
-            }
+        //     if (search_results.includes(search_key[index][0])) {
+        //         console.log("Searchable");
+        //     }
             
-        }
+        // }
 
-        await driver.sleep(70000);
+        await driver.sleep(3000);
         
         await driver.switchTo().newWindow('tab');
         
