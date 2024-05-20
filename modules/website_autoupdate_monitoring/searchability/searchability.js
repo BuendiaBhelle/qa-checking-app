@@ -31,11 +31,11 @@ async function searchability(browser) {
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "SEARCHABILITY!A1:B1",
+        range: "SEARCHABILITY!A1:F1",
         valueInputOption: "USER_ENTERED",
         resource: {
             values: [
-                [ output, "Visible? (Y/N)" ]
+                [ output, "Visible? (Y/N)", "Chrome", "Firefox", "Edge", "Safari" ]
             ]
         }
     });
@@ -72,7 +72,7 @@ async function searchability(browser) {
             
         // }
 
-        await driver.sleep(3000);
+        await driver.sleep(10000);
         
         await driver.switchTo().newWindow('tab');
         
