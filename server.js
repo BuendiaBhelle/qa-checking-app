@@ -2,7 +2,7 @@ require('dotenv').config();
 const app = require('express')();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
-const fs = require('file-system');
+// const fs = require('file-system');
 const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
@@ -330,8 +330,8 @@ app.get('/logout', async (req,res) => {
         await sheet.addRow();
         await sheet.appendValues(value);
     }
-    fs.writeFile("./middleware/logs/combined.log", "");
-    fs.writeFile("./middleware/logs/error.log", "");
+    // fs.writeFile("./middleware/logs/combined.log", "");
+    // fs.writeFile("./middleware/logs/error.log", "");
 });
 
 app.post('/post/checkout', async (req, res) => {
@@ -5562,10 +5562,9 @@ app.post('/post/waum_visibility', async (req, res) => {
 });
 
 app.post('/post/waum_searchability', async (req, res) => {
-    var browser = req.body.browser;
 
     try {
-        await waum_searchability.searchability(browser);
+        await waum_searchability.searchability();
     } catch (error) {
         console.log(error);
     }

@@ -78,7 +78,7 @@ async function executeTest(timestamp, username, password, domain){
         try {
             await driver.executeScript("window.location = \'"+esReportUrl+"\'");
             console.log("ES Report");
-            await driver.wait(until.elementLocated(By.className('send_now')), 10000);
+            await driver.wait(until.elementLocated(By.className('send_now')), 50000);
             console.log("Send Now Is loaded");
             var done = false;
             while(!done) {
