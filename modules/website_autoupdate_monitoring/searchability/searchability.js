@@ -195,6 +195,9 @@ async function searchability() {
         }
 
 
+        console.log("--------------------------------------------");
+
+
 
         await driver.sleep(10000);
         await driver.switchTo().newWindow('tab');

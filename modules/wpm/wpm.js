@@ -544,7 +544,8 @@ async function displaySitesToBeReported(timestamp) {
             var first_byte_time = data[j][6];
             var screenshot_link = data[j][12];
     
-            if ((first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC" && site !== "DMM" && site !== "SCAZ")) {
+            if ((first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) && 
+            (site !== "CFHEC" && site !== "GPS" && site !== "RLX" && site !== "IN")) {
                 console.log("* " + site + " - " + screenshot_link)
                 try {
                     await googleSheets.spreadsheets.values.append({
