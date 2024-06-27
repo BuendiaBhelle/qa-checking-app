@@ -486,7 +486,7 @@ async function displaySitesToBeReported(timestamp) {
             var security_score = data[i][5];
             var screenshot_link = data[i][12];
     
-            if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "CFHEC" && site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "IN" && site !== "ISC" && site !== "DMM" && site !== "SCAZ")) {
+            if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "ISC" && site !== "DMM" && site !== "SCAZ")) {
                 console.log("* " + site + " - " + screenshot_link)
                 try {
                     await googleSheets.spreadsheets.values.append({

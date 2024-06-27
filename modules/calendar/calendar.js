@@ -1,6 +1,7 @@
 const {Builder, By, until} = require("selenium-webdriver");
 const {google} = require("googleapis");
 const config = require("../../config");
+const fs = require('fs');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -20,12 +21,31 @@ async function calendar(timestamp, user) {
 
     await driver.get(td_url);
 
+    console.log(user);
+
     if ((user === "user2") || user === "user4") {
         await driver.findElement(By.id("signinButtonGoogle")).click();
         await driver.sleep(30000);
         await driver.get(td_url);
     } else {
-        await driver.sleep(30000);
+        fs.readFile('C:\\Users\\Belle\\Desktop\\OptimizeX\\creds.txt', 'utf8', async (err, data) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+        
+            var lines = data.split('\n');        
+        
+            let username = lines[0];
+            let password = lines[1];
+        
+            console.log(username);
+            console.log(password);
+
+            await driver.findElement(By.id("email")).sendKeys(username);
+            await driver.findElement(By.id("password")).sendKeys(password);
+            await driver.findElement(By.id("signinFormButton")).click();
+        });
     }
 
     await driver.sleep(10000);
@@ -106,10 +126,27 @@ async function calendar(timestamp, user) {
         await driver.executeScript("return document.getElementsByClassName('w-button__label')[1].click()");
         await driver.executeScript("return document.getElementsByClassName('wLBAL')[0].click()");
     } else {
-        await driver.sleep(30000);
+        fs.readFile('C:\\Users\\Belle\\Desktop\\OptimizeX\\creds.txt', 'utf8', async (err, data) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+        
+            var lines = data.split('\n');        
+        
+            let username = lines[0];
+            let password = lines[1];
+        
+            console.log(username);
+            console.log(password);
+
+            await driver.findElement(By.id("loginemail")).sendKeys(username);
+            await driver.findElement(By.id("loginpassword")).sendKeys(password);
+            await driver.findElement(By.className("w-button w-button--blue")).click();
+        });
     }
 
-    await driver.sleep(3000);
+    await driver.sleep(10000);
 
     let ranges_client = [
         "Sheet!B3",
