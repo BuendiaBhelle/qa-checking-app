@@ -156,6 +156,12 @@ async function listSitesWithIssues(timestamp) {
         range: "NHU!A174:O174",
     });
 
+    const jmr = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "JMR!A4:O4",
+    });
+
     const azrs = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
@@ -288,6 +294,18 @@ async function listSitesWithIssues(timestamp) {
         range: "VTS!O4:P4",
     });
 
+    const thj = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "THJ!A4:P4",
+    });
+
+    const thj_screenshot_link_mobile = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "THJ!O4:P4",
+    });
+
 
     const sites = [
         acc.data.values,
@@ -301,6 +319,7 @@ async function listSitesWithIssues(timestamp) {
         gps.data.values,
         kfd.data.values,
         nhu.data.values,
+        jmr.data.values,
         azrs.data.values,
         np.data.values,
         i_n.data.values,
@@ -312,7 +331,8 @@ async function listSitesWithIssues(timestamp) {
         al.data.values,
         sj.data.values,
         bs.data.values,
-        vts.data.values
+        vts.data.values,
+        thj.data.values
     ]
 
     // console.log(sites.length);
@@ -328,7 +348,8 @@ async function listSitesWithIssues(timestamp) {
         atu: atu_screenshot_link_mobile.data.values[0][0] + "\n" + atu_screenshot_link_mobile.data.values[0][1],
         iic: iic_screenshot_link_mobile.data.values[0][0] + "\n" + iic_screenshot_link_mobile.data.values[0][1],
         bs: bs_screenshot_link_mobile.data.values[0][0] + "\n" + bs_screenshot_link_mobile.data.values[0][1],
-        vts: vts_screenshot_link_mobile.data.values[0][0] + "\n" + vts_screenshot_link_mobile.data.values[0][1]
+        vts: vts_screenshot_link_mobile.data.values[0][0] + "\n" + vts_screenshot_link_mobile.data.values[0][1],
+        thj: thj_screenshot_link_mobile.data.values[0][0] + "\n" + thj_screenshot_link_mobile.data.values[0][1]
     }
 
     console.log("ALL SITES WITH ISSUES:");
@@ -355,14 +376,15 @@ async function listSitesWithIssues(timestamp) {
         sites[index][0].splice(13, 0, '');
     }
 
-    sites[12][0].splice(16, 1, screenshot_link_md.np);
-    sites[13][0].splice(16, 1, screenshot_link_md.i_n);
-    sites[14][0].splice(16, 1, screenshot_link_md.frl);
-    sites[15][0].splice(16, 1, screenshot_link_md.cfhec);
-    sites[16][0].splice(16, 1, screenshot_link_md.atu);
-    sites[17][0].splice(16, 1, screenshot_link_md.iic);
-    sites[21][0].splice(16, 1, screenshot_link_md.bs);
-    sites[22][0].splice(16, 1, screenshot_link_md.vts);
+    sites[13][0].splice(16, 1, screenshot_link_md.np);
+    sites[14][0].splice(16, 1, screenshot_link_md.i_n);
+    sites[15][0].splice(16, 1, screenshot_link_md.frl);
+    sites[16][0].splice(16, 1, screenshot_link_md.cfhec);
+    sites[17][0].splice(16, 1, screenshot_link_md.atu);
+    sites[18][0].splice(16, 1, screenshot_link_md.iic);
+    sites[22][0].splice(16, 1, screenshot_link_md.bs);
+    sites[23][0].splice(16, 1, screenshot_link_md.vts);
+    sites[24][0].splice(16, 1, screenshot_link_md.thj);
 
 
 
@@ -486,7 +508,7 @@ async function displaySitesToBeReported(timestamp) {
             var security_score = data[i][5];
             var screenshot_link = data[i][12];
     
-            if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "EPS" && site !== "GPS" && site !== "CDG" && site !== "RLX" && site !== "ISC" && site !== "DMM" && site !== "SCAZ")) {
+            if ((security_score === score[0] || security_score === score[1] || security_score === score[2] || security_score === score[3]) && (site !== "GPS" && site !== "RLX")) {
                 console.log("* " + site + " - " + screenshot_link)
                 try {
                     await googleSheets.spreadsheets.values.append({
@@ -545,7 +567,7 @@ async function displaySitesToBeReported(timestamp) {
             var screenshot_link = data[j][12];
     
             if ((first_byte_time === score[0] || first_byte_time === score[1] || first_byte_time === score[2] || first_byte_time === score[3]) && 
-            (site !== "CFHEC" && site !== "GPS" && site !== "RLX" && site !== "IN")) {
+            (site !== "GPS" && site !== "RLX")) {
                 console.log("* " + site + " - " + screenshot_link)
                 try {
                     await googleSheets.spreadsheets.values.append({

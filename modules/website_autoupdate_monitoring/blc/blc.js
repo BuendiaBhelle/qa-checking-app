@@ -48,6 +48,8 @@ async function blc(timestamp) {
             await driver.get(credentials[index][0] + "/hoylogin");
         } else if (credentials[index][0] === "https://www.phoenixritecare.org") {
             await driver.get(credentials[index][0] + "/members-login/");
+        } else if ((credentials[index][0] === "https://www.andresperezjurado.com") || (credentials[index][0] === "https://dyslexiaproject.org")) {
+            await driver.get(credentials[index][0] + "/wp-admin");
         } else {
             await driver.get(credentials[index][0] + "/pvlogin");
         }
