@@ -46,7 +46,7 @@
       z-index: 1;
       color: #fff;
       width: 100%;
-      height: 107px;
+      height: 128px;
     }
     
     .dropdown_waum:hover .dropdown_waum-content {
@@ -123,7 +123,8 @@
                                     <div class="dropdown_waum-content">
                                         <p style="margin-bottom: 6px;" onclick="waum_backend()">Backend</p>
                                         <p style="margin-bottom: 6px;" onclick="waum_blc()">BLC</p>
-                                        <p onclick="waum_frontend()">Frontend</p>
+                                        <p style="margin-bottom: 6px;" onclick="waum_frontend()">Frontend</p>
+                                        <p onclick="waum_searchability()">Visibility</p>
                                     </div>
                                 </li>
                             </div>
@@ -1252,6 +1253,15 @@
                                 </form>
                             </div>
 
+
+                            <!-- WEBSITE AUTOUPDATE MONITORING - VISIBILITY -->
+                            <div id="waum_searchability">
+                                <h1 style="margin-top: 100px;">VISIBILITY</h1>
+                                <form action="/post/waum_searchability" method="post">
+                                    <button type="submit" id="submit" class="btn btn-primary-lg">Send</button>
+                                </form>
+                            </div>
+
                             <!-- DEV CHECKLIST -->
                             <div id="dev_checklist">
                                 <h1 style="margin-top: 100px;">Dev Checklist</h1>
@@ -1431,6 +1441,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1449,6 +1460,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1467,6 +1479,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1485,6 +1498,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1503,6 +1517,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1521,6 +1536,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1539,6 +1555,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1557,6 +1574,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1575,6 +1593,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1593,6 +1612,7 @@
             document.getElementById('waum_backend').style.display = 'block';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1611,6 +1631,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'block';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1629,6 +1650,26 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'block';
+            document.getElementById('waum_searchability').style.display = 'none';
+            document.getElementById('dev_checklist').style.display = 'none';
+            document.getElementById('responsiveness_lambdatest').style.display = 'none';
+            document.getElementById('responsiveness_manual').style.display = 'none';
+            document.getElementById('sheet-links').style.display = 'block';
+        }
+        function waum_searchability() {
+            document.getElementById('checkout').style.display = 'none';
+            document.getElementById('daily_fixes_broken_links').style.display = 'none';
+            document.getElementById('image_optimization').style.display = 'none';
+            document.getElementById('visibility').style.display = 'none';
+            document.getElementById('webForms').style.display = 'none';
+            document.getElementById('newsletter').style.display = 'none';
+            document.getElementById('nitropack').style.display = 'none';
+            document.getElementById('wpm').style.display = 'none';
+            document.getElementById('calendar').style.display = 'none';
+            document.getElementById('waum_backend').style.display = 'none';
+            document.getElementById('waum_blc').style.display = 'none';
+            document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'block';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1647,6 +1688,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'block';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1665,6 +1707,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'block';
             document.getElementById('responsiveness_manual').style.display = 'none';
@@ -1683,6 +1726,7 @@
             document.getElementById('waum_backend').style.display = 'none';
             document.getElementById('waum_blc').style.display = 'none';
             document.getElementById('waum_frontend').style.display = 'none';
+            document.getElementById('waum_searchability').style.display = 'none';
             document.getElementById('dev_checklist').style.display = 'none';
             document.getElementById('responsiveness_lambdatest').style.display = 'none';
             document.getElementById('responsiveness_manual').style.display = 'block';
