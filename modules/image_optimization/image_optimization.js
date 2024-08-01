@@ -14,7 +14,7 @@ async function imageOptimization(url, timestamp) {
         await driver_web.get(webpagetest_url);
         await driver_web.findElement(By.name("url")).sendKeys(url, Key.RETURN);
     
-        await driver_web.sleep(40000);
+        await driver_web.sleep(150000);
 
         // let waiting = await driver_web.executeScript("return document.getElementsByClassName('is-active')[0].innerHTML");
         // if (waiting === "Waiting...") {
